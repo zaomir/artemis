@@ -47,7 +47,12 @@ cat > /etc/nginx/sites-available/artemisresort.com << NGX
 server {
     listen 80;
     server_name artemisresort.com www.artemisresort.com;
-    location /static/ { alias $SITE_DIR/app/static/; expires 30d; }
+    location /static/ {
+        alias $SITE_DIR/app/static/;
+        expires -1;
+        add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0";
+        add_header Pragma "no-cache";
+    }
     location /deploy-hook { proxy_pass http://127.0.0.1:9001; proxy_set_header X-Hook-Secret \$http_x_hook_secret; }
     location / { proxy_pass http://127.0.0.1:$APP_PORT; proxy_set_header Host \$host; proxy_set_header X-Real-IP \$remote_addr; }
 }
