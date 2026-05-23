@@ -348,94 +348,281 @@ footer p{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif}
 </section>
 
 <!-- CALCULATOR -->
-<div id="calculator">
-  <div class="calc-inner">
-    <p class="section-label">Финансовый калькулятор</p>
+<div id="calculator" style="background:var(--dark2);padding:96px 40px">
+  <div style="max-width:1100px;margin:0 auto">
+    <p class="section-label">Инвестиционный калькулятор</p>
     <h2 class="section-title">Рассчитайте доходность</h2>
     <div class="divider"></div>
-    <div class="calc-grid">
-      <div class="calc-controls">
-        <div class="slider-group">
-          <label>Сумма инвестиций <span class="slider-val" id="inv-val">€3 000 000</span></label>
-          <input type="range" id="inv-slider" min="3000000" max="20000000" step="500000" value="3000000"
-            oninput="calcUpdate()">
-        </div>
-        <div class="slider-group">
-          <label>Срок участия <span class="slider-val" id="term-val">5 лет</span></label>
-          <input type="range" id="term-slider" min="3" max="10" step="1" value="5"
-            oninput="calcUpdate()">
-        </div>
-        <div class="slider-group">
-          <label>Сценарий доходности <span class="slider-val" id="yield-val">Базовый</span></label>
-          <input type="range" id="yield-slider" min="1" max="3" step="1" value="2"
-            oninput="calcUpdate()">
-        </div>
-        <div class="upsell-hint" id="upsell">
-          💡 <strong>При €5 млн</strong> вы получаете блокирующий пакет (25%) и право вето по ключевым решениям. <strong>При €10 млн</strong> — контрольный пакет (50%) с приоритетным распределением прибыли.
+
+    <!-- ROW 1: Сумма + Сценарий -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px">
+      <!-- Сумма инвестиций -->
+      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:28px;border-radius:4px">
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:12px">Сумма инвестиций</div>
+        <div style="font-size:2.5rem;color:var(--gold);font-weight:bold;margin-bottom:4px" id="c-inv-val">€3 000 000</div>
+        <div style="font-size:.9rem;color:var(--muted);font-family:Arial;margin-bottom:16px">Ваша доля: <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> · Девелопер: <span style="color:var(--muted)">20%</span></div>
+        <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()" style="width:100%">
+        <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);font-family:Arial;margin-top:6px"><span>€3M</span><span>€20M</span></div>
+        <!-- Доля-бар -->
+        <div style="margin-top:16px">
+          <div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-bottom:6px;letter-spacing:1px">РАСПРЕДЕЛЕНИЕ 100%</div>
+          <div style="display:flex;height:10px;border-radius:5px;overflow:hidden">
+            <div id="bar-inv" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:12%"></div>
+            <div id="bar-dev" style="background:#2a5f8f;transition:width .3s;width:20%"></div>
+            <div style="background:rgba(255,255,255,.06);flex:1"></div>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:6px;font-size:.72rem;font-family:Arial">
+            <span style="color:var(--gold)">■ Инвестор <span id="bar-inv-pct">12%</span></span>
+            <span style="color:#4a8fbf">■ Девелопер 20%</span>
+            <span style="color:rgba(255,255,255,.3)">■ Свободно <span id="bar-free-pct">68%</span></span>
+          </div>
         </div>
       </div>
-      <div class="calc-results">
-        <div class="result-row"><span class="result-label">Ваша доля в проекте</span><span class="result-val" id="r-share">15%</span></div>
-        <div class="result-row"><span class="result-label">Годовой доход (операции)</span><span class="result-val" id="r-annual">€225 000</span></div>
-        <div class="result-row"><span class="result-label">Доход за период</span><span class="result-val" id="r-total">€1 125 000</span></div>
-        <div class="result-row"><span class="result-label">Прирост стоимости актива</span><span class="result-val" id="r-growth">+€450 000</span></div>
-        <div class="result-row"><span class="result-label">Итого возврат (gross)</span><span class="result-val big" id="r-gross">€1 575 000</span></div>
-        <div class="result-row"><span class="result-label">IRR (расчётный)</span><span class="result-val big" id="r-irr">8.2%</span></div>
-        <p class="calc-note">Расчёт носит иллюстративный характер на основе рыночных данных. Фактические показатели зависят от условий SPV и выбранной модели участия.</p>
+
+      <!-- Сценарий -->
+      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:28px;border-radius:4px">
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:16px">Сценарий участия</div>
+        <div style="display:grid;gap:10px">
+          <button onclick="cSetMode('hold')" id="btn-hold" class="mode-btn active-mode">
+            🏨 Владение и аренда
+            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Держу актив, получаю арендный доход</span>
+          </button>
+          <button onclick="cSetMode('sell')" id="btn-sell" class="mode-btn">
+            💼 Построил и продал
+            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Выход через 2 года по рыночной цене</span>
+          </button>
+          <button onclick="cSetMode('mix')" id="btn-mix" class="mode-btn">
+            ⚖️ Микс
+            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Часть продать, часть оставить в аренду</span>
+          </button>
+        </div>
       </div>
+    </div>
+
+    <!-- Микс-слайдер (показывается только в режиме mix) -->
+    <div id="mix-panel" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.3);padding:24px;border-radius:4px;margin-bottom:32px">
+      <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:12px">Распределение площади</div>
+      <div style="display:flex;justify-content:space-between;font-family:Arial;font-size:.9rem;margin-bottom:10px">
+        <span style="color:var(--text)">Продать: <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong> · <span id="mix-sell-m2" style="color:var(--muted)">~1 641 м²</span></span>
+        <span style="color:var(--text)">В аренду: <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong> · <span id="mix-hold-m2" style="color:var(--muted)">~1 641 м²</span></span>
+      </div>
+      <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()" style="width:100%">
+      <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:10px">
+        <div id="mix-bar-sell" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:50%"></div>
+        <div id="mix-bar-hold" style="background:linear-gradient(90deg,#2abf8f,#4adfaf);transition:width .3s;flex:1"></div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Результаты -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px">
+
+      <!-- Hold результат -->
+      <div id="res-hold" style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:28px;border-radius:4px">
+        <div style="font-size:.75rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:16px">🏨 Арендный доход</div>
+        <div class="r-row"><span class="r-lab">ADR (цена номера)</span><span class="r-val" id="rh-adr">€220</span></div>
+        <div class="r-row"><span class="r-lab">Заполняемость</span><span class="r-val">93% · 210 дней</span></div>
+        <div class="r-row"><span class="r-lab">Выручка в год (доля)</span><span class="r-val" id="rh-rev">—</span></div>
+        <div class="r-row"><span class="r-lab">NOI в год (35% margin)</span><span class="r-val" id="rh-noi">—</span></div>
+        <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:12px;margin-top:4px">
+          <span class="r-lab">Cash Yield (годовой)</span>
+          <span class="r-val big" id="rh-yield">—</span>
+        </div>
+        <div class="r-row"><span class="r-lab">Cap Rate</span><span class="r-val" id="rh-cap">—</span></div>
+      </div>
+
+      <!-- Sell результат -->
+      <div id="res-sell" style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:28px;border-radius:4px">
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">💼 Доход от продажи</div>
+        <div class="r-row"><span class="r-lab">Цена продажи (€/м²)</span><span class="r-val">€5 500/м²</span></div>
+        <div class="r-row"><span class="r-lab">Общая площадь номеров</span><span class="r-val">~3 282 м²</span></div>
+        <div class="r-row"><span class="r-lab">Выручка от продажи (доля)</span><span class="r-val" id="rs-rev">—</span></div>
+        <div class="r-row"><span class="r-lab">Прибыль (exit − вход)</span><span class="r-val" id="rs-profit">—</span></div>
+        <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:12px;margin-top:4px">
+          <span class="r-lab">ROI (за 2 года)</span>
+          <span class="r-val big" id="rs-roi">—</span>
+        </div>
+        <div class="r-row"><span class="r-lab">IRR (годовой)</span><span class="r-val" id="rs-irr">—</span></div>
+      </div>
+    </div>
+
+    <!-- Микс дополнительно -->
+    <div id="res-mix" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.3);padding:24px;border-radius:4px;margin-bottom:32px">
+      <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">⚖️ Итог микс-стратегии</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
+          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Доход от продажи</div>
+          <div style="font-size:1.4rem;color:var(--gold);font-weight:bold" id="mx-sell">—</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
+          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Годовой NOI (аренда)</div>
+          <div style="font-size:1.4rem;color:#4abf8f;font-weight:bold" id="mx-noi">—</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
+          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Итого (год 1)</div>
+          <div style="font-size:1.4rem;color:white;font-weight:bold" id="mx-total">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ПОКАЗАТЕЛИ ИНВЕСТОРА -->
+    <div style="background:var(--dark);border:1px solid rgba(196,163,90,.3);padding:32px;border-radius:4px">
+      <div style="font-size:.75rem;letter-spacing:3px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:24px">Ключевые показатели инвестора</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" id="kpi-grid">
+        <div class="kpi-card"><div class="kpi-lab">Вложено (Equity)</div><div class="kpi-val" id="kp-equity">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">Доля в проекте</div><div class="kpi-val" id="kp-share">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">Общий возврат (Gross)</div><div class="kpi-val" id="kp-gross">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">Чистая прибыль</div><div class="kpi-val" id="kp-profit">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">IRR</div><div class="kpi-val" id="kp-irr">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">MOIC (множитель)</div><div class="kpi-val" id="kp-moic">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">Срок окупаемости</div><div class="kpi-val" id="kp-payback">—</div></div>
+        <div class="kpi-card"><div class="kpi-lab">Стоимость доли (exit)</div><div class="kpi-val" id="kp-exit">—</div></div>
+      </div>
+      <p style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:20px;font-style:italic">
+        Источники: HVS European Hotel Transactions 2024–2025 (€865K/ключ, 5★); MKG Consulting (RevPAR Греция €216,8, лидер Европы 2025); ADR €220 — средний уровень 5★ западный Крит. Расчёт иллюстративный.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- LEGAL -->
-<section id="legal">
-  <p class="section-label">Юридическая процедура</p>
-  <h2 class="section-title">Путь к сделке</h2>
-  <div class="divider"></div>
-  <div class="legal-steps">
-    <div class="legal-step">
-      <div class="step-num">01</div>
-      <div class="step-title">NDA</div>
-      <div class="step-desc">Соглашение о конфиденциальности. Открываем Due Diligence Room</div>
-    </div>
-    <div class="legal-step">
-      <div class="step-num">02</div>
-      <div class="step-title">Proof of Funds</div>
-      <div class="step-desc">Подтверждение наличия средств от инвестора</div>
-    </div>
-    <div class="legal-step">
-      <div class="step-num">03</div>
-      <div class="step-title">Term Sheet</div>
-      <div class="step-desc">Подписание Term Sheet с девелопером ROVLEX</div>
-    </div>
-    <div class="legal-step">
-      <div class="step-num">04</div>
-      <div class="step-title">SPV</div>
-      <div class="step-desc">Создание SPV, акционерное соглашение, оформление земли</div>
-    </div>
-    <div class="legal-step">
-      <div class="step-num">05</div>
-      <div class="step-title">Финансирование</div>
-      <div class="step-desc">Инвестор финансирует проект траншами по графику строительства</div>
-    </div>
-  </div>
-  <div style="background:var(--dark2);border:1px solid rgba(196,163,90,.2);padding:32px;margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
-    <div>
-      <div style="font-size:.75rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:8px">ЧТО ПОЛУЧАЕТ ИНВЕСТОР</div>
-      <ul style="list-style:none;display:grid;gap:8px">
-        <li style="font-size:.9rem;color:var(--text);font-family:Arial">✓ Долю в SPV согласно вкладу</li>
-        <li style="font-size:.9rem;color:var(--text);font-family:Arial">✓ Право на увеличение доли до 100%</li>
-        <li style="font-size:.9rem;color:var(--text);font-family:Arial">✓ Доход от операционной деятельности</li>
-        <li style="font-size:.9rem;color:var(--text);font-family:Arial">✓ Прирост стоимости актива</li>
-        <li style="font-size:.9rem;color:var(--text);font-family:Arial">✓ Доступ к DD Room с полной документацией</li>
-      </ul>
-    </div>
-    <div>
-      <div style="font-size:.75rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:8px">КОНТАКТ</div>
-      <p style="font-size:.9rem;color:var(--text);font-family:Arial;line-height:1.8">ROVLEX<br>ROVLEX@ROVLEX.COM<br>artemisresort.com</p>
-    </div>
-  </div>
-</section>
+<style>
+.mode-btn{width:100%;text-align:left;padding:12px 16px;background:var(--dark2);border:1px solid rgba(196,163,90,.15);color:var(--text);font-family:Arial;font-size:.9rem;cursor:pointer;border-radius:3px;transition:all .2s}
+.mode-btn:hover{border-color:var(--gold);color:var(--white)}
+.active-mode{border-color:var(--gold)!important;background:rgba(196,163,90,.08)!important;color:var(--white)!important}
+.r-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.r-row:last-child{border-bottom:none}
+.r-lab{font-size:.8rem;color:var(--muted);font-family:Arial}
+.r-val{font-size:.9rem;color:var(--white);font-family:Arial;font-weight:bold}
+.r-val.big{font-size:1.3rem;color:var(--gold)}
+.kpi-card{background:rgba(0,0,0,.2);padding:16px;border-radius:4px;border:1px solid rgba(255,255,255,.05)}
+.kpi-lab{font-size:.72rem;color:var(--muted);font-family:Arial;letter-spacing:1px;margin-bottom:6px}
+.kpi-val{font-size:1.2rem;color:var(--gold);font-weight:bold;font-family:Arial}
+@media(max-width:768px){
+  #kpi-grid{grid-template-columns:repeat(2,1fr)!important}
+  #calculator > div > div:nth-child(4),#calculator > div > div:nth-child(5){grid-template-columns:1fr!important}
+}
+</style>
+
+<script>
+const TOTAL_PROJECT = 20;   // млн €
+const TOTAL_M2 = 3282;      // м² застройки
+const ADR = 220;            // € за ночь
+const OCC = 0.93;           // заполняемость
+const DAYS = 210;           // дней сезон
+const NOI_MARGIN = 0.35;    // маржа NOI
+const PRICE_M2 = 5500;      // € за м² при продаже
+const DEV_SHARE = 0.20;     // доля девелопера
+
+let cMode = 'hold';
+
+function cSetMode(m) {
+  cMode = m;
+  ['hold','sell','mix'].forEach(x => {
+    document.getElementById('btn-'+x).classList.toggle('active-mode', x===m);
+  });
+  document.getElementById('mix-panel').style.display = m==='mix' ? 'block' : 'none';
+  document.getElementById('res-mix').style.display = m==='mix' ? 'block' : 'none';
+  cCalc();
+}
+
+function fe(n) {
+  if(Math.abs(n) >= 1000000) return '€' + (n/1000000).toFixed(2) + 'M';
+  if(Math.abs(n) >= 1000) return '€' + Math.round(n).toLocaleString('ru-RU');
+  return '€' + Math.round(n);
+}
+function fp(n) { return n.toFixed(1) + '%'; }
+
+function cCalc() {
+  const invM = +document.getElementById('c-inv').value;
+  const inv = invM * 1e6;
+  const investorShare = (invM / TOTAL_PROJECT) * (1 - DEV_SHARE); // 80% делим пропорционально
+  const shareDisplay = investorShare * 100;
+
+  // Доля-бар
+  document.getElementById('c-inv-val').textContent = '€' + invM.toLocaleString('ru-RU') + ' 000 000';
+  document.getElementById('c-share').textContent = fp(shareDisplay);
+  document.getElementById('bar-inv').style.width = shareDisplay + '%';
+  document.getElementById('bar-dev').style.width = '20%';
+  document.getElementById('bar-inv-pct').textContent = fp(shareDisplay);
+  document.getElementById('bar-free-pct').textContent = fp(100 - shareDisplay - 20);
+
+  // HOLD расчёт
+  const nominalRooms = 66;
+  const myRooms = nominalRooms * investorShare;
+  const annualRev = myRooms * ADR * OCC * DAYS;
+  const annualNOI = annualRev * NOI_MARGIN;
+  const cashYield = annualNOI / inv * 100;
+  const exitValTotal = TOTAL_M2 * PRICE_M2; // ~€18M на выходе
+  const exitValMy = exitValTotal * investorShare;
+  const capRate = annualNOI / (exitValMy) * 100;
+
+  document.getElementById('rh-rev').textContent = fe(annualRev);
+  document.getElementById('rh-noi').textContent = fe(annualNOI);
+  document.getElementById('rh-yield').textContent = fp(cashYield);
+  document.getElementById('rh-cap').textContent = fp(capRate);
+
+  // SELL расчёт (через 2 года)
+  const sellRevMy = exitValMy;
+  const sellProfit = sellRevMy - inv;
+  const sellROI = sellProfit / inv * 100;
+  const sellIRR = (Math.pow(sellRevMy / inv, 1/2) - 1) * 100;
+
+  document.getElementById('rs-rev').textContent = fe(sellRevMy);
+  document.getElementById('rs-profit').textContent = (sellProfit >= 0 ? '+' : '') + fe(sellProfit);
+  document.getElementById('rs-roi').textContent = fp(sellROI);
+  document.getElementById('rs-irr').textContent = fp(sellIRR);
+
+  // MIX
+  const mixPct = +document.getElementById('mix-slider').value / 100;
+  const sellM2 = Math.round(TOTAL_M2 * investorShare * mixPct);
+  const holdM2 = Math.round(TOTAL_M2 * investorShare * (1 - mixPct));
+  document.getElementById('mix-sell-pct').textContent = Math.round(mixPct*100) + '%';
+  document.getElementById('mix-hold-pct').textContent = Math.round((1-mixPct)*100) + '%';
+  document.getElementById('mix-sell-m2').textContent = '~' + sellM2 + ' м²';
+  document.getElementById('mix-hold-m2').textContent = '~' + holdM2 + ' м²';
+  document.getElementById('mix-bar-sell').style.width = Math.round(mixPct*100) + '%';
+
+  const mxSellIncome = sellM2 * PRICE_M2;
+  const mxHoldRooms = nominalRooms * investorShare * (1 - mixPct);
+  const mxNOI = mxHoldRooms * ADR * OCC * DAYS * NOI_MARGIN;
+  document.getElementById('mx-sell').textContent = fe(mxSellIncome);
+  document.getElementById('mx-noi').textContent = fe(mxNOI) + '/год';
+  document.getElementById('mx-total').textContent = fe(mxSellIncome + mxNOI);
+
+  // KPI блок — в зависимости от режима
+  let gross, kpiIRR, moic, payback, exitVal;
+  if (cMode === 'hold') {
+    gross = inv + annualNOI * 10; // 10-летний горизонт + возврат тела
+    kpiIRR = cashYield;
+    moic = gross / inv;
+    payback = inv / annualNOI;
+    exitVal = exitValMy;
+  } else if (cMode === 'sell') {
+    gross = sellRevMy;
+    kpiIRR = sellIRR;
+    moic = gross / inv;
+    payback = 2;
+    exitVal = sellRevMy;
+  } else {
+    gross = mxSellIncome + mxNOI * 10 + holdM2 * PRICE_M2;
+    kpiIRR = (mxSellIncome / inv * 50 + cashYield * (1 - mixPct));
+    moic = gross / inv;
+    payback = mxNOI > 0 ? (inv - mxSellIncome) / mxNOI : 99;
+    exitVal = holdM2 * PRICE_M2;
+  }
+
+  document.getElementById('kp-equity').textContent = fe(inv);
+  document.getElementById('kp-share').textContent = fp(shareDisplay);
+  document.getElementById('kp-gross').textContent = fe(gross);
+  document.getElementById('kp-profit').textContent = fe(gross - inv);
+  document.getElementById('kp-irr').textContent = fp(kpiIRR);
+  document.getElementById('kp-moic').textContent = moic.toFixed(2) + 'x';
+  document.getElementById('kp-payback').textContent = payback > 30 ? '—' : Math.round(payback) + ' лет';
+  document.getElementById('kp-exit').textContent = fe(exitVal);
+}
+
+// Init
+cCalc();
+</script>
 
 <!-- FOOTER -->
 <footer>
