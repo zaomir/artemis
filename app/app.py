@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template, send_file, abort
-import sqlite3, os, smtplib, datetime
-from email.mime.text import MIMEText
+import sqlite3, os, smtplib, datetime, subprocess
 
 app = Flask(__name__, 
     template_folder='templates',
@@ -8,6 +7,25 @@ app = Flask(__name__,
 
 DB = os.path.join(os.path.dirname(__file__), 'leads.db')
 PDF_PATH = os.path.join(os.path.dirname(__file__), 'static', 'Artemis_Resort_Investment.pdf')
+
+def get_version():
+    try:
+        commit = subprocess.check_output(
+            ['git', '-C', '/var/www/artemis', 'log', '--oneline', '-1'],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+        date = subprocess.check_output(
+            ['git', '-C', '/var/www/artemis', 'log', '-1', '--format=%ci'],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()[:10]
+        count = subprocess.check_output(
+            ['git', '-C', '/var/www/artemis', 'rev-list', '--count', 'HEAD'],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+        short_hash = commit.split()[0]
+        return f"v{count} · {short_hash} · {date}"
+    except:
+        return "v1.0"
 
 def init_db():
     conn = sqlite3.connect(DB)
@@ -18,7 +36,7 @@ def init_db():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', version=get_version())
 
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -34,7 +52,9 @@ def register():
         (name, email, phone, amount, datetime.datetime.now().isoformat()))
     conn.commit(); conn.close()
     try:
-        msg = MIMEText(f'Новый лид\nИмя: {name}\nEmail: {email}\nТел: {phone}\nСумма: {amount}')
+        msg = smtplib.MIMEText if hasattr(smtplib, 'MIMEText') else None
+        from email.mime.text import MIMEText
+        msg = MIMEText(f'Лид: {name} | {email} | {phone} | {amount}')
         msg['Subject'] = f'Artemis — лид: {name}'
         msg['From'] = 'noreply@artemisresort.com'
         msg['To'] = 'ROVLEX@ROVLEX.COM'
@@ -56,8 +76,9 @@ def admin_leads():
     conn = sqlite3.connect(DB)
     rows = conn.execute('SELECT id,name,email,phone,amount,created_at FROM leads ORDER BY id DESC').fetchall()
     conn.close()
-    h = '<style>body{font-family:sans-serif;padding:20px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:8px}tr:nth-child(even){background:#f9f9f9}h2{margin-bottom:16px}</style>'
-    h += f'<h2>Artemis Leads ({len(rows)})</h2>'
+    v = get_version()
+    h = f'<style>body{{font-family:sans-serif;padding:20px}}table{{border-collapse:collapse;width:100%}}td,th{{border:1px solid #ccc;padding:8px}}tr:nth-child(even){{background:#f9f9f9}}</style>'
+    h += f'<h2>Artemis Leads ({len(rows)})</h2><p style="color:#888;font-size:12px">{v}</p>'
     h += '<table><tr><th>#</th><th>Имя</th><th>Email</th><th>Тел</th><th>Сумма</th><th>Дата</th></tr>'
     for r in rows:
         h += f'<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td><td>{r[4]}</td><td>{r[5]}</td></tr>'
