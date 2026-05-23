@@ -6,145 +6,150 @@
 <title>Artemis Resort & Spa — Инвестиционное предложение</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --gold:#C4A35A;--gold2:#e8c97a;
-  --dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;
-  --text:#e8e0d0;--muted:#8a9bb0;
-  --white:#fff;
-}
+:root{--gold:#C4A35A;--gold2:#e8c97a;--dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;--text:#e8e0d0;--muted:#8a9bb0;--white:#fff}
 html{scroll-behavior:smooth}
 body{background:var(--dark);color:var(--text);font-family:'Georgia',serif;line-height:1.6}
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,163,90,0.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:1.2rem;font-weight:bold;color:var(--gold);letter-spacing:2px}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:1px;font-family:'Arial',sans-serif;transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,163,90,.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.1rem;font-weight:bold;color:var(--gold);letter-spacing:2px}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:1px;font-family:'Arial',sans-serif;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-  background:linear-gradient(160deg, #0d1b2a 0%, #1a2f45 40%, #0d3d2a 100%)}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80') center/cover;opacity:.18}
-.hero-content{position:relative;text-align:center;padding:40px 20px;max-width:900px}
-.hero-badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:.75rem;letter-spacing:3px;padding:6px 20px;margin-bottom:32px;font-family:'Arial',sans-serif}
-.hero h1{font-size:clamp(2.5rem,6vw,5rem);color:var(--white);font-weight:400;line-height:1.1;margin-bottom:16px}
-.hero h1 span{color:var(--gold)}
-.hero-sub{font-size:1.1rem;color:var(--muted);margin-bottom:40px;font-family:'Arial',sans-serif}
-.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-.stat{text-align:center}
-.stat-val{font-size:2rem;color:var(--gold);font-weight:bold}
-.stat-lab{font-size:.75rem;color:var(--muted);letter-spacing:2px;font-family:'Arial',sans-serif;text-transform:uppercase}
-.btn{display:inline-block;padding:14px 36px;background:var(--gold);color:var(--dark);font-family:'Arial',sans-serif;font-size:.9rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:background .2s}
+.btn{display:inline-block;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:'Arial',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s;text-decoration:none}
 .btn:hover{background:var(--gold2)}
-.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);margin-left:16px}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);margin-left:12px}
 .btn-outline:hover{background:var(--gold);color:var(--dark)}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('/static/img/render_00.jpg') center/cover;filter:brightness(.45) saturate(1.2)}
+.hero-content{position:relative;text-align:center;padding:40px 20px;max-width:900px}
+.hero-badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:.72rem;letter-spacing:3px;padding:5px 18px;margin-bottom:28px;font-family:'Arial',sans-serif}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);color:var(--white);font-weight:400;line-height:1.1;margin-bottom:14px}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:1rem;color:var(--muted);margin-bottom:36px;font-family:'Arial',sans-serif}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.stat-val{font-size:1.9rem;color:var(--gold);font-weight:bold}
+.stat-lab{font-size:.7rem;color:var(--muted);letter-spacing:2px;font-family:'Arial',sans-serif;text-transform:uppercase}
 /* SECTIONS */
-section{padding:96px 40px;max-width:1100px;margin:0 auto}
-.section-label{font-size:.75rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Arial',sans-serif;margin-bottom:12px}
-.section-title{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);font-weight:400;margin-bottom:40px}
-.divider{width:60px;height:1px;background:var(--gold);margin-bottom:40px}
+.sec{padding:88px 40px;max-width:1100px;margin:0 auto}
+.sec-full{padding:88px 40px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.72rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-family:'Arial',sans-serif;margin-bottom:10px}
+.sec-title{font-size:clamp(1.6rem,4vw,2.6rem);color:var(--white);font-weight:400;margin-bottom:32px}
+.divider{width:50px;height:1px;background:var(--gold);margin-bottom:32px}
+/* GALLERY GRID */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:32px}
+.gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .3s;cursor:zoom-in}
+.gallery img:hover{transform:scale(1.02);z-index:1;position:relative}
+.gallery-wide{grid-column:span 2}
 /* LOCATION */
-.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.location-map{background:var(--dark2);border:1px solid rgba(196,163,90,.2);border-radius:4px;overflow:hidden}
-.location-facts{display:grid;gap:20px}
-.fact{border-left:2px solid var(--gold);padding-left:16px}
-.fact-label{font-size:.75rem;color:var(--muted);font-family:'Arial',sans-serif;letter-spacing:1px}
-.fact-value{font-size:1.05rem;color:var(--white)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.fact{border-left:2px solid var(--gold);padding-left:14px;margin-bottom:16px}
+.fact-label{font-size:.72rem;color:var(--muted);font-family:'Arial',sans-serif;letter-spacing:1px}
+.fact-value{font-size:1rem;color:var(--white)}
 /* ROOMS */
-.rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.room-card{background:var(--dark2);border:1px solid rgba(196,163,90,.15);padding:28px;transition:border-color .2s}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.room-card{background:var(--dark2);border:1px solid rgba(196,163,90,.15);overflow:hidden;transition:border-color .2s}
 .room-card:hover{border-color:var(--gold)}
-.room-type{font-size:.75rem;color:var(--gold);letter-spacing:2px;font-family:'Arial',sans-serif;text-transform:uppercase;margin-bottom:8px}
-.room-title{font-size:1.2rem;color:var(--white);margin-bottom:8px}
-.room-area{font-size:1.8rem;color:var(--gold);font-weight:bold}
-.room-area span{font-size:.9rem;color:var(--muted)}
-.room-desc{font-size:.85rem;color:var(--muted);font-family:'Arial',sans-serif;margin-top:8px}
+.room-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.room-info{padding:20px}
+.room-type{font-size:.68rem;color:var(--gold);letter-spacing:2px;font-family:'Arial',sans-serif;text-transform:uppercase;margin-bottom:5px}
+.room-title{font-size:1.05rem;color:var(--white);margin-bottom:5px}
+.room-area{font-size:1.6rem;color:var(--gold);font-weight:bold}
+.room-area span{font-size:.85rem;color:var(--muted)}
+.room-desc{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif;margin-top:6px;line-height:1.5}
 /* AMENITIES */
-.amenities-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.amenity{display:flex;align-items:center;gap:12px;padding:16px;background:var(--dark2);border:1px solid rgba(196,163,90,.1)}
-.amenity-icon{font-size:1.5rem;width:40px;text-align:center;flex-shrink:0}
-.amenity-text{font-size:.9rem;color:var(--text);font-family:'Arial',sans-serif}
+.amen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.amen{display:flex;align-items:center;gap:12px;padding:14px;background:var(--dark2);border:1px solid rgba(196,163,90,.08)}
+.amen-icon{font-size:1.4rem;flex-shrink:0}
+.amen-text{font-size:.85rem;color:var(--text);font-family:'Arial',sans-serif}
 /* INVESTMENT */
-.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.capital-chart{background:var(--dark2);border:1px solid rgba(196,163,90,.2);padding:32px;border-radius:4px}
-.cap-bar{margin-bottom:20px}
-.cap-label{display:flex;justify-content:space-between;font-family:'Arial',sans-serif;font-size:.85rem;margin-bottom:6px}
-.cap-label span:first-child{color:var(--text)}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.cap-chart{background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:28px;border-radius:3px}
+.cap-bar{margin-bottom:18px}
+.cap-label{display:flex;justify-content:space-between;font-family:'Arial',sans-serif;font-size:.82rem;margin-bottom:5px}
 .cap-label span:last-child{color:var(--gold);font-weight:bold}
-.cap-track{height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
-.cap-fill{height:100%;border-radius:4px;transition:width 1s ease}
-.fill-dev{background:linear-gradient(90deg,#2a5f8f,#3a7fbf);width:85%}
-.fill-inv{background:linear-gradient(90deg,var(--gold),var(--gold2));width:15%}
-.upgrade-box{background:rgba(196,163,90,.08);border:1px solid rgba(196,163,90,.3);padding:20px;border-radius:4px;margin-top:24px}
-.upgrade-box p{font-size:.85rem;color:var(--text);font-family:'Arial',sans-serif;line-height:1.7}
+.cap-track{height:7px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.cap-fill-dev{background:linear-gradient(90deg,#2a5f8f,#3a7fbf);width:85%;height:100%;border-radius:3px}
+.cap-fill-inv{background:linear-gradient(90deg,var(--gold),var(--gold2));height:100%;border-radius:3px}
+.upgrade-box{background:rgba(196,163,90,.07);border:1px solid rgba(196,163,90,.25);padding:18px;border-radius:3px;margin-top:20px;font-size:.83rem;color:var(--text);font-family:'Arial',sans-serif;line-height:1.7}
 .upgrade-box strong{color:var(--gold)}
+/* F&B */
+.fb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.fb-card{position:relative;overflow:hidden;border:1px solid rgba(196,163,90,.15)}
+.fb-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .4s}
+.fb-card:hover img{transform:scale(1.05)}
+.fb-overlay{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.fb-title{font-size:.95rem;color:var(--white);font-family:'Arial',sans-serif;font-weight:bold}
+.fb-desc{font-size:.75rem;color:rgba(255,255,255,.7);font-family:'Arial',sans-serif}
 /* MODELS */
-.models-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.model-card{background:var(--dark2);border:1px solid rgba(196,163,90,.2);padding:32px}
-.model-icon{font-size:2.5rem;margin-bottom:16px}
-.model-title{font-size:1.15rem;color:var(--gold);margin-bottom:12px;font-family:'Arial',sans-serif;letter-spacing:1px}
-.model-desc{font-size:.875rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.7}
-.model-badge{display:inline-block;margin-top:12px;font-size:.7rem;padding:4px 12px;background:rgba(196,163,90,.15);color:var(--gold);border:1px solid rgba(196,163,90,.3);letter-spacing:1px}
+.models-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.model-card{background:var(--dark2);border:1px solid rgba(196,163,90,.18);padding:28px}
+.model-icon{font-size:2.2rem;margin-bottom:14px}
+.model-title{font-size:1.05rem;color:var(--gold);margin-bottom:10px;font-family:'Arial',sans-serif;letter-spacing:1px}
+.model-desc{font-size:.84rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.7}
+.model-badge{display:inline-block;margin-top:10px;font-size:.67rem;padding:3px 10px;background:rgba(196,163,90,.12);color:var(--gold);border:1px solid rgba(196,163,90,.25);letter-spacing:1px}
+/* FORMATS */
+.formats-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.format-card{background:var(--dark2);border:1px solid rgba(196,163,90,.2);overflow:hidden}
+.format-img{width:100%;aspect-ratio:16/7;object-fit:cover;display:block}
+.format-body{padding:24px}
+.format-title{font-size:1.05rem;color:var(--gold);font-family:'Arial',sans-serif;font-weight:bold;margin-bottom:10px}
+.format-desc{font-size:.83rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.7}
+.format-proof{margin-top:12px;background:rgba(196,163,90,.07);border-left:2px solid var(--gold);padding:10px 14px;font-size:.8rem;color:var(--text);font-family:'Arial',sans-serif}
 /* CALCULATOR */
-#calculator{background:var(--dark2);padding:96px 40px}
+.calc-wrap{background:var(--dark2);padding:88px 40px}
 .calc-inner{max-width:1100px;margin:0 auto}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.calc-controls{display:grid;gap:28px}
-.slider-group label{display:block;font-size:.8rem;letter-spacing:2px;color:var(--muted);font-family:'Arial',sans-serif;text-transform:uppercase;margin-bottom:10px}
-.slider-val{float:right;color:var(--gold);font-size:1.1rem;font-weight:bold}
-input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:rgba(255,255,255,.1);border-radius:2px;outline:none}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--gold);border-radius:50%;cursor:pointer}
-.calc-results{background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:32px;border-radius:4px}
-.result-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.result-row:last-child{border-bottom:none;padding-top:20px}
-.result-label{font-size:.85rem;color:var(--muted);font-family:'Arial',sans-serif}
-.result-val{font-size:1.1rem;color:var(--white);font-weight:bold}
-.result-val.big{font-size:1.6rem;color:var(--gold)}
-.calc-note{font-size:.75rem;color:var(--muted);font-family:'Arial',sans-serif;margin-top:16px;line-height:1.6;font-style:italic}
-.upsell-hint{display:none;background:rgba(196,163,90,.08);border:1px solid rgba(196,163,90,.3);padding:16px;border-radius:4px;margin-top:16px;font-size:.85rem;color:var(--text);font-family:'Arial',sans-serif;line-height:1.7}
-.upsell-hint strong{color:var(--gold)}
+.mode-btn{width:100%;text-align:left;padding:13px 16px;background:var(--dark3);border:1px solid rgba(196,163,90,.12);color:var(--text);font-family:'Arial',sans-serif;font-size:.88rem;cursor:pointer;border-radius:2px;transition:all .2s;margin-bottom:8px}
+.mode-btn:hover{border-color:var(--gold);color:var(--white)}
+.active-mode{border-color:var(--gold)!important;background:rgba(196,163,90,.09)!important;color:var(--white)!important}
+input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:rgba(255,255,255,.1);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--gold);border-radius:50%;cursor:pointer}
+.r-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.r-row:last-child{border-bottom:none}
+.r-lab{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif}
+.r-val{font-size:.9rem;color:var(--white);font-family:'Arial',sans-serif;font-weight:bold}
+.r-val.big{font-size:1.3rem;color:var(--gold)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi-card{background:rgba(0,0,0,.2);padding:16px;border:1px solid rgba(255,255,255,.05);border-radius:2px}
+.kpi-lab{font-size:.69rem;color:var(--muted);font-family:'Arial',sans-serif;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.kpi-val{font-size:1.2rem;color:var(--gold);font-weight:bold;font-family:'Arial',sans-serif}
 /* LEGAL */
-.legal-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;position:relative}
-.legal-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.legal-step{text-align:center;padding:20px 16px;position:relative}
-.step-num{width:56px;height:56px;background:var(--dark2);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:.8rem;color:var(--gold);font-family:'Arial',sans-serif;font-weight:bold;position:relative;z-index:1}
-.step-title{font-size:.9rem;color:var(--white);font-family:'Arial',sans-serif;font-weight:bold;margin-bottom:6px}
-.step-desc{font-size:.78rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.5}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:27px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.step{text-align:center;padding:16px 10px;position:relative}
+.step-num{width:54px;height:54px;background:var(--dark2);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:.75rem;color:var(--gold);font-family:'Arial',sans-serif;font-weight:bold;position:relative;z-index:1}
+.step-title{font-size:.88rem;color:var(--white);font-family:'Arial',sans-serif;font-weight:bold;margin-bottom:5px}
+.step-desc{font-size:.75rem;color:var(--muted);font-family:'Arial',sans-serif;line-height:1.5}
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center}
-.modal-overlay.active{display:flex}
-.modal{background:var(--dark2);border:1px solid rgba(196,163,90,.3);padding:48px;max-width:480px;width:90%;position:relative}
-.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1}
-.modal h3{font-size:1.5rem;color:var(--white);margin-bottom:8px;font-weight:400}
-.modal p{font-size:.9rem;color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:28px}
-.form-group{margin-bottom:20px}
-.form-group label{display:block;font-size:.75rem;letter-spacing:2px;color:var(--muted);font-family:'Arial',sans-serif;text-transform:uppercase;margin-bottom:8px}
-.form-group input{width:100%;background:var(--dark3);border:1px solid rgba(196,163,90,.2);color:var(--text);padding:12px 16px;font-size:.95rem;font-family:'Arial',sans-serif;outline:none;transition:border-color .2s}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;align-items:center;justify-content:center}
+.overlay.on{display:flex}
+.modal{background:var(--dark2);border:1px solid rgba(196,163,90,.3);padding:44px;max-width:460px;width:90%;position:relative}
+.modal-x{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:'Arial',sans-serif;text-transform:uppercase;margin-bottom:7px}
+.form-group input{width:100%;background:var(--dark3);border:1px solid rgba(196,163,90,.18);color:var(--text);padding:11px 14px;font-size:.92rem;font-family:'Arial',sans-serif;outline:none;transition:border-color .2s}
 .form-group input:focus{border-color:var(--gold)}
-.form-success{display:none;text-align:center;padding:20px 0}
-.form-success .check{font-size:3rem;margin-bottom:12px}
-.form-success p{color:var(--text);font-family:'Arial',sans-serif}
-/* FOOTER */
-footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.15);padding:40px;text-align:center}
-footer .logo{font-size:1.5rem;margin-bottom:12px}
-footer p{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif}
-/* RESPONSIVE */
+footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
 @media(max-width:768px){
-  nav{padding:0 20px}.nav-links{display:none}
-  section{padding:64px 20px}
-  .location-grid,.inv-grid,.calc-grid,.models-grid{grid-template-columns:1fr}
-  #calculator{padding:64px 20px}
-  .hero-stats{gap:24px}
+  nav{padding:0 16px}.nav-links{display:none}
+  .sec{padding:56px 20px}.sec-full{padding:56px 20px}
+  .loc-grid,.inv-grid,.models-grid,.formats-grid,.calc-top,.calc-res{grid-template-columns:1fr!important}
+  .gallery{grid-template-columns:1fr 1fr}.gallery-wide{grid-column:span 1}
+  .fb-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr 1fr!important}
+  .steps{grid-template-columns:repeat(3,1fr)}.steps::before{display:none}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">ARTEMIS RESORT</div>
+  <div class="logo">ARTEMIS RESORT & SPA</div>
   <ul class="nav-links">
     <li><a href="#location">Локация</a></li>
     <li><a href="#rooms">Номера</a></li>
-    <li><a href="#investment">Инвестиции</a></li>
+    <li><a href="#fb">F&B</a></li>
+    <li><a href="#models">Участие</a></li>
     <li><a href="#calculator">Калькулятор</a></li>
     <li><a href="#legal">Процедура</a></li>
   </ul>
@@ -155,518 +160,427 @@ footer p{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif}
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">ИНВЕСТИЦИОННОЕ ПРЕДЛОЖЕНИЕ</div>
+    <div class="hero-badge">ИНВЕСТИЦИОННОЕ ПРЕДЛОЖЕНИЕ · КРИТ · ГРЕЦИЯ</div>
     <h1>ARTEMIS<br><span>RESORT & SPA</span></h1>
-    <p class="hero-sub">5★ · Первая береговая линия · Крит, Греция · Лицензия №27</p>
+    <p class="hero-sub">5★ · Первая береговая линия · Платаньяс, Ханья · Лицензия №27 · Готовность к стройке</p>
     <div class="hero-stats">
-      <div class="stat"><div class="stat-val">€20M</div><div class="stat-lab">Бюджет проекта</div></div>
-      <div class="stat"><div class="stat-val">66+1</div><div class="stat-lab">Номеров + вилла</div></div>
-      <div class="stat"><div class="stat-val">93%</div><div class="stat-lab">Заполняемость в сезон</div></div>
-      <div class="stat"><div class="stat-val">2.5 km</div><div class="stat-lab">Пляж · Голубой флаг</div></div>
+      <div><div class="stat-val">€20M</div><div class="stat-lab">Бюджет проекта</div></div>
+      <div><div class="stat-val">66+1</div><div class="stat-lab">Номеров + вилла</div></div>
+      <div><div class="stat-val">93%</div><div class="stat-lab">Заполняемость сезон</div></div>
+      <div><div class="stat-val">2.5 km</div><div class="stat-lab">Пляж Голубой флаг</div></div>
     </div>
     <button class="btn" onclick="openModal()">Запросить презентацию</button>
-    <a href="#investment" class="btn btn-outline">Условия участия</a>
+    <a href="#calculator" class="btn btn-outline">Рассчитать доход</a>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div style="background:var(--dark3)">
+  <div class="gallery">
+    <img src="/static/img/render_02.jpg" alt="Вид с воздуха" class="gallery-wide">
+    <img src="/static/img/render_03.jpg" alt="Бассейн">
+    <img src="/static/img/render_04.jpg" alt="Территория">
+    <img src="/static/img/render_05.jpg" alt="Номера">
+    <img src="/static/img/render_06.jpg" alt="Beach Zone" class="gallery-wide">
   </div>
 </div>
 
 <!-- LOCATION -->
-<section id="location">
-  <p class="section-label">Расположение</p>
-  <h2 class="section-title">Герани, Платаньяс, Ханья</h2>
+<section id="location" class="sec">
+  <p class="sec-label">Расположение</p>
+  <h2 class="sec-title">Герани, Платаньяс, Ханья, Крит</h2>
   <div class="divider"></div>
-  <div class="location-grid">
-    <div class="location-map">
-      <svg viewBox="0 0 500 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
-        <rect width="500" height="360" fill="#1a2f45"/>
-        <!-- Crete island shape -->
-        <path d="M60,180 Q80,130 140,120 Q200,110 260,115 Q320,118 370,130 Q420,142 450,160 Q460,175 440,195 Q420,215 380,225 Q340,235 300,230 Q260,228 220,232 Q180,238 150,250 Q120,260 90,248 Q65,238 60,220 Z" fill="#2a4a2a" stroke="#3a6a3a" stroke-width="1.5"/>
-        <!-- Sea -->
-        <text x="50" y="90" fill="#4a8ab0" font-size="11" font-family="Arial" opacity=".7">Критское море</text>
-        <text x="350" y="280" fill="#4a8ab0" font-size="11" font-family="Arial" opacity=".7">Ливийское море</text>
-        <!-- Airport -->
-        <circle cx="200" cy="145" r="6" fill="#8ab0d0" stroke="white" stroke-width="1.5"/>
-        <text x="210" y="142" fill="white" font-size="10" font-family="Arial">✈ Аэропорт Ханья</text>
-        <!-- Chania -->
-        <circle cx="175" cy="160" r="5" fill="#c4a35a" stroke="white" stroke-width="1.5"/>
-        <text x="155" y="175" fill="#c4a35a" font-size="10" font-family="Arial">Ханья</text>
-        <!-- Hotel -->
-        <circle cx="150" cy="155" r="8" fill="#e8c97a" stroke="white" stroke-width="2"/>
-        <text x="90" y="148" fill="#e8c97a" font-size="11" font-family="Arial" font-weight="bold">★ ARTEMIS</text>
-        <text x="93" y="162" fill="#e8c97a" font-size="9" font-family="Arial">RESORT</text>
-        <!-- Heraklion -->
-        <circle cx="330" cy="160" r="4" fill="#8ab0d0" stroke="white" stroke-width="1"/>
-        <text x="337" y="158" fill="#8ab0d0" font-size="9" font-family="Arial">Ираклион</text>
-        <!-- Distance lines -->
-        <line x1="150" y1="155" x2="175" y2="160" stroke="#c4a35a" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
-        <text x="148" y="170" fill="#8a9bb0" font-size="8" font-family="Arial">13 км</text>
-        <!-- Legend -->
-        <rect x="10" y="310" width="480" height="42" fill="rgba(0,0,0,0.3)" rx="3"/>
-        <circle cx="30" cy="331" r="5" fill="#e8c97a"/>
-        <text x="40" y="335" fill="#e8e0d0" font-size="10" font-family="Arial">Artemis Resort</text>
-        <circle cx="130" cy="331" r="4" fill="#c4a35a"/>
-        <text x="140" y="335" fill="#e8e0d0" font-size="10" font-family="Arial">Ханья</text>
-        <circle cx="210" cy="331" r="4" fill="#8ab0d0"/>
-        <text x="220" y="335" fill="#e8e0d0" font-size="10" font-family="Arial">Аэропорт (25 мин)</text>
-        <circle cx="330" cy="331" r="4" fill="#8ab0d0"/>
-        <text x="340" y="335" fill="#e8e0d0" font-size="10" font-family="Arial">Ираклион (2.5 ч)</text>
+  <div class="loc-grid">
+    <div>
+      <svg viewBox="0 0 500 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:var(--dark2);border:1px solid rgba(196,163,90,.2);border-radius:3px">
+        <rect width="500" height="340" fill="#1a2f45"/>
+        <text x="50" y="70" fill="#4a8ab0" font-size="10" font-family="Arial" opacity=".6">Критское море</text>
+        <text x="340" y="270" fill="#4a8ab0" font-size="10" font-family="Arial" opacity=".6">Ливийское море</text>
+        <path d="M55,175 Q80,125 145,115 Q210,105 270,110 Q330,113 375,125 Q420,137 445,158 Q455,172 438,190 Q418,210 378,220 Q335,230 295,226 Q255,224 215,228 Q175,233 148,244 Q118,254 90,244 Q62,234 55,215 Z" fill="#2a4a2a" stroke="#3a6a3a" stroke-width="1.5"/>
+        <circle cx="198" cy="138" r="5" fill="#8ab0d0" stroke="white" stroke-width="1.5"/>
+        <text x="207" y="136" fill="white" font-size="9" font-family="Arial">✈ Аэропорт Ханья (25 мин)</text>
+        <circle cx="172" cy="155" r="4" fill="#c4a35a" stroke="white" stroke-width="1.5"/>
+        <text x="152" y="170" fill="#c4a35a" font-size="9" font-family="Arial">Ханья</text>
+        <circle cx="147" cy="150" r="9" fill="#e8c97a" stroke="white" stroke-width="2"/>
+        <text x="86" y="140" fill="#e8c97a" font-size="10" font-family="Arial" font-weight="bold">★ ARTEMIS</text>
+        <text x="90" y="153" fill="#e8c97a" font-size="8" font-family="Arial">RESORT</text>
+        <line x1="147" y1="150" x2="172" y2="155" stroke="#c4a35a" stroke-width="1" stroke-dasharray="3,2" opacity=".6"/>
+        <circle cx="325" cy="155" r="3" fill="#8ab0d0" stroke="white" stroke-width="1"/>
+        <text x="330" y="153" fill="#8ab0d0" font-size="8" font-family="Arial">Ираклион</text>
+        <rect x="8" y="300" width="484" height="34" fill="rgba(0,0,0,0.35)" rx="2"/>
+        <circle cx="25" cy="317" r="5" fill="#e8c97a"/><text x="34" y="321" fill="#e8e0d0" font-size="9" font-family="Arial">Artemis Resort</text>
+        <circle cx="120" cy="317" r="4" fill="#c4a35a"/><text x="129" y="321" fill="#e8e0d0" font-size="9" font-family="Arial">Ханья (13 км)</text>
+        <circle cx="215" cy="317" r="4" fill="#8ab0d0"/><text x="224" y="321" fill="#e8e0d0" font-size="9" font-family="Arial">Аэропорт CHQ</text>
+        <circle cx="310" cy="317" r="4" fill="#8ab0d0"/><text x="319" y="321" fill="#e8e0d0" font-size="9" font-family="Arial">Ираклион (2.5 ч)</text>
       </svg>
+      <img src="/static/img/beach.jpg" alt="Пляж Платаньяс" style="width:100%;margin-top:3px;aspect-ratio:16/6;object-fit:cover;display:block">
     </div>
-    <div class="location-facts">
+    <div>
       <div class="fact"><div class="fact-label">Адрес</div><div class="fact-value">пос. Герани, Платаньяс, Ханья, Крит</div></div>
-      <div class="fact"><div class="fact-label">Расстояние до аэропорта</div><div class="fact-value">25 минут · Аэропорт Ханья (CHQ)</div></div>
-      <div class="fact"><div class="fact-label">Пляж</div><div class="fact-value">Первая береговая линия · 2,5 км · Голубой флаг ЕС</div></div>
-      <div class="fact"><div class="fact-label">Участок</div><div class="fact-value">16 499 м² · Пятно застройки 3 262 м²</div></div>
-      <div class="fact"><div class="fact-label">Разрешение на строительство</div><div class="fact-value">Лицензия №27 (2018) · Готовность к стройке</div></div>
-      <div class="fact"><div class="fact-label">Сезонность</div><div class="fact-value">Апрель — Октябрь · Загрузка 93%</div></div>
+      <div class="fact"><div class="fact-label">Аэропорт</div><div class="fact-value">25 минут · Ханья (CHQ)</div></div>
+      <div class="fact"><div class="fact-label">Пляж</div><div class="fact-value">Первая линия · 2,5 км · Голубой флаг ЕС</div></div>
+      <div class="fact"><div class="fact-label">Участок</div><div class="fact-value">16 499 м² · Застройка 3 262 м²</div></div>
+      <div class="fact"><div class="fact-label">Разрешение</div><div class="fact-value">Лицензия №27 (2018) · Готовность к стройке</div></div>
+      <div class="fact"><div class="fact-label">Сезон</div><div class="fact-value">Апрель — Октябрь · Заполняемость 93%</div></div>
+      <div class="fact"><div class="fact-label">Категория</div><div class="fact-value">5★ · 66 номеров + вилла · 132 койко-места</div></div>
+      <div class="fact"><div class="fact-label">Зонирование</div><div class="fact-value">Туристическая зона — только отель / tourist residence</div></div>
     </div>
   </div>
 </section>
 
 <!-- ROOMS -->
-<section id="rooms" style="background:var(--dark2);max-width:100%;padding:96px 40px">
-  <div style="max-width:1100px;margin:0 auto">
-    <p class="section-label">Номерной фонд</p>
-    <h2 class="section-title">66 номеров + Вилла Nika</h2>
+<div id="rooms" class="sec-full" style="background:var(--dark2)">
+  <div class="sec-inner">
+    <p class="sec-label">Номерной фонд</p>
+    <h2 class="sec-title">66 номеров + Вилла Nika</h2>
     <div class="divider"></div>
     <div class="rooms-grid">
       <div class="room-card">
-        <div class="room-type">Double Room</div>
-        <div class="room-title">Двухместный стандарт</div>
-        <div class="room-area">27–32 <span>м²</span></div>
-        <div class="room-desc">55 номеров · 33 на первом этаже с частным или shared бассейном · 22 на втором с балконом</div>
+        <img src="/static/img/render_08.jpg" alt="Double Room">
+        <div class="room-info">
+          <div class="room-type">Double Room</div>
+          <div class="room-title">Двухместный стандарт</div>
+          <div class="room-area">27–32 <span>м²</span></div>
+          <div class="room-desc">55 номеров · 33 на 1 этаже с частным или shared бассейном · 22 на 2 этаже с балконом</div>
+        </div>
       </div>
       <div class="room-card">
-        <div class="room-type">Attic Room</div>
-        <div class="room-title">Двухместный с мансардой</div>
-        <div class="room-area">37 <span>м²</span></div>
-        <div class="room-desc">8 номеров · Вид на море · Лестница в мансардную спальню · Shared pool</div>
+        <img src="/static/img/render_09.jpg" alt="Attic Room">
+        <div class="room-info">
+          <div class="room-type">Attic Room</div>
+          <div class="room-title">С мансардой</div>
+          <div class="room-area">37 <span>м²</span></div>
+          <div class="room-desc">8 номеров · Вид на море · Мансардная спальня · Shared pool</div>
+        </div>
       </div>
       <div class="room-card">
-        <div class="room-type">Suite</div>
-        <div class="room-title">Люкс</div>
-        <div class="room-area">41–60 <span>м²</span></div>
-        <div class="room-desc">3 сюиты · Премиальная отделка · Панорамные террасы</div>
+        <img src="/static/img/render_10.jpg" alt="Suite">
+        <div class="room-info">
+          <div class="room-type">Suite</div>
+          <div class="room-title">Люкс-сюита</div>
+          <div class="room-area">41–60 <span>м²</span></div>
+          <div class="room-desc">3 сюиты · Частный бассейн · Прямой выход к морю · Панорамная терраса</div>
+        </div>
       </div>
       <div class="room-card" style="border-color:rgba(196,163,90,.4)">
-        <div class="room-type" style="color:#e8c97a">Villa Nika</div>
-        <div class="room-title">Вилла Ника</div>
-        <div class="room-area">~200 <span>м²</span></div>
-        <div class="room-desc">Отдельный объект · Построена, меблирована · Стоимость €1,4–1,7 млн · 3 этажа · Греческий стиль</div>
+        <img src="/static/img/render_11.jpg" alt="Villa Nika">
+        <div class="room-info">
+          <div class="room-type" style="color:#e8c97a">Villa Nika</div>
+          <div class="room-title">Вилла Nika</div>
+          <div class="room-area">~200 <span>м²</span></div>
+          <div class="room-desc">Построена, меблирована · 3 этажа · Греческий стиль · Стоимость <strong style="color:var(--gold)">€1,7M</strong></div>
+        </div>
+      </div>
+    </div>
+    <!-- WELLNESS -->
+    <div style="margin-top:32px">
+      <p class="sec-label" style="margin-bottom:16px">Wellness & Бассейны</p>
+      <div class="amen-grid">
+        <div class="amen"><div class="amen-icon">🏊</div><div class="amen-text">30 открытых бассейнов · 1 414 м²</div></div>
+        <div class="amen"><div class="amen-icon">🌊</div><div class="amen-text">Крытый бассейн · 303 м² · круглосуточно</div></div>
+        <div class="amen"><div class="amen-icon">🧘</div><div class="amen-text">SPA-центр + фитнес · цокольный этаж</div></div>
+        <div class="amen"><div class="amen-icon">🎤</div><div class="amen-text">Конференц-зал · цокольный этаж</div></div>
+        <div class="amen"><div class="amen-icon">🎾</div><div class="amen-text">Теннисный корт</div></div>
+        <div class="amen"><div class="amen-icon">🅿️</div><div class="amen-text">Паркинг · 20 мест</div></div>
+        <div class="amen"><div class="amen-icon">🌿</div><div class="amen-text">Озеленение · 5 048 м²</div></div>
+        <div class="amen"><div class="amen-icon">🏖️</div><div class="amen-text">Пляж 2,5 км · Голубой флаг ЕС</div></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- AMENITIES -->
-<section>
-  <p class="section-label">Инфраструктура</p>
-  <h2 class="section-title">Объекты на территории</h2>
+<!-- F&B -->
+<section id="fb" class="sec">
+  <p class="sec-label">F&B — Рестораны и Бары</p>
+  <h2 class="sec-title">Три ресторана на территории</h2>
   <div class="divider"></div>
-  <div class="amenities-grid">
-    <div class="amenity"><div class="amenity-icon">🏊</div><div class="amenity-text">30 открытых бассейнов (1 414 м²) + 1 крытый (303 м²)</div></div>
-    <div class="amenity"><div class="amenity-icon">🍽️</div><div class="amenity-text">Главный ресторан · Beach Restaurant · Roof Garden</div></div>
-    <div class="amenity"><div class="amenity-icon">🧘</div><div class="amenity-text">SPA-центр + фитнес (цокольный этаж)</div></div>
-    <div class="amenity"><div class="amenity-icon">🎤</div><div class="amenity-text">Конференц-зал (цокольный этаж)</div></div>
-    <div class="amenity"><div class="amenity-icon">🎾</div><div class="amenity-text">Теннисный корт</div></div>
-    <div class="amenity"><div class="amenity-icon">🅿️</div><div class="amenity-text">Паркинг · 20 мест</div></div>
-    <div class="amenity"><div class="amenity-icon">🌿</div><div class="amenity-text">Озеленение 5 048 м²</div></div>
-    <div class="amenity"><div class="amenity-icon">🏖️</div><div class="amenity-text">Пляж 2,5 км · Голубой флаг ЕС</div></div>
+  <div class="fb-grid">
+    <div class="fb-card">
+      <img src="/static/img/render_12.jpg" alt="Главный ресторан">
+      <div class="fb-overlay">
+        <div class="fb-title">Главный ресторан / Бар</div>
+        <div class="fb-desc">317 м² · 136 мест · Круглосуточно</div>
+      </div>
+    </div>
+    <div class="fb-card">
+      <img src="/static/img/render_13.jpg" alt="Beach Restaurant">
+      <div class="fb-overlay">
+        <div class="fb-title">Beach Restaurant</div>
+        <div class="fb-desc">170 м² · 76 мест · Вид на море</div>
+      </div>
+    </div>
+    <div class="fb-card">
+      <img src="/static/img/render_14.jpg" alt="Roof Garden">
+      <div class="fb-overlay">
+        <div class="fb-title">Roof Garden Restaurant</div>
+        <div class="fb-desc">132 м² · 60 мест · Панорама моря</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- INVESTMENT -->
-<section id="investment" style="background:var(--dark2);max-width:100%;padding:96px 40px">
-  <div style="max-width:1100px;margin:0 auto">
-    <p class="section-label">Структура капитала</p>
-    <h2 class="section-title">Инвестиционное предложение</h2>
+<div class="sec-full" style="background:var(--dark2)">
+  <div class="sec-inner">
+    <p class="sec-label">Структура капитала</p>
+    <h2 class="sec-title">Инвестиционное предложение</h2>
     <div class="divider"></div>
     <div class="inv-grid">
-      <div>
-        <div class="capital-chart">
-          <h3 style="color:var(--white);font-weight:400;margin-bottom:24px;font-size:1.1rem">Структура капитала · €20 млн</h3>
-          <div class="cap-bar">
-            <div class="cap-label"><span>Девелопер (земля + работы)</span><span>до €17 млн</span></div>
-            <div class="cap-track"><div class="cap-fill fill-dev"></div></div>
-          </div>
-          <div class="cap-bar">
-            <div class="cap-label"><span>Финансовый инвестор</span><span>от €3 млн</span></div>
-            <div class="cap-track"><div class="cap-fill fill-inv" style="width:15%"></div></div>
-          </div>
-          <div class="upgrade-box">
-            <p>Инвестор входит с долей <strong>от 15%</strong> при минимальном чеке <strong>€3 млн</strong>.<br><br>
-            Доля может быть <strong>увеличена немедленно или поэтапно</strong> — вплоть до <strong>полного выкупа проекта (100%)</strong> у девелопера на согласованных условиях.</p>
-          </div>
+      <div class="cap-chart">
+        <h3 style="color:var(--white);font-weight:400;margin-bottom:22px;font-size:1rem">Бюджет проекта · €20 млн</h3>
+        <div class="cap-bar">
+          <div class="cap-label"><span>Девелопер (земля + работы)</span><span>до €17 млн</span></div>
+          <div class="cap-track"><div class="cap-fill-dev"></div></div>
+        </div>
+        <div class="cap-bar">
+          <div class="cap-label"><span>Финансовый инвестор</span><span>от €3 млн</span></div>
+          <div class="cap-track"><div class="cap-fill-inv" style="width:15%"></div></div>
+        </div>
+        <div class="upgrade-box">
+          Инвестор входит с долей <strong>от 12%</strong> при минимальном чеке <strong>€3 млн</strong>.<br><br>
+          Доля может быть <strong>увеличена немедленно или поэтапно</strong> — вплоть до <strong>полного выкупа проекта (80%)</strong> у девелопера на согласованных условиях.
         </div>
       </div>
       <div>
-        <h3 style="color:var(--white);font-weight:400;margin-bottom:20px">Показатели проекта</h3>
-        <div style="display:grid;gap:16px">
-          <div class="fact"><div class="fact-label">ADR (средняя цена номера)</div><div class="fact-value">€180–250 / ночь (5★, Ханья)</div></div>
-          <div class="fact"><div class="fact-label">RevPAR</div><div class="fact-value">~€140–175 (сезон апр–окт)</div></div>
-          <div class="fact"><div class="fact-label">Occupancy Rate</div><div class="fact-value">93% в сезон · 7 месяцев</div></div>
-          <div class="fact"><div class="fact-label">Cap Rate (доходность)</div><div class="fact-value">7–9% на операционном активе</div></div>
-          <div class="fact"><div class="fact-label">Yield (аренда виллы)</div><div class="fact-value">5–7% годовых</div></div>
-          <div class="fact"><div class="fact-label">Максимальный чек</div><div class="fact-value">€20 млн (100% проекта)</div></div>
-        </div>
+        <h3 style="color:var(--white);font-weight:400;margin-bottom:18px">Рыночные показатели</h3>
+        <div class="fact"><div class="fact-label">ADR (5★, Западный Крит)</div><div class="fact-value">€220 / ночь</div></div>
+        <div class="fact"><div class="fact-label">RevPAR (Греция, лидер Европы 2025)</div><div class="fact-value">€216,8 · +15,4% г/г</div></div>
+        <div class="fact"><div class="fact-label">Заполняемость в сезон</div><div class="fact-value">93% · 210 дней · апрель–октябрь</div></div>
+        <div class="fact"><div class="fact-label">Цена сделки 5★ (Europe M&A 2024)</div><div class="fact-value">€865 000 за ключ · HVS</div></div>
+        <div class="fact"><div class="fact-label">Cap Rate · Prime Hotels Греция</div><div class="fact-value">6–7%</div></div>
+        <div class="fact"><div class="fact-label">Стоимость объекта (exit, 66 ключей)</div><div class="fact-value">~€57M (Hold) · €65M (розница)</div></div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- MODELS -->
-<section id="models">
-  <p class="section-label">Модели реализации</p>
-  <h2 class="section-title">Возможные форматы участия</h2>
+<section id="models" class="sec">
+  <p class="sec-label">Модели реализации</p>
+  <h2 class="sec-title">Возможны различные модели и их комбинации</h2>
   <div class="divider"></div>
-  <p style="color:var(--muted);font-family:'Arial',sans-serif;margin-bottom:32px">Возможны различные модели реализации проекта и их комбинации</p>
   <div class="models-grid">
     <div class="model-card">
       <div class="model-icon">🏗️</div>
-      <div class="model-title">Доля в SPV</div>
-      <div class="model-desc">Участие в SPV с правами на все категории активов — номерной фонд, рестораны, SPA, конференц-зал, вилла. Полный доход от операционной деятельности и роста капитала.</div>
-      <div class="model-badge">EQUITY · ВСЕ АКТИВЫ</div>
+      <div class="model-title">Доля в SPV · все категории</div>
+      <div class="model-desc">Участие в SPV с правами на весь объект — номерной фонд, рестораны, SPA, конференц-зал, вилла. Полный доход от операционной деятельности и роста стоимости актива.</div>
+      <div class="model-badge">EQUITY · ALL ASSETS</div>
     </div>
     <div class="model-card">
       <div class="model-icon">🍽️</div>
       <div class="model-title">Владение категорией</div>
-      <div class="model-desc">Права на отдельную категорию: ресторан, SPA, конференц-зал, паркинг или их часть. Целевые инвестиции с прямым контролем над доходностью актива.</div>
+      <div class="model-desc">Права на отдельную категорию или её часть: ресторан, SPA, конференц-зал, паркинг. Целевые инвестиции с прямым контролем над доходностью актива.</div>
       <div class="model-badge">КАТЕГОРИЙНОЕ УЧАСТИЕ</div>
-    </div>
-    <div class="model-card">
-      <div class="model-icon">🏨</div>
-      <div class="model-title">Построить и сдавать</div>
-      <div class="model-desc">Долгосрочная аренда под управлением сетевого оператора. <strong style="color:var(--gold)">Договор управления с международной гостиничной группой подписан.</strong></div>
-      <div class="model-badge">HOLD & LEASE</div>
-    </div>
-    <div class="model-card">
-      <div class="model-icon">💼</div>
-      <div class="model-title">Построить и продать</div>
-      <div class="model-desc">Реализация юнитов индивидуальным покупателям. <strong style="color:var(--gold)">Подписано 17 предварительных договоров · депозит €2 000/договор · итого €34 000 внесено.</strong></div>
-      <div class="model-badge">BUILD & SELL</div>
     </div>
   </div>
 </section>
 
+<!-- FORMATS -->
+<div class="sec-full" style="background:var(--dark2)" id="formats">
+  <div class="sec-inner">
+    <p class="sec-label">Форматы участия</p>
+    <h2 class="sec-title">Два пути к доходу</h2>
+    <div class="divider"></div>
+    <div class="formats-grid">
+      <div class="format-card">
+        <img src="/static/img/render_05.jpg" alt="Hold and Lease">
+        <div class="format-body">
+          <div class="format-title">🏨 Построить и сдавать в аренду</div>
+          <div class="format-desc">Инвестор владеет долей объекта под управлением профессионального оператора. Ежегодный операционный доход на весь срок владения. Стоимость актива растёт.</div>
+          <div class="format-proof">✓ Подписан договор управления с международной гостиничной группой</div>
+        </div>
+      </div>
+      <div class="format-card">
+        <img src="/static/img/render_07.jpg" alt="Build and Sell">
+        <div class="format-body">
+          <div class="format-title">💼 Построить и продать</div>
+          <div class="format-desc">Реализация объекта по завершении строительства. Продажа целиком институциональному покупателю или розничная продажа юнитов и коммерции по отдельности.</div>
+          <div class="format-proof">✓ Подписано 17 предварительных договоров с покупателями юнитов · депозит €2 000/договор · итого €34 000 внесено</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CALCULATOR -->
-<div id="calculator" style="background:var(--dark2);padding:96px 40px">
-  <div style="max-width:1100px;margin:0 auto">
-    <p class="section-label">Инвестиционный калькулятор</p>
-    <h2 class="section-title">Рассчитайте доходность</h2>
+<div id="calculator" class="calc-wrap">
+  <div class="calc-inner">
+    <p class="sec-label">Финансовый калькулятор</p>
+    <h2 class="sec-title">Рассчитайте доходность</h2>
     <div class="divider"></div>
 
-    <!-- ROW 1: Сумма + Сценарий -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px">
-      <!-- Сумма инвестиций -->
-      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:28px;border-radius:4px">
-        <div style="font-size:.75rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:12px">Сумма инвестиций</div>
-        <div style="font-size:2.5rem;color:var(--gold);font-weight:bold;margin-bottom:4px" id="c-inv-val">€3 000 000</div>
-        <div style="font-size:.9rem;color:var(--muted);font-family:Arial;margin-bottom:16px">Ваша доля: <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> · Девелопер: <span style="color:var(--muted)">20%</span></div>
-        <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()" style="width:100%">
-        <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);font-family:Arial;margin-top:6px"><span>€3M</span><span>€20M</span></div>
-        <!-- Доля-бар -->
-        <div style="margin-top:16px">
-          <div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-bottom:6px;letter-spacing:1px">РАСПРЕДЕЛЕНИЕ 100%</div>
-          <div style="display:flex;height:10px;border-radius:5px;overflow:hidden">
+    <!-- TOP ROW -->
+    <div class="calc-top" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px">
+
+      <!-- Сумма -->
+      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:26px;border-radius:2px">
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:10px">Сумма инвестиций</div>
+        <div style="font-size:2.4rem;color:var(--gold);font-weight:bold;margin-bottom:4px" id="c-inv-val">€3 000 000</div>
+        <div style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:14px">Ваша доля: <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> &nbsp;·&nbsp; Девелопер: <span style="color:var(--muted)">20%</span></div>
+        <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()">
+        <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:5px"><span>€3M</span><span>€20M</span></div>
+        <!-- bar -->
+        <div style="margin-top:14px">
+          <div style="font-size:.68rem;color:var(--muted);font-family:Arial;margin-bottom:5px;letter-spacing:1px">РАСПРЕДЕЛЕНИЕ 100%</div>
+          <div style="display:flex;height:8px;border-radius:4px;overflow:hidden">
             <div id="bar-inv" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:12%"></div>
-            <div id="bar-dev" style="background:#2a5f8f;transition:width .3s;width:20%"></div>
+            <div style="background:#2a5f8f;width:20%"></div>
             <div style="background:rgba(255,255,255,.06);flex:1"></div>
           </div>
-          <div style="display:flex;gap:16px;margin-top:6px;font-size:.72rem;font-family:Arial">
+          <div style="display:flex;gap:14px;margin-top:5px;font-size:.68rem;font-family:Arial">
             <span style="color:var(--gold)">■ Инвестор <span id="bar-inv-pct">12%</span></span>
             <span style="color:#4a8fbf">■ Девелопер 20%</span>
-            <span style="color:rgba(255,255,255,.3)">■ Свободно <span id="bar-free-pct">68%</span></span>
+            <span style="color:rgba(255,255,255,.25)">■ Свободно <span id="bar-free-pct">68%</span></span>
           </div>
         </div>
       </div>
 
       <!-- Сценарий -->
-      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:28px;border-radius:4px">
-        <div style="font-size:.75rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:16px">Сценарий участия</div>
-        <div style="display:grid;gap:10px">
-          <button onclick="cSetMode('hold')" id="btn-hold" class="mode-btn active-mode">
-            🏨 Владение и аренда
-            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Держу актив, получаю арендный доход</span>
-          </button>
-          <button onclick="cSetMode('sell')" id="btn-sell" class="mode-btn">
-            💼 Построил и продал
-            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Выход через 2 года по рыночной цене</span>
-          </button>
-          <button onclick="cSetMode('mix')" id="btn-mix" class="mode-btn">
-            ⚖️ Микс
-            <span style="display:block;font-size:.72rem;opacity:.7;margin-top:2px">Часть продать, часть оставить в аренду</span>
-          </button>
-        </div>
+      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:26px;border-radius:2px">
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:14px">Сценарий</div>
+        <button onclick="cSetMode('hold')" id="btn-hold" class="mode-btn active-mode">
+          🏨 Владение и аренда
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Держу актив, получаю арендный доход ежегодно</span>
+        </button>
+        <button onclick="cSetMode('sell')" id="btn-sell" class="mode-btn">
+          💼 Продажа
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Выход по €65M после завершения строительства</span>
+        </button>
+        <button onclick="cSetMode('mix')" id="btn-mix" class="mode-btn">
+          ⚖️ Микс
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Часть продать, часть оставить в аренду</span>
+        </button>
       </div>
     </div>
 
-    <!-- Микс-слайдер (показывается только в режиме mix) -->
-    <div id="mix-panel" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.3);padding:24px;border-radius:4px;margin-bottom:32px">
-      <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:12px">Распределение площади</div>
-      <div style="display:flex;justify-content:space-between;font-family:Arial;font-size:.9rem;margin-bottom:10px">
-        <span style="color:var(--text)">Продать: <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong> · <span id="mix-sell-m2" style="color:var(--muted)">~1 641 м²</span></span>
-        <span style="color:var(--text)">В аренду: <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong> · <span id="mix-hold-m2" style="color:var(--muted)">~1 641 м²</span></span>
+    <!-- MIX SLIDER -->
+    <div id="mix-panel" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.25);padding:22px;border-radius:2px;margin-bottom:24px">
+      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:10px">Что продаю</div>
+      <div style="display:flex;justify-content:space-between;font-family:Arial;font-size:.88rem;margin-bottom:9px">
+        <span>Продать: <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong></span>
+        <span>В аренду: <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong></span>
       </div>
-      <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()" style="width:100%">
-      <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:10px">
+      <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()">
+      <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:9px">
         <div id="mix-bar-sell" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:50%"></div>
-        <div id="mix-bar-hold" style="background:linear-gradient(90deg,#2abf8f,#4adfaf);transition:width .3s;flex:1"></div>
+        <div style="background:linear-gradient(90deg,#2abf8f,#4adfaf);flex:1"></div>
       </div>
     </div>
 
-    <!-- ROW 2: Результаты -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px">
+    <!-- RESULTS -->
+    <div class="calc-res" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">
 
-      <!-- Hold результат -->
-      <div id="res-hold" style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:28px;border-radius:4px">
-        <div style="font-size:.75rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:16px">🏨 Арендный доход</div>
-        <div class="r-row"><span class="r-lab">ADR (цена номера)</span><span class="r-val" id="rh-adr">€220</span></div>
-        <div class="r-row"><span class="r-lab">Заполняемость</span><span class="r-val">93% · 210 дней</span></div>
-        <div class="r-row"><span class="r-lab">Выручка в год (доля)</span><span class="r-val" id="rh-rev">—</span></div>
-        <div class="r-row"><span class="r-lab">NOI в год (35% margin)</span><span class="r-val" id="rh-noi">—</span></div>
-        <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:12px;margin-top:4px">
-          <span class="r-lab">Cash Yield (годовой)</span>
-          <span class="r-val big" id="rh-yield">—</span>
+      <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:24px;border-radius:2px">
+        <div id="res-label" style="font-size:.72rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:14px">🏨 Арендный доход</div>
+        <div id="res-hold-rows">
+          <div class="r-row"><span class="r-lab">ADR · заполняемость · сезон</span><span class="r-val">€220 · 93% · 210 дн.</span></div>
+          <div class="r-row"><span class="r-lab">Годовая выручка (доля)</span><span class="r-val" id="rh-rev">—</span></div>
+          <div class="r-row"><span class="r-lab">NOI в год (после комиссии)</span><span class="r-val" id="rh-noi">—</span></div>
+          <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
+            <span class="r-lab">Cash Yield (годовой)</span><span class="r-val big" id="rh-yield">—</span>
+          </div>
+          <div class="r-row"><span class="r-lab">Cap Rate</span><span class="r-val" id="rh-cap">—</span></div>
         </div>
-        <div class="r-row"><span class="r-lab">Cap Rate</span><span class="r-val" id="rh-cap">—</span></div>
+        <div id="res-sell-rows" style="display:none">
+          <div class="r-row"><span class="r-lab">Стоимость объекта</span><span class="r-val">€65 000 000</span></div>
+          <div class="r-row"><span class="r-lab">Ваша выручка от продажи</span><span class="r-val" id="rs-rev">—</span></div>
+          <div class="r-row"><span class="r-lab">Прибыль (выручка − вложения)</span><span class="r-val" id="rs-profit">—</span></div>
+          <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
+            <span class="r-lab">ROI (3 года)</span><span class="r-val big" id="rs-roi">—</span>
+          </div>
+          <div class="r-row"><span class="r-lab">IRR годовой</span><span class="r-val" id="rs-irr">—</span></div>
+        </div>
+        <div id="res-mix-rows" style="display:none">
+          <div class="r-row"><span class="r-lab">Доход от продажи (разово)</span><span class="r-val" id="mx-sell">—</span></div>
+          <div class="r-row"><span class="r-lab">NOI от аренды / год</span><span class="r-val" id="mx-noi">—</span></div>
+          <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
+            <span class="r-lab">Итого год 1</span><span class="r-val big" id="mx-total">—</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Sell результат -->
-      <div id="res-sell" style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:28px;border-radius:4px">
-        <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">💼 Доход от продажи</div>
-        <div class="r-row"><span class="r-lab">Цена продажи (€/м²)</span><span class="r-val">€5 500/м²</span></div>
-        <div class="r-row"><span class="r-lab">Общая площадь номеров</span><span class="r-val">~3 282 м²</span></div>
-        <div class="r-row"><span class="r-lab">Выручка от продажи (доля)</span><span class="r-val" id="rs-rev">—</span></div>
-        <div class="r-row"><span class="r-lab">Прибыль (exit − вход)</span><span class="r-val" id="rs-profit">—</span></div>
-        <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:12px;margin-top:4px">
-          <span class="r-lab">ROI (за 2 года)</span>
-          <span class="r-val big" id="rs-roi">—</span>
+      <!-- KPI -->
+      <div style="background:var(--dark);border:1px solid rgba(196,163,90,.2);padding:24px;border-radius:2px">
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">Ключевые показатели</div>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-lab">Вложено</div><div class="kpi-val" id="kp-equity">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">Доля</div><div class="kpi-val" id="kp-share">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">Возврат (Gross)</div><div class="kpi-val" id="kp-gross">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">Чистая прибыль</div><div class="kpi-val" id="kp-profit">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">IRR</div><div class="kpi-val" id="kp-irr">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">MOIC</div><div class="kpi-val" id="kp-moic">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">Окупаемость</div><div class="kpi-val" id="kp-payback">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">Стоимость доли</div><div class="kpi-val" id="kp-exit">—</div></div>
         </div>
-        <div class="r-row"><span class="r-lab">IRR (годовой)</span><span class="r-val" id="rs-irr">—</span></div>
+        <p style="font-size:.68rem;color:var(--muted);font-family:Arial;margin-top:14px;font-style:italic;line-height:1.5">
+          Источники: HVS 2024–2025 (€865K/ключ); MKG Consulting (RevPAR Греция №1 в Европе); Brevitas/Indomio (cap rate 6–7%). Расчёт иллюстративный.
+        </p>
       </div>
-    </div>
-
-    <!-- Микс дополнительно -->
-    <div id="res-mix" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.3);padding:24px;border-radius:4px;margin-bottom:32px">
-      <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">⚖️ Итог микс-стратегии</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
-          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Доход от продажи</div>
-          <div style="font-size:1.4rem;color:var(--gold);font-weight:bold" id="mx-sell">—</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
-          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Годовой NOI (аренда)</div>
-          <div style="font-size:1.4rem;color:#4abf8f;font-weight:bold" id="mx-noi">—</div>
-        </div>
-        <div style="text-align:center;padding:16px;background:rgba(0,0,0,.2);border-radius:4px">
-          <div style="font-size:.75rem;color:var(--muted);font-family:Arial;margin-bottom:6px">Итого (год 1)</div>
-          <div style="font-size:1.4rem;color:white;font-weight:bold" id="mx-total">—</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ПОКАЗАТЕЛИ ИНВЕСТОРА -->
-    <div style="background:var(--dark);border:1px solid rgba(196,163,90,.3);padding:32px;border-radius:4px">
-      <div style="font-size:.75rem;letter-spacing:3px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:24px">Ключевые показатели инвестора</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" id="kpi-grid">
-        <div class="kpi-card"><div class="kpi-lab">Вложено (Equity)</div><div class="kpi-val" id="kp-equity">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">Доля в проекте</div><div class="kpi-val" id="kp-share">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">Общий возврат (Gross)</div><div class="kpi-val" id="kp-gross">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">Чистая прибыль</div><div class="kpi-val" id="kp-profit">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">IRR</div><div class="kpi-val" id="kp-irr">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">MOIC (множитель)</div><div class="kpi-val" id="kp-moic">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">Срок окупаемости</div><div class="kpi-val" id="kp-payback">—</div></div>
-        <div class="kpi-card"><div class="kpi-lab">Стоимость доли (exit)</div><div class="kpi-val" id="kp-exit">—</div></div>
-      </div>
-      <p style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:20px;font-style:italic">
-        Источники: HVS European Hotel Transactions 2024–2025 (€865K/ключ, 5★); MKG Consulting (RevPAR Греция €216,8, лидер Европы 2025); ADR €220 — средний уровень 5★ западный Крит. Расчёт иллюстративный.
-      </p>
     </div>
   </div>
 </div>
 
-<style>
-.mode-btn{width:100%;text-align:left;padding:12px 16px;background:var(--dark2);border:1px solid rgba(196,163,90,.15);color:var(--text);font-family:Arial;font-size:.9rem;cursor:pointer;border-radius:3px;transition:all .2s}
-.mode-btn:hover{border-color:var(--gold);color:var(--white)}
-.active-mode{border-color:var(--gold)!important;background:rgba(196,163,90,.08)!important;color:var(--white)!important}
-.r-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.r-row:last-child{border-bottom:none}
-.r-lab{font-size:.8rem;color:var(--muted);font-family:Arial}
-.r-val{font-size:.9rem;color:var(--white);font-family:Arial;font-weight:bold}
-.r-val.big{font-size:1.3rem;color:var(--gold)}
-.kpi-card{background:rgba(0,0,0,.2);padding:16px;border-radius:4px;border:1px solid rgba(255,255,255,.05)}
-.kpi-lab{font-size:.72rem;color:var(--muted);font-family:Arial;letter-spacing:1px;margin-bottom:6px}
-.kpi-val{font-size:1.2rem;color:var(--gold);font-weight:bold;font-family:Arial}
-@media(max-width:768px){
-  #kpi-grid{grid-template-columns:repeat(2,1fr)!important}
-  #calculator > div > div:nth-child(4),#calculator > div > div:nth-child(5){grid-template-columns:1fr!important}
-}
-</style>
+<!-- LEGAL -->
+<section id="legal" class="sec">
+  <p class="sec-label">Юридическая процедура</p>
+  <h2 class="sec-title">Путь к сделке</h2>
+  <div class="divider"></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">NDA</div><div class="step-desc">Соглашение о конфиденциальности. Открываем DD Room</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Proof of Funds</div><div class="step-desc">Подтверждение наличия средств от инвестора</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Term Sheet</div><div class="step-desc">Подписание Term Sheet с девелопером ROVLEX</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">SPV</div><div class="step-desc">Создание SPV, акционерное соглашение, оформление земли</div></div>
+    <div class="step"><div class="step-num">05</div><div class="step-title">Финансирование</div><div class="step-desc">Инвестор финансирует траншами по графику строительства</div></div>
+  </div>
+  <div style="background:var(--dark2);border:1px solid rgba(196,163,90,.2);padding:28px;margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px">
+    <div>
+      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">ЧТО ПОЛУЧАЕТ ИНВЕСТОР</div>
+      <ul style="list-style:none;display:grid;gap:7px">
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Долю в SPV согласно вкладу</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Право на увеличение доли до 80%</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Доход от операционной деятельности</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Прирост стоимости актива</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Полный доступ к Due Diligence Room</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">КОНТАКТ</div>
+      <p style="font-size:.9rem;color:var(--text);font-family:Arial;line-height:1.9">ROVLEX<br>ROVLEX@ROVLEX.COM<br>artemisresort.com</p>
+    </div>
+  </div>
+</section>
 
-<script>
-const TOTAL_PROJECT = 20;   // млн €
-const TOTAL_M2 = 3282;      // м² застройки
-const ADR = 220;            // € за ночь
-const OCC = 0.93;           // заполняемость
-const DAYS = 210;           // дней сезон
-const NOI_MARGIN = 0.35;    // маржа NOI
-const PRICE_M2 = 5500;      // € за м² при продаже
-const DEV_SHARE = 0.20;     // доля девелопера
-
-let cMode = 'hold';
-
-function cSetMode(m) {
-  cMode = m;
-  ['hold','sell','mix'].forEach(x => {
-    document.getElementById('btn-'+x).classList.toggle('active-mode', x===m);
-  });
-  document.getElementById('mix-panel').style.display = m==='mix' ? 'block' : 'none';
-  document.getElementById('res-mix').style.display = m==='mix' ? 'block' : 'none';
-  cCalc();
-}
-
-function fe(n) {
-  if(Math.abs(n) >= 1000000) return '€' + (n/1000000).toFixed(2) + 'M';
-  if(Math.abs(n) >= 1000) return '€' + Math.round(n).toLocaleString('ru-RU');
-  return '€' + Math.round(n);
-}
-function fp(n) { return n.toFixed(1) + '%'; }
-
-function cCalc() {
-  const invM = +document.getElementById('c-inv').value;
-  const inv = invM * 1e6;
-  const investorShare = (invM / TOTAL_PROJECT) * (1 - DEV_SHARE); // 80% делим пропорционально
-  const shareDisplay = investorShare * 100;
-
-  // Доля-бар
-  document.getElementById('c-inv-val').textContent = '€' + invM.toLocaleString('ru-RU') + ' 000 000';
-  document.getElementById('c-share').textContent = fp(shareDisplay);
-  document.getElementById('bar-inv').style.width = shareDisplay + '%';
-  document.getElementById('bar-dev').style.width = '20%';
-  document.getElementById('bar-inv-pct').textContent = fp(shareDisplay);
-  document.getElementById('bar-free-pct').textContent = fp(100 - shareDisplay - 20);
-
-  // HOLD расчёт
-  const nominalRooms = 66;
-  const myRooms = nominalRooms * investorShare;
-  const annualRev = myRooms * ADR * OCC * DAYS;
-  const annualNOI = annualRev * NOI_MARGIN;
-  const cashYield = annualNOI / inv * 100;
-  const exitValTotal = TOTAL_M2 * PRICE_M2; // ~€18M на выходе
-  const exitValMy = exitValTotal * investorShare;
-  const capRate = annualNOI / (exitValMy) * 100;
-
-  document.getElementById('rh-rev').textContent = fe(annualRev);
-  document.getElementById('rh-noi').textContent = fe(annualNOI);
-  document.getElementById('rh-yield').textContent = fp(cashYield);
-  document.getElementById('rh-cap').textContent = fp(capRate);
-
-  // SELL расчёт (через 2 года)
-  const sellRevMy = exitValMy;
-  const sellProfit = sellRevMy - inv;
-  const sellROI = sellProfit / inv * 100;
-  const sellIRR = (Math.pow(sellRevMy / inv, 1/2) - 1) * 100;
-
-  document.getElementById('rs-rev').textContent = fe(sellRevMy);
-  document.getElementById('rs-profit').textContent = (sellProfit >= 0 ? '+' : '') + fe(sellProfit);
-  document.getElementById('rs-roi').textContent = fp(sellROI);
-  document.getElementById('rs-irr').textContent = fp(sellIRR);
-
-  // MIX
-  const mixPct = +document.getElementById('mix-slider').value / 100;
-  const sellM2 = Math.round(TOTAL_M2 * investorShare * mixPct);
-  const holdM2 = Math.round(TOTAL_M2 * investorShare * (1 - mixPct));
-  document.getElementById('mix-sell-pct').textContent = Math.round(mixPct*100) + '%';
-  document.getElementById('mix-hold-pct').textContent = Math.round((1-mixPct)*100) + '%';
-  document.getElementById('mix-sell-m2').textContent = '~' + sellM2 + ' м²';
-  document.getElementById('mix-hold-m2').textContent = '~' + holdM2 + ' м²';
-  document.getElementById('mix-bar-sell').style.width = Math.round(mixPct*100) + '%';
-
-  const mxSellIncome = sellM2 * PRICE_M2;
-  const mxHoldRooms = nominalRooms * investorShare * (1 - mixPct);
-  const mxNOI = mxHoldRooms * ADR * OCC * DAYS * NOI_MARGIN;
-  document.getElementById('mx-sell').textContent = fe(mxSellIncome);
-  document.getElementById('mx-noi').textContent = fe(mxNOI) + '/год';
-  document.getElementById('mx-total').textContent = fe(mxSellIncome + mxNOI);
-
-  // KPI блок — в зависимости от режима
-  let gross, kpiIRR, moic, payback, exitVal;
-  if (cMode === 'hold') {
-    gross = inv + annualNOI * 10; // 10-летний горизонт + возврат тела
-    kpiIRR = cashYield;
-    moic = gross / inv;
-    payback = inv / annualNOI;
-    exitVal = exitValMy;
-  } else if (cMode === 'sell') {
-    gross = sellRevMy;
-    kpiIRR = sellIRR;
-    moic = gross / inv;
-    payback = 2;
-    exitVal = sellRevMy;
-  } else {
-    gross = mxSellIncome + mxNOI * 10 + holdM2 * PRICE_M2;
-    kpiIRR = (mxSellIncome / inv * 50 + cashYield * (1 - mixPct));
-    moic = gross / inv;
-    payback = mxNOI > 0 ? (inv - mxSellIncome) / mxNOI : 99;
-    exitVal = holdM2 * PRICE_M2;
-  }
-
-  document.getElementById('kp-equity').textContent = fe(inv);
-  document.getElementById('kp-share').textContent = fp(shareDisplay);
-  document.getElementById('kp-gross').textContent = fe(gross);
-  document.getElementById('kp-profit').textContent = fe(gross - inv);
-  document.getElementById('kp-irr').textContent = fp(kpiIRR);
-  document.getElementById('kp-moic').textContent = moic.toFixed(2) + 'x';
-  document.getElementById('kp-payback').textContent = payback > 30 ? '—' : Math.round(payback) + ' лет';
-  document.getElementById('kp-exit').textContent = fe(exitVal);
-}
-
-// Init
-cCalc();
-</script>
-
-<!-- FOOTER -->
 <footer>
-  <div class="logo">ARTEMIS RESORT & SPA</div>
-  <p style="margin-top:8px">Герани · Платаньяс · Ханья · Крит · Греция</p>
-  <p style="margin-top:4px;font-size:.75rem;opacity:.5">© 2025 ROVLEX · Информация носит предварительный характер</p>
+  <div class="logo" style="font-size:1.3rem;margin-bottom:8px">ARTEMIS RESORT & SPA</div>
+  <p style="font-family:Arial;font-size:.82rem;color:var(--muted)">Герани · Платаньяс · Ханья · Крит · Греция</p>
+  <p style="font-family:Arial;font-size:.72rem;color:var(--muted);margin-top:4px;opacity:.5">© 2025 ROVLEX · Информация носит предварительный характер</p>
 </footer>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modal">
+<div class="overlay" id="modal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <h3>Получить презентацию</h3>
-    <p>Оставьте контакт — мы пришлём PDF и ответим на вопросы</p>
+    <button class="modal-x" onclick="closeModal()">×</button>
+    <h3 style="font-size:1.4rem;color:var(--white);margin-bottom:6px;font-weight:400">Получить презентацию</h3>
+    <p style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:24px">Оставьте контакт — пришлём PDF и ответим на вопросы</p>
     <div id="form-wrap">
-      <div class="form-group">
-        <label>Ваше имя *</label>
-        <input type="text" id="f-name" placeholder="Имя Фамилия">
-      </div>
-      <div class="form-group">
-        <label>Email *</label>
-        <input type="email" id="f-email" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label>Телефон / Telegram</label>
-        <input type="text" id="f-phone" placeholder="+7 / @username">
-      </div>
-      <div class="form-group">
-        <label>Планируемая сумма инвестиций</label>
-        <input type="text" id="f-amount" placeholder="от €3 000 000">
-      </div>
+      <div class="form-group"><label>Ваше имя *</label><input type="text" id="f-name" placeholder="Имя Фамилия"></div>
+      <div class="form-group"><label>Email *</label><input type="email" id="f-email" placeholder="email@example.com"></div>
+      <div class="form-group"><label>Телефон / Telegram</label><input type="text" id="f-phone" placeholder="+7 / @username"></div>
+      <div class="form-group"><label>Планируемая сумма</label><input type="text" id="f-amount" placeholder="от €3 000 000"></div>
       <button class="btn" style="width:100%;text-align:center" onclick="submitForm()">Отправить и скачать PDF</button>
-      <p id="form-err" style="color:#e07070;font-family:Arial;font-size:.8rem;margin-top:8px;display:none"></p>
+      <p id="form-err" style="color:#e07070;font-family:Arial;font-size:.78rem;margin-top:8px;display:none"></p>
     </div>
-    <div class="form-success" id="form-success">
-      <div class="check">✓</div>
-      <p>Спасибо! Скачивание началось.<br><br>Мы свяжемся с вами в течение 24 часов.</p>
+    <div id="form-success" style="display:none;text-align:center;padding:16px 0">
+      <div style="font-size:2.8rem;margin-bottom:10px">✓</div>
+      <p style="color:var(--text);font-family:Arial">Спасибо! Скачивание началось.<br><br>Мы свяжемся с вами в течение 24 часов.</p>
     </div>
   </div>
 </div>
 
 <script>
-function openModal(){ document.getElementById('modal').classList.add('active') }
-function closeModal(){ document.getElementById('modal').classList.remove('active') }
+// MODAL
+function openModal(){ document.getElementById('modal').classList.add('on') }
+function closeModal(){ document.getElementById('modal').classList.remove('on') }
 document.getElementById('modal').addEventListener('click',function(e){ if(e.target===this) closeModal() })
 
 async function submitForm(){
@@ -675,7 +589,7 @@ async function submitForm(){
   const phone=document.getElementById('f-phone').value.trim()
   const amount=document.getElementById('f-amount').value.trim()
   const err=document.getElementById('form-err')
-  if(!name||!email){ err.textContent='Пожалуйста, заполните имя и email'; err.style.display='block'; return }
+  if(!name||!email){err.textContent='Пожалуйста, заполните имя и email';err.style.display='block';return}
   err.style.display='none'
   try{
     const r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone,amount})})
@@ -684,40 +598,131 @@ async function submitForm(){
       document.getElementById('form-wrap').style.display='none'
       document.getElementById('form-success').style.display='block'
       setTimeout(()=>{ window.location.href='/download-pdf' },800)
-    } else { err.textContent=d.error||'Ошибка. Попробуйте ещё раз.'; err.style.display='block' }
-  } catch(e){ err.textContent='Ошибка сети. Попробуйте ещё раз.'; err.style.display='block' }
+    } else {err.textContent=d.error||'Ошибка. Попробуйте ещё раз.';err.style.display='block'}
+  } catch(e){err.textContent='Ошибка сети.';err.style.display='block'}
 }
 
-function fmt(n){ return '€'+n.toLocaleString('ru-RU') }
+// CALCULATOR
+const TOTAL_PROJECT = 20   // млн €
+const ADR = 220
+const OCC = 0.93
+const DAYS = 210
+const NOI_MARGIN = 0.25    // 25% после комиссии оператора (молча)
+const EXIT_HOLD = 57       // млн — M&A (Hold)
+const EXIT_SELL = 65       // млн — розница (Sell)
+const DEV_SHARE = 0.20
 
-function calcUpdate(){
-  const inv=+document.getElementById('inv-slider').value
-  const term=+document.getElementById('term-slider').value
-  const sc=+document.getElementById('yield-slider').value
-  document.getElementById('inv-val').textContent=fmt(inv)
-  document.getElementById('term-val').textContent=term+' лет'
-  const scNames=['','Консервативный','Базовый','Оптимистичный']
-  document.getElementById('yield-val').textContent=scNames[sc]
-  const totalProject=20000000
-  const share=inv/totalProject
-  const yieldRates=[0,0.06,0.08,0.11]
-  const growthRates=[0,0.02,0.03,0.045]
-  const yr=yieldRates[sc]; const gr=growthRates[sc]
-  const annual=Math.round(inv*yr)
-  const totalIncome=annual*term
-  const growth=Math.round(inv*gr*term)
-  const gross=totalIncome+growth
-  const irr=(yr+gr*0.5)*100
-  document.getElementById('r-share').textContent=Math.round(share*100)+'%'
-  document.getElementById('r-annual').textContent=fmt(annual)
-  document.getElementById('r-total').textContent=fmt(totalIncome)
-  document.getElementById('r-growth').textContent='+'+fmt(growth)
-  document.getElementById('r-gross').textContent=fmt(gross)
-  document.getElementById('r-irr').textContent=irr.toFixed(1)+'%'
-  const upsell=document.getElementById('upsell')
-  upsell.style.display = inv < 5000000 ? 'block' : 'none'
+let cMode = 'hold'
+
+function cSetMode(m){
+  cMode = m
+  ;['hold','sell','mix'].forEach(x=>{
+    document.getElementById('btn-'+x).classList.toggle('active-mode',x===m)
+  })
+  document.getElementById('mix-panel').style.display = m==='mix'?'block':'none'
+  // Switch result rows
+  document.getElementById('res-hold-rows').style.display = m==='hold'?'block':'none'
+  document.getElementById('res-sell-rows').style.display = m==='sell'?'block':'none'
+  document.getElementById('res-mix-rows').style.display  = m==='mix'?'block':'none'
+  const labels={'hold':'🏨 Арендный доход','sell':'💼 Доход от продажи','mix':'⚖️ Микс'}
+  document.getElementById('res-label').textContent = labels[m]
+  const colors={'hold':'#4abf8f','sell':'var(--gold)','mix':'#4a8fbf'}
+  document.getElementById('res-label').style.color = colors[m]
+  cCalc()
 }
-calcUpdate()
+
+function fe(n){
+  if(Math.abs(n)>=1000000) return '€'+(n/1000000).toFixed(2)+'M'
+  if(Math.abs(n)>=1000) return '€'+Math.round(n).toLocaleString('ru-RU')
+  return '€'+Math.round(n)
+}
+function fp(n){ return n.toFixed(1)+'%' }
+
+function cCalc(){
+  const invM = +document.getElementById('c-inv').value
+  const inv = invM * 1e6
+  const share = (invM / TOTAL_PROJECT) * (1 - DEV_SHARE)
+  const sharePct = share * 100
+
+  // Update UI
+  document.getElementById('c-inv-val').textContent = '€'+invM.toLocaleString('ru-RU')+' 000 000'
+  document.getElementById('c-share').textContent = fp(sharePct)
+  document.getElementById('bar-inv').style.width = sharePct+'%'
+  document.getElementById('bar-inv-pct').textContent = fp(sharePct)
+  document.getElementById('bar-free-pct').textContent = fp(100-sharePct-20)
+
+  const rooms = 66
+  const myRooms = rooms * share
+
+  // HOLD
+  const annualRev = myRooms * ADR * OCC * DAYS
+  const annualNOI = annualRev * NOI_MARGIN
+  const cashYield = annualNOI / inv * 100
+  const exitMy = EXIT_HOLD * 1e6 * share
+  const capRate = annualNOI / exitMy * 100
+
+  document.getElementById('rh-rev').textContent = fe(annualRev)
+  document.getElementById('rh-noi').textContent = fe(annualNOI)
+  document.getElementById('rh-yield').textContent = fp(cashYield)
+  document.getElementById('rh-cap').textContent = fp(capRate)
+
+  // SELL
+  const sellRevMy = EXIT_SELL * 1e6 * share
+  const sellProfit = sellRevMy - inv
+  const sellROI = sellProfit / inv * 100
+  const sellIRR = (Math.pow(sellRevMy/inv, 1/3) - 1) * 100
+
+  document.getElementById('rs-rev').textContent = fe(sellRevMy)
+  document.getElementById('rs-profit').textContent = (sellProfit>=0?'+':'')+fe(sellProfit)
+  document.getElementById('rs-roi').textContent = fp(sellROI)
+  document.getElementById('rs-irr').textContent = fp(sellIRR)
+
+  // MIX
+  const mixPct = +document.getElementById('mix-slider').value / 100
+  document.getElementById('mix-sell-pct').textContent = Math.round(mixPct*100)+'%'
+  document.getElementById('mix-hold-pct').textContent = Math.round((1-mixPct)*100)+'%'
+  document.getElementById('mix-bar-sell').style.width = Math.round(mixPct*100)+'%'
+  const mxSellIncome = EXIT_SELL * 1e6 * share * mixPct
+  const mxNOI = annualNOI * (1 - mixPct)
+  document.getElementById('mx-sell').textContent = fe(mxSellIncome)
+  document.getElementById('mx-noi').textContent = fe(mxNOI)+'/год'
+  document.getElementById('mx-total').textContent = fe(mxSellIncome + mxNOI)
+
+  // KPI
+  let gross, kpiIRR, moic, payback, exitVal
+  if(cMode==='hold'){
+    const YEARS = 10
+    gross = annualNOI*YEARS + exitMy
+    kpiIRR = cashYield
+    moic = gross/inv
+    payback = inv/annualNOI
+    exitVal = exitMy
+  } else if(cMode==='sell'){
+    gross = sellRevMy
+    kpiIRR = sellIRR
+    moic = gross/inv
+    payback = 3
+    exitVal = sellRevMy
+  } else {
+    gross = mxSellIncome + mxNOI*10 + EXIT_HOLD*1e6*share*(1-mixPct)
+    kpiIRR = mxNOI>0 ? (mxSellIncome/inv*33 + cashYield*(1-mixPct)) : sellIRR*mixPct
+    moic = gross/inv
+    payback = mxNOI>0 ? Math.min(30,(inv-mxSellIncome)/mxNOI) : 3
+    exitVal = EXIT_HOLD*1e6*share*(1-mixPct)
+  }
+
+  document.getElementById('kp-equity').textContent = fe(inv)
+  document.getElementById('kp-share').textContent = fp(sharePct)
+  document.getElementById('kp-gross').textContent = fe(gross)
+  document.getElementById('kp-profit').textContent = fe(gross-inv)
+  document.getElementById('kp-irr').textContent = fp(kpiIRR)
+  document.getElementById('kp-moic').textContent = moic.toFixed(2)+'x'
+  document.getElementById('kp-payback').textContent = payback>29?'30+ лет':Math.round(payback)+' лет'
+  document.getElementById('kp-exit').textContent = fe(exitVal)
+}
+
+// init
+cSetMode('hold')
 </script>
 </body>
 </html>
