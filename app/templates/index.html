@@ -17,7 +17,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.9
 .nav-links a:hover{color:var(--gold)}
 .btn{display:inline-block;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:'Arial',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s;text-decoration:none}
 .btn:hover{background:var(--gold2)}
-.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);margin-left:12px}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-cta .btn{box-sizing:border-box}
 .btn-outline:hover{background:var(--gold);color:var(--dark)}
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -149,6 +151,9 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   .loc-grid,.inv-grid,.models-grid,.formats-grid,.calc-top,.calc-res{grid-template-columns:1fr!important}
   .gallery{grid-template-columns:1fr 1fr}.gallery-wide{grid-column:span 1}
   .fb-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr 1fr!important}
+  .logo{font-size:1rem;line-height:1.15}.logo-rest{display:block}
+  .hero-cta{flex-direction:column;gap:12px;width:100%;max-width:340px}
+  .hero-cta .btn{width:100%;text-align:center;margin:0}
   .legal-foot{grid-template-columns:1fr!important;gap:22px!important}
   .steps{grid-template-columns:1fr;gap:0;padding-left:10px}
   .steps::before{display:block;top:0;bottom:0;left:37px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
@@ -161,7 +166,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <body>
 
 <nav>
-  <div class="logo">ARTEMIS RESORT & SPA</div>
+  <div class="logo">ARTEMIS<span class="logo-rest"> RESORT&nbsp;&amp;&nbsp;SPA</span></div>
   <ul class="nav-links">
     <li><a href="#location">Локация</a></li>
     <li><a href="#rooms">Номера</a></li>
@@ -187,8 +192,10 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
       <div><div class="stat-val">€65M</div><div class="stat-lab">Стоимость при выходе</div></div>
       <div><div class="stat-val">2.5 km</div><div class="stat-lab">Пляж Голубой флаг</div></div>
     </div>
-    <button class="btn" onclick="openModal()">Запросить презентацию</button>
-    <a href="#calculator" class="btn btn-outline">Рассчитать доход</a>
+    <div class="hero-cta">
+      <button class="btn" onclick="openModal()">Запросить презентацию</button>
+      <a href="#calculator" class="btn btn-outline">Рассчитать доход</a>
+    </div>
   </div>
 </div>
 
