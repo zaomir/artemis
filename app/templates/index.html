@@ -112,8 +112,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.9
 .mode-btn{width:100%;text-align:left;padding:13px 16px;background:var(--dark3);border:1px solid rgba(196,163,90,.12);color:var(--text);font-family:'Arial',sans-serif;font-size:.88rem;cursor:pointer;border-radius:2px;transition:all .2s;margin-bottom:8px}
 .mode-btn:hover{border-color:var(--gold);color:var(--white)}
 .active-mode{border-color:var(--gold)!important;background:rgba(196,163,90,.09)!important;color:var(--white)!important}
-input[type=range]{width:100%;-webkit-appearance:none;height:4px;background:rgba(255,255,255,.1);border-radius:2px;outline:none;cursor:pointer}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--gold);border-radius:50%;cursor:pointer}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:30px;background:transparent;outline:none;cursor:pointer;touch-action:pan-y;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:6px;background:rgba(255,255,255,.12);border-radius:3px}
+input[type=range]::-moz-range-track{height:6px;background:rgba(255,255,255,.12);border-radius:3px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;margin-top:-11px;background:var(--gold);border:3px solid #0D1B2A;border-radius:50%;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;background:var(--gold);border:3px solid #0D1B2A;border-radius:50%;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.4)}
 .r-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .r-row:last-child{border-bottom:none}
 .r-lab{font-size:.8rem;color:var(--muted);font-family:'Arial',sans-serif}
@@ -455,7 +458,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
         <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:10px">Сумма инвестиций</div>
         <div style="font-size:2.4rem;color:var(--gold);font-weight:bold;margin-bottom:4px" id="c-inv-val">€3 000 000</div>
         <div style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:14px">Ваша доля: <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> &nbsp;·&nbsp; Девелопер: <span style="color:var(--muted)">20%</span></div>
-        <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()">
+        <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()" onchange="cCalc()">
         <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:5px"><span>€3M</span><span>€20M</span></div>
         <!-- bar -->
         <div style="margin-top:14px">
@@ -498,7 +501,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
         <span>Продать: <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong></span>
         <span>В аренду: <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong></span>
       </div>
-      <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()">
+      <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()" onchange="cCalc()">
       <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:9px">
         <div id="mix-bar-sell" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:50%"></div>
         <div style="background:linear-gradient(90deg,#2abf8f,#4adfaf);flex:1"></div>
