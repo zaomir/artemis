@@ -87,6 +87,45 @@ def admin_leads():
     resp = make_response(h + '</table>')
     return no_cache(resp)
 
+
+# ── Telegram support bot: forward incoming messages to ops group ──
+import urllib.request, urllib.parse, json as _json
+TG_TOKEN = os.environ.get('TG_BOT_TOKEN', '')   # set server-side, NOT in git
+TG_GROUP = '-5168641824'
+
+def tg_send(chat_id, text):
+    if not TG_TOKEN:
+        return
+    try:
+        data = urllib.parse.urlencode({'chat_id': chat_id, 'text': text}).encode()
+        urllib.request.urlopen(
+            f'https://api.telegram.org/bot{TG_TOKEN}/sendMessage', data=data, timeout=5)
+    except Exception:
+        pass
+
+@app.route('/tg-webhook', methods=['POST'])
+def tg_webhook():
+    upd = request.get_json(silent=True) or {}
+    msg = upd.get('message') or upd.get('edited_message') or {}
+    chat = msg.get('chat', {})
+    frm = msg.get('from', {})
+    text = msg.get('text', '')
+    # Only react to private chats with the bot (a user contacting support)
+    if chat.get('type') == 'private':
+        uname = frm.get('username', '')
+        name = (frm.get('first_name','') + ' ' + frm.get('last_name','')).strip()
+        uid = frm.get('id', '')
+        handle = f'@{uname}' if uname else f'id{uid}'
+        notify = (f'🔔 Обращение в саппорт Artemis\n'
+                  f'От: {name} ({handle})\n'
+                  f'Сообщение: {text}')
+        tg_send(TG_GROUP, notify)
+        # auto-reply to the user
+        tg_send(chat.get('id'),
+                'Спасибо за обращение! Команда Artemis Resort свяжется с вами в ближайшее время.')
+    return jsonify({'ok': True})
+
+
 if __name__ == '__main__':
     init_db()
     app.run(host='127.0.0.1', port=8082, debug=False)

@@ -155,11 +155,12 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   .hero-cta{flex-direction:column;gap:12px;width:100%;max-width:340px}
   .hero-cta .btn{width:100%;text-align:center;margin:0}
   .legal-foot{grid-template-columns:1fr!important;gap:22px!important}
-  .steps{grid-template-columns:1fr;gap:0;padding-left:10px}
-  .steps::before{display:block;top:0;bottom:0;left:37px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
-  .step{display:grid;grid-template-columns:54px 1fr;text-align:left;gap:14px;align-items:start;padding:10px 0}
-  .step-num{margin:0}
-  .step-title{margin-top:14px}
+  .steps{grid-template-columns:1fr;gap:12px;position:static}
+  .steps::before{display:none}
+  .step{display:grid;grid-template-columns:48px 1fr;text-align:left;gap:14px;align-items:center;padding:14px 16px;background:var(--dark2);border:1px solid rgba(196,163,90,.18);border-radius:4px}
+  .step-num{width:48px;height:48px;margin:0;font-size:.8rem}
+  .step-title{margin:0 0 3px 0}
+  .step-desc{grid-column:2}
 }
 </style>
 </head>
@@ -648,7 +649,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     </div>
     <div>
       <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">КОНТАКТ</div>
-      <p style="font-size:.9rem;color:var(--text);font-family:Arial;line-height:1.9"><a href="https://wa.me/33743600400" style="color:#fff;text-decoration:none;font-weight:bold">+33 743 600 400</a><br>INFO@ARTEMISRESORT.COM<br>ARTEMISRESORT.COM</p>
+      <p style="font-size:.9rem;color:var(--text);font-family:Arial;line-height:1.9"><a href="https://wa.me/33743600400" style="color:#fff;text-decoration:none;font-weight:bold">+33 743 600 400</a><br><a href="https://t.me/ArtemisResortbot" style="color:#4abf8f;text-decoration:none">✈ Саппорт в Телеграм</a><br>INFO@ARTEMISRESORT.COM<br>ARTEMISRESORT.COM</p>
     </div>
   </div>
 </section>
