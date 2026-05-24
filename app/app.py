@@ -90,7 +90,7 @@ def admin_leads():
 
 # ── Telegram support bot: forward incoming messages to ops group ──
 import urllib.request, urllib.parse, json as _json
-TG_TOKEN = os.environ.get('TG_BOT_TOKEN', '')   # set server-side, NOT in git
+TG_TOKEN = os.environ.get('TG_BOT_TOKEN', '8982488539:AAEVjyZ_KM1NdNA5LF32rMvzuhtpeW8CSYI')
 TG_GROUP = '-5168641824'
 
 def tg_send(chat_id, text):
