@@ -1,6 +1,6 @@
 # Artemis Resort & Spa — саммари проекта, решения и материалы
 
-> Эталонное состояние (канон): сайт **v32** · commit `eab9390` · 2026-05-24
+> Эталонное состояние (канон): сайт **v33** · commit `badeb01` · 2026-05-27
 > Домен: **artemisresort.com** · Девелопер: **ROVLEX International Ltd** · Бюджет €20M
 
 ---
@@ -69,7 +69,9 @@
 
 ---
 
-## 4. Состояние сайта (v32)
+## 4. Состояние сайта (v33)
+
+**Favicon (2026-05-27, `badeb01`):** в `app/static/` — `favicon.ico`, `favicon-32x32.png`, `favicon-192x192.png`, `apple-touch-icon.png`; в `<head>` — `url_for('static', …)` → `/static/…`. Nginx отдаёт статику напрямую.
 
 Секции по порядку: HERO → РАСПОЛОЖЕНИЕ (генплан+карта) → НОМЕРА (Люкс-сюит, от €450K) →
 WELLNESS (1 фото spa) → F&B (rest.png + список) → ИНВЕСТПРЕДЛОЖЕНИЕ → МОДЕЛИ → ФОРМАТЫ (без фото) →
@@ -103,10 +105,11 @@ WELLNESS (1 фото spa) → F&B (rest.png + список) → ИНВЕСТПР
 
 ```
 # Деплой сайта
-edit /home/claude/artemis → git push origin main →
-curl -s -X POST http://213.155.28.121/deploy-hook \
-  -H "X-Hook-Secret: rovlex-artemis-2025" -H "Host: artemisresort.com" -L --max-time 50
-# (если HTTP 522 Cloudflare — повторить хук, проходит)
+git push origin main →
+curl -sS -X POST https://artemisresort.com/deploy-hook \
+  -H "X-Hook-Secret: rovlex-artemis-2025" --max-time 60
+# hook: sudo git pull + sudo systemctl restart artemis (www-data → root via sudoers.d/artemis-hook)
+# (если HTTP 522 Cloudflare — повторить хук)
 
 # Откат к канону
 git checkout canon
