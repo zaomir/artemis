@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ lang }}">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -7,7 +7,19 @@
 <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='favicon-192x192.png') }}">
 <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artemis Resort & Spa — Инвестиционное предложение</title>
+<meta name="description" content="{{ t.meta_description }}">
+<link rel="canonical" href="https://artemisresort.com/{{ lang }}/">
+<link rel="alternate" hreflang="ru" href="https://artemisresort.com/ru/">
+<link rel="alternate" hreflang="en" href="https://artemisresort.com/en/">
+<link rel="alternate" hreflang="es" href="https://artemisresort.com/es/">
+<link rel="alternate" hreflang="fr" href="https://artemisresort.com/fr/">
+<link rel="alternate" hreflang="x-default" href="https://artemisresort.com/">
+<meta property="og:title" content="{{ t.head_01 }}">
+<meta property="og:description" content="{{ t.meta_description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://artemisresort.com/{{ lang }}/">
+<meta property="og:locale" content="{{ og_locale }}">
+<title>{{ t.head_01 }}</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#C4A35A;--gold2:#e8c97a;--dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;--text:#e8e0d0;--muted:#8a9bb0;--white:#fff}
@@ -19,6 +31,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,0.9
 .nav-links{display:flex;gap:20px;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:1px;font-family:'Arial',sans-serif;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.lang-switch{display:flex;align-items:center;gap:10px;font-family:'Arial',sans-serif;font-size:.78rem;letter-spacing:1px}
+.lang-switch a{color:var(--muted);text-decoration:none;transition:color .2s}
+.lang-switch a:hover{color:var(--gold)}
+.lang-switch a.on{color:var(--white);font-weight:bold}
 .btn{display:inline-block;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:'Arial',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s;text-decoration:none}
 .btn:hover{background:var(--gold2)}
 .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
@@ -157,6 +174,7 @@ input[type=range]::-moz-range-thumb{width:28px;height:28px;background:var(--gold
 footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
 @media(max-width:768px){
   nav{padding:0 16px}.nav-links{display:none}
+  .nav-right{gap:12px}.lang-switch{gap:7px;font-size:.72rem}
   .sec{padding:56px 20px}.sec-full{padding:56px 20px}
   .loc-grid,.inv-grid,.models-grid,.formats-grid,.calc-top,.calc-res{grid-template-columns:1fr!important}
   .gallery{grid-template-columns:1fr 1fr}.gallery-wide{grid-column:span 1}
@@ -180,33 +198,41 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <nav>
   <div class="logo">ARTEMIS<span class="logo-rest"> RESORT&nbsp;&amp;&nbsp;SPA</span></div>
   <ul class="nav-links">
-    <li><a href="#location">Локация</a></li>
-    <li><a href="#rooms">Номера</a></li>
+    <li><a href="#location">{{ t.nav_01 }}</a></li>
+    <li><a href="#rooms">{{ t.nav_02 }}</a></li>
     <li><a href="#fb">F&B</a></li>
-    <li><a href="#models">Участие</a></li>
-    <li><a href="#calculator">Калькулятор</a></li>
-    <li><a href="#developer">Девелопер</a></li>
-    <li><a href="#legal">Процедура</a></li>
+    <li><a href="#models">{{ t.nav_03 }}</a></li>
+    <li><a href="#calculator">{{ t.nav_04 }}</a></li>
+    <li><a href="#developer">{{ t.nav_05 }}</a></li>
+    <li><a href="#legal">{{ t.nav_06 }}</a></li>
   </ul>
-  <button class="btn" onclick="openModal()">Получить PDF</button>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <a href="/ru/"{% if lang=='ru' %} class="on"{% endif %}>RU</a>
+      <a href="/en/"{% if lang=='en' %} class="on"{% endif %}>EN</a>
+      <a href="/es/"{% if lang=='es' %} class="on"{% endif %}>ES</a>
+      <a href="/fr/"{% if lang=='fr' %} class="on"{% endif %}>FR</a>
+    </div>
+    <button class="btn" onclick="openModal()">{{ t.nav_07 }}</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">ИНВЕСТИЦИОННОЕ ПРЕДЛОЖЕНИЕ · КРИТ · ГРЕЦИЯ</div>
+    <div class="hero-badge">{{ t.misc_01 }}</div>
     <h1>ARTEMIS<br><span>RESORT & SPA</span></h1>
-    <p class="hero-sub">5★ · Первая береговая линия · Платаньяс, Ханья · Лицензия №27 · Готовность к стройке</p>
+    <p class="hero-sub">{{ t.misc_02 }}</p>
     <div class="hero-stats">
-      <div><div class="stat-val">€20M</div><div class="stat-lab">Бюджет проекта</div></div>
-      <div><div class="stat-val">66+1</div><div class="stat-lab">Номеров + вилла</div></div>
-      <div><div class="stat-val">€65M</div><div class="stat-lab">Стоимость при выходе</div></div>
-      <div><div class="stat-val">2.5 km</div><div class="stat-lab">Пляж Голубой флаг</div></div>
+      <div><div class="stat-val">€20M</div><div class="stat-lab">{{ t.misc_03 }}</div></div>
+      <div><div class="stat-val">66+1</div><div class="stat-lab">{{ t.misc_04 }}</div></div>
+      <div><div class="stat-val">€65M</div><div class="stat-lab">{{ t.misc_05 }}</div></div>
+      <div><div class="stat-val">2.5 km</div><div class="stat-lab">{{ t.misc_06 }}</div></div>
     </div>
     <div class="hero-cta">
-      <button class="btn" onclick="openModal()">Запросить презентацию</button>
-      <a href="#calculator" class="btn btn-outline">Рассчитать доход</a>
+      <button class="btn" onclick="openModal()">{{ t.misc_07 }}</button>
+      <a href="#calculator" class="btn btn-outline">{{ t.misc_08 }}</a>
     </div>
   </div>
 </div>
@@ -214,25 +240,25 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <!-- LOCATION -->
 <section id="location" class="sec">
-  <p class="sec-label">Расположение</p>
-  <h2 class="sec-title">Герани, Платаньяс, Ханья, Крит</h2>
+  <p class="sec-label">{{ t.location_01 }}</p>
+  <h2 class="sec-title">{{ t.location_02 }}</h2>
   <div class="divider"></div>
   <div class="loc-grid">
     <div>
       <div style="display:grid;gap:3px">
-      <img src="/static/img/siteplan.jpg" alt="Генплан территории" style="width:100%;display:block;border-radius:3px 3px 0 0">
-      <img src="/static/img/map_island.jpg" alt="Расположение на Крите" style="width:100%;display:block;border-radius:0 0 3px 3px">
+      <img src="/static/img/siteplan.jpg" alt="{{ t.alt_01 }}" style="width:100%;display:block;border-radius:3px 3px 0 0">
+      <img src="/static/img/map_island.jpg" alt="{{ t.alt_02 }}" style="width:100%;display:block;border-radius:0 0 3px 3px">
     </div>
     </div>
     <div>
-      <div class="fact"><div class="fact-label">Адрес</div><div class="fact-value">пос. Герани, Платаньяс, Ханья, Крит</div></div>
-      <div class="fact"><div class="fact-label">Аэропорт</div><div class="fact-value">25 минут · Ханья (CHQ)</div></div>
-      <div class="fact"><div class="fact-label">Пляж</div><div class="fact-value">Первая линия · 2,5 км · Голубой флаг ЕС</div></div>
-      <div class="fact"><div class="fact-label">Участок</div><div class="fact-value">16 499 м² · Застройка 3 262 м²</div></div>
-      <div class="fact"><div class="fact-label">Разрешение</div><div class="fact-value">Лицензия №27 (2018) · Готовность к стройке</div></div>
-      <div class="fact"><div class="fact-label">Сезон</div><div class="fact-value">Апрель — Октябрь · Заполняемость 73%</div></div>
-      <div class="fact"><div class="fact-label">Категория</div><div class="fact-value">5★ · 66 номеров + вилла · 132 койко-места</div></div>
-      <div class="fact"><div class="fact-label">Зонирование</div><div class="fact-value">Туристическая зона — только отель / tourist residence</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_03 }}</div><div class="fact-value">{{ t.location_04 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_05 }}</div><div class="fact-value">{{ t.location_06 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_07 }}</div><div class="fact-value">{{ t.location_08 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_09 }}</div><div class="fact-value">{{ t.location_10 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_11 }}</div><div class="fact-value">{{ t.location_12 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_13 }}</div><div class="fact-value">{{ t.location_14 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_15 }}</div><div class="fact-value">{{ t.location_16 }}</div></div>
+      <div class="fact"><div class="fact-label">{{ t.location_17 }}</div><div class="fact-value">{{ t.location_18 }}</div></div>
     </div>
   </div>
 </section>
@@ -240,62 +266,62 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <!-- ROOMS -->
 <div id="rooms" class="sec-full" style="background:var(--dark2)">
   <div class="sec-inner">
-    <p class="sec-label">Номерной фонд</p>
-    <h2 class="sec-title">66 номеров + Вилла Nika</h2>
+    <p class="sec-label">{{ t.misc_09 }}</p>
+    <h2 class="sec-title">{{ t.misc_10 }}</h2>
     <div class="divider"></div>
     <div class="rooms-grid">
       <div class="room-card">
         <img src="/static/img/double_room.jpg" alt="Double Room">
         <div class="room-info">
           <div class="room-type">Double Room</div>
-          <div class="room-title">Двухместный стандарт</div>
-          <div class="room-area">27–32 <span>м²</span></div>
-          <div class="room-desc">55 номеров · 33 на 1 этаже с бассейном · 22 на 2 этаже с балконом · Цена продажи <strong style="color:var(--gold)">от €450K</strong> (€15 000/м²)</div>
+          <div class="room-title">{{ t.misc_11 }}</div>
+          <div class="room-area">27–32 <span>{{ t.misc_12 }}</span></div>
+          <div class="room-desc">{{ t.misc_13 }} <strong style="color:var(--gold)">{{ t.misc_14 }}</strong> {{ t.misc_15 }}</div>
         </div>
       </div>
       <div class="room-card">
         <img src="/static/img/attic_room.jpg" alt="Attic Room">
         <div class="room-info">
           <div class="room-type">Attic Room</div>
-          <div class="room-title">С мансардой</div>
-          <div class="room-area">37 <span>м²</span></div>
-          <div class="room-desc">8 номеров · Вид на море · Мансардная спальня · Shared pool</div>
+          <div class="room-title">{{ t.misc_16 }}</div>
+          <div class="room-area">37 <span>{{ t.misc_12 }}</span></div>
+          <div class="room-desc">{{ t.misc_17 }}</div>
         </div>
       </div>
       <div class="room-card">
         <img src="/static/img/suite.jpg" alt="Suite">
         <div class="room-info">
           <div class="room-type">Suite</div>
-          <div class="room-title">Люкс-сюит</div>
-          <div class="room-area">41–60 <span>м²</span></div>
-          <div class="room-desc">3 сюиты · Частный бассейн · Прямой выход к морю · Панорамная терраса</div>
+          <div class="room-title">{{ t.misc_18 }}</div>
+          <div class="room-area">41–60 <span>{{ t.misc_12 }}</span></div>
+          <div class="room-desc">{{ t.misc_19 }}</div>
         </div>
       </div>
       <div class="room-card" style="border-color:rgba(196,163,90,.4)">
         <img src="/static/img/villa_ext.jpg" alt="Villa Nika">
         <div class="room-info">
           <div class="room-type" style="color:#e8c97a">Villa Nika</div>
-          <div class="room-title">Вилла Nika</div>
-          <div class="room-area">~200 <span>м²</span></div>
-          <div class="room-desc">Построена, меблирована · 3 этажа · Стоимость <strong style="color:var(--gold)">€1,4–1,7M</strong></div>
+          <div class="room-title">{{ t.misc_20 }}</div>
+          <div class="room-area">~200 <span>{{ t.misc_12 }}</span></div>
+          <div class="room-desc">{{ t.misc_21 }} <strong style="color:var(--gold)">€1,4–1,7M</strong></div>
         </div>
       </div>
     </div>
     <!-- WELLNESS -->
     <div style="margin-top:32px">
-      <p class="sec-label" style="margin-bottom:16px">Wellness & Бассейны</p>
+      <p class="sec-label" style="margin-bottom:16px">{{ t.misc_22 }}</p>
       <div style="margin-bottom:20px">
         <img src="/static/img/spa.jpg" alt="SPA & Wellness" style="width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:3px">
       </div>
       <div class="amen-grid">
-        <div class="amen"><div class="amen-icon">🏊</div><div class="amen-text">30 открытых бассейнов · 1 414 м²</div></div>
-        <div class="amen"><div class="amen-icon">🌊</div><div class="amen-text">Крытый бассейн · 303 м² · круглосуточно</div></div>
-        <div class="amen"><div class="amen-icon">🧘</div><div class="amen-text">SPA-центр + фитнес · цокольный этаж</div></div>
-        <div class="amen"><div class="amen-icon">🎤</div><div class="amen-text">Конференц-зал · цокольный этаж</div></div>
-        <div class="amen"><div class="amen-icon">🎾</div><div class="amen-text">Теннисный корт</div></div>
-        <div class="amen"><div class="amen-icon">🅿️</div><div class="amen-text">Паркинг · 20 мест</div></div>
-        <div class="amen"><div class="amen-icon">🌿</div><div class="amen-text">Озеленение · 5 048 м²</div></div>
-        <div class="amen"><div class="amen-icon">🏖️</div><div class="amen-text">Пляж 2,5 км · Голубой флаг ЕС</div></div>
+        <div class="amen"><div class="amen-icon">🏊</div><div class="amen-text">{{ t.misc_23 }}</div></div>
+        <div class="amen"><div class="amen-icon">🌊</div><div class="amen-text">{{ t.misc_24 }}</div></div>
+        <div class="amen"><div class="amen-icon">🧘</div><div class="amen-text">{{ t.misc_25 }}</div></div>
+        <div class="amen"><div class="amen-icon">🎤</div><div class="amen-text">{{ t.misc_26 }}</div></div>
+        <div class="amen"><div class="amen-icon">🎾</div><div class="amen-text">{{ t.misc_27 }}</div></div>
+        <div class="amen"><div class="amen-icon">🅿️</div><div class="amen-text">{{ t.misc_28 }}</div></div>
+        <div class="amen"><div class="amen-icon">🌿</div><div class="amen-text">{{ t.misc_29 }}</div></div>
+        <div class="amen"><div class="amen-icon">🏖️</div><div class="amen-text">{{ t.misc_30 }}</div></div>
       </div>
     </div>
   </div>
@@ -304,16 +330,16 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <!-- F&B -->
 <section id="fb" class="sec">
-  <p class="sec-label">F&B — Рестораны и Бары</p>
-  <h2 class="sec-title">Три ресторана на территории</h2>
+  <p class="sec-label">{{ t.fb_01 }}</p>
+  <h2 class="sec-title">{{ t.fb_02 }}</h2>
   <div class="divider"></div>
   <div style="max-width:1000px;margin:0 auto">
-    <img src="/static/img/restaurant_main.jpg" alt="Рестораны и бары" style="width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:3px;margin-bottom:20px">
+    <img src="/static/img/restaurant_main.jpg" alt="{{ t.alt_03 }}" style="width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:3px;margin-bottom:20px">
     <div class="amen-grid">
-      <div class="amen"><div class="amen-icon">🍽️</div><div class="amen-text">Главный ресторан + Бар · 317 м² · 136 мест · 24/7</div></div>
-      <div class="amen"><div class="amen-icon">🌊</div><div class="amen-text">Beach Restaurant · 170 м² · 76 мест · Вид на море</div></div>
-      <div class="amen"><div class="amen-icon">🌅</div><div class="amen-text">Roof Garden Restaurant · 132 м² · 60 мест · Панорама</div></div>
-      <div class="amen"><div class="amen-icon">🍸</div><div class="amen-text">Центральный бар / Пул-бар · 271 м² · у бассейна</div></div>
+      <div class="amen"><div class="amen-icon">🍽️</div><div class="amen-text">{{ t.fb_03 }}</div></div>
+      <div class="amen"><div class="amen-icon">🌊</div><div class="amen-text">{{ t.fb_04 }}</div></div>
+      <div class="amen"><div class="amen-icon">🌅</div><div class="amen-text">{{ t.fb_05 }}</div></div>
+      <div class="amen"><div class="amen-icon">🍸</div><div class="amen-text">{{ t.fb_06 }}</div></div>
     </div>
   </div>
 </section>
@@ -321,33 +347,33 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <!-- INVESTMENT -->
 <div class="sec-full" style="background:var(--dark2)">
   <div class="sec-inner">
-    <p class="sec-label">Структура капитала</p>
-    <h2 class="sec-title">Инвестиционное предложение</h2>
+    <p class="sec-label">{{ t.misc_31 }}</p>
+    <h2 class="sec-title">{{ t.misc_32 }}</h2>
     <div class="divider"></div>
     <div class="inv-grid">
       <div class="cap-chart">
-        <h3 style="color:var(--white);font-weight:400;margin-bottom:22px;font-size:1rem">Бюджет проекта · €20 млн</h3>
+        <h3 style="color:var(--white);font-weight:400;margin-bottom:22px;font-size:1rem">{{ t.misc_33 }}</h3>
         <div class="cap-bar">
-          <div class="cap-label"><span>Девелопер (земля + работы)</span><span>до €17 млн</span></div>
+          <div class="cap-label"><span>{{ t.misc_34 }}</span><span>{{ t.misc_35 }}</span></div>
           <div class="cap-track"><div class="cap-fill-dev"></div></div>
         </div>
         <div class="cap-bar">
-          <div class="cap-label"><span>Финансовый инвестор</span><span>от €3 млн</span></div>
+          <div class="cap-label"><span>{{ t.misc_36 }}</span><span>{{ t.misc_37 }}</span></div>
           <div class="cap-track"><div class="cap-fill-inv" style="width:15%"></div></div>
         </div>
         <div class="upgrade-box">
-          Инвестор входит с долей <strong>≈20%</strong> при минимальном чеке <strong>€3 млн</strong> · возможность наращивания до 100%.<br><br>
-          Доля может быть <strong>увеличена немедленно или поэтапно</strong> — вплоть до <strong>полного выкупа проекта</strong> у девелопера на согласованных условиях.
+          {{ t.misc_38 }} <strong>≈20%</strong> {{ t.misc_39 }} <strong>{{ t.misc_40 }}</strong> {{ t.misc_41 }}<br><br>
+          {{ t.misc_42 }} <strong>{{ t.misc_43 }}</strong> {{ t.misc_44 }} <strong>{{ t.misc_45 }}</strong> {{ t.misc_46 }}
         </div>
       </div>
       <div>
-        <h3 style="color:var(--white);font-weight:400;margin-bottom:18px">Рыночные показатели</h3>
-        <div class="fact"><div class="fact-label">ADR (5★, Западный Крит)</div><div class="fact-value">€220 / ночь</div></div>
-        <div class="fact"><div class="fact-label">RevPAR (Греция, лидер Европы 2025)</div><div class="fact-value">€216,8 · +15,4% г/г</div></div>
-        <div class="fact"><div class="fact-label">Заполняемость (сезон 197 дней)</div><div class="fact-value">73% · среднеэксплуатационная</div></div>
-        <div class="fact"><div class="fact-label">Цена сделки 5★ resort Греция (M&A)</div><div class="fact-value">€700 000–800 000 за ключ</div></div>
-        <div class="fact"><div class="fact-label">Cap Rate · Prime Hotels Греция</div><div class="fact-value">6–7%</div></div>
-        <div class="fact"><div class="fact-label">Стоимость объекта (exit, 67 ключей)</div><div class="fact-value">€47–54M (бизнес) · €65M (розница)</div></div>
+        <h3 style="color:var(--white);font-weight:400;margin-bottom:18px">{{ t.misc_47 }}</h3>
+        <div class="fact"><div class="fact-label">{{ t.misc_48 }}</div><div class="fact-value">{{ t.misc_49 }}</div></div>
+        <div class="fact"><div class="fact-label">{{ t.misc_50 }}</div><div class="fact-value">{{ t.misc_51 }}</div></div>
+        <div class="fact"><div class="fact-label">{{ t.misc_52 }}</div><div class="fact-value">{{ t.misc_53 }}</div></div>
+        <div class="fact"><div class="fact-label">{{ t.misc_54 }}</div><div class="fact-value">{{ t.misc_55 }}</div></div>
+        <div class="fact"><div class="fact-label">{{ t.misc_56 }}</div><div class="fact-value">6–7%</div></div>
+        <div class="fact"><div class="fact-label">{{ t.misc_57 }}</div><div class="fact-value">{{ t.misc_58 }}</div></div>
       </div>
     </div>
   </div>
@@ -355,21 +381,21 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <!-- MODELS -->
 <section id="models" class="sec">
-  <p class="sec-label">Модели реализации</p>
-  <h2 class="sec-title">Возможны различные модели и их комбинации</h2>
+  <p class="sec-label">{{ t.models_01 }}</p>
+  <h2 class="sec-title">{{ t.models_02 }}</h2>
   <div class="divider"></div>
   <div class="models-grid">
     <div class="model-card">
       <div class="model-icon">🏗️</div>
-      <div class="model-title">Доля в SPV · все категории</div>
-      <div class="model-desc">Участие в SPV с правами на весь объект — номерной фонд, рестораны, SPA, конференц-зал, вилла. Полный доход от операционной деятельности и роста стоимости актива.</div>
+      <div class="model-title">{{ t.models_03 }}</div>
+      <div class="model-desc">{{ t.models_04 }}</div>
       <div class="model-badge">EQUITY · ALL ASSETS</div>
     </div>
     <div class="model-card">
       <div class="model-icon">🍽️</div>
-      <div class="model-title">Владение категорией</div>
-      <div class="model-desc">Права на отдельную категорию или её часть: ресторан, SPA, конференц-зал, паркинг. Целевые инвестиции с прямым контролем над доходностью актива.</div>
-      <div class="model-badge">КАТЕГОРИЙНОЕ УЧАСТИЕ</div>
+      <div class="model-title">{{ t.models_05 }}</div>
+      <div class="model-desc">{{ t.models_06 }}</div>
+      <div class="model-badge">{{ t.models_07 }}</div>
     </div>
   </div>
 </section>
@@ -377,22 +403,22 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <!-- FORMATS -->
 <div class="sec-full" style="background:var(--dark2)" id="formats">
   <div class="sec-inner">
-    <p class="sec-label">Форматы участия</p>
-    <h2 class="sec-title">Два пути к доходу</h2>
+    <p class="sec-label">{{ t.misc_59 }}</p>
+    <h2 class="sec-title">{{ t.misc_60 }}</h2>
     <div class="divider"></div>
     <div class="formats-grid">
       <div class="format-card">
         <div class="format-body">
-          <div class="format-title">🏨 Построить и сдавать в аренду</div>
-          <div class="format-desc">Инвестор владеет долей объекта под управлением профессионального оператора. Ежегодный операционный доход на весь срок владения. Стоимость актива растёт.</div>
-          <div class="format-proof">✓ Подписан договор управления с международной гостиничной группой</div>
+          <div class="format-title">{{ t.misc_61 }}</div>
+          <div class="format-desc">{{ t.misc_62 }}</div>
+          <div class="format-proof">{{ t.misc_63 }}</div>
         </div>
       </div>
       <div class="format-card">
         <div class="format-body">
-          <div class="format-title">💼 Построить и продать</div>
-          <div class="format-desc">Реализация объекта по завершении строительства. Продажа целиком институциональному покупателю или розничная продажа юнитов и коммерции по отдельности.</div>
-          <div class="format-proof">✓ Подписано 17 предварительных договоров с покупателями юнитов · депозит €2 000/договор · итого €34 000 внесено</div>
+          <div class="format-title">{{ t.misc_64 }}</div>
+          <div class="format-desc">{{ t.misc_65 }}</div>
+          <div class="format-proof">{{ t.misc_66 }}</div>
         </div>
       </div>
     </div>
@@ -401,11 +427,11 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <!-- PRICE LADDER -->
 <section class="sec" id="pricing" style="text-align:center">
-  <p class="sec-label">Позиционирование по цене</p>
-  <h2 class="sec-title">Почему €15 000 за м² — это рыночная цена</h2>
+  <p class="sec-label">{{ t.pricing_01 }}</p>
+  <h2 class="sec-title">{{ t.pricing_02 }}</h2>
   <div class="divider" style="margin-left:auto;margin-right:auto"></div>
   <p style="max-width:780px;margin:0 auto 28px;font-size:.95rem;color:var(--text);font-family:Arial;line-height:1.8;text-align:center">
-    €15 000/м² — это не «дорого относительно рынка жилья», а норма сегмента branded residences. Сравнивать нужно не со средней ценой по Криту, а с управляемыми резиденциями 5★, где Costa Navarino и Amanzoe продают по €15 000–22 000/м².
+    {{ t.pricing_03 }}
   </p>
   <div style="max-width:820px;margin:0 auto;display:grid;gap:16px">
     <div class="pl-row"><span class="pl-label" style="color:var(--gold);font-weight:bold">ARTEMIS</span><div class="pl-track"><div class="pl-bar" style="width:68%;background:var(--gold)"></div></div><span class="pl-val" style="color:var(--gold);font-weight:bold">€15 000</span></div>
@@ -413,73 +439,73 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <div class="pl-row"><span class="pl-label">Amanzoe</span><div class="pl-track"><div class="pl-bar" style="width:100%;background:#9a8048"></div></div><span class="pl-val">€22 000</span></div>
   </div>
   <p style="max-width:820px;margin:18px auto 0;font-size:.78rem;color:var(--muted);font-family:Arial;line-height:1.6;font-style:italic;text-align:center">
-    ARTEMIS входит в сегмент по нижней границе — выгоднее прямых аналогов 5★. Цена включает бренд, rental pool и управление международным оператором. Источник: Knight Frank Branded Residences (€/м² премиум-сегмента).
+    {{ t.pricing_04 }}
   </p>
 </section>
 
 <!-- TWO EXIT STRATEGIES -->
 <section class="sec" id="exit">
-  <p class="sec-label">Две стратегии выхода</p>
-  <h2 class="sec-title">Один объект — две оценки. Обе подтверждены рынком</h2>
+  <p class="sec-label">{{ t.exit_01 }}</p>
+  <h2 class="sec-title">{{ t.exit_02 }}</h2>
   <div class="divider"></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:980px;margin:0 auto">
     <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.18);padding:28px;border-radius:3px">
-      <div style="font-size:.72rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:14px">Продажа целиком · бизнес</div>
+      <div style="font-size:.72rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:14px">{{ t.exit_03 }}</div>
       <div style="font-size:2.2rem;color:var(--white);font-weight:bold;margin-bottom:6px">€47–54M</div>
       <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
-        Оценка по доходному методу · €700–800K за ключ.<br>
-        Бенчмарки: 7Pines Ibiza, Elounda Beach, W Costa Navarino.<br>
-        Покупатель — фонд или гостиничный оператор.
+        {{ t.exit_04 }}<br>
+        {{ t.exit_05 }}<br>
+        {{ t.exit_06 }}
       </div>
     </div>
     <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.45);padding:28px;border-radius:3px;position:relative">
-      <div style="position:absolute;top:14px;right:16px;font-size:.62rem;letter-spacing:1px;color:#0e1b14;background:var(--gold);padding:3px 8px;border-radius:2px;font-family:Arial">+38% ПРЕМИЯ</div>
-      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:14px">Продажа по частям · розница</div>
+      <div style="position:absolute;top:14px;right:16px;font-size:.62rem;letter-spacing:1px;color:#0e1b14;background:var(--gold);padding:3px 8px;border-radius:2px;font-family:Arial">{{ t.exit_07 }}</div>
+      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:14px">{{ t.exit_08 }}</div>
       <div style="font-size:2.2rem;color:var(--gold);font-weight:bold;margin-bottom:6px">€54–65M</div>
       <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
-        Branded residences · €15 000–18 000/м².<br>
-        Бенчмарки: Costa Navarino, Amanzoe (€15–22K/м²).<br>
-        Тысячи частных покупателей вместо одного.
+        {{ t.exit_09 }}<br>
+        {{ t.exit_10 }}<br>
+        {{ t.exit_11 }}
       </div>
     </div>
   </div>
   <p style="text-align:center;font-size:.82rem;color:var(--muted);font-family:Arial;margin-top:22px;max-width:760px;margin-left:auto;margin-right:auto;line-height:1.7">
-    Сумма частей больше целого: готовая инфраструктура 5★, снятие операционного риска и розничная премия за метр дают <strong style="color:var(--gold)">+15–38%</strong> к стоимости бизнес-продажи.
+    {{ t.exit_12 }} <strong style="color:var(--gold)">+15–38%</strong> {{ t.exit_13 }}
   </p>
 </section>
 
 <!-- UNIT BUYER YIELD -->
 <div class="sec-full" style="background:var(--dark2)" id="yield">
   <div class="sec-inner">
-    <p class="sec-label">Доходность покупателя юнита</p>
-    <h2 class="sec-title">Покупаете не метры, а доход</h2>
+    <p class="sec-label">{{ t.misc_67 }}</p>
+    <h2 class="sec-title">{{ t.misc_68 }}</h2>
     <div class="divider"></div>
     <div class="formats-grid">
       <div class="format-card" style="display:block;padding:0">
         <div class="format-body">
-          <div class="format-title">⚓ Safe Harbor · для консерваторов</div>
-          <div class="format-desc">Гарантированный чистый доход <strong style="color:var(--gold)">4% годовых</strong> на первые 3 года — оператор берёт риск загрузки на себя. Как у Costa Navarino Residences.</div>
-          <div class="format-proof">✓ Фиксированная выплата · 4 недели личного использования в год</div>
+          <div class="format-title">{{ t.misc_69 }}</div>
+          <div class="format-desc">{{ t.misc_70 }} <strong style="color:var(--gold)">{{ t.misc_71 }}</strong> {{ t.misc_72 }}</div>
+          <div class="format-proof">{{ t.misc_73 }}</div>
         </div>
       </div>
       <div class="format-card" style="display:block;padding:0">
         <div class="format-body">
-          <div class="format-title">📈 Upside Partner · для капиталистов</div>
-          <div class="format-desc">Revenue Share <strong style="color:var(--gold)">45% / 55%</strong> от выручки номера. При ADR €300 и пиковой загрузке — потенциал <strong style="color:var(--gold)">6,5–7%</strong> годовых.</div>
-          <div class="format-proof">✓ Прозрачный сплит от gross выручки · FF&E-резерв 4%</div>
+          <div class="format-title">{{ t.misc_74 }}</div>
+          <div class="format-desc">Revenue Share <strong style="color:var(--gold)">45% / 55%</strong> {{ t.misc_75 }} <strong style="color:var(--gold)">6,5–7%</strong> {{ t.misc_76 }}</div>
+          <div class="format-proof">{{ t.misc_77 }}</div>
         </div>
       </div>
     </div>
     <div style="max-width:920px;margin:28px auto 0;background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:24px;border-radius:3px">
-      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px;text-align:center">Совокупная доходность vs альтернативы</div>
+      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px;text-align:center">{{ t.misc_78 }}</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center">
-        <div><div style="font-size:1.8rem;color:var(--gold);font-weight:bold">~9%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">5★ Resort Греция<br>(рента + рост)</div></div>
-        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">5–7%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">Европейские<br>REIT</div></div>
-        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">3,2%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">Гособлигации<br>ЕС 10y</div></div>
-        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">~2%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">Банковский<br>депозит</div></div>
+        <div><div style="font-size:1.8rem;color:var(--gold);font-weight:bold">~9%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">{{ t.misc_79 }}<br>{{ t.misc_80 }}</div></div>
+        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">5–7%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">{{ t.misc_81 }}<br>REIT</div></div>
+        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">3,2%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">{{ t.misc_82 }}<br>{{ t.misc_83 }}</div></div>
+        <div><div style="font-size:1.8rem;color:var(--white);font-weight:bold">~2%</div><div style="font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:4px">{{ t.misc_84 }}<br>{{ t.misc_85 }}</div></div>
       </div>
       <p style="text-align:center;font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:18px;font-style:italic;line-height:1.6">
-        Net Yield 4,5–5,5% (Греция resort) + рост капитала 4–5%/год + бесплатный отдых (экономия €15–20K/год). Источники: Savills, Knight Frank Branded Residences Report, Deloitte.
+        {{ t.misc_86 }}
       </p>
     </div>
   </div>
@@ -488,8 +514,8 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <!-- CALCULATOR -->
 <div id="calculator" class="calc-wrap">
   <div class="calc-inner">
-    <p class="sec-label">Финансовый калькулятор</p>
-    <h2 class="sec-title">Рассчитайте доходность</h2>
+    <p class="sec-label">{{ t.misc_87 }}</p>
+    <h2 class="sec-title">{{ t.misc_88 }}</h2>
     <div class="divider"></div>
 
     <!-- TOP ROW -->
@@ -497,51 +523,51 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
       <!-- Сумма -->
       <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:26px;border-radius:2px">
-        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:10px">Сумма инвестиций</div>
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:10px">{{ t.misc_89 }}</div>
         <div style="font-size:2.4rem;color:var(--gold);font-weight:bold;margin-bottom:4px" id="c-inv-val">€3 000 000</div>
-        <div style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:14px">Ваша доля: <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> &nbsp;·&nbsp; Девелопер: <span style="color:var(--muted)">20%</span></div>
+        <div style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:14px">{{ t.misc_90 }} <span id="c-share" style="color:var(--white);font-weight:bold">12%</span> {{ t.misc_91 }} <span style="color:var(--muted)">20%</span></div>
         <input type="range" id="c-inv" min="3" max="20" step="1" value="3" oninput="cCalc()" onchange="cCalc()">
         <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-family:Arial;margin-top:5px"><span>€3M</span><span>€20M</span></div>
         <!-- bar -->
         <div style="margin-top:14px">
-          <div style="font-size:.68rem;color:var(--muted);font-family:Arial;margin-bottom:5px;letter-spacing:1px">РАСПРЕДЕЛЕНИЕ 100%</div>
+          <div style="font-size:.68rem;color:var(--muted);font-family:Arial;margin-bottom:5px;letter-spacing:1px">{{ t.misc_92 }}</div>
           <div style="display:flex;height:8px;border-radius:4px;overflow:hidden">
             <div id="bar-inv" style="background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .3s;width:12%"></div>
             <div style="background:#2a5f8f;width:20%"></div>
             <div style="background:rgba(255,255,255,.06);flex:1"></div>
           </div>
           <div style="display:flex;gap:14px;margin-top:5px;font-size:.68rem;font-family:Arial">
-            <span style="color:var(--gold)">■ Инвестор <span id="bar-inv-pct">12%</span></span>
-            <span style="color:#4a8fbf">■ Девелопер 20%</span>
-            <span style="color:rgba(255,255,255,.25)">■ Свободно <span id="bar-free-pct">68%</span></span>
+            <span style="color:var(--gold)">{{ t.misc_93 }} <span id="bar-inv-pct">12%</span></span>
+            <span style="color:#4a8fbf">{{ t.misc_94 }}</span>
+            <span style="color:rgba(255,255,255,.25)">{{ t.misc_95 }} <span id="bar-free-pct">68%</span></span>
           </div>
         </div>
       </div>
 
       <!-- Сценарий -->
       <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.2);padding:26px;border-radius:2px">
-        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:14px">Сценарий</div>
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--muted);font-family:Arial;text-transform:uppercase;margin-bottom:14px">{{ t.misc_96 }}</div>
         <button onclick="cSetMode('hold')" id="btn-hold" class="mode-btn active-mode">
-          🏨 Владение и аренда
-          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Держу актив, получаю арендный доход ежегодно</span>
+          {{ t.misc_97 }}
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">{{ t.misc_98 }}</span>
         </button>
         <button onclick="cSetMode('sell')" id="btn-sell" class="mode-btn">
-          💼 Продажа
-          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Выход по €65M после завершения строительства</span>
+          {{ t.misc_99 }}
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">{{ t.misc_100 }}</span>
         </button>
         <button onclick="cSetMode('mix')" id="btn-mix" class="mode-btn">
-          ⚖️ Микс
-          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">Часть продать, часть оставить в аренду</span>
+          {{ t.misc_101 }}
+          <span style="display:block;font-size:.7rem;opacity:.65;margin-top:2px">{{ t.misc_102 }}</span>
         </button>
       </div>
     </div>
 
     <!-- MIX SLIDER -->
     <div id="mix-panel" style="display:none;background:var(--dark3);border:1px solid rgba(196,163,90,.25);padding:22px;border-radius:2px;margin-bottom:24px">
-      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:10px">Что продаю</div>
+      <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:10px">{{ t.misc_103 }}</div>
       <div style="display:flex;justify-content:space-between;font-family:Arial;font-size:.88rem;margin-bottom:9px">
-        <span>Продать: <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong></span>
-        <span>В аренду: <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong></span>
+        <span>{{ t.misc_104 }} <strong id="mix-sell-pct" style="color:var(--gold)">50%</strong></span>
+        <span>{{ t.misc_105 }} <strong id="mix-hold-pct" style="color:#4abf8f">50%</strong></span>
       </div>
       <input type="range" id="mix-slider" min="0" max="100" step="5" value="50" oninput="cCalc()" onchange="cCalc()">
       <div style="display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:9px">
@@ -554,51 +580,51 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <div class="calc-res" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">
 
       <div style="background:var(--dark3);border:1px solid rgba(196,163,90,.15);padding:24px;border-radius:2px">
-        <div id="res-label" style="font-size:.72rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:14px">🏨 Арендный доход</div>
+        <div id="res-label" style="font-size:.72rem;letter-spacing:2px;color:#4abf8f;font-family:Arial;text-transform:uppercase;margin-bottom:14px">{{ t.misc_106 }}</div>
         <div id="res-hold-rows">
-          <div class="r-row"><span class="r-lab">Гарантированный доход (preferred)</span><span class="r-val" id="rh-pref">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_107 }}</span><span class="r-val" id="rh-pref">—</span></div>
           <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
-            <span class="r-lab">Preferred Yield (фикс.)</span><span class="r-val big" id="rh-yield">—</span>
+            <span class="r-lab">{{ t.misc_108 }}</span><span class="r-val big" id="rh-yield">—</span>
           </div>
-          <div class="r-row"><span class="r-lab">Рост капитала (CAGR до выхода)</span><span class="r-val" id="rh-appr">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_109 }}</span><span class="r-val" id="rh-appr">—</span></div>
           <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
-            <span class="r-lab" style="color:var(--gold)">Совокупная доходность / год</span><span class="r-val big" id="rh-total" style="color:var(--gold)">—</span>
+            <span class="r-lab" style="color:var(--gold)">{{ t.misc_110 }}</span><span class="r-val big" id="rh-total" style="color:var(--gold)">—</span>
           </div>
-          <div class="r-row"><span class="r-lab">Против рынка (5★ Греция ~9%)</span><span class="r-val" id="rh-mkt" style="color:#4abf8f">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_111 }}</span><span class="r-val" id="rh-mkt" style="color:#4abf8f">—</span></div>
         </div>
         <div id="res-sell-rows" style="display:none">
-          <div class="r-row"><span class="r-lab">Стоимость объекта (розница)</span><span class="r-val">€65 000 000</span></div>
-          <div class="r-row"><span class="r-lab">Ваша выручка от продажи</span><span class="r-val" id="rs-rev">—</span></div>
-          <div class="r-row"><span class="r-lab">Прибыль (выручка − вложения)</span><span class="r-val" id="rs-profit">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_112 }}</span><span class="r-val">€65 000 000</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_113 }}</span><span class="r-val" id="rs-rev">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_114 }}</span><span class="r-val" id="rs-profit">—</span></div>
           <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
-            <span class="r-lab">ROI (3 года)</span><span class="r-val big" id="rs-roi">—</span>
+            <span class="r-lab">{{ t.misc_115 }}</span><span class="r-val big" id="rs-roi">—</span>
           </div>
-          <div class="r-row"><span class="r-lab">IRR годовой</span><span class="r-val" id="rs-irr">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_116 }}</span><span class="r-val" id="rs-irr">—</span></div>
         </div>
         <div id="res-mix-rows" style="display:none">
-          <div class="r-row"><span class="r-lab">Доход от продажи (разово)</span><span class="r-val" id="mx-sell">—</span></div>
-          <div class="r-row"><span class="r-lab">NOI от аренды / год</span><span class="r-val" id="mx-noi">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_117 }}</span><span class="r-val" id="mx-sell">—</span></div>
+          <div class="r-row"><span class="r-lab">{{ t.misc_118 }}</span><span class="r-val" id="mx-noi">—</span></div>
           <div class="r-row" style="border-top:1px solid rgba(196,163,90,.2);padding-top:10px;margin-top:4px">
-            <span class="r-lab">Итого год 1</span><span class="r-val big" id="mx-total">—</span>
+            <span class="r-lab">{{ t.misc_119 }}</span><span class="r-val big" id="mx-total">—</span>
           </div>
         </div>
       </div>
 
       <!-- KPI -->
       <div style="background:var(--dark);border:1px solid rgba(196,163,90,.2);padding:24px;border-radius:2px">
-        <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">Ключевые показатели</div>
+        <div style="font-size:.72rem;letter-spacing:2px;color:var(--gold);font-family:Arial;text-transform:uppercase;margin-bottom:16px">{{ t.misc_120 }}</div>
         <div class="kpi-grid">
-          <div class="kpi-card"><div class="kpi-lab">Вложено</div><div class="kpi-val" id="kp-equity">—</div></div>
-          <div class="kpi-card"><div class="kpi-lab">Доля</div><div class="kpi-val" id="kp-share">—</div></div>
-          <div class="kpi-card"><div class="kpi-lab">Возврат (Gross)</div><div class="kpi-val" id="kp-gross">—</div></div>
-          <div class="kpi-card"><div class="kpi-lab">Чистая прибыль</div><div class="kpi-val" id="kp-profit">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_121 }}</div><div class="kpi-val" id="kp-equity">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_122 }}</div><div class="kpi-val" id="kp-share">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_123 }}</div><div class="kpi-val" id="kp-gross">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_124 }}</div><div class="kpi-val" id="kp-profit">—</div></div>
           <div class="kpi-card"><div class="kpi-lab">IRR</div><div class="kpi-val" id="kp-irr">—</div></div>
           <div class="kpi-card"><div class="kpi-lab">MOIC</div><div class="kpi-val" id="kp-moic">—</div></div>
-          <div class="kpi-card"><div class="kpi-lab">Против рынка</div><div class="kpi-val" id="kp-vsmkt">—</div></div>
-          <div class="kpi-card"><div class="kpi-lab">Стоимость доли</div><div class="kpi-val" id="kp-exit">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_125 }}</div><div class="kpi-val" id="kp-vsmkt">—</div></div>
+          <div class="kpi-card"><div class="kpi-lab">{{ t.misc_126 }}</div><div class="kpi-val" id="kp-exit">—</div></div>
         </div>
         <p style="font-size:.68rem;color:var(--muted);font-family:Arial;margin-top:14px;font-style:italic;line-height:1.5">
-          Источники: HVS / Global Asset Solutions 2024 (€700–800K/ключ для 5★ resort Греция); MKG Consulting (RevPAR Греция №1 в Европе); Brevitas/Indomio (cap rate 6–7%). Расчёт иллюстративный.
+          {{ t.misc_127 }}
         </p>
       </div>
     </div>
@@ -608,45 +634,45 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <!-- DEVELOPER -->
 <div class="sec-full" style="background:var(--dark2)" id="developer">
   <div class="sec-inner">
-    <p class="sec-label">О девелопере</p>
+    <p class="sec-label">{{ t.misc_128 }}</p>
     <h2 class="sec-title">ROVLEX International</h2>
     <div class="divider"></div>
     <p style="max-width:780px;font-size:.95rem;color:var(--text);font-family:Arial;line-height:1.8;margin-bottom:8px">
-      Международная девелоперская компания, специализирующаяся на премиальной курортной и гостиничной недвижимости 5★ в США и Европе. Мы реализуем объекты полного цикла — от поиска земли и концепции до получения разрешений, строительства, запуска и управления готовым активом.
+      {{ t.misc_129 }}
     </p>
     <div style="max-width:780px;margin-bottom:32px;display:grid;gap:14px">
       <div style="display:flex;gap:12px;align-items:flex-start">
         <span style="color:var(--gold);font-size:1rem;line-height:1.4">▸</span>
-        <p style="font-size:.92rem;color:var(--text);font-family:Arial;line-height:1.6;margin:0"><strong style="color:var(--white)">Структурирование инвестиций</strong> — инвестирование собственных средств, привлечение соинвесторов, SPV, юридическое сопровождение</p>
+        <p style="font-size:.92rem;color:var(--text);font-family:Arial;line-height:1.6;margin:0"><strong style="color:var(--white)">{{ t.misc_130 }}</strong> {{ t.misc_131 }}</p>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start">
         <span style="color:var(--gold);font-size:1rem;line-height:1.4">▸</span>
-        <p style="font-size:.92rem;color:var(--text);font-family:Arial;line-height:1.6;margin:0"><strong style="color:var(--white)">Девелопмент полного цикла</strong> — от участка до сданного в эксплуатацию 5★ объекта</p>
+        <p style="font-size:.92rem;color:var(--text);font-family:Arial;line-height:1.6;margin:0"><strong style="color:var(--white)">{{ t.misc_132 }}</strong> {{ t.misc_133 }}</p>
       </div>
     </div>
     <div class="dev-grid">
       <div class="dev-card">
         <img src="/static/img/dev_montenegro.jpg" alt="Iberostar Selection Montenegro">
         <div class="dev-body">
-          <div class="dev-loc">🇲🇪 Черногория</div>
+          <div class="dev-loc">{{ t.misc_134 }}</div>
           <div class="dev-name">Iberostar Selection Montenegro</div>
-          <div class="dev-desc">Курортный комплекс на первой линии Адриатики · резиденции и пляжная инфраструктура</div>
+          <div class="dev-desc">{{ t.misc_135 }}</div>
         </div>
       </div>
       <div class="dev-card">
-        <img src="/static/img/dev_italy.jpg" alt="Filario Hotel & Residences, Италия">
+        <img src="/static/img/dev_italy.jpg" alt="{{ t.alt_04 }}">
         <div class="dev-body">
-          <div class="dev-loc">🇮🇹 Италия · озеро Комо</div>
+          <div class="dev-loc">{{ t.misc_136 }}</div>
           <div class="dev-name">Filario Hotel & Residences</div>
-          <div class="dev-desc">Бутик-отель и резиденции на берегу озера · 5★ lifestyle-формат</div>
+          <div class="dev-desc">{{ t.misc_137 }}</div>
         </div>
       </div>
       <div class="dev-card">
         <img src="/static/img/dev_paris.jpg" alt="Four Seasons Hotel George V, Paris">
         <div class="dev-body">
-          <div class="dev-loc">🇫🇷 Франция · Париж</div>
+          <div class="dev-loc">{{ t.misc_138 }}</div>
           <div class="dev-name">Four Seasons Hotel George V</div>
-          <div class="dev-desc">Легендарный палас 5★ в центре Парижа · эталон luxury-гостеприимства</div>
+          <div class="dev-desc">{{ t.misc_139 }}</div>
         </div>
       </div>
     </div>
@@ -655,32 +681,32 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <!-- LEGAL -->
 <section id="legal" class="sec">
-  <p class="sec-label">Юридическая процедура</p>
-  <h2 class="sec-title">Путь к сделке</h2>
+  <p class="sec-label">{{ t.legal_01 }}</p>
+  <h2 class="sec-title">{{ t.legal_02 }}</h2>
   <div class="divider"></div>
   <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">NDA</div><div class="step-desc">Соглашение о конфиденциальности. Открываем DD Room</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Proof of Funds</div><div class="step-desc">Подтверждение наличия средств от инвестора</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">Term Sheet</div><div class="step-desc">Подписание Term Sheet с девелопером ROVLEX</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">SPV</div><div class="step-desc">Создание SPV, акционерное соглашение, оформление земли</div></div>
-    <div class="step"><div class="step-num">05</div><div class="step-title">Финансирование</div><div class="step-desc">Инвестор финансирует траншами по графику строительства</div></div>
+    <div class="step"><div class="step-num">01</div><div class="step-title">NDA</div><div class="step-desc">{{ t.legal_03 }}</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Proof of Funds</div><div class="step-desc">{{ t.legal_04 }}</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Term Sheet</div><div class="step-desc">{{ t.legal_05 }}</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">SPV</div><div class="step-desc">{{ t.legal_06 }}</div></div>
+    <div class="step"><div class="step-num">05</div><div class="step-title">{{ t.legal_07 }}</div><div class="step-desc">{{ t.legal_08 }}</div></div>
   </div>
   <div class="legal-foot" style="background:var(--dark2);border:1px solid rgba(196,163,90,.2);padding:28px;margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px">
     <div>
-      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">ЧТО ПОЛУЧАЕТ ИНВЕСТОР</div>
+      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">{{ t.legal_09 }}</div>
       <ul style="list-style:none;display:grid;gap:7px">
-        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Долю в SPV согласно вкладу</li>
-        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Право на увеличение доли вплоть до полного выкупа</li>
-        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Доход от операционной деятельности</li>
-        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Прирост стоимости актива</li>
-        <li style="font-size:.88rem;color:var(--text);font-family:Arial">✓ Полный доступ к Due Diligence Room</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">{{ t.legal_10 }}</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">{{ t.legal_11 }}</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">{{ t.legal_12 }}</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">{{ t.legal_13 }}</li>
+        <li style="font-size:.88rem;color:var(--text);font-family:Arial">{{ t.legal_14 }}</li>
       </ul>
     </div>
     <div>
-      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">КОНТАКТ</div>
+      <div style="font-size:.72rem;color:var(--gold);letter-spacing:2px;font-family:Arial;margin-bottom:10px">{{ t.legal_15 }}</div>
       <p style="font-size:.9rem;color:#fff;font-family:Arial;line-height:2.2;text-transform:uppercase">
         <a href="https://wa.me/33743600400" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:9px;letter-spacing:.5px"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C4A35A"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.738-.957zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>+33 743 600 400</a><br>
-        <a href="https://t.me/ArtemisResortbot" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:9px;letter-spacing:.5px"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C4A35A"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>САППОРТ В ТЕЛЕГРАМ</a><br>
+        <a href="https://t.me/ArtemisResortbot" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:9px;letter-spacing:.5px"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C4A35A"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>{{ t.legal_16 }}</a><br>
         <a href="mailto:INFO@ARTEMISRESORT.COM" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:9px;letter-spacing:.5px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C4A35A" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>INFO@ARTEMISRESORT.COM</a><br>
         <a href="https://artemisresort.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:bold;letter-spacing:.5px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C4A35A" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>ARTEMISRESORT.COM</a>
       </p>
@@ -690,7 +716,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <footer>
   <div class="logo" style="font-size:1.3rem;margin-bottom:8px">ARTEMIS RESORT & SPA</div>
-  <p style="font-family:Arial;font-size:.82rem;color:var(--muted)">Герани · Платаньяс · Ханья · Крит · Греция</p>
+  <p style="font-family:Arial;font-size:.82rem;color:var(--muted)">{{ t.footer_01 }}</p>
   <p style="font-family:Arial;font-size:.72rem;color:var(--muted);margin-top:4px;opacity:.5">© 2025 ROVLEX &nbsp;·&nbsp; {{ version }}</p>
 </footer>
 
@@ -698,25 +724,33 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 <div class="overlay" id="modal">
   <div class="modal">
     <button class="modal-x" onclick="closeModal()">×</button>
-    <h3 style="font-size:1.4rem;color:var(--white);margin-bottom:6px;font-weight:400">Получить презентацию</h3>
-    <p style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:24px">Оставьте контакт — пришлём PDF и ответим на вопросы</p>
+    <h3 style="font-size:1.4rem;color:var(--white);margin-bottom:6px;font-weight:400">{{ t.modal_01 }}</h3>
+    <p style="font-size:.88rem;color:var(--muted);font-family:Arial;margin-bottom:24px">{{ t.modal_02 }}</p>
     <div id="form-wrap">
-      <div class="form-group"><label>Ваше имя *</label><input type="text" id="f-name" placeholder="Имя Фамилия"></div>
+      <div class="form-group"><label>{{ t.modal_03 }}</label><input type="text" id="f-name" placeholder="{{ t.ph_01 }}"></div>
       <div class="form-group"><label>Email *</label><input type="email" id="f-email" placeholder="email@example.com"></div>
-      <div class="form-group"><label>Телефон / Telegram</label><input type="text" id="f-phone" placeholder="+7 / @username"></div>
-      <div class="form-group"><label>Планируемая сумма</label><input type="text" id="f-amount" placeholder="от €3 000 000"></div>
-      <button class="btn" style="width:100%;text-align:center" onclick="submitForm()">Отправить и скачать PDF</button>
+      <div class="form-group"><label>{{ t.modal_04 }}</label><input type="text" id="f-phone" placeholder="+7 / @username"></div>
+      <div class="form-group"><label>{{ t.modal_05 }}</label><input type="text" id="f-amount" placeholder="{{ t.ph_02 }}"></div>
+      <button class="btn" style="width:100%;text-align:center" onclick="submitForm()">{{ t.modal_06 }}</button>
       <p id="form-err" style="color:#e07070;font-family:Arial;font-size:.78rem;margin-top:8px;display:none"></p>
     </div>
     <div id="form-success" style="display:none;text-align:center;padding:16px 0">
       <div style="font-size:2.8rem;margin-bottom:10px">✓</div>
-      <p style="color:var(--text);font-family:Arial">Спасибо! Скачивание началось.<br><br>Мы свяжемся с вами в течение 24 часов.</p>
+      <p style="color:var(--text);font-family:Arial">{{ t.modal_07 }}<br><br>{{ t.modal_08 }}</p>
     </div>
   </div>
 </div>
 
 <script>
 // MODAL
+const I18N = {
+  errFields: {{ t.js_err_fields | tojson }},
+  errGeneric: {{ t.js_err_generic | tojson }},
+  errNetwork: {{ t.js_err_network | tojson }},
+  sell: {{ t.js_sell_label | tojson }},
+  perYear: {{ t.js_per_year | tojson }},
+  xMarket: {{ t.js_x_market | tojson }}
+};
 function openModal(){ document.getElementById('modal').classList.add('on') }
 function closeModal(){ document.getElementById('modal').classList.remove('on') }
 document.getElementById('modal').addEventListener('click',function(e){ if(e.target===this) closeModal() })
@@ -727,7 +761,7 @@ async function submitForm(){
   const phone=document.getElementById('f-phone').value.trim()
   const amount=document.getElementById('f-amount').value.trim()
   const err=document.getElementById('form-err')
-  if(!name||!email){err.textContent='Пожалуйста, заполните имя и email';err.style.display='block';return}
+  if(!name||!email){err.textContent=I18N.errFields;err.style.display='block';return}
   err.style.display='none'
   try{
     const r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone,amount})})
@@ -736,8 +770,8 @@ async function submitForm(){
       document.getElementById('form-wrap').style.display='none'
       document.getElementById('form-success').style.display='block'
       setTimeout(()=>{ window.location.href='/download-pdf' },800)
-    } else {err.textContent=d.error||'Ошибка. Попробуйте ещё раз.';err.style.display='block'}
-  } catch(e){err.textContent='Ошибка сети.';err.style.display='block'}
+    } else {err.textContent=d.error||I18N.errGeneric;err.style.display='block'}
+  } catch(e){err.textContent=I18N.errNetwork;err.style.display='block'}
 }
 
 // CALCULATOR
@@ -765,7 +799,7 @@ function cSetMode(m){
   document.getElementById('res-hold-rows').style.display = m==='hold'?'block':'none'
   document.getElementById('res-sell-rows').style.display = m==='sell'?'block':'none'
   document.getElementById('res-mix-rows').style.display  = m==='mix'?'block':'none'
-  const labels={'hold':'🏨 Арендный доход','sell':'💼 Доход от продажи','mix':'⚖️ Микс'}
+  const labels={'hold':'{{ t.misc_106 }}','sell':I18N.sell,'mix':'{{ t.misc_101 }}'}
   document.getElementById('res-label').textContent = labels[m]
   const colors={'hold':'#4abf8f','sell':'var(--gold)','mix':'#4a8fbf'}
   document.getElementById('res-label').style.color = colors[m]
@@ -806,11 +840,11 @@ function cCalc(){
   const holdMOIC = holdGross / inv
   const holdIRR = (Math.pow(holdGross/inv, 1/HOLD_YEARS) - 1) * 100
 
-  document.getElementById('rh-pref').textContent = fe(prefIncome)+'/год'
+  document.getElementById('rh-pref').textContent = fe(prefIncome)+I18N.perYear
   document.getElementById('rh-yield').textContent = fp(prefYield)
   document.getElementById('rh-appr').textContent = fp(apprCAGR)
   document.getElementById('rh-total').textContent = fp(totalReturn)
-  document.getElementById('rh-mkt').textContent = (totalReturn/MKT_TOTAL).toFixed(1)+'× рынка'
+  document.getElementById('rh-mkt').textContent = (totalReturn/MKT_TOTAL).toFixed(1)+I18N.xMarket
 
   // ── SELL: розничный выход €65M ──
   const sellRevMy = EXIT_SELL * 1e6 * share
@@ -832,7 +866,7 @@ function cCalc(){
   const mxSellIncome = EXIT_SELL * 1e6 * share * mixPct
   const mxPref = prefIncome * (1 - mixPct)
   document.getElementById('mx-sell').textContent = fe(mxSellIncome)
-  document.getElementById('mx-noi').textContent = fe(mxPref)+'/год'
+  document.getElementById('mx-noi').textContent = fe(mxPref)+I18N.perYear
   document.getElementById('mx-total').textContent = fe(mxSellIncome + mxPref)
 
   // ── KPI ──

@@ -1,10 +1,46 @@
-from flask import Flask, request, jsonify, render_template, send_file, abort, make_response
-import sqlite3, os, smtplib, datetime, subprocess
+from flask import Flask, request, jsonify, render_template, send_file, abort, make_response, redirect
+import sqlite3, os, smtplib, datetime, subprocess, json
 from email.mime.text import MIMEText
 
 app = Flask(__name__, 
     template_folder='templates',
     static_folder='static')
+
+BASE_DIR   = os.path.dirname(os.path.abspath(__file__))
+TRANS_DIR  = os.path.join(BASE_DIR, "translations")
+SUPPORTED  = ["ru", "en", "es", "fr"]
+DEFAULT    = "ru"
+OG_LOCALE  = {"ru": "ru_RU", "en": "en_US", "es": "es_ES", "fr": "fr_FR"}
+
+TRANSLATIONS = {}
+for _lang in SUPPORTED:
+    with open(os.path.join(TRANS_DIR, f"{_lang}.json"), encoding="utf-8") as _f:
+        TRANSLATIONS[_lang] = json.load(_f)
+
+def _pick_language():
+    c = request.cookies.get("lang")
+    if c in SUPPORTED:
+        return c
+    return request.accept_languages.best_match(SUPPORTED) or DEFAULT
+
+def _render_site(lang):
+    resp = make_response(render_template(
+        "index.html",
+        t=TRANSLATIONS[lang], lang=lang, og_locale=OG_LOCALE[lang],
+        version=get_version(),
+    ))
+    resp.set_cookie("lang", lang, max_age=60*60*24*365, samesite="Lax")
+    return no_cache(resp)
+
+@app.route("/")
+def root():
+    return redirect(f"/{_pick_language()}/", code=302)
+
+@app.route("/<lang>/")
+def localized(lang):
+    if lang not in SUPPORTED:
+        abort(404)
+    return _render_site(lang)
 
 DB = os.path.join(os.path.dirname(__file__), 'leads.db')
 PDF_PATH = os.path.join(os.path.dirname(__file__), 'static', 'Artemis_Resort_Investment.pdf')
@@ -36,11 +72,6 @@ def init_db():
         (id INTEGER PRIMARY KEY, name TEXT, email TEXT, phone TEXT,
          amount TEXT, created_at TEXT)''')
     conn.commit(); conn.close()
-
-@app.route('/')
-def index():
-    resp = make_response(render_template('index.html', version=get_version()))
-    return no_cache(resp)
 
 @app.route('/api/register', methods=['POST'])
 def register():
