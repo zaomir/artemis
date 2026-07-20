@@ -4,3 +4,6 @@ venv/
 *.db
 .env
 *.log
+.git-credentials
+app/private_quarantine/
+leads.db

@@ -1,35 +1,40 @@
-# Artemis Resort & Spa — Investment Site
+# Artemis Resort & Spa — public project-information site
 
-**Live:** https://artemisresort.com  
-**Admin:** https://artemisresort.com/admin/leads?t=rovlex2025
+**Live (after Final deploy):** https://artemisresort.com  
+**Source:** this repository (`zaomir/artemis`)  
+**Mirror in grainee-v2:** `site-artemis/` (public-safe source only)
 
-## Structure
+## Stack
 
-```
-app/
-  app.py              # Flask backend
-  templates/
-    index.html        # Main site (RU, investment presentation)
-  static/
-    Artemis_Resort_Investment.pdf   # PDF for download (add manually)
-deploy/
-  setup_server.sh     # First-time server setup (run as root)
-```
+- Flask (`app/app.py`) on `127.0.0.1:8082`
+- Templates: `app/templates/`
+- i18n: `app/translations/{en,ru,es,fr}.json`
+- Static: `app/static/` (nginx alias)
+- Counsel draft disclaimer: `app/legal/DISCLAIMER_EN.txt`
 
-## First Deploy (on server as root)
+## Public architecture
 
-```bash
-bash <(curl -s https://raw.githubusercontent.com/zaomir/artemis/main/deploy/setup_server.sh)
-```
+Hero → At a glance → Location → Concept → Accommodation → Status → Governance → Professional enquiry → Legal footer
 
-## Update (after git push)
+Legal pages: `/<lang>/privacy/`, `/terms/`, `/disclaimer/`, `/fraud-warning/`
+
+## Compliance
 
 ```bash
-artemis-update
+bash scripts/artemis-compliance-scan.sh
+# or: python3 scripts/compliance_scan.py
 ```
 
-## SSL
+## Deploy (Final only — Lane B does not deploy)
 
 ```bash
-certbot --nginx -d artemisresort.com -d www.artemisresort.com -m ROVLEX@ROVLEX.COM --agree-tos --no-eff-email
+git push origin main
+curl -sS -X POST https://artemisresort.com/deploy-hook \
+  -H "X-Hook-Secret: <secret>" --max-time 60
 ```
+
+Also apply `deploy/nginx-410-snippet.conf` before `/static/` alias, then `nginx -t` && reload.
+
+## Admin
+
+`/admin/leads?t=<ARTEMIS_ADMIN_TOKEN>` — professional enquiries (no planned amount).
