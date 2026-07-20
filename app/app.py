@@ -41,7 +41,7 @@ for _lang in SUPPORTED:
     with open(os.path.join(TRANS_DIR, f"{_lang}.json"), encoding="utf-8") as _f:
         TRANSLATIONS[_lang] = json.load(_f)
 
-DB = os.path.join(BASE_DIR, "leads.db")
+DB = os.path.join(os.path.dirname(BASE_DIR), "leads.db")  # repo-root, writable by www-data
 
 # Legacy public investment surfaces → 410 Gone (do not redirect to homepage)
 GONE_PATHS = [
