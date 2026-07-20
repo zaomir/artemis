@@ -7,3 +7,5 @@ venv/
 .git-credentials
 app/private_quarantine/
 leads.db
+templates.legacy/
+app.py.legacy
