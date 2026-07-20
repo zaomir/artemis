@@ -43,8 +43,7 @@
       "name": "Artemis Resort & Spa",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Gerani, Platanias",
-        "addressRegion": "Chania",
+        "addressRegion": "Crete",
         "addressCountry": "GR"
       }
     }
@@ -173,17 +172,13 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 </section>
 
 <section id="glance" class="sec">
-  {{ t.glance_note | safe }}
   <p class="sec-label">{{ t.glance_label }}</p>
   <h2 class="sec-title">{{ t.glance_title }}</h2>
   <div class="divider"></div>
-  <p class="flag">{{ t.glance_location_flag }}</p>
   <div class="fact-grid">
     <div class="fact"><div class="fact-label">{{ t.glance_location_l }}</div><div class="fact-value">{{ t.glance_location_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_stage_l }}</div><div class="fact-value">{{ t.glance_stage_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_category_l }}</div><div class="fact-value">{{ t.glance_category_v }}</div></div>
-    <div class="fact"><div class="fact-label">{{ t.glance_keys_l }}</div><div class="fact-value">{{ t.glance_keys_v }}</div></div>
-    <div class="fact"><div class="fact-label">{{ t.glance_plot_l }}</div><div class="fact-value">{{ t.glance_plot_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_phase_l }}</div><div class="fact-value">{{ t.glance_phase_v }}</div></div>
   </div>
 </section>
@@ -274,12 +269,12 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
       <tr><th>{{ t.status_th_stream }}</th><th>{{ t.status_th_status }}</th><th>{{ t.status_th_evidence }}</th></tr>
     </thead>
     <tbody>
-      <tr><td>{{ t.status_site }}</td><td>{{ t.status_site_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
-      <tr><td>{{ t.status_planning }}</td><td>{{ t.status_planning_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
-      <tr><td>{{ t.status_design }}</td><td>{{ t.status_design_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
-      <tr><td>{{ t.status_operator }}</td><td>{{ t.status_operator_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
-      <tr><td>{{ t.status_procurement }}</td><td>{{ t.status_procurement_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
-      <tr><td>{{ t.status_construction }}</td><td>{{ t.status_construction_v }}</td><td><!-- LANE_A: date -->TBD</td></tr>
+      <tr><td>{{ t.status_site }}</td><td>{{ t.status_site_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td>{{ t.status_planning }}</td><td>{{ t.status_planning_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td>{{ t.status_design }}</td><td>{{ t.status_design_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td>{{ t.status_operator }}</td><td>{{ t.status_operator_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td>{{ t.status_procurement }}</td><td>{{ t.status_procurement_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td>{{ t.status_construction }}</td><td>{{ t.status_construction_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
     </tbody>
   </table>
   <div class="fact" style="margin-top:28px">
@@ -294,7 +289,6 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <h2 class="sec-title">{{ t.gov_title }}</h2>
     <div class="divider"></div>
     <p class="lead">{{ t.gov_intro }}</p>
-    <!-- LANE_A: replace TBD roles with verified legal names and scopes only -->
     <div class="gov-grid">
       <div class="gov-card"><div class="fact-label">{{ t.gov_owner }}</div><div class="fact-value">{{ t.gov_owner_v }}</div></div>
       <div class="gov-card"><div class="fact-label">{{ t.gov_contracting }}</div><div class="fact-value">{{ t.gov_contracting_v }}</div></div>
