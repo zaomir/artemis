@@ -1,4 +1,4 @@
-"""Artemis Resort & Spa — public project-information site (Flask)."""
+"""Artemis Resort & Spa — public project + investment site (Flask)."""
 from __future__ import annotations
 
 import datetime
@@ -25,16 +25,9 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANS_DIR = os.path.join(BASE_DIR, "translations")
-LEGAL_DIR = os.path.join(BASE_DIR, "legal")
 SUPPORTED = ["ru", "en", "es", "fr"]
 DEFAULT = "en"
 OG_LOCALE = {"ru": "ru_RU", "en": "en_US", "es": "es_ES", "fr": "fr_FR"}
-
-# Exact disclaimer (EN) — SSOT for allowlisted counsel draft
-with open(os.path.join(LEGAL_DIR, "DISCLAIMER_EN.txt"), encoding="utf-8") as _df:
-    DISCLAIMER_LINES = [ln.strip() for ln in _df.read().splitlines() if ln.strip()]
-DISCLAIMER_MARK = DISCLAIMER_LINES[0]
-DISCLAIMER_BODY = DISCLAIMER_LINES[1]
 
 TRANSLATIONS = {}
 for _lang in SUPPORTED:
@@ -42,34 +35,6 @@ for _lang in SUPPORTED:
         TRANSLATIONS[_lang] = json.load(_f)
 
 DB = os.path.join(os.path.dirname(BASE_DIR), "leads.db")  # repo-root, writable by www-data
-
-# Legacy public investment surfaces → 410 Gone (do not redirect to homepage)
-GONE_PATHS = [
-    "/download-pdf",
-    "/download-pdf/",
-    "/presentation",
-    "/presentation/",
-    "/investor",
-    "/investor/",
-    "/investors",
-    "/investors/",
-    "/opportunity",
-    "/opportunity/",
-    "/calculator",
-    "/calculator/",
-    "/returns",
-    "/returns/",
-    "/deck",
-    "/deck/",
-    "/term-sheet",
-    "/term-sheet/",
-    "/proof-of-funds",
-    "/proof-of-funds/",
-    "/static/Artemis_Resort_Investment.pdf",
-    "/static/Artemis_Resort_Investment_Presentation.pdf",
-    "/static/artemis-investment.pdf",
-    "/static/presentation.pdf",
-]
 
 
 def get_version():
@@ -124,8 +89,6 @@ def _ctx(lang):
         "lang": lang,
         "og_locale": OG_LOCALE[lang],
         "version": get_version(),
-        "disclaimer_mark": DISCLAIMER_MARK,
-        "disclaimer_body": DISCLAIMER_BODY,
         "supported": SUPPORTED,
     }
 
@@ -140,21 +103,12 @@ def _render_legal(lang, page):
     templates = {
         "privacy": "legal/privacy.html",
         "terms": "legal/terms.html",
-        "disclaimer": "legal/disclaimer.html",
-        "fraud-warning": "legal/fraud_warning.html",
     }
     if page not in templates:
         abort(404)
     resp = make_response(render_template(templates[page], page=page, **_ctx(lang)))
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)
-
-
-@app.before_request
-def _gone_legacy():
-    path = request.path
-    if path in GONE_PATHS or path.rstrip("/") in {p.rstrip("/") for p in GONE_PATHS}:
-        abort(410)
 
 
 @app.route("/")
@@ -183,20 +137,6 @@ def terms(lang):
     return _render_legal(lang, "terms")
 
 
-@app.route("/<lang>/disclaimer/")
-def disclaimer(lang):
-    if lang not in SUPPORTED:
-        abort(404)
-    return _render_legal(lang, "disclaimer")
-
-
-@app.route("/<lang>/fraud-warning/")
-def fraud_warning(lang):
-    if lang not in SUPPORTED:
-        abort(404)
-    return _render_legal(lang, "fraud-warning")
-
-
 # Bare legal paths → language-prefixed
 @app.route("/privacy/")
 def privacy_root():
@@ -208,14 +148,13 @@ def terms_root():
     return redirect(f"/{_pick_language()}/terms/", code=302)
 
 
+# Removed investment-strip pages — 404 (no disclaimer / fraud-warning restore)
+@app.route("/<lang>/disclaimer/")
 @app.route("/disclaimer/")
-def disclaimer_root():
-    return redirect(f"/{_pick_language()}/disclaimer/", code=302)
-
-
+@app.route("/<lang>/fraud-warning/")
 @app.route("/fraud-warning/")
-def fraud_warning_root():
-    return redirect(f"/{_pick_language()}/fraud-warning/", code=302)
+def legal_removed(lang=None):
+    abort(404)
 
 
 def init_db():
@@ -224,15 +163,15 @@ def init_db():
         """CREATE TABLE IF NOT EXISTS leads
         (id INTEGER PRIMARY KEY,
          name TEXT, email TEXT, organisation TEXT, role TEXT,
-         enquiry_type TEXT, message TEXT, consent INTEGER,
+         enquiry_type TEXT, amount TEXT, message TEXT, consent INTEGER,
          created_at TEXT)"""
     )
-    # Legacy columns may exist from older schema — leave table as-is if already created
     cols = {r[1] for r in conn.execute("PRAGMA table_info(leads)").fetchall()}
     for col, typ in [
         ("organisation", "TEXT"),
         ("role", "TEXT"),
         ("enquiry_type", "TEXT"),
+        ("amount", "TEXT"),
         ("message", "TEXT"),
         ("consent", "INTEGER"),
     ]:
@@ -246,6 +185,7 @@ def init_db():
 
 
 ENQUIRY_TYPES = {
+    "investor",
     "project_adviser",
     "operator",
     "contractor_supplier",
@@ -264,6 +204,7 @@ def enquiry():
     organisation = (d.get("organisation") or "").strip()
     role = (d.get("role") or "").strip()
     enquiry_type = (d.get("enquiry_type") or "").strip()
+    amount = (d.get("amount") or "").strip()
     message = (d.get("message") or "").strip()
     consent = bool(d.get("consent"))
 
@@ -277,14 +218,15 @@ def enquiry():
     init_db()
     conn = sqlite3.connect(DB)
     conn.execute(
-        """INSERT INTO leads(name,email,organisation,role,enquiry_type,message,consent,created_at)
-           VALUES(?,?,?,?,?,?,?,?)""",
+        """INSERT INTO leads(name,email,organisation,role,enquiry_type,amount,message,consent,created_at)
+           VALUES(?,?,?,?,?,?,?,?,?)""",
         (
             name,
             email,
             organisation,
             role,
             enquiry_type,
+            amount,
             message,
             1 if consent else 0,
             datetime.datetime.now().isoformat(),
@@ -295,12 +237,13 @@ def enquiry():
 
     try:
         body = (
-            f"Professional enquiry\n"
+            f"Artemis enquiry\n"
             f"Name: {name}\nEmail: {email}\nOrg: {organisation}\n"
-            f"Role: {role}\nType: {enquiry_type}\nMessage: {message}"
+            f"Role: {role}\nType: {enquiry_type}\nAmount: {amount}\n"
+            f"Message: {message}"
         )
         msg = MIMEText(body)
-        msg["Subject"] = f"Artemis — professional enquiry: {name}"
+        msg["Subject"] = f"Artemis — enquiry: {name}"
         msg["From"] = "noreply@artemisresort.com"
         msg["To"] = "INFO@ARTEMISRESORT.COM"
         with smtplib.SMTP("localhost", 25, timeout=5) as s:
@@ -311,16 +254,26 @@ def enquiry():
     return jsonify({"ok": True})
 
 
-# Legacy endpoint: reject investment registration payloads
-@app.route("/api/register", methods=["POST", "GET"])
-def register_gone():
-    abort(410)
+# Investor registration alias (restored — no longer 410)
+@app.route("/api/register", methods=["POST"])
+def register():
+    return enquiry()
 
 
 @app.route("/download-pdf")
 @app.route("/download-pdf/")
-def download_pdf_gone():
-    abort(410)
+def download_pdf():
+    # Presentation path — serve if file exists; otherwise soft message
+    for name in (
+        "Artemis_Resort_Investment.pdf",
+        "Artemis_Resort_Investment_Presentation.pdf",
+        "artemis-investment.pdf",
+        "presentation.pdf",
+    ):
+        path = os.path.join(BASE_DIR, "static", name)
+        if os.path.isfile(path):
+            return redirect(f"/static/{name}", code=302)
+    abort(404)
 
 
 @app.route("/admin/leads")
@@ -331,12 +284,12 @@ def admin_leads():
     conn = sqlite3.connect(DB)
     try:
         rows = conn.execute(
-            """SELECT id,name,email,organisation,role,enquiry_type,message,consent,created_at
+            """SELECT id,name,email,organisation,role,enquiry_type,amount,message,consent,created_at
                FROM leads ORDER BY id DESC"""
         ).fetchall()
     except sqlite3.OperationalError:
         rows = conn.execute(
-            "SELECT id,name,email,'','','','',0,created_at FROM leads ORDER BY id DESC"
+            "SELECT id,name,email,'','','','','',0,created_at FROM leads ORDER BY id DESC"
         ).fetchall()
     conn.close()
     v = get_version()
@@ -346,22 +299,22 @@ def admin_leads():
         "td,th{border:1px solid #ccc;padding:8px;font-size:13px}"
         "tr:nth-child(even){background:#f9f9f9}</style>"
     )
-    h += f"<h2>Artemis professional enquiries ({len(rows)})</h2>"
+    h += f"<h2>Artemis enquiries ({len(rows)})</h2>"
     h += f'<p style="color:#888;font-size:12px">{v}</p>'
     h += (
         "<table><tr><th>#</th><th>Name</th><th>Email</th><th>Org</th>"
-        "<th>Role</th><th>Type</th><th>Message</th><th>Consent</th><th>Date</th></tr>"
+        "<th>Role</th><th>Type</th><th>Amount</th><th>Message</th>"
+        "<th>Consent</th><th>Date</th></tr>"
     )
     for r in rows:
         h += (
             f"<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td>"
-            f"<td>{r[4]}</td><td>{r[5]}</td><td>{(r[6] or '')[:120]}</td>"
-            f"<td>{r[7]}</td><td>{r[8]}</td></tr>"
+            f"<td>{r[4]}</td><td>{r[5]}</td><td>{r[6]}</td>"
+            f"<td>{(r[7] or '')[:120]}</td><td>{r[8]}</td><td>{r[9]}</td></tr>"
         )
     return no_cache(make_response(h + "</table>"))
 
 
-# Telegram ops webhook — env token only (no hardcoded secret in source)
 TG_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_GROUP = os.environ.get("TG_OPS_GROUP", "-5168641824")
 
@@ -390,28 +343,13 @@ def tg_webhook():
         name = (frm.get("first_name", "") + " " + frm.get("last_name", "")).strip()
         uid = frm.get("id", "")
         handle = f"@{uname}" if uname else f"id{uid}"
-        notify = (
-            f"Artemis site message\nFrom: {name} ({handle})\nMessage: {text}"
-        )
+        notify = f"Artemis site message\nFrom: {name} ({handle})\nMessage: {text}"
         tg_send(TG_GROUP, notify)
         tg_send(
             chat.get("id"),
-            "Thank you. Please use the professional enquiry form on artemisresort.com.",
+            "Thank you. Please use the enquiry form on artemisresort.com.",
         )
     return jsonify({"ok": True})
-
-
-@app.errorhandler(410)
-def gone(_e):
-    body = (
-        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
-        "<title>410 Gone</title></head><body>"
-        "<h1>410 Gone</h1>"
-        "<p>This resource has been permanently removed from the public site.</p>"
-        "</body></html>"
-    )
-    resp = make_response(body, 410)
-    return no_cache(resp)
 
 
 if __name__ == "__main__":

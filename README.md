@@ -1,8 +1,8 @@
-# Artemis Resort & Spa — public project-information site
+# Artemis Resort & Spa — project + investment site
 
-**Live (after Final deploy):** https://artemisresort.com  
-**Source:** this repository (`zaomir/artemis`)  
-**Mirror in grainee-v2:** `site-artemis/` (public-safe source only)
+**Live:** https://artemisresort.com  
+**Source:** `zaomir/artemis` · **Mirror:** `site-artemis/` in grainee-v2  
+**Canon:** `docs/audits/artemis/04_SAFE_PUBLIC_COPY.md` · DEC-ARTEMIS-INVESTMENT-RESTORE-2026-10-30
 
 ## Stack
 
@@ -10,22 +10,20 @@
 - Templates: `app/templates/`
 - i18n: `app/translations/{en,ru,es,fr}.json`
 - Static: `app/static/` (nginx alias)
-- Counsel draft disclaimer: `app/legal/DISCLAIMER_EN.txt`
 
 ## Public architecture
 
-Hero → At a glance → Location → Concept → Accommodation → Status → Governance → Professional enquiry → Legal footer
+Hero → At a glance → Location → Concept → Investment → Accommodation → Status → Governance → Enquiry → Privacy/Terms
 
-Legal pages: `/<lang>/privacy/`, `/terms/`, `/disclaimer/`, `/fraud-warning/`
+Disclaimer / fraud-warning pages **removed**. Investment content **allowed**.
 
 ## Compliance
 
 ```bash
-bash scripts/artemis-compliance-scan.sh
-# or: python3 scripts/compliance_scan.py
+bash scripts/artemis-compliance-scan.sh   # no-op PASS (hard-block disabled)
 ```
 
-## Deploy (Final only — Lane B does not deploy)
+## Deploy
 
 ```bash
 git push origin main
@@ -33,8 +31,6 @@ curl -sS -X POST https://artemisresort.com/deploy-hook \
   -H "X-Hook-Secret: <secret>" --max-time 60
 ```
 
-Also apply `deploy/nginx-410-snippet.conf` before `/static/` alias, then `nginx -t` && reload.
-
 ## Admin
 
-`/admin/leads?t=<ARTEMIS_ADMIN_TOKEN>` — professional enquiries (no planned amount).
+`/admin/leads?t=<ARTEMIS_ADMIN_TOKEN>` — enquiries including planned amount.

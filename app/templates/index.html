@@ -43,6 +43,7 @@
       "name": "Artemis Resort & Spa",
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Gerani, Platanias, Chania",
         "addressRegion": "Crete",
         "addressCountry": "GR"
       }
@@ -115,8 +116,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96
 .consent{display:flex;gap:10px;align-items:flex-start;font-family:Arial,sans-serif;font-size:.82rem;color:var(--text);margin-bottom:18px}
 .consent input{margin-top:3px}
 .warn{font-family:Arial,sans-serif;font-size:.82rem;color:var(--gold);border-left:2px solid var(--gold);padding:10px 14px;margin-bottom:20px;background:rgba(196,163,90,.06)}
-.disclaimer-box{font-family:Arial,sans-serif;font-size:.8rem;color:var(--muted);line-height:1.7;border:1px solid rgba(196,163,90,.2);padding:16px 18px;margin-top:24px;background:rgba(0,0,0,.15)}
-.disclaimer-mark{color:var(--gold);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
 .form-err{color:#e07070;font-family:Arial,sans-serif;font-size:.78rem;margin-top:8px;display:none}
 .form-ok{display:none;padding:20px 0;font-family:Arial,sans-serif;color:var(--text)}
 footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
@@ -142,6 +141,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <li><a href="#location">{{ t.nav_location }}</a></li>
     <li><a href="#concept">{{ t.nav_concept }}</a></li>
     <li><a href="#accommodation">{{ t.nav_accommodation }}</a></li>
+    <li><a href="#invest">{{ t.nav_invest }}</a></li>
     <li><a href="#status">{{ t.nav_status }}</a></li>
     <li><a href="#governance">{{ t.nav_governance }}</a></li>
     <li><a href="#enquiry">{{ t.nav_enquiry }}</a></li>
@@ -179,6 +179,8 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <div class="fact"><div class="fact-label">{{ t.glance_location_l }}</div><div class="fact-value">{{ t.glance_location_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_stage_l }}</div><div class="fact-value">{{ t.glance_stage_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_category_l }}</div><div class="fact-value">{{ t.glance_category_v }}</div></div>
+    <div class="fact"><div class="fact-label">{{ t.glance_keys_l }}</div><div class="fact-value">{{ t.glance_keys_v }}</div></div>
+    <div class="fact"><div class="fact-label">{{ t.glance_plot_l }}</div><div class="fact-value">{{ t.glance_plot_v }}</div></div>
     <div class="fact"><div class="fact-label">{{ t.glance_phase_l }}</div><div class="fact-value">{{ t.glance_phase_v }}</div></div>
   </div>
 </section>
@@ -259,6 +261,20 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
+
+<section id="invest" class="sec">
+  <p class="sec-label">{{ t.invest_label }}</p>
+  <h2 class="sec-title">{{ t.invest_title }}</h2>
+  <div class="divider"></div>
+  <p class="lead">{{ t.invest_intro }}</p>
+  <div class="fact-grid">
+    <div class="fact"><div class="fact-label">{{ t.invest_raise_l }}</div><div class="fact-value">{{ t.invest_raise_v }}</div></div>
+    <div class="fact"><div class="fact-label">{{ t.invest_exit_l }}</div><div class="fact-value">{{ t.invest_exit_v }}</div></div>
+    <div class="fact"><div class="fact-label">{{ t.invest_ticket_l }}</div><div class="fact-value">{{ t.invest_ticket_v }}</div></div>
+    <div class="fact"><div class="fact-label">{{ t.invest_yield_l }}</div><div class="fact-value">{{ t.invest_yield_v }}</div></div>
+  </div>
+</section>
+
 <section id="status" class="sec">
   <p class="sec-label">{{ t.status_label }}</p>
   <h2 class="sec-title">{{ t.status_title }}</h2>
@@ -316,6 +332,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
       <label for="f-type">{{ t.form_type }}</label>
       <select id="f-type">
         <option value="">—</option>
+        <option value="investor">{{ t.type_investor }}</option>
         <option value="project_adviser">{{ t.type_project_adviser }}</option>
         <option value="operator">{{ t.type_operator }}</option>
         <option value="contractor_supplier">{{ t.type_contractor_supplier }}</option>
@@ -325,16 +342,13 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
         <option value="other">{{ t.type_other }}</option>
       </select>
     </div>
+    <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" placeholder="{{ t.ph_amount }}"></div>
     <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" placeholder="{{ t.ph_message }}"></textarea></div>
     <label class="consent"><input id="f-consent" type="checkbox"> <span>{{ t.form_consent }}</span></label>
     <button class="btn" type="button" onclick="submitEnquiry()">{{ t.form_submit }}</button>
     <p class="form-err" id="form-err"></p>
   </div>
   <div class="form-ok" id="form-ok">{{ t.form_success }}</div>
-  <div class="disclaimer-box">
-    <div class="disclaimer-mark">{{ disclaimer_mark }}</div>
-    <p>{{ disclaimer_body }}</p>
-  </div>
   <p class="lead" style="margin-top:24px"><a href="mailto:{{ t.contact_email }}" style="color:var(--gold)">{{ t.contact_email }}</a></p>
 </section>
 
@@ -344,12 +358,6 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <div class="footer-links">
     <a href="/{{ lang }}/privacy/">{{ t.footer_legal_privacy }}</a>
     <a href="/{{ lang }}/terms/">{{ t.footer_legal_terms }}</a>
-    <a href="/{{ lang }}/disclaimer/">{{ t.footer_legal_disclaimer }}</a>
-    <a href="/{{ lang }}/fraud-warning/">{{ t.footer_legal_fraud }}</a>
-  </div>
-  <div class="disclaimer-box" style="max-width:900px;margin:18px auto 0;text-align:left">
-    <div class="disclaimer-mark">{{ disclaimer_mark }}</div>
-    <p>{{ disclaimer_body }}</p>
   </div>
   <p style="font-family:Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-top:16px;opacity:.55">{{ version }}</p>
 </footer>
@@ -367,6 +375,7 @@ async function submitEnquiry(){
   const organisation = document.getElementById('f-org').value.trim();
   const role = document.getElementById('f-role').value.trim();
   const enquiry_type = document.getElementById('f-type').value;
+  const amount = document.getElementById('f-amount').value.trim();
   const message = document.getElementById('f-message').value.trim();
   const consent = document.getElementById('f-consent').checked;
   const err = document.getElementById('form-err');

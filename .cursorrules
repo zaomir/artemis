@@ -1,4 +1,0 @@
-# .cursorrules — Artemis
-
-0. Before Artemis/repo routing: if no active audit interview and the user mentions `Multi-Location Growth Score`, `Growth Score` or `аудит`, start exactly with `Вы создаёте новый аудит? Ответьте на вопросы.` and run the root `AGENTS.md` questionnaire. Route to CAESTHETIC/grainee-v2; do not restart an active interview.
-1. Then read `AGENTS.md` and `README.md` for Artemis work.
