@@ -105,19 +105,19 @@ class TenerifeSiteTest(unittest.TestCase):
             self.assertTrue(hit(bad), bad)
 
     def test_no_live_disclaimers(self):
-        for url in list(SHIPPED.values()) + ["/tenerife-preview/", "/tenerife-preview/impressum/",
-                                             "/tenerife-preview/privacy/"]:
+        for url in list(SHIPPED.values()) + ["/tenerife-preview/", "/tenerife/impressum/",
+                                             "/tenerife/privacy/"]:
             html = self.client.get(url).get_data(as_text=True)
             for rx in LIVE_DISCLAIMERS:
                 self.assertIsNone(re.search(rx, html), f"{url}: {rx}")
 
     def test_legal_pages_only_known_data(self):
-        imp = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
+        imp = self.client.get("/tenerife/impressum/").get_data(as_text=True)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "info@artemisresort.com"):
             self.assertIn(must, imp)
         for gone in ("Телефон", "VAT", "MStV", 'class="todo"'):
             self.assertNotIn(gone, imp)
-        prv = self.client.get("/tenerife-preview/privacy/").get_data(as_text=True)
+        prv = self.client.get("/tenerife/privacy/").get_data(as_text=True)
         self.assertIn("info@artemisresort.com", prv)
         self.assertNotIn('class="todo"', prv)
 
@@ -166,9 +166,36 @@ class TenerifeSiteTest(unittest.TestCase):
             html, _ = self.page(url)
             for pat in REMOVED_DISCLAIMERS:
                 self.assertIsNone(re.search(pat, html, re.I), f"{name}: {pat}")
-            for s in ("/tenerife-preview/impressum/", "/tenerife-preview/privacy/",
+            for s in ('href="/tenerife/impressum/"', 'href="/tenerife/privacy/"',
                       "OXFORD FRAME REAL ASSETS LTD", "09153936"):
                 self.assertIn(s, html, f"{name}: {s}")
+            self.assertNotIn("/tenerife-preview/", html, name)
+
+    def test_legal_pages_prod_indexable_canonical(self):
+        # 31.10.2026: Impressum / privacy live at /tenerife/<name>/ (indexable, canonical, in sitemap)
+        locs = re.findall(r"<loc>([^<]+)</loc>", self.client.get("/sitemap.xml").get_data(as_text=True))
+        for name in ("impressum", "privacy"):
+            url = f"/tenerife/{name}/"
+            html, r = self.page(url)
+            self.assertNotIn("X-Robots-Tag", r.headers, url)
+            self.assertNotIn("noindex", html, url)
+            self.assertIn(f'<link rel="canonical" href="https://artemisresort.com{url}">', html)
+            self.assertNotIn("Предварительная версия", html, url)
+            self.assertNotIn("превью", html, url)
+            self.assertIn("https://artemisresort.com" + url, locs)
+            # nginx CSP on /tenerife/ forbids inline style/script
+            self.assertNotIn("<style", html, url)
+            self.assertNotIn("style=", html, url)
+            self.assertIsNone(re.search(r"<script", html), url)
+            self.assertIn('<link rel="stylesheet" href="/static/tenerife/base.css">', html)
+            self.assertTrue((STATIC / "tenerife" / "base.css").is_file())
+            for ref in re.findall(r'(?:href|src)="(/[^"#?]*)', html):
+                if ref.startswith("/static/"):
+                    self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{url}: missing {ref}")
+                else:
+                    self.assertEqual(self.client.get(ref).status_code, 200, f"{url}: {ref}")
+            self.assertIn(self.client.get(f"/tenerife/{name}").status_code, (301, 308))
+            self.assertEqual(self.client.get(f"/tenerife/{name}.html").status_code, 301)
 
     def test_internal_links_and_assets_resolve(self):
         for name, url in SHIPPED.items():

@@ -1,8 +1,8 @@
 {% extends "tenerife/base.html" %}
-{% block title %}Правовая информация — Artemis Tenerife (превью){% endblock %}
+{% block title %}Правовая информация — Artemis Tenerife{% if not canonical %} (превью){% endif %}{% endblock %}
 {% block body %}
-<section class="legal" style="border-bottom:0"><div class="wrap">
-  <h1 style="font-size:30px">Правовая информация</h1>
+<section class="legal"><div class="wrap">
+  <h1>Правовая информация</h1>
   <p class="muted">Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) для страницы Artemis Tenerife.</p>
 
   <h2>Оператор страницы</h2>
@@ -10,7 +10,7 @@
   Registered in England and Wales — компания зарегистрирована в Англии и Уэльсе<br>
   Регистрационный номер (Companies House): 09153936<br>
   Зарегистрированный адрес (registered office): Drovers, Preston Candover, Basingstoke, RG25 2EE</p>
-  <p class="muted" style="font-size:14px">Источник: публичный реестр <a href="https://find-and-update.company-information.service.gov.uk/company/09153936" rel="nofollow noopener">Companies House</a>, проверено 31.10.2026.</p>
+  <p class="muted src">Источник: публичный реестр <a href="https://find-and-update.company-information.service.gov.uk/company/09153936" rel="nofollow noopener">Companies House</a>, проверено 31.10.2026.</p>
 
   <h2>Представитель</h2>
   <p>Директор: Szabolcs Szaniszlo</p>
@@ -20,6 +20,6 @@
 
 
 
-  <p style="margin-top:28px"><a href="/tenerife/">← К сайту проекта</a></p>
+  <p class="back"><a href="/tenerife/">← К сайту проекта</a></p>
 </div></section>
 {% endblock %}

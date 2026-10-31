@@ -2,8 +2,10 @@
 
 Routes (Blueprint, registered in app.py):
   GET  /tenerife-preview/            RU preview page
-  GET  /tenerife-preview/impressum/  legal notice (Impressum / Aviso legal)
-  GET  /tenerife-preview/privacy/    privacy notice for the waitlist
+  GET  /tenerife-preview/impressum/  301 -> /tenerife/impressum/ (canonical since 31.10.2026)
+  GET  /tenerife-preview/privacy/    301 -> /tenerife/privacy/
+  GET  /tenerife/impressum/          legal notice (Impressum / Aviso legal); indexable, canonical
+  GET  /tenerife/privacy/            privacy notice for the waitlist; indexable, canonical
   POST /api/tenerife/waitlist        name, contact, language, GDPR consent
   GET  /tenerife/, /tenerife/<page>/ RU prod site (static pages built from
                                      grainee-v2 docs/projects/artemis/tenerife/site-ru,
@@ -94,20 +96,22 @@ def preview():
     return _render("tenerife/preview.html", sent=request.args.get("ok") == "1")
 
 
+# Legal pages moved from /tenerife-preview/<name>/ to the prod prefix (31.10.2026).
+# Old preview URLs answer 301 so earlier links keep working; /tenerife-preview/ itself is untouched.
+LEGAL_PAGES = ("impressum", "privacy")
+
+
 @bp.route(PREVIEW_PREFIX + "/impressum/")
-def impressum():
-    return _render("tenerife/impressum.html")
-
-
 @bp.route(PREVIEW_PREFIX + "/privacy/")
-def privacy():
-    return _render("tenerife/privacy.html")
+def preview_legal_moved():
+    return redirect("/tenerife/" + request.path.rstrip("/").rsplit("/", 1)[-1] + "/", code=301)
 
 
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
 SITE_PAGES = ("norte", "producto", "construccion", "proceso", "faq")
+SITE_URL = "https://artemisresort.com"
 
 
 def _site_page(name: str):
@@ -130,6 +134,16 @@ def site_index():
     return _site_page("index")
 
 
+@bp.route(SITE_PREFIX + "/impressum/")
+@bp.route(SITE_PREFIX + "/privacy/")
+def legal_page():
+    name = request.path.rstrip("/").rsplit("/", 1)[-1]
+    url = f"{SITE_URL}{SITE_PREFIX}/{name}/"
+    resp = make_response(render_template(f"tenerife/{name}.html", langs=WAITLIST_LANGS, canonical=url))
+    resp.headers["Cache-Control"] = "public, max-age=300"
+    return resp
+
+
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
     if page not in SITE_PAGES:
@@ -143,7 +157,7 @@ def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(SITE_PREFIX + "/", code=301)
-    if page in SITE_PAGES:
+    if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(f"{SITE_PREFIX}/{page}/", code=301)
     return make_response("Not found", 404)
 
