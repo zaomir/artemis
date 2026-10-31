@@ -215,7 +215,7 @@ class TenerifeSiteTest(unittest.TestCase):
                     widths.append(w)
                     self.assertTrue(ref.endswith(".webp"), ref)
                     self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{name}: missing {ref}")
-                self.assertEqual(widths, ["640w", "1024w", "1600w"], name)
+                self.assertEqual(widths, ["640w", "800w", "1024w", "1600w"], name)
 
     def test_css_local_with_fonts(self):
         css = (STATIC / "tenerife/site/style.css").read_text(encoding="utf-8")
