@@ -46,9 +46,13 @@ def _db_path() -> str:
 
 
 def init_waitlist_db(conn: sqlite3.Connection) -> None:
+    # AUTOINCREMENT (31.10.2026): ids of deleted leads are never handed out again in NEW databases.
+    # An existing table keeps its old schema on purpose: SQLite cannot add AUTOINCREMENT in place, it
+    # would need a copy-drop-rename rebuild of the lead table. The lead relay identifies a lead by
+    # tbl:id:created_at, so id reuse in an existing DB is handled there.
     conn.execute(
         """CREATE TABLE IF NOT EXISTS tenerife_waitlist
-        (id INTEGER PRIMARY KEY,
+        (id INTEGER PRIMARY KEY AUTOINCREMENT,
          name TEXT NOT NULL, contact TEXT NOT NULL, language TEXT NOT NULL,
          page TEXT, consent INTEGER NOT NULL, client_hash TEXT,
          created_at TEXT NOT NULL)"""
