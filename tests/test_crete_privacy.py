@@ -30,7 +30,9 @@ class CretePrivacyGoogleTest(unittest.TestCase):
             self.assertIn(marker, h, lang)
             self.assertIn("Google (Gmail, Google Workspace)", h, lang)
             self.assertIn("info@artemisresort.com", h, lang)
-            self.assertIn(ORIGINAL, h, lang)        # rest of the page unchanged
+            import legal_i18n
+            if legal_i18n.load("privacy", lang) is None:   # no reviewed drop-in translation (A-06) yet
+                self.assertIn(ORIGINAL, h, lang)        # rest of the page unchanged
 
     def test_terms_untouched(self):
         for lang in MARKER:

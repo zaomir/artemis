@@ -6,6 +6,7 @@ import hmac
 import html
 import json
 import os
+import re
 import sqlite3
 import subprocess
 import urllib.parse
@@ -23,6 +24,7 @@ from flask import (
 
 import logging
 
+import legal_i18n  # drop-in translations of the long legal texts (app/legal_translations/)
 from notify import notify_lead
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -115,7 +117,9 @@ def _render_legal(lang, page):
     }
     if page not in templates:
         abort(404)
-    resp = make_response(render_template(templates[page], page=page, **_ctx(lang)))
+    resp = make_response(
+        render_template(templates[page], page=page, legal_i18n=legal_i18n.load(page, lang), **_ctx(lang))
+    )
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)
 
@@ -238,24 +242,62 @@ ENQUIRY_TYPES = {
 }
 
 
+# Server-side validation shared with the client (templates/index.html: EMAIL_RE / AMOUNT_RE).
+# Errors carry a machine "code" (+ "field"); the page maps it to the localized message.
+EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+AMOUNT_MAX = 64
+AMOUNT_RE = re.compile(r"^[\w\s€$£.,'’+\-–~/()]+$")
+
+
+def _clean_amount(raw) -> str | None:
+    """Planned investment amount: optional free text such as "€3,000,000" or "3-5 M EUR".
+
+    Returns the normalised value ("" when empty) or None when invalid
+    (too long, no digit, or characters outside the allowed set)."""
+    if raw is None:
+        return ""
+    if isinstance(raw, bool) or not isinstance(raw, (str, int, float)):
+        return None
+    value = " ".join(str(raw).split())
+    if not value:
+        return ""
+    if len(value) > AMOUNT_MAX or not AMOUNT_RE.match(value) or "_" in value:
+        return None
+    if not any(ch.isdigit() for ch in value):
+        return None
+    return value
+
+
+def _enquiry_error(code: str, field: str, error: str):
+    return jsonify({"ok": False, "code": code, "field": field, "error": error}), 400
+
+
 @app.route("/api/enquiry", methods=["POST"])
 def enquiry():
-    d = request.json or {}
-    name = (d.get("name") or "").strip()
-    email = (d.get("email") or "").strip()
-    organisation = (d.get("organisation") or "").strip()
-    role = (d.get("role") or "").strip()
-    enquiry_type = (d.get("enquiry_type") or "").strip()
-    amount = (d.get("amount") or "").strip()
-    message = (d.get("message") or "").strip()
+    d = request.get_json(silent=True)
+    if not isinstance(d, dict):
+        d = {}
+    name = str(d.get("name") or "").strip()
+    email = str(d.get("email") or "").strip()
+    organisation = str(d.get("organisation") or "").strip()
+    role = str(d.get("role") or "").strip()
+    enquiry_type = str(d.get("enquiry_type") or "").strip()
+    amount = _clean_amount(d.get("amount"))
+    message = str(d.get("message") or "").strip()
     consent = bool(d.get("consent"))
 
-    if not name or not email:
-        return jsonify({"ok": False, "error": "Name and work email are required"}), 400
+    if not name:
+        return _enquiry_error("required", "name", "Name and work email are required")
+    if not email:
+        return _enquiry_error("required", "email", "Name and work email are required")
+    if len(email) > 254 or not EMAIL_RE.match(email):
+        return _enquiry_error("email", "email", "Invalid email address")
     if not consent:
-        return jsonify({"ok": False, "error": "Consent is required"}), 400
+        return _enquiry_error("consent", "consent", "Consent is required")
     if enquiry_type and enquiry_type not in ENQUIRY_TYPES:
-        return jsonify({"ok": False, "error": "Invalid enquiry type"}), 400
+        return _enquiry_error("generic", "enquiry_type", "Invalid enquiry type")
+    if amount is None:
+        return _enquiry_error("amount", "amount", "Invalid planned investment amount")
 
     init_db()
     conn = sqlite3.connect(DB)
@@ -281,7 +323,10 @@ def enquiry():
     if lang not in SUPPORTED:
         lang = request.cookies.get("lang", "") if request.cookies.get("lang") in SUPPORTED else "?"
     page = (d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path or "/"
-    notify_lead("Crete enquiry", name, email, lang, page)
+    if amount:
+        notify_lead("Crete enquiry", name, email, lang, page, amount=amount)
+    else:
+        notify_lead("Crete enquiry", name, email, lang, page)
 
     return jsonify({"ok": True})
 

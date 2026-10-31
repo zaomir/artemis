@@ -16,7 +16,7 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 nav.toc{display:flex;gap:8px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
 nav.toc a{white-space:nowrap;font-size:14px;text-decoration:none;color:var(--ink);background:#eef2ef;padding:6px 11px;border-radius:999px}
 section{padding:34px 0;border-bottom:1px solid var(--line)}
-h1{font-size:34px;line-height:1.15;margin:.2em 0 .3em}
+h1{font-size:clamp(26px,8vw,34px);line-height:1.15;margin:.2em 0 .3em;overflow-wrap:break-word;hyphens:auto}
 h2{font-size:25px;line-height:1.2;margin:0 0 .6em}
 h3{font-size:18px;margin:1.1em 0 .4em}
 p{margin:.5em 0 .9em}
@@ -69,6 +69,6 @@ footer.site a{margin-right:14px}
  section{padding:52px 0}
 }
 section.legal{border-bottom:0}
-section.legal h1{font-size:30px}
+section.legal h1{font-size:clamp(24px,7.5vw,30px)}
 section.legal .src{font-size:14px}
 section.legal .back{margin-top:28px}

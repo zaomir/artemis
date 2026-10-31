@@ -155,7 +155,7 @@
   "legal_nav_home": "Home",
   "privacy_title": "Privacy",
   "privacy_body": "We process enquiry contact details (name, work email, organisation, role, enquiry type, planned amount and message) to review and respond. Contact INFO@ARTEMISRESORT.COM for privacy requests.",
-  "privacy_recipients": "Recipient and processor of enquiry copies: Google (Gmail, Google Workspace) — a copy of the new-enquiry notification (name, contact, time) is sent to the service address info@artemisresort.com. Google may process data outside the EEA (EU-US Data Privacy Framework / standard contractual clauses).",
+  "privacy_recipients": "Recipient and processor of enquiry copies: Google (Gmail, Google Workspace) — a copy of the new-enquiry notification (name, contact, planned amount if provided, time) is sent to the service address info@artemisresort.com. Google may process data outside the EEA (EU-US Data Privacy Framework / standard contractual clauses).",
   "terms_title": "Terms of use",
   "terms_body": "This website provides project and investment information about Artemis Resort & Spa. Content may change. Access for professional and investor information purposes.",
   "cgi_note": "Architectural visualisation / concept image — subject to design and approval",
@@ -166,5 +166,8 @@
   "alt_restaurant": "Dining concept visual",
   "alt_room": "Guest accommodation concept visual",
   "alt_villa": "Villa Nika concept visual",
-  "status_evidence_pending": "2026-10-30"
+  "status_evidence_pending": "2026-10-30",
+  "form_err_email": "Please enter a valid email address.",
+  "form_err_amount": "Please enter the amount in figures, e.g. €3,000,000.",
+  "legal_body_pending": ""
 }

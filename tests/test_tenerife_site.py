@@ -21,6 +21,8 @@ PAGES = {"index": "/tenerife/", "norte": "/tenerife/norte/", "producto": "/tener
 SHIPPED = {k: v for k, v in PAGES.items() if (SITE / f"{k}.html").is_file()}
 FORM_HOST = "proceso" if "proceso" in SHIPPED else "index"  # until proceso.html arrives the form lives on /tenerife/
 
+# <form action=mailto:…> / formaction='mailto:…' in any quoting (QA 2026-10-31 pr19 -01)
+MAILTO_FORM = r"""(?i)\b(?:form)?action\s*=\s*["']?\s*mailto:"""
 FORBIDDEN = [
     # founder 31.10.2026 16:28 UTC: share mechanics with a calculation may be shown («дивиденд», «акция» allowed);
     # a guaranteed / promised return stays forbidden.
@@ -30,7 +32,11 @@ FORBIDDEN = [
     r"(?i)оплат\w+ сейчас", r"(?i)iban", r"(?i)stripe", r"(?i)paypal", r"не для деплоя",
     r"(?i)TODO", r"(?i)\bTZ\b", r"(?i)бриф", r"нельзя", r"в наших файлах", r"Лица не генерируем",
     r"(?i)googletagmanager|google-analytics|gtag\(|fbq\(|yandex|metrika|hotjar|clarity",
-    r"fonts\.googleapis|fonts\.gstatic", r"cdn\.leonardo\.ai", r"(?i)formspree|action=\"mailto:",
+    r"fonts\.googleapis|fonts\.gstatic", r"cdn\.leonardo\.ai", r"(?i)formspree",
+    # only the *form* rule, on purpose: plain <a href="mailto:info@…"> contact links are allowed (and required inside
+    # <!--email_off-->; the address allowlist is test_mailto_only_contact_address), but a <form action> /
+    # <button formaction> that submits via mailto (no consent, no server copy) is forbidden — any quoting / spacing.
+    MAILTO_FORM,
     r"email-protection|/cdn-cgi/",  # Cloudflare-obfuscated e-mail must never be baked into a page
     r"\+\d[\d\s()-]{7,}",  # phone numbers
 ]
@@ -140,6 +146,22 @@ class TenerifeSiteTest(unittest.TestCase):
             self.assertEqual(unprotected(html), [], url)
             self.assertNotIn("email-protection", html, url)
             self.assertEqual(html.count("<!--email_off-->"), html.count("<!--/email_off-->"), url)
+
+    def test_mailto_only_contact_address(self):
+        # QA 2026-10-31 pr19 -01: on every Tenerife URL the only mailto target is the contact address
+        # (any quoting, inside or outside the markers), and nothing submits a form via mailto
+        for url in list(SHIPPED.values()) + LEGAL_AND_PREVIEW:
+            html, _ = self.page(url)
+            targets = {t.lower() for t in re.findall(r"mailto:([^\"'\s>?]+)", html, re.I)}
+            self.assertEqual(targets, {CONTACT_EMAIL}, url)
+            self.assertIsNone(re.search(MAILTO_FORM, html), url)
+        hit = lambda t: re.search(MAILTO_FORM, t)
+        for bad in ('<form action="mailto:x@y.z">', "<form ACTION = 'MAILTO:x@y.z'>", "<form action=mailto:x@y.z>",
+                    "<button formaction='mailto:evil@example.com'>", '<input formaction = " mailto:x@y.z">'):
+            self.assertTrue(hit(bad), bad)
+        for ok in ('<a href="mailto:info@artemisresort.com">', '<form action="/api/tenerife/waitlist">',
+                   "<p>transaction=mailto: (text)</p>"):
+            self.assertFalse(hit(ok), ok)
 
     def test_email_off_comments_not_stripped(self):
         # nothing between the source files and the response (minifier, after_request hook, build step)
