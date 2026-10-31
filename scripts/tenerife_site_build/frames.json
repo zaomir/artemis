@@ -1,0 +1,39 @@
+{
+ "_comment": "RU v3: [КАДР Fxx] -> existing Canary Stone lock photos in app/static/tenerife/site/img (no Leonardo F01-F25 renders in the repo yet). prefer = theme match from PLAN §8; build_v3.py picks the first one not yet used on the page, then falls back to 'fallback' order. alt = image description (UI text, not copy).",
+ "images": {
+  "modern-low-6e9d80": "Невысокие дома террасами на склоне над океаном",
+  "entrance-o-9abe9d": "Вход в комплекс: каменные пилоны и деревянные ворота",
+  "communal-s-af42cd": "Общий бассейн и дома Canary Stone",
+  "private-te-6016b5": "Терраса со стеклянным ограждением и видом на океан",
+  "interior-o-74f891": "Спальня с окном в пол и выходом во внутренний дворик",
+  "green-hill-3f3856": "Дома среди зелени на склоне над океаном",
+  "golden-hou-d4cc25": "Террасы домов на склоне в вечернем свете"
+ },
+ "fallback": ["modern-low-6e9d80", "green-hill-3f3856", "golden-hou-d4cc25", "private-te-6016b5", "communal-s-af42cd", "entrance-o-9abe9d", "interior-o-74f891"],
+ "prefer": {
+  "F01": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"],
+  "F02": ["entrance-o-9abe9d"],
+  "F03": ["communal-s-af42cd"],
+  "F04": ["private-te-6016b5", "modern-low-6e9d80"],
+  "F05": ["interior-o-74f891", "private-te-6016b5"],
+  "F06": ["interior-o-74f891", "private-te-6016b5"],
+  "F07": ["interior-o-74f891", "private-te-6016b5", "golden-hou-d4cc25"],
+  "F08": ["interior-o-74f891", "private-te-6016b5", "communal-s-af42cd"],
+  "F09": ["interior-o-74f891", "private-te-6016b5", "entrance-o-9abe9d"],
+  "F10": ["interior-o-74f891", "private-te-6016b5"],
+  "F11": ["green-hill-3f3856", "modern-low-6e9d80", "golden-hou-d4cc25"],
+  "F12": ["entrance-o-9abe9d", "communal-s-af42cd"],
+  "F13": ["entrance-o-9abe9d", "interior-o-74f891"],
+  "F14": ["green-hill-3f3856", "golden-hou-d4cc25"],
+  "F15": ["golden-hou-d4cc25", "modern-low-6e9d80"],
+  "F16": ["modern-low-6e9d80", "golden-hou-d4cc25"],
+  "F17": ["golden-hou-d4cc25", "entrance-o-9abe9d", "private-te-6016b5"],
+  "F18": ["green-hill-3f3856", "entrance-o-9abe9d"],
+  "F19": ["modern-low-6e9d80", "golden-hou-d4cc25"],
+  "F20": ["interior-o-74f891", "private-te-6016b5"],
+  "F21": ["green-hill-3f3856", "modern-low-6e9d80"],
+  "F22": ["golden-hou-d4cc25", "communal-s-af42cd"],
+  "F23": ["green-hill-3f3856", "golden-hou-d4cc25"],
+  "F24": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"]
+ }
+}

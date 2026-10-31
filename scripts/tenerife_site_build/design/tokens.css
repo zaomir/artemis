@@ -1,0 +1,155 @@
+/* Artemis Tenerife — Canary Stone design tokens v1 (2026-10-31)
+   Единственный источник значений. Компоненты используют только эти переменные.
+   Контраст (WCAG 2.x) посчитан скриптом, таблица в DESIGN.md §3.1. */
+:root {
+  /* ---------- 1. Цвет: материалы Canary Stone ---------- */
+  --cs-lime:          #F4F1EA; /* известковая штукатурка — фон страницы */
+  --cs-sand:          #E8E2D6; /* тёплый туф — вторая поверхность (форма, полосы таблиц) */
+  --cs-white:         #FFFFFF; /* только заливка полей ввода */
+  --cs-ink:           #1C1A17; /* основной текст: 15.39 на lime, 13.46 на sand */
+  --cs-ink-soft:      #4A463F; /* вторичный текст: 8.31 на lime, 7.27 на sand */
+  --cs-bronze:        #8A6A45; /* бронза рам: линии, маркеры, графика, текст ≥24px — 4.40 на lime (только non-text/large) */
+  --cs-bronze-deep:   #6F5335; /* бронза для текста: ссылки, мелкие акценты — 6.28 на lime, 5.49 на sand */
+  --cs-basalt:        #3A3A38; /* базальтовый цоколь: кнопка, полоса фактов — lime на нём 10.11 */
+  --cs-basalt-deep:   #2A2A28; /* тёмный базальт: подвал, скрим героя — lime на нём 12.75 */
+  --cs-on-dark:       #F4F1EA; /* текст на базальте */
+  --cs-on-dark-soft:  #CFC8BB; /* вторичный текст на базальте: 6.86 на basalt, 8.65 на basalt-deep */
+  --cs-ocean:         #1F4250; /* Атлантика: фокус, текущая ступень, акцент данных — 9.53 на lime */
+  --cs-laurel:        #3F5A3C; /* лавр: состояние «успех» — 6.80 на lime, 5.94 на sand */
+  --cs-error:         #9B2C2C; /* ошибка формы — 6.67 на lime, 7.53 на white */
+  --cs-line:          #D6CFC3; /* декоративные разделители (не несут смысла) */
+  --cs-line-on-dark:  #5A5853; /* декоративный разделитель на базальте (подвал) */
+  --cs-control-line:  #7A7468; /* граница полей ввода: 4.64 на white, 4.11 на lime (≥3:1, WCAG 1.4.11) */
+  --cs-scrim:         rgba(42, 42, 40, 0.72); /* скрим под текстом шапки и героя: lime поверх (скрим на белом #FFF) = 5.10 */
+  --cs-placeholder:   #CFC8BB; /* нейтральная заливка кадра до загрузки (= on-dark-soft) */
+
+  /* ---------- 2. Типографика ---------- */
+  --font-display: "Literata", "Georgia", "Times New Roman", serif;          /* заголовки, крупные цифры */
+  --font-text:    "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif; /* текст, интерфейс, таблицы */
+
+  /* шкала: mobile @320 → desktop @1440, линейно через clamp() */
+  --fs-display: clamp(2rem, 1.429rem + 2.857vw, 4rem);         /* H1   32 → 64 px */
+  --fs-h2:      clamp(1.625rem, 1.304rem + 1.607vw, 2.75rem);  /* H2   26 → 44 px */
+  --fs-h3:      clamp(1.25rem, 1.143rem + 0.536vw, 1.625rem);  /* H3   20 → 26 px */
+  --fs-figure:  clamp(2.25rem, 1.607rem + 3.214vw, 4.5rem);    /* ключевые цифры 36 → 72 px */
+  --fs-lead:    clamp(1.125rem, 1.054rem + 0.357vw, 1.375rem); /* лид  18 → 22 px */
+  --fs-body:    clamp(1.0625rem, 1.045rem + 0.089vw, 1.125rem);/* текст 17 → 18 px */
+  --fs-small:   0.9375rem;  /* 15 px: подписи, таблицы на mobile, подвал */
+  --fs-label:   0.8125rem;  /* 13 px: подписи данных, caps, ls 0.08em */
+  --fs-input:   1rem;       /* 16 px: поля ввода, никогда меньше */
+
+  --lh-display: 1.06;
+  --lh-heading: 1.15;
+  --lh-lead:    1.5;
+  --lh-body:    1.6;
+  --lh-tight:   1.25;
+
+  --fw-text:    400;
+  --fw-strong:  600;
+  --fw-display: 500;
+
+  --ls-display: -0.015em;
+  --ls-label:   0.08em;
+  --measure:    68ch;  /* максимальная длина строки текста */
+
+  /* ---------- 3. Отступы (база 4 px) ---------- */
+  --space-1: 0.25rem;  /*   4 */
+  --space-2: 0.5rem;   /*   8 */
+  --space-3: 0.75rem;  /*  12 */
+  --space-4: 1rem;     /*  16 */
+  --space-5: 1.5rem;   /*  24 */
+  --space-6: 2rem;     /*  32 */
+  --space-7: 3rem;     /*  48 */
+  --space-8: 4rem;     /*  64 */
+  --space-9: 6rem;     /*  96 */
+  --space-10: 8rem;    /* 128 */
+  --section-y:       clamp(4rem, 3.143rem + 4.286vw, 7rem);  /* обычная секция  64 → 112 */
+  --section-y-tight: clamp(3rem, 2.571rem + 2.143vw, 4.5rem); /* связанная секция 48 → 72 */
+
+  /* ---------- 4. Сетка ---------- */
+  --grid-max:     1360px;                       /* max-width контента */
+  --grid-text:    760px;                        /* колонка длинного текста */
+  --grid-margin:  clamp(1.25rem, 0.5rem + 3.75vw, 3.5rem); /* поля 20 → 56 px */
+  --grid-cols-mobile: 4;   --grid-gutter-mobile: 1rem;    /* < 768: 4 колонки, 16 px */
+  --grid-cols-tablet: 8;   --grid-gutter-tablet: 1.25rem; /* 768–1023: 8 колонок, 20 px */
+  --grid-cols-desktop: 12; --grid-gutter-desktop: 1.5rem; /* ≥ 1024: 12 колонок, 24 px */
+
+  /* ---------- 5. Брейкпоинты (для matchMedia; в @media писать числом) ---------- */
+  --bp-min: 320px;
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-xxl: 1440px;
+
+  /* ---------- 6. Радиусы: камень режут прямо ---------- */
+  --radius-0: 0;      /* кадры, плиты, секции */
+  --radius-1: 2px;    /* кнопка, поля ввода */
+  --radius-2: 4px;    /* переключатели, контур фокуса повторяет радиус */
+
+  /* ---------- 7. Тени и линии ---------- */
+  --shadow-none:  none;                                   /* по умолчанию теней нет */
+  --shadow-sheet: 0 16px 40px rgba(28, 26, 23, 0.16);     /* только мобильная шторка меню */
+  --border-hair:  1px solid var(--cs-line);
+  --plinth:       6px;  /* высота «цоколя» — базальтовая полоса под кадром и героем (сигнатура) */
+  --shadow-hairline: 0 1px 0 var(--cs-line);           /* нижняя линия сплошной шапки (не меняет высоту) */
+  --border-ink:   1px solid var(--cs-ink);              /* сильная линия: верх таблиц, FAQ, журнала */
+  --border-control: 1px solid var(--cs-control-line);   /* граница полей и переключателей */
+  --rule-2:       2px;  /* линия текущего пункта меню, верх шагов */
+  --rule-accent:  3px;  /* полоса слева у сообщений формы */
+  --stroke:       1.5px; /* штрих CSS-иконок (меню, шеврон, плюс) */
+  /* фокус: outline, а не box-shadow — виден в Chromium, WebKit, Firefox у всех нативных контролов */
+  --focus-width:  2px;
+  --focus-offset: 2px;
+  --focus-color:  var(--cs-ocean);   /* на lime 9.53, sand 8.33, white 10.75 */
+  --focus-color-on-dark: var(--cs-on-dark); /* на basalt 10.11, basalt-deep 12.75, скриме 5.10 */
+
+  /* ---------- 8. Движение ---------- */
+  --dur-micro:  120ms;  /* hover, нажатие */
+  --dur-ui:     200ms;  /* шапка, аккордеон, переключатели */
+  --dur-reveal: 320ms;  /* рост ступеней лестницы */
+  --stagger:    60ms;   /* шаг между ступенями */
+  --ease-out:   cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-std:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- 9. Слои ---------- */
+  --z-header: 50;
+  --z-sheet:  60;
+  --z-skip:   70;
+
+  /* ---------- 10. Размеры элементов ---------- */
+  --header-h:  64px;   /* шапка desktop и mobile (одна строка) */
+  --touch-min: 44px;   /* минимальная цель касания */
+  --fs-brand:  1.375rem; /* 22 px: словесный знак в шапке */
+  --control-h: 48px;   /* поле ввода, select */
+  --cta-h:     56px;   /* главная кнопка */
+  --check-size: 24px;  /* чекбокс согласия (зона касания — вся подпись ≥44 px) */
+  --icon-xs:   6px;    /* шеврон «Ещё» */
+  --icon-s:    14px;   /* «+» FAQ */
+  --icon-m:    20px;   /* иконка «Меню», ширина */
+  --icon-m-h:  12px;   /* иконка «Меню», высота */
+  --menu-min-w: 220px; /* выпадающее «Ещё» */
+  --sheet-col: 140px;  /* мин. ширина колонки мобильной шторки */
+  --ledger-label: 200px; /* колонка подписи мини-расчёта ≥768 */
+  --ladder-h:  260px;  /* высота самой высокой ступени (desktop) */
+  --ladder-bar-h: 10px; /* толщина полосы ступени (mobile) */
+  --hero-h:    min(88vh, 820px); /* высота кадра героя ≥768 */
+  --hero-min-h: 560px;
+  --hero-max-h-mobile: 88vh; /* потолок кадра 4:5 на mobile */
+  --scrim-fade: 6rem;  /* 96 px: зона нарастания скрима над текстом героя; текст начинается ниже неё */
+  --measure-lead: 60ch; /* лид героя */
+  --lh-figure: 1;      /* крупные цифры */
+  --underline-offset: 0.18em;
+  --underline-offset-nav: 0.5em;
+  --opacity-dim: 0.4;  /* цифра калькулятора в момент смены */
+  --opacity-busy: 0.7; /* кнопка во время отправки */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-micro: 0ms;
+    --dur-ui: 0ms;
+    --dur-reveal: 0ms;
+    --stagger: 0ms;
+  }
+}

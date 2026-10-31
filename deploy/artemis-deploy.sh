@@ -35,7 +35,11 @@ PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/pr
 # Tenerife RU prod (/tenerife/): must be 200 locally and via Cloudflare.
 # Pages the author has not delivered yet (producto, construccion, proceso, faq) are
 # added here when they ship (see app/tenerife_site/README.md).
-TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/impressum/ /tenerife/privacy/ /static/tenerife/site/style.css /static/tenerife/site/waitlist.js /sitemap.xml /robots.txt)
+TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/calculadora/
+  /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
+  /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/impressum/ /tenerife/privacy/
+  /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
+  /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
 
 smoke() {

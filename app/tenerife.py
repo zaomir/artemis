@@ -46,9 +46,13 @@ def _db_path() -> str:
 
 
 def init_waitlist_db(conn: sqlite3.Connection) -> None:
+    # AUTOINCREMENT (31.10.2026): ids of deleted leads are never handed out again in NEW databases.
+    # An existing table keeps its old schema on purpose: SQLite cannot add AUTOINCREMENT in place, it
+    # would need a copy-drop-rename rebuild of the lead table. The lead relay identifies a lead by
+    # tbl:id:created_at, so id reuse in an existing DB is handled there.
     conn.execute(
         """CREATE TABLE IF NOT EXISTS tenerife_waitlist
-        (id INTEGER PRIMARY KEY,
+        (id INTEGER PRIMARY KEY AUTOINCREMENT,
          name TEXT NOT NULL, contact TEXT NOT NULL, language TEXT NOT NULL,
          page TEXT, consent INTEGER NOT NULL, client_hash TEXT,
          created_at TEXT NOT NULL)"""
@@ -119,7 +123,8 @@ def preview_legal_moved():
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "construccion", "proceso", "faq")
+SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energia", "construccion",
+              "proceso", "faq", "simon", "mercado", "boris")  # RU v3: scripts/tenerife_site_build/build_v3.py
 SITE_URL = "https://artemisresort.com"
 
 
