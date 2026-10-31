@@ -91,8 +91,9 @@ def _client_hash() -> str:
         or request.remote_addr
         or "?"
     )
-    # same secret key as the Crete limiter (RATE_LIMIT_SALT, else ARTEMIS_ADMIN_TOKEN); no public default
-    return hmac.new(ratelimit.hmac_salt().encode(), ip.encode(), hashlib.sha256).hexdigest()[:32]
+    # same secret key as the Crete limiter (RATE_LIMIT_SALT, else ARTEMIS_ADMIN_TOKEN); no public default.
+    # QA PS-08: same key shape too - IPv6 counted per /64 (ratelimit.limit_key).
+    return hmac.new(ratelimit.hmac_salt().encode(), ratelimit.limit_key(ip).encode(), hashlib.sha256).hexdigest()[:32]
 
 
 def _noindex(resp):
