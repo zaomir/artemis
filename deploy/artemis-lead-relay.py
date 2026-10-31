@@ -12,11 +12,13 @@
 leads.db is opened read-only; relay state lives in its own DB (ARTEMIS_RELAY_STATE).
 Never prints tokens or lead data; logs only table/id/channel/message id.
 
-Delivery guards (31.10.2026, artemisresort.com has no MX):
+Delivery guards (31.10.2026; artemisresort.com mail is Google Workspace: MX = 1 smtp.google.com,
+info@artemisresort.com is an alias there):
 - Before sending, the recipient domain must have an MX record (ARTEMIS_LEAD_EMAIL_REQUIRE_MX=1, default).
   Without MX (NXDOMAIN / no answer / null MX) or on a DNS error nothing is sent: new leads stay
-  queued for the copy and go out automatically once the domain has mail. This avoids Gmail falling back
-  to the A record (Cloudflare proxy, no SMTP) and bouncing into info@oxfordframe.com.
+  queued for the copy and go out automatically once the domain has MX again. The guard is kept as a
+  safety net (e.g. a broken DNS change): without MX, Gmail would fall back to the A record
+  (Cloudflare proxy, no SMTP) and the message would bounce.
   The deferral is logged on change and then once an hour, not every minute.
 - Send errors are retried with exponential backoff (1, 2, 4 … min, max 6 h) and at most
   ARTEMIS_LEAD_EMAIL_MAX_ATTEMPTS times (default 8). After that the lead is parked (still in leads.db,
