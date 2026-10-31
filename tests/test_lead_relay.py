@@ -252,7 +252,7 @@ class LeadRelayTest(unittest.TestCase):
 
     def test_reply_to_only_for_email_contacts(self):
         self.assertEqual(self.m.reply_to({"contact": "a.b@example.com"}), "a.b@example.com")
-        self.assertEqual(self.m.reply_to({"contact": "+34 600 000 000"}), "")
+        self.assertEqual(self.m.reply_to({"contact": "+440000000000"}), "")
         self.assertEqual(self.m.reply_to({"contact": "@telegram_user"}), "")
         self.assertEqual(self.m.reply_to({"contact": "a@b.com, c@d.com"}), "")
 

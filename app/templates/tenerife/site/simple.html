@@ -1,0 +1,37 @@
+{#- v2 shell for pages without hero/form (DESIGN.md §5: «сплошная шапка → текст 760 → C14 (без C13)»):
+    Impressum, Конфиденциальность (legal text = the body block of app/templates/tenerife/{impressum,privacy}.html,
+    verbatim) and the no-JS form answers (_notice.html: Flask fills the {{ "{{NOTICE_*}}" }} slots, escaped). -#}
+{% import "_components.html" as c %}
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+{% if description is defined %}<meta name="description" content="{{ description }}">
+{% endif %}{% if canonical %}
+<link rel="canonical" href="{{ canonical }}">
+{% else %}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
+<meta name="theme-color" content="#F4F1EA">
+<link rel="icon" href="/static/favicon-32x32.png">
+<link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/tenerife/site/site.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+{{ c.header(menu, nav, url) }}
+<main id="main">
+<section class="hero-text {{ kind }}" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="col-text{% if kind == "notice" %} bar-under{% endif %}">
+{{ body }}
+    </div>
+  </div>
+</section>
+</main>
+{{ c.footer(footer, nav, url) }}
+<script src="/static/tenerife/site/site.js" defer></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-31",
+  "version": "2026-10-31-v2",
   "status": "PROPOSAL — ступени, рассрочка и дивиденд ждут ОК основателя (numbers.md, sources_v3.md)",
   "currency": "EUR",
   "share_m2": 1,
@@ -20,5 +20,13 @@
     { "id": "large",    "name": "Большой дом",  "min": 85, "max": 100, "count": 4 }
   ],
   "house_on_handover_eur_m2": { "min": 3800, "max": 4600 },
-  "rounding": { "money": "integer_eur_half_up", "percent": "1_decimal" }
+  "rounding": {
+    "rule": "ROUND_HALF_UP",
+    "note": "Одно правило везде: x,5 → вверх. Деньги — до целых евро, проценты — до 0,1, площадь середины типа — до целого м². Python: decimal ROUND_HALF_UP (copy_v3/make_numbers.py), JS: Math.floor(x + 0.5) для положительных, Intl roundingMode 'halfExpand'. Пример: 57 м² × 2 950 ÷ 12 = 14 012,5 → 14 013 €.",
+    "money": "integer_eur_half_up",
+    "percent": "1_decimal_half_up",
+    "type_midpoint_m2": "integer_half_up"
+  },
+  "type_click_sets": "midpoint",
+  "type_midpoints_m2": { "one_bed": 52, "two_bed": 73, "large": 93 }
 }

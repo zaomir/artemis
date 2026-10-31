@@ -49,7 +49,7 @@ FORBIDDEN = [
 CONTACT_EMAIL = "info@artemisresort.com"
 EMAIL_OFF_LINK = ('<!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a>'
                   '<!--/email_off-->')
-LEGAL_AND_PREVIEW = ["/tenerife-preview/", "/tenerife/impressum/", "/tenerife/privacy/"]
+LEGAL_AND_PREVIEW = ["/tenerife/impressum/", "/tenerife/privacy/"]  # /tenerife-preview/ is a 301 since T47
 
 
 # founder 31.10.2026: no public disclaimers on the live Tenerife pages
@@ -68,7 +68,9 @@ FORBIDDEN = [rx for rx in FORBIDDEN if rx not in V3_ALLOWED]
 class TenerifeSiteTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.saved = {k: os.environ.pop(k, None) for k in ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID")}
+        self.saved = {k: os.environ.pop(k, None) for k in ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID",
+                                                            "TENERIFE_WHATSAPP", "TENERIFE_INDEXING")}
+        os.environ["TENERIFE_INDEXING"] = "1"  # r4: indexable mode here; default noindex: test_tenerife_r4
         import app as artemis_app
         self.mod = importlib.reload(artemis_app)
         self.mod.DB = os.path.join(self.tmp.name, "leads.db")
@@ -76,6 +78,7 @@ class TenerifeSiteTest(unittest.TestCase):
 
     def tearDown(self):
         self.tmp.cleanup()
+        os.environ.pop("TENERIFE_INDEXING", None)
         for k, v in self.saved.items():
             if v is not None:
                 os.environ[k] = v
@@ -131,7 +134,7 @@ class TenerifeSiteTest(unittest.TestCase):
             self.assertTrue(hit(bad), bad)
 
     def test_no_live_disclaimers(self):
-        for url in list(SHIPPED.values()) + ["/tenerife-preview/", "/tenerife/impressum/",
+        for url in list(SHIPPED.values()) + ["/tenerife/impressum/",
                                              "/tenerife/privacy/"]:
             html = self.client.get(url).get_data(as_text=True)
             for rx in LIVE_DISCLAIMERS:
@@ -220,7 +223,8 @@ class TenerifeSiteTest(unittest.TestCase):
         # nginx CSP on /tenerife/: script-src 'self' (no 'unsafe-inline')
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
-            self.assertIsNone(re.search(r"<script(?![^>]*\ssrc=)[^>]*>", html), name)
+            # non-executable data blocks (FAQPage JSON-LD on /faq/) are not scripts for CSP
+            self.assertIsNone(re.search(r"<script(?![^>]*\ssrc=)(?! type=\"application/ld\+json\">)[^>]*>", html), name)
             self.assertNotRegex(html, r"\son[a-z]+=", name)
             self.assertNotIn("style=", html, name)
 
@@ -268,9 +272,10 @@ class TenerifeSiteTest(unittest.TestCase):
             # nginx CSP on /tenerife/ forbids inline style/script
             self.assertNotIn("<style", html, url)
             self.assertNotIn("style=", html, url)
-            self.assertIsNone(re.search(r"<script", html), url)
-            self.assertIn('<link rel="stylesheet" href="/static/tenerife/base.css">', html)
-            self.assertTrue((STATIC / "tenerife" / "base.css").is_file())
+            # QA T3-09: v2 layout (site.css, site.js for the menu); no inline script, no form
+            self.assertIsNone(re.search(r"<script(?![^>]*\ssrc=)", html), url)
+            self.assertIn('<link rel="stylesheet" href="/static/tenerife/site/site.css">', html)
+            self.assertNotIn("<form", html, url)
             for ref in re.findall(r'(?:href|src)="(/[^"#?]*)', html):
                 if ref.startswith("/static/"):
                     self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{url}: missing {ref}")
@@ -306,19 +311,21 @@ class TenerifeSiteTest(unittest.TestCase):
                     self.assertIsNone(re.search(pat, alt.group(1), re.I), f"{name}: alt {pat}")
 
     def test_images_responsive_webp_sized_lazy(self):
+        total = 0
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
             imgs = re.findall(r"<img[^>]+>", html)
-            self.assertTrue(imgs, name)
+            total += len(imgs)  # T47: one photo = one slot site-wide, so a page may have none
+            hero = '<div class="hero__media"><picture>' in html  # QA T3-11: a hero slot may have no photo
             for i, tag in enumerate(imgs):
                 self.assertRegex(tag, r'width="\d+" height="\d+"', f"{name}: no size {tag}")
-                if i == 0:
+                if i == 0 and hero:
                     self.assertIn('fetchpriority="high"', tag, name)
                     self.assertNotIn('loading="lazy"', tag, name)
                 else:
                     self.assertIn('loading="lazy"', tag, f"{name}: {tag}")
             self.assertEqual(len(re.findall(r'<source type="image/webp"', html)), len(imgs), name)
-            self.assertIn('<link rel="preload" as="image" type="image/webp" imagesrcset=', html, name)
+            self.assertEqual('<link rel="preload" as="image" type="image/webp" imagesrcset=' in html, hero, name)
             for srcset in re.findall(r'(?:imagesrcset|srcset)="([^"]+)"', html):
                 widths = []
                 for part in srcset.split(", "):
@@ -327,6 +334,7 @@ class TenerifeSiteTest(unittest.TestCase):
                     self.assertTrue(ref.endswith(".webp"), ref)
                     self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{name}: missing {ref}")
                 self.assertEqual(widths, ["640w", "800w", "1024w", "1600w"], name)
+        self.assertTrue(total, "no images on the site")
 
     def test_css_local_with_fonts(self):
         css = (STATIC / "tenerife/site/style.css").read_text(encoding="utf-8")
@@ -353,7 +361,8 @@ class TenerifeSiteTest(unittest.TestCase):
             "name": "Anna", "contact": "anna@example.de", "language": "ru", "consent": "1",
             "page": "/tenerife/proceso/"}, headers={"CF-Connecting-IP": "9.9.9.9"})
         self.assertEqual(r.status_code, 303)
-        self.assertTrue(r.headers["Location"].endswith("/tenerife/proceso/?ok=1#waitlist"))
+        # QA T3-05: no-JS thank-you page with the way back to the page the form was sent from
+        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2Fproceso%2F"))
         r = self.client.post("/api/tenerife/waitlist", data={
             "name": "Bob", "contact": "bob@example.de", "language": "ru", "consent": "1",
             "page": "//evil.example/x"}, headers={"CF-Connecting-IP": "9.9.9.8"})
@@ -365,8 +374,9 @@ class TenerifeSiteTest(unittest.TestCase):
             html = self.client.get(f"/{lang}/").get_data(as_text=True)
             self.assertNotIn("/tenerife/", html, lang)
 
-    def test_preview_still_there(self):
-        self.assertEqual(self.client.get("/tenerife-preview/").status_code, 200)
+    def test_preview_still_there(self):  # T47 (31.10.2026): the old one-pager is retired -> 301 to /tenerife/
+        r = self.client.get("/tenerife-preview/")
+        self.assertEqual((r.status_code, r.headers["Location"].replace("http://localhost", "")), (301, "/tenerife/"))
 
 
 if __name__ == "__main__":

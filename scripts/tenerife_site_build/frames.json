@@ -1,15 +1,5 @@
 {
- "_comment": "RU v3: [КАДР Fxx] -> existing Canary Stone lock photos in app/static/tenerife/site/img (no Leonardo F01-F25 renders in the repo yet). prefer = theme match from PLAN §8; build_v3.py picks the first one not yet used on the page, then falls back to 'fallback' order. alt = image description (UI text, not copy).",
- "images": {
-  "modern-low-6e9d80": "Невысокие дома террасами на склоне над океаном",
-  "entrance-o-9abe9d": "Вход в комплекс: каменные пилоны и деревянные ворота",
-  "communal-s-af42cd": "Общий бассейн и дома Canary Stone",
-  "private-te-6016b5": "Терраса со стеклянным ограждением и видом на океан",
-  "interior-o-74f891": "Спальня с окном в пол и выходом во внутренний дворик",
-  "green-hill-3f3856": "Дома среди зелени на склоне над океаном",
-  "golden-hou-d4cc25": "Террасы домов на склоне в вечернем свете"
- },
- "fallback": ["modern-low-6e9d80", "green-hill-3f3856", "golden-hou-d4cc25", "private-te-6016b5", "communal-s-af42cd", "entrance-o-9abe9d", "interior-o-74f891"],
+ "_comment": "RU v3 photos until the Leonardo F01–F25 frames arrive (designer r2, 31.10.2026): a slot [КАДР Fxx] gets the first photo of its 'prefer' list (theme match, PLAN §8) not used yet on the page — hero included; every photo at most ONCE per page. No suitable photo (empty list: F13, F18, F19, F20) or all already used -> no image: the text block gets the 6 px basalt bar (--plinth, --cs-basalt). Alt texts: alts.json. focal = object-position of each photo in the mobile 4:5 hero crop (CSS class fp-<file>, CSP forbids style=). QA T3-11: F14 (котлован), F15 (каркас), F16 (кровля в монтаже) are construction stages; no photo shows one -> text block + basalt bar (decision 1). F17 (отделка): designer r3 (31.10.2026) — a finished-house photo is misleading, so F17 never gets a photo: on construccion it is a text block + basalt bar, on other pages the slot is hidden when the page already shows another photo (else text block + bar); build_v3.py F17_RULE.",
  "prefer": {
   "F01": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"],
   "F02": ["entrance-o-9abe9d"],
@@ -23,17 +13,26 @@
   "F10": ["interior-o-74f891", "private-te-6016b5"],
   "F11": ["green-hill-3f3856", "modern-low-6e9d80", "golden-hou-d4cc25"],
   "F12": ["entrance-o-9abe9d", "communal-s-af42cd"],
-  "F13": ["entrance-o-9abe9d", "interior-o-74f891"],
-  "F14": ["green-hill-3f3856", "golden-hou-d4cc25"],
-  "F15": ["golden-hou-d4cc25", "modern-low-6e9d80"],
-  "F16": ["modern-low-6e9d80", "golden-hou-d4cc25"],
-  "F17": ["golden-hou-d4cc25", "entrance-o-9abe9d", "private-te-6016b5"],
-  "F18": ["green-hill-3f3856", "entrance-o-9abe9d"],
-  "F19": ["modern-low-6e9d80", "golden-hou-d4cc25"],
-  "F20": ["interior-o-74f891", "private-te-6016b5"],
+  "F13": [],
+  "F14": [],
+  "F15": [],
+  "F16": [],
+  "F17": [],
+  "F18": [],
+  "F19": [],
+  "F20": [],
   "F21": ["green-hill-3f3856", "modern-low-6e9d80"],
   "F22": ["golden-hou-d4cc25", "communal-s-af42cd"],
   "F23": ["green-hill-3f3856", "golden-hou-d4cc25"],
   "F24": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"]
+ },
+ "focal": {
+  "modern-low-6e9d80": "35% 50%",
+  "entrance-o-9abe9d": "50% 60%",
+  "communal-s-af42cd": "40% 50%",
+  "private-te-6016b5": "55% 50%",
+  "interior-o-74f891": "65% 55%",
+  "green-hill-3f3856": "68% 50%",
+  "golden-hou-d4cc25": "40% 50%"
  }
 }

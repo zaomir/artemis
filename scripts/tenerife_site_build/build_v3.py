@@ -15,6 +15,7 @@ reaches the output. build.py (old pages) and email_off.py are not touched; wrap(
 import hashlib
 import html
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -33,7 +34,11 @@ IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
 MODEL = STATIC / "tenerife" / "site" / "model.json"
 BASE_URL = "https://artemisresort.com"
-COPY_SHA256 = "c60ce13336cabf1e34f88b95bf068e5646072e1da15c696f2b683d97f8303725"
+# Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
+# Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
+# Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
+COPY_SHA256_DEFAULT = "d50ee7e4962a7fbbceec800dc7e9fcbc2c922dab79fb370ed0de4114c9f6be79"
+COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
 # copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Слаг»
@@ -42,6 +47,20 @@ PAGES = [("01_glavnaya.md", "index"), ("02_sever.md", "norte"), ("03_rezidencii.
          ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"), ("09_sdelka.md", "proceso"),
          ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris")]
 FOOTER = "14_podval.md"
+WA_TOKEN = "WhatsApp: {номер из TENERIFE_WHATSAPP}"  # 14_podval.md «Контакты.»
+WA_RX = re.compile(r"\+[1-9]\d{7,14}")  # E.164, same rule as app/tenerife.py whatsapp_number()
+# phone-like literal (not a CSS unicode-range U+…): + or 00, then ≥ 8 digits (spaces . - ( ) nbsp between)
+PHONE_RX = re.compile(r"(?:(?<![Uu])\+|\b00)\d(?:[\s\u00a0.()\-]*\d){7,}")
+
+
+def check_whatsapp_env():
+    """Kimi r16: the build fails when TENERIFE_WHATSAPP is empty or invalid. The value is never printed and never
+    written into the output (runtime slot, see parse_footer)."""
+    v = os.environ.get("TENERIFE_WHATSAPP", "").strip()
+    if not v:
+        raise BuildError("TENERIFE_WHATSAPP is empty: set it (E.164, e.g. +440000000000) before building")
+    if not WA_RX.fullmatch(v):
+        raise BuildError("TENERIFE_WHATSAPP is invalid (expected E.164: + then 8–15 digits); value not shown")
 # footer «Страницы.» names -> output name (names are the copy's; order is the copy's)
 NAV = {"Главная": "index", "Север": "norte", "Резиденции": "producto", "Акции": "acciones",
        "Калькулятор": "calculadora", "Аренда": "alquiler", "Энергия": "energia", "Стройка": "construccion",
@@ -54,6 +73,9 @@ FORM_HOST_PAGE = "/tenerife/proceso/"
 LONG_PAGES = {"simon", "boris"}
 SHORT_HERO = {"calculadora", "faq"}
 # DESIGN.md C1: 7 links + «Ещё»; labels are the footer's («Страницы.»)
+# Kimi r18: footer items for pages that are not built yet. Shown only once the page is in PAGES (page 18
+# «Инвесторам» -> /tenerife/inversores/ is a draft, not built), so the footer never links to a 404.
+NAV_FUTURE = {"Инвесторам": "inversores"}
 NAV_PRIMARY = ["norte", "producto", "acciones", "calculadora", "construccion", "proceso", "faq"]
 NAV_MORE = ["alquiler", "energia", "mercado", "simon", "boris"]
 
@@ -76,8 +98,15 @@ class BuildError(Exception):
 
 
 # ---------------------------------------------------------------- copy + figures
+def copy_files():
+    """The copy the build actually uses: the 13 pages + footer, legal, form. Anything else in copy_v3 (e.g. Kimi's
+    draft 18_investoram.md) is not built and not hashed."""
+    names = sorted({f for f, _ in PAGES} | {FOOTER, "15_impressum.md", "16_privacy.md", FORMA})
+    return [COPY / n for n in names]
+
+
 def combined_sha():
-    files = sorted(COPY.glob("[01][0-9]_*.md"))
+    files = copy_files()
     s = "\n---\n\n".join(f.read_text(encoding="utf-8").rstrip("\n") + "\n" for f in files)
     return hashlib.sha256(s.encode()).hexdigest()
 
@@ -229,19 +258,91 @@ def image_variant(stem):
 
 
 def assign_frames(frame_ids, frames_cfg):
-    """Per page: each F-id gets its first preferred photo not used yet on this page."""
+    """Per page (designer r2): each F-id gets its first preferred photo not used yet on this page, hero
+    included — a photo at most once per page. No suitable free photo -> None (text block + basalt bar)."""
     used, out = set(), {}
     for fid in frame_ids:
-        pick = None
-        for stem in frames_cfg["prefer"].get(fid, []) + frames_cfg["fallback"]:
-            if stem not in used:
-                pick = stem
-                break
-        if pick is None:
-            raise BuildError(f"no free photo for {fid}")
-        used.add(pick)
+        if fid in out:
+            raise BuildError(f"{fid} twice on one page")
+        pick = next((stem for stem in frames_cfg["prefer"].get(fid, []) if stem not in used), None)
+        if pick is not None:
+            used.add(pick)
         out[fid] = pick
     return out
+
+
+def assign_site_frames(page_frames, frames_cfg):
+    """Founder / designer T47 (31.10.2026): one photo fills ONE slot on the whole site. Pass 1 gives each page's first
+    slot (the hero, or the first frame of a text hero) its first preferred photo still free, pages in PAGES order;
+    pass 2 fills the remaining slots the same way. No free photo -> None (text block + basalt bar, DESIGN.md)."""
+    used, out = set(), {}
+    for name, fids in page_frames.items():
+        if len(set(fids)) != len(fids):
+            raise BuildError(f"{name}: a frame id twice on one page")
+        out[name] = dict.fromkeys(fids)
+    for rest in (False, True):
+        for name, fids in page_frames.items():
+            for fid in (fids[1:] if rest else fids[:1]):
+                pick = next((st for st in frames_cfg["prefer"].get(fid, []) if st not in used), None)
+                if pick is not None:
+                    used.add(pick)
+                out[name][fid] = pick
+    return out
+
+
+DHASH_MAX = 10  # Hamming distance (of 64 bits) at or below which two pictures count as the same photo
+
+
+def dhash(path):
+    """64-bit difference hash (9x8 grey, left < right). Needs Pillow; None without it."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return None
+    with Image.open(path) as im:
+        g = im.convert("L").resize((9, 8), Image.Resampling.LANCZOS)
+        px = list(g.tobytes())
+    return sum(1 << i for i, (a, b) in enumerate((px[r * 9 + c], px[r * 9 + c + 1])
+                                                  for r in range(8) for c in range(8)) if a < b)
+
+
+IMG_SRC_RX = re.compile(r'<img [^>]*src="/static/tenerife/site/img/([^"/]+)\.jpg"')
+
+
+def check_unique_images(outputs, img_dir=None):
+    """Fail the build when any picture appears in two slots anywhere on the site: same file, or a different file
+    whose dHash is within DHASH_MAX (a re-export / crop of the same photo). og:image is not a slot."""
+    img_dir = Path(img_dir or IMG)
+    slots = [(name, stem) for name, out in sorted(outputs.items()) for stem in IMG_SRC_RX.findall(out)]
+    seen = {}
+    for name, stem in slots:
+        if stem in seen:
+            raise BuildError(f"image {stem} repeats: {seen[stem]} and {name} (one photo = one slot site-wide)")
+        seen[stem] = name
+    hashes = {}
+    for stem in seen:
+        h = dhash(img_dir / f"{stem}.jpg")
+        if h is None:  # no Pillow: the exact checks above and below still run
+            print("note: Pillow missing, perceptual image check skipped (file name + sha256 only)")
+            h = hashlib.sha256((img_dir / f"{stem}.jpg").read_bytes()).hexdigest()
+        for other, oh in hashes.items():
+            same = (h == oh) if isinstance(h, str) else bin(h ^ oh).count("1") <= DHASH_MAX
+            if same:
+                raise BuildError(f"images {other} ({seen[other]}) and {stem} ({seen[stem]}) are the same picture")
+        hashes[stem] = h
+    return len(slots)
+
+
+def slot_alt(alts, page, fid, stem):
+    """alts.json: per-slot override {file, alt} (must still be that slot's photo) or the photo's default."""
+    o = alts["slots"].get(f"{page}/{fid}")
+    if o is not None:
+        if o.get("file") != stem:
+            raise BuildError(f"alts.json: {page}/{fid} is for {o.get('file')}, the slot now shows {stem}")
+        return o["alt"]
+    if stem not in alts["images"]:
+        raise BuildError(f"alts.json: no alt for {stem}")
+    return alts["images"][stem]
 
 
 # ---------------------------------------------------------------- page structure
@@ -271,8 +372,12 @@ def facts_items(text):
     return out
 
 
+HEAD_NUM_SPACE_RX = re.compile(r"(?<=\d) (?=\d{3}(?!\d))|(?<=\d) (?=[€%])")
+
+
 def table_item(b):
-    head = [inline(x) for x in b["head"]]
+    # T47: column heads may wrap now; NBSP keeps «2 950 €» in one piece (same characters, typography only)
+    head = [HEAD_NUM_SPACE_RX.sub(NBSP, inline(x)) for x in b["head"]]
     rows = [[inline(x) for x in r] for r in b["rows"]]
     ncol = len(head)
     num = [j > 0 and all(NUM_CELL_RX.match(r[j]) for r in rows) for j in range(ncol)]
@@ -301,15 +406,141 @@ def body_item(b):
     raise BuildError(f"unexpected block {b['kind']}")
 
 
-def structure(blocks, frames, frames_cfg, name):
+# ---------------------------------------------------------------- DESIGN.md §5 components (QA T3-07)
+# Every component below only re-presents the copy's own words (or model.json, which the copy's figures come from);
+# nothing is added or reworded. Sections are matched by their ### title.
+STEP_P_RX = re.compile(r"^<strong>(\d+)\. ([^<]+)</strong>\s+(.+)$")   # 09 «Шесть шагов»: **1. Запись.** текст
+C7_SENTENCE_TITLES = {"Порядок входа", "Как устроен вход", "Как это работает"}  # one paragraph -> one step per sentence
+SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[А-ЯЁA-Z])")
+MINI_LADDER = {("index", "Как это работает"), ("construccion", "Девять стадий и ступени цены"),
+               ("mercado", "Ступени Artemis рядом с рынком")}          # C8 mini (01, 08, 12)
+# C10 log: OFF until copy_v3 has confirmed entries «дата → стадия → что сделано» (DESIGN C10: concrete dates).
+# The sections keep their copy (text + planned-dates table). To enable: put
+# {("index", "Стройка"), ("construccion", "Журнал стройки")} back.
+LOG_SECTIONS = set()  # C10
+# C11 OFF (designer r3 item 4, 31.10.2026): kept only if every name, role and photo has a documented source (who
+# confirmed it, when) in the repo, /workspace/web-designer/tenerife/ or FOUNDER_SITE_REQUIREMENTS.md. Names: founder
+# t266u 31.10 00:32 (FOUNDER:54, :172). Roles: only [КАНОН] (copy_v3/sources_v3.md:17-19), no who/when -> the whole
+# section is not rendered (no empty section). Back: TEAM_SECTIONS = {("index", "Команда и компания")}, HIDDEN = set().
+TEAM_SECTIONS = set()                                                       # C11
+HIDDEN_SECTIONS = {("index", "Команда и компания")}
+PEOPLE = {"Simon Subic": "/tenerife/simon/", "Boris Ribaut": "/tenerife/boris/"}
+CALC_SHORT = {("acciones", "Пример на 72 метрах")}                       # C9 short (04)
+
+
+def plain(fragment):
+    return re.sub(r"<[^>]+>", "", fragment)
+
+
+def c7_steps(body, title):
+    """C7 from paragraphs: numbered bold leads (09) or the sentences of a single «Порядок входа» paragraph."""
+    m = [STEP_P_RX.match(i["html"]) if i["kind"] == "p" else None for i in body]
+    if len(body) >= 3 and all(m) and [int(x.group(1)) for x in m] == list(range(1, len(m) + 1)):
+        return [{"kind": "steps", "items": [{"lead": x.group(2), "rest": x.group(3), "n_copy": True} for x in m]}]
+    if title in C7_SENTENCE_TITLES and len(body) == 1 and body[0]["kind"] == "p":
+        parts = SENTENCE_RX.split(body[0]["html"])
+        if 3 <= len(parts) <= 6 and all("<" not in x or x.count("<") % 2 == 0 for x in parts):
+            return [{"kind": "steps", "items": [{"lead": None, "rest": x} for x in parts]}]
+    return body
+
+
+def c10_log(body):
+    out = []
+    for i in body:
+        if i["kind"] == "table" and len(i["head"]) in (2, 3):
+            out.append({"kind": "log", "head": i["plain_head"], "rows": i["rows"]})
+        else:
+            out.append(i)
+    if not any(i["kind"] == "log" for i in out):
+        raise BuildError("C10: no table to show as the construction log")
+    return out
+
+
+def c11_people(body):
+    out = []
+    for i in body:
+        if i["kind"] == "ledger":     # «**Simon Subic**, девелопер — …» arrives as lead + rest
+            ms = [re.match(r"^<strong>([^<]+)</strong>, (.+)$", f"<strong>{plain(x['lead'])}</strong>{x['rest']}")
+                  for x in i["items"]]
+        else:
+            items = i.get("items", []) if i["kind"] == "ul" else []
+            ms = [re.match(r"^<strong>([^<]+)</strong>, (.+)$", x) for x in items]
+        if ms and all(m and m.group(1) in PEOPLE for m in ms):
+            out.append({"kind": "people", "items": [{"name": m.group(1), "href": PEOPLE[m.group(1)], "role": m.group(2)}
+                                                    for m in ms]})
+        else:
+            out.append(i)
+    if not any(i["kind"] == "people" for i in out):
+        raise BuildError("C11: no team list")
+    return out
+
+
+SHORT_RX = re.compile(r"^<strong>([^<]+):</strong> [\d\u00a0 ]+\u00a0?€ (.+?) [\d\u00a0 ]+\u00a0?€ (.+)\.$")
+
+
+def short_labels(page):
+    """C9 short (04): words of the section's own sentence «Покупка из очереди: 212 400 € сразу или 17 700 € в месяц
+    двенадцать месяцев.» — the two amounts become the computed values (no word from another page)."""
+    s = next((x for x in page["sections"] if x["calc_short"]), None)
+    if s is None:
+        return None
+    for i in s["body"]:
+        m = SHORT_RX.match(i["html"]) if i["kind"] == "p" else None
+        if m:
+            return {"lead": m.group(1), "mid": m.group(2), "tail": m.group(3)}
+    raise BuildError("C9 short: «Покупка из очереди: … € сразу или … € в месяц …» not found")
+
+
+def mini_ladder(model):
+    """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it."""
+    def eur(v):
+        return fmt_int(v) + NBSP + "€"
+    return [{"name": st["name"], "price": eur(st["price_eur_m2"]), "current": bool(st.get("current"))}
+            for st in model["steps"]]
+
+
+# Designer r3 (31.10.2026): F17 («отделка») never shows a finished-house photo. On construccion the slot is a
+# text block with the basalt bar (like F14-F16); on other pages it is hidden when the page already shows another
+# photo, otherwise it renders the same text block + bar.
+NO_PHOTO_SLOTS = {"F17"}
+NO_PHOTO_BAR_PAGES = {"construccion"}
+
+
+def hide_no_photo_slots(frames, name):
+    """Slots of NO_PHOTO_SLOTS to drop entirely on this page (no image, no bar)."""
+    if name in NO_PHOTO_BAR_PAGES or not any(stem for stem in frames.values()):
+        return set()
+    return {f for f in NO_PHOTO_SLOTS if f in frames}
+
+
+def drop_hidden_sections(blocks, name):
+    """Remove a ### section of HIDDEN_SECTIONS (heading .. next heading / --- / end) before frames are assigned."""
+    out, skip = [], False
+    for b in blocks:
+        if b["kind"] == "h":
+            skip = (name, plain(inline(b["text"]))) in HIDDEN_SECTIONS
+        elif b["kind"] == "hr":
+            skip = False
+        if not skip:
+            out.append(b)
+    return out
+
+
+def structure(blocks, frames, alts, name, model=None):
     """Group blocks into hero / sections / cta and choose the DESIGN.md component per section.
-    Text order inside a section never changes; pictures ([КАДР]) of a section are placed after its text."""
-    alt = frames_cfg["images"]
+    Text order inside a section never changes; pictures ([КАДР]) of a section are placed after its text.
+    A slot without a photo (frames[fid] is None) renders no image: its text block gets the basalt bar."""
     long_page = name in LONG_PAGES
+    for fid in NO_PHOTO_SLOTS:
+        if frames.get(fid) is not None:
+            raise BuildError(f"{fid} must not get a photo (designer r3)")
+    hidden = hide_no_photo_slots(frames, name)
 
     def img(fid, role):
+        if frames[fid] is None:
+            return None
         d = dict(image_variant(frames[fid]))
-        d.update(alt=alt[frames[fid]], frame=fid, sizes=SIZES[role])
+        d.update(alt=html.escape(slot_alt(alts, name, fid, frames[fid]), quote=True), frame=fid, sizes=SIZES[role])
         return d
 
     h1 = [b for b in blocks if b["kind"] == "h" and b["level"] == 1]
@@ -322,10 +553,10 @@ def structure(blocks, frames, frames_cfg, name):
     j = next(i for i, b in enumerate(rest) if b["kind"] == "frame")
     if any(b["kind"] != "p" for b in rest[:j]):
         raise BuildError("hero intro must be paragraphs")
+    hero_img = img(rest[j]["id"], "long" if long_page else "hero")
     hero = {"h1": inline(h1[0]["text"]), "h1_text": h1[0]["text"],
-            "intro": [inline(b["text"]) for b in rest[:j]],
-            "img": img(rest[j]["id"], "long" if long_page else "hero"),
-            "kind": "text" if long_page else ("short" if name in SHORT_HERO else "full")}
+            "intro": [inline(b["text"]) for b in rest[:j]], "img": hero_img, "bar": hero_img is None,
+            "kind": "text" if long_page or hero_img is None else ("short" if name in SHORT_HERO else "full")}
     rest = rest[j + 1:]
     facts = None
     if rest and is_facts(rest[0]):
@@ -356,10 +587,22 @@ def structure(blocks, frames, frames_cfg, name):
             and not all(i["kind"] == "p" and QA_RX.match(i["html"]) for i in last["body"]):
         cta_section = sections.pop()
         cta_section["id"] = f"s{len(sections) + 1}"
+    for s in sections:
+        key = (name, plain(s["title"]))
+        s["body"] = c7_steps(s["body"], key[1])
+        if key in LOG_SECTIONS:
+            s["body"] = c10_log(s["body"])
+        if key in TEAM_SECTIONS:
+            s["body"] = c11_people(s["body"])
+        s["mini_ladder"] = mini_ladder(model) if key in MINI_LADDER and model else None
+        s["calc_short"] = key in CALC_SHORT
     split_n = 0
     for n, s in enumerate(sections, 1):
         s["id"] = f"s{n}"
         s["rev"], s["qa"] = False, []
+        s["frames"] = [f for f in s["frames"] if f not in hidden]
+        s["bar"] = bool(s["frames"]) and all(frames[f] is None for f in s["frames"])
+        s["frames"] = [f for f in s["frames"] if frames[f] is not None]
         body = s["body"]
         qa = [QA_RX.match(i["html"]) if i["kind"] == "p" else None for i in body]
         s["ladder"] = next((ladder_from(i) for i in body if i["kind"] == "table" and ladder_from(i)), None)
@@ -368,7 +611,7 @@ def structure(blocks, frames, frames_cfg, name):
             s["qa"] = [{"q": m.group(1), "a": m.group(2)} for m in qa]
         elif long_page:
             s["layout"] = "long"
-        elif s["ladder"] or any(i["kind"] == "steps" for i in body):
+        elif s["ladder"] or any(i["kind"] in ("steps", "log") for i in body):
             s["layout"] = "stack"
         elif len(s["frames"]) == 1 and not any(i["kind"] == "table" for i in body):
             s["layout"] = "split"
@@ -398,11 +641,25 @@ def parse_footer(md, fmap, rx):
         label, rest = lab.group(1), lab.group(2)
         if label == "Страницы.":
             names = rest.split(" · ")
+            built = {n for _f, n in PAGES}
+            out["hidden"] = [x for x in names if x in NAV_FUTURE and NAV_FUTURE[x] not in built]
+            names = [x for x in names if x not in out["hidden"]]
             if set(names) != set(NAV) or len(names) != len(NAV):
                 raise BuildError(f"footer pages differ from NAV: {names}")
             out["pages"] = names
         elif label == "Контакты.":
-            out["contacts"] = rest.split(" · ")
+            # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}». The token becomes the WhatsApp slot; app/tenerife.py
+            # fills it with the TENERIFE_WHATSAPP value on every request, so the number never lands in the built
+            # files / git. A number written into the copy, or any other {…}, fails the build.
+            contacts = []
+            for c in rest.split(" · "):
+                if c == WA_TOKEN:
+                    contacts.append("whatsapp")
+                elif "{" in c or "}" in c or re.search(r"\+?\d[\d ]{7,}", c):
+                    raise BuildError(f"footer «Контакты»: unexpected token or hard-coded number: {c[:12]}…")
+                else:
+                    contacts.append(c)
+            out["contacts"] = contacts
         elif label == "Компания.":
             out["company"] = inline(rest)
         elif label == "Документы.":
@@ -412,6 +669,31 @@ def parse_footer(md, fmap, rx):
         else:
             raise BuildError(f"unknown footer line {p[:40]}")
     return out
+
+
+# ---------------------------------------------------------------- form messages (copy_v3/17_forma.md, Kimi r4)
+FORMA = "17_forma.md"
+# label in 17_forma.md «Сообщения формы» -> key (data-msg-<key> on the form; app/tenerife.py FORM_MSG)
+FORM_MESSAGES = {
+    "Кнопка во время отправки.": "sending", "Успех, заголовок.": "ok-title", "Успех, что дальше.": "ok-next",
+    "Ошибка сервера.": "server", "Нет связи с сервером.": "network", "Слишком много заявок.": "rate",
+    "Поле «Имя» пустое.": "name", "Поле «Контакт» пустое или короче 5 символов.": "contact",
+    "Язык не выбран.": "language", "Нет согласия.": "consent",
+}
+
+
+def form_messages(md=None):
+    """{key: text} from the «## Сообщения формы» section of 17_forma.md, verbatim; every label required."""
+    md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
+    sec = re.search(r"^## Сообщения формы\n(.*?)(?=^## |\Z)", md, re.S | re.M)
+    if not sec:
+        raise BuildError(f"{FORMA}: no «Сообщения формы» section")
+    found = dict(re.findall(r"^\*\*(.+?)\*\* (.+)$", sec.group(1), re.M))
+    missing = [lbl for lbl in FORM_MESSAGES if lbl not in found]
+    if missing or len(found) != len(FORM_MESSAGES):
+        unknown = sorted(set(found) - set(FORM_MESSAGES))
+        raise BuildError(f"{FORMA}: form messages missing {missing} / unknown {unknown}")
+    return {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
 
 
 # ---------------------------------------------------------------- calculator defaults (server-rendered, no CLS)
@@ -438,7 +720,8 @@ def calc_view(model):
     total = m2 * cur["price_eur_m2"]
     d = model["dividend_eur_per_share_year"]
     months = model["installments"]["months"]
-    eur = lambda v: fmt_int(v) + NBSP + "€"
+    def eur(v):
+        return fmt_int(v) + NBSP + "€"
     island = {"steps": [{k: st[k] for k in ("id", "price_eur_m2", "entry") if k in st}
                         | ({"current": True} if st.get("current") else {}) for st in steps],
               "installments": {"months": months}, "dividend_eur_per_share_year": d,
@@ -456,10 +739,24 @@ def calc_view(model):
 DESIGN = HERE / "design"   # verbatim copies of web-designer/tenerife/design/{fonts.css,tokens.css}
 
 
-def site_css(model):
-    """site.css = designer fonts.css + tokens.css (both as is) + components (site.src.css) + C8 ladder."""
+def focal_css(frames_cfg):
+    """Focal point of each photo in the mobile 4:5 hero crop (frames.json focal); classes: CSP forbids style=."""
+    rx = re.compile(r"^\d{1,3}% \d{1,3}%$")
+    rules = []
+    for stem, pos in sorted(frames_cfg["focal"].items()):
+        if not rx.match(pos) or not (STATIC / "tenerife" / "site" / "img" / f"{stem}.jpg").exists():
+            raise BuildError(f"frames.json focal: bad entry {stem}: {pos}")
+        rules.append(f"  .hero__media .fp-{stem}{{object-position:{pos}}}")
+    return ("/* mobile 4:5 hero crop focal points: generated by build_v3.py from frames.json */\n"
+            "@media (max-width:767px){\n" + "\n".join(rules) + "\n}\n")
+
+
+def site_css(model, frames_cfg=None):
+    """site.css = designer fonts.css + tokens.css (both as is) + components (site.src.css) + C8 ladder
+    + photo focal points."""
+    frames_cfg = frames_cfg or json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     parts = [(DESIGN / "fonts.css").read_text(encoding="utf-8"), (DESIGN / "tokens.css").read_text(encoding="utf-8"),
-             (HERE / "site.src.css").read_text(encoding="utf-8"), ladder_css(model)]
+             (HERE / "site.src.css").read_text(encoding="utf-8"), ladder_css(model), focal_css(frames_cfg)]
     return "\n".join(parts)
 
 
@@ -489,15 +786,86 @@ def ladder_css(model):
     return "/* C8 ladder: generated by build_v3.py from model.json */\n" + "\n".join(rules) + "\n"
 
 
+# ---------------------------------------------------------------- FAQPage JSON-LD (designer r2, item 5)
+FAQ_LD_PAGE = "faq"
+
+
+def visible_text(fragment):
+    """What a reader sees of an HTML fragment: tags dropped, entities decoded, whitespace collapsed."""
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", "", fragment)).split())
+
+
+def faq_ld(page):
+    """FAQPage built only from the visible questions/answers (<summary> / <p> of the C12 sections), word
+    for word; '<' escaped so the data block can never close the <script>."""
+    qa = [x for s in page["sections"] if s["layout"] == "faq" for x in s["qa"]]
+    if not qa:
+        raise BuildError("faq: no visible questions for FAQPage")
+    data = {"@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": [{"@type": "Question", "name": visible_text(x["q"]),
+                            "acceptedAnswer": {"@type": "Answer", "text": visible_text(x["a"])}} for x in qa]}
+    return ld_json(data)
+
+
+def ld_json(data):
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c").replace(">", "\\u003e")
+
+
+COMPANY_RX = re.compile(r"^(?P<name>[A-Z][A-Z ]+ LTD)\. .*Companies House № (?P<num>\d{8})\. Юридический адрес: "
+                        r"(?P<street>[^,]+, [^,]+), (?P<city>[^,]+), (?P<zip>[A-Z0-9]{2,4} [A-Z0-9]{3}), "
+                        r"(?P<country>[^.]+)\.")
+
+
+def org_ld(footer):
+    """QA T3-08: Organization only from the copy (14 «Компания.»). No telephone: the number is not confirmed yet
+    (T3-01); no e-mail: addresses on the site stay inside email_off (Cloudflare obfuscation), not in data blocks."""
+    m = COMPANY_RX.match(plain(footer["company"]))
+    if not m:
+        raise BuildError("footer «Компания.»: Organization facts not found")
+    return ld_json({"@context": "https://schema.org", "@type": "Organization",
+                    "name": m["name"], "legalName": m["name"],
+                    "url": BASE_URL + "/tenerife/",
+                    "identifier": {"@type": "PropertyValue", "propertyID": "Companies House", "value": m["num"]},
+                    "address": {"@type": "PostalAddress", "streetAddress": m["street"], "addressLocality": m["city"],
+                                "postalCode": m["zip"], "addressCountry": m["country"]}})
+
+
+def breadcrumb_ld(nav, name):
+    """QA T3-08: Главная → page; names = the copy's «Страницы.» labels."""
+    by = {x["name"]: x for x in nav}
+    items = [by["index"]] + ([by[name]] if name != "index" else [])
+    return ld_json({"@context": "https://schema.org", "@type": "BreadcrumbList",
+                    "itemListElement": [{"@type": "ListItem", "position": i, "name": html.unescape(x["label"]),
+                                         "item": BASE_URL + x["url"]} for i, x in enumerate(items, 1)]})
+
+
 # ---------------------------------------------------------------- checks
 ALLOWED_COMMENTS = ("<!--email_off-->", "<!--/email_off-->")
 
 
+LD_RX = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+
+
 def check_output(name, out):
     errs = []
+    for ld in LD_RX.findall(out):           # JSON-LD data block: must parse; then skipped by the text checks
+        try:
+            json.loads(ld)
+        except ValueError:
+            errs.append(f"{name}: invalid JSON-LD")
+    out = LD_RX.sub('<script type="application/ld+json"></script>', out)
     for bad in ("[КАДР", "{{", "{%", "%}", "}}", "**", "Кнопка:"):
         if bad in out:
             errs.append(f"{name}: «{bad}» in output")
+    # Kimi r16: no copy token may survive, not even a lone brace (the calculator's JSON model is a data block)
+    text = re.sub(r'<script type="application/json" id="cs-model">.*?</script>', "", out, flags=re.S)
+    if "{" in text or "}" in text:
+        errs.append(f"{name}: «{{» or «}}» in output")
+    if "TENERIFE_WHATSAPP" in out:
+        errs.append(f"{name}: «TENERIFE_WHATSAPP» in output")
+    # QA r16: no phone number may be built into a page; the only one is TENERIFE_WHATSAPP, added at runtime
+    if PHONE_RX.search(re.sub(r"<[^>]+>", " ", text)) or re.search(r'href="(tel:|https://wa\.me/)', out):
+        errs.append(f"{name}: phone-like literal in output (contact numbers come only from TENERIFE_WHATSAPP)")
     for c in re.findall(r"<!--.*?-->", out, re.S):
         if c not in ALLOWED_COMMENTS:
             errs.append(f"{name}: HTML comment in output: {c[:60]}")
@@ -508,23 +876,29 @@ def check_output(name, out):
     n_cta = len(re.findall(r'class="[^"]*\bcta-primary\b', out))
     if n_cta != 1:
         errs.append(f"{name}: {n_cta} .cta-primary")
-    if re.search(r'<script(?![^>]*\ssrc=)(?! type="application/json" id="cs-model")[^>]*>', out) or re.search(r"\son[a-z]+=", out) or "style=" in out:
+    inline_script = (r'<script(?![^>]*\ssrc=)(?! type="application/json" id="cs-model")'
+                     r'(?! type="application/ld\+json">)[^>]*>')
+    if re.search(inline_script, out) or re.search(r"\son[a-z]+=", out) or "style=" in out:
         errs.append(f"{name}: inline script/style (CSP)")
     if errs:
         raise BuildError("\n".join(errs))
 
 
 # ---------------------------------------------------------------- main
-def build(model_path=MODEL, out_dir=SITE, write=True):
+def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
+    check_whatsapp_env()
     if combined_sha() != COPY_SHA256:
         raise BuildError(f"copy_v3 sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
     model = load_model(model_path)
     fmap = figure_map(model)
     rx = figure_regex(fmap)
     frames_cfg = json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
+    alts = json.loads(Path(alts_path or HERE / "alts.json").read_text(encoding="utf-8"))
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=False, undefined=StrictUndefined,
                       trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
     footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"), fmap, rx)
+    # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
+    env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
         md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
@@ -541,11 +915,13 @@ def build(model_path=MODEL, out_dir=SITE, write=True):
     menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE]}
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
+    pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
+    site_frames = assign_site_frames({n: [b["id"] for b in bl if b["kind"] == "frame"] for n, bl in pblocks.items()},
+                                     frames_cfg)
     for fname, name in PAGES:
-        meta, blocks = metas[name], parsed[name]
-        frame_ids = [b["id"] for b in blocks if b["kind"] == "frame"]
-        frames = assign_frames(frame_ids, frames_cfg)
-        page = structure(blocks, frames, frames_cfg, name)
+        meta, blocks = metas[name], pblocks[name]
+        frames = site_frames[name]
+        page = structure(blocks, frames, alts, name, model)
         url = slugs[name]
         out = tpl.render(
             name=name, url=url, canonical=BASE_URL + url,
@@ -556,18 +932,74 @@ def build(model_path=MODEL, out_dir=SITE, write=True):
             nav=nav, menu=menu, footer=footer, page=page,
             calc=calc_view(model) if name == CALC_PAGE else None,
             calc_labels=calc_labels(page) if name == CALC_PAGE else None,
+            lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
+                             org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
+            calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
+            calc_short_labels=short_labels(page),
         )
         out = wrap(out)
         check_output(name, out)
         outputs[name] = out
-        report[name] = {"url": url, "file": fname, "frames": frames, "title": meta["Meta title"],
+        report[name] = {"url": url, "file": fname, "frames": frames,
+                        "hidden": sorted(hide_no_photo_slots(frames, name)),
+                        "alts": {fid: slot_alt(alts, name, fid, stem) for fid, stem in frames.items() if stem},
+                        "title": meta["Meta title"],
                         "h1": page["hero"]["h1_text"]}
-    css = site_css(model)
+    outputs.update(simple_pages(env, nav, menu, footer))
+    check_unique_images(outputs)
+    css = site_css(model, frames_cfg)
     if write:
         (STATIC / "tenerife" / "site" / "site.css").write_text(css, encoding="utf-8")
         for name, out in outputs.items():
             (Path(out_dir) / f"{name}.html").write_text(out, encoding="utf-8")
     return outputs, report
+
+
+LEGAL_TEMPLATES = Path(__file__).resolve().parents[2] / "app" / "templates" / "tenerife"
+LEGAL = {"impressum": "Правовая информация — Artemis Tenerife", "privacy": "Конфиденциальность — Artemis Tenerife"}
+NOTICE_SLOTS = ('<h1 id="h1">{{NOTICE_TITLE}}</h1>\n<p class="hero__lead">{{NOTICE_TEXT}}</p>\n'
+                '<p class="back"><a href="{{NOTICE_BACK}}">{{NOTICE_BACK_LABEL}}</a></p>')
+
+
+def legal_body(name):
+    """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html without its old
+    wrapper (<section class="legal"><div class="wrap"> … </div></section>); only the h1 gets id="h1"."""
+    src = (LEGAL_TEMPLATES / f"{name}.html").read_text(encoding="utf-8")
+    m = re.search(r"\{% block body %\}\s*<section class=\"legal\"><div class=\"wrap\">\n(.*?)\n</div></section>\s*"
+                  r"\{% endblock %\}", src, re.S)
+    if not m or "{%" in m.group(1) or "{{" in m.group(1) or m.group(1).count("<h1>") != 1:
+        raise BuildError(f"{name}.html: legal body block not found / not plain HTML")
+    return m.group(1).replace("<h1>", '<h1 id="h1">', 1)
+
+
+LEGAL_META = HERE / "copy_v3" / "meta_legal.md"   # not part of the combined copy (COPY_SHA256 covers 01-17 only)
+
+
+def legal_meta(name, path=LEGAL_META):
+    """Meta description of a legal page: the PRIMARY variant («**Основной (N симв.):**», next line, verbatim) under
+    «## /tenerife/<name>/»; N must equal the Unicode length. Fallback variants are ignored."""
+    md = path.read_text(encoding="utf-8")
+    m = re.search(rf"^## /tenerife/{name}/[^\n]*\n(.*?)(?=^## |\Z)", md, re.S | re.M)
+    if not m:
+        raise BuildError(f"meta_legal.md: no section for /tenerife/{name}/")
+    p = re.search(r"^\*\*Основной \((\d+) симв\.\):\*\*\n(.+)$", m.group(1), re.M)
+    if not p or len(p.group(2).strip()) != int(p.group(1)):
+        raise BuildError(f"meta_legal.md: primary description for {name} missing or length != declared")
+    return p.group(2).strip()
+
+
+def simple_pages(env, nav, menu, footer):
+    """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
+    tpl = env.get_template("simple.html")
+    out = {}
+    for name, title in LEGAL.items():
+        url = f"/tenerife/{name}/"
+        out[name] = wrap(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
+                                    description=html.escape(legal_meta(name), quote=True),
+                                    body=legal_body(name), nav=nav, menu=menu, footer=footer))
+    out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis Tenerife", canonical=None, url="",
+                                     kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer))
+    return out
 
 
 def main():
@@ -577,7 +1009,8 @@ def main():
         print("BUILD FAILED:\n" + str(e), file=sys.stderr)
         sys.exit(1)
     for name, r in report.items():
-        fr = " ".join(f"{k}->{v.split('-')[0]}-{v.split('-')[1]}" for k, v in r["frames"].items())
+        fr = " ".join(f"{k}->{'-'.join(v.split('-')[:2]) if v else ('(hidden)' if k in r['hidden'] else '(text)')}"
+                      for k, v in r["frames"].items())
         print(f"{r['url']:28} {len(outputs[name]):6d} B  {fr}")
     (HERE / "frames_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 

@@ -17,7 +17,7 @@ FONTS = Path(__file__).resolve().parent  # fonts.css lives here; woff2 files are
 URL = lambda p: "/tenerife/" if p == "index" else f"/tenerife/{p}/"
 # SEO (task 4, 31.10): meta description + Open Graph per page. Pages without an entry get a flag.
 OG_IMG = "https://artemisresort.com/static/tenerife/site/img/og-tenerife-1200x630.jpg"
-DESC = {'index': '20 резиденций на севере Тенерифе, район La Quinta / Santa Úrsula: состав комплекса, архитектура, сроки и бесплатный лист ожидания.', 'norte': 'Север Тенерифе: La Quinta / Santa Úrsula рядом с Puerto de la Cruz — характер района и предложения соседних новостроек на октябрь 2026.'}
+DESC = {'index': '20 резиденций на севере Тенерифе, район La Quinta / Santa Úrsula: состав комплекса, архитектура, сроки и бесплатная запись в очередь.', 'norte': 'Север Тенерифе: La Quinta / Santa Úrsula рядом с Puerto de la Cruz — характер района и предложения соседних новостроек на октябрь 2026.'}
 
 def meta_block(p, title):
     d = DESC.get(p)

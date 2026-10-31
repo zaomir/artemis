@@ -1,4 +1,4 @@
-/* Artemis Tenerife RU v3: header state, mobile sheet, ladder rise (DESIGN.md C1, C8). External file: CSP.
+/* Artemis Tenerife RU v3: header state, mobile sheet (focus trap), ladder rise (DESIGN.md C1, C8). External file: CSP.
    C1: the header is solid by default and without JS; .is-over only while the hero picture (.hero__media)
    lies under the header strip (IntersectionObserver with the root narrowed to that strip, no scroll listener). */
 (function(){
@@ -18,16 +18,39 @@
     paint(under()); watch();
     var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){paint(under());watch();},100);});
   }
-  function setOpen(o){
+  /* QA T3-06: while the sheet is open it is a modal menu: everything else is inert (skip link, brand, desktop nav,
+     main, footer), Tab cycles burger -> sheet links, Esc closes; on close focus returns to the burger. */
+  function bg(){var r=[].slice.call(document.querySelectorAll('body > *:not(header):not(script)'));
+    [h.querySelector('.brand'),h.querySelector('.nav')].forEach(function(x){if(x) r.push(x);}); return r;}
+  function ring(){return [b].concat([].slice.call(s.querySelectorAll('a[href]')));}
+  function isOpen(){return s.classList.contains('is-open');}
+  function setOpen(o,back){
     s.classList.toggle('is-open',o); b.setAttribute('aria-expanded',o?'true':'false');
-    if(o) h.classList.remove('is-over'); else if(media) paint(under());
+    bg().forEach(function(x){if(o) x.setAttribute('inert',''); else x.removeAttribute('inert');});
+    if(o){h.classList.remove('is-over'); var f=s.querySelector('a[href]'); if(f) f.focus();}
+    else{if(media) paint(under()); if(back) b.focus();}
   }
   if(b&&s&&h){
     s.hidden=false; b.setAttribute('role','button');
-    b.addEventListener('click',function(ev){ev.preventDefault();setOpen(!s.classList.contains('is-open'));});
-    b.addEventListener('keydown',function(ev){if(ev.key===' '){ev.preventDefault();setOpen(!s.classList.contains('is-open'));}});
-    document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&s.classList.contains('is-open')){setOpen(false);b.focus();}});
+    b.addEventListener('click',function(ev){ev.preventDefault();setOpen(!isOpen(),true);});
+    b.addEventListener('keydown',function(ev){if(ev.key===' '){ev.preventDefault();setOpen(!isOpen(),true);}});
+    document.addEventListener('keydown',function(ev){
+      if(!isOpen()) return;
+      if(ev.key==='Escape'){ev.preventDefault();setOpen(false,true);return;}
+      if(ev.key!=='Tab') return;
+      var r=ring(), i=r.indexOf(document.activeElement);
+      if(ev.shiftKey&&i<=0){ev.preventDefault();r[r.length-1].focus();}
+      else if(!ev.shiftKey&&(i===-1||i===r.length-1)){ev.preventDefault();r[0].focus();}
+    });
+    /* burger hidden (desktop width) while open -> close, so the page never stays inert */
+    window.addEventListener('resize',function(){if(isOpen()&&!b.offsetParent) setOpen(false,false);});
   }
+  /* «Ещё» (<details> в меню ≥1024): Esc закрывает и возвращает фокус на summary (design v3, components.html) */
+  document.addEventListener('keydown',function(ev){
+    if(ev.key!=='Escape') return;
+    var d=document.querySelector('.nav details[open]'); if(!d) return;
+    d.open=false; var sm=d.querySelector('summary'); if(sm) sm.focus();
+  });
   var l=document.getElementById('ladder');
   if(l&&!rm&&'IntersectionObserver' in window&&l.getBoundingClientRect().top>window.innerHeight){
     l.classList.add('js-rise');

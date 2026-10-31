@@ -1,5 +1,5 @@
 <section id="waitlist" class="waitlist">
-  <h2>Лист ожидания</h2>
+  <h2>Очередь</h2>
   <p>Бесплатно и без обязательств. Мы свяжемся, когда появится информация об участке и условиях.</p>
   <form class="wl" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate>
     <label for="wl-name">Имя</label>
@@ -13,7 +13,7 @@
     <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
     <input type="hidden" name="page" value="__PAGE__">
     <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required>
-      <span>Согласен(на) на обработку моих данных (имя, контакт, язык) для связи по проекту Artemis Tenerife в соответствии с <a href="/tenerife/privacy/">политикой конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
     <button class="cta" type="submit" id="wl-submit">Записаться бесплатно</button>
     <div class="msg" id="wl-msg" role="status"></div>
   </form>

@@ -1,6 +1,6 @@
 {
  "_generated_by": "scripts/tenerife_site_build/make_model.py from copy_v3/numbers.md + model_inputs.json",
- "version": "2026-10-31",
+ "version": "2026-10-31-v2",
  "status": "PROPOSAL — ступени, рассрочка и дивиденд ждут ОК основателя (numbers.md, sources_v3.md)",
  "currency": "EUR",
  "share_m2": 1,
@@ -8,7 +8,7 @@
   {
    "id": "queue",
    "name": "Очередь",
-   "event": "запись и покупка через 3 месяца",
+   "event": "участок одобрен большинством очереди, инвестиционный договор",
    "price_eur_m2": 2950,
    "entry": true,
    "current": true
@@ -87,8 +87,17 @@
   "max": 4600
  },
  "rounding": {
+  "rule": "ROUND_HALF_UP",
+  "note": "Одно правило везде: x,5 → вверх. Деньги — до целых евро, проценты — до 0,1, площадь середины типа — до целого м². Python: decimal ROUND_HALF_UP (copy_v3/make_numbers.py), JS: Math.floor(x + 0.5) для положительных, Intl roundingMode 'halfExpand'. Пример: 57 м² × 2 950 ÷ 12 = 14 012,5 → 14 013 €.",
   "money": "integer_eur_half_up",
-  "percent": "1_decimal"
+  "percent": "1_decimal_half_up",
+  "type_midpoint_m2": "integer_half_up"
+ },
+ "type_click_sets": "midpoint",
+ "type_midpoints_m2": {
+  "one_bed": 52,
+  "two_bed": 73,
+  "large": 93
  },
  "proposal": true,
  "calc": {
@@ -709,216 +718,230 @@
   },
   {
    "id": "t080",
-   "label": "Рассрочка без надбавки (PROPOSAL)",
-   "copy": "без надбавки",
-   "value": "без надбавки",
-   "hits": 25
+   "label": "Оплата сразу полностью: бонус (ОСН 31.10)",
+   "copy": "бонус 10%",
+   "value": "бонус 10%",
+   "hits": 20
   },
   {
    "id": "t081",
+   "label": "Оплата за полгода: бонус (ОСН 31.10)",
+   "copy": "бонус 5%",
+   "value": "бонус 5%",
+   "hits": 20
+  },
+  {
+   "id": "t082",
+   "label": "Оплата за год (ОСН 31.10)",
+   "copy": "без бонуса",
+   "value": "без бонуса",
+   "hits": 23
+  },
+  {
+   "id": "t083",
    "label": "Резиденция 1 спальня = акций",
    "copy": "48–55 акций",
    "value": "48–55 акций",
    "hits": 4
   },
   {
-   "id": "t082",
+   "id": "t084",
    "label": "2 спальни = акций",
    "copy": "68–78 акций",
    "value": "68–78 акций",
    "hits": 4
   },
   {
-   "id": "t083",
+   "id": "t085",
    "label": "Большой дом = акций",
    "copy": "85–100 акций",
    "value": "85–100 акций",
    "hits": 4
   },
   {
-   "id": "t084",
+   "id": "t086",
    "label": "Докупка 50→72",
    "copy": "22 акци",
    "value": "22 акци",
    "hits": 1
   },
   {
-   "id": "t085",
+   "id": "t087",
    "label": "PVGIS La Quinta, кВт·ч/кВт в год, панели плоско",
    "copy": "1 490",
    "value": "1 490",
    "hits": 5
   },
   {
-   "id": "t086",
+   "id": "t088",
    "label": "Канары среднее, кВт·ч/кВт",
    "copy": "1 771",
    "value": "1 771",
    "hits": 3
   },
   {
-   "id": "t087",
+   "id": "t089",
    "label": "PVGIS La Quinta, оптимальный наклон 23°",
    "copy": "1 578",
    "value": "1 578",
    "hits": 3
   },
   {
-   "id": "t088",
+   "id": "t090",
    "label": "Дом на вводе 48–55 м² × 3 800–4 600",
    "copy": "182 400–253 000",
    "value": "182 400–253 000",
    "hits": 1
   },
   {
-   "id": "t089",
+   "id": "t091",
    "label": "Дом на вводе 68–78 м² × 3 800–4 600",
    "copy": "258 400–358 800",
    "value": "258 400–358 800",
    "hits": 1
   },
   {
-   "id": "t090",
+   "id": "t092",
    "label": "Дом на вводе 85–100 м² × 3 800–4 600",
    "copy": "323 000–460 000",
    "value": "323 000–460 000",
    "hits": 1
   },
   {
-   "id": "t091",
+   "id": "t093",
    "label": "Дом на вводе 72 м² × 3 800–4 600",
    "copy": "273 600–331 200",
    "value": "273 600–331 200",
    "hits": 2
   },
   {
-   "id": "t092",
+   "id": "t094",
    "label": "Дом на вводе 100 м² × 3 800 (от)",
    "copy": "от 380 000",
    "value": "от 380 000",
    "hits": 1
   },
   {
-   "id": "t093",
+   "id": "t095",
    "label": "Дом 50 м²",
    "copy": "50 м²",
    "value": "50 м²",
    "hits": 1
   },
   {
-   "id": "t094",
+   "id": "t096",
    "label": "Дом 95 м²",
    "copy": "95 м²",
    "value": "95 м²",
    "hits": 1
   },
   {
-   "id": "t095",
+   "id": "t097",
    "label": "50 м² × 12–15 €",
    "copy": "600–750",
    "value": "600–750",
    "hits": 1
   },
   {
-   "id": "t096",
+   "id": "t098",
    "label": "50 м² × 17 € (Puerto)",
    "copy": "около 850 €",
    "value": "около 850 €",
    "hits": 1
   },
   {
-   "id": "t097",
+   "id": "t099",
    "label": "72 м² × 17 € (Puerto)",
    "copy": "около 1 224 €",
    "value": "около 1 224 €",
    "hits": 1
   },
   {
-   "id": "t098",
+   "id": "t100",
    "label": "95 м² × 12–15 €",
    "copy": "1 140–1 425",
    "value": "1 140–1 425",
    "hits": 1
   },
   {
-   "id": "t099",
+   "id": "t101",
    "label": "95 м² × 17 € (Puerto)",
    "copy": "около 1 615 €",
    "value": "около 1 615 €",
    "hits": 1
   },
   {
-   "id": "t100",
+   "id": "t102",
    "label": "Пример счёта 120 €/мес × 12 (grupodlt)",
    "copy": "1 440",
    "value": "1 440",
    "hits": 1
   },
   {
-   "id": "t101",
+   "id": "t103",
    "label": "Расходы итого, € с метра (округл.)",
    "copy": "75 € с метра",
    "value": "75 € с метра",
    "hits": 4
   },
   {
-   "id": "t102",
+   "id": "t104",
    "label": "Докупка: начали с",
    "copy": "50 акций",
    "value": "50 акций",
    "hits": 2
   },
   {
-   "id": "t103",
+   "id": "t105",
    "label": "La Quinta III, цены 4 домов (estatenearme)",
    "copy": "420 000–425 000",
    "value": "420 000–425 000",
    "hits": 1
   },
   {
-   "id": "t104",
+   "id": "t106",
    "label": "La Quinta III, € за м² = 420–425 тыс. ÷ 125",
    "copy": "3 360–3 400",
    "value": "3 360–3 400",
    "hits": 1
   },
   {
-   "id": "t105",
+   "id": "t107",
    "label": "La Quinta 2, цены (estatenearme)",
    "copy": "399 999–425 700",
    "value": "399 999–425 700",
    "hits": 1
   },
   {
-   "id": "t106",
+   "id": "t108",
    "label": "La Quinta 2, € за м² ÷ 110",
    "copy": "3 636–3 870",
    "value": "3 636–3 870",
    "hits": 1
   },
   {
-   "id": "t107",
+   "id": "t109",
    "label": "Kelify, районы Santa Úrsula, март 2026, €/м²",
    "copy": "10,00–11,67",
    "value": "10,00–11,67",
    "hits": 2
   },
   {
-   "id": "t108",
+   "id": "t110",
    "label": "Kelify, La Quinta 80 м²",
    "copy": "975 €",
    "value": "975 €",
    "hits": 2
   },
   {
-   "id": "t109",
+   "id": "t111",
    "label": "Kelify, La Quinta 60 м²",
    "copy": "900 €",
    "value": "900 €",
    "hits": 2
   },
   {
-   "id": "t110",
+   "id": "t112",
    "label": "Kelify, La Quinta 132 м² (8 oct 2026)",
    "copy": "1 500 €",
    "value": "1 500 €",
