@@ -15,6 +15,22 @@ OUT_PAGES = REPO / "app/tenerife_site"
 OUT_STATIC = REPO / "app/static/tenerife/site"
 FONTS = Path(__file__).resolve().parent  # fonts.css lives here; woff2 files are already in app/static/tenerife/site/fonts
 URL = lambda p: "/tenerife/" if p == "index" else f"/tenerife/{p}/"
+# SEO (task 4, 31.10): meta description + Open Graph per page. Pages without an entry get a flag.
+OG_IMG = "https://artemisresort.com/static/tenerife/site/img/og-tenerife-1200x630.jpg"
+DESC = {'index': '20 резиденций на севере Тенерифе, район La Quinta / Santa Úrsula: состав комплекса, архитектура, сроки и бесплатный лист ожидания.', 'norte': 'Север Тенерифе: La Quinta / Santa Úrsula рядом с Puerto de la Cruz — характер района и предложения соседних новостроек на октябрь 2026.'}
+
+def meta_block(p, title):
+    d = DESC.get(p)
+    if not d:
+        report["flags"].append(f"{p}: нет meta description в DESC (build.py)")
+        return ""
+    u = "https://artemisresort.com" + URL(p)
+    return (f'<meta name="description" content="{d}">\n<meta property="og:type" content="website">\n'
+            f'<meta property="og:site_name" content="Artemis Tenerife">\n<meta property="og:locale" content="ru_RU">\n'
+            f'<meta property="og:title" content="{title}">\n<meta property="og:description" content="{d}">\n'
+            f'<meta property="og:url" content="{u}">\n<meta property="og:image" content="{OG_IMG}">\n'
+            f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n')
 report = {"fixes": [], "images": [], "missing": [], "flags": []}
 
 present = [p for p in PAGES if (SRC / f"{p}.html").exists()]
@@ -133,7 +149,8 @@ for p in present:
         report["fixes"].append(f"{p}.html: Google Fonts → свои шрифты (без запросов к Google)")
     h = re.sub(r'\s*<link[^>]*fonts\.(googleapis|gstatic)\.com[^>]*>', "", h)
     h = re.sub(r'<link rel="stylesheet" href="(?:\./)?style\.css">', '<link rel="stylesheet" href="/static/tenerife/site/style.css">', h)
-    h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n<link rel="icon" href="/static/favicon-32x32.png">', 1)
+    _title = (re.search(r"<title>(.*?)</title>", h, re.S) or [None, ""])[1]
+    h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n' + meta_block(p, _title) + '<link rel="icon" href="/static/favicon-32x32.png">', 1)
     h = links(h)
     h = images(h)
     # existing external forms → our handler

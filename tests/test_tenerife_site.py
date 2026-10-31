@@ -121,6 +121,45 @@ class TenerifeSiteTest(unittest.TestCase):
         self.assertIn("info@artemisresort.com", prv)
         self.assertNotIn('class="todo"', prv)
 
+    def test_seo_meta_og_canonical(self):
+        for name, url in SHIPPED.items():
+            html, _ = self.page(url)
+            full = "https://artemisresort.com" + url
+            self.assertIn(f'<link rel="canonical" href="{full}">', html, name)
+            desc = re.search(r'<meta name="description" content="([^"]+)">', html)
+            self.assertTrue(desc and 50 <= len(desc.group(1)) <= 170, name)
+            for prop in ("og:title", "og:description", "og:image", "og:type", "og:locale"):
+                self.assertRegex(html, rf'<meta property="{prop}" content="[^"]+">', f"{name}: {prop}")
+            self.assertIn(f'<meta property="og:url" content="{full}">', html, name)
+            img = re.search(r'<meta property="og:image" content="https://artemisresort.com/static/([^"]+)">', html)
+            self.assertTrue(img and (STATIC / img.group(1)).is_file(), name)
+
+    def test_no_inline_script_for_csp(self):
+        # nginx CSP on /tenerife/: script-src 'self' (no 'unsafe-inline')
+        for name, url in SHIPPED.items():
+            html, _ = self.page(url)
+            self.assertIsNone(re.search(r"<script(?![^>]*\ssrc=)[^>]*>", html), name)
+            self.assertNotRegex(html, r"\son[a-z]+=", name)
+            self.assertNotIn("style=", html, name)
+
+    def test_sitemap_and_robots(self):
+        r = self.client.get("/sitemap.xml")
+        self.assertEqual(r.status_code, 200)
+        self.assertIn("application/xml", r.headers["Content-Type"])
+        locs = re.findall(r"<loc>([^<]+)</loc>", r.get_data(as_text=True))
+        self.assertIn("https://artemisresort.com/tenerife/", locs)
+        for url in SHIPPED.values():
+            self.assertIn("https://artemisresort.com" + url, locs)
+        for loc in locs:
+            self.assertTrue(loc.startswith("https://artemisresort.com/"), loc)
+            self.assertNotIn("preview", loc)
+            path = loc[len("https://artemisresort.com"):]
+            self.assertEqual(self.client.get(path).status_code, 200, path)
+        self.assertEqual(len(locs), len(set(locs)))
+        r = self.client.get("/robots.txt")
+        self.assertEqual(r.status_code, 200)
+        self.assertIn("Sitemap: https://artemisresort.com/sitemap.xml", r.get_data(as_text=True))
+
     def test_no_disclaimers_and_legal_links(self):
         # founder 31.10.2026 01:44 UTC: no disclaimer block / AI captions; legal pages linked in the footer
         for name, url in SHIPPED.items():
