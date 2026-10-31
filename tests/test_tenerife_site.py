@@ -1,5 +1,5 @@
-"""Tenerife RU prod site (/tenerife/): clean URLs, local assets only, no yield /
-payments, no disclaimer block / AI captions (founder 31.10 01:44 UTC), legal links,
+"""Tenerife RU prod site (/tenerife/): clean URLs, local assets only, no guaranteed
+return / payments, no disclaimer block / AI captions (founder 31.10 01:44 UTC), legal links,
 waitlist form wired to our handler."""
 import importlib
 import os
@@ -21,7 +21,10 @@ SHIPPED = {k: v for k, v in PAGES.items() if (SITE / f"{k}.html").is_file()}
 FORM_HOST = "proceso" if "proceso" in SHIPPED else "index"  # until proceso.html arrives the form lives on /tenerife/
 
 FORBIDDEN = [
-    r"\d\s*[–-]\s*\d\s*%", r"\d+\s*% годовых", r"доходност\w* \d", r"дивиденд", r"гарантир\w+ доход",
+    # founder 31.10.2026 16:28 UTC: share mechanics with a calculation may be shown («дивиденд», «акция» allowed);
+    # a guaranteed / promised return stays forbidden.
+    r"\d\s*[–-]\s*\d\s*%", r"\d+\s*% годовых", r"доходност\w* \d",
+    r"(?i)гарантир\w*\s+(?:\w+\s+)?(?:доход|доходност|дивиденд)", r"(?i)гарантированн\w* доходност",
     r"(?i)rendimiento", r"(?i)\byield\b", r"name=\"amount\"", r"Сумма", r"(?i)купить сейчас",
     r"(?i)оплат\w+ сейчас", r"(?i)iban", r"(?i)stripe", r"(?i)paypal", r"не для деплоя",
     r"(?i)TODO", r"(?i)\bTZ\b", r"(?i)бриф", r"нельзя", r"в наших файлах", r"Лица не генерируем",
@@ -85,6 +88,16 @@ class TenerifeSiteTest(unittest.TestCase):
             html, _ = self.page(url)
             for rx in FORBIDDEN:
                 self.assertIsNone(re.search(rx, html), f"{name}: {rx}")
+
+    def test_forbidden_list_allows_shares_but_not_guaranteed_return(self):
+        # founder 31.10.2026 16:28 UTC: «дивиденд» / «акция» are allowed, a guaranteed return is not
+        hit = lambda t: [rx for rx in FORBIDDEN if re.search(rx, t)]
+        for ok in ("Дивиденд по акции зависит от чистой аренды.", "Акции компании-застройщика",
+                   "дивиденд на акцию в €/год"):
+            self.assertEqual(hit(ok), [], ok)
+        for bad in ("гарантированная доходность", "Гарантированный доход", "гарантируем дивиденд",
+                    "4–6 % годовых"):
+            self.assertTrue(hit(bad), bad)
 
     def test_no_disclaimers_and_legal_links(self):
         # founder 31.10.2026 01:44 UTC: no disclaimer block / AI captions; legal pages linked in the footer
