@@ -125,6 +125,7 @@ def images(html):
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from responsive import responsive  # noqa: E402
+from email_off import unprotected, wrap as email_off  # noqa: E402  (Cloudflare Email Obfuscation, see email_off.py)
 
 FOOTER = Path(__file__).with_name("_footer.html").read_text(encoding="utf-8")
 FORM = Path(__file__).with_name("_waitlist.html").read_text(encoding="utf-8")
@@ -185,6 +186,13 @@ for p in present:
         h = h.replace(old, FOOTER, 1)
     else:
         h = h.replace("</body>", FOOTER + "\n</body>", 1)
+    # last step, nothing may rewrite the page after it: e-mails stay readable without JS behind Cloudflare
+    h2 = email_off(h)
+    if h2 != h:
+        report["fixes"].append(f"{p}.html: e-mail / mailto обёрнуты в <!--email_off--> (Cloudflare Email Obfuscation)")
+    h = h2
+    if unprotected(h):
+        report["flags"].append(f"{p}: e-mail вне <!--email_off-->: {unprotected(h)}")
     (OUT_PAGES / f"{p}.html").write_text(h, encoding="utf-8")
 
 # links to pages not present must not ship

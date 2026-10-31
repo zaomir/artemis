@@ -13,6 +13,7 @@ from test_tenerife_preview import REMOVED_DISCLAIMERS
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 SITE = ROOT / "app" / "tenerife_site"
 STATIC = ROOT / "app" / "static"
 PAGES = {"index": "/tenerife/", "norte": "/tenerife/norte/", "producto": "/tenerife/producto/",
@@ -29,9 +30,18 @@ FORBIDDEN = [
     r"(?i)оплат\w+ сейчас", r"(?i)iban", r"(?i)stripe", r"(?i)paypal", r"не для деплоя",
     r"(?i)TODO", r"(?i)\bTZ\b", r"(?i)бриф", r"нельзя", r"в наших файлах", r"Лица не генерируем",
     r"(?i)googletagmanager|google-analytics|gtag\(|fbq\(|yandex|metrika|hotjar|clarity",
-    r"fonts\.googleapis|fonts\.gstatic", r"cdn\.leonardo\.ai", r"(?i)formspree|mailto:",
+    r"fonts\.googleapis|fonts\.gstatic", r"cdn\.leonardo\.ai", r"(?i)formspree|action=\"mailto:",
+    r"email-protection|/cdn-cgi/",  # Cloudflare-obfuscated e-mail must never be baked into a page
     r"\+\d[\d\s()-]{7,}",  # phone numbers
 ]
+
+
+# Cloudflare Email Obfuscation stays ON for the zone; Tenerife pages opt out per address with
+# <!--email_off-->…<!--/email_off--> so mailto works without JS (no /cdn-cgi/l/email-protection 404).
+CONTACT_EMAIL = "info@artemisresort.com"
+EMAIL_OFF_LINK = ('<!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a>'
+                  '<!--/email_off-->')
+LEGAL_AND_PREVIEW = ["/tenerife-preview/", "/tenerife/impressum/", "/tenerife/privacy/"]
 
 
 # founder 31.10.2026: no public disclaimers on the live Tenerife pages
@@ -121,6 +131,43 @@ class TenerifeSiteTest(unittest.TestCase):
         self.assertIn("info@artemisresort.com", prv)
         self.assertNotIn('class="todo"', prv)
 
+    def test_email_off_mailto_on_every_tenerife_page(self):
+        # raw HTML (no JS): mailto:info@… present and every address inside the email_off markers
+        from email_off import unprotected
+        for url in list(SHIPPED.values()) + LEGAL_AND_PREVIEW:
+            html, _ = self.page(url)
+            self.assertIn(EMAIL_OFF_LINK, html, url)
+            self.assertEqual(unprotected(html), [], url)
+            self.assertNotIn("email-protection", html, url)
+            self.assertEqual(html.count("<!--email_off-->"), html.count("<!--/email_off-->"), url)
+
+    def test_email_off_comments_not_stripped(self):
+        # nothing between the source files and the response (minifier, after_request hook, build step)
+        # may drop HTML comments, or Cloudflare would obfuscate the address again
+        from email_off import wrap
+        from responsive import responsive
+        build = ROOT / "scripts" / "tenerife_site_build"
+        footer = (build / "_footer.html").read_text(encoding="utf-8")
+        self.assertIn(EMAIL_OFF_LINK, footer)
+        self.assertEqual(wrap(footer), footer)  # idempotent
+        self.assertIn(EMAIL_OFF_LINK, responsive(footer, STATIC / "tenerife" / "site"))
+        for name, url in SHIPPED.items():
+            src = (SITE / f"{name}.html").read_text(encoding="utf-8")
+            html, _ = self.page(url)
+            self.assertEqual(html.count(EMAIL_OFF_LINK), src.count(EMAIL_OFF_LINK), name)
+            self.assertGreaterEqual(html.count("<!--email_off-->"), 1, name)
+            self.assertEqual(wrap(src), src, f"{name}: build output not passed through email_off.wrap")
+        for url in LEGAL_AND_PREVIEW:
+            html, _ = self.page(url)
+            self.assertEqual(wrap(html), html, url)
+        # helper: bare address and mailto get wrapped, attributes are left alone
+        self.assertEqual(wrap("<p>x@artemisresort.com</p>"),
+                         "<p><!--email_off-->x@artemisresort.com<!--/email_off--></p>")
+        a = '<a class="m" href="mailto:x@artemisresort.com">write</a>'
+        self.assertEqual(wrap(a), "<!--email_off-->" + a + "<!--/email_off-->")
+        attr = '<input placeholder="x@example.com">'
+        self.assertEqual(wrap(attr), attr)
+
     def test_seo_meta_og_canonical(self):
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
@@ -201,6 +248,8 @@ class TenerifeSiteTest(unittest.TestCase):
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
             for ref in re.findall(r'(?:href|src)="([^"#?]+)', html):
+                if ref == "mailto:" + CONTACT_EMAIL:  # wrapped in <!--email_off-->, see test_email_off_*
+                    continue
                 if ref.startswith(("http://", "https://")):
                     self.assertTrue(ref.startswith("https://artemisresort.com/tenerife/"), f"{name}: external {ref}")
                     continue
