@@ -24,12 +24,18 @@ ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "ARTEMIS_ADMIN_TOKEN",
 TEST_SALT = "unit-tests-only-not-a-secret"
 NODE = shutil.which("node")
 
-# verbatim from webdev/artemis-ui-strings-for-review-reviewed.md line 32 (cycle 3)
+# verbatim from webdev/artemis-ui-strings-for-review-reviewed.md line 34 (cycle 4, QA CR-01/CR-02): neutral
+# wording, the limit counts per connection (IP hash), not per person. The address is a literal: contact_email
+# is upper-case and translations have no interpolation.
 EXPECTED = {
-    "en": "We have already received your requests. Please try again later or email us at info@artemisresort.com.",
-    "ru": "Мы уже получили ваши заявки. Повторите попытку позже или напишите нам на info@artemisresort.com.",
-    "es": "Ya hemos recibido sus consultas. Inténtelo de nuevo más tarde o escríbanos a info@artemisresort.com.",
-    "fr": "Nous avons déjà reçu vos demandes. Veuillez réessayer plus tard ou nous écrire à info@artemisresort.com.",
+    "en": ("Too many enquiries have been sent from this connection. "
+           "Please try again later or email us at info@artemisresort.com."),
+    "ru": ("С этого подключения отправлено слишком много заявок. "
+           "Повторите попытку позже или напишите нам на info@artemisresort.com."),
+    "es": ("Se han enviado demasiadas consultas desde esta conexión. "
+           "Inténtelo de nuevo más tarde o escríbanos a info@artemisresort.com."),
+    "fr": ("Trop de demandes ont été envoyées depuis cette connexion. "
+           "Veuillez réessayer plus tard ou nous écrire à info@artemisresort.com."),
 }
 
 NGINX_429 = ("<html>\r\n<head><title>429 Too Many Requests</title></head>\r\n<body>\r\n"
@@ -94,6 +100,9 @@ class TranslationTest(Base):
             self.assertEqual(T[lang].get("form_err_rate_limited"), EXPECTED[lang], lang)
             self.assertNotEqual(T[lang]["form_err_rate_limited"], T[lang]["form_err_generic"], lang)
             self.assertIn("info@artemisresort.com", T[lang]["form_err_rate_limited"], lang)
+        # cycle 4: neutral wording, the limit is per connection; no claim that this person already wrote
+        self.assertNotIn("already received", T["en"]["form_err_rate_limited"])
+        self.assertNotIn("уже получили", T["ru"]["form_err_rate_limited"])
 
     def test_page_ships_localized_rate_limited_message(self):
         for lang in LANGS:

@@ -134,7 +134,7 @@
   "form_err_consent": "Votre consentement est requis.",
   "form_err_generic": "Une erreur s’est produite. Veuillez réessayer.",
   "form_err_network": "Erreur réseau. Veuillez réessayer.",
-  "form_err_rate_limited": "Nous avons déjà reçu vos demandes. Veuillez réessayer plus tard ou nous écrire à info@artemisresort.com.",
+  "form_err_rate_limited": "Trop de demandes ont été envoyées depuis cette connexion. Veuillez réessayer plus tard ou nous écrire à info@artemisresort.com.",
   "type_investor": "Investisseur, y compris financier",
   "type_project_adviser": "Conseiller du projet",
   "type_operator": "Opérateur hôtelier",

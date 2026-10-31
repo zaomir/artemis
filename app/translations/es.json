@@ -134,7 +134,7 @@
   "form_err_consent": "Es necesario su consentimiento.",
   "form_err_generic": "Se ha producido un error. Inténtelo de nuevo.",
   "form_err_network": "Error de red. Inténtelo de nuevo.",
-  "form_err_rate_limited": "Ya hemos recibido sus consultas. Inténtelo de nuevo más tarde o escríbanos a info@artemisresort.com.",
+  "form_err_rate_limited": "Se han enviado demasiadas consultas desde esta conexión. Inténtelo de nuevo más tarde o escríbanos a info@artemisresort.com.",
   "type_investor": "Inversor, incluido el financiero",
   "type_project_adviser": "Asesor del proyecto",
   "type_operator": "Operador hotelero",
