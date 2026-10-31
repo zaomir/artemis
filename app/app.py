@@ -157,6 +157,38 @@ def terms_root():
     return redirect(f"/{_pick_language()}/terms/", code=302)
 
 
+# --- SEO: sitemap.xml / robots.txt (before: /sitemap.xml 308 -> /sitemap.xml/ -> 404) -------------
+SITE_URL = "https://artemisresort.com"
+
+
+def sitemap_paths() -> list[str]:
+    """Indexable 200 pages only: Crete language homes + shipped Tenerife pages (no preview / noindex)."""
+    paths = [f"/{lang}/" for lang in SUPPORTED]
+    for name in ("index",) + tenerife.SITE_PAGES:
+        if (tenerife.SITE_DIR / f"{name}.html").is_file():
+            paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
+    return paths
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    urls = "".join(f"  <url><loc>{html.escape(SITE_URL + p)}</loc></url>\n" for p in sitemap_paths())
+    body = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
+    resp = make_response(body)
+    resp.headers["Content-Type"] = "application/xml; charset=utf-8"
+    resp.headers["Cache-Control"] = "public, max-age=3600"
+    return resp
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    resp = make_response(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    resp.headers["Content-Type"] = "text/plain; charset=utf-8"
+    resp.headers["Cache-Control"] = "public, max-age=3600"
+    return resp
+
+
 # Removed investment-strip pages — 404 (no disclaimer / fraud-warning restore)
 @app.route("/<lang>/disclaimer/")
 @app.route("/disclaimer/")
