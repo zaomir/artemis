@@ -4,11 +4,16 @@
   "file": "01_glavnaya.md",
   "frames": {
    "F01": "modern-low-6e9d80",
-   "F04": "private-te-6016b5",
-   "F02": "entrance-o-9abe9d",
-   "F03": "communal-s-af42cd",
-   "F17": "golden-hou-d4cc25",
-   "F22": "green-hill-3f3856"
+   "F04": null,
+   "F02": null,
+   "F03": null,
+   "F17": null
+  },
+  "hidden": [
+   "F17"
+  ],
+  "alts": {
+   "F01": "Невысокие дома террасами на склоне над океаном"
   },
   "title": "Artemis Tenerife — 20 резиденций в La Quinta, север Тенерифе",
   "h1": "20 резиденций в La Quinta: акции компании-застройщика от 2 950 € за м²"
@@ -18,11 +23,15 @@
   "file": "02_sever.md",
   "frames": {
    "F21": "green-hill-3f3856",
-   "F23": "golden-hou-d4cc25",
-   "F01": "modern-low-6e9d80",
-   "F04": "private-te-6016b5",
-   "F22": "communal-s-af42cd",
-   "F24": "entrance-o-9abe9d"
+   "F23": null,
+   "F01": null,
+   "F04": null,
+   "F22": null,
+   "F24": null
+  },
+  "hidden": [],
+  "alts": {
+   "F21": "Дома среди зелени на склоне над океаном"
   },
   "title": "Север Тенерифе: La Quinta, Santa Úrsula — Artemis",
   "h1": "La Quinta, Santa Úrsula: север, где на Тенерифе живут"
@@ -32,11 +41,15 @@
   "file": "03_rezidencii.md",
   "frames": {
    "F05": "interior-o-74f891",
-   "F06": "private-te-6016b5",
-   "F07": "golden-hou-d4cc25",
-   "F08": "communal-s-af42cd",
-   "F09": "entrance-o-9abe9d",
-   "F10": "modern-low-6e9d80"
+   "F06": null,
+   "F07": null,
+   "F08": null,
+   "F09": null,
+   "F10": null
+  },
+  "hidden": [],
+  "alts": {
+   "F05": "Спальня с окном в пол и выходом во внутренний дворик"
   },
   "title": "Резиденции Artemis: 20 домов от 48 до 100 м² в La Quinta",
   "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
@@ -45,13 +58,15 @@
   "url": "/tenerife/acciones/",
   "file": "04_akcii.md",
   "frames": {
-   "F14": "green-hill-3f3856",
-   "F01": "modern-low-6e9d80",
-   "F15": "golden-hou-d4cc25",
-   "F16": "private-te-6016b5",
-   "F17": "entrance-o-9abe9d",
-   "F12": "communal-s-af42cd"
+   "F14": null,
+   "F01": null,
+   "F15": null,
+   "F16": null,
+   "F17": null,
+   "F12": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Акции компании-застройщика Artemis: 1 акция = 1 м²",
   "h1": "Одна акция — один метр: акции компании-застройщика Artemis"
  },
@@ -59,13 +74,15 @@
   "url": "/tenerife/calculadora/",
   "file": "05_kalkulyator.md",
   "frames": {
-   "F20": "interior-o-74f891",
-   "F05": "private-te-6016b5",
-   "F07": "golden-hou-d4cc25",
-   "F11": "green-hill-3f3856",
-   "F17": "entrance-o-9abe9d",
-   "F22": "communal-s-af42cd"
+   "F20": null,
+   "F05": null,
+   "F07": null,
+   "F11": null,
+   "F17": null,
+   "F22": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Калькулятор акций Artemis Tenerife: сумма, платёж, дивиденд",
   "h1": "Калькулятор: ваши метры акциями компании-застройщика"
  },
@@ -73,12 +90,16 @@
   "url": "/tenerife/alquiler/",
   "file": "06_arenda.md",
   "frames": {
-   "F10": "interior-o-74f891",
-   "F04": "private-te-6016b5",
-   "F05": "modern-low-6e9d80",
-   "F03": "communal-s-af42cd",
-   "F22": "golden-hou-d4cc25",
-   "F21": "green-hill-3f3856"
+   "F10": "private-te-6016b5",
+   "F04": null,
+   "F05": null,
+   "F03": null,
+   "F22": null,
+   "F21": null
+  },
+  "hidden": [],
+  "alts": {
+   "F10": "Терраса со стеклянным ограждением и видом на океан"
   },
   "title": "Аренда на севере Тенерифе: 12–15 € за м² в месяц — Artemis",
   "h1": "Как дом в La Quinta зарабатывает после ввода"
@@ -87,12 +108,16 @@
   "url": "/tenerife/energia/",
   "file": "07_energiya.md",
   "frames": {
-   "F11": "green-hill-3f3856",
-   "F13": "entrance-o-9abe9d",
-   "F16": "modern-low-6e9d80",
-   "F12": "communal-s-af42cd",
-   "F01": "golden-hou-d4cc25",
-   "F22": "private-te-6016b5"
+   "F11": "golden-hou-d4cc25",
+   "F13": null,
+   "F16": null,
+   "F12": null,
+   "F01": null,
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {
+   "F11": "Террасы домов на склоне в вечернем свете"
   },
   "title": "Энергия дома Artemis: солнце на крыше и камень",
   "h1": "Солнечная крыша, каменный контур: дом, который сам держит тепло"
@@ -101,13 +126,15 @@
   "url": "/tenerife/construccion/",
   "file": "08_stroyka.md",
   "frames": {
-   "F15": "golden-hou-d4cc25",
-   "F14": "green-hill-3f3856",
-   "F16": "modern-low-6e9d80",
-   "F17": "entrance-o-9abe9d",
-   "F18": "private-te-6016b5",
-   "F12": "communal-s-af42cd"
+   "F15": null,
+   "F14": null,
+   "F16": null,
+   "F17": null,
+   "F18": null,
+   "F12": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Стройка Artemis Tenerife: 9 стадий и отчёт каждую неделю",
   "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
  },
@@ -116,11 +143,17 @@
   "file": "09_sdelka.md",
   "frames": {
    "F02": "entrance-o-9abe9d",
-   "F19": "modern-low-6e9d80",
-   "F20": "interior-o-74f891",
-   "F18": "green-hill-3f3856",
-   "F17": "golden-hou-d4cc25",
-   "F04": "private-te-6016b5"
+   "F19": null,
+   "F20": null,
+   "F18": null,
+   "F17": null,
+   "F04": null
+  },
+  "hidden": [
+   "F17"
+  ],
+  "alts": {
+   "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
   },
   "title": "Сделка Artemis Tenerife: от очереди до ключей шаг за шагом",
   "h1": "От очереди до ключей: шесть шагов сделки Artemis"
@@ -130,11 +163,15 @@
   "file": "10_voprosy.md",
   "frames": {
    "F03": "communal-s-af42cd",
-   "F01": "modern-low-6e9d80",
-   "F11": "green-hill-3f3856",
-   "F15": "golden-hou-d4cc25",
-   "F05": "interior-o-74f891",
-   "F22": "private-te-6016b5"
+   "F01": null,
+   "F11": null,
+   "F15": null,
+   "F05": null,
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {
+   "F03": "Общий бассейн и дома Canary Stone"
   },
   "title": "Вопросы об Artemis Tenerife: акции, цена, дивиденд, стройка",
   "h1": "Вопросы перед входом в Artemis Tenerife — и прямые ответы"
@@ -143,13 +180,15 @@
   "url": "/tenerife/simon/",
   "file": "11_simon.md",
   "frames": {
-   "F19": "modern-low-6e9d80",
-   "F18": "green-hill-3f3856",
-   "F21": "golden-hou-d4cc25",
-   "F20": "interior-o-74f891",
-   "F01": "private-te-6016b5",
-   "F24": "communal-s-af42cd"
+   "F19": null,
+   "F18": null,
+   "F21": null,
+   "F20": null,
+   "F01": null,
+   "F24": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Simon Subic, девелопер Artemis Tenerife",
   "h1": "Я Simon Subic, девелопер Artemis Tenerife"
  },
@@ -157,13 +196,15 @@
   "url": "/tenerife/mercado/",
   "file": "12_rynok.md",
   "frames": {
-   "F24": "modern-low-6e9d80",
-   "F01": "golden-hou-d4cc25",
-   "F12": "entrance-o-9abe9d",
-   "F17": "private-te-6016b5",
-   "F22": "communal-s-af42cd",
-   "F04": "green-hill-3f3856"
+   "F24": null,
+   "F01": null,
+   "F12": null,
+   "F17": null,
+   "F22": null,
+   "F04": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Рынок и цена метра в La Quinta: цифры для Artemis",
   "h1": "Рынок и цена метра: откуда цифры Artemis в La Quinta"
  },
@@ -171,13 +212,15 @@
   "url": "/tenerife/boris/",
   "file": "13_boris.md",
   "frames": {
-   "F18": "green-hill-3f3856",
-   "F14": "golden-hou-d4cc25",
-   "F12": "entrance-o-9abe9d",
-   "F15": "modern-low-6e9d80",
-   "F19": "private-te-6016b5",
-   "F20": "interior-o-74f891"
+   "F18": null,
+   "F14": null,
+   "F12": null,
+   "F15": null,
+   "F19": null,
+   "F20": null
   },
+  "hidden": [],
+  "alts": {},
   "title": "Boris Ribaut, главный строитель Artemis Tenerife",
   "h1": "Я Boris Ribaut, главный строитель Artemis Tenerife"
  }

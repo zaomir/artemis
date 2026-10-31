@@ -24,8 +24,13 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+{% if page.hero.img %}
 <link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.srcset }}" imagesizes="{{ page.hero.img.sizes }}" fetchpriority="high">
+{% endif %}
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
+{% for ld in lds %}
+<script type="application/ld+json">{{ ld }}</script>
+{% endfor %}
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -39,14 +44,14 @@
 {{ c.calculator(calc, calc_labels) }}
 {% endif %}
 {% for s in page.sections %}
-{{ c.section(s, loop.first and not page.facts and not calc) }}
+{{ c.section(s, loop.first and not page.facts and not calc, calc_short, calc_short_labels) }}
 {% endfor %}
 {{ c.cta(page.cta_section, page.button, url, calc) }}
 </main>
 {{ c.footer(footer, nav, url) }}
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-{% if calc %}
+{% if calc or calc_short %}
 <script src="/static/tenerife/site/calc.js" defer></script>
 {% endif %}
 </body>

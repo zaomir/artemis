@@ -50,6 +50,8 @@ Lead relay (`deploy/artemis-lead-relay.py` → `/usr/local/sbin/artemis-lead-rel
 `leads.db` no longer needs a state clean-up: a new lead that gets a deleted lead's id (existing tables have
 no AUTOINCREMENT; new databases do) is still e-mailed. Legacy `sent` rows without a key count only for a
 lead created no later than the row's `at`. Checkout: `/var/www/artemis` (branch `main`, never edit in place).
+Leads from `/tenerife/calculadora/` carry validated calculator fields (`calc_*` columns of `tenerife_waitlist`,
+added by the app on first write; `app/tenerife_calc.py`); the app's Telegram message shows them (the relay does not).
 
 ## Runtime config
 
@@ -59,8 +61,10 @@ lead created no later than the row's `at`. Checkout: `/var/www/artemis` (branch 
 |---|---|
 | `ARTEMIS_ADMIN_TOKEN` | `/admin/leads` token. Missing → admin always 403 (fail-closed) |
 | `ARTEMIS_TG_BOT_TOKEN` | Telegram bot used for lead notifications |
-| `ARTEMIS_TG_CHAT_ID` | Telegram group «Artemis». Missing → lead saved to DB + warning in journal only |
+| `ARTEMIS_TG_CHAT_ID` | Telegram group «Artemis». Missing → lead saved to DB + warning in journal only. A lead whose name (Crete: or message) contains `TEST` is still sent, with «[TEST] » before the first line |
 | `RATE_LIMIT_SALT` | Secret HMAC key for the per-client rate-limit hash (`/api/enquiry`, Tenerife waitlist; `app/ratelimit.py`); any long random string, e.g. `openssl rand -hex 32`. Unset or empty → `ARTEMIS_ADMIN_TOKEN` is used. **Neither set → the app refuses to start** (`refusing to start: rate limit: …` in the journal); there is no built-in default. Changing it only resets the rate-limit counters |
+| `TENERIFE_WHATSAPP` | WhatsApp number of the `/tenerife/` footer, E.164 with `+` (e.g. `+440000000000`): «WhatsApp: » + `https://wa.me/<digits>`. Unset/invalid → contact hidden + one warning without the value. Never commit it. Details: `app/tenerife_site/README.md` |
+| `TENERIFE_INDEXING` | `1` → `/tenerife/` indexable and in `sitemap.xml`. Unset → `noindex, nofollow` meta + `X-Robots-Tag` on every `/tenerife/` page (impressum/privacy included), none in the sitemap (until the founder approves numbers and prices). Crete unaffected |
 
 Notifications contain only: name, contact, language, page — plus the planned investment amount
 for Crete enquiries when the visitor filled it in (Telegram from `app/notify.py`, e-mail copy from

@@ -12,12 +12,15 @@
   var price=function(id){for(var i=0;i<M.steps.length;i++) if(M.steps[i].id===id) return M.steps[i].price_eur_m2;};
   var hand=M.steps.filter(function(s){return s.entry===false;})[0].price_eur_m2;
   var out=document.getElementById('calc-m2-out'), range=document.getElementById('calc-m2');
-  var val=function(n){var r=f.querySelector('input[name='+n+']:checked'); return r?r.value:'';};
-  var hid={m2:document.getElementById('wl-calc-m2'),step:document.getElementById('wl-calc-step'),pay:document.getElementById('wl-calc-pay')};
+  var cur=M.steps.filter(function(s){return s.current;})[0].id;
+  /* C9 short (04) has no step / pay choice: the current step and 12 months, as rendered server-side */
+  var val=function(n,dflt){var r=f.querySelector('input[name='+n+']:checked'); return r?r.value:dflt;};
+  /* hidden fields of the C13 «calculadora» form: exactly calc_m2, calc_step, calc_pay (DESIGN.md C9/C13) */
+  var hid={};['m2','step','pay'].forEach(function(k){hid[k]=document.getElementById('wl-calc-'+k);});
   function set(k,v){var d=res.querySelector('[data-k="'+k+'"]'); if(!d||d.textContent===v) return;
     if(!rm){d.classList.add('is-updating');setTimeout(function(){d.classList.remove('is-updating');},120);} d.textContent=v;}
   function calc(){
-    var m2=+range.value, step=val('step'), pay=val('pay'), p=price(step), sum=m2*p;
+    var m2=+range.value, step=val('step',cur), pay=val('pay','m12'), p=price(step), sum=m2*p;
     out.textContent=m2+' м²';
     M.types.forEach(function(t){var r=f.querySelector('input[name=type][value='+t.id+']'); if(r) r.checked=m2>=t.min&&m2<=t.max;});
     set('sum',eur(sum));
@@ -25,6 +28,7 @@
     set('handover',eur(m2*hand));
     set('div',eur(m2*M.dividend_eur_per_share_year));
     set('pct',pf.format(M.dividend_eur_per_share_year/p*100)+'%');
+    /* the server recomputes everything else from these with the current model.json (tenerife_calc.py) */
     if(hid.m2){hid.m2.value=m2;hid.step.value=step;hid.pay.value=pay;}
   }
   f.addEventListener('input',function(ev){

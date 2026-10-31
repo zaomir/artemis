@@ -62,23 +62,37 @@ class TenerifePreviewTest(unittest.TestCase):
                 "consent": True, "page": "/tenerife-preview/"}
         data.update(kw)
         return self.client.post("/api/tenerife/waitlist", json=data,
-                                headers={"CF-Connecting-IP": ip})
+                                headers={"X-Real-IP": ip})  # set by nginx (QA T3-04)
 
     # --- pages ---------------------------------------------------------
     def test_pages_200_and_noindex(self):
-        for path in ("/tenerife-preview/",):
+        # designer T47 (31.10.2026): the old one-pager is retired -> /tenerife-preview[/] answers ONE 301 to /tenerife/
+        for path in ("/tenerife-preview", "/tenerife-preview/"):
             r = self.client.get(path)
-            self.assertEqual(r.status_code, 200, path)
+            self.assertEqual(r.status_code, 301, path)
+            self.assertEqual(r.headers["Location"].replace("http://localhost", ""), "/tenerife/", path)
             self.assertIn("noindex", r.headers.get("X-Robots-Tag", ""), path)
-            self.assertIn('<meta name="robots" content="noindex', r.get_data(as_text=True), path)
         # legal pages moved to /tenerife/<name>/ (31.10.2026): old preview URLs answer 301
         for name in ("impressum", "privacy"):
             r = self.client.get(f"/tenerife-preview/{name}/")
             self.assertEqual(r.status_code, 301, name)
             self.assertTrue(r.headers["Location"].endswith(f"/tenerife/{name}/"), r.headers["Location"])
             self.assertIn("noindex", r.headers.get("X-Robots-Tag", ""), name)
-        r = self.client.get("/tenerife-preview")
-        self.assertIn(r.status_code, (301, 308))
+
+    def test_preview_subpaths_301_keep_page_and_query(self):
+        # T47: a sub-path that is a /tenerife/ page keeps it; anything else lands on /tenerife/; query kept; one hop
+        for path, want in (("/tenerife-preview/?utm_source=x", "/tenerife/?utm_source=x"),
+                           ("/tenerife-preview/norte", "/tenerife/norte/"),
+                           ("/tenerife-preview/faq/?a=1", "/tenerife/faq/?a=1"),
+                           ("/tenerife-preview/boris/x/y", "/tenerife/boris/"),
+                           ("/tenerife-preview/gracias/", "/tenerife/"),
+                           ("/tenerife-preview/no-such-page", "/tenerife/"),
+                           ("/tenerife-preview/index.html", "/tenerife/")):
+            r = self.client.get(path)
+            self.assertEqual(r.status_code, 301, path)
+            loc = r.headers["Location"].replace("http://localhost", "")
+            self.assertEqual(loc, want, path)
+            self.assertEqual(self.client.get(loc).status_code, 200, loc)
 
     def test_preview_legal_without_slash_one_hop_301_keeps_query(self):
         # QA B-01 (31.10.2026): no 308 -> 301 chain; straight to the canonical URL, query string kept
@@ -91,17 +105,8 @@ class TenerifePreviewTest(unittest.TestCase):
                 final = self.client.get(f"/tenerife/{name}/")
                 self.assertEqual(final.status_code, 200)
 
-    def test_preview_content_rules(self):
-        body = self.client.get("/tenerife-preview/").get_data(as_text=True)
-        for must in ("лист ожидания",
-                     "Simon Subic", "Lana Evans", "Boris Ribaut", "6/2025",
-                     "Посуточная аренда — только как опция", 'name="website"', 'name="consent"'):
-            self.assertIn(must, body)
-        for pat in FORBIDDEN:
-            self.assertIsNone(re.search(pat, body, re.I), pat)
-
     def test_no_disclaimers_or_ai_captions(self):
-        for path in ("/tenerife-preview/", "/tenerife/impressum/", "/tenerife/privacy/"):
+        for path in ("/tenerife/impressum/", "/tenerife/privacy/"):
             body = self.client.get(path).get_data(as_text=True)
             for pat in REMOVED_DISCLAIMERS:
                 self.assertIsNone(re.search(pat, body, re.I), f"{path}: {pat}")
@@ -123,25 +128,12 @@ class TenerifePreviewTest(unittest.TestCase):
             self.assertIn(must, body)
         self.assertNotIn("Oxford Frame Ltd", body)
 
-    def test_preview_footer_uses_registered_name(self):
-        body = self.client.get("/tenerife-preview/").get_data(as_text=True)
-        self.assertIn("OXFORD FRAME REAL ASSETS LTD", body)
-        self.assertNotIn("Oxford Frame Ltd", body)
-        for name in ("impressum", "privacy"):  # links go straight to the canonical legal pages
-            self.assertIn(f'href="/tenerife/{name}/"', body)
-            self.assertNotIn(f'href="/tenerife-preview/{name}/"', body)
-
     def test_not_linked_from_crete(self):
         for lang in ("en", "ru", "es", "fr"):
             for path in (f"/{lang}/", f"/{lang}/privacy/", f"/{lang}/terms/"):
                 body = self.client.get(path).get_data(as_text=True)
                 self.assertNotIn("tenerife-preview", body, path)
                 self.assertNotIn("noindex", self.client.get(path).headers.get("X-Robots-Tag", ""), path)
-
-    def test_images_exist(self):
-        body = self.client.get("/tenerife-preview/").get_data(as_text=True)
-        for src in set(re.findall(r'/static/tenerife/([\w.-]+\.jpg)', body)):
-            self.assertTrue((ROOT / "app" / "static" / "tenerife" / src).is_file(), src)
 
     # --- waitlist ------------------------------------------------------
     def test_waitlist_ok_stores_and_notifies_four_fields(self):
@@ -191,7 +183,8 @@ class TenerifePreviewTest(unittest.TestCase):
             r = self.client.post("/api/tenerife/waitlist", data={
                 "name": "Ivan", "contact": "@ivan_tg", "language": "ru", "consent": "1", "website": ""})
         self.assertEqual(r.status_code, 303)
-        self.assertIn("/tenerife-preview/?ok=1", r.headers["Location"])
+        # QA T3-05: no-JS thank-you page; without a page field the way back is /tenerife/, never the preview
+        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2F"), r.headers["Location"])
 
     def test_admin_lists_waitlist_escaped(self):
         os.environ["ARTEMIS_ADMIN_TOKEN"] = "z" * 40

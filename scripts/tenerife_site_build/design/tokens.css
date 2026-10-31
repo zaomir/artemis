@@ -24,8 +24,8 @@
   --cs-placeholder:   #CFC8BB; /* нейтральная заливка кадра до загрузки (= on-dark-soft) */
 
   /* ---------- 2. Типографика ---------- */
-  --font-display: "Literata", "Georgia", "Times New Roman", serif;          /* заголовки, крупные цифры */
-  --font-text:    "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif; /* текст, интерфейс, таблицы */
+  --font-display: "Literata", "Canary Serif", "Georgia", "Times New Roman", serif;          /* заголовки, крупные цифры */
+  --font-text:    "Source Sans 3", "Canary Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif; /* текст, интерфейс, таблицы */
 
   /* шкала: mobile @320 → desktop @1440, линейно через clamp() */
   --fs-display: clamp(2rem, 1.429rem + 2.857vw, 4rem);         /* H1   32 → 64 px */
@@ -50,6 +50,7 @@
 
   --ls-display: -0.015em;
   --ls-label:   0.08em;
+  --ls-brand:   0.01em;  /* словесный знак Artemis Tenerife */
   --measure:    68ch;  /* максимальная длина строки текста */
 
   /* ---------- 3. Отступы (база 4 px) ---------- */
@@ -61,8 +62,6 @@
   --space-6: 2rem;     /*  32 */
   --space-7: 3rem;     /*  48 */
   --space-8: 4rem;     /*  64 */
-  --space-9: 6rem;     /*  96 */
-  --space-10: 8rem;    /* 128 */
   --section-y:       clamp(4rem, 3.143rem + 4.286vw, 7rem);  /* обычная секция  64 → 112 */
   --section-y-tight: clamp(3rem, 2.571rem + 2.143vw, 4.5rem); /* связанная секция 48 → 72 */
 
@@ -74,7 +73,8 @@
   --grid-cols-tablet: 8;   --grid-gutter-tablet: 1.25rem; /* 768–1023: 8 колонок, 20 px */
   --grid-cols-desktop: 12; --grid-gutter-desktop: 1.5rem; /* ≥ 1024: 12 колонок, 24 px */
 
-  /* ---------- 5. Брейкпоинты (для matchMedia; в @media писать числом) ---------- */
+  /* ---------- 5. Брейкпоинты — RESERVED: справочные значения для JS matchMedia и сборки;
+     в @media custom properties не работают, там пишется то же число. В CSS компонентов не используются намеренно. ---------- */
   --bp-min: 320px;
   --bp-sm:  480px;
   --bp-md:  768px;
@@ -83,18 +83,18 @@
   --bp-xxl: 1440px;
 
   /* ---------- 6. Радиусы: камень режут прямо ---------- */
-  --radius-0: 0;      /* кадры, плиты, секции */
-  --radius-1: 2px;    /* кнопка, поля ввода */
-  --radius-2: 4px;    /* переключатели, контур фокуса повторяет радиус */
+  /* кадры, плиты, секции — без радиуса (значение 0 не токенизируется) */
+  --radius-1: 2px;    /* кнопка, поля ввода, метка «сейчас»; контур фокуса повторяет радиус элемента */
 
   /* ---------- 7. Тени и линии ---------- */
-  --shadow-none:  none;                                   /* по умолчанию теней нет */
   --shadow-sheet: 0 16px 40px rgba(28, 26, 23, 0.16);     /* только мобильная шторка меню */
-  --border-hair:  1px solid var(--cs-line);
+  --hairline:     1px;  /* толщина всех волосяных линий и подчёркивания ссылок */
+  --border-hair:  var(--hairline) solid var(--cs-line);
   --plinth:       6px;  /* высота «цоколя» — базальтовая полоса под кадром и героем (сигнатура) */
-  --shadow-hairline: 0 1px 0 var(--cs-line);           /* нижняя линия сплошной шапки (не меняет высоту) */
-  --border-ink:   1px solid var(--cs-ink);              /* сильная линия: верх таблиц, FAQ, журнала */
-  --border-control: 1px solid var(--cs-control-line);   /* граница полей и переключателей */
+  --shadow-hairline: 0 var(--hairline) 0 var(--cs-line);           /* нижняя линия сплошной шапки (не меняет высоту) */
+  --border-on-dark: var(--hairline) solid var(--cs-line-on-dark); /* разделитель в подвале */
+  --border-ink:   var(--hairline) solid var(--cs-ink);              /* сильная линия: верх таблиц, FAQ, журнала */
+  --border-control: var(--hairline) solid var(--cs-control-line);   /* граница полей и переключателей */
   --rule-2:       2px;  /* линия текущего пункта меню, верх шагов */
   --rule-accent:  3px;  /* полоса слева у сообщений формы */
   --stroke:       1.5px; /* штрих CSS-иконок (меню, шеврон, плюс) */
@@ -136,8 +136,20 @@
   --hero-h:    min(88vh, 820px); /* высота кадра героя ≥768 */
   --hero-min-h: 560px;
   --hero-max-h-mobile: 88vh; /* потолок кадра 4:5 на mobile */
-  --scrim-fade: 6rem;  /* 96 px: зона нарастания скрима над текстом героя; текст начинается ниже неё */
+  --scrim-fade: 2rem;  /* 32 px: затухание скрима под прозрачной шапкой .is-over (текст шапки — в сплошной части) */
+  --hero-plate-pad: var(--space-6); /* поля плиты-скрима под H1 героя ≥768 — по горизонтали */
+  --hero-plate-pad-block: var(--space-4); /* v3.1 D19: поля плиты по вертикали 16 px (было 32) — плита + шапка ≤ 55 % высоты кадра */
+  --fs-h1-short: clamp(2rem, 4.2cqi, 3.5rem); /* C2s короткий герой: H1 в шкале h2-display от ширины героя (container query), 32 → 56 px */
+  --h1-short-measure: 21ch; /* C2s: мера H1 короткого героя. Бриф — 16ch, но реальный H1 «Вопросы» (57 знаков) при 16–19ch даёт 4 строки; 20ch — минимум для ≤3 строк при ≥1024, 21ch — с запасом на метрики движков */
+  --hero-short-h: clamp(22rem, 62vh, 36rem); /* C2s: высота кадра короткого героя ≥768 (352 → 576 px) */
+  --hero-short-overhang: 6rem; /* C2s: на сколько плита H1 свисает с нижнего края кадра на lime */
+  --legal-h1-cap: 8.6cqi; /* C17: потолок кегля H1 правовой страницы от ширины секции — «конфиденциальности» не рвётся на 320–375 */
+  --inline-hit-pad: 12px; /* добор зоны касания ссылки в строке текста: строка 21–25 px + 2 × 12 ≥ 44 */
+  --fig-cap-tablet: 7cqi;  /* потолок крупной цифры полосы фактов 768–1023 (доля ширины .figures) */
+  --fig-cap-desktop: 6.5cqi; /* то же ≥1024 */
+  --ladder-name-cap: 2.2cqi;   /* C8 ладдер ≥1024: потолок кегля названия этапа от ширины ладдера (container query) — без разрыва слов */
   --measure-lead: 60ch; /* лид героя */
+  --output-w:  5ch;    /* поле «72 м²» калькулятора */
   --lh-figure: 1;      /* крупные цифры */
   --underline-offset: 0.18em;
   --underline-offset-nav: 0.5em;

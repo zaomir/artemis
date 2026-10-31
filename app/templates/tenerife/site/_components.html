@@ -2,7 +2,7 @@
     style/script: CSP). No texts or figures here except DESIGN.md §5 interface strings (Меню, Ещё, сейчас,
     Площадь, м², Сайт); every number comes from the copy via model.json. -#}
 {% macro picture(img, hero=false) -%}
-<picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
+<picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
 {%- endmacro %}
 
 {% macro navlink(n, url) -%}
@@ -15,7 +15,7 @@
 <header class="header" id="site-header">
   <div class="wrap header__in">
     <a class="brand" href="/tenerife/"{% if url == "/tenerife/" %} aria-current="page"{% endif %}>Artemis Tenerife</a>
-    <nav class="nav" aria-label="Основное">
+    <nav class="nav" aria-label="Основное меню">
       <ul>
 {% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
@@ -43,38 +43,48 @@
 </header>
 {%- endmacro %}
 
-{#- C2 hero: full (01–04, 06–09, 12), short (05, 10), text (11, 13: no hero picture, first frame 3:2 below) -#}
+{#- C2 hero: full (01–04, 06–09, 12), short (05, 10), text (11, 13: no hero picture, first frame 3:2 below).
+    No photo for the hero slot (designer r2: one photo once per page, F13/F18/F19/F20 have none) -> text hero,
+    no figure, the basalt bar (.bar-under) under the text. -#}
 {% macro hero(h) -%}
 {% if h.kind == "text" %}
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
-    <div class="col-text">
+    <div class="col-text{% if h.bar %} bar-under{% endif %}">
       <h1 id="h1">{{ h.h1 }}</h1>
 {% for p in h.intro %}
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
+{% if h.img %}
       <figure class="frame hero-text__frame"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div></figure>
+{% endif %}
     </div>
   </div>
 </section>
 {% else %}
-<section class="hero{% if h.kind == 'short' %} hero--short{% endif %}" id="hero" aria-labelledby="h1">
+<section class="hero{% if h.kind == "short" %} hero--short{% endif %}" id="hero" aria-labelledby="h1">
   <div class="hero__media">{{ picture(h.img, true) }}</div>
   <div class="hero__body">
     <div class="wrap grid">
-      <h1 id="h1">{{ h.h1 }}</h1>
+      <h1 id="h1"{% if h.kind == "short" %} class="hero__h1--short"{% endif %}>{{ h.h1 }}</h1>
+    </div>
+  </div>
+{% if h.intro %}
+  <div class="hero__after">
+    <div class="wrap grid">
 {% for p in h.intro %}
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
     </div>
   </div>
+{% endif %}
 </section>
 {% endif %}
 {%- endmacro %}
 
 {#- C3 key figures on the basalt plinth (copy line, split into value + label) -#}
 {% macro facts(items) -%}
-<section class="plinth">
+<section class="plinth" aria-label="Ключевые цифры">
   <ul class="wrap grid figures figures--{{ items|length }}">
 {% for it in items %}
 {% if it.value %}
@@ -112,6 +122,15 @@
 </ol>
 {%- endmacro %}
 
+{#- C8 mini (01, 08, 12): names + prices from model.json, bars ∝ price; decorative, the copy's text/table sits next to it -#}
+{% macro ladder_mini(rows) -%}
+<ol class="ladder ladder--mini" aria-hidden="true">
+{% for r in rows %}
+  <li{% if r.current %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__bar"><i></i></span></li>
+{% endfor %}
+</ol>
+{%- endmacro %}
+
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}
 <figure class="frame{{ extra }}"><div class="frame__media r-{{ img.ratio }}">{{ picture(img) }}</div></figure>
@@ -142,13 +161,26 @@
 {% elif it.kind == "steps" %}
 <ol class="grid steps">
 {% for x in it["items"] %}
-  <li><span class="steps__n" aria-hidden="true">{{ loop.index }}</span><h3>{{ x.lead }}</h3><p>{{ x.rest }}</p></li>
+  <li><span class="steps__n"{% if not x.get("n_copy") %} aria-hidden="true"{% endif %}>{{ loop.index }}</span>{% if x.lead %}<h3>{{ x.lead }}</h3>{% endif %}<p>{{ x.rest }}</p></li>
 {% endfor %}
 </ol>
 {% elif it.kind == "ledger" %}
 <ul class="ledger">
 {% for x in it["items"] %}
   <li><strong>{{ x.lead }}</strong><span>{{ x.rest }}</span></li>
+{% endfor %}
+</ul>
+{% elif it.kind == "log" %}
+<p class="log__head grid">{% for h in it.head %}<span>{{ h }}</span>{% endfor %}</p>
+<ol class="log">
+{% for r in it.rows %}
+  <li class="grid"><time>{{ r[0] }}</time><h3>{{ r[1] }}</h3>{% if r|length > 2 %}<p>{{ r[2] }}</p>{% endif %}</li>
+{% endfor %}
+</ol>
+{% elif it.kind == "people" %}
+<ul class="people">
+{% for x in it["items"] %}
+  <li><a href="{{ x.href }}">{{ x.name }}</a><p>{{ x.role }}</p></li>
 {% endfor %}
 </ul>
 {% elif it.kind == "table" %}
@@ -161,8 +193,20 @@
 {% if s.level == 2 %}<h2 class="h2-major" id="{{ s.id }}">{{ s.title }}</h2>{% else %}<h2 id="{{ s.id }}">{{ s.title }}</h2>{% endif %}
 {%- endmacro %}
 
-{#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13) -#}
-{% macro section(s, first) -%}
+{% macro extras(s, k, res) -%}
+{% if s.mini_ladder %}
+  <div class="wrap extras">
+{{ ladder_mini(s.mini_ladder) }}
+  </div>
+{% endif %}
+{% if s.calc_short and k %}
+{{ calc_short(k, res) }}
+{% endif %}
+{%- endmacro %}
+
+{#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13).
+    s.bar: its [КАДР] slots have no photo -> no figure, 6 px basalt bar under the text block -#}
+{% macro section(s, first, k=none, res=none) -%}
 <section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}" aria-labelledby="{{ s.id }}">
 {% if s.layout == "split" %}
   <div class="wrap grid ti{% if s.rev %} ti--rev{% endif %}">
@@ -172,8 +216,9 @@
     </div>
     {{ frame(s.imgs[0]) }}
   </div>
+{{ extras(s, k, res) }}
 {% elif s.layout == "faq" %}
-  <div class="wrap grid split-head">
+  <div class="wrap grid split-head{% if s.bar %} bar-under{% endif %}">
     {{ heading(s) }}
     <div class="split-head__body faq">
 {% for x in s.qa %}
@@ -181,31 +226,35 @@
 {% endfor %}
     </div>
   </div>
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% elif s.layout == "long" %}
   <div class="wrap">
-    <div class="col-text">
+    <div class="col-text{% if s.bar %} bar-under{% endif %}">
       {{ heading(s) }}
 {{ body_items(s.body, s.id) }}
     </div>
   </div>
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% elif s.layout == "stack" %}
-  <div class="wrap stack">
+  <div class="wrap stack{% if s.bar %} bar-under{% endif %}">
     {{ heading(s) }}
 {% if s.ladder %}
 {{ ladder(s.ladder) }}
 {% endif %}
 {{ body_items(s.body, s.id) }}
   </div>
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% else %}
-  <div class="wrap grid split-head">
+  <div class="wrap grid split-head{% if s.bar %} bar-under{% endif %}">
     {{ heading(s) }}
     <div class="split-head__body">
 {{ body_items(s.body, s.id) }}
     </div>
   </div>
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% endif %}
 </section>
@@ -261,6 +310,29 @@
 </section>
 {%- endmacro %}
 
+{#- C9 short (04): area only, the current step and 12 months; same calc.js and #cs-model island, no form button.
+    Words: the section's own «Покупка из очереди: … сразу или … в месяц двенадцать месяцев» -#}
+{% macro calc_short(k, res) -%}
+  <div class="wrap grid calc calc--short" id="calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
+      <fieldset>
+        <legend>Площадь</legend>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
+          <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}">
+          <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
+        </div>
+      </fieldset>
+    </div>
+    <div class="calc__out" aria-live="polite">
+      <dl class="res" id="calc-res">
+        <div class="res__short"><dt>{{ res.lead }}</dt><dd><span data-k="sum">{{ k.sum }}</span> {{ res.mid }} <span data-k="month">{{ k.month }}</span> {{ res.tail }}</dd></div>
+      </dl>
+    </div>
+    <script type="application/json" id="cs-model">{{ k.island }}</script>
+  </div>
+{%- endmacro %}
+
 {#- C13 waitlist: the page's single .cta-primary. Fields as in prod. id="waitlist" stays for the no-JS redirect -#}
 {% macro cta(s, button, url, calc) -%}
 <section class="section section--sand" id="ochered"{% if s %} aria-labelledby="{{ s.id }}"{% else %} aria-label="{{ button.text }}"{% endif %}>
@@ -271,11 +343,11 @@
 {{ body_items(s.body, s.id) }}
     </div>
 {% endif %}
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate>
-      <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required></div>
-      <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required></div>
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate{% if calc %} data-variant="calculadora"{% endif %}{% for k, v in form_msg.items() %} data-msg-{{ k }}="{{ v }}"{% endfor %}>
+      <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
+      <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Язык общения</label>
-        <select id="wl-lang" name="language" required><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select></div>
+        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
       <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="{{ url }}">
 {% if calc %}
@@ -283,7 +355,8 @@
       <input type="hidden" name="calc_step" id="wl-calc-step" value="{{ calc.current }}">
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m12">
 {% endif %}
-      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required><span>Согласен(на) на обработку моих данных (имя, контакт, язык) для связи по проекту Artemis Tenerife в соответствии с <a href="/tenerife/privacy/">политикой конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ button.text }}</button></div>
       <p class="micro">{{ button.micro }}</p>
       <div class="msg" id="wl-msg" role="status"></div>
@@ -292,7 +365,7 @@
 </section>
 {%- endmacro %}
 
-{#- C14 footer (copy 14). Phone stays text: site rule — every href starts with "/" (or the protected mailto) -#}
+{#- C14 footer (copy 14). The copy's phone -> WhatsApp slot, filled by app/tenerife.py from TENERIFE_WHATSAPP (r4) -#}
 {% macro footer(f, nav, url) -%}
 <footer class="footer">
   <div class="wrap">
@@ -313,7 +386,7 @@
         <p><strong>Контакты.</strong></p>
         <ul>
 {% for cn in f.contacts %}
-          <li>{% if "@" in cn %}<a href="mailto:{{ cn }}">{{ cn }}</a>{% else %}{{ cn }}{% endif %}</li>
+          {% if cn == "whatsapp" %}<li data-tenerife-whatsapp hidden></li>{% else %}<li>{% if "@" in cn %}<a href="mailto:{{ cn }}">{{ cn }}</a>{% else %}{{ cn }}{% endif %}</li>{% endif %}
 {% endfor %}
         </ul>
       </div>

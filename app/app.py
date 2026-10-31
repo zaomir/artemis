@@ -55,7 +55,7 @@ def _load_email_off(path=_EO_PATH):
 
 
 email_off = _load_email_off()
-from notify import notify_lead  # noqa: E402
+from notify import is_test, notify_lead  # noqa: E402
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 logging.basicConfig(level=logging.INFO)
@@ -225,6 +225,8 @@ SITE_URL = "https://artemisresort.com"
 def sitemap_paths() -> list[str]:
     """Indexable 200 pages only: Crete language homes + shipped Tenerife pages (no preview / noindex)."""
     paths = [f"/{lang}/" for lang in SUPPORTED]
+    if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
+        return paths
     for name in ("index",) + tenerife.SITE_PAGES:
         if (tenerife.SITE_DIR / f"{name}.html").is_file():
             paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
@@ -466,10 +468,10 @@ def enquiry():
     if lang not in SUPPORTED:
         lang = request.cookies.get("lang", "") if request.cookies.get("lang") in SUPPORTED else "?"
     page = (d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path or "/"
-    if amount:
-        notify_lead("Crete enquiry", name, email, lang, page, amount=amount)
-    else:
-        notify_lead("Crete enquiry", name, email, lang, page)
+    kw = {"amount": amount} if amount else {}
+    if is_test(message):  # QA PS-09: «[TEST] » in the notification; the message itself is not sent
+        kw["test"] = True
+    notify_lead("Crete enquiry", name, email, lang, page, **kw)
 
     return jsonify({"ok": True})
 

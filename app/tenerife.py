@@ -1,25 +1,34 @@
 """Artemis Tenerife — RU preview (noindex) + free waitlist.
 
 Routes (Blueprint, registered in app.py):
-  GET  /tenerife-preview/            RU preview page
-  GET  /tenerife-preview/impressum/  301 -> /tenerife/impressum/ (canonical since 31.10.2026)
-  GET  /tenerife-preview/privacy/    301 -> /tenerife/privacy/
+  GET  /tenerife-preview[/<sub>]     301 -> /tenerife/<sub>/ if that page exists, else /tenerife/ (T47)
   GET  /tenerife/impressum/          legal notice (Impressum / Aviso legal); indexable, canonical
   GET  /tenerife/privacy/            privacy notice for the waitlist; indexable, canonical
+                                     (both static, v2 layout, built by build_v3.py from the templates' text)
+  GET  /tenerife/gracias/?back=      no-JS thank-you page after the form (noindex); errors answer with the
+                                     same v2 notice shell and a link back to the form
   POST /api/tenerife/waitlist        name, contact, language, GDPR consent
+                                     (+ calc_m2, calc_step, calc_pay from /tenerife/calculadora/:
+                                     recomputed with model.json in tenerife_calc.py)
   GET  /tenerife/, /tenerife/<page>/ RU prod site (static pages built from
                                      grainee-v2 docs/projects/artemis/tenerife/site-ru,
                                      see app/tenerife_site/README.md); indexable.
                                      /tenerife/<page>.html -> 301 clean URL.
 
 Preview + API paths are noindex (meta + X-Robots-Tag) and is not
-linked from the Crete site. No amounts, no payments, no yield.
+linked from the Crete site. No payments; the only amounts are the server's recomputation of
+the visitor's calculator inputs, stored with the lead.
 """
 from __future__ import annotations
 
 import datetime
 import hashlib
+import html
 import hmac
+import ipaddress
+import logging
+import os
+import re
 import sqlite3
 import urllib.parse
 from pathlib import Path
@@ -28,6 +37,7 @@ from flask import Blueprint, current_app, jsonify, make_response, redirect, rend
 
 import ratelimit
 from notify import notify_lead
+from tenerife_calc import COLUMNS as CALC_COLUMNS, check_calc, load_model, migrate as migrate_calc
 
 bp = Blueprint("tenerife", __name__)
 
@@ -60,12 +70,24 @@ def init_waitlist_db(conn: sqlite3.Connection) -> None:
     conn.execute(
         "CREATE INDEX IF NOT EXISTS ix_tw_client_time ON tenerife_waitlist(client_hash, created_at)"
     )
+    migrate_calc(conn)
+
+
+def _client_ip() -> str:
+    """Client IP for the rate-limit key (QA T3-04). nginx (prod and preview) resolves the real client via
+    Cloudflare real_ip and sets X-Real-IP to the verified $remote_addr, overwriting anything the client sent.
+    CF-Connecting-IP and X-Forwarded-For are client-controllable on the way in and are never read here
+    (no ProxyFix on XFF either); without X-Real-IP (local runs) the TCP peer is used."""
+    real = (request.headers.get("X-Real-IP") or "").strip()
+    try:
+        return str(ipaddress.ip_address(real))
+    except ValueError:
+        return request.remote_addr or "?"
 
 
 def _client_hash() -> str:
     ip = (
-        request.headers.get("CF-Connecting-IP")
-        or request.headers.get("X-Real-IP")
+        _client_ip()  # T3-04: X-Real-IP (set by nginx), else the TCP peer
         or request.remote_addr
         or "?"
     )
@@ -90,34 +112,24 @@ def _render(template: str, **ctx):
     return _noindex(make_response(render_template(template, langs=WAITLIST_LANGS, **ctx)))
 
 
-@bp.route(PREVIEW_PREFIX)
-def preview_noslash():
-    return redirect(PREVIEW_PREFIX + "/", code=301)
-
-
-@bp.route(PREVIEW_PREFIX + "/")
-def preview():
-    return _render("tenerife/preview.html", sent=request.args.get("ok") == "1")
-
-
-# Legal pages moved from /tenerife-preview/<name>/ to the prod prefix (31.10.2026).
-# Old preview URLs answer 301 so earlier links keep working; /tenerife-preview/ itself is untouched.
+# The old RU one-pager /tenerife-preview/ is retired (designer T47, 31.10.2026): every URL under it answers ONE 301
+# to the same page under /tenerife/ when it exists (impressum, privacy, the 12 site pages), else to /tenerife/;
+# the query string is kept. Legal pages moved here first (31.10.2026, same rule).
 LEGAL_PAGES = ("impressum", "privacy")
+
+
+@bp.route(PREVIEW_PREFIX)
+@bp.route(PREVIEW_PREFIX + "/")
+@bp.route(PREVIEW_PREFIX + "/<path:sub>")
+def preview_moved(sub: str = ""):
+    first = sub.strip("/").split("/", 1)[0]
+    target = f"/tenerife/{first}/" if first in LEGAL_PAGES + SITE_PAGES else "/tenerife/"
+    return redirect(_with_query(target), code=301)
 
 
 def _with_query(url: str) -> str:
     qs = request.query_string.decode("latin-1")
     return f"{url}?{qs}" if qs else url
-
-
-# With and without the trailing slash: one 301 hop straight to the canonical URL, query string kept
-# (without the explicit no-slash rules Werkzeug first answers 308 -> /tenerife-preview/<name>/).
-@bp.route(PREVIEW_PREFIX + "/impressum/")
-@bp.route(PREVIEW_PREFIX + "/privacy/")
-@bp.route(PREVIEW_PREFIX + "/impressum")
-@bp.route(PREVIEW_PREFIX + "/privacy")
-def preview_legal_moved():
-    return redirect(_with_query("/tenerife/" + request.path.rstrip("/").rsplit("/", 1)[-1] + "/"), code=301)
 
 
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
@@ -128,13 +140,71 @@ SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energ
 SITE_URL = "https://artemisresort.com"
 
 
+log = logging.getLogger("artemis.tenerife")
+
+# ---- runtime config of the built pages (the static HTML is committed; these two never are)
+# TENERIFE_WHATSAPP  E.164 with "+", e.g. +440000000000. Footer «Контакты»: «WhatsApp: » + a wa.me link whose text is
+#                    the number. The build leaves WA_SLOT where the copy has the phone; unset/invalid -> the contact
+#                    is left out (never a placeholder) and a warning WITHOUT the value is logged.
+# TENERIFE_INDEXING  "1" -> /tenerife/ pages indexable and in sitemap.xml; unset/anything else -> every page gets
+#                    <meta name="robots" content="noindex, nofollow"> + X-Robots-Tag and none is in the
+#                    sitemap (until the founder approves numbers and prices).
+WA_SLOT = "<li data-tenerife-whatsapp hidden></li>"
+_WA_RX = re.compile(r"\+[1-9]\d{7,14}")
+_ROBOTS_META = '<meta name="robots" content="noindex, nofollow">'
+_warned = set()
+
+
+def tenerife_indexing() -> bool:
+    return os.environ.get("TENERIFE_INDEXING", "").strip() == "1"
+
+
+def whatsapp_number() -> str | None:
+    raw = os.environ.get("TENERIFE_WHATSAPP", "").strip()
+    if _WA_RX.fullmatch(raw):
+        return raw
+    if "wa" not in _warned:  # once per process; never the value itself
+        _warned.add("wa")
+        log.warning("TENERIFE_WHATSAPP %s: WhatsApp contact hidden on /tenerife/ pages",
+                    "is not set" if not raw else "is not E.164 (+ and 8-15 digits)")
+    return None
+
+
+def whatsapp_display(num: str) -> str:
+    """+440000000000 -> «+44 0000 000000» (UK mobile); other numbers: «+» and the digits as given."""
+    d = num[1:]
+    if d.startswith("44") and len(d) == 12:
+        return f"+44 {d[2:6]} {d[6:]}"
+    return num
+
+
+def whatsapp_li(num: str) -> str:
+    shown = whatsapp_display(num)
+    return (f'<li class="f-wa">WhatsApp: <a href="https://wa.me/{num[1:]}" aria-label="WhatsApp: {shown}">'
+            f'{shown.replace(" ", "&nbsp;")}</a></li>')
+
+
+def _finish(page: str) -> str:
+    """Fill the runtime slots of a built page (see above)."""
+    num = whatsapp_number()
+    if num:
+        page = page.replace(WA_SLOT, whatsapp_li(num))
+    else:
+        page = re.sub(r"[ \t]*" + re.escape(WA_SLOT) + r"\n?", "", page)
+    if not tenerife_indexing() and _ROBOTS_META not in page:
+        page = page.replace('<meta charset="utf-8">\n', '<meta charset="utf-8">\n' + _ROBOTS_META + "\n", 1)
+    return page
+
+
 def _site_page(name: str):
     f = SITE_DIR / f"{name}.html"
     if not f.is_file():
         return make_response("Not found", 404)
-    resp = make_response(f.read_text(encoding="utf-8"))
+    resp = make_response(_finish(f.read_text(encoding="utf-8")))
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
     resp.headers["Cache-Control"] = "public, max-age=300"
+    if not tenerife_indexing():  # QA PS-03: header as well as the meta, legal pages included
+        resp.headers["X-Robots-Tag"] = "noindex, nofollow"
     return resp
 
 
@@ -151,11 +221,9 @@ def site_index():
 @bp.route(SITE_PREFIX + "/impressum/")
 @bp.route(SITE_PREFIX + "/privacy/")
 def legal_page():
-    name = request.path.rstrip("/").rsplit("/", 1)[-1]
-    url = f"{SITE_URL}{SITE_PREFIX}/{name}/"
-    resp = make_response(render_template(f"tenerife/{name}.html", langs=WAITLIST_LANGS, canonical=url))
-    resp.headers["Cache-Control"] = "public, max-age=300"
-    return resp
+    # v2 layout (QA T3-09): static pages built by build_v3.py; the legal text itself stays in
+    # app/templates/tenerife/{impressum,privacy}.html (body block, copied verbatim by the build)
+    return _site_page(request.path.rstrip("/").rsplit("/", 1)[-1])
 
 
 @bp.route(SITE_PREFIX + "/<page>/")
@@ -180,7 +248,7 @@ def _safe_back(page: str) -> str:
     """Where a no-JS form submit returns to: only our own Tenerife pages."""
     if page.startswith(SITE_PREFIX + "/") and "//" not in page and "\\" not in page and len(page) < 60:
         return page.split("?")[0].split("#")[0]
-    return PREVIEW_PREFIX + "/"
+    return SITE_PREFIX + "/"
 
 
 def _payload() -> tuple[dict, bool]:
@@ -189,15 +257,61 @@ def _payload() -> tuple[dict, bool]:
     return request.form.to_dict(), False
 
 
-def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: str = ""):
+# No-JS answers (QA T3-05): the v2 page shell built by build_v3.py (app/tenerife_site/_notice.html) with
+# {{NOTICE_*}} slots; Flask fills them with escaped text. Strings: C13 states (DESIGN.md) and the server errors.
+THANKS_URL = SITE_PREFIX + "/gracias/"
+# Form messages: copy_v3/17_forma.md «Сообщения формы», verbatim (tests/test_tenerife_r4.py checks them against
+# build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
+FORM_MSG = {
+    "ok-title": "Спасибо! Вы в очереди.",
+    "ok-next": "Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.",
+    "server": "Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.",
+    "rate": "С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на "
+            "info@artemisresort.com.",
+    "name": "Укажите имя.",
+    "contact": "Укажите контакт: email, телефон или Telegram.",
+    "language": "Выберите язык общения.",
+    "consent": "Отметьте согласие на обработку данных.",
+}
+THANKS_TITLE = FORM_MSG["ok-title"]
+THANKS_TEXT = FORM_MSG["ok-next"]
+BACK_SITE = "← К сайту проекта"
+BACK_FORM = "← Назад к форме"
+
+
+_EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
+
+
+def _notice(status: int, title: str, text: str, back: str, back_label: str):
+    shell = _finish((SITE_DIR / "_notice.html").read_text(encoding="utf-8"))
+    if not text:  # error answers: the message is the heading, no empty lead paragraph
+        shell = shell.replace('<p class="hero__lead">{{NOTICE_TEXT}}</p>\n', "")
+    for key, val in (("TITLE", title), ("TEXT", text), ("BACK", back), ("BACK_LABEL", back_label)):
+        val = html.escape(val, quote=True)
+        if key in ("TITLE", "TEXT"):  # the form texts name info@…: keep it out of Cloudflare's e-mail obfuscation
+            val = _EMAIL_RX.sub(lambda m: "<!--email_off-->" + m.group(0) + "<!--/email_off-->", val)
+        shell = shell.replace("{{NOTICE_%s}}" % key, val)
+    return _noindex(make_response(shell, status, {"Content-Type": "text/html; charset=utf-8"}))
+
+
+@bp.route(THANKS_URL)
+def thanks():
+    back = _safe_back(request.args.get("back", ""))
+    return _notice(200, THANKS_TITLE, THANKS_TEXT, back, BACK_SITE)
+
+
+def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: str = "", field: str = ""):
     if is_json:
         body = {"ok": ok}
         if error:
             body["error"] = error
+        if field:
+            body["field"] = field
         return jsonify(body), status
+    back = back or SITE_PREFIX + "/"
     if ok:
-        return redirect((back or PREVIEW_PREFIX + "/") + "?ok=1#waitlist", code=303)
-    return make_response(error or "Ошибка", status)
+        return redirect(THANKS_URL + "?" + urllib.parse.urlencode({"back": back}), code=303)
+    return _notice(status, error or FORM_MSG["server"], "", back + "#ochered", BACK_FORM)
 
 
 @bp.route("/api/tenerife/waitlist", methods=["POST"])
@@ -207,21 +321,38 @@ def waitlist():
     # Honeypot: bots fill the hidden field. Pretend success, store nothing.
     if str(d.get(HONEYPOT_FIELD) or "").strip():
         current_app.logger.info("tenerife waitlist: honeypot hit, dropped")
-        return _reply(is_json, True)
+        return jsonify({"ok": True}) if is_json else redirect(SITE_PREFIX + "/", code=303)
 
     name = " ".join(str(d.get("name") or "").split())[:120]
     contact = " ".join(str(d.get("contact") or "").split())[:200]
     language = str(d.get("language") or "").strip().lower()[:5]
     consent = str(d.get("consent")).lower() in {"1", "true", "on", "yes"}
     page = str(d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path
-    page = page or PREVIEW_PREFIX + "/"
+    page = page or SITE_PREFIX + "/"
+    back = _safe_back(page)
 
-    if not name or len(contact) < 5:
-        return _reply(is_json, False, 400, "Укажите имя и контакт (email, телефон или Telegram).")
+    if not name:
+        return _reply(is_json, False, 400, FORM_MSG["name"], back, "name")
+    if len(contact) < 5:
+        return _reply(is_json, False, 400, FORM_MSG["contact"], back, "contact")
     if language not in WAITLIST_LANGS:
-        return _reply(is_json, False, 400, "Выберите язык общения.")
+        return _reply(is_json, False, 400, FORM_MSG["language"], back, "language")
     if not consent:
-        return _reply(is_json, False, 400, "Нужно согласие на обработку данных.")
+        return _reply(is_json, False, 400, FORM_MSG["consent"], back, "consent")
+
+    # calculator fields (calc_m2, calc_step, calc_pay): recomputed with the current model.json and stored
+    # with its version as ok / mismatch / invalid (tenerife_calc.py); never blocks the lead
+    model = None
+    try:
+        model = load_model()
+        calc, problems = check_calc(d, model)
+    except (OSError, ValueError, KeyError, TypeError, StopIteration) as e:
+        model = None
+        calc = {"calc_status": "invalid", "calc_note": "model.json не прочитан"} if any(
+            d.get(k) not in (None, "") for k in ("calc_m2", "calc_step", "calc_pay")) else None
+        problems = [f"model.json unavailable: {type(e).__name__}"] if calc else []
+    if problems:
+        current_app.logger.warning("tenerife waitlist calc %s: %s", calc["calc_status"], "; ".join(problems))
 
     client = _client_hash()
     now = datetime.datetime.now(datetime.timezone.utc)
@@ -234,18 +365,24 @@ def waitlist():
             (client, since),
         ).fetchone()[0]
         if recent >= RATE_LIMIT_MAX:
-            return _reply(is_json, False, 429, "Слишком много заявок. Попробуйте позже.")
+            return _reply(is_json, False, 429, FORM_MSG["rate"], back)
+        cols = ("name", "contact", "language", "page", "consent", "client_hash", "created_at")
+        vals = (name, contact, language, page, 1, client, now.isoformat())
+        if calc:
+            cols += tuple(c for c, _ in CALC_COLUMNS)
+            vals += tuple(calc.get(c) for c, _ in CALC_COLUMNS)
         conn.execute(
-            """INSERT INTO tenerife_waitlist(name,contact,language,page,consent,client_hash,created_at)
-               VALUES(?,?,?,?,?,?,?)""",
-            (name, contact, language, page, 1, client, now.isoformat()),
+            f"INSERT INTO tenerife_waitlist({','.join(cols)}) VALUES({','.join('?' * len(cols))})", vals
         )
         conn.commit()
     finally:
         conn.close()
 
-    notify_lead("Tenerife waitlist", name, contact, language, page)
-    return _reply(is_json, True, back=_safe_back(page))
+    if calc:
+        notify_lead("Tenerife waitlist", name, contact, language, page, calc=calc, model=model)
+    else:
+        notify_lead("Tenerife waitlist", name, contact, language, page)
+    return _reply(is_json, True, back=back)
 
 
 def waitlist_rows(conn: sqlite3.Connection):

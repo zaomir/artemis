@@ -1,6 +1,9 @@
-/* Artemis Tenerife RU v3 — components of web-designer/tenerife/design/components.html (Canary Stone v1),
+/* Artemis Tenerife RU v3 — components of web-designer/tenerife/design/components.html (Canary Stone v3),
    copied as is (base … footer; the «states demo» block left out) + production additions below.
-   site.css = design/fonts.css + design/tokens.css + this file + generated ladder rules (build_v3.py). */
+   site.css = design/fonts.css + design/tokens.css + this file + generated ladder and photo focal-point rules (build_v3.py). */
+/* ===== T47 text width (designer audit_t47/fix_proposed.css, 31.10.2026): tokens.css stays as vendored; these two
+   override it (body 17 -> 20 px, measure 70ch = ~700 px at 20 px, 60-78 Cyrillic chars per line) ===== */
+:root{--fs-body:clamp(1.0625rem, 0.9rem + 0.5vw, 1.25rem);--measure:70ch}
 /* ===== base ===== */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--header-h) + var(--space-4))}
@@ -14,8 +17,12 @@ h3{font-size:var(--fs-h3);line-height:var(--lh-tight)}
 p{margin:0 0 var(--space-4);max-width:var(--measure)}
 p:last-child{margin-bottom:0}
 strong{font-weight:var(--fw-strong)}
-a{color:var(--cs-bronze-deep);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:var(--underline-offset);transition:color var(--dur-micro) var(--ease-std)}
+a{color:var(--cs-bronze-deep);text-decoration:underline;text-decoration-thickness:var(--hairline);text-underline-offset:var(--underline-offset);transition:color var(--dur-micro) var(--ease-std)}
 a:hover{color:var(--cs-ink)}
+/* D15 (ФТ B8: 44 px для всего): ссылка внутри строки текста получает зону касания ≥ 44 × 44 без изменения ритма строк —
+   вертикальный padding у inline-элемента не меняет высоту строки, горизонтальный гасится равным отрицательным margin-inline;
+   position:relative поднимает зону над соседними строками для hit-test; контур фокуса возвращён к глифам через outline-offset. */
+:where(p:not(.f-docs),dd,td,figcaption,.check>span,li:not(:is(nav,footer,.sheet) li))>a:not([class]){position:relative;padding:var(--inline-hit-pad);margin-inline:calc(-1*var(--inline-hit-pad));outline-offset:calc(var(--focus-offset) - var(--inline-hit-pad))}
 /* фокус: один контур для всех элементов и нативных контролов (range, checkbox, select) во всех движках */
 :focus{outline:none}
 :focus-visible{outline:var(--focus-width) solid var(--focus-color);outline-offset:var(--focus-offset)}
@@ -47,7 +54,7 @@ a:hover{color:var(--cs-ink)}
 .header.is-over{background:transparent;color:var(--cs-on-dark);box-shadow:none}
 .header.is-over::before{opacity:1}
 .header__in{position:relative;height:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-5)}
-.brand{font-family:var(--font-display);font-size:var(--fs-brand);font-weight:var(--fw-display);color:inherit;text-decoration:none;letter-spacing:.01em;white-space:nowrap;min-height:var(--touch-min);display:inline-flex;align-items:center}
+.brand{font-family:var(--font-display);font-size:var(--fs-brand);font-weight:var(--fw-display);color:inherit;text-decoration:none;letter-spacing:var(--ls-brand);white-space:nowrap;min-height:var(--touch-min);display:inline-flex;align-items:center}
 .brand:hover{color:inherit}
 .nav{display:none}
 .nav a,.nav summary{color:inherit;text-decoration:none;font-size:var(--fs-small);min-height:var(--touch-min);min-width:var(--touch-min);display:inline-flex;align-items:center;justify-content:center;padding:0 var(--space-2);cursor:pointer}
@@ -73,39 +80,55 @@ a:hover{color:var(--cs-ink)}
 
 /* ===== hero =====
    Mobile <768: кадр 4:5, под ним H1 и лид на lime тёмным текстом (шапка над кадром — .is-over, ниже кадра — сплошная).
-   ≥768: кадр и текст в одной ячейке сетки (текст никогда не выходит за кадр); скрим — фон самого .hero__body:
-   сплошной --cs-scrim под всеми строками H1 и лида, нарастание только в верхних --scrim-fade, где текста нет. */
+   ≥768: кадр и H1 в одной ячейке сетки (H1 никогда не выходит за кадр). Скрим — только ПЛИТА под самим H1 (фон h1, сплошной --cs-scrim,
+   поля --hero-plate-pad-block × --hero-plate-pad), стоит на нижнем крае кадра у цоколя; лид — под кадром на lime. Плита закрывает ≤ ~35 % кадра (замер — DESIGN.md §9). */
 .hero{position:relative;background:var(--cs-lime)}
 .hero__media{position:relative;background:var(--cs-placeholder);aspect-ratio:4/5;max-height:var(--hero-max-h-mobile);width:100%}
-.hero__body{padding:var(--space-6) 0 var(--space-7)}
-.hero__lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--cs-ink-soft);margin-top:var(--space-5);max-width:var(--measure-lead)}
+.hero__body{padding:var(--space-6) 0 0}
+.hero__after{padding:var(--space-5) 0 var(--space-7)}
+.hero__lead{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--cs-ink-soft);max-width:var(--measure-lead)}
 @media (min-width:768px){
-  .hero{display:grid;grid-template:1fr/1fr}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
   .hero__media,.hero__body{grid-area:1/1}
   .hero__media{aspect-ratio:auto;max-height:none;min-height:max(var(--hero-min-h),var(--hero-h))}
-  .hero__body{align-self:end;position:relative;z-index:1;color:var(--cs-on-dark);padding:calc(var(--scrim-fade) + var(--space-5)) 0 var(--space-8);background:linear-gradient(to top,var(--cs-scrim) 0,var(--cs-scrim) calc(100% - var(--scrim-fade)),transparent 100%)}
-  .hero__body h1{grid-column:1/span 7}
-  .hero__lead{grid-column:1/span 6;color:var(--cs-on-dark)}
+  .hero__body{align-self:end;position:relative;z-index:1;padding:0}
+  .hero__body h1{grid-column:1/span 7;margin-inline:calc(-1*var(--hero-plate-pad));padding:var(--hero-plate-pad-block) var(--hero-plate-pad);background:var(--cs-scrim);color:var(--cs-on-dark)}
+  .hero__after{grid-row:2;padding-block:var(--space-6) var(--space-7)}
+  .hero__lead{grid-column:1/span 6}
 }
 @media (min-width:1024px){.hero__body h1{grid-column:1/span 9}.hero__lead{grid-column:1/span 7}}
+/* ===== C2s короткий герой (design v3.1, components.html verbatim). Production: the H1 is <h1 class="hero__h1--short"> inside
+   .hero__body, so the selectors carry .hero--short (0,2,0) to win over .hero__body h1 (0,1,1); declarations as the designer's. */
+.hero--short{container-type:inline-size}
+.hero--short .hero__media{aspect-ratio:3/2}
+.hero--short .hero__h1--short{margin:0;font-family:var(--font-display);font-weight:var(--fw-display);font-size:var(--fs-h1-short);line-height:var(--lh-display);letter-spacing:var(--ls-display);grid-column:1/-1}
+@media (min-width:768px){
+  .hero--short{grid-template-rows:auto var(--hero-short-overhang) auto}
+  .hero--short .hero__media{grid-area:1/1;aspect-ratio:auto;min-height:var(--hero-short-h)}
+  .hero--short .hero__body{grid-row:1/3;grid-column:1}
+  .hero--short .hero__after{grid-row:3}
+  .hero--short .hero__h1--short{grid-column:1/span 8;justify-self:start;max-width:calc(var(--h1-short-measure) + 2*var(--hero-plate-pad));margin-inline:calc(-1*var(--hero-plate-pad));padding:var(--hero-plate-pad-block) var(--hero-plate-pad);background:var(--cs-basalt);color:var(--cs-on-dark)} /* плита сплошная basalt: она свисает на lime, полупрозрачный скрим дал бы два тона */
+}
 
 /* ===== key figures on basalt plinth ===== */
 .plinth{background:var(--cs-basalt);color:var(--cs-on-dark)}
-.figures{list-style:none;margin:0 auto;padding-block:var(--space-6);row-gap:var(--space-6)}
+.figures{list-style:none;margin:0 auto;padding-block:var(--space-6);row-gap:var(--space-6);container-type:inline-size}
 .figures li{grid-column:span 2;display:flex;flex-direction:column-reverse;justify-content:flex-start;gap:var(--space-2)}
 .figures li:nth-child(n+3){grid-column:1/-1}
 .figures b{font-family:var(--font-display);font-weight:var(--fw-display);font-size:var(--fs-figure);line-height:var(--lh-figure);letter-spacing:var(--ls-display)}
 .figures b.figures__text{font-size:var(--fs-h3);line-height:var(--lh-tight)}
 .figures span{font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-on-dark-soft)}
-.figures a{color:inherit;display:inline-block;padding-block:calc((var(--touch-min) - 1em*var(--lh-tight))/2)}
-@media (min-width:768px){.figures li,.figures li:nth-child(n+3){grid-column:span 2}.figures li:nth-child(2),.figures li:nth-child(3){grid-column:span 3}.figures li:last-child{grid-column:1/-1}}
-@media (min-width:1024px){.figures{padding-block:var(--space-7);row-gap:var(--space-4)}.figures li{grid-row:1/3}.figures li:nth-child(1){grid-column:1/3}.figures li:nth-child(2){grid-column:3/6}.figures li:nth-child(3){grid-column:6/9}.figures li:nth-child(4),.figures li:nth-child(5){grid-column:9/13;border-left:1px solid var(--cs-on-dark-soft);padding-left:var(--space-5)}.figures li:nth-child(4){grid-row:1}.figures li:nth-child(5){grid-row:2}}
+.figures a{color:inherit;display:inline-flex;align-items:center;min-height:var(--touch-min)}
+/* D13: крупная цифра не шире своей ячейки — размер ограничен шириной полосы (cqi контейнера .figures):
+   «от 2 950 €» ≈ 4,64 em; ячейка = 3/8 полосы (768–1023) и 4/12 (≥1024) → потолок 7cqi и 6.5cqi (запас ≥ 5 %). */
+@media (min-width:768px){.figures li,.figures li:nth-child(n+3){grid-column:span 2}.figures li:nth-child(2),.figures li:nth-child(3){grid-column:span 3}.figures li:last-child{grid-column:1/-1}.figures b:not(.figures__text){font-size:min(var(--fs-figure),var(--fig-cap-tablet))}}
+@media (min-width:1024px){.figures{padding-block:var(--space-7);row-gap:var(--space-4)}.figures li{grid-row:1/3}.figures b:not(.figures__text){font-size:min(var(--fs-figure),var(--fig-cap-desktop))}.figures li:nth-child(1){grid-column:1/3}.figures li:nth-child(2){grid-column:3/6}.figures li:nth-child(3){grid-column:6/10}.figures li:nth-child(4),.figures li:nth-child(5){grid-column:10/13;border-left:var(--hairline) solid var(--cs-on-dark-soft);padding-left:var(--space-5)}.figures li:nth-child(4){grid-row:1}.figures li:nth-child(5){grid-row:2}}
 
 /* ===== section heading: left heading | right text ===== */
 .split-head h2{margin-bottom:var(--space-5)}
 @media (min-width:1024px){
   .split-head>h2{grid-column:1/span 4}
-  .split-head>.split-head__body{grid-column:6/span 7}
+  .split-head>.split-head__body{grid-column:5/span 8}
 }
 .lead{font-size:var(--fs-lead);line-height:var(--lh-lead)}
 
@@ -121,10 +144,14 @@ a:hover{color:var(--cs-ink)}
 
 /* ===== text + image split ===== */
 .ti{row-gap:var(--space-6);align-items:end}
+/* T47: 1024-1279 the text gets the full measure and the picture goes under it; >=1280 text and picture 6 + 6 */
 @media (min-width:1024px){
-  .ti>.ti__text{grid-column:1/span 5}
+  .ti>.ti__text,.ti--rev>.ti__text,.ti>.frame,.ti--rev>.frame{grid-column:1/-1;order:0}
+}
+@media (min-width:1280px){
+  .ti>.ti__text{grid-column:1/span 6}
   .ti>.frame{grid-column:7/span 6}
-  .ti--rev>.ti__text{grid-column:8/span 5;order:2}
+  .ti--rev>.ti__text{grid-column:7/span 6;order:2}
   .ti--rev>.frame{grid-column:1/span 6;order:1}
 }
 .ti__text h2{margin-bottom:var(--space-5)}
@@ -137,7 +164,9 @@ a:hover{color:var(--cs-ink)}
 .dt thead th{font-weight:var(--fw-strong);color:var(--cs-ink-soft);border-bottom:var(--border-ink)}
 .dt td.num,.dt th.num{text-align:right;padding-right:0;white-space:nowrap}
 @media (min-width:768px){.dt{font-size:var(--fs-body)}}
-@media (max-width:599px){
+/* T47: stacked rows when the table's own column is narrower than a 6-column table needs (was: viewport < 600 px) */
+.table-wrap{container-type:inline-size}
+@container (max-width:719px){
   .dt--stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .dt--stack tr{display:block;border-bottom:var(--border-ink);padding:var(--space-3) 0}
   .dt--stack td,.dt--stack th[scope=row]{display:flex;justify-content:space-between;gap:var(--space-4);border:0;padding:var(--space-1) 0;text-align:right}
@@ -170,7 +199,9 @@ a:hover{color:var(--cs-ink)}
 .ladder li.is-current .ladder__bar i{background:var(--cs-ocean)}
 .ladder__now{display:inline-block;margin-left:var(--space-2);font-family:var(--font-text);font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-on-dark);background:var(--cs-ocean);padding:0 var(--space-2);vertical-align:middle;border-radius:var(--radius-1)}
 @media (min-width:1024px){
-  .ladder{grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--grid-gutter-desktop);align-items:end;border-bottom:var(--plinth) solid var(--cs-basalt)}
+  .ladder{grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--grid-gutter-desktop);align-items:end;container-type:inline-size;border-bottom:var(--plinth) solid var(--cs-basalt)}
+  /* v3: самое длинное слово «Разрешение» ≈ 6,3 em; колонка 1/6 ладдера при 1024 = 135 px → кегль ограничен 2,2cqi (≈ 20,5 px при 1024), чтобы слово не рвалось */
+  .ladder__name{font-size:min(var(--fs-h3),var(--ladder-name-cap))}
   .ladder li{display:flex;flex-direction:column;justify-content:flex-end;border:0;padding:0;height:100%}
   .ladder__name{order:1}
   .ladder__event{order:2;min-height:calc(2em*var(--lh-body))}
@@ -198,7 +229,7 @@ a:hover{color:var(--cs-ink)}
 .opt input:focus-visible+span{outline:var(--focus-width) solid var(--focus-color);outline-offset:var(--focus-offset)}
 .range{display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:center;margin-top:var(--space-4)}
 .range input{width:100%;accent-color:var(--cs-basalt);min-height:var(--touch-min);margin:0}
-.range output{font-family:var(--font-display);font-size:var(--fs-h3);min-width:5ch;text-align:right;font-variant-numeric:tabular-nums}
+.range output{font-family:var(--font-display);font-size:var(--fs-h3);min-width:var(--output-w);text-align:right;font-variant-numeric:tabular-nums}
 .calc__out{border-top:var(--plinth) solid var(--cs-basalt);padding-top:var(--space-5)}
 .res{margin:0;padding:0}
 .res div{display:grid;grid-template-columns:1fr;gap:var(--space-1);padding:var(--space-4) 0;border-bottom:var(--border-hair)}
@@ -236,7 +267,7 @@ a:hover{color:var(--cs-ink)}
 
 /* ===== waitlist ===== */
 .wl{row-gap:var(--space-7)}
-@media (min-width:1024px){.wl__text{grid-column:1/span 5}.wl__form{grid-column:7/span 6}}
+@media (min-width:1024px){.wl .wl__text{grid-column:1/span 5}.wl .wl__form{grid-column:7/span 6}}
 .form{display:grid;gap:var(--space-5)}
 .field{display:grid;gap:var(--space-2)}
 .field label{font-size:var(--fs-small);font-weight:var(--fw-strong)}
@@ -251,7 +282,7 @@ a:hover{color:var(--cs-ink)}
    Вид кнопки — .btn-primary; на странице кнопка формы очереди несёт оба класса. */
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:var(--cta-h);padding:var(--space-3) var(--space-6);background:var(--cs-basalt);color:var(--cs-on-dark);border:0;border-radius:var(--radius-1);font:inherit;font-size:var(--fs-body);font-weight:var(--fw-strong);cursor:pointer;text-decoration:none;transition:background-color var(--dur-micro) var(--ease-std)}
 .btn-primary:hover{background:var(--cs-basalt-deep);color:var(--cs-on-dark)}
-.btn-primary:active{transform:translateY(1px)}
+.btn-primary:active{transform:translateY(var(--hairline))}
 .btn-primary[aria-busy="true"]{opacity:var(--opacity-busy);cursor:progress}
 @media (max-width:479px){.btn-primary{width:100%}}
 .micro{font-size:var(--fs-small);color:var(--cs-ink-soft);margin-top:calc(-1*var(--space-3))}
@@ -267,23 +298,25 @@ a:hover{color:var(--cs-ink)}
 .footer strong{color:var(--cs-on-dark)}
 .footer ul{list-style:none;margin:0;padding:0}
 .footer li a,.f-docs a{display:inline-flex;align-items:center;min-height:var(--touch-min)}
-.f-docs a{min-width:var(--touch-min)}
+.footer li a,.f-docs a{min-width:var(--touch-min)}
 .footer .grid{row-gap:var(--space-6)}
 @media (min-width:768px){.f-about{grid-column:span 8}.f-pages{grid-column:span 4}.f-contact{grid-column:span 4}}
 @media (min-width:1024px){.f-about{grid-column:1/span 4}.f-pages{grid-column:6/span 3}.f-contact{grid-column:10/span 3}}
 .f-pages ul{columns:2;column-gap:var(--space-5)}
-.f-legal{border-top:1px solid var(--cs-line-on-dark);margin-top:var(--space-7);padding-top:var(--space-5)}
+.f-legal{border-top:var(--border-on-dark);margin-top:var(--space-7);padding-top:var(--space-5)}
 
 /* ===== production additions (DESIGN.md §9: mockup inline styles -> classes; image fill; long text) ===== */
 .hero__media picture,.frame__media picture{display:block;width:100%;height:100%}
 .hero__media img,.frame__media img{width:100%;height:100%;object-fit:cover}
+/* the photo fills the hero box and never sizes it: height = C2 (mobile 4:5 ≤ --hero-max-h-mobile; ≥768 max(--hero-min-h, --hero-h)) */
+.hero__media picture{position:absolute;inset:0}
 .hero__media{overflow:hidden}
-@media (min-width:768px){.hero--short .hero__media{height:min(60vh,560px);min-height:420px}}
 .hero-text{padding-top:calc(var(--header-h) + var(--space-8))}
-.hero-text .hero__lead{color:var(--cs-ink-soft)}
+.hero-text .hero__lead{color:var(--cs-ink-soft);margin-top:var(--space-5)} /* v3 moved the hero lead spacing to .hero__after; the text hero keeps it */
 .hero-text__frame{margin-top:var(--space-7)}
 .col-text{max-width:var(--grid-text)}
 .col-text h2{margin-bottom:var(--space-5)}
+.col-text>.list,.col-text>.ledger{max-width:var(--measure)} /* T47: text, lists and ledgers end on one line */
 .stack>h2{margin-bottom:var(--space-5);max-width:var(--grid-text)}
 .stack>p,.stack>.list{max-width:var(--measure)}
 .stack>.table-wrap,.stack>.ledger{margin-bottom:var(--space-6)}
@@ -307,3 +340,40 @@ a:hover{color:var(--cs-ink)}
 .msg:empty{display:none}
 .msg.ok{color:var(--cs-laurel)}.msg.err{color:var(--cs-error)}
 .dt td.num,.dt th.num{padding-left:var(--space-4)}
+.dt thead th.num{white-space:normal} /* T47 /producto/ 1440: long column names wrap (only figures stay on one line) */
+.dt .num+:not(.num){padding-left:var(--space-4)} /* T47: a text column after a right-aligned figure keeps a gap */
+@container (max-width:299px){.dt{font-size:0.875rem}.dt th,.dt td{padding-right:var(--space-2)}.dt td.num,.dt th.num{padding-left:var(--space-1)}.dt .num+:not(.num){padding-left:var(--space-2)}.dt tr>:last-child{padding-right:0}} /* T47: 320 px */
+/* designer r2: a [КАДР] slot without a photo -> no figure; 6 px basalt bar (the frame's plinth) under the text */
+.bar-under::after{content:"";display:block;grid-column:1/-1;height:var(--plinth);background:var(--cs-basalt);margin-top:var(--space-6)}
+/* QA T3-07 (DESIGN.md §5): C7 with 5–6 steps — 3 in a row on desktop */
+@media (min-width:1024px){.steps:has(li:nth-child(5)) li{grid-column:span 4}}
+/* C8 mini (01, 08, 12): names + prices + bars, desktop terraces at half height */
+.extras{margin-top:var(--space-7)}
+.ladder--mini .ladder__name,.ladder--mini .ladder__price{font-size:var(--fs-body)}
+@media (min-width:1024px){.ladder--mini .ladder__price{font-size:var(--fs-h3)}.ladder--mini .ladder__bar{height:calc(var(--p) * var(--ladder-h) / 2)}}
+/* C10: the copy's column names above the designer's log, on the same columns (DESIGN.md C10 has no head row) */
+.log__head{margin:var(--space-6) 0 0;font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-ink-soft)}
+.log__head+.log{margin-top:var(--space-2)}
+@media (max-width:767px){.log__head span:nth-child(n+2)::before{content:" · "}.log__head{display:block}}
+@media (min-width:768px){.log__head span:nth-child(1){grid-column:span 3}.log__head span:nth-child(2){grid-column:span 2}.log__head span:nth-child(3){grid-column:span 3}}
+@media (min-width:1024px){.log__head span:nth-child(1){grid-column:1/span 4}.log__head span:nth-child(2){grid-column:5/span 3}.log__head span:nth-child(3){grid-column:8/span 5}}
+.people li p{margin:0;color:var(--cs-ink-soft)}
+/* C9 short (04) */
+.calc--short{margin-top:var(--space-7)}
+.res .res__short dd{font-family:var(--font-text);font-size:var(--fs-body);white-space:normal}
+.res .res__short dd span{font-family:var(--font-display);font-size:var(--fs-h2);white-space:nowrap}
+/* Impressum / privacy / no-JS answers: solid header, text column 760 (DESIGN.md §5) */
+.legal h2{margin-top:var(--space-7)}
+.legal .muted,.legal .src{color:var(--cs-ink-soft);font-size:var(--fs-small)}
+.legal .back,.notice .back{margin-top:var(--space-7)}
+.legal .back a,.notice .back a,.legal .src a{display:inline-flex;align-items:center;min-height:var(--touch-min)}
+.legal li{margin-bottom:var(--space-2)}
+.legal p,.legal li{max-width:68ch} /* T47: legal text ~75 chars per line */
+/* T3-10: per-field error under the field (aria-describedby), --cs-error */
+.field__err{margin:var(--space-1) 0 0;color:var(--cs-error);font-size:var(--fs-small)}
+.field__err:empty{display:none}
+.form [aria-invalid="true"]{border-color:var(--cs-error)}
+/* C17 legal H1 (design v3.1, components.html .legal-head__h1, verbatim declarations): production markup is .legal h1 in
+   .legal .col-text (the text column = the size container); links in legal lists get the D15 hit area from the li rule above. */
+.legal .col-text{container-type:inline-size}
+.legal h1{font-size:min(var(--fs-display),var(--legal-h1-cap));hyphens:manual;overflow-wrap:normal}
