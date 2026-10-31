@@ -1,0 +1,193 @@
+{% extends "tenerife/base.html" %}
+{% macro viz(file, alt, caption) -%}
+<figure>
+  <img src="/static/tenerife/{{ file }}" alt="{{ alt }}" width="1024" height="576" loading="lazy" decoding="async">
+  <span class="tag">Визуализация</span>
+  <figcaption>Визуализация (AI), не фотография объекта. {{ caption }}</figcaption>
+</figure>
+{%- endmacro %}
+{% block body %}
+<section id="top" style="padding-top:18px">
+<div class="wrap">
+  <nav class="toc" aria-label="Разделы">
+    <a href="#status">Статус</a><a href="#north">Север</a><a href="#residences">Резиденции</a><a href="#use">Использование</a><a href="#process">Как это работает</a><a href="#build">Стройка</a><a href="#team">Команда</a><a href="#faq">Вопросы</a><a href="#waitlist">Лист ожидания</a>
+  </nav>
+  <figure style="margin-top:6px">
+    <img src="/static/tenerife/hero-aerial.jpg" alt="Визуализация: террасный комплекс резиденций на склоне у океана" width="1024" height="576" fetchpriority="high">
+    <span class="tag">Визуализация</span>
+    <figcaption>Визуализация (AI) концепции, не фотография. Участок ещё не выбран, облик может измениться.</figcaption>
+  </figure>
+  <h1>Artemis Tenerife</h1>
+  <p class="lead">20 резиденций на севере Тенерифе.</p>
+  <p>Запишитесь в бесплатный лист ожидания — первыми получите информацию об участке, планировках и условиях, когда они появятся. Запись ни к чему не обязывает, деньги мы не принимаем.</p>
+  <p><a class="btn" href="#waitlist">Записаться в лист ожидания</a></p>
+</div>
+</section>
+
+<section id="status">
+<div class="wrap">
+  <h2>Статус проекта</h2>
+  <div class="status">
+    <b>Проект на стадии подготовки.</b> Участок не зафиксирован, разрешение на строительство не получено.
+    До получения разрешения и оформления гарантии возврата авансов мы не принимаем никаких денег — только бесплатная запись в лист ожидания.
+  </div>
+  <div class="facts">
+    <div class="fact"><div class="k">Резиденции</div><div class="v">20, общая площадь ≈ 1 450–1 550 м²</div></div>
+    <div class="fact"><div class="k">Район</div><div class="v">La Quinta / Santa Úrsula (ориентировочно)</div></div>
+    <div class="fact"><div class="k">Участок</div><div class="v">Не зафиксирован</div></div>
+    <div class="fact"><div class="k">Разрешение на строительство</div><div class="v">Не получено</div></div>
+  </div>
+</div>
+</section>
+
+<section id="north">
+<div class="wrap">
+  <h2>Почему север Тенерифе</h2>
+  <div class="grid2">
+    <div>
+      <p>Север острова — это зелень, виды на океан и горы, мягкий климат и спокойный ритм. Рядом Puerto de la Cruz с набережной, ресторанами и инфраструктурой.</p>
+      <p>Рыночный ориентир по сопоставимым новостройкам на 4–20 квартир в этом районе: <b>2 100–3 600 €/м²</b>. Это цены аналогов на рынке, а не цена Artemis Tenerife: цены по нашим резиденциям появятся только после выбора участка и получения разрешения.</p>
+    </div>
+    <div>{{ viz("hillside-terraces.jpg", "Визуализация: резиденции террасами на зелёном склоне", "Концепция террасной застройки на склоне.") }}</div>
+  </div>
+  {{ viz("golden-hour.jpg", "Визуализация: комплекс на закате", "Вечерний свет, концепция.") }}
+</div>
+</section>
+
+<section id="residences">
+<div class="wrap">
+  <h2>Резиденции</h2>
+  <p>Планируемый состав — 20 резиденций трёх типов:</p>
+  <table class="mix">
+    <tr><th>Тип</th><th>Кол-во</th><th>Площадь</th></tr>
+    <tr><td>1 спальня</td><td>6</td><td>48–55 м²</td></tr>
+    <tr><td>2 спальни</td><td>10</td><td>68–78 м²</td></tr>
+    <tr><td>Премиум</td><td>4</td><td>85–100 м²</td></tr>
+    <tr><td><b>Итого</b></td><td><b>20</b></td><td><b>≈ 1 450–1 550 м²</b></td></tr>
+  </table>
+  <p class="muted" style="font-size:14px;margin-top:8px">Состав и площади предварительные и могут измениться после выбора участка и проектирования.</p>
+  <h3>Что заложено в концепцию</h3>
+  <p>Энергоэффективная новостройка: солнечные панели, «умный дом», общий бассейн с подогревом, террасы с видом. Комплекс с управлением (обслуживание и сервис для владельцев).</p>
+  <div class="grid2">
+    {{ viz("pool.jpg", "Визуализация: общий бассейн между резиденциями", "Общий бассейн, концепция.") }}
+    {{ viz("terrace-ocean.jpg", "Визуализация: терраса с видом на океан", "Терраса, концепция.") }}
+  </div>
+  {{ viz("interior.jpg", "Визуализация: интерьер с выходом к бассейну", "Интерьер, концепция.") }}
+</div>
+</section>
+
+<section id="use">
+<div class="wrap">
+  <h2>Как можно будет использовать резиденцию</h2>
+  <ol class="steps">
+    <li><b>Жить самому или сдавать в долгосрочную аренду.</b> Базовый вариант для всех резиденций.</li>
+    <li><b>Посуточная аренда — только как опция.</b> На Канарах для новостроек действуют ограничения на туристическую аренду жилья (закон Канарских островов 6/2025). Будет ли посуточная аренда возможна, зависит от конкретного участка и его статуса; решение примем после проверки участка и с учётом запросов из листа ожидания.</li>
+  </ol>
+  <p class="muted" style="font-size:14.5px">Мы не обещаем и не гарантируем доход от аренды.</p>
+</div>
+</section>
+
+<section id="process">
+<div class="wrap">
+  <h2>Как это работает</h2>
+  <ol class="steps">
+    <li><b>Бесплатный лист ожидания.</b> Оставляете имя и контакт. Без платежей и обязательств.</li>
+    <li><b>Собираем запросы и выбираем участок.</b> По итогам листа ожидания определяем формат использования и уточняем проект.</li>
+    <li><b>Разрешение и гарантия.</b> Только после получения разрешения на строительство и оформления гарантии возврата авансов открываем бронирование конкретных резиденций — с прайс-листом и договором.</li>
+  </ol>
+  <p><a class="btn ghost" href="#waitlist">Записаться в лист ожидания</a></p>
+</div>
+</section>
+
+<section id="build">
+<div class="wrap">
+  <h2>Стройка и прозрачность</h2>
+  <p>Ориентировочный план: старт строительства в 2027 году, сдача — конец 2028 – середина 2029. Сроки зависят от участка и получения разрешения и могут сдвинуться.</p>
+  <p>После старта строительства — камеры на площадке и регулярные отчёты по этапам для всех, кто записан.</p>
+  {{ viz("construction.jpg", "Визуализация: строительная площадка с кранами", "Иллюстрация этапа строительства, не реальная площадка.") }}
+</div>
+</section>
+
+<section id="team">
+<div class="wrap">
+  <h2>Команда</h2>
+  <div class="team">
+    <div class="person"><b>Simon Subic</b>Девелопер</div>
+    <div class="person"><b>Lana Evans</b>Финансовый директор</div>
+    <div class="person"><b>Boris Ribaut</b>Главный строитель</div>
+  </div>
+</div>
+</section>
+
+<section id="faq">
+<div class="wrap">
+  <h2>Вопросы и ответы</h2>
+  <details><summary>Нужно ли платить, чтобы попасть в лист ожидания?</summary><p>Нет. Запись бесплатная и ни к чему не обязывает. До получения разрешения на строительство и оформления гарантии возврата авансов мы не принимаем никаких денег.</p></details>
+  <details><summary>Это инвестиционное предложение?</summary><p>Нет. Эта страница не является предложением ценных бумаг, долей или иных инвестиционных продуктов и не является публичной офертой. Мы не обещаем доходность.</p></details>
+  <details><summary>Где именно будет комплекс?</summary><p>Ориентировочно район La Quinta / Santa Úrsula на севере Тенерифе. Конкретный участок пока не зафиксирован.</p></details>
+  <details><summary>Можно ли будет сдавать посуточно?</summary><p>Только как опция и только если это позволит участок и действующее законодательство. На Канарах для новостроек действуют ограничения на туристическую аренду жилья (закон 6/2025). Базовый вариант — жить самому или сдавать долгосрочно.</p></details>
+  <details><summary>Когда появятся цены?</summary><p>После выбора участка и получения разрешения — с прайс-листом по каждой резиденции. Цифры 2 100–3 600 €/м² на этой странице — рыночный ориентир по аналогам, а не наша цена.</p></details>
+  <details><summary>Что если законодательство изменится?</summary><p>На Канарах обсуждаются изменения в правилах аренды и покупки жилья. Мы следим за ними; актуальные условия, включая порядок возврата денег, будут прописаны в договоре на этапе бронирования.</p></details>
+  <details><summary>На каких языках можно общаться?</summary><p>Русский, немецкий, английский, испанский, французский.</p></details>
+</div>
+</section>
+
+<section id="waitlist">
+<div class="wrap">
+  <h2>Лист ожидания</h2>
+  <p>Бесплатно и без обязательств. Мы свяжемся, когда появится информация об участке и условиях.</p>
+  <form class="wl" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate>
+    <label for="wl-name">Имя</label>
+    <input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required>
+    <label for="wl-contact">Контакт — email, телефон или Telegram</label>
+    <input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required>
+    <label for="wl-lang">Язык общения</label>
+    <select id="wl-lang" name="language" required>
+      {% for code, title in langs.items() %}<option value="{{ code }}"{% if code == 'ru' %} selected{% endif %}>{{ title }}</option>{% endfor %}
+    </select>
+    <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="page" value="/tenerife-preview/">
+    <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required>
+      <span>Согласен(на) на обработку моих данных (имя, контакт, язык) для связи по проекту Artemis Tenerife в соответствии с <a href="/tenerife-preview/privacy/">политикой конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+    <p style="margin-top:14px"><button class="btn" type="submit" id="wl-submit">Записаться бесплатно</button></p>
+    <div class="msg{% if sent %} ok{% endif %}" id="wl-msg">{% if sent %}Спасибо! Вы в листе ожидания.{% endif %}</div>
+  </form>
+</div>
+</section>
+
+<section id="disclaimers" style="border-bottom:0">
+<div class="wrap disc">
+  <h2 style="font-size:20px">Важная информация</h2>
+  <ul>
+    <li>Проект находится на стадии подготовки. Участок не зафиксирован, разрешение на строительство не получено. Проект может измениться или не состояться.</li>
+    <li>Страница носит информационный характер и не является предложением ценных бумаг, долей, инвестиционных продуктов (в том числе Vermögensanlage по праву Германии), публичной офертой или предложением заключить договор.</li>
+    <li>Мы не принимаем денег до получения разрешения на строительство и оформления гарантии возврата авансов.</li>
+    <li>Доходность не гарантирована и не обещается. Все цифры — предварительные ориентиры.</li>
+    <li>Изображения — визуализации, созданные с помощью ИИ; это не фотографии объекта.</li>
+    <li>Упоминания законов — общая информация, а не юридическое, налоговое или инвестиционное заключение.</li>
+  </ul>
+</div>
+</section>
+
+<script>
+(function(){
+  var f=document.getElementById('wl-form'); if(!f||!window.fetch) return;
+  var m=document.getElementById('wl-msg'), b=document.getElementById('wl-submit');
+  function show(cls,t){m.className='msg '+cls;m.textContent=t;}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var el=f.elements;
+    var d={name:el['name'].value.trim(),contact:el['contact'].value.trim(),language:el['language'].value,
+           consent:el['consent'].checked,website:el['website'].value,page:location.pathname};
+    if(!d.name||d.contact.length<5){show('err','Укажите имя и контакт (email, телефон или Telegram).');return;}
+    if(!d.consent){show('err','Нужно согласие на обработку данных.');return;}
+    b.disabled=true;
+    fetch('/api/tenerife/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json();})
+      .then(function(r){ if(r.ok){show('ok','Спасибо! Вы в листе ожидания. Мы свяжемся с вами.');f.reset();} else {show('err',r.error||'Ошибка. Попробуйте ещё раз.');} })
+      .catch(function(){show('err','Ошибка сети. Попробуйте ещё раз.');})
+      .then(function(){b.disabled=false;});
+  });
+})();
+</script>
+{% endblock %}
