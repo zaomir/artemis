@@ -79,6 +79,17 @@ class TenerifePreviewTest(unittest.TestCase):
         r = self.client.get("/tenerife-preview")
         self.assertIn(r.status_code, (301, 308))
 
+    def test_preview_legal_without_slash_one_hop_301_keeps_query(self):
+        # QA B-01 (31.10.2026): no 308 -> 301 chain; straight to the canonical URL, query string kept
+        for name in ("impressum", "privacy"):
+            for suffix, qs in (("", ""), ("", "?utm_source=x&a=1"), ("/", "?utm_source=x")):
+                r = self.client.get(f"/tenerife-preview/{name}{suffix}{qs}")
+                self.assertEqual(r.status_code, 301, (name, suffix, qs))
+                self.assertEqual(r.headers["Location"].split("artemisresort.com")[-1].replace("http://localhost", ""),
+                                 f"/tenerife/{name}/{qs}")
+                final = self.client.get(f"/tenerife/{name}/")
+                self.assertEqual(final.status_code, 200)
+
     def test_preview_content_rules(self):
         body = self.client.get("/tenerife-preview/").get_data(as_text=True)
         for must in ("лист ожидания",

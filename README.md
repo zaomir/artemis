@@ -35,7 +35,20 @@ ssh vps2402 sudo /usr/local/sbin/artemis-deploy.sh --check  # smoke only
 
 Source of the script: `deploy/artemis-deploy.sh` (re-install after changing it:
 `install -m 750 deploy/artemis-deploy.sh /usr/local/sbin/artemis-deploy.sh`).
-Log: `/var/log/artemis-deploy.log`. Checkout: `/var/www/artemis` (branch `main`, never edit in place).
+Log: `/var/log/artemis-deploy.log`.
+The script runs the unit tests (`python -m unittest discover -s tests`, app venv) on the new commit
+in a temp dir **before** switching prod; a failure aborts the deploy and leaves prod untouched.
+
+nginx (not deployed by the script; copy by hand, `nginx -t`, `systemctl reload nginx`, backup first):
+`deploy/nginx-artemisresort.com.origin.conf` → `/etc/nginx/sites-enabled/artemisresort.com.origin.conf`,
+`deploy/nginx-artemis-security-map.conf` → `/etc/nginx/conf.d/artemis-security-map.conf`,
+`deploy/nginx-artemis-security-headers.conf` → `/etc/nginx/snippets/artemis-security-headers.conf`.
+
+Lead relay (`deploy/artemis-lead-relay.py` → `/usr/local/sbin/artemis-lead-relay.py`, timer every minute):
+`--status`, `--requeue [--channel email|telegram]`. When test leads are deleted from `leads.db`, also delete
+their `sent` rows in `/var/lib/artemis-lead-relay/state.db` (SQLite reuses the highest id; a stale row would
+make the next real lead with that id look already e-mailed — the new `sending` marker keys on created_at,
+the old `sent` table does not). Checkout: `/var/www/artemis` (branch `main`, never edit in place).
 
 ## Runtime config
 

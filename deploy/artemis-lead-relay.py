@@ -21,14 +21,25 @@ Delivery guards (31.10.2026, artemisresort.com has no MX):
 - Send errors are retried with exponential backoff (1, 2, 4 … min, max 6 h) and at most
   ARTEMIS_LEAD_EMAIL_MAX_ATTEMPTS times (default 8). After that the lead is parked (still in leads.db,
   never deleted); `--requeue` clears the attempt counters. Same cap for the Telegram backlog.
+- While the route is deferred (no MX / DNS error) the MX lookup itself backs off too (1, 2, 4 … min,
+  max 1 h) instead of running every minute; leads that are backing off or parked never trigger a lookup.
 - `--status` prints counters only (queued / backing off / parked, last route state), no lead data.
+- `--requeue [--channel email|telegram]` clears attempt counters (all channels, or only the given one).
+- Duplicate guard (A-11, 31.10.2026): a `sending` marker is committed BEFORE each Gmail send and replaced
+  by the `sent` row after it. A marker left behind (process killed mid-send, e.g. TimeoutStartSec) is
+  resolved on the next run by looking for the message in the sender's Sent folder via its
+  `X-Artemis-Lead-Key` header: found -> recorded as sent, not re-sent; not found -> sent again.
+  Residual risk: if Gmail accepted the message but it is not yet searchable, a duplicate is still
+  possible (the marker is only resolved after SENDING_GRACE seconds to make that unlikely).
+- Reply-To of the copy = the lead's e-mail when the contact is an e-mail address (else none).
 """
+import base64
 import datetime as dt
 import email.message
 import email.utils
-import base64
 import json
 import os
+import re
 import sqlite3
 import subprocess
 import sys
@@ -42,9 +53,13 @@ MAIL_TO = os.environ.get("ARTEMIS_LEAD_EMAIL_TO", "").strip()
 MAIL_FROM = os.environ.get("ARTEMIS_LEAD_EMAIL_FROM", "").strip()
 EMAIL_ENGINE = os.environ.get("ARTEMIS_EMAIL_ENGINE", "/opt/email-engine")
 REQUIRE_MX = os.environ.get("ARTEMIS_LEAD_EMAIL_REQUIRE_MX", "1").strip() != "0"
-MAX_ATTEMPTS = max(1, int(os.environ.get("ARTEMIS_LEAD_EMAIL_MAX_ATTEMPTS", "8") or 8))
+DEFAULT_MAX_ATTEMPTS = 8
 BACKOFF_CAP = 6 * 3600
+ROUTE_RECHECK_CAP = 3600
 DEFER_LOG_EVERY = 3600
+SENDING_GRACE = 300
+CHANNELS = {"email": "email", "telegram": "tg", "tg": "tg"}
+EMAIL_RE = re.compile(r"^[^@\s<>,;\"]+@[^@\s<>,;\"]+\.[^@\s<>,;\"]+$")
 
 SOURCES = {
     # table: (kind label, contact column, extra columns)
@@ -65,6 +80,55 @@ def log(*a):
     print(ts(), *a, flush=True)
 
 
+def env_int(name, default, minimum=1):
+    """Integer env value; an invalid value falls back to the default with a warning (never crashes)."""
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        v = int(raw)
+    except ValueError:
+        log(f"warning: {name} is not an integer, using default {default}")
+        return default
+    if v < minimum:
+        log(f"warning: {name}={v} is below {minimum}, using default {default}")
+        return default
+    return v
+
+
+MAX_ATTEMPTS = env_int("ARTEMIS_LEAD_EMAIL_MAX_ATTEMPTS", DEFAULT_MAX_ATTEMPTS)
+
+
+def parse_dig_mx(rc, out):
+    """Parse `dig +noall +comments +answer MX` output.
+
+    [] = authoritative "no usable MX" (NXDOMAIN, NOERROR without MX rows, null MX "."),
+    None = unknown (SERVFAIL/REFUSED/timeout/unparseable) -> retry later, never "no MX".
+    Only rows whose type is MX count; a CNAME row is not an MX (its target's MX rows follow it).
+    """
+    if rc != 0:
+        return None
+    m = re.search(r"status:\s*([A-Z]+)", out or "")
+    if not m:
+        return None
+    status = m.group(1)
+    if status == "NXDOMAIN":
+        return []
+    if status != "NOERROR":
+        return None
+    hosts = []
+    for ln in out.splitlines():
+        if not ln.strip() or ln.lstrip().startswith(";"):
+            continue
+        f = ln.split()
+        # owner TTL class type prio exchange
+        if len(f) >= 6 and f[2].upper() == "IN" and f[3].upper() == "MX":
+            h = f[5].rstrip(".")
+            if h:
+                hosts.append(h)
+    return hosts
+
+
 def mx_hosts(domain):
     """MX hosts of domain. [] = no usable MX (NXDOMAIN, no MX, null MX "."); None = DNS error (unknown)."""
     try:
@@ -72,14 +136,11 @@ def mx_hosts(domain):
         import dns.resolver
     except ImportError:  # fallback without dnspython
         try:
-            p = subprocess.run(["dig", "+short", "+time=4", "+tries=2", "MX", domain],
+            p = subprocess.run(["dig", "+noall", "+comments", "+answer", "+time=4", "+tries=2", "MX", domain],
                                capture_output=True, text=True, timeout=20)
         except (OSError, subprocess.TimeoutExpired):
             return None
-        if p.returncode != 0:
-            return None
-        hosts = [ln.split()[-1].rstrip(".") for ln in p.stdout.splitlines() if ln.strip()]
-        return [h for h in hosts if h]
+        return parse_dig_mx(p.returncode, p.stdout)
     try:
         ans = dns.resolver.resolve(domain, "MX", lifetime=10)
     except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
@@ -110,7 +171,18 @@ def state_db():
     s.execute("CREATE TABLE IF NOT EXISTS kv(k TEXT PRIMARY KEY, v TEXT)")
     s.execute("CREATE TABLE IF NOT EXISTS attempts(tbl TEXT, lead_id INTEGER, channel TEXT, n INTEGER,"
               " next_at TEXT, last_error TEXT, PRIMARY KEY(tbl, lead_id, channel))")
+    s.execute("CREATE TABLE IF NOT EXISTS sending(tbl TEXT, lead_id INTEGER, channel TEXT, lead_key TEXT,"
+              " started_at TEXT, PRIMARY KEY(tbl, lead_id, channel))")
     return s
+
+
+def lead_key(tbl, d):
+    """Stable id of one lead for the duplicate guard (created_at guards against SQLite id reuse)."""
+    return f"{tbl}:{d['id']}:{clean(d.get('created_at'), 40)}"
+
+
+def parse_ts(v):
+    return dt.datetime.strptime(v, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)
 
 
 def attempt_state(s, tbl, lead_id, channel):
@@ -150,10 +222,26 @@ def note_route(s, ok, why, queued, now):
             "email route ok" if ok else f"email deferred: {why}; {queued} lead(s) stay queued, nothing sent")
         kv(s, "email_route", state)
         kv(s, "email_route_logged_at", ts(now))
-    elif not ok and (not last or (now - dt.datetime.strptime(last, "%Y-%m-%dT%H:%M:%SZ").replace(
-            tzinfo=dt.timezone.utc)).total_seconds() >= DEFER_LOG_EVERY):
+    elif not ok and (not last or (now - parse_ts(last)).total_seconds() >= DEFER_LOG_EVERY):
         log(f"email still deferred: {why}; {queued} lead(s) queued")
         kv(s, "email_route_logged_at", ts(now))
+
+
+def route_check(s, queued, now):
+    """mail_route(MAIL_TO) with its own backoff while deferred: (ok, why, checked)."""
+    nxt, prev = kv(s, "email_route_next_check"), kv(s, "email_route")
+    if prev and prev != "ok" and nxt and nxt > ts(now):
+        return False, prev, False
+    ok, why = mail_route(MAIL_TO)
+    note_route(s, ok, why, queued, now)
+    if ok:
+        s.execute("DELETE FROM kv WHERE k IN ('email_route_fails', 'email_route_next_check')")
+        s.commit()
+    else:
+        n = int(kv(s, "email_route_fails") or 0) + 1
+        kv(s, "email_route_fails", str(n))
+        kv(s, "email_route_next_check", ts(now + dt.timedelta(seconds=min(60 * 2 ** (n - 1), ROUTE_RECHECK_CAP))))
+    return ok, why, True
 
 
 def kv(s, k, v=None):
@@ -195,29 +283,57 @@ def lead_text(kind, d, mark=""):
     return "\n".join(lines)
 
 
-def send_email(kind, tbl, d):
+def gmail():
     sys.path.insert(0, EMAIL_ENGINE)
     from src.google_auth import build_gmail_service  # noqa: E402
+    return build_gmail_service(MAIL_FROM)
+
+
+def reply_to(d):
+    c = clean(d.get("contact"), 254)
+    return c if EMAIL_RE.match(c) else ""
+
+
+def send_email(kind, tbl, d, key=""):
     test = clean(d.get("name")).upper().startswith("TEST")
     m = email.message.EmailMessage()
     m["From"] = f"Artemis leads <{MAIL_FROM}>"
     m["To"] = MAIL_TO
+    rt = reply_to(d)
+    if rt:
+        m["Reply-To"] = rt
     m["Subject"] = f"{'TEST — ' if test else ''}Artemis: новая заявка — {kind} #{d['id']}"
     m["Message-ID"] = email.utils.make_msgid(domain=MAIL_FROM.split("@")[1])
     m["Date"] = email.utils.formatdate(localtime=False)
+    m["X-Artemis-Lead-Key"] = key or lead_key(tbl, d)
     m.set_content(lead_text(kind, d) + "\n\nКопия заявки с artemisresort.com (оригинал — в базе сайта).\n")
-    svc = build_gmail_service(MAIL_FROM)
     raw = base64.urlsafe_b64encode(m.as_bytes()).decode()
-    r = svc.users().messages().send(userId="me", body={"raw": raw}).execute()
+    r = gmail().users().messages().send(userId="me", body={"raw": raw}).execute()
     return f"{m['Message-ID']} gmail:{r.get('id')}"
+
+
+def find_sent_email(key, since):
+    """Gmail id of an already sent copy with X-Artemis-Lead-Key == key (sender's Sent folder), else ""."""
+    svc = gmail()
+    after = int(since.timestamp()) - 120
+    r = svc.users().messages().list(userId="me", q=f"in:sent after:{after} subject:Artemis",
+                                    maxResults=50).execute()
+    for m in r.get("messages", []):
+        g = svc.users().messages().get(userId="me", id=m["id"], format="metadata",
+                                       metadataHeaders=["X-Artemis-Lead-Key"]).execute()
+        for h in g.get("payload", {}).get("headers", []):
+            if h.get("name", "").lower() == "x-artemis-lead-key" and h.get("value", "").strip() == key:
+                return m["id"]
+    return ""
 
 
 def env_value(key):
     try:
-        for line in open(ENV_FILE, encoding="utf-8"):
-            line = line.strip()
-            if line.startswith(key + "="):
-                return line.split("=", 1)[1].strip().strip('"').strip("'")
+        with open(ENV_FILE, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith(key + "="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
     except OSError:
         pass
     return ""
@@ -234,6 +350,50 @@ def tg_send(text):
     return f"tg:{j['result']['message_id']}@{j['result']['date']}"
 
 
+def send_one_email(s, tbl, kind, d, now_t):
+    """True = sent/recorded, None = left for later, False = failed (attempt recorded)."""
+    key, now = lead_key(tbl, d), ts(now_t)
+    mark = s.execute("SELECT lead_key, started_at FROM sending WHERE tbl=? AND lead_id=? AND channel='email'",
+                     (tbl, d["id"])).fetchone()
+    if mark and mark[0] == key:
+        started = parse_ts(mark[1])
+        if (now_t - started).total_seconds() < SENDING_GRACE:
+            return None                                 # another run may still be sending / Gmail indexing
+        try:
+            gid = find_sent_email(key, started)
+        except Exception as e:
+            n, nxt = record_failure(s, tbl, d["id"], "email", f"verify {type(e).__name__}", now_t)
+            log("email state unknown (interrupted send), Sent lookup failed", tbl, d["id"], type(e).__name__,
+                f"attempt {n}/{MAX_ATTEMPTS}")
+            return False
+        if gid:
+            s.execute("INSERT OR REPLACE INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email",
+                                                                       f"recovered gmail:{gid}", now))
+            s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
+            s.commit()
+            clear_attempts(s, tbl, d["id"], "email")
+            log("email already sent (interrupted run), recorded without re-sending", tbl, d["id"], f"gmail:{gid}")
+            return True
+        log("email interrupted before Gmail accepted it, sending again", tbl, d["id"])
+    s.execute("INSERT OR REPLACE INTO sending VALUES(?,?,?,?,?)", (tbl, d["id"], "email", key, now))
+    s.commit()                                          # idempotency marker BEFORE the send
+    try:
+        ref = send_email(kind, tbl, d, key)
+    except Exception as e:
+        s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
+        s.commit()                                      # an exception means Gmail did not accept it
+        n, nxt = record_failure(s, tbl, d["id"], "email", type(e).__name__, now_t)
+        log("email failed", tbl, d["id"], type(e).__name__, f"attempt {n}/{MAX_ATTEMPTS}",
+            "- parked, lead stays in DB (--requeue to retry)" if n >= MAX_ATTEMPTS else f"- next {ts(nxt)}")
+        return False
+    s.execute("INSERT INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email", ref, now))
+    s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
+    s.commit()
+    clear_attempts(s, tbl, d["id"], "email")
+    log("email sent", tbl, d["id"], ref)
+    return True
+
+
 def run():
     s = state_db()
     rows = leads()
@@ -243,7 +403,8 @@ def run():
     # baseline: leads that existed before the relay started are never e-mailed
     if kv(s, "email_baseline_at") is None:
         for tbl, _, d in rows:
-            s.execute("INSERT OR IGNORE INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email", "baseline-not-emailed", now))
+            s.execute("INSERT OR IGNORE INTO sent VALUES(?,?,?,?,?)",
+                      (tbl, d["id"], "email", "baseline-not-emailed", now))
         s.commit()
         kv(s, "email_baseline_at", now)
         log("baseline set:", len(rows), "existing leads will not be e-mailed")
@@ -251,31 +412,18 @@ def run():
     rc = 0
     if MAIL_TO and MAIL_FROM:
         pending = [(tbl, kind, d) for tbl, kind, d in rows if (tbl, d["id"], "email") not in done]
-        if pending:
-            ok, why = mail_route(MAIL_TO)
-            note_route(s, ok, why, len(pending), now_t)
-        else:
-            ok = False
-        for tbl, kind, d in (pending if ok else []):
-            if may_try(s, tbl, d["id"], "email", now_t) != "try":
-                continue
-            try:
-                ref = send_email(kind, tbl, d)
-            except Exception as e:
-                n, nxt = record_failure(s, tbl, d["id"], "email", type(e).__name__, now_t)
-                log("email failed", tbl, d["id"], type(e).__name__, f"attempt {n}/{MAX_ATTEMPTS}",
-                    "- parked, lead stays in DB (--requeue to retry)" if n >= MAX_ATTEMPTS else f"- next {ts(nxt)}")
+        # only leads that are due now may trigger the (backed-off) MX lookup; parked/backing-off ones don't
+        due = [(tbl, kind, d) for tbl, kind, d in pending if may_try(s, tbl, d["id"], "email", now_t) == "try"]
+        ok = route_check(s, len(due), now_t)[0] if due else False
+        for tbl, kind, d in (due if ok else []):
+            if send_one_email(s, tbl, kind, d, now_t) is False:
                 rc = 1
-                continue
-            s.execute("INSERT INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email", ref, now))
-            s.commit()
-            clear_attempts(s, tbl, d["id"], "email")
-            log("email sent", tbl, d["id"], ref)
     # one-time Telegram backlog once the group chat id is configured
     if env_value("ARTEMIS_TG_CHAT_ID") and env_value("ARTEMIS_TG_BOT_TOKEN") and not kv(s, "tg_backlog_done_at"):
         cutoff = kv(s, "tg_backlog_cutoff")
         if cutoff is None:  # leads created before the chat id was configured never reached Telegram
-            cutoff = dt.datetime.fromtimestamp(os.path.getmtime(ENV_FILE)).strftime("%Y-%m-%dT%H:%M:%S")  # server time, same as created_at
+            # server local time, same as created_at
+            cutoff = dt.datetime.fromtimestamp(os.path.getmtime(ENV_FILE)).strftime("%Y-%m-%dT%H:%M:%S")
             kv(s, "tg_backlog_cutoff", cutoff)
         n = parked = 0
         for tbl, kind, d in rows:
@@ -303,24 +451,48 @@ def run():
     return rc
 
 
+def status():
+    s = state_db()
+    done = {(t, i) for t, i in s.execute("SELECT tbl, lead_id FROM sent WHERE channel='email'")}
+    queued = [(t, d["id"]) for t, _, d in leads() if (t, d["id"]) not in done]
+    att = {(t, i): (n, nx) for t, i, n, nx in s.execute(
+        "SELECT tbl, lead_id, n, next_at FROM attempts WHERE channel='email'")}
+    return {"kv": dict(s.execute("SELECT k, v FROM kv").fetchall()),
+            "sent": s.execute("SELECT channel, ref LIKE 'baseline%', count(*) FROM sent GROUP BY 1, 2").fetchall(),
+            "email_queued": len(queued),
+            "email_parked": sum(1 for q in queued if att.get(q, (0,))[0] >= MAX_ATTEMPTS),
+            "email_backing_off": sum(1 for q in queued if 0 < att.get(q, (0,))[0] < MAX_ATTEMPTS),
+            "email_sending_markers": s.execute("SELECT count(*) FROM sending WHERE channel='email'").fetchone()[0],
+            "mail_route": mail_route(MAIL_TO)[1] if MAIL_TO else "MAIL_TO not set"}
+
+
+def requeue(args):
+    """--requeue [--channel email|telegram]: clear attempt counters (all channels or only one)."""
+    channel = None
+    if args:
+        if len(args) == 2 and args[0] == "--channel" and args[1] in CHANNELS:
+            channel = CHANNELS[args[1]]
+        elif len(args) == 1 and args[0].startswith("--channel=") and args[0].split("=", 1)[1] in CHANNELS:
+            channel = CHANNELS[args[0].split("=", 1)[1]]
+        else:
+            print("usage: artemis-lead-relay.py --requeue [--channel email|telegram]", file=sys.stderr)
+            return 2
+    s = state_db()
+    if channel:
+        n = s.execute("DELETE FROM attempts WHERE channel=?", (channel,)).rowcount
+    else:
+        n = s.execute("DELETE FROM attempts").rowcount
+    if channel in (None, "email"):
+        s.execute("DELETE FROM kv WHERE k IN ('email_route_fails', 'email_route_next_check')")
+    s.commit()
+    log("requeue: attempt counters cleared:", n, f"(channel {channel})" if channel else "(all channels)")
+    return 0
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["--status"]:
-        s = state_db()
-        done = {(t, i) for t, i in s.execute("SELECT tbl, lead_id FROM sent WHERE channel='email'")}
-        queued = [(t, d["id"]) for t, _, d in leads() if (t, d["id"]) not in done]
-        att = {(t, i): (n, nx) for t, i, n, nx in s.execute(
-            "SELECT tbl, lead_id, n, next_at FROM attempts WHERE channel='email'")}
-        print(json.dumps({"kv": dict(s.execute("SELECT k, v FROM kv").fetchall()),
-                          "sent": s.execute("SELECT channel, ref LIKE 'baseline%', count(*) FROM sent GROUP BY 1, 2").fetchall(),
-                          "email_queued": len(queued),
-                          "email_parked": sum(1 for q in queued if att.get(q, (0,))[0] >= MAX_ATTEMPTS),
-                          "email_backing_off": sum(1 for q in queued if 0 < att.get(q, (0,))[0] < MAX_ATTEMPTS),
-                          "mail_route": mail_route(MAIL_TO)[1] if MAIL_TO else "MAIL_TO not set"}))
+        print(json.dumps(status()))
         sys.exit(0)
-    if sys.argv[1:] == ["--requeue"]:
-        s = state_db()
-        n = s.execute("DELETE FROM attempts").rowcount
-        s.commit()
-        log("requeue: attempt counters cleared:", n)
-        sys.exit(0)
+    if sys.argv[1:2] == ["--requeue"]:
+        sys.exit(requeue(sys.argv[2:]))
     sys.exit(run())
