@@ -78,8 +78,24 @@ class TenerifePreviewTest(unittest.TestCase):
 
     def test_impressum_has_operator_and_todo_marks(self):
         body = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
-        self.assertIn("Oxford Frame Ltd", body)
-        self.assertIn("[уточнить]", body)
+        # founder 31.10.2026 01:11 UTC: publish OXFORD FRAME REAL ASSETS LTD / 09153936 (Companies House facts only)
+        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales",
+                     "Drovers, Preston Candover, Basingstoke, RG25 2EE", "Szabolcs Szaniszlo"):
+            self.assertIn(must, body)
+        self.assertIn("[уточнить]", body)  # email, phone, VAT, § 18 MStV still open
+        for forbidden in ("Oxford Frame Ltd", "dormant", "Dormant", "активн", "торгу"):
+            self.assertNotIn(forbidden, body)
+
+    def test_privacy_names_controller_and_hosting_country(self):
+        body = self.client.get("/tenerife-preview/privacy/").get_data(as_text=True)
+        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "Германии"):
+            self.assertIn(must, body)
+        self.assertNotIn("Oxford Frame Ltd", body)
+
+    def test_preview_footer_uses_registered_name(self):
+        body = self.client.get("/tenerife-preview/").get_data(as_text=True)
+        self.assertIn("OXFORD FRAME REAL ASSETS LTD", body)
+        self.assertNotIn("Oxford Frame Ltd", body)
 
     def test_not_linked_from_crete(self):
         for lang in ("en", "ru", "es", "fr"):
