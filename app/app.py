@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import datetime
+import hmac
+import html
 import json
 import os
 import smtplib
@@ -276,9 +278,18 @@ def download_pdf():
     abort(404)
 
 
+def _admin_token_ok() -> bool:
+    """Fail-closed admin check: no ARTEMIS_ADMIN_TOKEN in env -> always denied."""
+    expected = os.environ.get("ARTEMIS_ADMIN_TOKEN", "")
+    if len(expected) < 24:
+        return False
+    supplied = request.args.get("t", "") or request.headers.get("X-Admin-Token", "")
+    return hmac.compare_digest(supplied.encode(), expected.encode())
+
+
 @app.route("/admin/leads")
 def admin_leads():
-    if request.args.get("t", "") != os.environ.get("ARTEMIS_ADMIN_TOKEN", "rovlex2025"):
+    if not _admin_token_ok():
         abort(403)
     init_db()
     conn = sqlite3.connect(DB)
@@ -307,12 +318,16 @@ def admin_leads():
         "<th>Consent</th><th>Date</th></tr>"
     )
     for r in rows:
+        e = [html.escape(str(x if x is not None else "")) for x in r]
+        e[7] = html.escape(str(r[7] or "")[:120])
         h += (
-            f"<tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td>"
-            f"<td>{r[4]}</td><td>{r[5]}</td><td>{r[6]}</td>"
-            f"<td>{(r[7] or '')[:120]}</td><td>{r[8]}</td><td>{r[9]}</td></tr>"
+            f"<tr><td>{e[0]}</td><td>{e[1]}</td><td>{e[2]}</td><td>{e[3]}</td>"
+            f"<td>{e[4]}</td><td>{e[5]}</td><td>{e[6]}</td>"
+            f"<td>{e[7]}</td><td>{e[8]}</td><td>{e[9]}</td></tr>"
         )
-    return no_cache(make_response(h + "</table>"))
+    resp = no_cache(make_response(h + "</table>"))
+    resp.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return resp
 
 
 TG_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
