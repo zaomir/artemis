@@ -11,9 +11,19 @@ SITE_DIR=/var/www/artemis
 APP_PORT=8082
 
 git_with_token() {
-  # QA PR24-06: the token is checked only here, i.e. only where it is really needed.
-  : "${GITHUB_TOKEN:?set GITHUB_TOKEN (needed for git clone/pull)}"
-  local askpass rc=0
+  # QA PR24-08: xtrace is switched off while the token is handled (the guard and the git call), so
+  # `bash -x setup_server.sh` never prints it; the caller's xtrace state is restored afterwards.
+  local xtrace=0 askpass rc=0
+  case $- in *x*) xtrace=1 ;; esac
+  { set +x; } 2>/dev/null
+  # QA PR24-06: the token is checked only here, i.e. only where it is really needed; the check never
+  # expands the value.
+  if [ -z "${GITHUB_TOKEN:-}" ]; then
+    echo "ERROR: set GITHUB_TOKEN (needed for git clone/pull)" >&2
+    if [ "$xtrace" = 1 ]; then set -x; fi
+    return 1
+  fi
+  export GITHUB_TOKEN
   askpass="$(mktemp)"
   chmod 700 "$askpass"
   trap 'rm -f "$askpass"' EXIT
@@ -24,10 +34,10 @@ case "$1" in
   *) printf '%s\n' "$GITHUB_TOKEN" ;;
 esac
 ASKPASS
-  GITHUB_TOKEN="$GITHUB_TOKEN" GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 \
-    git -c credential.helper= "$@" || rc=$?
+  GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 git -c credential.helper= "$@" || rc=$?
   rm -f "$askpass"
   trap - EXIT
+  if [ "$xtrace" = 1 ]; then set -x; fi
   return "$rc"
 }
 

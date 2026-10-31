@@ -29,8 +29,10 @@ class SetupServerTokenTest(unittest.TestCase):
         s = read("setup_server.sh")
         fn = s[s.index("git_with_token() {"):]
         fn = fn[:fn.index("\n}\n")]
-        self.assertEqual(s.count("${GITHUB_TOKEN:?"), 1)
-        self.assertIn("${GITHUB_TOKEN:?", fn)
+        # QA PR24-08: the guard must not expand the token value (no ${GITHUB_TOKEN:?...} / ": $GITHUB_TOKEN")
+        self.assertNotIn("${GITHUB_TOKEN:?", s)
+        self.assertEqual(s.count('[ -z "${GITHUB_TOKEN:-}" ]'), 1)
+        self.assertIn('[ -z "${GITHUB_TOKEN:-}" ]', fn)
 
 
 class NginxEnquiryLimitTest(unittest.TestCase):
@@ -98,6 +100,48 @@ class RealIpSnippetInstallTest(unittest.TestCase):
             r = subprocess.run(["bash", "-euc", block], capture_output=True, text=True)
             self.assertEqual(r.returncode, 0, r.stderr)
             self.assertEqual((Path(tmp) / "out.conf").read_text(encoding="utf-8"), read(SNIPPET_REL))
+
+
+def git_helper_source():
+    s = read("setup_server.sh")
+    fn = s[s.index("git_with_token() {"):]
+    return fn[:fn.index("\n}\n") + 3]
+
+
+FAKE_TOKEN = "ghp_QAFAKExtraceTEST0123456789abcdefABCD"
+
+
+class SetupServerXtraceTest(unittest.TestCase):
+    """QA PR24-08: under bash -x the token never reaches stderr and xtrace is restored afterwards."""
+
+    def run_x(self, body, token=FAKE_TOKEN):
+        # git is stubbed by a shell function that exercises the askpass script like git would
+        script = (
+            git_helper_source()
+            + 'git() { [ "$("$GIT_ASKPASS" Password)" = "$GITHUB_TOKEN" ] && echo "stub-git-ok $*"; }\n'
+            + body
+        )
+        env = {"PATH": "/usr/bin:/bin"}
+        if token is not None:
+            env["GITHUB_TOKEN"] = token
+        return subprocess.run(["bash", "-x", "-euo", "pipefail", "-c", script],
+                              capture_output=True, text=True, env=env)
+
+    def test_token_not_in_xtrace(self):
+        r = self.run_x("git_with_token -C /nonexistent pull\n: after-marker\n")
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("stub-git-ok -c credential.helper= -C /nonexistent pull", r.stdout)
+        self.assertNotIn(FAKE_TOKEN, r.stderr)
+        self.assertNotIn(FAKE_TOKEN, r.stdout)
+        self.assertNotIn(FAKE_TOKEN[4:], r.stderr)
+        # xtrace was restored after the helper returned
+        self.assertIn("+ : after-marker", r.stderr)
+
+    def test_missing_token_error_without_value(self):
+        r = self.run_x("git_with_token clone x y || echo rc=$?\n: after-marker\n", token=None)
+        self.assertIn("rc=1", r.stdout)
+        self.assertIn("ERROR: set GITHUB_TOKEN", r.stderr)
+        self.assertIn("+ : after-marker", r.stderr)
 
 
 if __name__ == "__main__":
