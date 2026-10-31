@@ -3,7 +3,7 @@
 # Run as root: bash setup_server.sh
 set -e
 
-REPO="https://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@github.com/zaomir/artemis.git"
+REPO="https://${GITHUB_TOKEN:?set GITHUB_TOKEN}@github.com/zaomir/artemis.git"
 SITE_DIR=/var/www/artemis
 APP_PORT=8082
 
@@ -53,7 +53,7 @@ server {
         add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0";
         add_header Pragma "no-cache";
     }
-    location /deploy-hook { proxy_pass http://127.0.0.1:9001; proxy_set_header X-Hook-Secret \$http_x_hook_secret; }
+    location /deploy-hook { proxy_pass http://127.0.0.1:9001; proxy_set_header X-Hook-Secret \$http_x_hook_secret; proxy_set_header X-Real-IP \$remote_addr; }
     location / { proxy_pass http://127.0.0.1:$APP_PORT; proxy_set_header Host \$host; proxy_set_header X-Real-IP \$remote_addr; }
 }
 NGX
