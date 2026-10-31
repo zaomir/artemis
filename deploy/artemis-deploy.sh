@@ -2,7 +2,7 @@
 # Artemis production deploy (server-side, no GitHub Actions, no webhook).
 # Installed copy: /usr/local/sbin/artemis-deploy.sh  (run as root on vps2402)
 #
-#   artemis-deploy.sh            # fetch origin/main, unit tests, ff-only merge, restart, smoke
+#   artemis-deploy.sh            # fetch origin/main, unit tests, ff-only merge, reload, smoke
 #   artemis-deploy.sh --check    # smoke only, no changes
 #
 # Tests (31.10.2026): before prod is switched, the NEW commit is exported to a temp dir and
@@ -12,24 +12,38 @@
 # Zero-downtime switch (QA PS-06, 31.10.2026): gunicorn gets SIGHUP instead of `systemctl restart`. The master
 # keeps the listening socket, starts new workers (no --preload, so they import the new code) and only then
 # stops the old ones gracefully - no window without a listener on 127.0.0.1:8082 (the restart caused a 502).
-# If the service is not running or the workers are not all replaced within 60 s, it falls back to restart.
+# If the service is not running, the master exits/changes after HUP, or the workers are not all replaced
+# within 60 s, it falls back to restart.
+# HUP goes to MainPID with plain `kill` (QA PR27-02: the systemctl kill "whom" option exists only in systemd >= 252).
 #
 # Safety: flock (no parallel runs), refuses dirty tree, ff-only (never rewrites
 # history), smoke-checks local gunicorn + public Crete pages; on any failure
 # resets to the previous HEAD, restarts and exits non-zero.
+# QA PR27-01 (31.10.2026): once the code is switched, ANY error (ERR trap) or a failed reload ends in
+# smoke -> ROLLBACK, never in a silent exit. State in $ARTEMIS_STATE_DIR (/var/lib/artemis-deploy):
+#   pending   "OLD NEW" while a switch is not verified yet (left behind if the run was killed)
+#   last_good last commit that passed smoke
+#   failed    commit that was rolled back - not redeployed again unless ARTEMIS_RETRY_FAILED=1
+# A rerun that finds the checkout "up to date" but failing smoke rolls back to the pre-deploy commit
+# (pending) or last_good instead of reporting "no change deployed".
 set -Eeuo pipefail
 
 APP_DIR="${ARTEMIS_DIR:-/var/www/artemis}"
 SERVICE="${ARTEMIS_SERVICE:-artemis}"
 BRANCH="${ARTEMIS_BRANCH:-main}"
-LOCAL="http://127.0.0.1:8082"
+LOCAL="${ARTEMIS_LOCAL_URL:-http://127.0.0.1:8082}"
 PUBLIC="${ARTEMIS_PUBLIC_URL:-https://artemisresort.com}"
 LOG="${ARTEMIS_DEPLOY_LOG:-/var/log/artemis-deploy.log}"
 TEST_PY="${ARTEMIS_TEST_PYTHON:-${APP_DIR}/venv/bin/python}"
 TEST_TIMEOUT="${ARTEMIS_TEST_TIMEOUT:-600}"
+RELOAD_TIMEOUT="${ARTEMIS_RELOAD_TIMEOUT:-60}"
+STATE_DIR="${ARTEMIS_STATE_DIR:-/var/lib/artemis-deploy}"
+PENDING="${STATE_DIR}/pending"
+LAST_GOOD="${STATE_DIR}/last_good"
+FAILED="${STATE_DIR}/failed"
 G=(git -c "safe.directory=${APP_DIR}" -C "${APP_DIR}")
 
-exec 9>/run/artemis-deploy.lock
+exec 9>"${ARTEMIS_LOCK:-/run/artemis-deploy.lock}"
 flock -n 9 || { echo "another artemis deploy is running" >&2; exit 2; }
 
 log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
@@ -47,26 +61,47 @@ TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/accion
   /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
 
-workers() { pgrep -P "$1" 2>/dev/null | sort; }
+# MainPID of the unit, "0" if none / not a number
+main_pid() {
+  local p
+  p=$(systemctl show -p MainPID --value "$SERVICE" 2>/dev/null) || p=0
+  [[ "$p" =~ ^[0-9]+$ ]] || p=0
+  echo "$p"
+}
 
-# graceful reload of gunicorn: SIGHUP to the master, wait until every old worker is replaced
+# child PIDs of the gunicorn master; empty output (master gone / no workers) is not an error (QA PR27-01)
+workers() { { pgrep -P "$1" 2>/dev/null || true; } | sort; }
+
+restart_app() {
+  log "reload: $1 - restart"
+  systemctl reset-failed "$SERVICE" 2>/dev/null || true
+  systemctl restart "$SERVICE" || { log "reload: systemctl restart ${SERVICE} failed"; return 1; }
+}
+
+# graceful reload of gunicorn: SIGHUP to the master, wait until every old worker is replaced.
+# Never aborts the script: every failure is logged, falls back to restart, and the caller runs smoke.
 reload_app() {
-  local main old new n=0
-  main=$(systemctl show -p MainPID --value "$SERVICE" 2>/dev/null || echo 0)
-  if ! systemctl is-active -q "$SERVICE" || [[ -z "$main" || "$main" == 0 ]]; then
-    log "reload: ${SERVICE} not running - restart"; systemctl restart "$SERVICE"; return
+  local main now old new n=0
+  main=$(main_pid)
+  if ! systemctl is-active -q "$SERVICE" || [[ "$main" == 0 ]]; then
+    restart_app "${SERVICE} not running"; return
   fi
   old=$(workers "$main")
-  systemctl kill -s HUP --kill-whom=main "$SERVICE"
-  while (( n < 60 )); do
+  if ! kill -s HUP "$main" 2>/dev/null; then
+    restart_app "HUP to gunicorn ${main} failed"; return
+  fi
+  while (( n < RELOAD_TIMEOUT )); do
     sleep 1; n=$((n + 1))
+    now=$(main_pid)
+    if [[ "$now" != "$main" ]] || ! kill -0 "$main" 2>/dev/null; then
+      restart_app "gunicorn master ${main} gone after HUP (MainPID now ${now}, ${n}s)"; return
+    fi
     new=$(workers "$main")
-    if [[ -n "$new" ]] && (( $(wc -l <<<"$new") >= $(wc -l <<<"$old") )) && [[ -z "$(comm -12 <(echo "$old") <(echo "$new"))" ]] \
-       && [[ "$(systemctl show -p MainPID --value "$SERVICE")" == "$main" ]]; then
-      log "reload: gunicorn ${main} HUP, workers replaced in ${n}s"; return
+    if [[ -n "$new" ]] && (( $(wc -l <<<"$new") >= $(wc -l <<<"$old") )) && [[ -z "$(comm -12 <(echo "$old") <(echo "$new"))" ]]; then
+      log "reload: gunicorn ${main} HUP, workers replaced in ${n}s"; return 0
     fi
   done
-  log "reload: workers not replaced in 60s - restart"; systemctl restart "$SERVICE"
+  restart_app "workers not replaced in ${RELOAD_TIMEOUT}s"
 }
 
 smoke() {
@@ -96,7 +131,8 @@ if [[ "${1:-}" == "--check" ]]; then
   smoke && { log "check OK"; exit 0; } || { log "check FAILED"; exit 1; }
 fi
 
-[[ $EUID -eq 0 ]] || { echo "run as root" >&2; exit 1; }
+[[ $EUID -eq 0 || "${ARTEMIS_SKIP_ROOT_CHECK:-0}" == 1 ]] || { echo "run as root" >&2; exit 1; }
+mkdir -p "$STATE_DIR"
 if [[ -n "$("${G[@]}" status --porcelain --untracked-files=no)" ]]; then
   log "ABORT: tracked changes in ${APP_DIR} (hotfix on server?) — commit them to the repo first"
   exit 1
@@ -104,12 +140,66 @@ fi
 cur=$("${G[@]}" rev-parse --abbrev-ref HEAD)
 [[ "$cur" == "$BRANCH" ]] || { log "ABORT: ${APP_DIR} is on ${cur}, expected ${BRANCH}"; exit 1; }
 
+# restore $1, restart, smoke; always exits 1 (the deploy did not go through)
+rollback() {
+  local to=$1
+  trap - ERR
+  log "ROLLBACK to ${to:0:7} ($2)"
+  "${G[@]}" reset -q --hard "$to" || log "ROLLBACK: git reset --hard ${to:0:7} failed"
+  systemctl reset-failed "$SERVICE" 2>/dev/null || true
+  systemctl restart "$SERVICE" || log "ROLLBACK: systemctl restart ${SERVICE} failed"
+  if smoke; then
+    log "rollback OK"
+    echo "$to" >"$LAST_GOOD"; rm -f "$PENDING"
+  else
+    log "ROLLBACK SMOKE ALSO FAILED — manual attention"
+  fi
+  exit 1
+}
+
+on_err() {  # ERR trap after the code switch: no silent exit, always smoke + rollback
+  trap - ERR
+  log "ERROR: rc=$1 at line $2 after switching ${OLD:0:7} -> ${NEW:0:7}"
+  echo "$NEW" >"$FAILED" 2>/dev/null || true
+  rollback "$OLD" "deploy step failed"
+}
+
 OLD=$("${G[@]}" rev-parse HEAD)
 "${G[@]}" fetch -q origin "$BRANCH"
 NEW=$("${G[@]}" rev-parse "origin/${BRANCH}")
 if [[ "$OLD" == "$NEW" ]]; then
   log "up to date at ${OLD:0:7}; running smoke"
-  smoke && { log "smoke OK"; exit 0; } || { log "smoke FAILED (no change deployed)"; exit 1; }
+  p_old="" p_new=""
+  if [[ -s "$PENDING" ]]; then read -r p_old p_new <"$PENDING" || true; fi
+  if [[ -n "$p_old" && "$p_new" == "$OLD" && "$p_old" != "$OLD" ]]; then
+    # previous run switched the code and died before smoke/rollback: make sure the workers run this code
+    log "previous deploy ${p_old:0:7} -> ${OLD:0:7} did not finish - reload before smoke"
+    reload_app || log "reload: failed (rc=$?) - checking with smoke"
+  fi
+  if smoke; then
+    log "smoke OK"; echo "$OLD" >"$LAST_GOOD"; rm -f "$PENDING"; exit 0
+  fi
+  log "smoke FAILED at ${OLD:0:7} (up to date)"
+  if [[ -n "$p_old" && "$p_new" == "$OLD" && "$p_old" != "$OLD" ]]; then
+    echo "$OLD" >"$FAILED"
+    rollback "$p_old" "unfinished deploy ${p_old:0:7} -> ${OLD:0:7}"
+  fi
+  systemctl reset-failed "$SERVICE" 2>/dev/null || true
+  systemctl restart "$SERVICE" || log "systemctl restart ${SERVICE} failed"
+  if smoke; then
+    log "recovered by restart at ${OLD:0:7}"; echo "$OLD" >"$LAST_GOOD"; exit 0
+  fi
+  lg=$(cat "$LAST_GOOD" 2>/dev/null || true)
+  if [[ -n "$lg" && "$lg" != "$OLD" ]] && "${G[@]}" merge-base --is-ancestor "$lg" "$OLD" 2>/dev/null; then
+    echo "$OLD" >"$FAILED"
+    rollback "$lg" "last good commit"
+  fi
+  log "smoke FAILED at ${OLD:0:7}, no known-good commit to roll back to — manual attention"
+  exit 1
+fi
+if [[ "$(cat "$FAILED" 2>/dev/null || true)" == "$NEW" && "${ARTEMIS_RETRY_FAILED:-0}" != 1 ]]; then
+  log "ABORT: ${NEW:0:7} already failed and was rolled back; prod stays at ${OLD:0:7}. Push a fix or rerun with ARTEMIS_RETRY_FAILED=1"
+  exit 1
 fi
 
 run_tests() {
@@ -134,16 +224,17 @@ if ! run_tests; then
 fi
 
 log "deploy ${OLD:0:7} -> ${NEW:0:7}"
+printf '%s %s\n' "$OLD" "$NEW" >"$PENDING"
+trap 'on_err $? $LINENO' ERR
 "${G[@]}" merge --ff-only -q "origin/${BRANCH}"
 chown www-data:www-data "${APP_DIR}/leads.db" 2>/dev/null || true
-reload_app
+reload_app || log "reload: failed (rc=$?) - checking with smoke"
 
 if smoke; then
+  trap - ERR
   log "deploy OK at ${NEW:0:7}"
+  echo "$NEW" >"$LAST_GOOD"; rm -f "$PENDING" "$FAILED"
 else
-  log "ROLLBACK to ${OLD:0:7}"
-  "${G[@]}" reset -q --hard "$OLD"
-  systemctl restart "$SERVICE"
-  smoke && log "rollback OK" || log "ROLLBACK SMOKE ALSO FAILED — manual attention"
-  exit 1
+  echo "$NEW" >"$FAILED"
+  rollback "$OLD" "smoke failed for ${NEW:0:7}"
 fi

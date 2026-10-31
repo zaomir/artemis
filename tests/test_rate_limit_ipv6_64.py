@@ -54,7 +54,7 @@ class ClientHashPer64Test(unittest.TestCase):
     def test_same_64_same_key_both_limiters(self):
         same = ["2001:db8:5:6::1", "2001:db8:5:6:ffff:ffff:ffff:fffe"]
         other = "2001:db8:5:7::1"
-        for fn, header in ((ratelimit.client_hash, "X-Real-IP"), (self.tenerife._client_hash, "CF-Connecting-IP")):
+        for fn, header in ((ratelimit.client_hash, "X-Real-IP"), (self.tenerife._client_hash, "X-Real-IP")):
             h = self.hashes(fn, header, same + [other])
             self.assertEqual(h[0], h[1], fn.__name__)
             self.assertNotEqual(h[0], h[2], fn.__name__)
@@ -66,7 +66,7 @@ class ClientHashPer64Test(unittest.TestCase):
         salt = ratelimit.hmac_salt().encode()
         want = hmac.new(salt, b"198.51.100.4", hashlib.sha256).hexdigest()[:32]
         self.assertEqual(self.hashes(ratelimit.client_hash, "X-Real-IP", ["198.51.100.4"]), [want])
-        self.assertEqual(self.hashes(self.tenerife._client_hash, "CF-Connecting-IP", ["198.51.100.4"]), [want])
+        self.assertEqual(self.hashes(self.tenerife._client_hash, "X-Real-IP", ["198.51.100.4"]), [want])
 
     def test_limit_hits_whole_64(self):
         """Rotating addresses inside one /64 does not reset the limit."""

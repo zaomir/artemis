@@ -29,7 +29,7 @@ No GitHub Actions and no webhook (the old `/deploy-hook` / `artemis-hook.service
 is **disabled**, see `webhook.py`). Deploy = merge to `main`, then on the server:
 
 ```bash
-ssh vps2402 sudo /usr/local/sbin/artemis-deploy.sh          # fetch + ff-only + restart + smoke, auto-rollback
+ssh vps2402 sudo /usr/local/sbin/artemis-deploy.sh          # fetch + tests + ff-only + HUP reload + smoke, auto-rollback
 ssh vps2402 sudo /usr/local/sbin/artemis-deploy.sh --check  # smoke only
 ```
 

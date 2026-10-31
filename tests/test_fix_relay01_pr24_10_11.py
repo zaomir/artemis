@@ -132,13 +132,19 @@ class Ps06GracefulReloadTest(unittest.TestCase):
 
     def test_deploy_uses_hup_reload(self):
         s = read("artemis-deploy.sh")
-        body = s[s.index('log "deploy ${OLD:0:7} -> ${NEW:0:7}"'):s.index("if smoke; then")]
+        start = s.index('log "deploy ${OLD:0:7} -> ${NEW:0:7}"')
+        body = s[start:s.index("if smoke; then", start)]
         self.assertIn("reload_app", body)
         self.assertNotIn("systemctl restart", body)
         fn = s[s.index("reload_app() {"):]
         fn = fn[:fn.index("\n}\n")]
-        self.assertIn('systemctl kill -s HUP --kill-whom=main "$SERVICE"', fn)
-        self.assertIn('systemctl restart "$SERVICE"', fn)  # fallback when not running / not replaced
+        # QA PR27-02: no `systemctl kill --kill-whom` (systemd >= 252 only) - plain kill to MainPID
+        self.assertIn('kill -s HUP "$main"', fn)
+        self.assertNotIn("--kill-whom", s)
+        self.assertIn("restart_app ", fn)  # fallback when not running / master gone / not replaced
+        rfn = s[s.index("restart_app() {"):]
+        rfn = rfn[:rfn.index("\n}\n")]
+        self.assertIn('systemctl restart "$SERVICE"', rfn)
         r = subprocess.run(["bash", "-n", str(DEPLOY / "artemis-deploy.sh")], capture_output=True)
         self.assertEqual(r.returncode, 0, r.stderr)
 
