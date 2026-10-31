@@ -56,9 +56,10 @@ smoke() {
     [[ "$code" == 200 ]] || { log "SMOKE FAIL public ${p} -> ${code}"; fail=1; }
   done
   for p in "${EXTRA_PATHS[@]}"; do
-    # optional pages: must not 5xx (404 tolerated if the route is not shipped yet)
+    # optional pages: must not 5xx (404 tolerated if the route is not shipped yet;
+    # 301 since r4/T47: /tenerife-preview/ is retired and redirects to /tenerife/)
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
-    [[ "$code" =~ ^(200|404)$ ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
+    [[ "$code" =~ ^(200|301|404)$ ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
   done
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/admin/leads" || true)
   [[ "$code" == 403 ]] || { log "SMOKE FAIL /admin/leads without token -> ${code} (want 403)"; fail=1; }
