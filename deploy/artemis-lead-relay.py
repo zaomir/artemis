@@ -32,6 +32,13 @@ Delivery guards (31.10.2026, artemisresort.com has no MX):
   Residual risk: if Gmail accepted the message but it is not yet searchable, a duplicate is still
   possible (the marker is only resolved after SENDING_GRACE seconds to make that unlikely).
 - Reply-To of the copy = the lead's e-mail when the contact is an e-mail address (else none).
+- Stable lead identity (id reuse fix, 31.10.2026): leads.db ids were `INTEGER PRIMARY KEY` without
+  AUTOINCREMENT, so SQLite hands a deleted top id to the next lead. `sent`/`attempts` are still keyed by
+  (tbl, lead_id, channel) (old rows stay valid, rollback-safe), but the side tables `sent_key` and
+  `attempt_key` record which lead (`lead_key` = tbl:id:created_at) a row belongs to. A row whose key
+  differs from the current lead's key belongs to a deleted lead: the new lead is sent and the row replaced.
+  Legacy rows written before this change have no key; they count for the current lead only if that lead
+  was created no later than the row's `at` (a lead created after it was sent/baselined is a reused id).
 """
 import base64
 import datetime as dt
@@ -173,6 +180,11 @@ def state_db():
               " next_at TEXT, last_error TEXT, PRIMARY KEY(tbl, lead_id, channel))")
     s.execute("CREATE TABLE IF NOT EXISTS sending(tbl TEXT, lead_id INTEGER, channel TEXT, lead_key TEXT,"
               " started_at TEXT, PRIMARY KEY(tbl, lead_id, channel))")
+    # which lead (lead_key) a sent/attempts row belongs to; separate tables keep the old schema intact
+    s.execute("CREATE TABLE IF NOT EXISTS sent_key(tbl TEXT, lead_id INTEGER, channel TEXT, lead_key TEXT,"
+              " PRIMARY KEY(tbl, lead_id, channel))")
+    s.execute("CREATE TABLE IF NOT EXISTS attempt_key(tbl TEXT, lead_id INTEGER, channel TEXT, lead_key TEXT,"
+              " PRIMARY KEY(tbl, lead_id, channel))")
     return s
 
 
@@ -185,14 +197,65 @@ def parse_ts(v):
     return dt.datetime.strptime(v, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)
 
 
-def attempt_state(s, tbl, lead_id, channel):
-    r = s.execute("SELECT n, next_at FROM attempts WHERE tbl=? AND lead_id=? AND channel=?",
-                  (tbl, lead_id, channel)).fetchone()
-    return (r[0], r[1]) if r else (0, "")
+def created_utc(v):
+    """created_at as aware UTC (naive = server local time, as written by the app); None if unparseable."""
+    try:
+        t = dt.datetime.fromisoformat(str(v).strip().replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+    return (t if t.tzinfo else t.astimezone()).astimezone(dt.timezone.utc).replace(microsecond=0)
 
 
-def may_try(s, tbl, lead_id, channel, now):
-    n, next_at = attempt_state(s, tbl, lead_id, channel)
+def sent_rows(s):
+    """{(tbl, lead_id, channel): (at, lead_key or None)} of the state's sent rows (None = legacy row)."""
+    keys = {(t, i, ch): k for t, i, ch, k in s.execute("SELECT tbl, lead_id, channel, lead_key FROM sent_key")}
+    return {(t, i, ch): (at, keys.get((t, i, ch))) for t, i, ch, at in
+            s.execute("SELECT tbl, lead_id, channel, at FROM sent")}
+
+
+def is_done(done, tbl, d, channel):
+    """True if this very lead (not an earlier lead with the same id) was already sent/baselined."""
+    row = done.get((tbl, d["id"], channel))
+    if row is None:
+        return False
+    at, key = row
+    if key is not None:
+        return key == lead_key(tbl, d)
+    # legacy row (before the id-reuse fix): it belongs to the current lead unless that lead is newer than it
+    created = created_utc(d.get("created_at"))
+    try:
+        sent_at = parse_ts(at)
+    except (TypeError, ValueError):
+        return True                                     # unknown -> never resend
+    return created is None or created <= sent_at
+
+
+def mark_sent(s, tbl, d, channel, ref, now):
+    """Record (replacing a row of a deleted lead with the same id) that this lead went out."""
+    s.execute("INSERT OR REPLACE INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], channel, ref, now))
+    s.execute("INSERT OR REPLACE INTO sent_key VALUES(?,?,?,?)", (tbl, d["id"], channel, lead_key(tbl, d)))
+
+
+def attempt_state(s, tbl, d, channel):
+    """(n, next_at) for this lead; counters of a deleted lead with the same id do not apply to it."""
+    r = s.execute("SELECT a.n, a.next_at, k.lead_key FROM attempts a LEFT JOIN attempt_key k ON"
+                  " k.tbl=a.tbl AND k.lead_id=a.lead_id AND k.channel=a.channel"
+                  " WHERE a.tbl=? AND a.lead_id=? AND a.channel=?", (tbl, d["id"], channel)).fetchone()
+    if not r or (r[2] is not None and r[2] != lead_key(tbl, d)):
+        return 0, ""
+    if r[2] is None and r[1]:                           # legacy row: ignore it if the lead is newer than
+        try:                                            # the last failed attempt (next_at minus its backoff)
+            last = parse_ts(r[1]) - dt.timedelta(seconds=min(60 * 2 ** (max(r[0], 1) - 1), BACKOFF_CAP))
+        except ValueError:
+            last = None
+        created = created_utc(d.get("created_at"))
+        if last is not None and created is not None and created > last:
+            return 0, ""
+    return r[0], r[1]
+
+
+def may_try(s, tbl, d, channel, now):
+    n, next_at = attempt_state(s, tbl, d, channel)
     if n >= MAX_ATTEMPTS:
         return "parked"
     if next_at and next_at > ts(now):
@@ -200,16 +263,18 @@ def may_try(s, tbl, lead_id, channel, now):
     return "try"
 
 
-def record_failure(s, tbl, lead_id, channel, err, now):
-    n = attempt_state(s, tbl, lead_id, channel)[0] + 1
+def record_failure(s, tbl, d, channel, err, now):
+    n = attempt_state(s, tbl, d, channel)[0] + 1
     nxt = now + dt.timedelta(seconds=min(60 * 2 ** (n - 1), BACKOFF_CAP))
-    s.execute("INSERT OR REPLACE INTO attempts VALUES(?,?,?,?,?,?)", (tbl, lead_id, channel, n, ts(nxt), err))
+    s.execute("INSERT OR REPLACE INTO attempts VALUES(?,?,?,?,?,?)", (tbl, d["id"], channel, n, ts(nxt), err))
+    s.execute("INSERT OR REPLACE INTO attempt_key VALUES(?,?,?,?)", (tbl, d["id"], channel, lead_key(tbl, d)))
     s.commit()
     return n, nxt
 
 
 def clear_attempts(s, tbl, lead_id, channel):
     s.execute("DELETE FROM attempts WHERE tbl=? AND lead_id=? AND channel=?", (tbl, lead_id, channel))
+    s.execute("DELETE FROM attempt_key WHERE tbl=? AND lead_id=? AND channel=?", (tbl, lead_id, channel))
     s.commit()
 
 
@@ -365,13 +430,12 @@ def send_one_email(s, tbl, kind, d, now_t):
         try:
             gid = find_sent_email(key, started)
         except Exception as e:
-            n, nxt = record_failure(s, tbl, d["id"], "email", f"verify {type(e).__name__}", now_t)
+            n, nxt = record_failure(s, tbl, d, "email", f"verify {type(e).__name__}", now_t)
             log("email state unknown (interrupted send), Sent lookup failed", tbl, d["id"], type(e).__name__,
                 f"attempt {n}/{MAX_ATTEMPTS}")
             return False
         if gid:
-            s.execute("INSERT OR REPLACE INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email",
-                                                                       f"recovered gmail:{gid}", now))
+            mark_sent(s, tbl, d, "email", f"recovered gmail:{gid}", now)
             s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
             s.commit()
             clear_attempts(s, tbl, d["id"], "email")
@@ -385,11 +449,11 @@ def send_one_email(s, tbl, kind, d, now_t):
     except Exception as e:
         s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
         s.commit()                                      # an exception means Gmail did not accept it
-        n, nxt = record_failure(s, tbl, d["id"], "email", type(e).__name__, now_t)
+        n, nxt = record_failure(s, tbl, d, "email", type(e).__name__, now_t)
         log("email failed", tbl, d["id"], type(e).__name__, f"attempt {n}/{MAX_ATTEMPTS}",
             "- parked, lead stays in DB (--requeue to retry)" if n >= MAX_ATTEMPTS else f"- next {ts(nxt)}")
         return False
-    s.execute("INSERT INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "email", ref, now))
+    mark_sent(s, tbl, d, "email", ref, now)
     s.execute("DELETE FROM sending WHERE tbl=? AND lead_id=? AND channel='email'", (tbl, d["id"]))
     s.commit()
     clear_attempts(s, tbl, d["id"], "email")
@@ -402,21 +466,20 @@ def run():
     rows = leads()
     now_t = utcnow()
     now = ts(now_t)
-    done = {(t, i, ch) for t, i, ch in s.execute("SELECT tbl, lead_id, channel FROM sent")}
+    done = sent_rows(s)
     # baseline: leads that existed before the relay started are never e-mailed
     if kv(s, "email_baseline_at") is None:
         for tbl, _, d in rows:
-            s.execute("INSERT OR IGNORE INTO sent VALUES(?,?,?,?,?)",
-                      (tbl, d["id"], "email", "baseline-not-emailed", now))
+            mark_sent(s, tbl, d, "email", "baseline-not-emailed", now)
         s.commit()
         kv(s, "email_baseline_at", now)
         log("baseline set:", len(rows), "existing leads will not be e-mailed")
         return 0
     rc = 0
     if MAIL_TO and MAIL_FROM:
-        pending = [(tbl, kind, d) for tbl, kind, d in rows if (tbl, d["id"], "email") not in done]
+        pending = [(tbl, kind, d) for tbl, kind, d in rows if not is_done(done, tbl, d, "email")]
         # only leads that are due now may trigger the (backed-off) MX lookup; parked/backing-off ones don't
-        due = [(tbl, kind, d) for tbl, kind, d in pending if may_try(s, tbl, d["id"], "email", now_t) == "try"]
+        due = [(tbl, kind, d) for tbl, kind, d in pending if may_try(s, tbl, d, "email", now_t) == "try"]
         ok = route_check(s, len(due), now_t)[0] if due else False
         for tbl, kind, d in (due if ok else []):
             if send_one_email(s, tbl, kind, d, now_t) is False:
@@ -430,9 +493,9 @@ def run():
             kv(s, "tg_backlog_cutoff", cutoff)
         n = parked = 0
         for tbl, kind, d in rows:
-            if (tbl, d["id"], "tg") in done or str(d.get("created_at") or "") >= cutoff:
+            if is_done(done, tbl, d, "tg") or str(d.get("created_at") or "") >= cutoff:
                 continue
-            st = may_try(s, tbl, d["id"], "tg", now_t)
+            st = may_try(s, tbl, d, "tg", now_t)
             if st == "parked":
                 parked += 1
                 continue
@@ -441,10 +504,10 @@ def run():
             try:
                 ref = tg_send(lead_text(kind, d, " (↪ переслано из базы, накопленная заявка)"))
             except Exception as e:
-                k, nxt = record_failure(s, tbl, d["id"], "tg", str(e)[:80], now_t)
+                k, nxt = record_failure(s, tbl, d, "tg", str(e)[:80], now_t)
                 log("tg backlog failed", tbl, d["id"], str(e), f"attempt {k}/{MAX_ATTEMPTS}")
                 return 1
-            s.execute("INSERT INTO sent VALUES(?,?,?,?,?)", (tbl, d["id"], "tg", ref, now))
+            mark_sent(s, tbl, d, "tg", ref, now)
             s.commit()
             clear_attempts(s, tbl, d["id"], "tg")
             n += 1
@@ -456,15 +519,14 @@ def run():
 
 def status():
     s = state_db()
-    done = {(t, i) for t, i in s.execute("SELECT tbl, lead_id FROM sent WHERE channel='email'")}
-    queued = [(t, d["id"]) for t, _, d in leads() if (t, d["id"]) not in done]
-    att = {(t, i): (n, nx) for t, i, n, nx in s.execute(
-        "SELECT tbl, lead_id, n, next_at FROM attempts WHERE channel='email'")}
+    done = sent_rows(s)
+    queued = [(t, d) for t, _, d in leads() if not is_done(done, t, d, "email")]
+    att = [attempt_state(s, t, d, "email")[0] for t, d in queued]
     return {"kv": dict(s.execute("SELECT k, v FROM kv").fetchall()),
             "sent": s.execute("SELECT channel, ref LIKE 'baseline%', count(*) FROM sent GROUP BY 1, 2").fetchall(),
             "email_queued": len(queued),
-            "email_parked": sum(1 for q in queued if att.get(q, (0,))[0] >= MAX_ATTEMPTS),
-            "email_backing_off": sum(1 for q in queued if 0 < att.get(q, (0,))[0] < MAX_ATTEMPTS),
+            "email_parked": sum(1 for n in att if n >= MAX_ATTEMPTS),
+            "email_backing_off": sum(1 for n in att if 0 < n < MAX_ATTEMPTS),
             "email_sending_markers": s.execute("SELECT count(*) FROM sending WHERE channel='email'").fetchone()[0],
             "mail_route": mail_route(MAIL_TO)[1] if MAIL_TO else "MAIL_TO not set"}
 
@@ -483,8 +545,10 @@ def requeue(args):
     s = state_db()
     if channel:
         n = s.execute("DELETE FROM attempts WHERE channel=?", (channel,)).rowcount
+        s.execute("DELETE FROM attempt_key WHERE channel=?", (channel,))
     else:
         n = s.execute("DELETE FROM attempts").rowcount
+        s.execute("DELETE FROM attempt_key")
     if channel in (None, "email"):
         s.execute("DELETE FROM kv WHERE k IN ('email_route_fails', 'email_route_next_check')")
     s.commit()

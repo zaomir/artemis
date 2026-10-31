@@ -284,9 +284,13 @@ def legal_removed(lang=None):
 
 def init_db():
     conn = sqlite3.connect(DB)
+    # AUTOINCREMENT (31.10.2026): ids of deleted leads are never handed out again in NEW databases.
+    # An existing table keeps its old schema on purpose: SQLite cannot add AUTOINCREMENT in place, it
+    # would need a copy-drop-rename rebuild of the lead table. The lead relay identifies a lead by
+    # tbl:id:created_at, so id reuse in an existing DB is handled there.
     conn.execute(
         """CREATE TABLE IF NOT EXISTS leads
-        (id INTEGER PRIMARY KEY,
+        (id INTEGER PRIMARY KEY AUTOINCREMENT,
          name TEXT, email TEXT, organisation TEXT, role TEXT,
          enquiry_type TEXT, amount TEXT, message TEXT, consent INTEGER,
          created_at TEXT)"""
