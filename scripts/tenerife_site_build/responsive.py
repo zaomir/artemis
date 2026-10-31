@@ -1,7 +1,7 @@
 """Responsive images for /tenerife/ pages (task 3, speed).
 
 <img src="/static/tenerife/site/img/X.jpg" alt="..."> becomes
-<picture><source type="image/webp" srcset="X-640.webp 640w, X-1024.webp 1024w, X-1600.webp 1600w" sizes="...">
+<picture><source type="image/webp" srcset="X-640.webp 640w, X-800.webp 800w, X-1024.webp 1024w, X-1600.webp 1600w" sizes="...">
 <img src="X.jpg" width=".." height=".." ...></picture>
 First image in <main> = hero: fetchpriority=high, eager, plus <link rel=preload> in <head>.
 Others: loading=lazy decoding=async. JPEG stays as fallback. Idempotent.
@@ -10,7 +10,7 @@ import re
 import struct
 from pathlib import Path
 
-WIDTHS = (640, 1024, 1600)
+WIDTHS = (640, 800, 1024, 1600)  # 800w: phones at DPR ~1.75 (372 css px) get ~55 KB instead of 1024w ~90 KB
 SIZES_HERO = "(min-width: 1080px) 560px, (min-width: 800px) 52vw, calc(100vw - 40px)"
 SIZES_TWO = "(min-width: 1080px) 512px, (min-width: 800px) 48vw, calc(100vw - 40px)"
 SIZES_FULL = "(min-width: 1080px) 1040px, calc(100vw - 40px)"
@@ -32,7 +32,7 @@ def jpeg_size(path):
 
 
 def ensure_webp(jpg):
-    """Create X-640/1024/1600.webp next to X.jpg if missing (needs Pillow; committed files otherwise)."""
+    """Create X-640/800/1024/1600.webp next to X.jpg if missing (needs Pillow; committed files otherwise)."""
     jpg = Path(jpg)
     missing = [w for w in WIDTHS if not jpg.with_name(f"{jpg.stem}-{w}.webp").exists()]
     if not missing:
