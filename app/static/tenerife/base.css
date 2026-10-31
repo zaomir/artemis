@@ -72,3 +72,5 @@ section.legal{border-bottom:0}
 section.legal h1{font-size:clamp(24px,7.5vw,30px)}
 section.legal .src{font-size:14px}
 section.legal .back{margin-top:28px}
+/* QA 2026-10-31 P03: footer link touch target >= 44px (founder rule; WCAG 2.5.8 >= 24px at 320px) */
+footer.site a{display:inline-flex;align-items:center;min-height:44px;min-width:44px}

@@ -1,0 +1,432 @@
+{
+ "_encoders": {
+  "avif": "1.4.2",
+  "jpg": "6.2",
+  "pillow": "13.0.0",
+  "settings": {
+   "avif": {
+    "quality": 50,
+    "speed": 4,
+    "subsampling": "4:2:0"
+   },
+   "jpeg": {
+    "optimize": true,
+    "progressive": true,
+    "quality": 76,
+    "subsampling": "4:2:0"
+   },
+   "og_jpeg": {
+    "optimize": true,
+    "progressive": true,
+    "quality": 82,
+    "subsampling": "4:2:0"
+   },
+   "webp": {
+    "method": 6,
+    "quality": 72
+   }
+  },
+  "webp": "1.6.0"
+ },
+ "_generated_by": "tools/build_images.py",
+ "files": {
+  "attic_room-480.avif": {
+   "bytes": 8773,
+   "sha256": "b476e25dc2f6d6e67107b2c2a326758c105eb388ae78db729b6fcf2bc7e9362d"
+  },
+  "attic_room-480.jpg": {
+   "bytes": 22601,
+   "sha256": "c53f8e31be8dbaf1385627cd10f128619adf962d30fb163a3969ed3c063dd7e5"
+  },
+  "attic_room-480.webp": {
+   "bytes": 12904,
+   "sha256": "5ab09f74b2d00203f1a162b57f66b1c08fa8fed29705518975e67fde7eebf1f3"
+  },
+  "attic_room-800.avif": {
+   "bytes": 19720,
+   "sha256": "fbd12fb57c611d314f1f3af3be86d83ad645c3542703dc9381e6ceed7ba03d70"
+  },
+  "attic_room-800.jpg": {
+   "bytes": 53585,
+   "sha256": "714b20e31cf06869ff99ed4613f4baeff3582221213d9d4100b182ebb0c65ba9"
+  },
+  "attic_room-800.webp": {
+   "bytes": 28670,
+   "sha256": "11dee10433222f5881f4dcc5ec0d754b4db936233c1d81fbcb73d3d8f3ca8c6c"
+  },
+  "double_room-480.avif": {
+   "bytes": 10185,
+   "sha256": "2f9fe43c9c3683c3ded2a44de126053f4c7575fcf7c9ee15187608c0f564ce0d"
+  },
+  "double_room-480.jpg": {
+   "bytes": 23205,
+   "sha256": "cf4671524a91e2febe56abdef3f87c532b384b3b170011863666298ce307e194"
+  },
+  "double_room-480.webp": {
+   "bytes": 15686,
+   "sha256": "2f343071d6a16ed7e5a0cb3379c0944d85a86d0546ec0da7d1927d8c8117513a"
+  },
+  "double_room-800.avif": {
+   "bytes": 23191,
+   "sha256": "aa6d0d2c6c43b9d2d2c53c6c3fa5fbb1fc38068b2af63e7d7f8a8692551acddd"
+  },
+  "double_room-800.jpg": {
+   "bytes": 56625,
+   "sha256": "1c17e46373606989e0cdb1e233c4a346f41976f6eff24cc88b76b44dfb8e662d"
+  },
+  "double_room-800.webp": {
+   "bytes": 36370,
+   "sha256": "e8a00797fe316e524121077b8dd859e92dfc16bbdd31ed12dd7210a9e7defdfb"
+  },
+  "hero-1280.avif": {
+   "bytes": 60538,
+   "sha256": "4092d3390e3e6c838f70d26695293cc547131a4ef399d2460439c9b006dcd0a1"
+  },
+  "hero-1280.jpg": {
+   "bytes": 145707,
+   "sha256": "524b598c190f71c45a6c36d65624e8ed20f33dc88720b5cb3bd69d037fc6f6bd"
+  },
+  "hero-1280.webp": {
+   "bytes": 93066,
+   "sha256": "5f5f10d835c4d17ec2477c15e371820870b281206af3a59573df96203312c4c5"
+  },
+  "hero-1600.avif": {
+   "bytes": 86547,
+   "sha256": "05fdee7f4572b6dc59a2691593b88039cfb9808fd47a78f0c0341adb746aad37"
+  },
+  "hero-1600.jpg": {
+   "bytes": 215888,
+   "sha256": "1b99e28ba97390101532ff416e97899bea6937ca41b7aba01cd523d612ad1c5d"
+  },
+  "hero-1600.webp": {
+   "bytes": 135810,
+   "sha256": "8dd236a91d2947241ec3cfdbf18a14b9dcfb846663cc31859406aaab84ddf7b1"
+  },
+  "hero-2400.avif": {
+   "bytes": 176287,
+   "sha256": "961aaaec32518a545cb86ecfb9c1e60c41d91fc17d5f084d9b6542613c6006b6"
+  },
+  "hero-2400.jpg": {
+   "bytes": 420863,
+   "sha256": "ad31359a539122a7ed0af6b5d2b089ba8f17398a8e391d0ef0e1e91fce215e8f"
+  },
+  "hero-2400.webp": {
+   "bytes": 266590,
+   "sha256": "e300004458d3d6856a2f78825d391008eb0ce3124c1e5c461fe86a3448035cd9"
+  },
+  "hero-640.avif": {
+   "bytes": 19635,
+   "sha256": "ca97e4f38b183590a98e35360f8f09575147be303871159d1b822f40f6604804"
+  },
+  "hero-640.jpg": {
+   "bytes": 44022,
+   "sha256": "484b583af4424d135439dae3273e30fec14ee4989085b3a14960d9169a287610"
+  },
+  "hero-640.webp": {
+   "bytes": 30302,
+   "sha256": "5d20a8c4157fda723174a0a17d7907f9f6cf4be7c8b48306d1ec6929452b916e"
+  },
+  "hero-960.avif": {
+   "bytes": 37032,
+   "sha256": "00ecea04c0fae6e8a00fee2b4254d03c1de5f14f1df50067d35b68bd033e9ec4"
+  },
+  "hero-960.jpg": {
+   "bytes": 88434,
+   "sha256": "819ca71395dfdf2a7a8a9ca1de4484f6b1f58800c2fa577466ca760b491aa6dc"
+  },
+  "hero-960.webp": {
+   "bytes": 58016,
+   "sha256": "7baf2b56443560a63418c62bf10d3202cb62f4f43a252fc8da090780d1e20ad2"
+  },
+  "map_island-1200.avif": {
+   "bytes": 34721,
+   "sha256": "2dbd840141ce6c5ab23ed0a938eceafe4d81505e2368d3e59fdf20dc6bfa8898"
+  },
+  "map_island-1200.jpg": {
+   "bytes": 74556,
+   "sha256": "faaeea67fac63b58e9e04a88fe4e98f551bef485bbd65c671fbde32cdcde70c6"
+  },
+  "map_island-1200.webp": {
+   "bytes": 45310,
+   "sha256": "aa2049ac69505fc316f4571ca81727e8a9d0b42cffa4ed6ed1bb636abe543942"
+  },
+  "map_island-480.avif": {
+   "bytes": 8597,
+   "sha256": "26afd9fc90224148cbf92720199c370315fe420079ce851110a55695c071f054"
+  },
+  "map_island-480.jpg": {
+   "bytes": 16439,
+   "sha256": "7f70d86b60e7da88d0833d241531f968f12146a7f91f7f44eb7a52f4d7cbe9df"
+  },
+  "map_island-480.webp": {
+   "bytes": 10658,
+   "sha256": "43252388645358193650eeef25c1c63269951fe49e06cacc4589d9817cf8942d"
+  },
+  "map_island-800.avif": {
+   "bytes": 19248,
+   "sha256": "6845b6c8542be4c4af678db95ea818edb27f3e28865bb3dec491124a90dab92f"
+  },
+  "map_island-800.jpg": {
+   "bytes": 39169,
+   "sha256": "f3e8992353299c6121a68eb169366aa52aa7ab3251d9e73ce2f1a24be79a505d"
+  },
+  "map_island-800.webp": {
+   "bytes": 24782,
+   "sha256": "ba185c63f440ddf03abb2d4328665d090ee3c363ef5b41fd9043bd8efc9dc53e"
+  },
+  "restaurant_main-1200.avif": {
+   "bytes": 43306,
+   "sha256": "94b9303c1a1d6b0f095c27c94984e1a5d2c66f5b2581f71c5dc75b43b19dd90a"
+  },
+  "restaurant_main-1200.jpg": {
+   "bytes": 118023,
+   "sha256": "b29a6020f20465237b2ed904dfd482c57702ea8bf7ea4a5b639440c5fa0df9ce"
+  },
+  "restaurant_main-1200.webp": {
+   "bytes": 66530,
+   "sha256": "15aa498212deec28f2357fa82202ddc315e8a692dd0f6b958f9baa9891eeb81c"
+  },
+  "restaurant_main-480.avif": {
+   "bytes": 9728,
+   "sha256": "b45f3627b6714f4f02bd0e80af5ac3c79e4e1c867797e0037aeea22c20fecb2d"
+  },
+  "restaurant_main-480.jpg": {
+   "bytes": 24155,
+   "sha256": "434b29f9634ac09bc1c1eaf6424b43972d35cf3366b83c50962004bdd34477e4"
+  },
+  "restaurant_main-480.webp": {
+   "bytes": 15502,
+   "sha256": "dd8a4051819ea21ad4e7969a72daea11d460c40692bfe697127db4d676c1cd03"
+  },
+  "restaurant_main-800.avif": {
+   "bytes": 22158,
+   "sha256": "b1eee998a24a2e3b82a220d50b5c9232175adca5638e1c03ece7a11b9bc49256"
+  },
+  "restaurant_main-800.jpg": {
+   "bytes": 58121,
+   "sha256": "01eae78760478000d219a16f24c7148226a14c4b6295d2d9ba390cded56bd3a4"
+  },
+  "restaurant_main-800.webp": {
+   "bytes": 34740,
+   "sha256": "467cf2dcd8937534743b9e59ca584fddd6c66f278c08258d448cfb23f7622798"
+  },
+  "siteplan-1200.avif": {
+   "bytes": 44976,
+   "sha256": "68942f2dc6f4e2c3e657b66e187f9095814434375b5ceb81bd32788652e9c573"
+  },
+  "siteplan-1200.jpg": {
+   "bytes": 111730,
+   "sha256": "c34210a4c9b69921ae4fdfe4ccbd9a0c85d26e511eea615081bba7168744b937"
+  },
+  "siteplan-1200.webp": {
+   "bytes": 60504,
+   "sha256": "bda652f688fecd2bcf91d895c3f613fc745266bbc736a6462b813a7aaaa9168b"
+  },
+  "siteplan-480.avif": {
+   "bytes": 10992,
+   "sha256": "ea74da872c9b344e3db7d1a0bb0bf0a3cec6cf9390b55c741231978840f0bf1a"
+  },
+  "siteplan-480.jpg": {
+   "bytes": 24418,
+   "sha256": "9eba9f03018e620fa1881a1558ca9d232d4b1919d4ac0c1b67f8e53bb05c91a9"
+  },
+  "siteplan-480.webp": {
+   "bytes": 15662,
+   "sha256": "1af033c2ebe5cbdc578e0ddd6a8ec97c09c431fa5faeb4054866b12e7a989eb0"
+  },
+  "siteplan-800.avif": {
+   "bytes": 24047,
+   "sha256": "d061bd31ceda1abdaa961fc35c4972ec867db7e3ff59ab1ade8edd19dcb3f86b"
+  },
+  "siteplan-800.jpg": {
+   "bytes": 56203,
+   "sha256": "5ae5cf0afb90061d8c45c2144fdd7677590eb06f522466c69229b2847950d79d"
+  },
+  "siteplan-800.webp": {
+   "bytes": 32628,
+   "sha256": "7223653af1bf601d28ab0430903ec25df6cf17a6861a4042c026f72e8aadf007"
+  },
+  "spa-1200.avif": {
+   "bytes": 46901,
+   "sha256": "98286aa007dd7124b9ad94743531e5fd0c1a2910c873969446f8f81722569e9b"
+  },
+  "spa-1200.jpg": {
+   "bytes": 128973,
+   "sha256": "12d241ddbe66073c4960c909a665d3174f2a364707e21731abe9f35dda37e6f2"
+  },
+  "spa-1200.webp": {
+   "bytes": 76004,
+   "sha256": "465a6d83849fac37df53a00fe6d628318b8cb2ac624e5957e4ee281563b4df70"
+  },
+  "spa-480.avif": {
+   "bytes": 11436,
+   "sha256": "084c2ac72a3b1aa72b8e9b2103c1521d33b4b73093ecabd5785ad8fecc386139"
+  },
+  "spa-480.jpg": {
+   "bytes": 27102,
+   "sha256": "0e42a89416ce63c74b93dd9d90a3867a714d191dec2d65d68930ac820328e480"
+  },
+  "spa-480.webp": {
+   "bytes": 18704,
+   "sha256": "846186cf6a1e795a026a5f8ad550d72650d797a298e44c6b634f8d719f7dac0e"
+  },
+  "spa-800.avif": {
+   "bytes": 24993,
+   "sha256": "fc1ee8ecfbb518ad4eb0344a232a76a3bae18234ab619f36305f413f20da4f14"
+  },
+  "spa-800.jpg": {
+   "bytes": 65080,
+   "sha256": "e6b9db98a7b52369678363eeea7593189983540ae8ddc6746ccda13e4a41a376"
+  },
+  "spa-800.webp": {
+   "bytes": 41758,
+   "sha256": "925edc5d1e116806ea9ab5ac1d825d80ab6a97459e813b7df99777a3e8442b98"
+  },
+  "suite-480.avif": {
+   "bytes": 8954,
+   "sha256": "1424c643fcfd51cfdf1ba297df57c8cf387a1d71fcba0a8c329a35ad37173f9e"
+  },
+  "suite-480.jpg": {
+   "bytes": 22742,
+   "sha256": "1bfcfdb0e6d55232d621b3915e5d3c8c4c6af754c757ae429562df27a0722639"
+  },
+  "suite-480.webp": {
+   "bytes": 12328,
+   "sha256": "c654ec80591b5d0cfdcfcc6be013c7010f25accd99f079d71844186e1efa1408"
+  },
+  "suite-800.avif": {
+   "bytes": 20286,
+   "sha256": "495b4c7064b81e0b1afa42793936d51522eea19c7f82082d22bc3c13a6a20982"
+  },
+  "suite-800.jpg": {
+   "bytes": 54705,
+   "sha256": "c94a50bac86b5870aa2049c604a991e5d0d072e1023387dfcf57b2f74bf6ab80"
+  },
+  "suite-800.webp": {
+   "bytes": 28576,
+   "sha256": "3c4a72bba20caf372d01e8019aa147565c1b20846a88319870cab3e088c27989"
+  },
+  "villa_ext-480.avif": {
+   "bytes": 8731,
+   "sha256": "f8ee6fbc3bd587f7bd7746909095ef8b1517ea26505f82eb6c2363a61b924683"
+  },
+  "villa_ext-480.jpg": {
+   "bytes": 20683,
+   "sha256": "1bb217602e276bb3d6a0be608ea0c808f4ae1b6fb77e3a1233da2512dd98913b"
+  },
+  "villa_ext-480.webp": {
+   "bytes": 12890,
+   "sha256": "0342de0416cbea4cc7860f599995fbaa9230eb81085becf266397883e505879f"
+  },
+  "villa_ext-800.avif": {
+   "bytes": 20072,
+   "sha256": "ac475619004ccb66b0edaad04bb283c6de1a7676f7c31da57a3f02193d50af47"
+  },
+  "villa_ext-800.jpg": {
+   "bytes": 48807,
+   "sha256": "c5d84de5a7963798232d1103ef56c4e7e05bbde2546796f0827a59e71ad7f071"
+  },
+  "villa_ext-800.webp": {
+   "bytes": 28462,
+   "sha256": "12504fcef50f7cd38c10849b24853a14ad4f85587984fcaa52b775ce3a67dafc"
+  }
+ },
+ "images": {
+  "attic_room": {
+   "height": 768,
+   "src": "attic_room.jpg",
+   "width": 1408,
+   "widths": [
+    480,
+    800
+   ]
+  },
+  "double_room": {
+   "height": 768,
+   "src": "double_room.jpg",
+   "width": 1408,
+   "widths": [
+    480,
+    800
+   ]
+  },
+  "hero": {
+   "height": 1309,
+   "src": "hero.jpg",
+   "width": 2400,
+   "widths": [
+    640,
+    960,
+    1280,
+    1600,
+    2400
+   ]
+  },
+  "map_island": {
+   "height": 898,
+   "src": "map_island.jpg",
+   "width": 1920,
+   "widths": [
+    480,
+    800,
+    1200
+   ]
+  },
+  "restaurant_main": {
+   "height": 720,
+   "src": "restaurant_main.jpg",
+   "width": 1440,
+   "widths": [
+    480,
+    800,
+    1200
+   ]
+  },
+  "siteplan": {
+   "height": 1047,
+   "src": "siteplan.jpg",
+   "width": 1920,
+   "widths": [
+    480,
+    800,
+    1200
+   ]
+  },
+  "spa": {
+   "height": 768,
+   "src": "spa.jpg",
+   "width": 1365,
+   "widths": [
+    480,
+    800,
+    1200
+   ]
+  },
+  "suite": {
+   "height": 816,
+   "src": "suite.jpg",
+   "width": 1293,
+   "widths": [
+    480,
+    800
+   ]
+  },
+  "villa_ext": {
+   "height": 1090,
+   "src": "villa_ext.jpg",
+   "width": 2000,
+   "widths": [
+    480,
+    800
+   ]
+  }
+ },
+ "og": {
+  "bytes": 151462,
+  "file": "og-crete-1200x630.jpg",
+  "height": 630,
+  "sha256": "f4c80fc3016b994ee5e5c54aaae96ad212c6c9fed96bdf977376b5a5652bcf11",
+  "type": "image/jpeg",
+  "width": 1200
+ }
+}

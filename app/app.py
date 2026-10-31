@@ -21,6 +21,7 @@ from flask import (
     redirect,
     render_template,
     request,
+    send_from_directory,
 )
 
 import logging
@@ -67,6 +68,15 @@ TRANS_DIR = os.path.join(BASE_DIR, "translations")
 SUPPORTED = ["ru", "en", "es", "fr"]
 DEFAULT = "en"
 OG_LOCALE = {"ru": "ru_RU", "en": "en_US", "es": "es_ES", "fr": "fr_FR"}
+
+# Responsive image variants (tools/build_images.py -> app/static/img/opt/manifest.json; QA P02/P05).
+# Missing/broken manifest: templates fall back to the original JPEGs.
+try:
+    with open(os.path.join(BASE_DIR, "static", "img", "opt", "manifest.json"), encoding="utf-8") as _f:
+        IMAGES = json.load(_f)
+except (OSError, ValueError):
+    logging.exception("image manifest missing/broken: serving original JPEGs")
+    IMAGES = {"images": {}, "og": None}
 
 TRANSLATIONS = {}
 for _lang in SUPPORTED:
@@ -132,6 +142,8 @@ def _ctx(lang):
         # one validation rule for the form script and the API (QA -41 / -42)
         "email_pattern": EMAIL_PATTERN,
         "amount_ws": AMOUNT_WS,
+        "images": IMAGES.get("images", {}),
+        "og_image": IMAGES.get("og"),
     }
 
 
@@ -228,11 +240,33 @@ def sitemap_xml():
     return resp
 
 
+# Cloudflare's managed robots.txt is prepended at the edge and already carries the one
+# `User-agent: *` group (Allow: / + Content-Signal). A second `User-agent: *` group from the
+# origin made two groups for the same agent (QA P07), so the origin only adds the Sitemap line.
+# Same effective rules: with no matching group everything is allowed (RFC 9309 §2.2.1).
+ROBOTS_TXT = f"# artemisresort.com origin: all paths allowed\nSitemap: {SITE_URL}/sitemap.xml\n"
+
+
 @app.route("/robots.txt")
 def robots_txt():
-    resp = make_response(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    resp = make_response(ROBOTS_TXT)
     resp.headers["Content-Type"] = "text/plain; charset=utf-8"
     resp.headers["Cache-Control"] = "public, max-age=3600"
+    return resp
+
+
+# --- /health and /favicon.ico (QA P04 / P08: both were 308 -> "/x/" -> 404 via /<lang>/) ----------
+@app.route("/health")
+def health():
+    """Liveness only: no DB access, no config/secret values in the body."""
+    resp = jsonify(ok=True)
+    resp.headers["Cache-Control"] = "no-store, max-age=0"
+    return resp
+
+
+@app.route("/favicon.ico")
+def favicon_ico():
+    resp = send_from_directory(app.static_folder, "favicon.ico", mimetype="image/x-icon", max_age=86400)
     return resp
 
 

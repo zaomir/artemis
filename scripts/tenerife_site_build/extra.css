@@ -16,3 +16,8 @@ img { max-width: 100%; }
   .nav { flex-wrap: wrap; }
   .links { gap: 12px; font-size: 14px; }
 }
+/* --- QA 2026-10-31 P03 (WCAG 2.2 AA): bronze #8A6A45 on stone is 4.40:1, below 4.5:1 for 14px text.
+   Form privacy link + footer mailto use the existing --ink token (as footer .legal a) and are underlined
+   (link-in-text-block). Footer links get a 44px touch target (founder rule, WCAG 2.5.8 >= 24px). --- */
+form.wl .check a, footer a[href^="mailto:"] { color: var(--ink); text-decoration: underline; }
+footer .legal a, footer a[href^="mailto:"] { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
