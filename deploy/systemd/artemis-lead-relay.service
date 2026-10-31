@@ -1,0 +1,11 @@
+[Unit]
+Description=Artemis lead relay (e-mail duplicate to info@artemisresort.com, one-time Telegram backlog)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/email-engine
+EnvironmentFile=/etc/artemis/lead-relay.env
+ExecStart=/opt/email-engine/.venv/bin/python /usr/local/sbin/artemis-lead-relay.py
+TimeoutStartSec=120
