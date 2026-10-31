@@ -19,6 +19,17 @@ LEGAL_DIR = Path(__file__).resolve().with_name("legal_translations")
 SECTIONS = ("title", "body", "recipients")
 _MARKER = re.compile(r"^\s*<!--\s*@(\w+)\s*-->\s*$")
 _COMMENT = re.compile(r"<!--.*?-->", re.S)
+# Only ASCII whitespace is layout (line wraps, indentation). U+00A0 / U+202F are typography from the
+# copy-writer (e.g. French « : », « ; », thousands in 3 000 000 €) and must reach the page untouched;
+# str.split() / \s would treat them as whitespace and drop them (QA ARTEMIS-QA-20261031-33).
+_WS = "[ \t\r\n\f\v]"
+_PARA_BREAK = re.compile(rf"\n{_WS}*\n")
+_RUN = re.compile(rf"{_WS}+")
+
+
+def _squash(text: str) -> str:
+    """Collapse runs of ASCII whitespace to one space; keep U+00A0 / U+202F (and all other characters) as is."""
+    return _RUN.sub(" ", text).strip(" \t\r\n\f\v")
 
 
 def parse(text: str) -> dict:
@@ -38,7 +49,7 @@ def parse(text: str) -> dict:
         if name not in chunks:
             continue
         raw = _COMMENT.sub("", "\n".join(chunks[name]))
-        paras = [" ".join(p.split()) for p in re.split(r"\n\s*\n", raw)]
+        paras = [_squash(p) for p in _PARA_BREAK.split(raw)]
         paras = [p for p in paras if p]
         if not paras:
             continue
