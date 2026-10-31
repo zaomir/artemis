@@ -26,7 +26,8 @@ class CretePrivacyGoogleTest(unittest.TestCase):
         for lang, marker in MARKER.items():
             r = self.client.get(f"/{lang}/privacy/")
             self.assertEqual(r.status_code, 200, lang)
-            h = r.get_data(as_text=True)
+            # A-13 <!--email_off--> markers are checked in tests/test_crete_email_off.py
+            h = r.get_data(as_text=True).replace("<!--email_off-->", "").replace("<!--/email_off-->", "")
             self.assertIn(marker, h, lang)
             self.assertIn("Google (Gmail, Google Workspace)", h, lang)
             self.assertIn("info@artemisresort.com", h, lang)

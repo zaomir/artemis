@@ -25,6 +25,18 @@ from flask import (
 import logging
 
 import legal_i18n  # drop-in translations of the long legal texts (app/legal_translations/)
+
+# A-13: Cloudflare Email Obfuscation (zone setting, stays ON) rewrites addresses / mailto links into
+# /cdn-cgi/l/email-protection#…, which only decodes with JS (404 without it). Every rendered Crete page
+# goes through the same email_off.wrap() as the Tenerife build, so addresses sit inside
+# <!--email_off-->…<!--/email_off--> and reach the visitor as plain text / plain mailto links.
+import importlib.util as _ilu  # noqa: E402
+
+_EO_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "scripts", "tenerife_site_build", "email_off.py")
+_eo_spec = _ilu.spec_from_file_location("artemis_email_off", _EO_PATH)
+email_off = _ilu.module_from_spec(_eo_spec)
+_eo_spec.loader.exec_module(email_off)
 from notify import notify_lead
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -104,8 +116,17 @@ def _ctx(lang):
     }
 
 
+def _email_off(html_text: str) -> str:
+    """Wrap addresses / mailto links of a rendered Crete page in <!--email_off--> (A-13)."""
+    try:
+        return email_off.wrap(html_text)
+    except email_off.EmailOffError:  # never a marker inside a tag: serve the page unwrapped, but say so
+        logging.exception("email_off: page left unwrapped (Cloudflare will obfuscate its addresses)")
+        return html_text
+
+
 def _render_site(lang):
-    resp = make_response(render_template("index.html", **_ctx(lang)))
+    resp = make_response(_email_off(render_template("index.html", **_ctx(lang))))
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)
 
@@ -118,7 +139,7 @@ def _render_legal(lang, page):
     if page not in templates:
         abort(404)
     resp = make_response(
-        render_template(templates[page], page=page, legal_i18n=legal_i18n.load(page, lang), **_ctx(lang))
+        _email_off(render_template(templates[page], page=page, legal_i18n=legal_i18n.load(page, lang), **_ctx(lang)))
     )
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)

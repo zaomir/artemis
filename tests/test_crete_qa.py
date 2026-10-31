@@ -55,7 +55,8 @@ class Base(unittest.TestCase):
     def page(self, path):
         r = self.client.get(path)
         self.assertEqual(r.status_code, 200, path)
-        return r.get_data(as_text=True)
+        # A-13 <!--email_off--> markers are checked in tests/test_crete_email_off.py; compare the text without them
+        return r.get_data(as_text=True).replace("<!--email_off-->", "").replace("<!--/email_off-->", "")
 
     def post(self, **kw):
         body = {"name": "Bob", "email": "bob@x.io", "consent": True, "enquiry_type": "investor",
@@ -235,16 +236,42 @@ class LayoutMarkupTest(Base):
 
 
 class LegalDropInTest(Base):
-    """A-06: English body until a reviewed translation is dropped into app/legal_translations/."""
+    """A-06: reviewed translations from app/legal_translations/; English body + note when one is missing."""
+
+    def test_shipped_translations_rendered(self):
+        # A-06 done: reviewed privacy / terms translations ship in app/legal_translations/<page>.<lang>.md
+        import legal_i18n
+        from markupsafe import escape
+        for page in ("privacy", "terms"):
+            for lang in ("ru", "es", "fr"):
+                li = legal_i18n.load(page, lang)
+                self.assertIsNotNone(li, (page, lang))
+                h = self.page(f"/{lang}/{page}/")
+                for para in li["body"]:
+                    self.assertIn(f"<p>{escape(para)}</p>", h, (page, lang))
+                self.assertIn(f"<h1>{escape(li.get('title') or T[lang][page + '_title'])}</h1>", h, (page, lang))
+                self.assertNotIn('class="pending"', h, (page, lang))
+                self.assertNotIn(T["en"][page + "_body"], h, (page, lang))
+                self.assertNotIn('lang="en"', h.split("<body", 1)[1], (page, lang))
+                if li.get("recipients"):
+                    self.assertIn(str(escape(li["recipients"])), h, (page, lang))
+        h = self.page("/en/privacy/")
+        self.assertIn(f"<p>{T['en']['privacy_body']}</p>", h)
+        self.assertNotIn('class="pending"', h)
 
     def test_pending_english_body_marked(self):
-        for lang in ("ru", "es", "fr"):
-            h = self.page(f"/{lang}/privacy/")
-            self.assertIn(f'<p lang="en">{T["en"]["privacy_body"]}</p>', h, lang)
-            self.assertIn(T[lang]["legal_body_pending"], h, lang)
-            self.assertIn(f"<h1>{T[lang]['privacy_title']}</h1>", h, lang)
-            self.assertIn(T[lang]["legal_nav_home"], h, lang)
-        h = self.page("/en/privacy/")
+        # a language without a drop-in translation still shows the English body under the localized note
+        import legal_i18n
+        empty = Path(self.tmp.name) / "no-translations"
+        empty.mkdir()
+        with mock.patch.object(legal_i18n, "LEGAL_DIR", empty):
+            for lang in ("ru", "es", "fr"):
+                h = self.page(f"/{lang}/privacy/")
+                self.assertIn(f'<p lang="en">{T["en"]["privacy_body"]}</p>', h, lang)
+                self.assertIn(T[lang]["legal_body_pending"], h, lang)
+                self.assertIn(f"<h1>{T[lang]['privacy_title']}</h1>", h, lang)
+                self.assertIn(T[lang]["legal_nav_home"], h, lang)
+            h = self.page("/en/privacy/")
         self.assertIn(f"<p>{T['en']['privacy_body']}</p>", h)
         self.assertNotIn('class="pending"', h)
 
