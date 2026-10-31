@@ -106,8 +106,6 @@ class TenerifeSiteTest(unittest.TestCase):
                 self.assertTrue(ref.startswith("/"), f"{name}: relative link {ref}")
                 if ref.startswith("/static/"):
                     self.assertTrue((STATIC / ref[len('/static/'):]).is_file(), f"{name}: missing {ref}")
-                elif ref == "/favicon.ico":
-                    self.assertTrue((STATIC / "favicon.ico").is_file())
                 else:
                     self.assertEqual(self.client.get(ref).status_code, 200, f"{name}: {ref}")
 
