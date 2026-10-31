@@ -34,6 +34,11 @@ FORBIDDEN = [
 ]
 
 
+# founder 31.10.2026: no public disclaimers on the live Tenerife pages
+LIVE_DISCLAIMERS = [r"не зафиксирован", r"не наш прайс", r"не выбираем одну цифру", r"Точную точку не называем",
+                    r"не прайс-лист", r"не обязательство", r"\[уточнить", r"(?i)\bTBD\b"]
+
+
 class TenerifeSiteTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -98,6 +103,23 @@ class TenerifeSiteTest(unittest.TestCase):
         for bad in ("гарантированная доходность", "Гарантированный доход", "гарантируем дивиденд",
                     "4–6 % годовых"):
             self.assertTrue(hit(bad), bad)
+
+    def test_no_live_disclaimers(self):
+        for url in list(SHIPPED.values()) + ["/tenerife-preview/", "/tenerife-preview/impressum/",
+                                             "/tenerife-preview/privacy/"]:
+            html = self.client.get(url).get_data(as_text=True)
+            for rx in LIVE_DISCLAIMERS:
+                self.assertIsNone(re.search(rx, html), f"{url}: {rx}")
+
+    def test_legal_pages_only_known_data(self):
+        imp = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
+        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "info@artemisresort.com"):
+            self.assertIn(must, imp)
+        for gone in ("Телефон", "VAT", "MStV", 'class="todo"'):
+            self.assertNotIn(gone, imp)
+        prv = self.client.get("/tenerife-preview/privacy/").get_data(as_text=True)
+        self.assertIn("info@artemisresort.com", prv)
+        self.assertNotIn('class="todo"', prv)
 
     def test_no_disclaimers_and_legal_links(self):
         # founder 31.10.2026 01:44 UTC: no disclaimer block / AI captions; legal pages linked in the footer

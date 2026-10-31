@@ -75,7 +75,7 @@ class TenerifePreviewTest(unittest.TestCase):
 
     def test_preview_content_rules(self):
         body = self.client.get("/tenerife-preview/").get_data(as_text=True)
-        for must in ("лист ожидания", "Участок не зафиксирован", "разрешение на строительство не получено",
+        for must in ("лист ожидания",
                      "Simon Subic", "Lana Evans", "Boris Ribaut", "6/2025",
                      "Посуточная аренда — только как опция", 'name="website"', 'name="consent"'):
             self.assertIn(must, body)
@@ -88,13 +88,14 @@ class TenerifePreviewTest(unittest.TestCase):
             for pat in REMOVED_DISCLAIMERS:
                 self.assertIsNone(re.search(pat, body, re.I), f"{path}: {pat}")
 
-    def test_impressum_has_operator_and_todo_marks(self):
+    def test_impressum_has_operator_no_placeholders(self):
         body = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
         # founder 31.10.2026 01:11 UTC: publish OXFORD FRAME REAL ASSETS LTD / 09153936 (Companies House facts only)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales",
                      "Drovers, Preston Candover, Basingstoke, RG25 2EE", "Szabolcs Szaniszlo"):
             self.assertIn(must, body)
-        self.assertIn("[уточнить]", body)  # email, phone, VAT, § 18 MStV still open
+        self.assertNotIn("[уточнить", body)  # placeholders removed; only known data (founder 31.10)
+        self.assertIn("info@artemisresort.com", body)
         for forbidden in ("Oxford Frame Ltd", "dormant", "Dormant", "активн", "торгу"):
             self.assertNotIn(forbidden, body)
 
