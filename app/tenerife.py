@@ -101,10 +101,19 @@ def preview():
 LEGAL_PAGES = ("impressum", "privacy")
 
 
+def _with_query(url: str) -> str:
+    qs = request.query_string.decode("latin-1")
+    return f"{url}?{qs}" if qs else url
+
+
+# With and without the trailing slash: one 301 hop straight to the canonical URL, query string kept
+# (without the explicit no-slash rules Werkzeug first answers 308 -> /tenerife-preview/<name>/).
 @bp.route(PREVIEW_PREFIX + "/impressum/")
 @bp.route(PREVIEW_PREFIX + "/privacy/")
+@bp.route(PREVIEW_PREFIX + "/impressum")
+@bp.route(PREVIEW_PREFIX + "/privacy")
 def preview_legal_moved():
-    return redirect("/tenerife/" + request.path.rstrip("/").rsplit("/", 1)[-1] + "/", code=301)
+    return redirect(_with_query("/tenerife/" + request.path.rstrip("/").rsplit("/", 1)[-1] + "/"), code=301)
 
 
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
@@ -156,9 +165,9 @@ def site_page(page: str):
 def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
-        return redirect(SITE_PREFIX + "/", code=301)
+        return redirect(_with_query(SITE_PREFIX + "/"), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
-        return redirect(f"{SITE_PREFIX}/{page}/", code=301)
+        return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     return make_response("Not found", 404)
 
 
