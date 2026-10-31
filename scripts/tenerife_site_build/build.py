@@ -123,6 +123,9 @@ def images(html):
     html = re.sub(r'(<img[^>]*?\ssrc=)"([^"]+)"', rep, html)
     return html
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from responsive import responsive  # noqa: E402
+
 FOOTER = Path(__file__).with_name("_footer.html").read_text(encoding="utf-8")
 FORM = Path(__file__).with_name("_waitlist.html").read_text(encoding="utf-8")
 
@@ -153,6 +156,7 @@ for p in present:
     h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n' + meta_block(p, _title) + '<link rel="icon" href="/static/favicon-32x32.png">', 1)
     h = links(h)
     h = images(h)
+    h = responsive(h, OUT_STATIC)  # webp srcset, width/height, lazy, hero preload
     # existing external forms → our handler
     if re.search(r"<form", h):
         if re.search(r'action="(mailto:|https?://)', h):

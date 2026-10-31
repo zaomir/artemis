@@ -194,6 +194,29 @@ class TenerifeSiteTest(unittest.TestCase):
                 for pat in REMOVED_DISCLAIMERS:
                     self.assertIsNone(re.search(pat, alt.group(1), re.I), f"{name}: alt {pat}")
 
+    def test_images_responsive_webp_sized_lazy(self):
+        for name, url in SHIPPED.items():
+            html, _ = self.page(url)
+            imgs = re.findall(r"<img[^>]+>", html)
+            self.assertTrue(imgs, name)
+            for i, tag in enumerate(imgs):
+                self.assertRegex(tag, r'width="\d+" height="\d+"', f"{name}: no size {tag}")
+                if i == 0:
+                    self.assertIn('fetchpriority="high"', tag, name)
+                    self.assertNotIn('loading="lazy"', tag, name)
+                else:
+                    self.assertIn('loading="lazy"', tag, f"{name}: {tag}")
+            self.assertEqual(len(re.findall(r'<source type="image/webp"', html)), len(imgs), name)
+            self.assertIn('<link rel="preload" as="image" type="image/webp" imagesrcset=', html, name)
+            for srcset in re.findall(r'(?:imagesrcset|srcset)="([^"]+)"', html):
+                widths = []
+                for part in srcset.split(", "):
+                    ref, w = part.split(" ")
+                    widths.append(w)
+                    self.assertTrue(ref.endswith(".webp"), ref)
+                    self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{name}: missing {ref}")
+                self.assertEqual(widths, ["640w", "1024w", "1600w"], name)
+
     def test_css_local_with_fonts(self):
         css = (STATIC / "tenerife/site/style.css").read_text(encoding="utf-8")
         self.assertNotIn("googleapis", css)
