@@ -144,5 +144,49 @@ class SetupServerXtraceTest(unittest.TestCase):
         self.assertIn("+ : after-marker", r.stderr)
 
 
+def clone_block_source(site_dir):
+    s = read("setup_server.sh")
+    block = s[s.index("# Clone repo"):s.index("# Venv")]
+    return 'REPO_URL="https://github.com/zaomir/artemis.git"\nSITE_DIR=%s\n' % site_dir + git_helper_source() + block
+
+
+# git stub: get-url prints a clean URL; pull/clone exit with $STUB_GIT_RC and log their argv
+GIT_STUB = """git() {
+  case "$*" in *"remote get-url"*) echo https://github.com/zaomir/artemis.git; return 0 ;; esac
+  echo "stub-git $*" >> "$STUB_LOG"
+  return "${STUB_GIT_RC:-0}"
+}
+"""
+
+
+class SetupServerCloneBlockTest(unittest.TestCase):
+    def run_block(self, token, git_rc=0, existing=True):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp) / "site"
+            if existing:
+                (site / ".git").mkdir(parents=True)
+            log = Path(tmp) / "git.log"
+            log.touch()
+            script = GIT_STUB + clone_block_source(site) + 'echo "after-git-step"\nenv > "$CHILD_ENV"\n'
+            env = {"PATH": "/usr/bin:/bin", "STUB_LOG": str(log), "STUB_GIT_RC": str(git_rc),
+                   "CHILD_ENV": str(Path(tmp) / "child.env")}
+            if token is not None:
+                env["GITHUB_TOKEN"] = token
+            r = subprocess.run(["bash", "-x", "-euo", "pipefail", "-c", script],
+                               capture_output=True, text=True, env=env)
+            child = (Path(tmp) / "child.env").read_text() if (Path(tmp) / "child.env").exists() else ""
+            return r, log.read_text(), child
+
+    def test_token_not_passed_to_later_processes(self):
+        """QA PR24-09"""
+        r, log, child = self.run_block(FAKE_TOKEN)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("-c credential.helper= -C", log)
+        self.assertIn("after-git-step", r.stdout)
+        self.assertNotIn("GITHUB_TOKEN", child)
+        self.assertNotIn(FAKE_TOKEN, r.stderr)
+        self.assertNotIn(FAKE_TOKEN, child)
+
+
 if __name__ == "__main__":
     unittest.main()

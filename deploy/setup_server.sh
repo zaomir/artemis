@@ -58,6 +58,8 @@ if [ -d "$SITE_DIR/.git" ]; then
 else
   git_with_token clone "$REPO_URL" "$SITE_DIR"
 fi
+# QA PR24-09: the token is needed only for clone/pull - do not hand it to venv/pip/systemctl/python.
+unset GITHUB_TOKEN
 
 # Venv
 python3 -m venv "$SITE_DIR/venv"
