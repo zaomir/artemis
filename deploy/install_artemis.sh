@@ -47,10 +47,16 @@ cat > /etc/nginx/sites-available/artemisresort.com << 'NGXEOF'
 server {
     listen 80;
     server_name artemisresort.com www.artemisresort.com;
+    server_tokens off;
+    # QA PR24-05: Cloudflare realip like deploy/nginx-artemisresort.com.origin.conf (install
+    # deploy/nginx-snippets/cloudflare-realip.conf to /etc/nginx/snippets/; the glob keeps nginx -t
+    # working when it is absent). CF-Connecting-IP is always overwritten: clients cannot spoof it.
+    include /etc/nginx/snippets/cloudflare-realip*.conf;
     location /static/ { alias /var/www/artemis/static/; expires 30d; }
     location / {
         proxy_pass http://127.0.0.1:8082;
         proxy_set_header Host $host;
+        proxy_set_header CF-Connecting-IP $remote_addr;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;

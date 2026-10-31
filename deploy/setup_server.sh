@@ -1,20 +1,52 @@
 #!/bin/bash
 # ARTEMIS RESORT — First-time server setup
-# Run as root: bash setup_server.sh
-set -e
+# Run as root: GITHUB_TOKEN=... bash setup_server.sh   (token needed only for clone / pull)
+set -euo pipefail
 
-REPO="https://${GITHUB_TOKEN:?set GITHUB_TOKEN}@github.com/zaomir/artemis.git"
+# QA PR24-01 (31.10.2026): the remote URL never carries a token. clone/pull get the token from the
+# environment through a temporary GIT_ASKPASS script, so it is not written to .git/config and is
+# not visible in the argv of git / git-remote-https (ps).
+REPO_URL="https://github.com/zaomir/artemis.git"
 SITE_DIR=/var/www/artemis
 APP_PORT=8082
+
+git_with_token() {
+  # QA PR24-06: the token is checked only here, i.e. only where it is really needed.
+  : "${GITHUB_TOKEN:?set GITHUB_TOKEN (needed for git clone/pull)}"
+  local askpass rc=0
+  askpass="$(mktemp)"
+  chmod 700 "$askpass"
+  trap 'rm -f "$askpass"' EXIT
+  cat > "$askpass" << 'ASKPASS'
+#!/bin/sh
+case "$1" in
+  Username*) printf '%s\n' x-access-token ;;
+  *) printf '%s\n' "$GITHUB_TOKEN" ;;
+esac
+ASKPASS
+  GITHUB_TOKEN="$GITHUB_TOKEN" GIT_ASKPASS="$askpass" GIT_TERMINAL_PROMPT=0 \
+    git -c credential.helper= "$@" || rc=$?
+  rm -f "$askpass"
+  trap - EXIT
+  return "$rc"
+}
 
 echo "=== Artemis Resort — Setup ==="
 
 # Clone repo
 if [ -d "$SITE_DIR/.git" ]; then
   echo "Repo exists — pulling..."
-  cd "$SITE_DIR" && git pull
+  cur_url="$(git -C "$SITE_DIR" remote get-url origin 2>/dev/null || true)"
+  case "$cur_url" in
+    *@github.com*)
+      # old setup wrote https://<token>@github.com/... into .git/config: drop the credential
+      git -C "$SITE_DIR" remote set-url origin "$REPO_URL"
+      echo "origin URL reset to $REPO_URL (credential removed from .git/config)"
+      ;;
+  esac
+  git_with_token -C "$SITE_DIR" pull
 else
-  git clone "$REPO" "$SITE_DIR"
+  git_with_token clone "$REPO_URL" "$SITE_DIR"
 fi
 
 # Venv
@@ -43,18 +75,23 @@ systemctl is-active artemis && echo "artemis: OK"
 
 # Nginx (if not already configured)
 if [ ! -f /etc/nginx/sites-enabled/artemisresort.com ]; then
+# QA PR24-05: same Cloudflare realip snippet as the deploy config (deploy/nginx-artemisresort.com.origin.conf);
+# CF-Connecting-IP is always overwritten with the realip-resolved client address.
+install -D -m 644 "$SITE_DIR/deploy/nginx-snippets/cloudflare-realip.conf" /etc/nginx/snippets/cloudflare-realip.conf
 cat > /etc/nginx/sites-available/artemisresort.com << NGX
 server {
     listen 80;
     server_name artemisresort.com www.artemisresort.com;
+    server_tokens off;
+    include /etc/nginx/snippets/cloudflare-realip.conf;
     location /static/ {
         alias $SITE_DIR/app/static/;
         expires -1;
         add_header Cache-Control "no-store, no-cache, must-revalidate, max-age=0";
         add_header Pragma "no-cache";
     }
-    location /deploy-hook { proxy_pass http://127.0.0.1:9001; proxy_set_header X-Hook-Secret \$http_x_hook_secret; proxy_set_header X-Real-IP \$remote_addr; }
-    location / { proxy_pass http://127.0.0.1:$APP_PORT; proxy_set_header Host \$host; proxy_set_header X-Real-IP \$remote_addr; }
+    location /deploy-hook { proxy_pass http://127.0.0.1:9001; proxy_set_header X-Hook-Secret \$http_x_hook_secret; proxy_set_header CF-Connecting-IP \$remote_addr; proxy_set_header X-Real-IP \$remote_addr; }
+    location / { proxy_pass http://127.0.0.1:$APP_PORT; proxy_set_header Host \$host; proxy_set_header CF-Connecting-IP \$remote_addr; proxy_set_header X-Real-IP \$remote_addr; }
 }
 NGX
 ln -sf /etc/nginx/sites-available/artemisresort.com /etc/nginx/sites-enabled/
