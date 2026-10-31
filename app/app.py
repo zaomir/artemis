@@ -6,12 +6,10 @@ import hmac
 import html
 import json
 import os
-import smtplib
 import sqlite3
 import subprocess
 import urllib.parse
 import urllib.request
-from email.mime.text import MIMEText
 
 from flask import (
     Flask,
@@ -23,7 +21,12 @@ from flask import (
     request,
 )
 
+import logging
+
+from notify import notify_lead
+
 app = Flask(__name__, template_folder="templates", static_folder="static")
+logging.basicConfig(level=logging.INFO)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANS_DIR = os.path.join(BASE_DIR, "translations")
@@ -237,21 +240,11 @@ def enquiry():
     conn.commit()
     conn.close()
 
-    try:
-        body = (
-            f"Artemis enquiry\n"
-            f"Name: {name}\nEmail: {email}\nOrg: {organisation}\n"
-            f"Role: {role}\nType: {enquiry_type}\nAmount: {amount}\n"
-            f"Message: {message}"
-        )
-        msg = MIMEText(body)
-        msg["Subject"] = f"Artemis — enquiry: {name}"
-        msg["From"] = "noreply@artemisresort.com"
-        msg["To"] = "INFO@ARTEMISRESORT.COM"
-        with smtplib.SMTP("localhost", 25, timeout=5) as s:
-            s.sendmail(msg["From"], [msg["To"]], msg.as_string())
-    except Exception:
-        pass
+    lang = (d.get("lang") or "").strip()[:5]
+    if lang not in SUPPORTED:
+        lang = request.cookies.get("lang", "") if request.cookies.get("lang") in SUPPORTED else "?"
+    page = (d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path or "/"
+    notify_lead("Crete enquiry", name, email, lang, page)
 
     return jsonify({"ok": True})
 

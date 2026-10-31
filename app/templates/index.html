@@ -390,7 +390,7 @@ async function submitEnquiry(){
     const r = await fetch('/api/enquiry', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name, email, organisation, role, enquiry_type, message, consent})
+      body: JSON.stringify({name, email, organisation, role, enquiry_type, message, consent, lang: '{{ lang }}', page: location.pathname})
     });
     const d = await r.json();
     if(d.ok){

@@ -1,26 +1,18 @@
-from flask import Flask, request, abort
-import os
-import subprocess
+"""DISABLED (2026-10-31) — legacy deploy webhook, kept for history only.
+
+Deploy is done on the server with deploy/artemis-deploy.sh
+(installed as /usr/local/sbin/artemis-deploy.sh). The systemd unit
+artemis-hook.service is disabled and nginx /deploy-hook has no backend.
+Do not re-enable: there is no GitHub Actions / webhook deploy channel
+(see grainee-v2 docs/ssot/NO_GITHUB_ACTIONS.md).
+
+If ever started by mistake it is fail-closed: every request -> 410.
+"""
+from flask import Flask, abort
 
 app = Flask(__name__)
-SECRET = os.environ.get("HOOK_SECRET", "rovlex-artemis-2025")
-ARTEMIS_DIR = "/var/www/artemis"
-
-COMMANDS = [
-    ["/usr/bin/sudo", "-n", "/usr/bin/git", "-C", ARTEMIS_DIR, "pull", "origin", "main"],
-    ["/usr/bin/sudo", "-n", "/usr/bin/systemctl", "restart", "artemis"],
-]
 
 
-@app.route("/deploy-hook", methods=["POST"])
+@app.route("/deploy-hook", methods=["GET", "POST"])
 def hook():
-    sig = request.headers.get("X-Hook-Secret", "")
-    if sig != SECRET:
-        abort(403)
-    result = []
-    for cmd in COMMANDS:
-        r = subprocess.run(cmd, capture_output=True, text=True)
-        result.append(" ".join(cmd) + "\n" + (r.stdout or "") + (r.stderr or ""))
-        if r.returncode != 0:
-            return "\n".join(result), 500
-    return "\n".join(result), 200
+    abort(410)
