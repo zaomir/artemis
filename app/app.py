@@ -28,6 +28,10 @@ from notify import notify_lead
 app = Flask(__name__, template_folder="templates", static_folder="static")
 logging.basicConfig(level=logging.INFO)
 
+import tenerife  # noqa: E402  (blueprint: /tenerife-preview/, noindex)
+
+app.register_blueprint(tenerife.bp)
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANS_DIR = os.path.join(BASE_DIR, "translations")
 SUPPORTED = ["ru", "en", "es", "fr"]
@@ -318,6 +322,18 @@ def admin_leads():
             f"<td>{e[4]}</td><td>{e[5]}</td><td>{e[6]}</td>"
             f"<td>{e[7]}</td><td>{e[8]}</td><td>{e[9]}</td></tr>"
         )
+    h += "</table>"
+    conn = sqlite3.connect(DB)
+    try:
+        tw = tenerife.waitlist_rows(conn)
+        conn.commit()
+    finally:
+        conn.close()
+    h += f"<h2>Tenerife waitlist ({len(tw)})</h2>"
+    h += "<table><tr><th>#</th><th>Name</th><th>Contact</th><th>Lang</th><th>Page</th><th>Date (UTC)</th></tr>"
+    for r in tw:
+        e = [html.escape(str(x if x is not None else "")) for x in r]
+        h += "<tr>" + "".join(f"<td>{x}</td>" for x in e) + "</tr>"
     resp = no_cache(make_response(h + "</table>"))
     resp.headers["X-Robots-Tag"] = "noindex, nofollow"
     return resp
