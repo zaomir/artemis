@@ -176,7 +176,7 @@ class ValidationTest(Base):
                               ("generic", "form_err_generic"), ("network", "form_err_network")):
                 self.assertIn(f"{code}: {json.dumps(T[lang][key])}", h, (lang, code))
             self.assertIn("EMAIL_RE.test(email)", h)
-            self.assertIn("AMOUNT_RE.test(amount)", h)
+            self.assertIn("amountClean(amount) === null", h)   # same rule as the server (QA pr21 -41)
 
 
 class LocalizationTest(Base):
@@ -218,7 +218,8 @@ class LayoutMarkupTest(Base):
     def test_compact_mobile_header(self):
         for lang in LANGS:
             h = self.page(f"/{lang}/")
-            self.assertIn(f'<a class="btn" href="#enquiry" aria-label="{T[lang]["cta_request"]}">'
+            # no aria-label: the accessible name is the visible span at every width (QA pr21 -44, WCAG 2.5.3)
+            self.assertIn(f'<a class="btn" href="#enquiry">'
                           f'<span class="cta-long">{T[lang]["cta_request"]}</span>'
                           f'<span class="cta-short">{T[lang]["nav_enquiry"]}</span></a>', h)
         h = self.page("/en/")

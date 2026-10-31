@@ -181,7 +181,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
       <a href="/es/"{% if lang=='es' %} class="on"{% endif %}>ES</a>
       <a href="/fr/"{% if lang=='fr' %} class="on"{% endif %}>FR</a>
     </div>
-    <a class="btn" href="#enquiry" aria-label="{{ t.cta_request }}"><span class="cta-long">{{ t.cta_request }}</span><span class="cta-short">{{ t.nav_enquiry }}</span></a>
+    <a class="btn" href="#enquiry"><span class="cta-long">{{ t.cta_request }}</span><span class="cta-short">{{ t.nav_enquiry }}</span></a>
   </div>
 </nav>
 
@@ -401,9 +401,22 @@ const I18N = {
   generic: {{ t.form_err_generic | tojson }},
   network: {{ t.form_err_network | tojson }}
 };
-// same rules as the server (app.py: EMAIL_RE / AMOUNT_RE)
-const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const AMOUNT_RE = /^[\p{L}\p{N}\s€$£.,'’+\-–~\/()]{1,64}$/u;
+// same rules as the server (app.py: EMAIL_PATTERN / amount_ok); the e-mail pattern comes from app.py
+const EMAIL_RE = new RegExp({{ email_pattern | tojson }});
+const AMOUNT_WS = new RegExp('[' + {{ amount_ws | tojson }} + ']+', 'g');
+// planned amount: normalised value ('' = empty), or null when invalid — mirrors app.py _clean_amount()
+function amountClean(raw){
+  const v = String(raw).replace(AMOUNT_WS, ' ').replace(/^ +| +$/g, '');
+  if(!v){ return ''; }
+  if(Array.from(v).length > 64){ return null; }
+  if(!/^[0-9\p{L} €$£.,'’+\-–~\/()]+$/u.test(v)){ return null; }
+  const first = v.search(/[0-9]/);
+  if(first < 0 || !/[1-9]/.test(v)){ return null; }
+  if(/[-–]/.test(v.slice(0, first))){ return null; }
+  const words = v.match(/\p{L}+/gu) || [];
+  if(words.some(function(w){ return ['nan', 'inf', 'infinity'].indexOf(w.toLowerCase()) >= 0; })){ return null; }
+  return v;
+}
 function fieldError(id, code){
   const err = document.getElementById('form-err');
   document.querySelectorAll('#enquiry-form-wrap [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
@@ -425,7 +438,7 @@ async function submitEnquiry(){
   if(!email){ return fieldError('f-email', 'required'); }
   if(!EMAIL_RE.test(email) || (emailEl.validity && emailEl.validity.typeMismatch)){ return fieldError('f-email', 'email'); }
   if(!enquiry_type){ return fieldError('f-type', 'required'); }
-  if(amount && (!AMOUNT_RE.test(amount) || !/\d/.test(amount))){ return fieldError('f-amount', 'amount'); }
+  if(amountClean(amount) === null){ return fieldError('f-amount', 'amount'); }
   if(!consent){ return fieldError('f-consent', 'consent'); }
   document.querySelectorAll('#enquiry-form-wrap [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
   err.style.display = 'none'; err.textContent = '';

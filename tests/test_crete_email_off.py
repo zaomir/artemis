@@ -3,6 +3,7 @@
 Cloudflare (zone setting stays ON) rewrites mailto links / addresses into /cdn-cgi/l/email-protection#…, which
 404s without JS. Every Crete page is rendered through email_off.wrap() (same module as the Tenerife build), so
 addresses reach the visitor inside <!--email_off-->…<!--/email_off-->. Checked on the raw HTML of every route."""
+import html as _html
 import importlib
 import re
 import sys
@@ -15,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 
-from email_off import OFF, ON, unprotected, wrap  # noqa: E402
+from email_off import OFF, ON, mailto_form_actions, mailto_targets, unprotected, wrap  # noqa: E402
 
 LANGS = ("en", "ru", "es", "fr")
 ROUTES = [f"/{l}/{p}" for l in LANGS for p in ("", "privacy/", "terms/")]
@@ -51,11 +52,12 @@ class CreteEmailOffTest(unittest.TestCase):
             outside = BLOCK.sub("", html)
             self.assertNotIn("mailto:", outside.lower(), url)
             self.assertEqual(re.findall(r"(?i)<a\b[^>]*mailto:", outside), [], url)
-            # only the contact address is linked
-            targets = {t.lower() for t in re.findall(r"mailto:([^\"'\s>?]+)", html, re.I)}
-            self.assertLessEqual(targets, {CONTACT}, url)
-            # forms never submit via mailto (any quoting), no external form services
+            # only the contact address is linked: path and ?to= / ?cc= / ?bcc=, entities decoded (QA pr21 -40)
+            self.assertLessEqual(mailto_targets(html), {CONTACT}, url)
+            # forms never submit via mailto (any quoting, entity-encoded too), no external form services
             self.assertIsNone(re.search(MAILTO_FORM, html), url)
+            self.assertIsNone(re.search(MAILTO_FORM, _html.unescape(html)), url)
+            self.assertEqual(mailto_form_actions(html), [], url)
             self.assertNotRegex(html, r"(?i)formspree")
             # idempotent: the served page is already fully wrapped
             self.assertEqual(wrap(html), html, url)

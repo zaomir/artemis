@@ -1,6 +1,7 @@
 """Tenerife RU prod site (/tenerife/): clean URLs, local assets only, no guaranteed
 return / payments, no disclaimer block / AI captions (founder 31.10 01:44 UTC), legal links,
 waitlist form wired to our handler."""
+import html as _html
 import importlib
 import os
 import re
@@ -150,11 +151,14 @@ class TenerifeSiteTest(unittest.TestCase):
     def test_mailto_only_contact_address(self):
         # QA 2026-10-31 pr19 -01: on every Tenerife URL the only mailto target is the contact address
         # (any quoting, inside or outside the markers), and nothing submits a form via mailto
+        from email_off import mailto_form_actions, mailto_targets
         for url in list(SHIPPED.values()) + LEGAL_AND_PREVIEW:
             html, _ = self.page(url)
-            targets = {t.lower() for t in re.findall(r"mailto:([^\"'\s>?]+)", html, re.I)}
-            self.assertEqual(targets, {CONTACT_EMAIL}, url)
+            # path and ?to= / ?cc= / ?bcc= targets, &#109;ailto: entities decoded (QA 2026-10-31 pr21 -40)
+            self.assertEqual(mailto_targets(html), {CONTACT_EMAIL}, url)
             self.assertIsNone(re.search(MAILTO_FORM, html), url)
+            self.assertIsNone(re.search(MAILTO_FORM, _html.unescape(html)), url)
+            self.assertEqual(mailto_form_actions(html), [], url)
         hit = lambda t: re.search(MAILTO_FORM, t)
         for bad in ('<form action="mailto:x@y.z">', "<form ACTION = 'MAILTO:x@y.z'>", "<form action=mailto:x@y.z>",
                     "<button formaction='mailto:evil@example.com'>", '<input formaction = " mailto:x@y.z">'):
