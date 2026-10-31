@@ -10,7 +10,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
-ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "ARTEMIS_ADMIN_TOKEN")
+ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "ARTEMIS_ADMIN_TOKEN", "RATE_LIMIT_SALT")
 LANGS = ("en", "ru", "es", "fr")
 
 

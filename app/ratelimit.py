@@ -1,6 +1,7 @@
 """Per-client rate limit for the lead forms (QA ARTEMIS-QA-20261031-P09), stored in the leads DB.
 
-Client key = HMAC-SHA256(salt, client IP)[:32], the same shape as tenerife._client_hash().
+Client key = HMAC-SHA256(salt, client IP)[:32], the same shape as tenerife._client_hash(). The salt is
+RATE_LIMIT_SALT, falling back to ARTEMIS_ADMIN_TOKEN when it is unset or empty (see hmac_salt()).
 The IP is X-Real-IP (nginx sets it from the connection's verified $remote_addr; gunicorn listens on
 127.0.0.1 only) or, without nginx, request.remote_addr. CF-Connecting-IP and X-Forwarded-For are
 never read here: a client can send any value in them. Only the hash is stored, never the IP.
@@ -26,9 +27,20 @@ def client_ip() -> str:
     return (request.headers.get("X-Real-IP") or "").strip() or request.remote_addr or "?"
 
 
+def hmac_salt(salt_default: str = "artemis") -> str:
+    """HMAC key for client hashes: RATE_LIMIT_SALT, else ARTEMIS_ADMIN_TOKEN (the key used before
+    RATE_LIMIT_SALT existed, so counters survive the upgrade), else salt_default (dev / tests).
+
+    An unset, empty or whitespace-only RATE_LIMIT_SALT counts as unset. Changing the salt only
+    restarts the rate-limit counters (old rows no longer match and expire within two days)."""
+    salt = os.environ.get("RATE_LIMIT_SALT", "")
+    if salt.strip():
+        return salt
+    return os.environ.get("ARTEMIS_ADMIN_TOKEN", "") or salt_default
+
+
 def client_hash(salt_default: str = "artemis") -> str:
-    salt = os.environ.get("ARTEMIS_ADMIN_TOKEN", "") or salt_default
-    return hmac.new(salt.encode(), client_ip().encode(), hashlib.sha256).hexdigest()[:32]
+    return hmac.new(hmac_salt(salt_default).encode(), client_ip().encode(), hashlib.sha256).hexdigest()[:32]
 
 
 def _init(conn: sqlite3.Connection) -> None:

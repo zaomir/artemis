@@ -59,6 +59,7 @@ the old `sent` table does not). Checkout: `/var/www/artemis` (branch `main`, nev
 | `ARTEMIS_ADMIN_TOKEN` | `/admin/leads` token. Missing → admin always 403 (fail-closed) |
 | `ARTEMIS_TG_BOT_TOKEN` | Telegram bot used for lead notifications |
 | `ARTEMIS_TG_CHAT_ID` | Telegram group «Artemis». Missing → lead saved to DB + warning in journal only |
+| `RATE_LIMIT_SALT` | Secret HMAC key for the per-client rate-limit hash of `/api/enquiry` (`app/ratelimit.py`); any long random string, e.g. `openssl rand -hex 32`. Unset or empty → falls back to `ARTEMIS_ADMIN_TOKEN`. Changing it only resets the rate-limit counters |
 
 Notifications contain only: name, contact, language, page — plus the planned investment amount
 for Crete enquiries when the visitor filled it in (Telegram from `app/notify.py`, e-mail copy from
