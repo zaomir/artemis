@@ -29,7 +29,8 @@ flock -n 9 || { echo "another artemis deploy is running" >&2; exit 2; }
 
 log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
 
-PATHS=(/en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/privacy/
+# /health: app liveness JSON {"ok":true} (PR #23), must be 200 locally and via Cloudflare.
+PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/privacy/
        /en/terms/ /ru/terms/ /es/terms/ /fr/terms/)
 # Tenerife RU prod (/tenerife/): must be 200 locally and via Cloudflare.
 # Pages the author has not delivered yet (producto, construccion, proceso, faq) are
