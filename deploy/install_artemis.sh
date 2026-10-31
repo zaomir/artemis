@@ -102,12 +102,14 @@ server {
 NGXEOF
 
 ln -sf /etc/nginx/sites-available/artemisresort.com /etc/nginx/sites-enabled/artemisresort.com
-nginx -t && systemctl reload nginx && echo "nginx: OK"
+# QA PR24-11: a failed nginx -t must stop the installer (no reload, no DONE, rc=1).
+nginx -t || { echo "ERROR: nginx -t failed - nginx not reloaded, install aborted" >&2; exit 1; }
+systemctl reload nginx && echo "nginx: OK"
 
 # DB
 /var/www/artemis/venv/bin/python3 -c "
 import sqlite3; conn=sqlite3.connect('/var/www/artemis/leads.db')
-conn.execute('CREATE TABLE IF NOT EXISTS leads (id INTEGER PRIMARY KEY, name TEXT, email TEXT, phone TEXT, amount TEXT, created_at TEXT)')
+conn.execute('CREATE TABLE IF NOT EXISTS leads (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, amount TEXT, created_at TEXT)')
 conn.commit(); conn.close(); print('DB: OK')
 "
 chown -R www-data:www-data /var/www/artemis/

@@ -9,6 +9,11 @@
 # `python -m unittest discover -s tests` runs there with the app venv (has Flask). Any failure
 # (or timeout) aborts the deploy — prod checkout and service are not touched.
 #
+# Zero-downtime switch (QA PS-06, 31.10.2026): gunicorn gets SIGHUP instead of `systemctl restart`. The master
+# keeps the listening socket, starts new workers (no --preload, so they import the new code) and only then
+# stops the old ones gracefully - no window without a listener on 127.0.0.1:8082 (the restart caused a 502).
+# If the service is not running or the workers are not all replaced within 60 s, it falls back to restart.
+#
 # Safety: flock (no parallel runs), refuses dirty tree, ff-only (never rewrites
 # history), smoke-checks local gunicorn + public Crete pages; on any failure
 # resets to the previous HEAD, restarts and exits non-zero.
@@ -41,6 +46,28 @@ TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/accion
   /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
   /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
+
+workers() { pgrep -P "$1" 2>/dev/null | sort; }
+
+# graceful reload of gunicorn: SIGHUP to the master, wait until every old worker is replaced
+reload_app() {
+  local main old new n=0
+  main=$(systemctl show -p MainPID --value "$SERVICE" 2>/dev/null || echo 0)
+  if ! systemctl is-active -q "$SERVICE" || [[ -z "$main" || "$main" == 0 ]]; then
+    log "reload: ${SERVICE} not running - restart"; systemctl restart "$SERVICE"; return
+  fi
+  old=$(workers "$main")
+  systemctl kill -s HUP --kill-whom=main "$SERVICE"
+  while (( n < 60 )); do
+    sleep 1; n=$((n + 1))
+    new=$(workers "$main")
+    if [[ -n "$new" ]] && (( $(wc -l <<<"$new") >= $(wc -l <<<"$old") )) && [[ -z "$(comm -12 <(echo "$old") <(echo "$new"))" ]] \
+       && [[ "$(systemctl show -p MainPID --value "$SERVICE")" == "$main" ]]; then
+      log "reload: gunicorn ${main} HUP, workers replaced in ${n}s"; return
+    fi
+  done
+  log "reload: workers not replaced in 60s - restart"; systemctl restart "$SERVICE"
+}
 
 smoke() {
   local fail=0 code p
@@ -109,7 +136,7 @@ fi
 log "deploy ${OLD:0:7} -> ${NEW:0:7}"
 "${G[@]}" merge --ff-only -q "origin/${BRANCH}"
 chown www-data:www-data "${APP_DIR}/leads.db" 2>/dev/null || true
-systemctl restart "$SERVICE"
+reload_app
 
 if smoke; then
   log "deploy OK at ${NEW:0:7}"

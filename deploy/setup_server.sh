@@ -129,7 +129,9 @@ server {
 }
 NGX
 ln -sf /etc/nginx/sites-available/artemisresort.com /etc/nginx/sites-enabled/
-nginx -t && systemctl reload nginx
+# QA PR24-11: a failed nginx -t must stop the setup (no reload, no DONE, rc=1).
+nginx -t || { echo "ERROR: nginx -t failed - nginx not reloaded, setup aborted" >&2; exit 1; }
+systemctl reload nginx
 fi
 
 # DB
@@ -137,7 +139,7 @@ fi
 import sqlite3, os
 db = '$SITE_DIR/app/leads.db'
 conn=sqlite3.connect(db)
-conn.execute('CREATE TABLE IF NOT EXISTS leads (id INTEGER PRIMARY KEY, name TEXT, email TEXT, phone TEXT, amount TEXT, created_at TEXT)')
+conn.execute('CREATE TABLE IF NOT EXISTS leads (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, amount TEXT, created_at TEXT)')
 conn.commit(); conn.close(); print('DB: OK')
 "
 chown -R www-data:www-data "$SITE_DIR/"

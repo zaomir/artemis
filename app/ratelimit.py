@@ -1,6 +1,6 @@
 """Per-client rate limit for the lead forms (QA ARTEMIS-QA-20261031-P09), stored in the leads DB.
 
-Client key = HMAC-SHA256(salt, client IP)[:32], the same shape as tenerife._client_hash(). The salt is
+Client key = HMAC-SHA256(salt, limit_key(client IP))[:32] (IPv6 aggregated to its /64, QA PS-08), the same shape as tenerife._client_hash(). The salt is
 RATE_LIMIT_SALT, falling back to ARTEMIS_ADMIN_TOKEN when it is unset or empty; with neither the app
 refuses to start (require_salt(), called at app creation). There is no built-in default salt.
 The IP is X-Real-IP (nginx sets it from the connection's verified $remote_addr; gunicorn listens on
@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import ipaddress
 import logging
 import os
 import sqlite3
@@ -27,6 +28,26 @@ ENQUIRY_LIMITS = (("10min", 600, 3), ("day", 86400, 10))
 
 def client_ip() -> str:
     return (request.headers.get("X-Real-IP") or "").strip() or request.remote_addr or "?"
+
+
+IPV6_PREFIX = 64
+
+
+def limit_key(ip: str) -> str:
+    """Rate-limit identity of an IP (QA PS-08): IPv4 = the address itself; IPv6 = its /64 network,
+    because one subscriber usually gets a whole /64 and could otherwise rotate 2^64 keys.
+    An IPv4-mapped IPv6 address (::ffff:a.b.c.d) counts as the IPv4 address. Anything unparseable is
+    used as is (it then only limits itself)."""
+    raw = (ip or "").strip()
+    try:
+        addr = ipaddress.ip_address(raw.split("%", 1)[0])
+    except ValueError:
+        return raw
+    if addr.version == 6 and addr.ipv4_mapped is not None:
+        addr = addr.ipv4_mapped
+    if addr.version == 6:
+        return str(ipaddress.ip_network(f"{addr}/{IPV6_PREFIX}", strict=False))
+    return str(addr)
 
 
 SALT_ENV_VARS = ("RATE_LIMIT_SALT", "ARTEMIS_ADMIN_TOKEN")
@@ -61,7 +82,7 @@ def require_salt() -> None:
 
 
 def client_hash() -> str:
-    return hmac.new(hmac_salt().encode(), client_ip().encode(), hashlib.sha256).hexdigest()[:32]
+    return hmac.new(hmac_salt().encode(), limit_key(client_ip()).encode(), hashlib.sha256).hexdigest()[:32]
 
 
 def _init(conn: sqlite3.Connection) -> None:
