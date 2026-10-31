@@ -54,7 +54,18 @@ if [ -d "$SITE_DIR/.git" ]; then
       echo "origin URL reset to $REPO_URL (credential removed from .git/config)"
       ;;
   esac
-  git_with_token -C "$SITE_DIR" pull
+  # QA PR24-06: a re-run without GITHUB_TOKEN must not abort venv/systemd/nginx. Without a token we try
+  # the repo's own credential helper (prod: credential.helper store, see N-04) with prompts disabled;
+  # if that fails too, we warn, keep the current checkout and go on. Only the first clone needs the token.
+  # ${GITHUB_TOKEN:+set} keeps the token value out of `bash -x` output.
+  if [ -n "${GITHUB_TOKEN:+set}" ]; then
+    git_with_token -C "$SITE_DIR" pull
+  else
+    echo "WARNING: GITHUB_TOKEN not set - pulling with the repo's configured credential helper" >&2
+    if ! GIT_TERMINAL_PROMPT=0 git -C "$SITE_DIR" pull --ff-only; then
+      echo "WARNING: git pull failed without GITHUB_TOKEN - skipping pull, continuing with the existing checkout" >&2
+    fi
+  fi
 else
   git_with_token clone "$REPO_URL" "$SITE_DIR"
 fi

@@ -187,6 +187,33 @@ class SetupServerCloneBlockTest(unittest.TestCase):
         self.assertNotIn(FAKE_TOKEN, r.stderr)
         self.assertNotIn(FAKE_TOKEN, child)
 
+    def test_rerun_without_token_uses_helper_or_skips(self):
+        """QA PR24-06: existing checkout + no token -> pull via configured helper, on failure warn and go on"""
+        r, log, child = self.run_block(None, git_rc=0)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("stub-git -C", log)
+        self.assertIn("pull --ff-only", log)
+        self.assertNotIn("credential.helper=", log)
+        self.assertNotIn("skipping pull", r.stderr)
+        self.assertIn("after-git-step", r.stdout)
+        r, log, child = self.run_block(None, git_rc=1)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("skipping pull", r.stderr)
+        self.assertIn("after-git-step", r.stdout)
+
+    def test_first_clone_without_token_fails(self):
+        r, log, child = self.run_block(None, existing=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("ERROR: set GITHUB_TOKEN", r.stderr)
+        self.assertNotIn("after-git-step", r.stdout)
+        self.assertEqual(log, "")
+
+    def test_pull_with_token_failure_still_fails(self):
+        r, log, child = self.run_block(FAKE_TOKEN, git_rc=1)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertNotIn("after-git-step", r.stdout)
+        self.assertNotIn(FAKE_TOKEN, r.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
