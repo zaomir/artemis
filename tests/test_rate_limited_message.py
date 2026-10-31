@@ -17,9 +17,11 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 LANGS = ("en", "ru", "es", "fr")
 T = {lg: json.loads((ROOT / "app" / "translations" / f"{lg}.json").read_text(encoding="utf-8")) for lg in LANGS}
 ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "ARTEMIS_ADMIN_TOKEN", "RATE_LIMIT_SALT")
+TEST_SALT = "unit-tests-only-not-a-secret"
 NODE = shutil.which("node")
 
 # verbatim from webdev/artemis-ui-strings-for-review-reviewed.md line 32 (cycle 3)
@@ -66,6 +68,7 @@ submitEnquiry().then(function(){
 class Base(unittest.TestCase):
     def setUp(self):
         self.saved = {k: os.environ.pop(k, None) for k in ENV_KEYS}
+        os.environ["RATE_LIMIT_SALT"] = TEST_SALT  # restored in tearDown
         self.tmp = tempfile.TemporaryDirectory()
         import app as artemis_app
         import ratelimit

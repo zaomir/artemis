@@ -59,6 +59,8 @@ from notify import notify_lead  # noqa: E402
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 logging.basicConfig(level=logging.INFO)
+# QA PR #23: no public default for the rate-limit HMAC key; fail at startup, not on the first enquiry
+ratelimit.require_salt()
 
 import tenerife  # noqa: E402  (blueprint: /tenerife-preview/, noindex)
 
@@ -429,7 +431,7 @@ def enquiry():
     if amount is None:
         return _enquiry_error("amount", "amount", "Invalid planned investment amount")
 
-    retry = ratelimit.hit(DB, "crete_enquiry", ratelimit.client_hash("artemis-crete"))
+    retry = ratelimit.hit(DB, "crete_enquiry", ratelimit.client_hash())
     if retry:
         resp = jsonify({"ok": False, "code": "rate_limited", "error": "rate_limited"})
         resp.status_code = 429

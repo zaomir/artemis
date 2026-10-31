@@ -6,6 +6,7 @@ addresses reach the visitor inside <!--email_off-->…<!--/email_off-->. Checked
 import html as _html
 import importlib
 import re
+import os
 import sys
 import tempfile
 import unittest
@@ -14,6 +15,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 
 from email_off import OFF, ON, mailto_form_actions, mailto_targets, unprotected, wrap  # noqa: E402

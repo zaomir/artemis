@@ -21,6 +21,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 
 from email_off import ON, OFF, mailto_form_actions, mailto_targets, unprotected, wrap  # noqa: E402

@@ -20,6 +20,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 STATIC = ROOT / "app" / "static"
 OPT = STATIC / "img" / "opt"
 MANIFEST = json.loads((OPT / "manifest.json").read_text(encoding="utf-8"))

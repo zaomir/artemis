@@ -10,13 +10,16 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "ARTEMIS_ADMIN_TOKEN", "RATE_LIMIT_SALT")
+TEST_SALT = "unit-tests-only-not-a-secret"
 LANGS = ("en", "ru", "es", "fr")
 
 
 class EnquiryBase(unittest.TestCase):
     def setUp(self):
         self.saved = {k: os.environ.pop(k, None) for k in ENV_KEYS}
+        os.environ["RATE_LIMIT_SALT"] = TEST_SALT  # restored in tearDown
         self.tmp = tempfile.TemporaryDirectory()
         import app as artemis_app
         import ratelimit

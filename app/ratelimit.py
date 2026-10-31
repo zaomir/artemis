@@ -1,7 +1,8 @@
 """Per-client rate limit for the lead forms (QA ARTEMIS-QA-20261031-P09), stored in the leads DB.
 
 Client key = HMAC-SHA256(salt, client IP)[:32], the same shape as tenerife._client_hash(). The salt is
-RATE_LIMIT_SALT, falling back to ARTEMIS_ADMIN_TOKEN when it is unset or empty (see hmac_salt()).
+RATE_LIMIT_SALT, falling back to ARTEMIS_ADMIN_TOKEN when it is unset or empty; with neither the app
+refuses to start (require_salt(), called at app creation). There is no built-in default salt.
 The IP is X-Real-IP (nginx sets it from the connection's verified $remote_addr; gunicorn listens on
 127.0.0.1 only) or, without nginx, request.remote_addr. CF-Connecting-IP and X-Forwarded-For are
 never read here: a client can send any value in them. Only the hash is stored, never the IP.
@@ -13,6 +14,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import logging
 import os
 import sqlite3
 import time
@@ -27,20 +29,39 @@ def client_ip() -> str:
     return (request.headers.get("X-Real-IP") or "").strip() or request.remote_addr or "?"
 
 
-def hmac_salt(salt_default: str = "artemis") -> str:
+SALT_ENV_VARS = ("RATE_LIMIT_SALT", "ARTEMIS_ADMIN_TOKEN")
+
+
+class SaltNotConfigured(RuntimeError):
+    """Neither RATE_LIMIT_SALT nor ARTEMIS_ADMIN_TOKEN is set: the client hash would be guessable."""
+
+
+def hmac_salt() -> str:
     """HMAC key for client hashes: RATE_LIMIT_SALT, else ARTEMIS_ADMIN_TOKEN (the key used before
-    RATE_LIMIT_SALT existed, so counters survive the upgrade), else salt_default (dev / tests).
+    RATE_LIMIT_SALT existed, so counters survive the upgrade). There is no built-in default: a public
+    constant would let anyone recompute the hash of an IP. Unset, empty or whitespace-only counts as unset.
+    Changing the salt only restarts the rate-limit counters (old rows stop matching, purged after 2 days)."""
+    for name in SALT_ENV_VARS:
+        value = os.environ.get(name, "")
+        if value.strip():
+            return value
+    raise SaltNotConfigured(
+        "rate limit: RATE_LIMIT_SALT and ARTEMIS_ADMIN_TOKEN are both unset or empty; "
+        "set RATE_LIMIT_SALT (e.g. openssl rand -hex 32) in /etc/artemis/artemis.env"
+    )
 
-    An unset, empty or whitespace-only RATE_LIMIT_SALT counts as unset. Changing the salt only
-    restarts the rate-limit counters (old rows no longer match and expire within two days)."""
-    salt = os.environ.get("RATE_LIMIT_SALT", "")
-    if salt.strip():
-        return salt
-    return os.environ.get("ARTEMIS_ADMIN_TOKEN", "") or salt_default
+
+def require_salt() -> None:
+    """Called once at app creation: refuse to start without a secret HMAC key (logged, then raised)."""
+    try:
+        hmac_salt()
+    except SaltNotConfigured as exc:
+        logging.getLogger("artemis").critical("refusing to start: %s", exc)
+        raise
 
 
-def client_hash(salt_default: str = "artemis") -> str:
-    return hmac.new(hmac_salt(salt_default).encode(), client_ip().encode(), hashlib.sha256).hexdigest()[:32]
+def client_hash() -> str:
+    return hmac.new(hmac_salt().encode(), client_ip().encode(), hashlib.sha256).hexdigest()[:32]
 
 
 def _init(conn: sqlite3.Connection) -> None:
