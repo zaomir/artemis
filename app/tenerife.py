@@ -20,13 +20,13 @@ from __future__ import annotations
 import datetime
 import hashlib
 import hmac
-import os
 import sqlite3
 import urllib.parse
 from pathlib import Path
 
 from flask import Blueprint, current_app, jsonify, make_response, redirect, render_template, request
 
+import ratelimit
 from notify import notify_lead
 
 bp = Blueprint("tenerife", __name__)
@@ -65,8 +65,8 @@ def _client_hash() -> str:
         or request.remote_addr
         or "?"
     )
-    salt = os.environ.get("ARTEMIS_ADMIN_TOKEN", "") or "artemis-tenerife"
-    return hmac.new(salt.encode(), ip.encode(), hashlib.sha256).hexdigest()[:32]
+    # same secret key as the Crete limiter (RATE_LIMIT_SALT, else ARTEMIS_ADMIN_TOKEN); no public default
+    return hmac.new(ratelimit.hmac_salt().encode(), ip.encode(), hashlib.sha256).hexdigest()[:32]
 
 
 def _noindex(resp):

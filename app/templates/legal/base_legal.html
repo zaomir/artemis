@@ -14,17 +14,30 @@
 body{background:#0d1b2a;color:#e8e0d0;font-family:Georgia,serif;line-height:1.7;margin:0;padding:40px 20px}
 .wrap{max-width:760px;margin:0 auto}
 a{color:#C4A35A}
-h1{color:#fff;font-weight:400;margin-bottom:12px}
+h1{color:#fff;font-weight:400;margin-bottom:12px;font-size:clamp(1.5rem,7vw,2rem);overflow-wrap:break-word;hyphens:auto}
 .nav{font-family:Arial,sans-serif;font-size:.85rem;margin-bottom:28px}
-p{font-family:Arial,sans-serif;font-size:.95rem;color:#e8e0d0}
+.nav a{display:inline-flex;align-items:center;min-height:44px}
+p{font-family:Arial,sans-serif;font-size:.95rem;color:#e8e0d0;overflow-wrap:break-word}
+.pending{font-style:italic;opacity:.8}
+@media(max-width:480px){body{padding:24px 16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="nav"><a href="/{{ lang }}/">← {{ t.legal_nav_home }}</a></div>
-  <h1>{{ page_title }}</h1>
-  <p>{{ page_body }}</p>
-  {% if page_extra %}<p>{{ page_extra }}</p>{% endif %}
+  {% set li = legal_i18n or {} %}
+  <h1>{{ li.title or page_title }}</h1>
+  {% if li.body %}
+  {% for para in li.body %}<p>{{ para }}</p>
+  {% endfor %}
+  {% else %}
+  {# TODO(A-06): no reviewed translation of the main text yet — drop app/legal_translations/{{ page }}.{{ lang }}.md
+     (see app/legal_translations/README.md). Until then the English original is shown, marked lang="en". #}
+  {% if lang != 'en' and t.legal_body_pending %}<p class="pending">{{ t.legal_body_pending }}</p>{% endif %}
+  <p{% if lang != 'en' %} lang="en"{% endif %}>{{ page_body }}</p>
+  {% endif %}
+  {% set extra = li.recipients or page_extra %}
+  {% if extra %}<p>{{ extra }}</p>{% endif %}
 </div>
 </body>
 </html>

@@ -11,6 +11,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
 # founder 31.10.2026 01:44 UTC: no disclaimer block, no «Визуализация»/AI captions (supersedes PR #4/#5 rule)
 REMOVED_DISCLAIMERS = [
