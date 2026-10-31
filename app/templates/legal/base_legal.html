@@ -24,6 +24,7 @@ p{font-family:Arial,sans-serif;font-size:.95rem;color:#e8e0d0}
   <div class="nav"><a href="/{{ lang }}/">← {{ t.legal_nav_home }}</a></div>
   <h1>{{ page_title }}</h1>
   <p>{{ page_body }}</p>
+  {% if page_extra %}<p>{{ page_extra }}</p>{% endif %}
 </div>
 </body>
 </html>
