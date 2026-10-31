@@ -2,8 +2,12 @@
 # Artemis production deploy (server-side, no GitHub Actions, no webhook).
 # Installed copy: /usr/local/sbin/artemis-deploy.sh  (run as root on vps2402)
 #
-#   artemis-deploy.sh            # fetch origin/main, ff-only merge, restart, smoke
+#   artemis-deploy.sh            # fetch origin/main, unit tests, ff-only merge, restart, smoke
 #   artemis-deploy.sh --check    # smoke only, no changes
+#
+# Tests (31.10.2026): before prod is switched, the NEW commit is exported to a temp dir and
+# `python -m unittest discover -s tests` runs there with the app venv (has Flask). Any failure
+# (or timeout) aborts the deploy — prod checkout and service are not touched.
 #
 # Safety: flock (no parallel runs), refuses dirty tree, ff-only (never rewrites
 # history), smoke-checks local gunicorn + public Crete pages; on any failure
@@ -16,6 +20,8 @@ BRANCH="${ARTEMIS_BRANCH:-main}"
 LOCAL="http://127.0.0.1:8082"
 PUBLIC="${ARTEMIS_PUBLIC_URL:-https://artemisresort.com}"
 LOG="${ARTEMIS_DEPLOY_LOG:-/var/log/artemis-deploy.log}"
+TEST_PY="${ARTEMIS_TEST_PYTHON:-${APP_DIR}/venv/bin/python}"
+TEST_TIMEOUT="${ARTEMIS_TEST_TIMEOUT:-600}"
 G=(git -c "safe.directory=${APP_DIR}" -C "${APP_DIR}")
 
 exec 9>/run/artemis-deploy.lock
@@ -72,6 +78,27 @@ NEW=$("${G[@]}" rev-parse "origin/${BRANCH}")
 if [[ "$OLD" == "$NEW" ]]; then
   log "up to date at ${OLD:0:7}; running smoke"
   smoke && { log "smoke OK"; exit 0; } || { log "smoke FAILED (no change deployed)"; exit 1; }
+fi
+
+run_tests() {
+  local dir rc=0
+  dir=$(mktemp -d /tmp/artemis-deploy-test.XXXXXX)
+  "${G[@]}" archive "$NEW" | tar -x -C "$dir"
+  log "tests: python -m unittest discover -s tests @ ${NEW:0:7}"
+  ( cd "$dir" && HOME="$dir" timeout "$TEST_TIMEOUT" "$TEST_PY" -m unittest discover -s tests ) \
+    >"$dir.log" 2>&1 || rc=$?
+  log "tests: $(grep -E '^(Ran |OK|FAILED)' "$dir.log" | tr '\n' ' ')(rc=${rc})"
+  if [[ $rc -ne 0 ]]; then
+    cp "$dir.log" "/var/log/artemis-deploy-tests-${NEW:0:7}.log" 2>/dev/null || true
+    log "tests log: /var/log/artemis-deploy-tests-${NEW:0:7}.log"
+  fi
+  rm -rf "$dir" "$dir.log"
+  return $rc
+}
+
+if ! run_tests; then
+  log "ABORT: tests failed for ${NEW:0:7}; prod stays at ${OLD:0:7} (nothing changed)"
+  exit 1
 fi
 
 log "deploy ${OLD:0:7} -> ${NEW:0:7}"
