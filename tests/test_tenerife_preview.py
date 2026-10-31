@@ -12,6 +12,13 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
 
+# founder 31.10.2026 01:44 UTC: no disclaimer block, no «Визуализация»/AI captions (supersedes PR #4/#5 rule)
+REMOVED_DISCLAIMERS = [
+    r"визуализац", r"\(AI\)", r"(?<![А-Яа-яЁё])ИИ(?![А-Яа-яЁё])", r"не фотограф", r"иллюстрация этапа",
+    r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт", r"не гарантирован",
+    r"общая информация", r"до разрешения",
+]
+
 FORBIDDEN = [
     r"\d\s*[–-]\s*\d\s*%",          # yield ranges like 4–6 %
     r"доходност\w* \d",              # numeric yield
@@ -69,12 +76,17 @@ class TenerifePreviewTest(unittest.TestCase):
     def test_preview_content_rules(self):
         body = self.client.get("/tenerife-preview/").get_data(as_text=True)
         for must in ("лист ожидания", "Участок не зафиксирован", "разрешение на строительство не получено",
-                     "не является предложением ценных бумаг", "Доходность не гарантирована",
-                     "Визуализация", "Simon Subic", "Lana Evans", "Boris Ribaut", "6/2025",
+                     "Simon Subic", "Lana Evans", "Boris Ribaut", "6/2025",
                      "Посуточная аренда — только как опция", 'name="website"', 'name="consent"'):
             self.assertIn(must, body)
         for pat in FORBIDDEN:
             self.assertIsNone(re.search(pat, body, re.I), pat)
+
+    def test_no_disclaimers_or_ai_captions(self):
+        for path in ("/tenerife-preview/", "/tenerife-preview/impressum/", "/tenerife-preview/privacy/"):
+            body = self.client.get(path).get_data(as_text=True)
+            for pat in REMOVED_DISCLAIMERS:
+                self.assertIsNone(re.search(pat, body, re.I), f"{path}: {pat}")
 
     def test_impressum_has_operator_and_todo_marks(self):
         body = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
