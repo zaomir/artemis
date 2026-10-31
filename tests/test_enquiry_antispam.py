@@ -66,7 +66,7 @@ class RateLimitTest(EnquiryBase):
             self.assertEqual(self.post().status_code, 200)
         r = self.post()
         self.assertEqual(r.status_code, 429)
-        self.assertEqual(r.get_json(), {"ok": False, "error": "rate_limited"})
+        self.assertEqual(r.get_json(), {"ok": False, "code": "rate_limited", "error": "rate_limited"})
         retry = int(r.headers["Retry-After"])
         self.assertTrue(1 <= retry <= 600, retry)
         self.assertEqual(self.leads(), 3)

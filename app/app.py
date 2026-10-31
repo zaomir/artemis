@@ -431,7 +431,7 @@ def enquiry():
 
     retry = ratelimit.hit(DB, "crete_enquiry", ratelimit.client_hash("artemis-crete"))
     if retry:
-        resp = jsonify({"ok": False, "error": "rate_limited"})
+        resp = jsonify({"ok": False, "code": "rate_limited", "error": "rate_limited"})
         resp.status_code = 429
         resp.headers["Retry-After"] = str(retry)
         return resp

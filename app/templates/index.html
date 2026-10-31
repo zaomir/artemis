@@ -417,7 +417,8 @@ const I18N = {
   email: {{ t.form_err_email | tojson }},
   amount: {{ t.form_err_amount | tojson }},
   generic: {{ t.form_err_generic | tojson }},
-  network: {{ t.form_err_network | tojson }}
+  network: {{ t.form_err_network | tojson }},
+  rate_limited: {{ t.form_err_rate_limited | tojson }}
 };
 // same rules as the server (app.py: EMAIL_PATTERN / amount_ok); the e-mail pattern comes from app.py
 const EMAIL_RE = new RegExp({{ email_pattern | tojson }});
@@ -466,6 +467,9 @@ async function submitEnquiry(){
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, website: document.getElementById('f-website').value, lang: '{{ lang }}', page: location.pathname})
     });
+    // 429 = too many enquiries from this connection: the app's limiter (JSON code "rate_limited")
+    // or nginx limit_req (HTML body), so the status is checked before the body is parsed as JSON
+    if(r.status === 429){ return fieldError(null, 'rate_limited'); }
     const d = await r.json();
     if(d.ok){
       document.getElementById('enquiry-form-wrap').style.display = 'none';

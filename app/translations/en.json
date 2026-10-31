@@ -134,6 +134,7 @@
   "form_err_consent": "Consent is required.",
   "form_err_generic": "Something went wrong. Please try again.",
   "form_err_network": "Network error. Please try again.",
+  "form_err_rate_limited": "We have already received your requests. Please try again later or email us at info@artemisresort.com.",
   "type_investor": "Investor / financial investor",
   "type_project_adviser": "Project adviser",
   "type_operator": "Operator",
