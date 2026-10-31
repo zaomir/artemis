@@ -26,6 +26,7 @@ from flask import (
 
 import logging
 
+import ratelimit  # noqa: E402  (shared per-client limiter, QA P09)
 import legal_i18n  # drop-in translations of the long legal texts (app/legal_translations/)
 
 # A-13: Cloudflare Email Obfuscation (zone setting, stays ON) rewrites addresses / mailto links into
@@ -382,6 +383,7 @@ def email_ok(value: str) -> bool:
     return 0 < len(value) <= EMAIL_MAX and EMAIL_RE.fullmatch(value) is not None
 
 
+HONEYPOT_FIELD = "website"  # same name as the Tenerife waitlist honeypot
 _TEXT_FIELDS = ("name", "email", "organisation", "role", "enquiry_type", "message", "lang", "page")
 
 
@@ -394,6 +396,10 @@ def enquiry():
     d = request.get_json(silent=True)
     if not isinstance(d, dict):
         d = {}
+    # QA P09 honeypot: the hidden "website" field is empty for people. Pretend success, store and send nothing.
+    if str(d.get(HONEYPOT_FIELD) or "").strip():
+        logging.info("crete enquiry: honeypot hit, dropped")
+        return jsonify({"ok": True})
     # QA -42: text fields must be JSON strings (or absent / null); lists, objects, numbers are rejected,
     # never stored as their Python repr. consent must be the JSON boolean true (not "false", 1, "yes").
     for key in _TEXT_FIELDS:
@@ -422,6 +428,13 @@ def enquiry():
         return _enquiry_error("generic", "enquiry_type", "Invalid enquiry type")
     if amount is None:
         return _enquiry_error("amount", "amount", "Invalid planned investment amount")
+
+    retry = ratelimit.hit(DB, "crete_enquiry", ratelimit.client_hash("artemis-crete"))
+    if retry:
+        resp = jsonify({"ok": False, "error": "rate_limited"})
+        resp.status_code = 429
+        resp.headers["Retry-After"] = str(retry)
+        return resp
 
     init_db()
     conn = sqlite3.connect(DB)

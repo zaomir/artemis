@@ -41,6 +41,10 @@ M25 = '<form action="&#109;ailto:evil@example.com"><button>x</button></form>'
 
 class Base(unittest.TestCase):
     def setUp(self):
+        # many valid leads from one test client: the per-client limit (QA P09) is tested in test_enquiry_antispam
+        _rl = mock.patch("ratelimit.ENQUIRY_LIMITS", ())
+        _rl.start()
+        self.addCleanup(_rl.stop)
         self.saved = {k: os.environ.pop(k, None) for k in ENV_KEYS}
         self.tmp = tempfile.TemporaryDirectory()
         import app as artemis_app

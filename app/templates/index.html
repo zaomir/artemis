@@ -136,6 +136,7 @@ nav .btn{white-space:nowrap}
 @media(max-width:1279px){.logo-rest{display:none}}
 @media(max-width:1099px){.nav-links{display:none}}
 @media(min-width:601px) and (max-width:1099px){nav .btn .cta-long{display:inline}nav .btn .cta-short{display:none}}
+.hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}
 .form-ok{display:none;padding:20px 0;font-family:Arial,sans-serif;color:var(--text)}
 footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
 .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:Arial,sans-serif;font-size:.8rem}
@@ -391,6 +392,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" inputmode="decimal" maxlength="64" aria-describedby="form-err" placeholder="{{ t.ph_amount }}"></div>
     <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" placeholder="{{ t.ph_message }}"></textarea></div>
     <label class="consent"><input id="f-consent" type="checkbox"> <span>{{ t.form_consent }}</span></label>
+    <div class="hp" aria-hidden="true"><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
     <button class="btn" type="button" onclick="submitEnquiry()">{{ t.form_submit }}</button>
     <p class="form-err" id="form-err" role="alert" aria-live="assertive"></p>
   </div>
@@ -462,7 +464,7 @@ async function submitEnquiry(){
     const r = await fetch('/api/enquiry', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, lang: '{{ lang }}', page: location.pathname})
+      body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, website: document.getElementById('f-website').value, lang: '{{ lang }}', page: location.pathname})
     });
     const d = await r.json();
     if(d.ok){
