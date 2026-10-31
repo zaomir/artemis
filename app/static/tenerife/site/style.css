@@ -188,7 +188,9 @@ form.wl button.cta { justify-self: start; }
 .msg.ok { color: var(--bronze); }
 .msg.err { color: #9b2c2c; }
 footer .legal a { color: var(--ink); text-decoration: underline; }
+.nav { padding-left: 20px; padding-right: 20px; } /* author's .nav padding overrode .wrap side padding */
 .links { -webkit-overflow-scrolling: touch; }
+img { max-width: 100%; }
 @media (max-width: 799px) {
   .nav { flex-wrap: wrap; }
   .links { gap: 12px; font-size: 14px; }
