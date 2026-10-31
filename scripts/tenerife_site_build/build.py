@@ -121,7 +121,7 @@ for p in present:
         report["fixes"].append(f"{p}.html: Google Fonts → свои шрифты (без запросов к Google)")
     h = re.sub(r'\s*<link[^>]*fonts\.(googleapis|gstatic)\.com[^>]*>', "", h)
     h = re.sub(r'<link rel="stylesheet" href="(?:\./)?style\.css">', '<link rel="stylesheet" href="/static/tenerife/site/style.css">', h)
-    h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n<link rel="icon" href="/favicon.ico">', 1)
+    h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n<link rel="icon" href="/static/favicon-32x32.png">', 1)
     h = links(h)
     h = images(h)
     # existing external forms → our handler
