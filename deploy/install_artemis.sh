@@ -73,6 +73,6 @@ chmod 755 /var/www/artemis/static/
 echo ""
 echo "========================================"
 echo " DONE: http://artemisresort.com"
-echo " Leads: http://artemisresort.com/admin/leads?t=rovlex2025"
+echo " Leads: https://artemisresort.com/admin/leads?t=<ARTEMIS_ADMIN_TOKEN from /etc/artemis/artemis.env>"
 echo " SSL: certbot --nginx -d artemisresort.com -d www.artemisresort.com -m ROVLEX@ROVLEX.COM --agree-tos --no-eff-email"
 echo "========================================"
