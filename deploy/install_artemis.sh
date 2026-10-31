@@ -43,15 +43,52 @@ sleep 2
 systemctl is-active artemis && echo "artemis: RUNNING" || { echo "FAILED"; journalctl -u artemis -n 30; exit 1; }
 
 # nginx
+# QA PR24-07: install the Cloudflare realip snippet ourselves (byte-for-byte copy of
+# deploy/nginx-snippets/cloudflare-realip.conf, kept in sync by tests/test_deploy_pr24.py) and include it
+# without a glob, so a missing snippet makes the install fail loudly instead of silently running without realip.
+REALIP_SNIPPET=/etc/nginx/snippets/cloudflare-realip.conf
+mkdir -p /etc/nginx/snippets
+cat > "$REALIP_SNIPPET" << 'REALIPEOF'
+# Cloudflare edge ranges (https://www.cloudflare.com/ips-v4, ips-v6), fetched 2026-10-31. Trust CF-Connecting-IP only from these peers.
+set_real_ip_from 173.245.48.0/20;
+set_real_ip_from 103.21.244.0/22;
+set_real_ip_from 103.22.200.0/22;
+set_real_ip_from 103.31.4.0/22;
+set_real_ip_from 141.101.64.0/18;
+set_real_ip_from 108.162.192.0/18;
+set_real_ip_from 190.93.240.0/20;
+set_real_ip_from 188.114.96.0/20;
+set_real_ip_from 197.234.240.0/22;
+set_real_ip_from 198.41.128.0/17;
+set_real_ip_from 162.158.0.0/15;
+set_real_ip_from 104.16.0.0/13;
+set_real_ip_from 104.24.0.0/14;
+set_real_ip_from 172.64.0.0/13;
+set_real_ip_from 131.0.72.0/22;
+set_real_ip_from 2400:cb00::/32;
+set_real_ip_from 2606:4700::/32;
+set_real_ip_from 2803:f800::/32;
+set_real_ip_from 2405:b500::/32;
+set_real_ip_from 2405:8100::/32;
+set_real_ip_from 2a06:98c0::/29;
+set_real_ip_from 2c0f:f248::/32;
+real_ip_header CF-Connecting-IP;
+real_ip_recursive off;
+REALIPEOF
+chmod 644 "$REALIP_SNIPPET"
+if [ ! -s "$REALIP_SNIPPET" ] || ! grep -q '^real_ip_header CF-Connecting-IP;' "$REALIP_SNIPPET"; then
+  echo "ERROR: $REALIP_SNIPPET is missing or has no 'real_ip_header CF-Connecting-IP' - refusing to configure nginx without Cloudflare realip" >&2
+  exit 1
+fi
 cat > /etc/nginx/sites-available/artemisresort.com << 'NGXEOF'
 server {
     listen 80;
     server_name artemisresort.com www.artemisresort.com;
     server_tokens off;
-    # QA PR24-05: Cloudflare realip like deploy/nginx-artemisresort.com.origin.conf (install
-    # deploy/nginx-snippets/cloudflare-realip.conf to /etc/nginx/snippets/; the glob keeps nginx -t
-    # working when it is absent). CF-Connecting-IP is always overwritten: clients cannot spoof it.
-    include /etc/nginx/snippets/cloudflare-realip*.conf;
+    # QA PR24-05/07: Cloudflare realip like deploy/nginx-artemisresort.com.origin.conf. The snippet is
+    # installed above; no glob, so nginx -t fails if it is absent. CF-Connecting-IP is always overwritten
+    # with the realip-resolved client address: clients cannot spoof it.
+    include /etc/nginx/snippets/cloudflare-realip.conf;
     location /static/ { alias /var/www/artemis/static/; expires 30d; }
     location / {
         proxy_pass http://127.0.0.1:8082;

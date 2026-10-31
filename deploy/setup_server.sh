@@ -77,7 +77,18 @@ systemctl is-active artemis && echo "artemis: OK"
 if [ ! -f /etc/nginx/sites-enabled/artemisresort.com ]; then
 # QA PR24-05: same Cloudflare realip snippet as the deploy config (deploy/nginx-artemisresort.com.origin.conf);
 # CF-Connecting-IP is always overwritten with the realip-resolved client address.
-install -D -m 644 "$SITE_DIR/deploy/nginx-snippets/cloudflare-realip.conf" /etc/nginx/snippets/cloudflare-realip.conf
+# QA PR24-07: the snippet comes from the repo; without it we stop instead of configuring nginx without realip.
+REALIP_SRC="$SITE_DIR/deploy/nginx-snippets/cloudflare-realip.conf"
+REALIP_SNIPPET=/etc/nginx/snippets/cloudflare-realip.conf
+if [ ! -s "$REALIP_SRC" ]; then
+  echo "ERROR: $REALIP_SRC not found in the checkout - cannot install the Cloudflare realip snippet" >&2
+  exit 1
+fi
+install -D -m 644 "$REALIP_SRC" "$REALIP_SNIPPET"
+if ! grep -q '^real_ip_header CF-Connecting-IP;' "$REALIP_SNIPPET"; then
+  echo "ERROR: $REALIP_SNIPPET has no 'real_ip_header CF-Connecting-IP' - refusing to configure nginx without realip" >&2
+  exit 1
+fi
 cat > /etc/nginx/sites-available/artemisresort.com << NGX
 server {
     listen 80;

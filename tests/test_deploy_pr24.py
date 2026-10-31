@@ -1,7 +1,12 @@
 """PR #24 QA fixes (31.10.2026): no token in git URL/argv, nginx 429 JSON, log level, CF-Connecting-IP."""
 import re
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
+
+SNIPPET_REL = "nginx-snippets/cloudflare-realip.conf"
+SNIPPET_DST = "/etc/nginx/snippets/cloudflare-realip.conf"
 
 DEPLOY = Path(__file__).resolve().parents[1] / "deploy"
 
@@ -45,6 +50,54 @@ class LegacyTemplatesRealIpTest(unittest.TestCase):
             s = read(name)
             self.assertRegex(s, r"proxy_set_header CF-Connecting-IP \\?\$remote_addr;", name)
             self.assertIn("cloudflare-realip", s, name)
+
+
+class RealIpSnippetInstallTest(unittest.TestCase):
+    """QA PR24-07: the legacy installers install the realip snippet themselves and include it without a glob."""
+
+    def test_no_glob_include_anywhere(self):
+        for name in ("install_artemis.sh", "setup_server.sh", "nginx-artemisresort.com.origin.conf"):
+            s = read(name)
+            includes = re.findall(r"^\s*include\s+(\S*cloudflare-realip\S*);", s, re.M)
+            self.assertTrue(includes, name)
+            for inc in includes:
+                self.assertEqual(inc, SNIPPET_DST, name)
+                self.assertNotIn("*", inc, name)
+
+    def test_install_artemis_writes_snippet(self):
+        s = read("install_artemis.sh")
+        start = s.index("REALIP_SNIPPET=")
+        end = s.index("\nfi\n", start) + len("\nfi\n")
+        block = s[start:end]
+        self.assertIn("exit 1", block)
+        with tempfile.TemporaryDirectory() as tmp:
+            dst = Path(tmp) / "etc/nginx/snippets/cloudflare-realip.conf"
+            block = block.replace("/etc/nginx/snippets", str(dst.parent))
+            r = subprocess.run(["bash", "-euc", block], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertEqual(dst.read_text(encoding="utf-8"), read(SNIPPET_REL))
+            self.assertEqual(dst.stat().st_mode & 0o777, 0o644)
+        # the snippet is installed before the nginx site config is written
+        self.assertLess(s.index('cat > "$REALIP_SNIPPET"'), s.index("cat > /etc/nginx/sites-available/artemisresort.com"))
+
+    def test_setup_server_installs_snippet_from_repo_or_fails(self):
+        s = read("setup_server.sh")
+        self.assertIn('REALIP_SRC="$SITE_DIR/deploy/' + SNIPPET_REL + '"', s)
+        self.assertIn('install -D -m 644 "$REALIP_SRC" "$REALIP_SNIPPET"', s)
+        start = s.index('if [ ! -s "$REALIP_SRC" ]')
+        end = s.index("cat > /etc/nginx/sites-available/artemisresort.com", start)
+        with tempfile.TemporaryDirectory() as tmp:
+            block = ('SITE_DIR=%s\nREALIP_SRC="$SITE_DIR/deploy/%s"\nREALIP_SNIPPET=%s/out.conf\n' % (tmp, SNIPPET_REL, tmp)) + s[start:end]
+            r = subprocess.run(["bash", "-euc", block], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 1)
+            self.assertIn("ERROR:", r.stderr)
+            self.assertFalse((Path(tmp) / "out.conf").exists())
+            src = Path(tmp) / "deploy" / SNIPPET_REL
+            src.parent.mkdir(parents=True)
+            src.write_text(read(SNIPPET_REL), encoding="utf-8")
+            r = subprocess.run(["bash", "-euc", block], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertEqual((Path(tmp) / "out.conf").read_text(encoding="utf-8"), read(SNIPPET_REL))
 
 
 if __name__ == "__main__":
