@@ -1,0 +1,24 @@
+{
+  "version": "2026-10-31",
+  "status": "PROPOSAL — ступени, рассрочка и дивиденд ждут ОК основателя (numbers.md, sources_v3.md)",
+  "currency": "EUR",
+  "share_m2": 1,
+  "steps": [
+    { "id": "queue",      "name": "Очередь",          "event": "запись и покупка через 3 месяца",       "price_eur_m2": 2950, "entry": true,  "current": true },
+    { "id": "permit",     "name": "Разрешение",       "event": "получена лицензия на строительство",     "price_eur_m2": 3100, "entry": true },
+    { "id": "foundation", "name": "Фундамент",        "event": "основание и каменный цоколь готовы",     "price_eur_m2": 3250, "entry": true },
+    { "id": "shell_roof", "name": "Коробка и кровля", "event": "стены, перекрытия, кровля с панелями",   "price_eur_m2": 3450, "entry": true },
+    { "id": "finishing",  "name": "Отделка",          "event": "фасад, инженерия, интерьеры, бассейн",   "price_eur_m2": 3650, "entry": true },
+    { "id": "handover",   "name": "Ввод",             "event": "разрешение на ввод в эксплуатацию",      "price_eur_m2": 3850, "entry": false }
+  ],
+  "installments": { "months": 12, "surcharge": 0 },
+  "dividend_eur_per_share_year": 87,
+  "area_m2": { "min": 48, "max": 100, "default": 72 },
+  "types": [
+    { "id": "one_bed",  "name": "Одна спальня", "min": 48, "max": 55,  "count": 6 },
+    { "id": "two_bed",  "name": "Две спальни",  "min": 68, "max": 78,  "count": 10 },
+    { "id": "large",    "name": "Большой дом",  "min": 85, "max": 100, "count": 4 }
+  ],
+  "house_on_handover_eur_m2": { "min": 3800, "max": 4600 },
+  "rounding": { "money": "integer_eur_half_up", "percent": "1_decimal" }
+}

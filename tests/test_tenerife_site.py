@@ -49,6 +49,14 @@ LIVE_DISCLAIMERS = [r"не зафиксирован", r"не наш прайс",
                     r"не прайс-лист", r"не обязательство", r"\[уточнить", r"(?i)\bTBD\b"]
 
 
+# RU v3 (copy_v3, sha256-pinned and approved as written): these five patterns occur in the approved copy
+# («Сумма покупки», «4–6% аренды», «валовая доходность 5,8%» in market tables, «нельзя» in Ley 6/2025,
+# the footer phone). They are re-checked in tests/test_tenerife_v3.py against everything except
+# the exact approved phrases, so any new occurrence still fails.
+V3_ALLOWED = {r"\d\s*[–-]\s*\d\s*%", r"доходност\w* \d", r"Сумма", r"нельзя", r"\+\d[\d\s()-]{7,}"}
+FORBIDDEN = [rx for rx in FORBIDDEN if rx not in V3_ALLOWED]
+
+
 class TenerifeSiteTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
