@@ -119,7 +119,8 @@ def preview_legal_moved():
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "construccion", "proceso", "faq")
+SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energia", "construccion",
+              "proceso", "faq", "simon", "mercado", "boris")  # RU v3: scripts/tenerife_site_build/build_v3.py
 SITE_URL = "https://artemisresort.com"
 
 

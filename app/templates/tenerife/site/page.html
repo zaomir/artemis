@@ -1,0 +1,53 @@
+{#- RU v3 page shell (DESIGN.md §5 order: header → hero → figures → calculator → sections → waitlist → footer).
+    Generated to static HTML by scripts/tenerife_site_build/build_v3.py (not rendered by Flask).
+    No figures here: every number comes from the copy via model.json. -#}
+{% import "_components.html" as c %}
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ canonical }}">
+<link rel="alternate" hreflang="ru" href="{{ canonical }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Artemis Tenerife">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F4F1EA">
+<link rel="icon" href="/static/favicon-32x32.png">
+<link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.srcset }}" imagesizes="{{ page.hero.img.sizes }}" fetchpriority="high">
+<link rel="stylesheet" href="/static/tenerife/site/site.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+{{ c.header(menu, nav, url) }}
+<main id="main">
+{{ c.hero(page.hero) }}
+{% if page.facts %}
+{{ c.facts(page.facts) }}
+{% endif %}
+{% if calc %}
+{{ c.calculator(calc, calc_labels) }}
+{% endif %}
+{% for s in page.sections %}
+{{ c.section(s, loop.first and not page.facts and not calc) }}
+{% endfor %}
+{{ c.cta(page.cta_section, page.button, url, calc) }}
+</main>
+{{ c.footer(footer, nav, url) }}
+<script src="/static/tenerife/site/site.js" defer></script>
+<script src="/static/tenerife/site/waitlist.js" defer></script>
+{% if calc %}
+<script src="/static/tenerife/site/calc.js" defer></script>
+{% endif %}
+</body>
+</html>

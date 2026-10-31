@@ -1,0 +1,327 @@
+{#- RU v3 components = web-designer/tenerife/design/DESIGN.md C1–C15 (markup of components.html, no inline
+    style/script: CSP). No texts or figures here except DESIGN.md §5 interface strings (Меню, Ещё, сейчас,
+    Площадь, м², Сайт); every number comes from the copy via model.json. -#}
+{% macro picture(img, hero=false) -%}
+<picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
+{%- endmacro %}
+
+{% macro navlink(n, url) -%}
+<a href="{{ n.url }}"{% if n.url == url %} aria-current="page"{% endif %}>{{ n.label }}</a>
+{%- endmacro %}
+
+{#- C1 header: 7 links + «Ещё» from 1024 px; below — «Меню» (no JS: anchor to the footer page list) -#}
+{#- C1: solid by default and without JS; site.js adds .is-over only while the hero picture is under it -#}
+{% macro header(menu, nav, url) -%}
+<header class="header" id="site-header">
+  <div class="wrap header__in">
+    <a class="brand" href="/tenerife/"{% if url == "/tenerife/" %} aria-current="page"{% endif %}>Artemis Tenerife</a>
+    <nav class="nav" aria-label="Основное">
+      <ul>
+{% for n in menu.primary %}
+        <li>{{ navlink(n, url) }}</li>
+{% endfor %}
+        <li><details><summary>Ещё</summary>
+          <ul>
+{% for n in menu.more %}
+            <li>{{ navlink(n, url) }}</li>
+{% endfor %}
+          </ul>
+        </details></li>
+      </ul>
+    </nav>
+    <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>Меню</a>
+  </div>
+  <div class="sheet" id="sheet" hidden>
+    <nav aria-label="Меню">
+      <ul>
+{% for n in nav %}
+        <li>{{ navlink(n, url) }}</li>
+{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+{%- endmacro %}
+
+{#- C2 hero: full (01–04, 06–09, 12), short (05, 10), text (11, 13: no hero picture, first frame 3:2 below) -#}
+{% macro hero(h) -%}
+{% if h.kind == "text" %}
+<section class="hero-text" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="col-text">
+      <h1 id="h1">{{ h.h1 }}</h1>
+{% for p in h.intro %}
+      <p class="hero__lead">{{ p }}</p>
+{% endfor %}
+      <figure class="frame hero-text__frame"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div></figure>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="hero{% if h.kind == 'short' %} hero--short{% endif %}" id="hero" aria-labelledby="h1">
+  <div class="hero__media">{{ picture(h.img, true) }}</div>
+  <div class="hero__body">
+    <div class="wrap grid">
+      <h1 id="h1">{{ h.h1 }}</h1>
+{% for p in h.intro %}
+      <p class="hero__lead">{{ p }}</p>
+{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{%- endmacro %}
+
+{#- C3 key figures on the basalt plinth (copy line, split into value + label) -#}
+{% macro facts(items) -%}
+<section class="plinth">
+  <ul class="wrap grid figures figures--{{ items|length }}">
+{% for it in items %}
+{% if it.value %}
+    <li><b>{{ it.value }}</b><span>{{ it.label }}</span></li>
+{% elif it.link %}
+    <li><b class="figures__text"><a href="{{ it.link }}">{{ it.text }}</a></b></li>
+{% else %}
+    <li><b class="figures__text">{{ it.text }}</b></li>
+{% endif %}
+{% endfor %}
+  </ul>
+</section>
+{%- endmacro %}
+
+{#- C6 data table; > 3 columns stack below 600 px (data-label = column head) -#}
+{% macro table(t, label_id) -%}
+<div class="table-wrap" role="region" aria-labelledby="{{ label_id }}" tabindex="0">
+  <table class="dt{% if t.stack %} dt--stack{% endif %}">
+    <thead><tr>{% for h in t.head %}{% if loop.first and not t.plain_head[0] %}<td></td>{% else %}<th scope="col"{% if t.num[loop.index0] %} class="num"{% endif %}>{{ h }}</th>{% endif %}{% endfor %}</tr></thead>
+    <tbody>
+{% for r in t.rows %}
+      <tr>{% for c in r %}{% if loop.first %}<th scope="row">{{ c }}</th>{% else %}<td{% if t.num[loop.index0] %} class="num"{% endif %} data-label="{{ t.plain_head[loop.index0] }}">{{ c }}</td>{% endif %}{% endfor %}</tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+{%- endmacro %}
+
+{#- C8 ladder: visual version of the copy's «Шесть ступеней цены» table (the table stays as the text version) -#}
+{% macro ladder(rows) -%}
+<ol class="ladder" id="ladder" aria-hidden="true">
+{% for r in rows %}
+  <li{% if loop.first %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}{% if loop.first %}<span class="ladder__now">сейчас</span>{% endif %}</span><span class="ladder__event">{{ r.event }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__grow">{{ r.grow }}</span><span class="ladder__bar"><i></i></span></li>
+{% endfor %}
+</ol>
+{%- endmacro %}
+
+{#- C15 frame -#}
+{% macro frame(img, extra="") -%}
+<figure class="frame{{ extra }}"><div class="frame__media r-{{ img.ratio }}">{{ picture(img) }}</div></figure>
+{%- endmacro %}
+
+{% macro frames(s) -%}
+{% if s.imgs|length == 1 and s.imgs[0].ratio == "21x9" %}
+  <div class="wrap grid frames">
+    {{ frame(s.imgs[0], " frame--bleed") }}
+  </div>
+{% elif s.imgs %}
+  <div class="wrap grid frames frames--{{ 'col' if s.layout == 'long' else 'pair' }}">
+{% for img in s.imgs %}
+    {{ frame(img) }}
+{% endfor %}
+  </div>
+{% endif %}
+{%- endmacro %}
+
+{% macro body_items(items, label_id) -%}
+{% for it in items %}
+{% if it.kind == "p" %}
+<p>{{ it.html }}</p>
+{% elif it.kind == "ul" %}
+<ul class="list">{% for x in it["items"] %}<li>{{ x }}</li>{% endfor %}</ul>
+{% elif it.kind == "ol" %}
+<ol class="list">{% for x in it["items"] %}<li>{{ x }}</li>{% endfor %}</ol>
+{% elif it.kind == "steps" %}
+<ol class="grid steps">
+{% for x in it["items"] %}
+  <li><span class="steps__n" aria-hidden="true">{{ loop.index }}</span><h3>{{ x.lead }}</h3><p>{{ x.rest }}</p></li>
+{% endfor %}
+</ol>
+{% elif it.kind == "ledger" %}
+<ul class="ledger">
+{% for x in it["items"] %}
+  <li><strong>{{ x.lead }}</strong><span>{{ x.rest }}</span></li>
+{% endfor %}
+</ul>
+{% elif it.kind == "table" %}
+{{ table(it, label_id) }}
+{% endif %}
+{% endfor %}
+{%- endmacro %}
+
+{% macro heading(s) -%}
+{% if s.level == 2 %}<h2 class="h2-major" id="{{ s.id }}">{{ s.title }}</h2>{% else %}<h2 id="{{ s.id }}">{{ s.title }}</h2>{% endif %}
+{%- endmacro %}
+
+{#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13) -#}
+{% macro section(s, first) -%}
+<section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}" aria-labelledby="{{ s.id }}">
+{% if s.layout == "split" %}
+  <div class="wrap grid ti{% if s.rev %} ti--rev{% endif %}">
+    <div class="ti__text">
+      {{ heading(s) }}
+{{ body_items(s.body, s.id) }}
+    </div>
+    {{ frame(s.imgs[0]) }}
+  </div>
+{% elif s.layout == "faq" %}
+  <div class="wrap grid split-head">
+    {{ heading(s) }}
+    <div class="split-head__body faq">
+{% for x in s.qa %}
+      <details{% if loop.first %} open{% endif %}><summary>{{ x.q }}</summary><p>{{ x.a }}</p></details>
+{% endfor %}
+    </div>
+  </div>
+{{ frames(s) }}
+{% elif s.layout == "long" %}
+  <div class="wrap">
+    <div class="col-text">
+      {{ heading(s) }}
+{{ body_items(s.body, s.id) }}
+    </div>
+  </div>
+{{ frames(s) }}
+{% elif s.layout == "stack" %}
+  <div class="wrap stack">
+    {{ heading(s) }}
+{% if s.ladder %}
+{{ ladder(s.ladder) }}
+{% endif %}
+{{ body_items(s.body, s.id) }}
+  </div>
+{{ frames(s) }}
+{% else %}
+  <div class="wrap grid split-head">
+    {{ heading(s) }}
+    <div class="split-head__body">
+{{ body_items(s.body, s.id) }}
+    </div>
+  </div>
+{{ frames(s) }}
+{% endif %}
+</section>
+{%- endmacro %}
+
+{#- C9 calculator (05): defaults rendered server-side; calc.js reads the #cs-model island (= model.json).
+    The inputs sit in a group, not a <form>: every <form> on the site posts to the waitlist handler. -#}
+{% macro calculator(k, res) -%}
+<section class="section calc-sec" id="calc" aria-labelledby="h1">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
+      <fieldset>
+        <legend>Площадь</legend>
+        <div class="opts">
+{% for t in k.types %}
+          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.name }}, {{ t.min }}–{{ t.max }} м²</span></label>
+{% endfor %}
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
+          <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}">
+          <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Ступень входа</legend>
+        <div class="opts">
+{% for st in k.steps %}
+          <label class="opt"><input type="radio" name="step" value="{{ st.id }}"{% if st.id == k.current %} checked{% endif %}><span>{{ st.label }}</span></label>
+{% endfor %}
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Способ оплаты</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="pay" value="now"><span>{{ res.pay_now }}</span></label>
+          <label class="opt"><input type="radio" name="pay" value="m12" checked><span>{{ res.pay_parts }}</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="calc__out" aria-live="polite">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>{{ res.sum }}</dt><dd data-k="sum">{{ k.sum }}</dd></div>
+        <div><dt>{{ res.month }}</dt><dd data-k="month">{{ k.month }}</dd></div>
+        <div><dt>{{ res.handover }}</dt><dd data-k="handover">{{ k.handover }}</dd></div>
+        <div><dt>{{ res.div }}</dt><dd data-k="div">{{ k.div }}</dd></div>
+        <div><dt>{{ res.pct }}</dt><dd data-k="pct">{{ k.pct }}</dd></div>
+        <div class="res__paths"><dt>{{ res.paths }}</dt><dd>{{ res.paths_dd }}</dd></div>
+      </dl>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{{ k.island }}</script>
+</section>
+{%- endmacro %}
+
+{#- C13 waitlist: the page's single .cta-primary. Fields as in prod. id="waitlist" stays for the no-JS redirect -#}
+{% macro cta(s, button, url, calc) -%}
+<section class="section section--sand" id="ochered"{% if s %} aria-labelledby="{{ s.id }}"{% else %} aria-label="{{ button.text }}"{% endif %}>
+  <div class="wrap grid wl{% if not s %} wl--solo{% endif %}" id="waitlist">
+{% if s %}
+    <div class="wl__text">
+      <h2 id="{{ s.id }}">{{ s.title }}</h2>
+{{ body_items(s.body, s.id) }}
+    </div>
+{% endif %}
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate>
+      <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required></div>
+      <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required></div>
+      <div class="field"><label for="wl-lang">Язык общения</label>
+        <select id="wl-lang" name="language" required><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select></div>
+      <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="page" value="{{ url }}">
+{% if calc %}
+      <input type="hidden" name="calc_m2" id="wl-calc-m2" value="{{ calc.m2 }}">
+      <input type="hidden" name="calc_step" id="wl-calc-step" value="{{ calc.current }}">
+      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m12">
+{% endif %}
+      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required><span>Согласен(на) на обработку моих данных (имя, контакт, язык) для связи по проекту Artemis Tenerife в соответствии с <a href="/tenerife/privacy/">политикой конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ button.text }}</button></div>
+      <p class="micro">{{ button.micro }}</p>
+      <div class="msg" id="wl-msg" role="status"></div>
+    </form>
+  </div>
+</section>
+{%- endmacro %}
+
+{#- C14 footer (copy 14). Phone stays text: site rule — every href starts with "/" (or the protected mailto) -#}
+{% macro footer(f, nav, url) -%}
+<footer class="footer">
+  <div class="wrap">
+    <h2 class="visually-hidden">{{ f.title }}</h2>
+    <div class="grid">
+      <div class="f-about">
+        <p><strong>{{ f.about[0] }}</strong> {{ f.about[1] }}</p>
+      </div>
+      <nav class="f-pages" id="footer-pages" aria-label="Страницы">
+        <p><strong>Страницы.</strong></p>
+        <ul>
+{% for n in nav %}
+          <li>{{ navlink(n, url) }}</li>
+{% endfor %}
+        </ul>
+      </nav>
+      <div class="f-contact">
+        <p><strong>Контакты.</strong></p>
+        <ul>
+{% for cn in f.contacts %}
+          <li>{% if "@" in cn %}<a href="mailto:{{ cn }}">{{ cn }}</a>{% else %}{{ cn }}{% endif %}</li>
+{% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="f-legal">
+      <p><strong>Компания.</strong> {{ f.company }}</p>
+      <p><strong>Документы.</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    </div>
+  </div>
+</footer>
+{%- endmacro %}
