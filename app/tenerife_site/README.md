@@ -13,6 +13,9 @@ Generated files. Do not edit by hand: edit the author's source and rebuild.
   Nav items for missing pages are dropped and the waitlist form sits on `/tenerife/#waitlist`;
   once `proceso.html` arrives the form moves to `/tenerife/proceso/#waitlist`. Add new pages to
   `TENERIFE_PATHS` in `deploy/artemis-deploy.sh`.
+- Legal pages: `/tenerife/impressum/`, `/tenerife/privacy/` (Jinja templates `app/templates/tenerife/`, indexable,
+  canonical, in sitemap; CSS `/static/tenerife/base.css`, no inline styles — CSP `style-src 'self'` on `/tenerife/`).
+  Old `/tenerife-preview/impressum/` and `/tenerife-preview/privacy/` → 301 (31.10.2026).
 - Build: links `X.html` → `/tenerife/X/`; images → local (downloaded once);
   shared footer (Impressum/privacy links, OXFORD FRAME REAL ASSETS LTD, 09153936) — no disclaimer block
   and no «Визуализация»/AI captions (founder 31.10 01:44 UTC);

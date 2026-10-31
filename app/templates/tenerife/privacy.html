@@ -1,8 +1,8 @@
 {% extends "tenerife/base.html" %}
-{% block title %}Конфиденциальность — Artemis Tenerife (превью){% endblock %}
+{% block title %}Конфиденциальность — Artemis Tenerife{% if not canonical %} (превью){% endif %}{% endblock %}
 {% block body %}
-<section class="legal" style="border-bottom:0"><div class="wrap">
-  <h1 style="font-size:30px">Политика конфиденциальности</h1>
+<section class="legal"><div class="wrap">
+  <h1>Политика конфиденциальности</h1>
   <p class="muted">Для страницы Artemis Tenerife и листа ожидания. Версия от 31.10.2026.</p>
 
   <h2>1. Кто обрабатывает данные</h2>
@@ -37,6 +37,6 @@
   <h2>7. Cookies</h2>
   <p>Страница не использует рекламные или аналитические cookies. Cloudflare может устанавливать технические cookies, необходимые для защиты сайта.</p>
 
-  <p style="margin-top:28px"><a href="/tenerife/">← К сайту проекта</a></p>
+  <p class="back"><a href="/tenerife/">← К сайту проекта</a></p>
 </div></section>
 {% endblock %}

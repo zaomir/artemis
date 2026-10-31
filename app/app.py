@@ -167,6 +167,7 @@ def sitemap_paths() -> list[str]:
     for name in ("index",) + tenerife.SITE_PAGES:
         if (tenerife.SITE_DIR / f"{name}.html").is_file():
             paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
+    paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES]
     return paths
 
 

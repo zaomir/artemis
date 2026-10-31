@@ -65,11 +65,17 @@ class TenerifePreviewTest(unittest.TestCase):
 
     # --- pages ---------------------------------------------------------
     def test_pages_200_and_noindex(self):
-        for path in ("/tenerife-preview/", "/tenerife-preview/impressum/", "/tenerife-preview/privacy/"):
+        for path in ("/tenerife-preview/",):
             r = self.client.get(path)
             self.assertEqual(r.status_code, 200, path)
             self.assertIn("noindex", r.headers.get("X-Robots-Tag", ""), path)
             self.assertIn('<meta name="robots" content="noindex', r.get_data(as_text=True), path)
+        # legal pages moved to /tenerife/<name>/ (31.10.2026): old preview URLs answer 301
+        for name in ("impressum", "privacy"):
+            r = self.client.get(f"/tenerife-preview/{name}/")
+            self.assertEqual(r.status_code, 301, name)
+            self.assertTrue(r.headers["Location"].endswith(f"/tenerife/{name}/"), r.headers["Location"])
+            self.assertIn("noindex", r.headers.get("X-Robots-Tag", ""), name)
         r = self.client.get("/tenerife-preview")
         self.assertIn(r.status_code, (301, 308))
 
@@ -83,13 +89,13 @@ class TenerifePreviewTest(unittest.TestCase):
             self.assertIsNone(re.search(pat, body, re.I), pat)
 
     def test_no_disclaimers_or_ai_captions(self):
-        for path in ("/tenerife-preview/", "/tenerife-preview/impressum/", "/tenerife-preview/privacy/"):
+        for path in ("/tenerife-preview/", "/tenerife/impressum/", "/tenerife/privacy/"):
             body = self.client.get(path).get_data(as_text=True)
             for pat in REMOVED_DISCLAIMERS:
                 self.assertIsNone(re.search(pat, body, re.I), f"{path}: {pat}")
 
     def test_impressum_has_operator_no_placeholders(self):
-        body = self.client.get("/tenerife-preview/impressum/").get_data(as_text=True)
+        body = self.client.get("/tenerife/impressum/").get_data(as_text=True)
         # founder 31.10.2026 01:11 UTC: publish OXFORD FRAME REAL ASSETS LTD / 09153936 (Companies House facts only)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales",
                      "Drovers, Preston Candover, Basingstoke, RG25 2EE", "Szabolcs Szaniszlo"):
@@ -100,7 +106,7 @@ class TenerifePreviewTest(unittest.TestCase):
             self.assertNotIn(forbidden, body)
 
     def test_privacy_names_controller_and_hosting_country(self):
-        body = self.client.get("/tenerife-preview/privacy/").get_data(as_text=True)
+        body = self.client.get("/tenerife/privacy/").get_data(as_text=True)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "Германии"):
             self.assertIn(must, body)
         self.assertNotIn("Oxford Frame Ltd", body)
@@ -109,6 +115,9 @@ class TenerifePreviewTest(unittest.TestCase):
         body = self.client.get("/tenerife-preview/").get_data(as_text=True)
         self.assertIn("OXFORD FRAME REAL ASSETS LTD", body)
         self.assertNotIn("Oxford Frame Ltd", body)
+        for name in ("impressum", "privacy"):  # links go straight to the canonical legal pages
+            self.assertIn(f'href="/tenerife/{name}/"', body)
+            self.assertNotIn(f'href="/tenerife-preview/{name}/"', body)
 
     def test_not_linked_from_crete(self):
         for lang in ("en", "ru", "es", "fr"):

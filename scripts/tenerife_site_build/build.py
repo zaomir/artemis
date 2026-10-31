@@ -193,7 +193,7 @@ for p in present:
     for m in re.findall(r'href="(/tenerife/[a-z]*/?)', h):
         tgt = m.strip("/").split("/")[-1] or "index"
         tgt = "index" if tgt == "tenerife" else tgt
-        if tgt not in present and tgt != "index":
+        if tgt not in present and tgt not in ("index", "impressum", "privacy"):  # legal pages: app/tenerife.py
             report["flags"].append(f"BROKEN {p} -> {m}")
 print(json.dumps(report, ensure_ascii=False, indent=1))
 if report["missing"] and not ALLOW_MISSING:
