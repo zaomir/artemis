@@ -5,8 +5,12 @@ Routes (Blueprint, registered in app.py):
   GET  /tenerife-preview/impressum/  legal notice (Impressum / Aviso legal)
   GET  /tenerife-preview/privacy/    privacy notice for the waitlist
   POST /api/tenerife/waitlist        name, contact, language, GDPR consent
+  GET  /tenerife/, /tenerife/<page>/ RU prod site (static pages built from
+                                     grainee-v2 docs/projects/artemis/tenerife/site-ru,
+                                     see app/tenerife_site/README.md); indexable.
+                                     /tenerife/<page>.html -> 301 clean URL.
 
-Everything under these paths is noindex (meta + X-Robots-Tag) and is not
+Preview + API paths are noindex (meta + X-Robots-Tag) and is not
 linked from the Crete site. No amounts, no payments, no yield.
 """
 from __future__ import annotations
@@ -17,6 +21,7 @@ import hmac
 import os
 import sqlite3
 import urllib.parse
+from pathlib import Path
 
 from flask import Blueprint, current_app, jsonify, make_response, redirect, render_template, request
 
@@ -99,20 +104,71 @@ def privacy():
     return _render("tenerife/privacy.html")
 
 
+# --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
+SITE_PREFIX = "/tenerife"
+SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
+SITE_PAGES = ("norte", "producto", "construccion", "proceso", "faq")
+
+
+def _site_page(name: str):
+    f = SITE_DIR / f"{name}.html"
+    if not f.is_file():
+        return make_response("Not found", 404)
+    resp = make_response(f.read_text(encoding="utf-8"))
+    resp.headers["Content-Type"] = "text/html; charset=utf-8"
+    resp.headers["Cache-Control"] = "public, max-age=300"
+    return resp
+
+
+@bp.route(SITE_PREFIX)
+def site_noslash():
+    return redirect(SITE_PREFIX + "/", code=301)
+
+
+@bp.route(SITE_PREFIX + "/")
+def site_index():
+    return _site_page("index")
+
+
+@bp.route(SITE_PREFIX + "/<page>/")
+def site_page(page: str):
+    if page not in SITE_PAGES:
+        return make_response("Not found", 404)
+    return _site_page(page)
+
+
+@bp.route(SITE_PREFIX + "/<page>")
+@bp.route(SITE_PREFIX + "/<page>.html")
+def site_legacy(page: str):
+    page = page[:-5] if page.endswith(".html") else page
+    if page == "index":
+        return redirect(SITE_PREFIX + "/", code=301)
+    if page in SITE_PAGES:
+        return redirect(f"{SITE_PREFIX}/{page}/", code=301)
+    return make_response("Not found", 404)
+
+
+def _safe_back(page: str) -> str:
+    """Where a no-JS form submit returns to: only our own Tenerife pages."""
+    if page.startswith(SITE_PREFIX + "/") and "//" not in page and "\\" not in page and len(page) < 60:
+        return page.split("?")[0].split("#")[0]
+    return PREVIEW_PREFIX + "/"
+
+
 def _payload() -> tuple[dict, bool]:
     if request.is_json:
         return (request.get_json(silent=True) or {}), True
     return request.form.to_dict(), False
 
 
-def _reply(is_json: bool, ok: bool, status: int = 200, error: str = ""):
+def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: str = ""):
     if is_json:
         body = {"ok": ok}
         if error:
             body["error"] = error
         return jsonify(body), status
     if ok:
-        return redirect(PREVIEW_PREFIX + "/?ok=1#waitlist", code=303)
+        return redirect((back or PREVIEW_PREFIX + "/") + "?ok=1#waitlist", code=303)
     return make_response(error or "Ошибка", status)
 
 
@@ -161,7 +217,7 @@ def waitlist():
         conn.close()
 
     notify_lead("Tenerife waitlist", name, contact, language, page)
-    return _reply(is_json, True)
+    return _reply(is_json, True, back=_safe_back(page))
 
 
 def waitlist_rows(conn: sqlite3.Connection):

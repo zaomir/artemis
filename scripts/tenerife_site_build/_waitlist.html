@@ -1,0 +1,43 @@
+<section id="waitlist" class="waitlist">
+  <h2>Лист ожидания</h2>
+  <p>Бесплатно и без обязательств. Мы свяжемся, когда появится информация об участке и условиях.</p>
+  <form class="wl" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate>
+    <label for="wl-name">Имя</label>
+    <input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required>
+    <label for="wl-contact">Контакт — email, телефон или Telegram</label>
+    <input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required>
+    <label for="wl-lang">Язык общения</label>
+    <select id="wl-lang" name="language" required>
+      <option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option>
+    </select>
+    <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="page" value="__PAGE__">
+    <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required>
+      <span>Согласен(на) на обработку моих данных (имя, контакт, язык) для связи по проекту Artemis Tenerife в соответствии с <a href="/tenerife-preview/privacy/">политикой конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+    <button class="cta" type="submit" id="wl-submit">Записаться бесплатно</button>
+    <div class="msg" id="wl-msg" role="status"></div>
+  </form>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('wl-form'); if(!f) return;
+  var m=document.getElementById('wl-msg'), b=document.getElementById('wl-submit');
+  function show(cls,t){m.className='msg '+cls;m.textContent=t;}
+  if(/[?&]ok=1/.test(location.search)) show('ok','Спасибо! Вы в листе ожидания.');
+  if(!window.fetch) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var el=f.elements;
+    var d={name:el['name'].value.trim(),contact:el['contact'].value.trim(),language:el['language'].value,
+           consent:el['consent'].checked,website:el['website'].value,page:el['page'].value};
+    if(!d.name||d.contact.length<5){show('err','Укажите имя и контакт (email, телефон или Telegram).');return;}
+    if(!d.consent){show('err','Нужно согласие на обработку данных.');return;}
+    b.disabled=true;
+    fetch('/api/tenerife/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json();})
+      .then(function(r){ if(r.ok){show('ok','Спасибо! Вы в листе ожидания. Мы свяжемся с вами.');f.reset();} else {show('err',r.error||'Ошибка. Попробуйте ещё раз.');} })
+      .catch(function(){show('err','Ошибка сети. Попробуйте ещё раз.');})
+      .then(function(){b.disabled=false;});
+  });
+})();
+</script>

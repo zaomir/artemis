@@ -1,0 +1,16 @@
+/* --- added for /tenerife/ prod: waitlist form, disclaimers, footer --- */
+.waitlist { margin-top: 36px; }
+form.wl label { font-size: 15px; color: var(--ink-soft); }
+form.wl .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+form.wl .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+form.wl .check input { width: auto; margin-top: 4px; }
+form.wl button.cta { justify-self: start; }
+.msg { font-size: 15px; min-height: 1em; }
+.msg.ok { color: var(--bronze); }
+.msg.err { color: #9b2c2c; }
+footer .legal a { color: var(--ink); text-decoration: underline; }
+.links { -webkit-overflow-scrolling: touch; }
+@media (max-width: 799px) {
+  .nav { flex-wrap: wrap; }
+  .links { gap: 12px; font-size: 14px; }
+}

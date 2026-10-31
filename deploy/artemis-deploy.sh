@@ -25,6 +25,10 @@ log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
 
 PATHS=(/en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/privacy/
        /en/terms/ /ru/terms/ /es/terms/ /fr/terms/)
+# Tenerife RU prod (/tenerife/): must be 200 locally and via Cloudflare.
+# Pages the author has not delivered yet (producto, construccion, proceso, faq) are
+# added here when they ship (see app/tenerife_site/README.md).
+TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /static/tenerife/site/style.css)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
 
 smoke() {
@@ -34,7 +38,7 @@ smoke() {
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 "${LOCAL}/en/" || true)
     [[ "$code" == 200 ]] && break; sleep 2
   done
-  for p in "${PATHS[@]}"; do
+  for p in "${PATHS[@]}" "${TENERIFE_PATHS[@]}"; do
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
     [[ "$code" == 200 ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "${PUBLIC}${p}" || true)

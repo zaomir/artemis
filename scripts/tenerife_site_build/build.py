@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""Build Artemis Tenerife RU prod pages (/tenerife/) from the author's static
+source (grainee-v2 docs/projects/artemis/tenerife/site-ru/) into zaomir/artemis.
+
+usage: python3 scripts/tenerife_site_build/build.py SRC_DIR . [--allow-missing]
+  SRC_DIR = checkout of grainee-v2 docs/projects/artemis/tenerife/site-ru
+"""
+import hashlib, json, os, re, shutil, sys, urllib.request
+from pathlib import Path
+
+PAGES = ["index", "norte", "producto", "construccion", "proceso", "faq"]
+SRC, REPO = Path(sys.argv[1]), Path(sys.argv[2])
+ALLOW_MISSING = "--allow-missing" in sys.argv
+OUT_PAGES = REPO / "app/tenerife_site"
+OUT_STATIC = REPO / "app/static/tenerife/site"
+FONTS = Path(__file__).resolve().parent  # fonts.css lives here; woff2 files are already in app/static/tenerife/site/fonts
+URL = lambda p: "/tenerife/" if p == "index" else f"/tenerife/{p}/"
+report = {"fixes": [], "images": [], "missing": [], "flags": []}
+
+present = [p for p in PAGES if (SRC / f"{p}.html").exists()]
+report["missing"] = [p for p in PAGES if p not in present]
+
+# --- text fixes: internal notes / editorial instructions leaking to the public page
+FIXES = [
+    # founder 31.10 01:44 UTC: no disclaimers, no «Визуализация»/AI captions (same cleaning as the author's index.html @eb77aa1)
+    (r"Визуализация, не фото построенного\. ", "", "убрано «Визуализация, не фото построенного.» из подписей (решение 01:44, как в очищенном index)"),
+    (r'\s*<p class="note">[^<]*</p>', "", "убран note-блок с дисклеймерами (решение 01:44, как в очищенном index)"),
+    (r"\s*Без выдуманных биографий\. Фото Simon — из папок проекта, когда будут доступны\. Лица не генерируем\.", "",
+     "убрана внутренняя пометка «Без выдуманных биографий… Лица не генерируем»"),
+    (r"<p>\s*</p>", "", None),
+    (r" Не пишем адрес, высоту и минуты до аэропорта как факт\.", "",
+     "убрана внутренняя пометка «Не пишем адрес, высоту и минуты до аэропорта как факт»"),
+    (r" Мы не пишем, сколько минут до аэропорта, и не называем высоту\.", "",
+     "убрана внутренняя пометка «Мы не пишем, сколько минут до аэропорта…»"),
+    (r" Писать «скидка раннего входа» нельзя: 2 900–3 200 €/м² на старте — уровень соседних офферов, не дисконт\.", "",
+     "убрана редакторская инструкция «Писать «скидка раннего входа» нельзя: 2 900–3 200 €/м² на старте…»"),
+    (r" Цифр загрузки и комиссии оператора в наших файлах нет\.", "",
+     "убрана внутренняя фраза «…в наших файлах нет»"),
+    (r"\s*<p>Отдельной аналитики аренды с доходностью на сайте нет\.</p>", "",
+     "убрана мета-фраза «Отдельной аналитики аренды с доходностью на сайте нет»"),
+    (r"ориентиры брифа и чужих офферов", "предварительные ориентиры и данные чужих предложений",
+     "«ориентиры брифа и чужих офферов» → «предварительные ориентиры и данные чужих предложений»"),
+    (r"вилка брифа", "предварительная вилка", "«вилка брифа» → «предварительная вилка»"),
+]
+
+def links(html):
+    def rep(m):
+        page, frag = m.group(2), m.group(3) or ""
+        if page not in PAGES:
+            report["flags"].append(f"ссылка на неизвестную страницу {page}.html")
+            return m.group(0)
+        return f'{m.group(1)}"{URL(page)}{frag}"'
+    return re.sub(r'(href=)"(?:\./)?([a-z_-]+)\.html(#[^"]*)?"', rep, html)
+
+def img_local(url_or_rel):
+    if url_or_rel.startswith("https://cdn.leonardo.ai/"):
+        base = url_or_rel.rsplit("/", 1)[1]
+        m = re.search(r"photorealistic_(.+?)_\d+\.jpg$", base)
+        slug = (m.group(1) if m else base).replace("_", "-").lower() + "-" + hashlib.sha1(url_or_rel.encode()).hexdigest()[:6] + ".jpg"
+        dst = OUT_STATIC / "img" / slug
+        if not dst.exists():
+            try:
+                req = urllib.request.Request(url_or_rel, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    code, data = r.status, r.read()
+                if not data[:3] == b"\xff\xd8\xff":
+                    raise ValueError("not a jpeg")
+                dst.write_bytes(data)
+                report["images"].append({"src": url_or_rel, "local": slug, "code": code, "bytes": len(data)})
+            except Exception as e:  # noqa
+                code = getattr(e, "code", str(e))
+                report["images"].append({"src": url_or_rel, "local": None, "code": code})
+                return None
+        return f"/static/tenerife/site/img/{slug}"
+    if re.match(r"^(https?:)?//", url_or_rel):
+        report["flags"].append(f"внешняя картинка не Leonardo: {url_or_rel}")
+        return None
+    srcf = (SRC / url_or_rel).resolve()
+    if not srcf.exists():
+        report["flags"].append(f"нет файла картинки {url_or_rel}")
+        return None
+    rel = srcf.relative_to(SRC.resolve()).as_posix()
+    dst = OUT_STATIC / rel
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(srcf, dst)
+    report["images"].append({"src": url_or_rel, "local": rel, "code": "repo"})
+    return f"/static/tenerife/site/{rel}"
+
+def images(html):
+    def rep(m):
+        new = img_local(m.group(2))
+        if new is None:
+            return m.group(0)
+        return f'{m.group(1)}"{new}"'
+    html = re.sub(r'(<img[^>]*?\ssrc=)"([^"]+)"', rep, html)
+    return html
+
+FOOTER = Path(__file__).with_name("_footer.html").read_text(encoding="utf-8")
+FORM = Path(__file__).with_name("_waitlist.html").read_text(encoding="utf-8")
+
+OUT_PAGES.mkdir(parents=True, exist_ok=True); (OUT_STATIC / "img").mkdir(parents=True, exist_ok=True)
+(OUT_STATIC / "fonts").mkdir(exist_ok=True)
+for w in FONTS.glob("*.woff2"):  # optional: drop new woff2 next to this script
+    shutil.copy2(w, OUT_STATIC / "fonts" / w.name)
+
+css = (SRC / "style.css").read_text(encoding="utf-8")
+extra = Path(__file__).with_name("extra.css").read_text(encoding="utf-8")
+(OUT_STATIC / "style.css").write_text((FONTS / "fonts.css").read_text() + "\n" + css + "\n" + extra, encoding="utf-8")
+
+for p in present:
+    h = (SRC / f"{p}.html").read_text(encoding="utf-8")
+    if re.search(r"\{\{|\{%", h):
+        report["flags"].append(f"{p}: jinja-like syntax")
+    for rx, sub, desc in FIXES:
+        h2 = re.sub(rx, sub, h)
+        if h2 != h and desc:
+            report["fixes"].append(f"{p}.html: {desc}")
+        h = h2
+    # fonts: self-hosted, no Google requests
+    if "fonts.googleapis" in h:
+        report["fixes"].append(f"{p}.html: Google Fonts → свои шрифты (без запросов к Google)")
+    h = re.sub(r'\s*<link[^>]*fonts\.(googleapis|gstatic)\.com[^>]*>', "", h)
+    h = re.sub(r'<link rel="stylesheet" href="(?:\./)?style\.css">', '<link rel="stylesheet" href="/static/tenerife/site/style.css">', h)
+    h = h.replace("</title>", '</title>\n<link rel="canonical" href="https://artemisresort.com' + URL(p) + '">\n<link rel="icon" href="/favicon.ico">', 1)
+    h = links(h)
+    h = images(h)
+    # existing external forms → our handler
+    if re.search(r"<form", h):
+        if re.search(r'action="(mailto:|https?://)', h):
+            report["fixes"].append(f"{p}.html: внешний action формы → наш обработчик")
+        h = re.sub(r"<form.*?</form>", "{{WAITLIST_FORM}}", h, flags=re.S)
+        report["fixes"].append(f"{p}.html: форма заменена на нашу (waitlist /api/tenerife/waitlist)")
+    FORM_HOST = "proceso" if "proceso" in present else "index"
+    if p == FORM_HOST and "{{WAITLIST_FORM}}" not in h:
+        h = h.replace("</main>", "{{WAITLIST_FORM}}\n</main>", 1)
+        report["fixes"].append(f"{p}.html: добавлена форма листа ожидания")
+    h = h.replace("{{WAITLIST_FORM}}", FORM.replace("__PAGE__", URL(p)))
+    # waitlist CTAs point to the form anchor
+    form_url = URL(FORM_HOST) + "#waitlist"
+    h = h.replace('href="/tenerife/proceso/"', f'href="{form_url}"') if "proceso" in present else re.sub(
+        r'(<a class="cta" href=)"/tenerife/proceso/"', rf'\1"{form_url}"', h)
+    # pages not shipped yet: drop their nav items (no broken links)
+    for miss in report["missing"]:
+        h2 = re.sub(r'\n\s*<a href="%s">[^<]*</a>' % re.escape(URL(miss)), "", h)
+        if h2 != h:
+            report["fixes"].append(f"{p}.html: пункт меню на ещё не готовую страницу {miss} убран (вернётся при пересборке)")
+        h = h2
+    if re.search(r"<footer>.*?</footer>", h, flags=re.S):
+        old = re.search(r"<footer>.*?</footer>", h, flags=re.S).group(0)
+        if "не для деплоя" in old:
+            report["fixes"].append(f"{p}.html: футер «… не для деплоя» заменён на футер со ссылками на Impressum и privacy и реквизитами оператора")
+        h = h.replace(old, FOOTER, 1)
+    else:
+        h = h.replace("</body>", FOOTER + "\n</body>", 1)
+    (OUT_PAGES / f"{p}.html").write_text(h, encoding="utf-8")
+
+# links to pages not present must not ship
+for p in present:
+    h = (OUT_PAGES / f"{p}.html").read_text(encoding="utf-8")
+    for m in re.findall(r'href="(/tenerife/[a-z]*/?)', h):
+        tgt = m.strip("/").split("/")[-1] or "index"
+        tgt = "index" if tgt == "tenerife" else tgt
+        if tgt not in present and tgt != "index":
+            report["flags"].append(f"BROKEN {p} -> {m}")
+print(json.dumps(report, ensure_ascii=False, indent=1))
+if report["missing"] and not ALLOW_MISSING:
+    sys.exit(3)

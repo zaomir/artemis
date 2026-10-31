@@ -1,0 +1,195 @@
+/* Self-hosted Google Fonts (OFL): Newsreader, Source Sans 3. No requests to Google. */
+/* latin-ext */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/newsreader-latin-ext-a6a2a4bf.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/newsreader-latin-f24c3215.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/newsreader-latin-ext-a6a2a4bf.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/newsreader-latin-f24c3215.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/sourcesans3-cyrillic-48747d67.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/sourcesans3-latin-ext-023468e5.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/sourcesans3-latin-48884e38.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/sourcesans3-cyrillic-48747d67.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/sourcesans3-latin-ext-023468e5.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/sourcesans3-latin-48884e38.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --stone: #F4F1EA;
+  --stone-2: #E8E2D6;
+  --ink: #1C1A17;
+  --ink-soft: #4A463F;
+  --bronze: #8A6A45;
+  --basalt: #3A3A38;
+  --line: #D6CFC3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+a { color: var(--bronze); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(244,241,234,.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 14px 0;
+}
+.brand {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 22px; letter-spacing: .02em; color: var(--ink);
+}
+.links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 15px; }
+.links a { color: var(--ink-soft); }
+.links a[aria-current="page"] { color: var(--ink); border-bottom: 1px solid var(--bronze); }
+.hero {
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+  padding: 36px 0 10px;
+}
+h1, h2, h3 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 500; letter-spacing: -.01em; margin: 0 0 12px;
+}
+h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.05; }
+h2 { font-size: clamp(26px, 4vw, 36px); margin-top: 36px; }
+h3 { font-size: 22px; }
+.lead { font-size: 20px; color: var(--ink-soft); max-width: 640px; }
+.cta {
+  display: inline-block; margin: 18px 0;
+  background: var(--basalt); color: var(--stone);
+  padding: 12px 18px; border: 0; font-size: 16px;
+}
+.cta:hover { background: var(--bronze); text-decoration: none; color: #fff; }
+figure { margin: 0 0 22px; }
+img { width: 100%; height: auto; display: block; }
+figcaption {
+  font-size: 13px; color: var(--ink-soft);
+  border-top: 1px solid var(--line); padding-top: 6px; margin-top: 6px;
+}
+.grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.card {
+  background: #fff; border: 1px solid var(--line); padding: 16px;
+}
+.note {
+  font-size: 14px; color: var(--ink-soft);
+  border-top: 1px solid var(--line); margin-top: 40px; padding: 16px 0 40px;
+}
+footer {
+  border-top: 1px solid var(--line); padding: 18px 0 40px;
+  font-size: 14px; color: var(--ink-soft);
+}
+form { display: grid; gap: 10px; max-width: 420px; margin: 12px 0 20px; }
+input, select, button {
+  font: inherit; padding: 10px 12px; border: 1px solid var(--line); background: #fff;
+}
+button.cta { cursor: pointer; }
+.thanks { display: none; color: var(--bronze); }
+@media (min-width: 800px) {
+  .hero { grid-template-columns: 1fr 1.2fr; align-items: end; }
+  .grid.two { grid-template-columns: 1fr 1fr; }
+  .grid.three { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* --- added for /tenerife/ prod: waitlist form, disclaimers, footer --- */
+.waitlist { margin-top: 36px; }
+form.wl label { font-size: 15px; color: var(--ink-soft); }
+form.wl .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+form.wl .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+form.wl .check input { width: auto; margin-top: 4px; }
+form.wl button.cta { justify-self: start; }
+.msg { font-size: 15px; min-height: 1em; }
+.msg.ok { color: var(--bronze); }
+.msg.err { color: #9b2c2c; }
+footer .legal a { color: var(--ink); text-decoration: underline; }
+.links { -webkit-overflow-scrolling: touch; }
+@media (max-width: 799px) {
+  .nav { flex-wrap: wrap; }
+  .links { gap: 12px; font-size: 14px; }
+}
