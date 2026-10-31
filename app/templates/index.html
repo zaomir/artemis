@@ -19,7 +19,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://artemisresort.com/{{ lang }}/">
 <meta property="og:locale" content="{{ og_locale }}">
-<meta property="og:image" content="https://artemisresort.com/static/img/hero.jpg">
+{% if og_image %}<meta property="og:image" content="https://artemisresort.com/static/img/{{ og_image.file }}">
+<meta property="og:image:width" content="{{ og_image.width }}">
+<meta property="og:image:height" content="{{ og_image.height }}">
+<meta property="og:image:type" content="{{ og_image.type }}">
+{% else %}<meta property="og:image" content="https://artemisresort.com/static/img/hero.jpg">
+{% endif %}
 <title>{{ t.head_title }}</title>
 <script type="application/ld+json">
 {
@@ -53,6 +58,7 @@
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+picture{display:block}img{height:auto}
 :root{--gold:#C4A35A;--gold2:#e8c97a;--dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;--text:#e8e0d0;--muted:#8a9bb0;--white:#fff}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{background:var(--dark);color:var(--text);font-family:Georgia,serif;line-height:1.6}
@@ -70,7 +76,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96
 .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
 .btn-outline:hover{background:var(--gold);color:var(--dark)}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('/static/img/hero.jpg') center/cover;filter:brightness(.52) saturate(1.05)}
+.hero-bg{position:absolute;inset:0;filter:brightness(.52) saturate(1.05)}
+.hero-bg picture,.hero-bg img{width:100%;height:100%}.hero-bg img{display:block;object-fit:cover;object-position:center}
 .hero-content{position:relative;text-align:center;padding:40px 20px;max-width:900px}
 .hero-badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:.72rem;letter-spacing:3px;padding:5px 18px;margin-bottom:28px;font-family:Arial,sans-serif}
 .hero h1{font-size:clamp(2.2rem,6vw,4.2rem);color:var(--white);font-weight:400;line-height:1.1;margin-bottom:14px}
@@ -129,10 +136,11 @@ nav .btn{white-space:nowrap}
 @media(max-width:1279px){.logo-rest{display:none}}
 @media(max-width:1099px){.nav-links{display:none}}
 @media(min-width:601px) and (max-width:1099px){nav .btn .cta-long{display:inline}nav .btn .cta-short{display:none}}
+.hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}
 .form-ok{display:none;padding:20px 0;font-family:Arial,sans-serif;color:var(--text)}
 footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
 .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:Arial,sans-serif;font-size:.8rem}
-.footer-links a{color:var(--muted);text-decoration:none}
+.footer-links a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
 .footer-links a:hover{color:var(--gold)}
 @media(max-width:768px){
   nav{padding:0 16px}.nav-links{display:none}
@@ -161,6 +169,15 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 </style>
 </head>
 <body>
+{%- macro pic(name, alt, sizes, style="", hero=False) -%}
+{%- set e = images.get(name) -%}
+{%- if e -%}
+{%- set ws = e.widths -%}{%- set fb = (ws | select("le", 1600) | list | last) or ws[0] -%}
+<picture><source type="image/avif" srcset="{% for w in ws %}/static/img/opt/{{ name }}-{{ w }}.avif {{ w }}w{{ ", " if not loop.last }}{% endfor %}" sizes="{{ sizes }}"><source type="image/webp" srcset="{% for w in ws %}/static/img/opt/{{ name }}-{{ w }}.webp {{ w }}w{{ ", " if not loop.last }}{% endfor %}" sizes="{{ sizes }}"><img src="/static/img/opt/{{ name }}-{{ fb }}.jpg" srcset="{% for w in ws %}/static/img/opt/{{ name }}-{{ w }}.jpg {{ w }}w{{ ", " if not loop.last }}{% endfor %}" sizes="{{ sizes }}" width="{{ e.width }}" height="{{ e.height }}" alt="{{ alt }}"{% if hero %} fetchpriority="high" decoding="async"{% else %} loading="lazy" decoding="async"{% endif %}{% if style %} style="{{ style }}"{% endif %}></picture>
+{%- else -%}
+<img src="/static/img/{{ name }}.jpg" alt="{{ alt }}"{% if style %} style="{{ style }}"{% endif %}>
+{%- endif -%}
+{%- endmacro %}
 
 <nav>
   <a class="logo" href="/{{ lang }}/">ARTEMIS<span class="logo-rest"> RESORT&nbsp;&amp;&nbsp;SPA</span></a>
@@ -186,7 +203,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-bg" role="img" aria-label="{{ t.alt_hero }}"></div>
+  <div class="hero-bg" role="img" aria-label="{{ t.alt_hero }}">{{ pic("hero", "", "(max-aspect-ratio: 11/6) 184vh, 100vw", hero=True) }}</div>
   <div class="hero-content">
     <div class="hero-badge">{{ t.hero_eyebrow }}</div>
     <h1>ARTEMIS<br><span>RESORT &amp; SPA</span></h1>
@@ -221,9 +238,9 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <p class="lead">{{ t.location_intro }}</p>
     <div class="loc-grid">
       <div>
-        <img src="/static/img/siteplan.jpg" alt="{{ t.alt_siteplan }}">
+        {{ pic("siteplan", t.alt_siteplan, "(max-width: 768px) calc(100vw - 40px), (max-width: 1180px) calc(50vw - 60px), 530px") }}
         <p class="cgi">{{ t.location_plan_caption }}</p>
-        <img src="/static/img/map_island.jpg" alt="{{ t.alt_map }}" style="margin-top:12px">
+        {{ pic("map_island", t.alt_map, "(max-width: 768px) calc(100vw - 40px), (max-width: 1180px) calc(50vw - 60px), 530px", style="margin-top:12px") }}
         <p class="cgi">{{ t.location_map_caption }}</p>
       </div>
       <div>
@@ -252,25 +269,25 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <p class="lead">{{ t.accommodation_intro }}</p>
     <div class="rooms-grid">
       <div class="room-card">
-        <img src="/static/img/double_room.jpg" alt="{{ t.alt_room }}">
+        {{ pic("double_room", t.alt_room, "(max-width: 600px) calc(100vw - 40px), (max-width: 1180px) calc(34vw - 30px), 260px") }}
         <div class="room-info"><div class="room-title">{{ t.room_double }}</div><div class="room-desc">{{ t.room_double_d }}</div></div>
       </div>
       <div class="room-card">
-        <img src="/static/img/attic_room.jpg" alt="{{ t.alt_room }}">
+        {{ pic("attic_room", t.alt_room, "(max-width: 600px) calc(100vw - 40px), (max-width: 1180px) calc(34vw - 30px), 260px") }}
         <div class="room-info"><div class="room-title">{{ t.room_attic }}</div><div class="room-desc">{{ t.room_attic_d }}</div></div>
       </div>
       <div class="room-card">
-        <img src="/static/img/suite.jpg" alt="{{ t.alt_room }}">
+        {{ pic("suite", t.alt_room, "(max-width: 600px) calc(100vw - 40px), (max-width: 1180px) calc(34vw - 30px), 260px") }}
         <div class="room-info"><div class="room-title">{{ t.room_suite }}</div><div class="room-desc">{{ t.room_suite_d }}</div></div>
       </div>
       <div class="room-card">
-        <img src="/static/img/villa_ext.jpg" alt="{{ t.alt_villa }}">
+        {{ pic("villa_ext", t.alt_villa, "(max-width: 600px) calc(100vw - 40px), (max-width: 1180px) calc(34vw - 30px), 260px") }}
         <div class="room-info"><div class="room-title">{{ t.room_villa }}</div><div class="room-desc">{{ t.room_villa_d }}</div></div>
       </div>
     </div>
     <p class="cgi">{{ t.cgi_note }}</p>
     <p class="sec-label" style="margin-top:36px">{{ t.amen_label }}</p>
-    <img src="/static/img/spa.jpg" alt="{{ t.alt_spa }}" style="width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:3px;margin:12px 0 8px">
+    {{ pic("spa", t.alt_spa, "(max-width: 768px) calc(100vw - 40px), (max-width: 1180px) calc(100vw - 80px), 1100px", style="width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:3px;margin:12px 0 8px") }}
     <p class="cgi">{{ t.cgi_note }}</p>
     <div class="amen-grid">
       <div class="amen">{{ t.amen_pools }}</div>
@@ -283,7 +300,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     </div>
     <p class="sec-label" style="margin-top:40px">{{ t.fb_label }}</p>
     <h3 class="sec-title" style="font-size:1.6rem">{{ t.fb_title }}</h3>
-    <img src="/static/img/restaurant_main.jpg" alt="{{ t.alt_restaurant }}" style="width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:3px;margin:8px 0">
+    {{ pic("restaurant_main", t.alt_restaurant, "(max-width: 768px) calc(100vw - 40px), (max-width: 1180px) calc(100vw - 80px), 1100px", style="width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:3px;margin:8px 0") }}
     <p class="cgi">{{ t.cgi_note }}</p>
     <p class="lead">{{ t.fb_body }}</p>
   </div>
@@ -375,6 +392,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" inputmode="decimal" maxlength="64" aria-describedby="form-err" placeholder="{{ t.ph_amount }}"></div>
     <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" placeholder="{{ t.ph_message }}"></textarea></div>
     <label class="consent"><input id="f-consent" type="checkbox"> <span>{{ t.form_consent }}</span></label>
+    <div class="hp" aria-hidden="true"><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
     <button class="btn" type="button" onclick="submitEnquiry()">{{ t.form_submit }}</button>
     <p class="form-err" id="form-err" role="alert" aria-live="assertive"></p>
   </div>
@@ -389,7 +407,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
     <a href="/{{ lang }}/privacy/">{{ t.footer_legal_privacy }}</a>
     <a href="/{{ lang }}/terms/">{{ t.footer_legal_terms }}</a>
   </div>
-  <p style="font-family:Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-top:16px;opacity:.55">{{ version }}</p>
+  <p style="font-family:Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-top:16px">{{ version }}</p>
 </footer>
 
 <script>
@@ -399,7 +417,8 @@ const I18N = {
   email: {{ t.form_err_email | tojson }},
   amount: {{ t.form_err_amount | tojson }},
   generic: {{ t.form_err_generic | tojson }},
-  network: {{ t.form_err_network | tojson }}
+  network: {{ t.form_err_network | tojson }},
+  rate_limited: {{ t.form_err_rate_limited | tojson }}
 };
 // same rules as the server (app.py: EMAIL_PATTERN / amount_ok); the e-mail pattern comes from app.py
 const EMAIL_RE = new RegExp({{ email_pattern | tojson }});
@@ -446,8 +465,11 @@ async function submitEnquiry(){
     const r = await fetch('/api/enquiry', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, lang: '{{ lang }}', page: location.pathname})
+      body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, website: document.getElementById('f-website').value, lang: '{{ lang }}', page: location.pathname})
     });
+    // 429 = too many enquiries from this connection: the app's limiter (JSON code "rate_limited")
+    // or nginx limit_req (HTML body), so the status is checked before the body is parsed as JSON
+    if(r.status === 429){ return fieldError(null, 'rate_limited'); }
     const d = await r.json();
     if(d.ok){
       document.getElementById('enquiry-form-wrap').style.display = 'none';

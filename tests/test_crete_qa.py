@@ -18,6 +18,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 LANGS = ("en", "ru", "es", "fr")
 T = {l: json.loads((ROOT / "app" / "translations" / f"{l}.json").read_text(encoding="utf-8")) for l in LANGS}
 ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID")
@@ -38,6 +39,10 @@ SAME_AS_EN = {("fr", "form_message"), ("fr", "form_org")}
 
 class Base(unittest.TestCase):
     def setUp(self):
+        # many valid leads from one test client: the per-client limit (QA P09) is tested in test_enquiry_antispam
+        _rl = mock.patch("ratelimit.ENQUIRY_LIMITS", ())
+        _rl.start()
+        self.addCleanup(_rl.stop)
         self.saved = {k: os.environ.pop(k, None) for k in ENV_KEYS}
         self.tmp = tempfile.TemporaryDirectory()
         import app as artemis_app

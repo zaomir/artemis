@@ -21,6 +21,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 
 from email_off import ON, OFF, mailto_form_actions, mailto_targets, unprotected, wrap  # noqa: E402
@@ -41,6 +42,10 @@ M25 = '<form action="&#109;ailto:evil@example.com"><button>x</button></form>'
 
 class Base(unittest.TestCase):
     def setUp(self):
+        # many valid leads from one test client: the per-client limit (QA P09) is tested in test_enquiry_antispam
+        _rl = mock.patch("ratelimit.ENQUIRY_LIMITS", ())
+        _rl.start()
+        self.addCleanup(_rl.stop)
         self.saved = {k: os.environ.pop(k, None) for k in ENV_KEYS}
         self.tmp = tempfile.TemporaryDirectory()
         import app as artemis_app

@@ -11,6 +11,7 @@ Tenerife waitlist notifications carry no amount.
 """
 from __future__ import annotations
 
+import json
 import logging
 import os
 import threading
@@ -43,11 +44,22 @@ def _send(token: str, chat_id: str, text: str) -> None:
         data = urllib.parse.urlencode(
             {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
         ).encode()
-        urllib.request.urlopen(
+        raw = urllib.request.urlopen(
             f"https://api.telegram.org/bot{token}/sendMessage", data=data, timeout=8
         ).read()
     except Exception as e:  # never log the token / URL
         log.warning("artemis lead notification failed: %s", type(e).__name__)
+        return
+    # QA P10: a successful send is logged with the Telegram message_id only — never the lead text.
+    try:
+        reply = json.loads(raw)
+        message_id = int(reply["result"]["message_id"]) if reply.get("ok") is True else None
+    except Exception:
+        message_id = None
+    if message_id is None:
+        log.warning("artemis lead notification: unexpected Telegram reply")
+    else:
+        log.info("artemis lead notification sent: message_id=%d", message_id)
 
 
 def notify_lead(kind: str, name: str, contact: str, lang: str, page: str,

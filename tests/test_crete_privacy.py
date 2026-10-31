@@ -3,12 +3,14 @@ processor of enquiry copies (relay to info@artemisresort.com), in the language o
 the original privacy text is unchanged."""
 import importlib
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
+os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
 ORIGINAL = ("We process enquiry contact details (name, work email, organisation, role, enquiry type, planned amount"
             " and message) to review and respond. Contact INFO@ARTEMISRESORT.COM for privacy requests.")
