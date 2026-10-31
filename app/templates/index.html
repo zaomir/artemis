@@ -54,18 +54,18 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--gold:#C4A35A;--gold2:#e8c97a;--dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;--text:#e8e0d0;--muted:#8a9bb0;--white:#fff}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{background:var(--dark);color:var(--text);font-family:Georgia,serif;line-height:1.6}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,163,90,.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,163,90,.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .logo{font-size:1.1rem;font-weight:bold;color:var(--gold);letter-spacing:2px;text-decoration:none}
-.nav-links{display:flex;gap:18px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:1px;font-family:Arial,sans-serif}
+.nav-links{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:1px;font-family:Arial,sans-serif;white-space:nowrap}
 .nav-links a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:18px}
 .lang-switch{display:flex;gap:10px;font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:1px}
 .lang-switch a{color:var(--muted);text-decoration:none}
 .lang-switch a.on{color:var(--white);font-weight:bold}
-.btn{display:inline-block;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;text-decoration:none;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;text-decoration:none;text-align:center}
 .btn:hover{background:var(--gold2)}
 .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
 .btn-outline:hover{background:var(--gold);color:var(--dark)}
@@ -105,6 +105,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96
 .status-table th,.status-table td{border:1px solid rgba(196,163,90,.2);padding:12px 14px;text-align:left}
 .status-table th{color:var(--gold);font-size:.72rem;letter-spacing:1px;text-transform:uppercase}
 .status-table td{color:var(--text)}
+.table-scroll{max-width:100%;overflow-x:auto}
 .gov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .gov-card{background:var(--dark);border:1px solid rgba(196,163,90,.15);padding:18px}
 .form-wrap{max-width:640px}
@@ -117,6 +118,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96
 .consent input{margin-top:3px}
 .warn{font-family:Arial,sans-serif;font-size:.82rem;color:var(--gold);border-left:2px solid var(--gold);padding:10px 14px;margin-bottom:20px;background:rgba(196,163,90,.06)}
 .form-err{color:#e07070;font-family:Arial,sans-serif;font-size:.78rem;margin-top:8px;display:none}
+#enquiry-form-wrap .btn{min-height:48px;padding:14px 28px}
+.form-group input[aria-invalid="true"]{border-color:#e07070}
+.cta-short{display:none}
+nav .btn{white-space:nowrap}
+.logo{white-space:nowrap}
+/* header fit (QA A-03): full header needs ~1410px in FR; step down instead of wrapping/overflowing */
+@media(max-width:1499px){nav{padding:0 32px}.nav-links{gap:12px}}
+@media(max-width:1439px){nav .btn .cta-long{display:none}nav .btn .cta-short{display:inline}}
+@media(max-width:1279px){.logo-rest{display:none}}
+@media(max-width:1099px){.nav-links{display:none}}
+@media(min-width:601px) and (max-width:1099px){nav .btn .cta-long{display:inline}nav .btn .cta-short{display:none}}
 .form-ok{display:none;padding:20px 0;font-family:Arial,sans-serif;color:var(--text)}
 footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:36px 40px;text-align:center}
 .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-family:Arial,sans-serif;font-size:.8rem}
@@ -129,6 +141,22 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   .hero-content{padding-top:92px}
   .hero-cta{flex-direction:column;align-items:center}
   .hero-cta .btn{width:100%;max-width:340px}
+}
+@media(max-width:600px){
+  nav{padding:0 10px;height:60px;gap:6px}
+  .logo{font-size:1rem;letter-spacing:1px}
+  .nav-right{gap:8px}
+  .lang-switch{gap:0}
+  .lang-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:30px;min-height:44px;padding:0 2px}
+  nav .btn{padding:0 10px;font-size:.72rem;letter-spacing:.5px;white-space:nowrap}
+  nav .btn .cta-long{display:none}nav .btn .cta-short{display:inline}
+  .status-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .status-table,.status-table tbody,.status-table tr,.status-table td{display:block;width:100%}
+  .status-table tr{border:1px solid rgba(196,163,90,.2);margin-bottom:12px}
+  .status-table td{border:0;border-bottom:1px solid rgba(196,163,90,.1);padding:8px 12px;overflow-wrap:anywhere}
+  .status-table td:last-child{border-bottom:0}
+  .status-table td::before{content:attr(data-label);display:block;color:var(--gold);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+  #enquiry-form-wrap .btn{width:100%}
 }
 </style>
 </head>
@@ -153,7 +181,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
       <a href="/es/"{% if lang=='es' %} class="on"{% endif %}>ES</a>
       <a href="/fr/"{% if lang=='fr' %} class="on"{% endif %}>FR</a>
     </div>
-    <a class="btn" href="#enquiry">{{ t.cta_request }}</a>
+    <a class="btn" href="#enquiry"><span class="cta-long">{{ t.cta_request }}</span><span class="cta-short">{{ t.nav_enquiry }}</span></a>
   </div>
 </nav>
 
@@ -280,19 +308,21 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <h2 class="sec-title">{{ t.status_title }}</h2>
   <div class="divider"></div>
   <p class="lead">{{ t.status_intro }}</p>
+  <div class="table-scroll">
   <table class="status-table">
     <thead>
       <tr><th>{{ t.status_th_stream }}</th><th>{{ t.status_th_status }}</th><th>{{ t.status_th_evidence }}</th></tr>
     </thead>
     <tbody>
-      <tr><td>{{ t.status_site }}</td><td>{{ t.status_site_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
-      <tr><td>{{ t.status_planning }}</td><td>{{ t.status_planning_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
-      <tr><td>{{ t.status_design }}</td><td>{{ t.status_design_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
-      <tr><td>{{ t.status_operator }}</td><td>{{ t.status_operator_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
-      <tr><td>{{ t.status_procurement }}</td><td>{{ t.status_procurement_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
-      <tr><td>{{ t.status_construction }}</td><td>{{ t.status_construction_v }}</td><td>{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_site }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_site_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_planning }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_planning_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_design }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_design_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_operator }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_operator_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_procurement }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_procurement_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
+      <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_construction }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_construction_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
     </tbody>
   </table>
+  </div>
   <div class="fact" style="margin-top:28px">
     <div class="fact-label">{{ t.status_next }}</div>
     <div class="fact-value">{{ t.status_next_v }}</div>
@@ -324,13 +354,13 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <p class="lead">{{ t.enquiry_intro }}</p>
   <div class="warn">{{ t.enquiry_warn }}</div>
   <div class="form-wrap" id="enquiry-form-wrap">
-    <div class="form-group"><label for="f-name">{{ t.form_name }}</label><input id="f-name" type="text" autocomplete="name" placeholder="{{ t.ph_name }}"></div>
-    <div class="form-group"><label for="f-email">{{ t.form_email }}</label><input id="f-email" type="email" autocomplete="email" placeholder="{{ t.ph_email }}"></div>
+    <div class="form-group"><label for="f-name">{{ t.form_name }}</label><input id="f-name" type="text" autocomplete="name" required aria-required="true" maxlength="120" placeholder="{{ t.ph_name }}"></div>
+    <div class="form-group"><label for="f-email">{{ t.form_email }}</label><input id="f-email" type="email" autocomplete="email" required aria-required="true" maxlength="254" aria-describedby="form-err" placeholder="{{ t.ph_email }}"></div>
     <div class="form-group"><label for="f-org">{{ t.form_org }}</label><input id="f-org" type="text" autocomplete="organization" placeholder="{{ t.ph_org }}"></div>
     <div class="form-group"><label for="f-role">{{ t.form_role }}</label><input id="f-role" type="text" placeholder="{{ t.ph_role }}"></div>
     <div class="form-group">
       <label for="f-type">{{ t.form_type }}</label>
-      <select id="f-type">
+      <select id="f-type" required aria-required="true">
         <option value="">—</option>
         <option value="investor">{{ t.type_investor }}</option>
         <option value="project_adviser">{{ t.type_project_adviser }}</option>
@@ -342,13 +372,13 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
         <option value="other">{{ t.type_other }}</option>
       </select>
     </div>
-    <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" placeholder="{{ t.ph_amount }}"></div>
+    <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" inputmode="decimal" maxlength="64" aria-describedby="form-err" placeholder="{{ t.ph_amount }}"></div>
     <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" placeholder="{{ t.ph_message }}"></textarea></div>
     <label class="consent"><input id="f-consent" type="checkbox"> <span>{{ t.form_consent }}</span></label>
     <button class="btn" type="button" onclick="submitEnquiry()">{{ t.form_submit }}</button>
-    <p class="form-err" id="form-err"></p>
+    <p class="form-err" id="form-err" role="alert" aria-live="assertive"></p>
   </div>
-  <div class="form-ok" id="form-ok">{{ t.form_success }}</div>
+  <div class="form-ok" id="form-ok" role="status" aria-live="polite">{{ t.form_success }}</div>
   <p class="lead" style="margin-top:24px"><a href="mailto:{{ t.contact_email }}" style="color:var(--gold)">{{ t.contact_email }}</a></p>
 </section>
 
@@ -364,14 +394,39 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 
 <script>
 const I18N = {
-  errRequired: {{ t.form_err_required | tojson }},
-  errConsent: {{ t.form_err_consent | tojson }},
-  errGeneric: {{ t.form_err_generic | tojson }},
-  errNetwork: {{ t.form_err_network | tojson }}
+  required: {{ t.form_err_required | tojson }},
+  consent: {{ t.form_err_consent | tojson }},
+  email: {{ t.form_err_email | tojson }},
+  amount: {{ t.form_err_amount | tojson }},
+  generic: {{ t.form_err_generic | tojson }},
+  network: {{ t.form_err_network | tojson }}
 };
+// same rules as the server (app.py: EMAIL_PATTERN / amount_ok); the e-mail pattern comes from app.py
+const EMAIL_RE = new RegExp({{ email_pattern | tojson }});
+const AMOUNT_WS = new RegExp('[' + {{ amount_ws | tojson }} + ']+', 'g');
+// planned amount: normalised value ('' = empty), or null when invalid — mirrors app.py _clean_amount()
+function amountClean(raw){
+  const v = String(raw).replace(AMOUNT_WS, ' ').replace(/^ +| +$/g, '');
+  if(!v){ return ''; }
+  if(Array.from(v).length > 64){ return null; }
+  if(!/^[0-9\p{L} €$£.,'’+\-–~\/()]+$/u.test(v)){ return null; }
+  const first = v.search(/[0-9]/);
+  if(first < 0 || !/[1-9]/.test(v)){ return null; }
+  if(/[-–]/.test(v.slice(0, first))){ return null; }
+  const words = v.match(/\p{L}+/gu) || [];
+  if(words.some(function(w){ return ['nan', 'inf', 'infinity'].indexOf(w.toLowerCase()) >= 0; })){ return null; }
+  return v;
+}
+function fieldError(id, code){
+  const err = document.getElementById('form-err');
+  document.querySelectorAll('#enquiry-form-wrap [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
+  if(id){ const el = document.getElementById(id); el.setAttribute('aria-invalid', 'true'); el.focus(); }
+  err.textContent = I18N[code] || I18N.generic; err.style.display = 'block';
+}
 async function submitEnquiry(){
   const name = document.getElementById('f-name').value.trim();
-  const email = document.getElementById('f-email').value.trim();
+  const emailEl = document.getElementById('f-email');
+  const email = emailEl.value.trim();
   const organisation = document.getElementById('f-org').value.trim();
   const role = document.getElementById('f-role').value.trim();
   const enquiry_type = document.getElementById('f-type').value;
@@ -379,18 +434,19 @@ async function submitEnquiry(){
   const message = document.getElementById('f-message').value.trim();
   const consent = document.getElementById('f-consent').checked;
   const err = document.getElementById('form-err');
-  if(!name || !email || !enquiry_type){
-    err.textContent = I18N.errRequired; err.style.display = 'block'; return;
-  }
-  if(!consent){
-    err.textContent = I18N.errConsent; err.style.display = 'block'; return;
-  }
-  err.style.display = 'none';
+  if(!name){ return fieldError('f-name', 'required'); }
+  if(!email){ return fieldError('f-email', 'required'); }
+  if(!EMAIL_RE.test(email) || (emailEl.validity && emailEl.validity.typeMismatch)){ return fieldError('f-email', 'email'); }
+  if(!enquiry_type){ return fieldError('f-type', 'required'); }
+  if(amountClean(amount) === null){ return fieldError('f-amount', 'amount'); }
+  if(!consent){ return fieldError('f-consent', 'consent'); }
+  document.querySelectorAll('#enquiry-form-wrap [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
+  err.style.display = 'none'; err.textContent = '';
   try{
     const r = await fetch('/api/enquiry', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name, email, organisation, role, enquiry_type, message, consent, lang: '{{ lang }}', page: location.pathname})
+      body: JSON.stringify({name, email, organisation, role, enquiry_type, amount, message, consent, lang: '{{ lang }}', page: location.pathname})
     });
     const d = await r.json();
     if(d.ok){
@@ -398,10 +454,11 @@ async function submitEnquiry(){
       document.getElementById('form-ok').style.display = 'block';
       if(window.dataLayer){ window.dataLayer.push({event: 'professional_enquiry_submit'}); }
     } else {
-      err.textContent = d.error || I18N.errGeneric; err.style.display = 'block';
+      const map = {name: 'f-name', email: 'f-email', amount: 'f-amount', consent: 'f-consent', enquiry_type: 'f-type'};
+      fieldError(map[d.field] || null, d.code || 'generic');
     }
   } catch(e){
-    err.textContent = I18N.errNetwork; err.style.display = 'block';
+    fieldError(null, 'network');
   }
 }
 </script>

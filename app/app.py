@@ -5,7 +5,9 @@ import datetime
 import hmac
 import html
 import json
+import math
 import os
+import re
 import sqlite3
 import subprocess
 import urllib.parse
@@ -23,7 +25,35 @@ from flask import (
 
 import logging
 
-from notify import notify_lead
+import legal_i18n  # drop-in translations of the long legal texts (app/legal_translations/)
+
+# A-13: Cloudflare Email Obfuscation (zone setting, stays ON) rewrites addresses / mailto links into
+# /cdn-cgi/l/email-protection#…, which only decodes with JS (404 without it). Every rendered Crete page
+# goes through the same email_off.wrap() as the Tenerife build, so addresses sit inside
+# <!--email_off-->…<!--/email_off--> and reach the visitor as plain text / plain mailto links.
+import importlib.util as _ilu  # noqa: E402
+
+_EO_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "scripts", "tenerife_site_build", "email_off.py")
+
+
+def _load_email_off(path=_EO_PATH):
+    """The email_off module, or None (logged) when it is missing or broken (QA -43).
+
+    A missing / broken module must not stop the app: pages are then served without the markers
+    (Cloudflare obfuscates their addresses again, the deploy smoke test catches that)."""
+    try:
+        spec = _ilu.spec_from_file_location("artemis_email_off", path)
+        module = _ilu.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+    except Exception:
+        logging.exception("email_off: cannot load %s; pages are served without <!--email_off--> markers", path)
+        return None
+
+
+email_off = _load_email_off()
+from notify import notify_lead  # noqa: E402
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 logging.basicConfig(level=logging.INFO)
@@ -99,11 +129,25 @@ def _ctx(lang):
         "og_locale": OG_LOCALE[lang],
         "version": get_version(),
         "supported": SUPPORTED,
+        # one validation rule for the form script and the API (QA -41 / -42)
+        "email_pattern": EMAIL_PATTERN,
+        "amount_ws": AMOUNT_WS,
     }
 
 
+def _email_off(html_text: str) -> str:
+    """Wrap addresses / mailto links of a rendered Crete page in <!--email_off--> (A-13)."""
+    if email_off is None:  # module missing / broken: already logged at start-up
+        return html_text
+    try:
+        return email_off.wrap(html_text)
+    except Exception:  # EmailOffError or any bug in wrap(): serve the page unwrapped, but say so (QA -43)
+        logging.exception("email_off: page left unwrapped (Cloudflare will obfuscate its addresses)")
+        return html_text
+
+
 def _render_site(lang):
-    resp = make_response(render_template("index.html", **_ctx(lang)))
+    resp = make_response(_email_off(render_template("index.html", **_ctx(lang))))
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)
 
@@ -115,7 +159,9 @@ def _render_legal(lang, page):
     }
     if page not in templates:
         abort(404)
-    resp = make_response(render_template(templates[page], page=page, **_ctx(lang)))
+    resp = make_response(
+        _email_off(render_template(templates[page], page=page, legal_i18n=legal_i18n.load(page, lang), **_ctx(lang)))
+    )
     resp.set_cookie("lang", lang, max_age=60 * 60 * 24 * 365, samesite="Lax")
     return no_cache(resp)
 
@@ -238,24 +284,110 @@ ENQUIRY_TYPES = {
 }
 
 
+# Server-side validation shared with the client (templates/index.html: EMAIL_RE / amountClean()).
+# Errors carry a machine "code" (+ "field"); the page maps it to the localized message.
+#
+# E-mail (QA -42): dot-atom local part (no quotes, <>, spaces, leading / trailing / double dots) @ domain of
+# letter-digit-hyphen labels and a TLD of >= 2 letters (or xn--…). Non-ASCII letters allowed (IDN / EAI).
+# The same pattern string is handed to the page (new RegExp(...)), so client and server cannot drift.
+_EMAIL_UNI = "\\u00c0-\\u1fff\\u2c00-\\u2fff\\u3001-\\ud7ff\\uf900-\\ufdcf\\ufdf0-\\uffef"
+_EMAIL_ATOM = "[A-Za-z0-9!#$%&'*+/=?^_{|}~" + _EMAIL_UNI + "-]+"
+_EMAIL_LABEL = "[A-Za-z0-9" + _EMAIL_UNI + "](?:[A-Za-z0-9" + _EMAIL_UNI + "-]{0,61}[A-Za-z0-9" + _EMAIL_UNI + "])?"
+EMAIL_PATTERN = ("^(?=.{1,64}@)" + _EMAIL_ATOM + "(?:\\." + _EMAIL_ATOM + ")*@(?:" + _EMAIL_LABEL + "\\.)+"
+                 "(?:[A-Za-z" + _EMAIL_UNI + "]{2,63}|xn--[A-Za-z0-9-]{1,59})$")
+EMAIL_RE = re.compile(EMAIL_PATTERN)
+EMAIL_MAX = 254
+
+# Planned investment amount (QA -41): one rule, implemented twice (here and amountClean() in index.html,
+# kept in step by tests/test_crete_pr21_c4.py, which runs the page's function in node):
+#   * runs of the whitespace below collapse to one space (NBSP / narrow NBSP as in «3 000 000 €»);
+#   * at most 64 characters; only ASCII digits 0-9, letters (any script: «M EUR», «от 3 млн €»),
+#     spaces and € $ £ . , ' ’ + - – ~ / ( );  no other digits (², ٣, １), no %, _, <, ;
+#   * at least one ASCII digit and one non-zero digit (no «0», «0,00 €»);
+#   * no minus / dash before the first digit (no «-5», «-€3,000,000»; ranges «3-5 M EUR» are fine);
+#   * no NaN / Inf / Infinity words.
+AMOUNT_MAX = 64
+AMOUNT_WS = "\\t\\n\\v\\f\\r \\u00a0\\u2000-\\u200a\\u202f\\u205f\\u3000"
+_AMOUNT_WS_RE = re.compile("[" + AMOUNT_WS + "]+")
+_AMOUNT_CHARS = set("0123456789 €$£.,'’+-–~/()")
+_AMOUNT_BAD_WORDS = {"nan", "inf", "infinity"}
+
+
+def amount_ok(value: str) -> bool:
+    """The amount rule above, on an already normalised value (see _clean_amount)."""
+    if not value or len(value) > AMOUNT_MAX:
+        return False
+    if any(ch not in _AMOUNT_CHARS and not ch.isalpha() for ch in value):
+        return False
+    first = next((i for i, ch in enumerate(value) if ch in "0123456789"), None)
+    if first is None or not any(ch in "123456789" for ch in value):
+        return False
+    if any(ch in "-–" for ch in value[:first]):
+        return False
+    words = re.findall(r"[^\W\d_]+", value)  # letter runs (non-letters were rejected above)
+    return not any(w.lower() in _AMOUNT_BAD_WORDS for w in words)
+
+
+def _clean_amount(raw) -> str | None:
+    """Planned investment amount: optional free text such as "€3,000,000" or "3-5 M EUR".
+
+    Returns the normalised value ("" when empty) or None when invalid (rule above)."""
+    if raw is None:
+        return ""
+    if isinstance(raw, bool) or not isinstance(raw, (str, int, float)):
+        return None
+    if isinstance(raw, float) and not math.isfinite(raw):  # NaN / Infinity in the JSON body
+        return None
+    value = _AMOUNT_WS_RE.sub(" ", str(raw)).strip(" ")
+    if not value:
+        return ""
+    return value if amount_ok(value) else None
+
+
+def email_ok(value: str) -> bool:
+    return 0 < len(value) <= EMAIL_MAX and EMAIL_RE.fullmatch(value) is not None
+
+
+_TEXT_FIELDS = ("name", "email", "organisation", "role", "enquiry_type", "message", "lang", "page")
+
+
+def _enquiry_error(code: str, field: str, error: str):
+    return jsonify({"ok": False, "code": code, "field": field, "error": error}), 400
+
+
 @app.route("/api/enquiry", methods=["POST"])
 def enquiry():
-    d = request.json or {}
+    d = request.get_json(silent=True)
+    if not isinstance(d, dict):
+        d = {}
+    # QA -42: text fields must be JSON strings (or absent / null); lists, objects, numbers are rejected,
+    # never stored as their Python repr. consent must be the JSON boolean true (not "false", 1, "yes").
+    for key in _TEXT_FIELDS:
+        if d.get(key) is not None and not isinstance(d.get(key), str):
+            if key == "email":
+                return _enquiry_error("email", "email", "Invalid email address")
+            return _enquiry_error("generic", key, f"Invalid {key}")
     name = (d.get("name") or "").strip()
     email = (d.get("email") or "").strip()
     organisation = (d.get("organisation") or "").strip()
     role = (d.get("role") or "").strip()
     enquiry_type = (d.get("enquiry_type") or "").strip()
-    amount = (d.get("amount") or "").strip()
+    amount = _clean_amount(d.get("amount"))
     message = (d.get("message") or "").strip()
-    consent = bool(d.get("consent"))
+    consent = d.get("consent") is True
 
-    if not name or not email:
-        return jsonify({"ok": False, "error": "Name and work email are required"}), 400
+    if not name:
+        return _enquiry_error("required", "name", "Name and work email are required")
+    if not email:
+        return _enquiry_error("required", "email", "Name and work email are required")
+    if not email_ok(email):
+        return _enquiry_error("email", "email", "Invalid email address")
     if not consent:
-        return jsonify({"ok": False, "error": "Consent is required"}), 400
+        return _enquiry_error("consent", "consent", "Consent is required")
     if enquiry_type and enquiry_type not in ENQUIRY_TYPES:
-        return jsonify({"ok": False, "error": "Invalid enquiry type"}), 400
+        return _enquiry_error("generic", "enquiry_type", "Invalid enquiry type")
+    if amount is None:
+        return _enquiry_error("amount", "amount", "Invalid planned investment amount")
 
     init_db()
     conn = sqlite3.connect(DB)
@@ -281,7 +413,10 @@ def enquiry():
     if lang not in SUPPORTED:
         lang = request.cookies.get("lang", "") if request.cookies.get("lang") in SUPPORTED else "?"
     page = (d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path or "/"
-    notify_lead("Crete enquiry", name, email, lang, page)
+    if amount:
+        notify_lead("Crete enquiry", name, email, lang, page, amount=amount)
+    else:
+        notify_lead("Crete enquiry", name, email, lang, page)
 
     return jsonify({"ok": True})
 

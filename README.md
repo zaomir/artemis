@@ -60,7 +60,9 @@ the old `sent` table does not). Checkout: `/var/www/artemis` (branch `main`, nev
 | `ARTEMIS_TG_BOT_TOKEN` | Telegram bot used for lead notifications |
 | `ARTEMIS_TG_CHAT_ID` | Telegram group «Artemis». Missing → lead saved to DB + warning in journal only |
 
-Notifications contain only: name, contact, language, page.
+Notifications contain only: name, contact, language, page — plus the planned investment amount
+for Crete enquiries when the visitor filled it in (Telegram from `app/notify.py`, e-mail copy from
+`deploy/artemis-lead-relay.py`). Never the message body; Tenerife waitlist has no amount.
 
 ## Admin
 

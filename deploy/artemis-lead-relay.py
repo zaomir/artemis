@@ -63,7 +63,7 @@ EMAIL_RE = re.compile(r"^[^@\s<>,;\"]+@[^@\s<>,;\"]+\.[^@\s<>,;\"]+$")
 
 SOURCES = {
     # table: (kind label, contact column, extra columns)
-    "leads": ("Crete enquiry", "email", ()),
+    "leads": ("Crete enquiry", "email", ("amount",)),
     "tenerife_waitlist": ("Tenerife waitlist", "contact", ("language", "page")),
 }
 
@@ -260,7 +260,8 @@ def leads():
     for tbl, (kind, contact, extra) in SOURCES.items():
         if tbl not in have:
             continue
-        cols = ", ".join(("id", "name", contact, "created_at") + extra)
+        present = {r[1] for r in c.execute(f"PRAGMA table_info({tbl})")}
+        cols = ", ".join(("id", "name", contact, "created_at") + tuple(x for x in extra if x in present))
         for r in c.execute(f"SELECT {cols} FROM {tbl} ORDER BY id"):
             d = dict(r)
             d["contact"] = d.pop(contact)
@@ -279,6 +280,8 @@ def lead_text(kind, d, mark=""):
         lines.append(f"Язык: {clean(d['language'], 10)}")
     if d.get("page"):
         lines.append(f"Страница: {clean(d['page'])}")
+    if d.get("amount") and clean(d["amount"], 64):
+        lines.append(f"Сумма (план): {clean(d['amount'], 64)}")
     lines.append(f"Время заявки: {clean(d.get('created_at'), 40)}")
     return "\n".join(lines)
 

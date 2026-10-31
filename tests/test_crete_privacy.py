@@ -26,11 +26,14 @@ class CretePrivacyGoogleTest(unittest.TestCase):
         for lang, marker in MARKER.items():
             r = self.client.get(f"/{lang}/privacy/")
             self.assertEqual(r.status_code, 200, lang)
-            h = r.get_data(as_text=True)
+            # A-13 <!--email_off--> markers are checked in tests/test_crete_email_off.py
+            h = r.get_data(as_text=True).replace("<!--email_off-->", "").replace("<!--/email_off-->", "")
             self.assertIn(marker, h, lang)
             self.assertIn("Google (Gmail, Google Workspace)", h, lang)
             self.assertIn("info@artemisresort.com", h, lang)
-            self.assertIn(ORIGINAL, h, lang)        # rest of the page unchanged
+            import legal_i18n
+            if legal_i18n.load("privacy", lang) is None:   # no reviewed drop-in translation (A-06) yet
+                self.assertIn(ORIGINAL, h, lang)        # rest of the page unchanged
 
     def test_terms_untouched(self):
         for lang in MARKER:
