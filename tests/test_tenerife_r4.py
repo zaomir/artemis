@@ -14,6 +14,11 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+try:
+    import PIL
+except ImportError:
+    PIL = None
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
@@ -652,6 +657,7 @@ class SiteWideImageUniquenessTest(unittest.TestCase):
         with self.assertRaisesRegex(build_v3.BuildError, "repeats"):
             build_v3.check_unique_images({"a": self.img("golden-hou-d4cc25"), "b": self.img("golden-hou-d4cc25")})
 
+    @unittest.skipUnless(PIL, "Pillow missing")
     def test_same_picture_under_another_name_fails(self):
         # og-tenerife-1200x630.jpg is a re-export of modern-low-6e9d80 (dHash distance 4)
         with self.assertRaisesRegex(build_v3.BuildError, "same picture"):
