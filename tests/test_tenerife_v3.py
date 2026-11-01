@@ -33,8 +33,10 @@ FILES = {name: f for f, name in build_v3.PAGES}
 
 
 def shown_copy(name):
-    """The copy of a page minus sections the build hides (build_v3.HIDDEN_SECTIONS: C11 off, designer r3)."""
-    lines, out, skip = (COPY / FILES[name]).read_text(encoding="utf-8").splitlines(), [], False
+    """The copy of a page minus sections the build hides (build_v3.HIDDEN_SECTIONS: C11 off, designer r3) and minus
+    the figures (r4.1: the committed pages are built with TENERIFE_SHOW_FIGURES off)."""
+    md = build_v3.hide_figures_md((COPY / FILES[name]).read_text(encoding="utf-8"), None, name)
+    lines, out, skip = md.splitlines(), [], False
     for line in lines:
         h = re.match(r"^#{1,3} (.+)$", line)
         if h:
@@ -67,7 +69,9 @@ class V3AllPagesTest(base.TenerifeSiteTest):
         # script-src 'self': inline <script> only as non-executable data: the JSON island of C9 (calculadora,
         # short on acciones) and JSON-LD (Organization on index, BreadcrumbList elsewhere, + FAQPage on faq)
         ld, island = '<script type="application/ld+json">', '<script type="application/json" id="cs-model">'
-        allowed = {"calculadora": [ld, island], "acciones": [ld, island], "faq": [ld, ld]}
+        # r4.1: figures off -> no calculator anywhere; the island comes back only with TENERIFE_SHOW_FIGURES=1
+        allowed = {"faq": [ld, ld]}
+        self.assertNotIn(island, "".join(self.page(u)[0] for u in V3.values()))
         for name, url in V3.items():
             page, _ = self.page(url)
             scripts = re.findall(r"<script(?![^>]*\ssrc=)[^>]*>", page)
@@ -171,8 +175,8 @@ class V3BuildTest(unittest.TestCase):
 
     def test_meta_title_description_h1_exact(self):
         for name, page in self.pages.items():
-            meta, _ = build_v3.parse_page((COPY / FILES[name]).read_text(encoding="utf-8"))
-            md = (COPY / FILES[name]).read_text(encoding="utf-8")
+            md = build_v3.hide_figures_md((COPY / FILES[name]).read_text(encoding="utf-8"), None, name)  # r4.1
+            meta = build_v3.hide_figures_meta(build_v3.parse_page(md)[0], md)
             h1 = re.search(r"^# (.+)$", md, re.M).group(1)
             self.assertIn(f"<title>{htmllib.escape(meta['Meta title'], quote=True)}</title>", page, name)
             desc, og = (htmllib.escape(meta[k], quote=True) for k in ("Meta description", "OG title"))
@@ -191,7 +195,7 @@ class V3BuildTest(unittest.TestCase):
 
     def test_footer_is_the_copy(self):
         # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}» = the WhatsApp slot (filled at runtime, test_tenerife_r4)
-        md = (COPY / build_v3.FOOTER).read_text(encoding="utf-8")
+        md = build_v3.hide_figures_md((COPY / build_v3.FOOTER).read_text(encoding="utf-8"))   # r4.1: figures off
         self.assertEqual(md.count(" · " + build_v3.WA_TOKEN), 1)
         md = md.replace(" · " + build_v3.WA_TOKEN, "")
         for item in build_v3.NAV_FUTURE:  # Kimi r18 «Инвесторам»: hidden until page 18 is built (no broken link)
@@ -217,7 +221,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertEqual(make_model.baseline_check(), [])
 
     def test_model_matches_designer_schema(self):
-        model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
+        model = json.loads((build_v3.MODEL).read_text(encoding="utf-8"))
         designer = json.loads((DESIGN / "model.json").read_text(encoding="utf-8"))
         for k, v in designer.items():
             if k == "steps":  # Kimi r18: the stage event is the copy's (04 table); the designer file still has r17's
@@ -240,7 +244,7 @@ class V3BuildTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "model.json"
             p.write_text(json.dumps(model, ensure_ascii=False), encoding="utf-8")
-            outputs, _ = build_v3.build(model_path=p, write=False)
+            outputs, _ = build_v3.build(model_path=p, write=False, show_figures=True)   # r4.1: figures on
         joined = "\n".join(outputs.values())
         self.assertNotIn("2 950", joined)
         self.assertNotIn("2\u00a0950", joined)
@@ -249,7 +253,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertIn('"price_eur_m2":3000', outputs["calculadora"])
 
     def test_no_hardcoded_figures_in_templates_and_js(self):
-        model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
+        model = json.loads((build_v3.MODEL).read_text(encoding="utf-8"))
         figs = {t["value"] for t in model["tokens"] + model["extra"] if len(re.sub(r"\D", "", t["value"])) >= 3}
         for f in list(TEMPLATES.glob("*.html")) + [SITE_STATIC / "calc.js", SITE_STATIC / "site.js"]:
             src = re.sub(r"\{#.*?#\}|\{%.*?%\}|\{\{.*?\}\}", " ", f.read_text(encoding="utf-8"), flags=re.S)
@@ -311,7 +315,8 @@ class V3BuildTest(unittest.TestCase):
         cfg = json.loads((BUILD / "frames.json").read_text(encoding="utf-8"))
         self.assertEqual(cfg["prefer"]["F17"], [])
         with_f17 = {n for n, r in report.items() if "F17" in r["frames"]}
-        self.assertEqual(with_f17, {"index", "acciones", "calculadora", "construccion", "proceso", "mercado"})
+        # r4.1: the F17 slots of calculadora / mercado sit in sections hidden with the figures
+        self.assertEqual(with_f17, {"index", "acciones", "construccion", "proceso"})
         for name in with_f17:
             self.assertIsNone(report[name]["frames"]["F17"], name)
             others = [s for f, s in report[name]["frames"].items() if f != "F17" and s]
@@ -498,7 +503,7 @@ class V3BuildTest(unittest.TestCase):
     def test_r2_calc_hidden_fields_valid_by_default(self):
         sys.path.insert(0, str(ROOT / "app"))
         import tenerife_calc
-        page = self.pages[build_v3.CALC_PAGE]
+        page = build_v3.build(write=False, show_figures=True)[0][build_v3.CALC_PAGE]   # r4.1: calculator = figures on
         form = page[page.index('<form class="wl__form'):page.index("</form>")]
         self.assertIn('data-variant="calculadora"', form[:form.index(">")])
         hidden = dict(re.findall(r'<input type="hidden" name="([a-z0-9_]+)"(?: id="[a-z0-9-]+")? value="([^"]*)">',
@@ -506,7 +511,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertEqual(set(hidden), {"page", "calc_m2", "calc_step", "calc_pay"})
         self.assertEqual(tenerife_calc.FIELDS, ("calc_m2", "calc_step", "calc_pay"))
         self.assertEqual(hidden["page"], "/tenerife/calculadora/")
-        model = tenerife_calc.load_model(SITE_STATIC / "model.json")
+        model = tenerife_calc.load_model(build_v3.MODEL)
         self.assertNotIn(model["version"], form)          # the version stays server-side
         calc, problems = tenerife_calc.check_calc(hidden, model)
         self.assertEqual((problems, calc["calc_status"]), ([], "ok"))
@@ -523,7 +528,10 @@ class V3BuildTest(unittest.TestCase):
 
     # ---- criterion 4: words
     def test_visible_words_per_page(self):
-        for name, page in self.pages.items():
+        # r4.1: the copy-length criterion is about the copy, i.e. the build with the figures on
+        for name, page in build_v3.build(write=False, show_figures=True)[0].items():
+            if name not in self.pages:
+                continue
             n = len(words(main_text(page)))
             self.assertGreaterEqual(n, 500 if name == build_v3.CALC_PAGE else 700, f"{name}: {n}")
 

@@ -135,9 +135,9 @@ class ClientKeyTest(AppCase):
 
 # ---------------------------------------------------------------- T3-03 (e2e payload of the built form)
 class FormPayloadTest(AppCase):
-    def form_payload(self, name):
+    def form_payload(self, name, html=None):
         """Exactly what waitlist.js sends: name, contact, language, consent, website, page + every calc_* field."""
-        form = re.search(r'<form[^>]*id="wl-form".*?</form>', page(name), re.S).group(0)
+        form = re.search(r'<form[^>]*id="wl-form".*?</form>', html or page(name), re.S).group(0)
         d = {"name": "Анна", "contact": "anna@example.de", "language": "ru", "consent": True, "website": ""}
         for tag in re.findall(r"<input[^>]+>", form):
             n = re.search(r'name="([^"]+)"', tag)
@@ -147,13 +147,17 @@ class FormPayloadTest(AppCase):
         return d
 
     def test_calculadora_form_stores_calc_columns(self):
-        d = self.form_payload("calculadora")
+        # r4.1: the calculator (and its calc_* fields) is only built with TENERIFE_SHOW_FIGURES=1
+        self.assertFalse([k for k in self.form_payload("calculadora") if k.startswith("calc_")])
+        with mock.patch.dict(os.environ, {"TENERIFE_WHATSAPP": "+440000000000"}):   # dummy: the build needs one
+            shown = build_v3.build(write=False, show_figures=True)[0]["calculadora"]
+        d = self.form_payload("calculadora", shown)
         self.assertEqual(sorted(k for k in d if k.startswith("calc_")), ["calc_m2", "calc_pay", "calc_step"])
         self.assertEqual(d["page"], "/tenerife/calculadora/")
         r = self.client.post("/api/tenerife/waitlist", json=d, headers={"X-Real-IP": "203.0.113.5"})
         self.assertEqual(r.get_json(), {"ok": True})
         row = self.rows()[0]
-        model = json.loads((ROOT / "app/static/tenerife/site/model.json").read_text(encoding="utf-8"))
+        model = json.loads((ROOT / "app/tenerife_site/data/model.json").read_text(encoding="utf-8"))
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"]),
                          ("ok", 72, "queue", "m12"))
         self.assertEqual((row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
@@ -318,9 +322,11 @@ class MenuScriptTest(unittest.TestCase):
 # ---------------------------------------------------------------- T3-07 / T3-11
 class ComponentsTest(unittest.TestCase):
     def test_steps_log_people_mini_ladder_short_calc(self):
-        self.assertIn('<ol class="ladder ladder--mini"', page("index"))
-        for name in ("construccion", "mercado"):
-            self.assertIn('<ol class="ladder ladder--mini"', page(name), name)
+        # r4.1: the mini ladder and the short calculator are figures -> only with TENERIFE_SHOW_FIGURES=1
+        shown = build_v3.build(write=False, show_figures=True)[0]
+        for name in ("index", "construccion", "mercado"):
+            self.assertIn('<ol class="ladder ladder--mini"', shown[name], name)
+            self.assertNotIn('class="ladder', page(name), name)
         # C10 hidden (designer 20:23): copy_v3 has no confirmed log entries; the copy stays as an ordinary table,
         # no log markup and no anchor to it anywhere
         heads = {"index": '<th scope="col">Когда, по плану</th>',
@@ -340,7 +346,9 @@ class ComponentsTest(unittest.TestCase):
         self.assertIsNone(re.search(r"<section[^>]*>\s*</section>", page("index")))
         for href in ("/tenerife/simon/", "/tenerife/boris/"):
             self.assertIn(f'<li><a href="{href}">', page("index"))
-        a = page("acciones")
+        self.assertNotIn('id="calc"', page("acciones"))
+        self.assertNotIn("calc.js", page("acciones"))
+        a = shown["acciones"]
         self.assertIn('class="wrap grid calc calc--short" id="calc"', a)
         self.assertIn('<script type="application/json" id="cs-model">', a)
         self.assertIn('<script src="/static/tenerife/site/calc.js"', a)

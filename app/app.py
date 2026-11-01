@@ -66,6 +66,14 @@ import tenerife  # noqa: E402  (blueprint: /tenerife-preview/, noindex)
 
 app.register_blueprint(tenerife.bp)
 
+
+@app.before_request
+def _tenerife_figure_data_guard():
+    """r4.1: no figure JSON under /static/tenerife/ while TENERIFE_SHOW_FIGURES is off (runs before static serving)."""
+    if tenerife.figures_blocked(request.path):
+        return make_response("Not found", 404)
+    return None
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANS_DIR = os.path.join(BASE_DIR, "translations")
 SUPPORTED = ["ru", "en", "es", "fr"]
@@ -228,7 +236,7 @@ def sitemap_paths() -> list[str]:
     if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
         return paths
     for name in ("index",) + tenerife.SITE_PAGES:
-        if (tenerife.SITE_DIR / f"{name}.html").is_file():
+        if name not in tenerife.UNPUBLISHED_PAGES and (tenerife.SITE_DIR / f"{name}.html").is_file():
             paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
     paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES]
     return paths

@@ -11,7 +11,7 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   put on the form as `data-msg-*` for `waitlist.js`; `app/tenerife.py` `FORM_MSG` holds the same texts (tested).
   Text, title, description and H1 are transferred without edits.
 - Numbers: one data source. Edit `scripts/tenerife_site_build/model_inputs.json`, then
-  `python scripts/tenerife_site_build/make_model.py` → `app/static/tenerife/site/model.json`
+  `python scripts/tenerife_site_build/make_model.py` → `app/tenerife_site/data/model.json` (r4.1: not under `app/static/`, never served)
   (every price / dividend / tier figure of the copy as a token, plus the calculator block), then
   `python scripts/tenerife_site_build/build_v3.py` → these HTML files + `app/static/tenerife/site/site.css`.
   `make_model.py --check` proves the model reproduces `numbers.md` from `model_inputs.baseline.json`.
@@ -57,6 +57,18 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   to the same page under `/tenerife/` if it exists, else `/tenerife/` (designer T47, 31.10.2026).
 
 ## Runtime configuration (sysadmin, r4) — `/etc/artemis/artemis.env`, read by `app/tenerife.py` on every request
+
+### Figures switch (r4.1, build time)
+
+`TENERIFE_SHOW_FIGURES` is read by `build_v3.py` only, never by the app. Unset (default, the committed pages) → the
+build leaves out every sentence, list item, table row, table, section and meta text of the copy that shows a figure:
+any euro amount (price per m² / per share, the price ladder, payments, rents, costs), a dividend or yield %, the
+mini ladder and the calculator (C9 and C9 short, so no `calc_*` form fields). Intro lines that announced a removed
+table/list, headings left without content and the payment-example sections (`FIGURE_SECTIONS`) go with them; the
+build fails (`check_no_figures`) if a figure or a link to an unpublished investor page is left in any page.
+`TENERIFE_SHOW_FIGURES=1` → the pages are rebuilt exactly as before r4.1. The copy (`copy_v3/*.md`) and
+`model.json` are not changed. The investor page (`/tenerife/inversores/`, draft `18_investoram.md`) is not built
+and `app/tenerife.py` answers 404 for `UNPUBLISHED_PAGES` even if it were added to `SITE_PAGES`.
 
 The built HTML is committed; these values are not. Neither is ever written to a log.
 

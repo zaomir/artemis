@@ -1,4 +1,4 @@
-"""numbers.md + model_inputs.json -> app/static/tenerife/site/model.json (RU v3, single source of figures).
+"""numbers.md + model_inputs.json -> app/tenerife_site/data/model.json (RU v3, single source of figures).
 
 copy_v3/numbers.md is the baseline: every figure token the copy uses, in make_numbers.py order.
 model_inputs.json holds the inputs (stage prices, rent, costs, ...). This script recomputes every
@@ -19,7 +19,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 NUMBERS = HERE / "copy_v3" / "numbers.md"
 INPUTS = HERE / "model_inputs.json"
-OUT = ROOT / "app" / "static" / "tenerife" / "site" / "model.json"
+OUT = ROOT / "app" / "tenerife_site" / "data" / "model.json"   # r4.1: never under app/static (served by nginx)
 
 
 def fmt(x, dec=0):

@@ -80,60 +80,12 @@
   </div>
 </section>
 
-<section class="section calc-sec" id="calc" aria-labelledby="h1">
-  <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
-      <fieldset>
-        <legend>Площадь</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="one_bed"><span>Одна спальня, 48–55 м²</span></label>
-          <label class="opt"><input type="radio" name="type" value="two_bed" checked><span>Две спальни, 68–78 м²</span></label>
-          <label class="opt"><input type="radio" name="type" value="large"><span>Большой дом, 85–100 м²</span></label>
-        </div>
-        <div class="range">
-          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 м²</output>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Ступень входа</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Очередь — 2 950 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="permit"><span>Разрешение — 3 100 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="foundation"><span>Фундамент — 3 250 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Коробка и кровля — 3 450 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="finishing"><span>Отделка — 3 650 €</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Способ оплаты</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="pay" value="now"><span>Сразу</span></label>
-          <label class="opt"><input type="radio" name="pay" value="m12" checked><span>Равными частями за 12 месяцев. Бонус за полную оплату и вариант «за полгода» калькулятор пока не считает</span></label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="calc__out" aria-live="polite">
-      <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Сумма покупки</dt><dd data-k="sum">212 400 €</dd></div>
-        <div><dt>Платёж в месяц</dt><dd data-k="month">17 700 €</dd></div>
-        <div><dt>Цена ступени «Ввод» за те же метры</dt><dd data-k="handover">277 200 €</dd></div>
-        <div><dt>Дивиденд в год, до налога на прибыль компании</dt><dd data-k="div">6 264 €</dd></div>
-        <div><dt>Дивиденд к вложенному</dt><dd data-k="pct">2,9%</dd></div>
-        <div class="res__paths"><dt>Два пути после ввода</dt><dd>получать дивиденд или обменять акции на метры своей резиденции</dd></div>
-      </dl>
-    </div>
-  </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","price_eur_m2":2950,"entry":true,"current":true},{"id":"permit","price_eur_m2":3100,"entry":true},{"id":"foundation","price_eur_m2":3250,"entry":true},{"id":"shell_roof","price_eur_m2":3450,"entry":true},{"id":"finishing","price_eur_m2":3650,"entry":true},{"id":"handover","price_eur_m2":3850,"entry":false}],"installments":{"months":12},"dividend_eur_per_share_year":87,"area_m2":{"min":48,"max":100,"default":72},"types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
-</section>
-<section class="section rule-top s--head" aria-labelledby="s1">
+<section class="section s--head" aria-labelledby="s1">
   <div class="wrap grid split-head bar-under">
     <h2 id="s1">Что вы вводите</h2>
     <div class="split-head__body">
 <p><strong>Площадь.</strong> От 48 до 100 м² — или тип резиденции:</p>
 <ul class="list"><li>одна спальня, 48–55 м²;</li><li>две спальни, 68–78 м²;</li><li>большой дом, 85–100 м².</li></ul>
-<p><strong>Ступень входа.</strong> Очередь — 2 950 €, разрешение — 3 100 €, фундамент — 3 250 €, коробка и кровля — 3 450 €, отделка — 3 650 €.</p>
 <p><strong>Способ оплаты.</strong> Сразу или равными частями за 12 месяцев. Бонус за полную оплату и вариант «за полгода» калькулятор пока не считает.</p>
 
     </div>
@@ -148,8 +100,6 @@
 <ul class="ledger">
   <li><strong>Сумма покупки</strong><span>— сколько стоят ваши акции на выбранной ступени.</span></li>
   <li><strong>Платёж в месяц</strong><span>— если платите за 12 месяцев.</span></li>
-  <li><strong>Цена ступени «Ввод» за те же метры</strong><span>— по 3 850 € за метр.</span></li>
-  <li><strong>Дивиденд в год</strong><span>— расчётно 87 € на каждую акцию, до налога на прибыль компании.</span></li>
   <li><strong>Дивиденд к вложенному</strong><span>— в процентах от суммы покупки.</span></li>
   <li><strong>Два пути после ввода</strong><span>— получать дивиденд или обменять акции на метры своей резиденции.</span></li>
 </ul>
@@ -167,9 +117,6 @@
 <ul class="ledger">
   <li><strong>Сумма</strong><span>= м² × цена ступени.</span></li>
   <li><strong>Платёж в месяц</strong><span>= сумма ÷ 12.</span></li>
-  <li><strong>Цена на вводе</strong><span>= м² × 3 850 €.</span></li>
-  <li><strong>Дивиденд в год</strong><span>= м² × 87 €, расчётно, до налога на прибыль компании.</span></li>
-  <li><strong>Дивиденд к вложенному</strong><span>= 87 € ÷ цена ступени, расчётно.</span></li>
 </ul>
 
     </div>
@@ -178,58 +125,8 @@
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="s4">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s4">Три готовых примера из очереди</h2>
-    <div class="split-head__body">
-<div class="table-wrap" role="region" aria-labelledby="s4" tabindex="0">
-  <table class="dt dt--stack">
-    <thead><tr><td></td><th scope="col" class="num">48 м²</th><th scope="col" class="num">72 м²</th><th scope="col" class="num">100 м²</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Сумма по 2 950 €</th><td class="num" data-label="48 м²">141 600 €</td><td class="num" data-label="72 м²">212 400 €</td><td class="num" data-label="100 м²">295 000 €</td></tr>
-      <tr><th scope="row">Платёж за 12 месяцев</th><td class="num" data-label="48 м²">11 800 €</td><td class="num" data-label="72 м²">17 700 €</td><td class="num" data-label="100 м²">24 583 €</td></tr>
-      <tr><th scope="row">Те же метры по 3 850 €</th><td class="num" data-label="48 м²">184 800 €</td><td class="num" data-label="72 м²">277 200 €</td><td class="num" data-label="100 м²">385 000 €</td></tr>
-      <tr><th scope="row">Разница</th><td class="num" data-label="48 м²">43 200 €</td><td class="num" data-label="72 м²">64 800 €</td><td class="num" data-label="100 м²">90 000 €</td></tr>
-      <tr><th scope="row">Дивиденд в год, расчётно 87 € на акцию до налога на прибыль компании</th><td class="num" data-label="48 м²">4 176 €</td><td class="num" data-label="72 м²">6 264 €</td><td class="num" data-label="100 м²">8 700 €</td></tr>
-      <tr><th scope="row">Дивиденд в месяц, расчётно</th><td class="num" data-label="48 м²">348 €</td><td class="num" data-label="72 м²">522 €</td><td class="num" data-label="100 м²">725 €</td></tr>
-      <tr><th scope="row">К вложенному, расчётно</th><td class="num" data-label="48 м²">2,9%</td><td class="num" data-label="72 м²">2,9%</td><td class="num" data-label="100 м²">2,9%</td></tr>
-    </tbody>
-  </table>
-</div>
-<p><strong>48 метров</strong> — дом с одной спальней. Вход из очереди — 141 600 €, или 11 800 € в месяц. После ввода — расчётно 4 176 € дивиденда в год до налога на прибыль компании или ваш собственный дом.</p>
-<p><strong>72 метра</strong> — дом с двумя спальнями. 212 400 €, или 17 700 € в месяц. Дивиденд — расчётно 6 264 € в год до налога на прибыль компании.</p>
-<p><strong>100 метров</strong> — большой дом. 295 000 €, или около 24 583 € в месяц. Дивиденд — расчётно 8 700 € в год до налога на прибыль компании.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="s5">
   <div class="wrap grid split-head">
-    <h2 id="s5">Почему дивиденд в евро, а не в процентах</h2>
-    <div class="split-head__body">
-<p>Одна акция — один метр. Каждый метр сдаётся в долгую аренду одинаково, поэтому и дивиденд на каждую акцию одинаковый: расчётно 87 € в год до налога на прибыль компании. Кто вошёл в очереди по 2 950 €, получает те же 87 €, что и тот, кто вошёл на отделке по 3 650 €. К вложенному это 2,9% и 2,4%. Ранний вход виден в цифрах.</p>
-<p>Откуда расчётные 87 €: долгая аренда в Santa Úrsula — 12–15 € за метр в месяц. В середине вилки, 13,5 €, это 162 € в год с метра. Расходы по статьям — 46,3%, 75 € с метра: IBI 3,75 €, взносы сообщества 34,1 €, управление арендой с IGIC 17,3 €, простой 6,75 €, страховка 3,5 €, резерв на ремонт 8,1 €, сбор за мусор 1,5 €. Остаётся 87 € до налога на прибыль компании.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="s6">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s6">Если ступень уже позже</h2>
-    <div class="split-head__body">
-<p>Калькулятор считает любую ступень. Пример: 72 метра на ступени «Коробка и кровля» — 72 × 3 450 € = 248 400 €, или 20 700 € в месяц. Те же метры по цене ввода — 277 200 €. Дивиденд тот же: расчётно 6 264 € в год до налога на прибыль компании, к вложенному — 2,5%.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="s7">
-  <div class="wrap grid split-head">
-    <h2 id="s7">Порядок входа</h2>
+    <h2 id="s4">Порядок входа</h2>
     <div class="split-head__body">
 <p>Запись в очередь — бесплатно. Сейчас мы выбираем участок в районе La Quinta, Santa Úrsula, и обсуждаем варианты с участниками очереди. Денег до выбора участка не берём: инвестиционный договор приходит, когда участок одобрит большинство очереди. По договору вы покупаете акции компании-застройщика по цене текущей ступени: одна акция — один метр. Сразу полностью — бонус 10%, частями за полгода — бонус 5%, частями за год — без бонуса. Каждую неделю стройки — отчёт. После ввода дома — дивиденд в евро на каждую акцию из долгосрочной аренды за вычетом расходов, расчётно, до налога на прибыль компании, или обмен акций на метры своей резиденции.</p>
 
@@ -238,9 +135,9 @@
 
 
 </section>
-<section class="section rule-top s--head" aria-labelledby="s8">
+<section class="section rule-top s--head" aria-labelledby="s5">
   <div class="wrap grid split-head bar-under">
-    <h2 id="s8">После расчёта</h2>
+    <h2 id="s5">После расчёта</h2>
     <div class="split-head__body">
 <p>Нажмите кнопку — мы пришлём ваш расчёт письмом вместе с порядком входа: очередь бесплатно, акции — по инвестиционному договору после того, как большинство очереди одобрит участок, отчёт о стройке каждую неделю, после ввода — дивиденд на акцию или обмен на метры. Поле суммы вы не заполняете: мы берём площадь, ступень и способ оплаты из калькулятора.</p>
 
@@ -251,16 +148,13 @@
 </section>
 <section class="section section--sand" id="ochered" aria-label="Получить мой расчёт">
   <div class="wrap grid wl wl--solo" id="waitlist">
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Заявка уходит команде проекта в Telegram и на info&#64;artemisresort.com. Мы свяжемся с вами." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Заявка уходит команде проекта в Telegram и на info&#64;artemisresort.com. Мы свяжемся с вами." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
       <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Язык общения</label>
         <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
       <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="/tenerife/calculadora/">
-      <input type="hidden" name="calc_m2" id="wl-calc-m2" value="72">
-      <input type="hidden" name="calc_step" id="wl-calc-step" value="queue">
-      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m12">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить мой расчёт</button></div>
@@ -275,7 +169,7 @@
     <h2 class="visually-hidden">Подвал сайта</h2>
     <div class="grid">
       <div class="f-about">
-        <p><strong>Artemis Tenerife</strong> — двадцать резиденций на севере Тенерифе, участок выбираем в районе La Quinta, Santa Úrsula. Акции компании-застройщика от 2 950 € за метр. Запись в очередь — бесплатно, денег до выбора участка не берём.</p>
+        <p><strong>Artemis Tenerife</strong> — двадцать резиденций на севере Тенерифе, участок выбираем в районе La Quinta, Santa Úrsula. Запись в очередь — бесплатно, денег до выбора участка не берём.</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="Страницы">
         <p><strong>Страницы.</strong></p>
@@ -309,6 +203,5 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js" defer></script>
 </body>
 </html>

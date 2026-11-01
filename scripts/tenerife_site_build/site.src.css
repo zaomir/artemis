@@ -120,7 +120,7 @@ a:hover{color:var(--cs-ink)}
 .figures span{font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-on-dark-soft)}
 .figures a{color:inherit;display:inline-flex;align-items:center;min-height:var(--touch-min)}
 /* D13: крупная цифра не шире своей ячейки — размер ограничен шириной полосы (cqi контейнера .figures):
-   «от 2 950 €» ≈ 4,64 em; ячейка = 3/8 полосы (768–1023) и 4/12 (≥1024) → потолок 7cqi и 6.5cqi (запас ≥ 5 %). */
+   «от X XXX €» ≈ 4,64 em; ячейка = 3/8 полосы (768–1023) и 4/12 (≥1024) → потолок 7cqi и 6.5cqi (запас ≥ 5 %). */
 @media (min-width:768px){.figures li,.figures li:nth-child(n+3){grid-column:span 2}.figures li:nth-child(2),.figures li:nth-child(3){grid-column:span 3}.figures li:last-child{grid-column:1/-1}.figures b:not(.figures__text){font-size:min(var(--fs-figure),var(--fig-cap-tablet))}}
 @media (min-width:1024px){.figures{padding-block:var(--space-7);row-gap:var(--space-4)}.figures li{grid-row:1/3}.figures b:not(.figures__text){font-size:min(var(--fs-figure),var(--fig-cap-desktop))}.figures li:nth-child(1){grid-column:1/3}.figures li:nth-child(2){grid-column:3/6}.figures li:nth-child(3){grid-column:6/10}.figures li:nth-child(4),.figures li:nth-child(5){grid-column:10/13;border-left:var(--hairline) solid var(--cs-on-dark-soft);padding-left:var(--space-5)}.figures li:nth-child(4){grid-row:1}.figures li:nth-child(5){grid-row:2}}
 

@@ -32,7 +32,7 @@ SITE = ROOT / "app" / "tenerife_site"
 STATIC = ROOT / "app" / "static"
 IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
-MODEL = STATIC / "tenerife" / "site" / "model.json"
+MODEL = ROOT / "app" / "tenerife_site" / "data" / "model.json"   # r4.1: not under static (nginx serves /static/ from disk)
 BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
@@ -95,6 +95,188 @@ SIZES = {
 
 class BuildError(Exception):
     pass
+
+
+# ---------------------------------------------------------------- r4.1: figures hidden until approved
+# Project preview rule (DEC-ARTEMIS-TENERIFE-PREVIEW): no dividends and no price ladder in public. Founder: figures
+# come back later, as ranges, once approved. Until then (TENERIFE_SHOW_FIGURES unset = default) the build leaves out of
+# the rendered pages every sentence, list item, table row (or the whole table when its head has one), heading clause and
+# meta text with a euro amount (price per m² / per share, ladder, payment example, dividend, rent or cost figure) or a
+# percentage about a dividend / yield / return; the C8 ladders, the C9 calculator (calculadora, acciones) and every
+# section, lead or intro left empty by that. The copy (copy_v3, COPY_SHA256) and model.json are NOT changed:
+# TENERIFE_SHOW_FIGURES=1 python3 scripts/tenerife_site_build/build_v3.py rebuilds the pages exactly as before r4.1.
+def show_figures_env():
+    return os.environ.get("TENERIFE_SHOW_FIGURES", "").strip() == "1"
+
+
+_SP = r"[\s\u00a0\u202f]?"
+EUR_FIG_RX = re.compile(rf"\d{_SP}€|€{_SP}\d|€/[мm]²|\d{_SP}евро\b")
+PCT_FIG_RX = re.compile(rf"\d{_SP}%")
+PCT_CTX_RX = re.compile(r"(?i)дивиденд|доходн|годовых|вложен|к цене|рост|Bund|Festgeld|\bстатья\b")
+# sentence end: . ! ? (optionally closing a **lead.**) + space, next sentence starts with a capital, digit, «, ( or **
+_SENT_SPLIT_RX = re.compile(r"(?:(?<=[.!?])|(?<=[.!?]\*\*))\s+(?=(?:\*\*|[«(])?[А-ЯЁA-Z0-9])")
+_LEAD_ONLY_RX = re.compile(r"^\*\*[^*]+\*\*[.:]?$")
+_TABLE_SEP_RX = re.compile(r"^\|(\s*:?-+:?\s*\|)+$")
+_LIST_RX = re.compile(r"^(?:- |\d+\. )")
+_SPECIAL_RX = re.compile(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|<!--|\*\*Кнопка:)")
+
+
+# sections that are a payment / dividend example, the price ladder or a yield benchmark as a whole: what is left of them
+# without the figures is a stub that points at numbers no longer shown, so they go completely (heading + frames)
+FIGURE_SECTIONS = {("norte", "Рынок рядом"), ("acciones", "Пример на 72 метрах"),
+                   ("calculadora", "Три готовых примера из очереди"),
+                   ("calculadora", "Почему дивиденд в евро, а не в процентах"),
+                   ("calculadora", "Если ступень уже позже"), ("alquiler", "Годовая картина: 72 метра"),
+                   ("proceso", "Пример на 72 метрах"), ("mercado", "Ступени Artemis рядом с рынком"),
+                   ("mercado", "Немецкие ориентиры")}
+
+
+def has_figure(text):
+    """True when the text shows a figure that stays hidden until approved (see above)."""
+    return bool(EUR_FIG_RX.search(text) or (PCT_FIG_RX.search(text) and PCT_CTX_RX.search(text)))
+
+
+def keep_sentences(text):
+    """The sentences of a paragraph without a hidden figure, verbatim and in order; '' when nothing but a bold lead
+    («**Как считается.**», «**Q?**») would be left."""
+    parts = _SENT_SPLIT_RX.split(text)
+    kept = [x for x in parts if not has_figure(x)]
+    if len(kept) == len(parts):
+        return text
+    if parts[0].startswith("**") and has_figure(parts[0]):   # the lead / question itself goes: the rest is its answer
+        return ""
+    out = " ".join(kept)
+    return "" if not out or _LEAD_ONLY_RX.match(out) else out
+
+
+def keep_heading(text):
+    """Heading clauses («a: b») without a figure; None when none is left (the section goes)."""
+    parts = [x for x in text.split(": ") if not has_figure(x)]
+    return ": ".join(parts) if parts else None
+
+
+def hide_figures_md(md, hidden=None, name=None):
+    """copy markdown -> the same markdown without the hidden figures (lines verbatim or dropped; a paragraph is
+    re-joined from its kept sentences). `hidden`, if a list, receives one entry per removed unit (for the report)."""
+    log = hidden if hidden is not None else []
+    lines = md.splitlines()
+    ents, i, n = [], 0, len(lines)   # entries: [kind, out_lines, had_content, removed]
+    while i < n:
+        s = lines[i].strip()
+        if not s:
+            ents.append(["blank", [lines[i]], False, False]); i += 1; continue
+        if s.startswith("<!--"):
+            j = i
+            while "-->" not in lines[j]:
+                j += 1
+            ents.append(["raw", lines[i:j + 1], False, False]); i = j + 1; continue
+        if s.startswith("**Кнопка:"):
+            ents.append(["button", lines[i:i + 2], False, False]); i += 2; continue
+        if s.startswith("[КАДР"):
+            ents.append(["frame", [lines[i]], False, False]); i += 1; continue
+        if s == "---":
+            ents.append(["hr", [lines[i]], False, False]); i += 1; continue
+        hm = re.match(r"^(#{1,3}) (.+)$", s)
+        if hm:
+            t = keep_heading(hm.group(2))
+            if t != hm.group(2):
+                log.append(("heading", hm.group(2), t))
+            kind = "h1" if len(hm.group(1)) == 1 else "h"
+            if t is None and kind == "h1":
+                raise BuildError(f"H1 is a figure only: {s[:60]}")
+            ents.append([kind, [f"{hm.group(1)} {t}"] if t else [], True, t is None]); i += 1; continue
+        if s.startswith("|"):
+            rows = []
+            while i < n and lines[i].strip().startswith("|"):
+                rows.append(lines[i]); i += 1
+            head, body = rows[:2], rows[2:]
+            if has_figure(head[0]) or "€" in head[0]:   # a € column: its cells are euro figures without the sign
+                kept = []
+            else:
+                kept = [r for r in body if not has_figure(r)]
+            for r in (body if not kept else [r for r in body if r not in kept]):
+                log.append(("table row", r.strip(), None))
+            if has_figure(head[0]) or "€" in head[0]:
+                log.append(("table head", head[0].strip(), None))
+            ents.append(["table", head + kept if kept else [], True, not kept]); continue
+        if _LIST_RX.match(s):
+            ordered = bool(re.match(r"^\d+\. ", s))
+            items = []
+            while i < n and (re.match(r"^\d+\. ", lines[i].strip()) if ordered else lines[i].strip().startswith("- ")):
+                items.append(lines[i]); i += 1
+            kept = [x for x in items if not has_figure(x)]
+            log.extend(("list item", x.strip(), None) for x in items if has_figure(x))
+            ents.append(["list", kept, True, not kept]); continue
+        para = []
+        while i < n and lines[i].strip() and not _SPECIAL_RX.match(lines[i].strip()):
+            para.append(lines[i].strip()); i += 1
+        text = " ".join(para)
+        kept = keep_sentences(text)
+        if kept != text:
+            for x in _SENT_SPLIT_RX.split(text):
+                if has_figure(x):
+                    log.append(("sentence", x, None))
+            if not kept:
+                log.append(("paragraph (empty after hiding)", text[:80], None))
+        ents.append(["p", [kept] if kept else [], True, not kept])
+    # a paragraph that introduces a removed table / list («…к вложенному:») goes with it
+    content = [k for k, e in enumerate(ents) if e[0] in ("p", "table", "list", "h", "h1", "button", "frame", "hr")]
+    for a, b in zip(content, content[1:]):
+        e, nxt = ents[a], ents[b]
+        if e[0] == "p" and e[1] and e[1][0].rstrip().rstrip("*").endswith(":") and nxt[0] in ("table", "list") and nxt[3]:
+            log.append(("intro of a hidden block", e[1][0], None))
+            e[1], e[3] = [], True
+    # a section (## / ###) whose text is all hidden goes completely: heading, its [КАДР] frames
+    k = 0
+    while k < len(ents):
+        if ents[k][0] == "h":
+            j = k + 1
+            while j < len(ents) and ents[j][0] not in ("h", "h1", "hr", "button"):
+                j += 1
+            body = [e for e in ents[k + 1:j] if e[0] in ("p", "table", "list")]
+            whole = bool(ents[k][1]) and (name, re.sub(r"^#{1,3} ", "", ents[k][1][0])) in FIGURE_SECTIONS
+            if ents[k][3] or whole or (body and all(e[3] for e in body)):
+                title = re.sub(r"^#{1,3} ", "", ents[k][1][0]) if ents[k][1] else "(figure heading)"
+                log.append(("section", title, None))
+                for e in ents[k:j]:
+                    if e[0] != "blank":
+                        e[1], e[3] = [], True
+            k = j
+        else:
+            k += 1
+    out = [ln for e in ents for ln in e[1]]
+    # no runs of blank lines where blocks went
+    text = re.sub(r"\n{3,}", "\n\n", "\n".join(out))
+    return text + ("\n" if md.endswith("\n") else "")
+
+
+META_DESC_MAX = 160
+
+
+def hide_figures_meta(meta, md_hidden):
+    """Meta title / description / OG title without figures, from the copy's own words only: a title with a figure ->
+    the OG title (else the H1 as shown); an OG title with a figure -> the Meta title; a description that loses a
+    sentence -> the first sentences of the first paragraph shown (the hero intro, if any is left; <= 160 characters)."""
+    out = dict(meta)
+    h1 = re.search(r"^# (.+)$", md_hidden, re.M).group(1)
+    if has_figure(meta["Meta title"]):
+        out["Meta title"] = meta["OG title"] if not has_figure(meta["OG title"]) else h1
+    if has_figure(meta["OG title"]):
+        out["OG title"] = out["Meta title"]
+    if has_figure(meta["Meta description"]):
+        after = md_hidden.split("\n# " + h1, 1)[1]
+        paras = [ln.strip() for ln in after.splitlines()
+                 if ln.strip() and not _SPECIAL_RX.match(ln.strip()) and not _LEAD_ONLY_RX.match(ln.strip())]
+        intro = paras[0] if paras else ""   # the hero intro as shown, else the first paragraph shown
+        acc = ""
+        for x in _SENT_SPLIT_RX.split(intro):
+            if acc and len(acc) + 1 + len(x) > META_DESC_MAX:
+                break
+            acc = f"{acc} {x}".strip()
+        if not acc or has_figure(acc):
+            raise BuildError("meta description: no figure-free intro sentence")
+        out["Meta description"] = re.sub(r"\*\*", "", acc)
+    return out
 
 
 # ---------------------------------------------------------------- copy + figures
@@ -885,8 +1067,26 @@ def check_output(name, out):
 
 
 # ---------------------------------------------------------------- main
-def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
+UNPUBLISHED_URLS = ("/tenerife/inversores",)   # r4.1: investor page(s) stay unpublished and unlinked
+
+
+def check_no_figures(name, out):
+    """r4.1 guard: with figures hidden no rendered unit (text, attribute, JSON-LD) may carry one, and nothing links an
+    unpublished page."""
+    txt = html.unescape(re.sub(r"<[^>]+>", " | ", out))
+    attrs = " | ".join(html.unescape(v) for v in re.findall(r'(?:content|alt|aria-label|title)="([^"]*)"', out))
+    for unit in re.split(r"\s\|\s|(?<=[.!?])\s+", txt + " | " + attrs):
+        if has_figure(unit):
+            raise BuildError(f"{name}: figure left with TENERIFE_SHOW_FIGURES off: {unit.strip()[:80]}")
+    for u in UNPUBLISHED_URLS:
+        if u in out:
+            raise BuildError(f"{name}: links unpublished {u}")
+
+
+def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figures=None):
     check_whatsapp_env()
+    show = show_figures_env() if show_figures is None else bool(show_figures)
+    hidden_log = {}
     if combined_sha() != COPY_SHA256:
         raise BuildError(f"copy_v3 sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
     model = load_model(model_path)
@@ -896,13 +1096,21 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     alts = json.loads(Path(alts_path or HERE / "alts.json").read_text(encoding="utf-8"))
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=False, undefined=StrictUndefined,
                       trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
-    footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"), fmap, rx)
+    footer_md = (COPY / FOOTER).read_text(encoding="utf-8")
+    if not show:
+        footer_md = hide_figures_md(footer_md, hidden_log.setdefault("footer", []))
+    footer = parse_footer(footer_md, fmap, rx)
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
-    slugs, metas, parsed = {}, {}, {}
+    slugs, metas, parsed, full_blocks = {}, {}, {}, {}
     for fname, name in PAGES:
         md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
+        full_blocks[name] = parse_page(md)[1]   # photos are assigned on the full copy: no other slot changes
+        if not show:
+            md = hide_figures_md(md, hidden_log.setdefault(name, []), name)
         meta, blocks = parse_page(md)
+        if not show:
+            meta = hide_figures_meta(meta, md)
         slug = meta["Слаг"]
         expected = "/tenerife/" if name == "index" else f"/tenerife/{name}/"
         if slug != expected:
@@ -916,12 +1124,16 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
-    site_frames = assign_site_frames({n: [b["id"] for b in bl if b["kind"] == "frame"] for n, bl in pblocks.items()},
-                                     frames_cfg)
+    site_frames = assign_site_frames({n: [b["id"] for b in drop_hidden_sections(full_blocks[n], n)
+                                          if b["kind"] == "frame"] for n in pblocks}, frames_cfg)
     for fname, name in PAGES:
         meta, blocks = metas[name], pblocks[name]
-        frames = site_frames[name]
-        page = structure(blocks, frames, alts, name, model)
+        shown_ids = {b["id"] for b in blocks if b["kind"] == "frame"}   # r4.1: slots of hidden sections are not shown
+        frames = {f: stem for f, stem in site_frames[name].items() if f in shown_ids}
+        page = structure(blocks, frames, alts, name, model if show else None)
+        if not show:
+            for sec in page["sections"]:
+                sec["calc_short"] = False   # C9 short (acciones) shows prices and payments
         url = slugs[name]
         out = tpl.render(
             name=name, url=url, canonical=BASE_URL + url,
@@ -930,8 +1142,8 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             og_title=html.escape(meta["OG title"], quote=True),
             og_image=BASE_URL + "/static/tenerife/site/img/og-tenerife-1200x630.jpg",
             nav=nav, menu=menu, footer=footer, page=page,
-            calc=calc_view(model) if name == CALC_PAGE else None,
-            calc_labels=calc_labels(page) if name == CALC_PAGE else None,
+            calc=calc_view(model) if show and name == CALC_PAGE else None,
+            calc_labels=calc_labels(page) if show and name == CALC_PAGE else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
                              org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
             calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
@@ -939,13 +1151,19 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         )
         out = wrap(out)
         check_output(name, out)
+        if not show:
+            check_no_figures(name, out)
         outputs[name] = out
         report[name] = {"url": url, "file": fname, "frames": frames,
                         "hidden": sorted(hide_no_photo_slots(frames, name)),
                         "alts": {fid: slot_alt(alts, name, fid, stem) for fid, stem in frames.items() if stem},
                         "title": meta["Meta title"],
+                        "figures_hidden": [list(x[:2]) for x in hidden_log.get(name, [])] if not show else [],
                         "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
+    if not show:
+        for name in ("impressum", "privacy", "_notice"):
+            check_no_figures(name, outputs[name])
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)
     if write:
@@ -1012,6 +1230,9 @@ def main():
         fr = " ".join(f"{k}->{'-'.join(v.split('-')[:2]) if v else ('(hidden)' if k in r['hidden'] else '(text)')}"
                       for k, v in r["frames"].items())
         print(f"{r['url']:28} {len(outputs[name]):6d} B  {fr}")
+    for r in report.values():   # r4.1: the file keeps only how many units were hidden, by kind (full list: build())
+        r["figures_hidden"] = {k: sum(1 for x in r.get("figures_hidden", []) if x[0] == k)
+                               for k in sorted({x[0] for x in r.get("figures_hidden", [])})}
     (HERE / "frames_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 

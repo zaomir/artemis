@@ -139,6 +139,21 @@ SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
 SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energia", "construccion",
               "proceso", "faq", "simon", "mercado", "boris")  # RU v3: scripts/tenerife_site_build/build_v3.py
 SITE_URL = "https://artemisresort.com"
+# r4.1: investor pages are not published until the figures are approved: 404 (as the hidden «Инвесторам» footer link),
+# never in SITE_PAGES, the sitemap or any internal link. Guarded explicitly so adding one to SITE_PAGES can't leak it.
+UNPUBLISHED_PAGES = ("inversores", "investors", "inversiones", "invest")
+# r4.1: figure data (model.json & co.) is never served while TENERIFE_SHOW_FIGURES is off (default). The file itself
+# lives in app/tenerife_site/data/ (nginx serves /static/ straight from disk); this guard answers 404 in Flask before
+# static serving, for any JSON under /static/tenerife/, in case one is ever put back there.
+FIGURE_STATIC_RX = re.compile(r"^/static/tenerife/(?:.*/)?[^/]*\.json(?:\.gz|\.br)?$", re.I)
+
+
+def show_figures() -> bool:
+    return os.environ.get("TENERIFE_SHOW_FIGURES", "").strip() == "1"
+
+
+def figures_blocked(path: str) -> bool:
+    return not show_figures() and bool(FIGURE_STATIC_RX.match(path or ""))
 
 
 log = logging.getLogger("artemis.tenerife")
@@ -229,7 +244,7 @@ def legal_page():
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
-    if page not in SITE_PAGES:
+    if page not in SITE_PAGES or page in UNPUBLISHED_PAGES:
         return make_response("Not found", 404)
     return _site_page(page)
 
@@ -240,7 +255,7 @@ def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
-    if page in SITE_PAGES or page in LEGAL_PAGES:
+    if (page in SITE_PAGES or page in LEGAL_PAGES) and page not in UNPUBLISHED_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     return make_response("Not found", 404)
 

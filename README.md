@@ -65,6 +65,7 @@ added by the app on first write; `app/tenerife_calc.py`); the app's Telegram mes
 | `RATE_LIMIT_SALT` | Secret HMAC key for the per-client rate-limit hash (`/api/enquiry`, Tenerife waitlist; `app/ratelimit.py`); any long random string, e.g. `openssl rand -hex 32`. Unset or empty → `ARTEMIS_ADMIN_TOKEN` is used. **Neither set → the app refuses to start** (`refusing to start: rate limit: …` in the journal); there is no built-in default. Changing it only resets the rate-limit counters |
 | `TENERIFE_WHATSAPP` | WhatsApp number of the `/tenerife/` footer, E.164 with `+` (e.g. `+440000000000`): «WhatsApp: » + `https://wa.me/<digits>`. Unset/invalid → contact hidden + one warning without the value. Never commit it. Details: `app/tenerife_site/README.md` |
 | `TENERIFE_INDEXING` | `1` → `/tenerife/` indexable and in `sitemap.xml`. Unset → `noindex, nofollow` meta + `X-Robots-Tag` on every `/tenerife/` page (impressum/privacy included), none in the sitemap (until the founder approves numbers and prices). Crete unaffected |
+| `TENERIFE_SHOW_FIGURES` | **Build time only** (`scripts/tenerife_site_build/build_v3.py`, not the app). Unset → the committed `/tenerife/` pages carry no prices, ladder, payments, dividend or yield figures and no calculator; `1` → rebuilt with them, as before r4.1. Details: `app/tenerife_site/README.md` |
 
 Notifications contain only: name, contact, language, page — plus the planned investment amount
 for Crete enquiries when the visitor filled it in (Telegram from `app/notify.py`, e-mail copy from
