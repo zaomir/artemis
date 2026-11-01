@@ -37,7 +37,7 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   only while the hero picture is under it; mobile sheet, no-JS = anchor to `#footer-pages`; ladder rise only
   without reduced motion), `waitlist.js` (prod, unchanged), `calc.js` (05 only).
 - Served by `app/tenerife.py` (`SITE_PAGES`; sitemap in `app/app.py`): `/tenerife/`, `/tenerife/<page>/`
-  (clean URLs, canonical, hreflang ru only); `/tenerife/<page>.html` and `/tenerife/<page>` → 301.
+  (clean URLs, canonical, no hreflang: RU is review-only, noindex unless TENERIFE_INDEXING=1); `/tenerife/<page>.html` and `/tenerife/<page>` → 301.
 - Waitlist form on every page (`#ochered`, form `#waitlist` kept for the no-JS redirect) → `POST /api/tenerife/waitlist` (unchanged endpoint).
 - Tests: `tests/test_tenerife_v3.py` (+ `tests/test_tenerife_site.py`). Smoke: `TENERIFE_PATHS` in `deploy/artemis-deploy.sh`.
 - `scripts/tenerife_site_build/build.py` is the previous builder (author HTML from `zaomir/grainee-v2`);

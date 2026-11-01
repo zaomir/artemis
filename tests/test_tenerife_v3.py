@@ -536,9 +536,10 @@ class V3BuildTest(unittest.TestCase):
             self.assertGreaterEqual(n, 500 if name == build_v3.CALC_PAGE else 700, f"{name}: {n}")
 
     # ---- criterion 5: SEO, links, routes, deploy
-    def test_hreflang_ru_only_and_no_other_languages(self):
+    def test_no_hreflang_and_no_other_languages(self):
+        # ru-noindex: RU Tenerife is for the founder's review only, so no hreflang alternate at all
         for name, page in self.pages.items():
-            self.assertEqual(re.findall(r'hreflang="([^"]+)"', page), ["ru"], name)
+            self.assertEqual(re.findall(r'hreflang="([^"]+)"', page), [], name)
             self.assertIsNone(re.search(r'href="/(?:es|de|fr|en)/', page), name)
             self.assertIn('<html lang="ru">', page)
 
