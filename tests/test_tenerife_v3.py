@@ -244,8 +244,8 @@ class V3BuildTest(unittest.TestCase):
         joined = "\n".join(outputs.values())
         self.assertNotIn("2 950", joined)
         self.assertNotIn("2\u00a0950", joined)
-        self.assertIn("216 000", outputs["index"])          # 72 × 3 000 (mini calculation)
-        self.assertIn("216\u00a0000", outputs["calculadora"])  # calculator default, server-rendered
+        self.assertIn("156 000", outputs["index"])          # 52 × 3 000 — минимальная цена юнита
+        self.assertIn("156\u00a0000", outputs["calculadora"])  # calculator default, server-rendered
         self.assertIn('"price_eur_m2":3000', outputs["calculadora"])
 
     def test_no_hardcoded_figures_in_templates_and_js(self):

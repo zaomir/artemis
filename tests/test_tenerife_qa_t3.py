@@ -155,10 +155,10 @@ class FormPayloadTest(AppCase):
         row = self.rows()[0]
         model = json.loads((ROOT / "app/static/tenerife/site/model.json").read_text(encoding="utf-8"))
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"]),
-                         ("ok", 72, "queue", "m12"))
+                         ("ok", 52, "queue", "m12"))
         self.assertEqual((row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         (212400, 17700, model["version"]))
-        self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 212400)  # mocked: nothing sent
+                         (153400, 12783, model["version"]))
+        self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 153400)  # mocked: nothing sent
 
     def test_other_pages_send_page_only(self):
         for name in PAGES:
@@ -441,7 +441,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "164d74cc30195b1b7930d182326db06d41d0d44bc83ae30e1e986c0773334080")
+                         "f035387b2eeb26d4419e3d85504710eb9cb3d23d9281b7211a1ef7da39a55a6a")
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):

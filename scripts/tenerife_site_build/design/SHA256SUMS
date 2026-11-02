@@ -2,7 +2,7 @@
 # Paths are relative to this folder; fonts and OFL files live in app/static/tenerife/site/fonts/ (served), byte-identical.
 # Reference only, not vendored (designer docs; they still show the old copy phone, QA r16): DESIGN.md 31b1efeb60af5d88d2a98bd81a7e55483f320d0c8f1356db2502b69e7f574023, components.html 92364875b0a6aeacaa4ddf5994514a746fc5dfcb4dd5222b51a4d213b7a09828.
 00c7d4a22579c164ab3ce92adb3c2cb98942a87ee5f05814c859233883e1bc82  fonts.css
-f6636f0b01cdc3ad27e877bb30b91c87bce688d9f4174ff6ea6b4f0acfafb031  model.json
+c47ede372d193a0906717929653849bc886cac3b246f7b9a426f609a37682dd4  model.json
 54af08ffcaeaba5f6c8b7be8169d2f153dba9833aedb69110209d15e41fcecd3  tokens.css
 42b2b87fec6a06b75742d55f7c602938e735a425936e2c86db2d87cf3e169114  ../../../app/static/tenerife/site/fonts/OFL-CanarySans.txt
 3eb8c66475774d2307543205fe8ba5ecba52290271094ea302c82e6c5e65b1f7  ../../../app/static/tenerife/site/fonts/OFL-CanarySerif.txt

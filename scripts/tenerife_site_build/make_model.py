@@ -81,6 +81,7 @@ def compute(inp):
     t("Строгий сценарий, расходы %", fmt(strict[1] * 100, 1) + "%")
     t("Строгий сценарий, дивиденд", f"около {round(strict[2])} €")
     t("Жилая площадь, сумма по типам", f"{fmt(la)}–{fmt(lb)}")
+    t("Минимальная цена юнита, €", fmt(round((inp["units"][0][2] + inp["units"][0][3]) / 2 + 0.5) * q))
     for m in (48, 72, 100):
         for n, p in stages:
             if m == 72 or n in (stages[0][0], stages[-1][0]):
