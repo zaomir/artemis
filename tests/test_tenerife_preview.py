@@ -115,7 +115,7 @@ class TenerifePreviewTest(unittest.TestCase):
         body = self.client.get("/tenerife/impressum/").get_data(as_text=True)
         # founder 31.10.2026 01:11 UTC: publish OXFORD FRAME REAL ASSETS LTD / 09153936 (Companies House facts only)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales",
-                     "Drovers, Preston Candover, Basingstoke, RG25 2EE", "Szabolcs Szaniszlo"):
+                     "Drovers, Preston Candover, Basingstoke, RG25 2EE"):
             self.assertIn(must, body)
         self.assertNotIn("[уточнить", body)  # placeholders removed; only known data (founder 31.10)
         self.assertIn("info@artemisresort.com", body)

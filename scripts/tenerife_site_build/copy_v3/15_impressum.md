@@ -16,10 +16,6 @@ Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) для сайта Artemis T
 
 Источник: публичный реестр [Companies House](https://find-and-update.company-information.service.gov.uk/company/09153936), проверено 31.10.2026.
 
-## Представитель
-
-Директор: Szabolcs Szaniszlo.
-
 ## Контакты
 
 Email: info@artemisresort.com.

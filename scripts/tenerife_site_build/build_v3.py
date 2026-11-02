@@ -37,7 +37,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "d50ee7e4962a7fbbceec800dc7e9fcbc2c922dab79fb370ed0de4114c9f6be79"
+COPY_SHA256_DEFAULT = "cb31ce434fc40db1cfdea7e83887e39034c19eb887a19232ecfed21a9c23c0dc"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
