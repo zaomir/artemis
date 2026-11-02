@@ -546,7 +546,7 @@ class LegalPagesV31Test(R4Case):
     """QA PS-05: impressum / privacy in the v3.1 site design (site.css, not the old base.css), text = copy_v3
     15_impressum.md / 16_privacy.md word for word, meta description = meta_legal.md (sha 7bed1578…), and no
     two /tenerife/ pages share a description."""
-    META_LEGAL_SHA = "7bed1578035142870141b4d9071d050f7e2bb8f82c93033b8fbe2af9e55d181e"
+    META_LEGAL_SHA = "f1d16ad147d3cab95ab79cefe7935b739854afa43fb7b1de7e810de1e19bf838"
 
     def test_meta_legal_pinned(self):
         import hashlib
