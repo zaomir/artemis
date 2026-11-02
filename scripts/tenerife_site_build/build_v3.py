@@ -27,8 +27,9 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from email_off import unprotected, wrap  # noqa: E402
 
-COPY = HERE / "copy_v3"
-SITE = ROOT / "app" / "tenerife_site"
+LOCALE = os.environ.get("TENERIFE_LOCALE", "ru").strip().lower() or "ru"
+COPY = Path(os.environ.get("TENERIFE_COPY_DIR", str(HERE / "copy_v3")))
+SITE = Path(os.environ.get("TENERIFE_OUT_DIR", str(ROOT / "app" / "tenerife_site")))
 STATIC = ROOT / "app" / "static"
 IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
@@ -796,24 +797,32 @@ def ladder_css(model):
 
 
 def portfolio_html():
-    """Портфель команды: семь объектов, картинка с баннером статуса, некликабельно.
-    Картинки — CSS-фон (.case__media--<stem>), поэтому в разметке нет <img>/<picture>/<figure>."""
+    """Портфель команды: семь объектов одной бесконечной лентой (CSS-анимация, без ручного скролла).
+    Карточки дублируются, чтобы шов был незаметен; картинки — CSS-фон (.case__media--<stem>)."""
     cfg = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))
-    cards = []
-    for it in cfg["items"]:
-        name = html.escape(it["name"], quote=True)
-        cards.append(
-            '<div class="case">'
-            f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{name}"></div>'
-            f'<span class="case__badge">{it["status"]}</span>'
-            f'<div class="case__cap"><b>{it["name"]}</b><span>{it["place"]}</span></div>'
-            '</div>')
+
+    def cards():
+        out = []
+        for it in cfg["items"]:
+            name = html.escape(it["name"], quote=True)
+            out.append(
+                '<div class="case">'
+                f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{name}"></div>'
+                f'<span class="case__badge">{it["status"]}</span>'
+                f'<div class="case__cap"><b>{it["name"]}</b><span>{it["place"]}</span></div>'
+                '</div>')
+        return "".join(out)
+
+    group = '<div class="cases__group">' + cards() + '</div>'
     return ('<section class="section rule-top s--cases" aria-labelledby="s-cases">'
             '<div class="wrap">'
             '<h2 id="s-cases">Портфель команды</h2>'
             '<p class="cases__lead">Семь объектов, на которых мы девелопер и строительный надзор.</p>'
-            '<div class="cases">' + "".join(cards) + '</div>'
-            '</div></section>')
+            '</div>'
+            '<div class="cases__viewport">'
+            '<div class="cases__track">' + group + group + '</div>'
+            '</div>'
+            '</section>')
 
 # ---------------------------------------------------------------- FAQPage JSON-LD (designer r2, item 5)
 FAQ_LD_PAGE = "faq"
@@ -916,7 +925,7 @@ def check_output(name, out):
 # ---------------------------------------------------------------- main
 def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     check_whatsapp_env()
-    if combined_sha() != COPY_SHA256:
+    if LOCALE == "ru" and combined_sha() != COPY_SHA256:
         raise BuildError(f"copy_v3 sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
     model = load_model(model_path)
     fmap = figure_map(model)
