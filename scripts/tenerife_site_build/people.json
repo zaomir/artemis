@@ -1,0 +1,10 @@
+{
+ "_comment": "Фотогалерея страниц Developer (simon) и Supervisor (boris). Реальные фото Simon — из site-simon/assets/photos, остальное генерируется.",
+ "simon": [
+  {"img": "simon-portrait", "alt": "Simon Subic, девелопер Artemis de la Cruz"},
+  {"img": "simon-street",   "alt": "Simon Subic на улице у дома"},
+  {"img": "simon-rooftop",  "alt": "Simon Subic на крыше с видом на город"},
+  {"img": "simon-site",     "alt": "Simon Subic на площадке комплекса Canary Stone с чертежами"}
+ ],
+ "boris": []
+}

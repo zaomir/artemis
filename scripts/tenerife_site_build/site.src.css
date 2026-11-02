@@ -393,3 +393,8 @@ a:hover{color:var(--cs-ink)}
 .cases__lead{max-width:60ch;margin-top:8px}
 @keyframes cases-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.cases__track{animation:none}.s--cases .cases__viewport{overflow-x:auto}}
+
+/* Фотогалерея страниц Developer / Supervisor (2026-11-02) */
+.tperson{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.tperson__ph{aspect-ratio:4/5;background:var(--cs-sand,#E8E2D6) center/cover no-repeat;border-radius:2px}
+.tperson__ph--simon-rooftop{object-position:50% 40%}
