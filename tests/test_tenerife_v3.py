@@ -335,8 +335,10 @@ class V3BuildTest(unittest.TestCase):
 
     def test_r2_slots_without_subject_have_no_image(self):
         report = json.loads((BUILD / "frames_report.json").read_text(encoding="utf-8"))
+        # updated 2026-11-02: the Leonardo Canary Stone frames arrived, so F13/F18 may now carry a photo;
+        # F19 (Simon) and F20 (calculator hero) still have no subject of their own.
         for name in self.pages:
-            for fid in ("F13", "F18", "F19", "F20"):
+            for fid in ("F19", "F20"):
                 if fid in report[name]["frames"]:
                     self.assertIsNone(report[name]["frames"][fid], f"{name} {fid}")
 
@@ -385,7 +387,7 @@ class V3BuildTest(unittest.TestCase):
         cfg = json.loads((BUILD / "frames.json").read_text(encoding="utf-8"))
         photos = {p.stem for p in (SITE_STATIC / "img").glob("*.jpg") if not p.stem.startswith("og-")}
         self.assertEqual(set(cfg["focal"]), photos)
-        self.assertEqual(len(photos), 7)
+        self.assertGreaterEqual(len(photos), 7)
         css = (SITE_STATIC / "site.css").read_text(encoding="utf-8")
         block = css[css.index("@media (max-width:767px){\n  .hero__media .fp-"):]
         block = block[:block.index("\n}\n")]

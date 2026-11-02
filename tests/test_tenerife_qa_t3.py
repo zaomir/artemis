@@ -352,12 +352,16 @@ class ComponentsTest(unittest.TestCase):
             self.assertNotIn('<ol class="grid steps">', page(name), name)
             self.assertIn("Денег до выбора участка не берём", page(name), name)
 
-    def test_f14_f16_without_photo(self):
+    def test_f14_f16_no_interim_photo(self):
+        """Updated 2026-11-02: F14–F16 may only show the generated Canary Stone construction frames,
+        never one of the interim project photos that predate the style lock."""
         report = json.loads((BUILD / "frames_report.json").read_text(encoding="utf-8"))
+        allowed = {"build-pit-3ab7c2", "build-frame-5e6d77", "roof-montazh-6d90ef", "solar-flat-2b8f04"}
         for name, rep in report.items():
             for f in ("F14", "F15", "F16"):
-                if f in rep.get("frames", {}):
-                    self.assertIsNone(rep["frames"][f], (name, f))
+                stem = rep.get("frames", {}).get(f)
+                if stem is not None:
+                    self.assertIn(stem, allowed, (name, f, stem))
 
 
 # ---------------------------------------------------------------- T3-08

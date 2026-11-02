@@ -20,6 +20,7 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://artemisresort.com/tenerife/"},{"@type":"ListItem","position":2,"name":"Акции","item":"https://artemisresort.com/tenerife/acciones/"}]}</script>
 </head>
@@ -71,10 +72,15 @@
   </div>
 </header>
 <main id="main">
-<section class="hero-text" aria-labelledby="h1">
-  <div class="wrap">
-    <div class="col-text bar-under">
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="hero__media"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Котлован и фундамент домов на склоне, каменные террасы участка" width="1600" height="914" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero__body">
+    <div class="wrap grid">
       <h1 id="h1">Одна акция — один метр: акции компании-застройщика Artemis</h1>
+    </div>
+  </div>
+  <div class="hero__after">
+    <div class="wrap grid">
       <p class="hero__lead">Акции компании-застройщика Artemis Tenerife продаются по цене ступени стройки: одна акция — один квадратный метр. В очереди — 2 950 € за метр, на вводе дома — 3 850 €. Оплата — после того как большинство очереди одобрит участок и придёт инвестиционный договор: сразу с бонусом 10%, за полгода с бонусом 5% или за год без бонуса. После ввода — дивиденд в евро на каждую акцию или обмен акций на метры.</p>
     </div>
   </div>
@@ -184,17 +190,17 @@
 
 
 </section>
-<section class="section rule-top s--head" aria-labelledby="s5">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s5">Дивиденд: одинаковые евро на каждую акцию</h2>
-    <div class="split-head__body">
+<section class="section rule-top s--split" aria-labelledby="s5">
+  <div class="wrap grid ti">
+    <div class="ti__text">
+      <h2 id="s5">Дивиденд: одинаковые евро на каждую акцию</h2>
 <p>Акции, которые после ввода не обменяли на метры, остаются в компании. Компания сдаёт эти метры в долгосрочную аренду. Дивиденд — это аренда одного метра после расходов, до налога на прибыль компании, в расчёте на одну акцию. Поэтому он одинаков для всех акций, когда бы их ни купили.</p>
 <p><strong>Как считается.</strong> Долгая аренда в Santa Úrsula — 12–15 € за метр в месяц. Середина — 13,5 €. За год это 162 € с метра. Расходы по статьям — 75 € с метра, 46,3%: IBI 2,3%, взносы сообщества 21,0%, управление арендой с IGIC 10,7%, простой 4,2%, страховка 2,2%, резерв на ремонт 5,0%, сбор за мусор 0,9%. Остаётся 87 € на метр. Отсюда расчётный дивиденд — <strong>87 € на акцию в год до налога на прибыль компании</strong>.</p>
 <p>На 72 акциях это расчётно 6 264 € в год, 522 € в месяц, до налога на прибыль компании.</p>
 
     </div>
+    <figure class="frame"><div class="frame__media r-3x2"><picture><source type="image/webp" srcset="/static/tenerife/site/img/roof-montazh-6d90ef-640.webp 640w, /static/tenerife/site/img/roof-montazh-6d90ef-800.webp 800w, /static/tenerife/site/img/roof-montazh-6d90ef-1024.webp 1024w, /static/tenerife/site/img/roof-montazh-6d90ef-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw"><img class="fp-roof-montazh-6d90ef" src="/static/tenerife/site/img/roof-montazh-6d90ef.jpg" alt="Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
   </div>
-
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="s6">
@@ -223,7 +229,7 @@
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="s7">
-  <div class="wrap grid split-head bar-under">
+  <div class="wrap grid split-head">
     <h2 id="s7">Обмен акций на метры</h2>
     <div class="split-head__body">
 <p>После разрешения на ввод в эксплуатацию акции можно обменять на метры своей резиденции. 72 акции — 72 метра, дом с двумя спальнями. Обмен оформляется купчей у нотариуса и записью в реестре собственности. Первая передача нового жилья на Канарах облагается IGIC по общей ставке 7%, а купчая по такой сделке — AJD 1%.</p>

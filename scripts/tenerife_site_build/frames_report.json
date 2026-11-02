@@ -22,16 +22,17 @@
   "url": "/tenerife/norte/",
   "file": "02_sever.md",
   "frames": {
-   "F21": "green-hill-3f3856",
+   "F21": "hillside-row-71c3ab",
    "F23": null,
-   "F01": null,
+   "F01": "complex-row-9c31a1",
    "F04": null,
    "F22": null,
    "F24": null
   },
   "hidden": [],
   "alts": {
-   "F21": "Дома среди зелени на склоне над океаном"
+   "F21": "Дома террасами на зелёном склоне над океаном",
+   "F01": "Три дома Canary Stone со стороны сада, за ними океан"
   },
   "title": "Север Тенерифе: La Quinta, Santa Úrsula — Artemis",
   "h1": "La Quinta, Santa Úrsula: север, где на Тенерифе живут"
@@ -41,7 +42,7 @@
   "file": "03_rezidencii.md",
   "frames": {
    "F05": "interior-o-74f891",
-   "F06": null,
+   "F06": "interior-salon-8a2c19",
    "F07": null,
    "F08": null,
    "F09": null,
@@ -49,7 +50,8 @@
   },
   "hidden": [],
   "alts": {
-   "F05": "Спальня с окном в пол и выходом во внутренний дворик"
+   "F05": "Спальня с окном в пол и выходом во внутренний дворик",
+   "F06": "Гостиная резиденции: известковые стены, базальтовый пол, вид на океан"
   },
   "title": "Резиденции Artemis: 20 домов от 48 до 100 м² в La Quinta",
   "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
@@ -58,15 +60,20 @@
   "url": "/tenerife/acciones/",
   "file": "04_akcii.md",
   "frames": {
-   "F14": null,
+   "F14": "build-pit-3ab7c2",
    "F01": null,
    "F15": null,
-   "F16": null,
+   "F16": "roof-montazh-6d90ef",
    "F17": null,
    "F12": null
   },
-  "hidden": [],
-  "alts": {},
+  "hidden": [
+   "F17"
+  ],
+  "alts": {
+   "F14": "Котлован и фундамент домов на склоне, каменные террасы участка",
+   "F16": "Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом"
+  },
   "title": "Акции компании-застройщика Artemis: 1 акция = 1 м²",
   "h1": "Одна акция — один метр: акции компании-застройщика Artemis"
  },
@@ -108,8 +115,8 @@
   "url": "/tenerife/energia/",
   "file": "07_energiya.md",
   "frames": {
-   "F11": "golden-hou-d4cc25",
-   "F13": null,
+   "F11": "green-hill-3f3856",
+   "F13": "solar-flat-2b8f04",
    "F16": null,
    "F12": null,
    "F01": null,
@@ -117,7 +124,8 @@
   },
   "hidden": [],
   "alts": {
-   "F11": "Террасы домов на склоне в вечернем свете"
+   "F11": "Дома среди зелени на склоне над океаном",
+   "F13": "Солнечные панели в плоскости плоской кровли с бронзовой кромкой"
   },
   "title": "Энергия дома Artemis: солнце на крыше и камень",
   "h1": "Солнечная крыша, каменный контур: дом, который сам держит тепло"
@@ -126,7 +134,7 @@
   "url": "/tenerife/construccion/",
   "file": "08_stroyka.md",
   "frames": {
-   "F15": null,
+   "F15": "build-frame-5e6d77",
    "F14": null,
    "F16": null,
    "F17": null,
@@ -134,7 +142,9 @@
    "F12": null
   },
   "hidden": [],
-  "alts": {},
+  "alts": {
+   "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
+  },
   "title": "Стройка Artemis Tenerife: 9 стадий и отчёт каждую неделю",
   "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
  },
@@ -196,15 +206,19 @@
   "url": "/tenerife/mercado/",
   "file": "12_rynok.md",
   "frames": {
-   "F24": null,
+   "F24": "golden-hou-d4cc25",
    "F01": null,
    "F12": null,
    "F17": null,
    "F22": null,
    "F04": null
   },
-  "hidden": [],
-  "alts": {},
+  "hidden": [
+   "F17"
+  ],
+  "alts": {
+   "F24": "Террасы домов на склоне в вечернем свете"
+  },
   "title": "Рынок и цена метра в La Quinta: цифры для Artemis",
   "h1": "Рынок и цена метра: откуда цифры Artemis в La Quinta"
  },
@@ -212,7 +226,7 @@
   "url": "/tenerife/boris/",
   "file": "13_boris.md",
   "frames": {
-   "F18": null,
+   "F18": "pool-dusk-4d7e12",
    "F14": null,
    "F12": null,
    "F15": null,
@@ -220,7 +234,9 @@
    "F20": null
   },
   "hidden": [],
-  "alts": {},
+  "alts": {
+   "F18": "Общий бассейн в сумерках, свет в окнах домов"
+  },
   "title": "Boris Ribaut, главный строитель Artemis Tenerife",
   "h1": "Я Boris Ribaut, главный строитель Artemis Tenerife"
  }
