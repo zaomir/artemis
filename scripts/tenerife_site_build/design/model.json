@@ -49,8 +49,8 @@
   }
  ],
  "installments": {
-  "months": 12,
-  "surcharge": 0
+  "months": 6,
+  "discount_pct": 5
  },
  "dividend_eur_per_share_year": 87,
  "area_m2": {
@@ -97,5 +97,9 @@
   "one_bed": 52,
   "two_bed": 73,
   "large": 93
- }
+ },
+ "dividend_pct_range": [
+  2.5,
+  3.5
+ ]
 }

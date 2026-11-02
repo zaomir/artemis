@@ -30,7 +30,7 @@ def model():
 
 
 def good(**kw):
-    d = {"calc_m2": "72", "calc_step": "queue", "calc_pay": "m12"}
+    d = {"calc_m2": "72", "calc_step": "queue", "calc_pay": "m6"}
     d.update(kw)
     return d
 
@@ -54,15 +54,15 @@ class CheckCalcTest(unittest.TestCase):
             calc, problems = self.check(d)
             self.assertEqual(problems, [], d)
             self.assertEqual(calc, {
-                "calc_status": "ok", "calc_note": None, "calc_m2": 72, "calc_step": "queue", "calc_pay": "m12",
-                "calc_m2_server": 72, "calc_step_server": "queue", "calc_pay_server": "m12",
+                "calc_status": "ok", "calc_note": None, "calc_m2": 72, "calc_step": "queue", "calc_pay": "m6",
+                "calc_m2_server": 72, "calc_step_server": "queue", "calc_pay_server": "m6",
                 "calc_type": "two_bed", "calc_shares": 72, "calc_price_eur_m2": 2950, "calc_amount": 212400,
-                "calc_month_eur": 17700, "calc_model_version": self.m["version"]})
+                "calc_month_eur": 33630, "calc_model_version": self.m["version"]})
 
     def test_recomputed_from_model_half_up(self):
         # copy_v3 rounding example: 57 m² × 2 950 ÷ 12 = 14 012,5 -> 14 013 €
         calc, _ = self.check(good(calc_m2="57"))
-        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"], calc["calc_type"]), (168150, 14013, None))
+        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"], calc["calc_type"]), (168150, 26624, None))
         calc, _ = self.check(good(calc_m2="52", calc_step="permit", calc_pay="now"))
         self.assertEqual((calc["calc_type"], calc["calc_price_eur_m2"], calc["calc_amount"], calc["calc_month_eur"]),
                          ("one_bed", 3100, 161200, None))
@@ -113,7 +113,7 @@ class CheckCalcTest(unittest.TestCase):
             calc, problems = self.check(d)
             self.assertEqual((calc["calc_status"], calc["calc_note"]), ("invalid", f"{field}: нет"))
             self.assertIn(f"{field}: нет", problems)
-        calc, _ = self.check({"calc_pay": "m12"})
+        calc, _ = self.check({"calc_pay": "m6"})
         self.assertEqual(calc["calc_note"], "calc_m2: нет; calc_step: нет")
 
 
@@ -157,7 +157,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
         row = self.rows()[0]
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"], row["calc_type"],
                           row["calc_shares"], row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         ("ok", 72, "queue", "m12", "two_bed", 72, 212400, 17700, model()["version"]))
+                         ("ok", 72, "queue", "m6", "two_bed", 72, 212400, 33630, model()["version"]))
         kw = nl.call_args.kwargs
         self.assertEqual((kw["calc"]["calc_status"], kw["calc"]["calc_amount"]), ("ok", 212400))
         self.assertEqual(kw["model"]["version"], model()["version"])
@@ -196,7 +196,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
 
     def test_missing_calc_field_lead_kept(self):
         with self.assertLogs(self.mod.app.logger, level="WARNING"):
-            r, _ = self.post({"calc_m2": "72", "calc_pay": "m12"})
+            r, _ = self.post({"calc_m2": "72", "calc_pay": "m6"})
         self.assertEqual(r.get_json(), {"ok": True})
         self.assertEqual((self.rows()[0]["calc_status"], self.rows()[0]["calc_note"]), ("invalid", "calc_step: нет"))
 
@@ -270,7 +270,7 @@ class TelegramTextTest(unittest.TestCase):
             "Калькулятор: 72 м², акций: 72, тип: Две спальни",
             "Ступень: Очередь — 2 950 €/м²",
             "Сумма: 212 400 €",
-            "Оплата: рассрочка 12 мес. — 17 700 €/мес.",
+            "Оплата: рассрочка 6 мес. — 33 630 €/мес.",
             f"Модель: {model()['version']}",
         ])
 

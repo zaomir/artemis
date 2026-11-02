@@ -155,9 +155,9 @@ class FormPayloadTest(AppCase):
         row = self.rows()[0]
         model = json.loads((ROOT / "app/static/tenerife/site/model.json").read_text(encoding="utf-8"))
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"]),
-                         ("ok", 52, "queue", "m12"))
+                         ("ok", 52, "queue", "m6"))
         self.assertEqual((row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         (153400, 12783, model["version"]))
+                         (153400, 24288, model["version"]))
         self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 153400)  # mocked: nothing sent
 
     def test_other_pages_send_page_only(self):
@@ -441,7 +441,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "46aa1056e5fd9f44f1e65240d9463d6e5ca5cf59925e1ee6937530846113c94b")
+                         "257d2fb593c5463290927aa42f68e0c3159965f534df7fffef6ebfc793fa88c7")
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
@@ -597,6 +597,7 @@ class NumbersTest(unittest.TestCase):
             dst = Path(tmp) / "copy_v3"
             shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__"))
             (dst / "numbers.md").unlink()
+            shutil.copy(BUILD / "model_inputs.json", dst.parent / "model_inputs.json")  # 02.11: единый источник цифр
             r = subprocess.run([sys.executable, str(dst / "make_numbers.py")], capture_output=True, text=True)
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             self.assertNotIn("ERR", r.stdout)

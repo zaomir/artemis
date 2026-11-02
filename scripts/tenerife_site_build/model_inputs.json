@@ -26,7 +26,7 @@
    3850
   ]
  ],
- "installment_months": 12,
+ "installment_months": 6,
  "rent_mid": 13.5,
  "rent_range": [
   12,
@@ -140,5 +140,10 @@
   "one_bed",
   "two_bed",
   "large"
+ ],
+ "installment_discount_pct": 5,
+ "dividend_pct_range": [
+  2.5,
+  3.5
  ]
 }

@@ -1,7 +1,7 @@
 {#- v2 shell for pages without hero/form (DESIGN.md §5: «сплошная шапка → текст 760 → C14 (без C13)»):
     Impressum, Конфиденциальность (legal text = the body block of app/templates/tenerife/{impressum,privacy}.html,
     verbatim) and the no-JS form answers (_notice.html: Flask fills the {{ "{{NOTICE_*}}" }} slots, escaped). -#}
-{% import "_components.html" as c %}
+{% import "_components.html" as c with context %}
 <!doctype html>
 <html lang="ru">
 <head>

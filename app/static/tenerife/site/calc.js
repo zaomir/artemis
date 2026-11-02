@@ -24,10 +24,11 @@
     out.textContent=m2+' м²';
     M.types.forEach(function(t){var r=f.querySelector('input[name=type][value='+t.id+']'); if(r) r.checked=m2>=t.min&&m2<=t.max;});
     set('sum',eur(sum));
-    set('month',pay==='m12'?eur(sum/M.installments.months):'—');
+    var disc=(M.installments.discount_pct||0)/100;
+    set('month',pay==='now'?'—':eur(sum*(1-disc)/M.installments.months));
     set('handover',eur(m2*hand));
-    set('div',eur(m2*M.dividend_eur_per_share_year));
-    set('pct',pf.format(M.dividend_eur_per_share_year/p*100)+'%');
+    var pr=M.dividend_pct_range||[2.5,3.5];
+    set('pct',pf.format(pr[0])+'–'+pf.format(pr[1])+'%');
     /* the server recomputes everything else from these with the current model.json (tenerife_calc.py) */
     if(hid.m2){hid.m2.value=m2;hid.step.value=step;hid.pay.value=pay;}
   }

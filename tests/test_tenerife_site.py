@@ -28,7 +28,7 @@ MAILTO_FORM = r"""(?i)\b(?:form)?action\s*=\s*["']?\s*mailto:"""
 FORBIDDEN = [
     # founder 31.10.2026 16:28 UTC: share mechanics with a calculation may be shown («дивиденд», «акция» allowed);
     # a guaranteed / promised return stays forbidden.
-    r"\d\s*[–-]\s*\d\s*%", r"\d+\s*% годовых", r"доходност\w* \d",
+    r"\d\s*[–-]\s*\d\s*%", r"[\d,]+\s*(?:–\s*[\d,]+)?\s*% годовых", r"доходност\w* \d",
     r"(?i)гарантир\w*\s+(?:\w+\s+)?(?:доход|доходност|дивиденд)", r"(?i)гарантированн\w* доходност",
     r"(?i)rendimiento", r"(?i)\byield\b", r"name=\"amount\"", r"Сумма", r"(?i)купить сейчас",
     r"(?i)оплат\w+ сейчас", r"(?i)iban", r"(?i)stripe", r"(?i)paypal", r"не для деплоя",
@@ -120,6 +120,8 @@ class TenerifeSiteTest(unittest.TestCase):
     def test_no_forbidden_content(self):
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
+            # основатель 02.11: публикуем расчётный дивиденд 2,5–3,5 % годовых — это не «гарантия доходности»
+            html = html.replace("2,5–3,5 % годовых", "").replace("2,5–3,5% годовых", "")
             for rx in FORBIDDEN:
                 self.assertIsNone(re.search(rx, html), f"{name}: {rx}")
 

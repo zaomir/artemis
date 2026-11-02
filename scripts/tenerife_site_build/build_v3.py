@@ -38,7 +38,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "46aa1056e5fd9f44f1e65240d9463d6e5ca5cf59925e1ee6937530846113c94b"
+COPY_SHA256_DEFAULT = "257d2fb593c5463290927aa42f68e0c3159965f534df7fffef6ebfc793fa88c7"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -721,18 +721,23 @@ def calc_view(model):
     total = m2 * cur["price_eur_m2"]
     d = model["dividend_eur_per_share_year"]
     months = model["installments"]["months"]
+    disc = model["installments"].get("discount_pct", 0) / 100.0
+    pct_min, pct_max = model.get("dividend_pct_range", [2.5, 3.5])
+
     def eur(v):
         return fmt_int(v) + NBSP + "€"
     island = {"steps": [{k: st[k] for k in ("id", "price_eur_m2", "entry") if k in st}
                         | ({"current": True} if st.get("current") else {}) for st in steps],
-              "installments": {"months": months}, "dividend_eur_per_share_year": d,
+              "installments": {"months": months, "discount_pct": model["installments"].get("discount_pct", 0)},
+              "dividend_eur_per_share_year": d, "dividend_pct_range": [pct_min, pct_max],
               "area_m2": model["area_m2"], "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
     return {"m2": m2, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"], "months": months,
             "types": [dict(t, checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
             "steps": [dict(st, label=st["name"] + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
             "current": cur["id"],
-            "sum": eur(total), "month": eur(total / months), "handover": eur(m2 * hand["price_eur_m2"]),
-            "div": eur(m2 * d), "pct": fmt_pct(d / cur["price_eur_m2"] * 100),
+            "sum": eur(total), "month": eur(total * (1 - disc) / months),
+            "handover": eur(m2 * hand["price_eur_m2"]),
+            "pct": fmt_pct(pct_min).rstrip("%") + "–" + fmt_pct(pct_max),
             "m2_out": f"{m2} м²",
             "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
@@ -1025,7 +1030,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         page = structure(blocks, frames, alts, name, model)
         url = slugs[name]
         out = tpl.render(
-            name=name, url=url, canonical=BASE_URL + url,
+            name=name, url=url, canonical=BASE_URL + url, months=model["installments"]["months"],
             title=html.escape(meta["Meta title"], quote=True),
             description=html.escape(meta["Meta description"], quote=True),
             og_title=html.escape(meta["OG title"], quote=True),

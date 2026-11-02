@@ -101,7 +101,9 @@ def compute(m2: int, step: str, pay: str, model: dict) -> dict:
     amount = half_up(Decimal(m2) * price)
     month = None
     if pay != "now":
-        month = half_up(Decimal(m2) * price / Decimal(model["installments"]["months"]))
+        months = Decimal(model["installments"]["months"])
+        disc = Decimal(str((model.get("installments") or {}).get("discount_pct", 0))) / Decimal(100)
+        month = half_up(Decimal(m2) * price * (1 - disc) / months)
     return {"calc_type": ctype, "calc_shares": m2 // int(model.get("share_m2", 1)),
             "calc_price_eur_m2": price, "calc_amount": amount, "calc_month_eur": month}
 
