@@ -441,7 +441,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "cb31ce434fc40db1cfdea7e83887e39034c19eb887a19232ecfed21a9c23c0dc")
+                         "164d74cc30195b1b7930d182326db06d41d0d44bc83ae30e1e986c0773334080")
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
