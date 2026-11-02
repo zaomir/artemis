@@ -1,0 +1,12 @@
+{
+ "_comment": "Портфель команды на главной: семь объектов, девелопмент и строительный надзор. status = баннер на картинке.",
+ "items": [
+  {"img": "crete",      "name": "Artemis Resort & Spa",           "place": "Греция · Крит, Герани",       "status": "Строится"},
+  {"img": "montenegro", "name": "Iberostar Selection Montenegro", "place": "Черногория · Ратац",          "status": "Открытие 2026"},
+  {"img": "filario",    "name": "Filario Hotel & Residences",     "place": "Италия · озеро Комо",         "status": "Завершён"},
+  {"img": "paris",      "name": "Four Seasons Hotel George V",    "place": "Франция · Париж",             "status": "Завершён"},
+  {"img": "paraiso",    "name": "Residencial Paraíso de San Juan","place": "Испания · Тенерифе",          "status": "Завершён"},
+  {"img": "aneto",      "name": "Residencial Aneto",              "place": "Испания · Тенерифе",          "status": "Строится"},
+  {"img": "iconic",     "name": "ICONIC",                         "place": "Испания · Тенерифе, Адехе",   "status": "Строится"}
+ ]
+}

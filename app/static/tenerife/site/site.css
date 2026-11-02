@@ -597,3 +597,11 @@ a:hover{color:var(--cs-ink)}
   .hero__media .fp-solar-flat-2b8f04{object-position:50% 50%}
   .hero__media .fp-terrace-view-7c2d15{object-position:50% 55%}
 }
+
+.case__media--crete{background-image:url('/static/tenerife/site/cases/crete-1200.webp')}
+.case__media--montenegro{background-image:url('/static/tenerife/site/cases/montenegro-1200.webp')}
+.case__media--filario{background-image:url('/static/tenerife/site/cases/filario-1200.webp')}
+.case__media--paris{background-image:url('/static/tenerife/site/cases/paris-1200.webp')}
+.case__media--paraiso{background-image:url('/static/tenerife/site/cases/paraiso-1200.webp')}
+.case__media--aneto{background-image:url('/static/tenerife/site/cases/aneto-1200.webp')}
+.case__media--iconic{background-image:url('/static/tenerife/site/cases/iconic-1200.webp')}
