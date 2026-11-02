@@ -78,7 +78,7 @@ def build_model(inputs=None):
         "installments": {"months": inputs["installment_months"],
                          "discount_pct": inputs.get("installment_discount_pct", 0)},
         "dividend_eur_per_share_year": calc["dividend"],
-        "dividend_pct_range": [2.2, 3.0],
+        "dividend_pct_range": inputs.get("dividend_pct_range", [2.5, 3.5]),
         "area_m2": {"min": inputs["calc_area_range"][0], "max": inputs["calc_area_range"][1],
                     "default": inputs["calc_default_area"]},
         "types": [{"id": inputs["unit_ids"][i], "name": u[0], "min": u[2], "max": u[3], "count": u[1]}
