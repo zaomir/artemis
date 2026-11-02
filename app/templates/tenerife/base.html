@@ -6,15 +6,15 @@
 {% if canonical %}<link rel="canonical" href="{{ canonical }}">
 {% else %}<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
-{% endif %}<title>{% block title %}Artemis Tenerife — превью{% endblock %}</title>
-<meta name="description" content="Artemis Tenerife — проект 20 резиденций на севере Тенерифе на стадии подготовки. Бесплатная запись в очередь.">
+{% endif %}<title>{% block title %}Artemis de la Cruz — превью{% endblock %}</title>
+<meta name="description" content="Artemis de la Cruz — проект 20 резиденций на севере Тенерифе на стадии подготовки. Бесплатная запись в очередь.">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="stylesheet" href="/static/tenerife/base.css">
 </head>
 <body>
 {% if not canonical %}<div class="preview-bar">Предварительная версия · не опубликована</div>
 {% endif %}<header class="site"><div class="wrap">
-  <a class="brand" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}">Artemis Tenerife<small>Север Тенерифе · проект на стадии подготовки</small></a>
+  <a class="brand" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}">Artemis de la Cruz<small>Север Тенерифе · проект на стадии подготовки</small></a>
   {% block headcta %}<a class="btn sm" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}#waitlist">Встать в очередь</a>{% endblock %}
 </div></header>
 <main>

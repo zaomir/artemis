@@ -11,7 +11,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 TPL = ROOT / "app" / "templates" / "tenerife"
 FILES = {"impressum": "15_impressum.md", "privacy": "16_privacy.md"}
-TITLES = {"impressum": "Правовая информация — Artemis Tenerife", "privacy": "Конфиденциальность — Artemis Tenerife"}
+TITLES = {"impressum": "Правовая информация — Artemis de la Cruz", "privacy": "Конфиденциальность — Artemis de la Cruz"}
 EMAIL = "info@artemisresort.com"
 BACK = '  <p class="back"><a href="/tenerife/">← К сайту проекта</a></p>'
 

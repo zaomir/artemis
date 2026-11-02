@@ -1,12 +1,12 @@
 <!-- META
 Слаг: /tenerife/privacy/
-Meta title: Конфиденциальность — Artemis Tenerife
+Meta title: Конфиденциальность — Artemis de la Cruz
 Блок: юридическая страница. Без кнопки и без кадров.
 -->
 
 # Политика конфиденциальности
 
-Для сайта Artemis Tenerife и записи в очередь. Версия от 31.10.2026.
+Для сайта Artemis de la Cruz и записи в очередь. Версия от 31.10.2026.
 
 ## 1. Кто обрабатывает данные
 
@@ -23,7 +23,7 @@ Meta title: Конфиденциальность — Artemis Tenerife
 
 ## 3. Зачем и на каком основании
 
-Чтобы записать вас в очередь и связаться по проекту Artemis Tenerife, в том числе прислать расчёт из калькулятора, — на основании вашего согласия (ст. 6(1)(a) GDPR / UK GDPR). Защита от спама и технические журналы — законный интерес (ст. 6(1)(f) GDPR).
+Чтобы записать вас в очередь и связаться по проекту Artemis de la Cruz, в том числе прислать расчёт из калькулятора, — на основании вашего согласия (ст. 6(1)(a) GDPR / UK GDPR). Защита от спама и технические журналы — законный интерес (ст. 6(1)(f) GDPR).
 
 ## 4. Кому передаются данные
 
@@ -48,4 +48,4 @@ Meta title: Конфиденциальность — Artemis Tenerife
 
 ## 7. Cookies
 
-Сайт не использует аналитику, инструменты отслеживания и рекламные cookies, а страницы Artemis Tenerife сами не записывают в браузер ни cookies, ни localStorage. Страницы Artemis Crete на том же домене ставят функциональную cookie lang: она хранит только выбранный язык, действует 1 год и относится ко всему сайту artemisresort.com, поэтому браузер присылает её и на страницах Artemis Tenerife. Cloudflare, который обеспечивает CDN и защиту сайта, может устанавливать технические cookies, необходимые для защиты, например __cf_bm и cf_clearance ([описание cookies Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)).
+Сайт не использует аналитику, инструменты отслеживания и рекламные cookies, а страницы Artemis de la Cruz сами не записывают в браузер ни cookies, ни localStorage. Страницы Artemis Crete на том же домене ставят функциональную cookie lang: она хранит только выбранный язык, действует 1 год и относится ко всему сайту artemisresort.com, поэтому браузер присылает её и на страницах Artemis de la Cruz. Cloudflare, который обеспечивает CDN и защиту сайта, может устанавливать технические cookies, необходимые для защиты, например __cf_bm и cf_clearance ([описание cookies Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)).

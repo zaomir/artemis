@@ -1,12 +1,12 @@
 <!-- META
 Слаг: /tenerife/impressum/
-Meta title: Правовая информация — Artemis Tenerife
+Meta title: Правовая информация — Artemis de la Cruz
 Блок: юридическая страница. Без кнопки и без кадров.
 -->
 
 # Правовая информация
 
-Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) для сайта Artemis Tenerife.
+Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) для сайта Artemis de la Cruz.
 
 ## Оператор сайта
 

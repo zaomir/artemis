@@ -1,4 +1,4 @@
-"""Artemis Tenerife — RU preview (noindex) + free waitlist.
+"""Artemis de la Cruz — RU preview (noindex) + free waitlist.
 
 Routes (Blueprint, registered in app.py):
   GET  /tenerife-preview[/<sub>]     301 -> /tenerife/<sub>/ if that page exists, else /tenerife/ (T47)
