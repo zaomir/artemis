@@ -6,14 +6,16 @@
    "complex-row-9c31a1"
   ],
   "F02": [
-   "entrance-o-9abe9d"
+   "entrance-o-9abe9d",
+   "gate-stone-4f1a2b"
   ],
   "F03": [
-   "communal-s-af42cd"
+   "communal-s-af42cd",
+   "pool-day-6b1c93"
   ],
   "F04": [
    "private-te-6016b5",
-   "modern-low-6e9d80"
+   "terrace-view-7c2d15"
   ],
   "F05": [
    "interior-o-74f891",
@@ -25,31 +27,30 @@
   ],
   "F07": [
    "interior-o-74f891",
-   "private-te-6016b5",
-   "golden-hou-d4cc25"
+   "bedroom-sea-2a7f61",
+   "interior-salon-8a2c19"
   ],
   "F08": [
    "interior-o-74f891",
-   "private-te-6016b5",
-   "communal-s-af42cd"
+   "kitchen-stone-9e3b40",
+   "interior-salon-8a2c19"
   ],
   "F09": [
    "interior-o-74f891",
-   "private-te-6016b5",
-   "entrance-o-9abe9d"
+   "bedroom-sea-2a7f61"
   ],
   "F10": [
    "interior-o-74f891",
+   "terrace-view-7c2d15",
    "private-te-6016b5"
   ],
   "F11": [
    "green-hill-3f3856",
-   "modern-low-6e9d80",
-   "golden-hou-d4cc25"
+   "aerial-complex-3d9e50"
   ],
   "F12": [
    "entrance-o-9abe9d",
-   "communal-s-af42cd"
+   "gate-stone-4f1a2b"
   ],
   "F13": [
    "solar-flat-2b8f04"
@@ -75,8 +76,8 @@
   "F20": [],
   "F21": [
    "hillside-row-71c3ab",
-   "green-hill-3f3856",
-   "modern-low-6e9d80"
+   "aerial-complex-3d9e50",
+   "green-hill-3f3856"
   ],
   "F22": [
    "pool-dusk-4d7e12",
@@ -85,11 +86,12 @@
   ],
   "F23": [
    "green-hill-3f3856",
-   "golden-hou-d4cc25"
+   "aerial-complex-3d9e50"
   ],
   "F24": [
    "golden-hou-d4cc25",
-   "complex-row-9c31a1"
+   "complex-row-9c31a1",
+   "aerial-complex-3d9e50"
   ]
  },
  "focal": {
@@ -107,6 +109,12 @@
   "build-frame-5e6d77": "50% 45%",
   "interior-salon-8a2c19": "55% 50%",
   "build-pit-3ab7c2": "50% 45%",
-  "roof-montazh-6d90ef": "50% 55%"
+  "roof-montazh-6d90ef": "50% 55%",
+  "gate-stone-4f1a2b": "50% 55%",
+  "terrace-view-7c2d15": "50% 55%",
+  "kitchen-stone-9e3b40": "50% 50%",
+  "bedroom-sea-2a7f61": "50% 50%",
+  "pool-day-6b1c93": "50% 45%",
+  "aerial-complex-3d9e50": "50% 50%"
  }
 }
