@@ -7,7 +7,8 @@
    "F04": "private-te-6016b5",
    "F02": "gate-stone-4f1a2b",
    "F03": "pool-day-6b1c93",
-   "F17": null
+   "F17": null,
+   "F22": null
   },
   "hidden": [
    "F17"
@@ -18,8 +19,8 @@
    "F02": "Въезд в комплекс: базальтовые пилоны и бронзовые ворота",
    "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
   },
-  "title": "Artemis de la Cruz — 20 резиденций в La Quinta, север Тенерифе",
-  "h1": "20 резиденций в La Quinta — от 153 400 €"
+  "title": "Artemis de la Cruz — 20 résidences à La Quinta, nord de Tenerife",
+  "h1": "20 résidences à La Quinta — à partir de 153 400 €"
  },
  "norte": {
   "url": "/tenerife/norte/",
@@ -38,8 +39,8 @@
    "F23": "Весь комплекс из двадцати домов террасами над океаном",
    "F01": "Три дома Canary Stone со стороны сада, за ними океан"
   },
-  "title": "Север Тенерифе: La Quinta, Santa Úrsula — Artemis",
-  "h1": "La Quinta, Santa Úrsula: север, где на Тенерифе живут"
+  "title": "Nord de Tenerife: La Quinta, Santa Úrsula — Artemis",
+  "h1": "La Quinta, Santa Úrsula: le nord où l'on vit, à Tenerife"
  },
  "producto": {
   "url": "/tenerife/producto/",
@@ -59,8 +60,8 @@
    "F07": "Спальня резиденции с окном на океан",
    "F08": "Кухня резиденции: дуб, базальтовая столешница, вид в сад"
   },
-  "title": "Резиденции Artemis: 20 домов от 48 до 100 м² в La Quinta",
-  "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
+  "title": "Résidences Artemis: 20 maisons de 48 à 100 м² à La Quinta",
+  "h1": "Vingt résidences de 48 à 100 mètres, une seule façade Canary Stone"
  },
  "acciones": {
   "url": "/tenerife/acciones/",
@@ -80,8 +81,8 @@
    "F14": "Котлован и фундамент домов на склоне, каменные террасы участка",
    "F16": "Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом"
   },
-  "title": "Акции компании-застройщика Artemis: 1 акция = 1 м²",
-  "h1": "Одна акция — один метр: акции компании-застройщика Artemis"
+  "title": "Actions de la société promotrice Artemis: 1 action = 1 м²",
+  "h1": "Une action pour un mètre: les actions de la société promotrice Artemis"
  },
  "calculadora": {
   "url": "/tenerife/calculadora/",
@@ -96,8 +97,8 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Калькулятор акций Artemis de la Cruz: сумма, платёж, дивиденд",
-  "h1": "Калькулятор: ваши метры акциями компании-застройщика"
+  "title": "Calculatrice des actions Artemis de la Cruz: montant, versement, dividende",
+  "h1": "Calculatrice: vos mètres en actions de la société promotrice"
  },
  "alquiler": {
   "url": "/tenerife/alquiler/",
@@ -114,8 +115,8 @@
   "alts": {
    "F10": "Терраса резиденции с видом на склон и океан"
   },
-  "title": "Аренда на севере Тенерифе: 12–15 € за м² в месяц — Artemis",
-  "h1": "Как дом в La Quinta зарабатывает после ввода"
+  "title": "Location dans le nord de Tenerife: 12–15 € le м² par mois — Artemis",
+  "h1": "Comment une maison de La Quinta gagne de l'argent après la livraison"
  },
  "energia": {
   "url": "/tenerife/energia/",
@@ -133,8 +134,8 @@
    "F11": "Дома среди зелени на склоне над океаном",
    "F13": "Солнечные панели в плоскости плоской кровли с бронзовой кромкой"
   },
-  "title": "Энергия дома Artemis: солнце на крыше и камень",
-  "h1": "Солнечная крыша, каменный контур: дом, который сам держит тепло"
+  "title": "L'énergie de la maison Artemis: le soleil sur le toit et la pierre",
+  "h1": "Toit solaire, enveloppe de pierre: une maison qui garde sa chaleur"
  },
  "construccion": {
   "url": "/tenerife/construccion/",
@@ -151,8 +152,8 @@
   "alts": {
    "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
   },
-  "title": "Стройка Artemis de la Cruz: 9 стадий и отчёт каждую неделю",
-  "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
+  "title": "Le chantier Artemis de la Cruz: 9 étapes et un rapport chaque semaine",
+  "h1": "Un chantier planifié 2027–2029: neuf étapes et un rapport chaque semaine"
  },
  "proceso": {
   "url": "/tenerife/proceso/",
@@ -171,8 +172,8 @@
   "alts": {
    "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
   },
-  "title": "Сделка Artemis de la Cruz: от очереди до ключей шаг за шагом",
-  "h1": "От очереди до ключей: шесть шагов сделки Artemis"
+  "title": "La transaction Artemis de la Cruz: de la liste d'attente aux clés",
+  "h1": "De la liste d'attente aux clés: les six étapes d'une transaction Artemis"
  },
  "faq": {
   "url": "/tenerife/faq/",
@@ -189,8 +190,8 @@
   "alts": {
    "F03": "Общий бассейн и дома Canary Stone"
   },
-  "title": "Вопросы об Artemis de la Cruz: акции, цена, дивиденд, стройка",
-  "h1": "Вопросы перед входом в Artemis de la Cruz — и прямые ответы"
+  "title": "Questions sur Artemis de la Cruz: actions, prix, dividende, chantier",
+  "h1": "Les questions avant d'entrer chez Artemis de la Cruz, et des réponses directes"
  },
  "simon": {
   "url": "/tenerife/simon/",
@@ -205,8 +206,8 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Simon Subic, девелопер Artemis de la Cruz",
-  "h1": "Я Simon Subic, девелопер Artemis de la Cruz"
+  "title": "Simon Subic, promoteur d'Artemis de la Cruz",
+  "h1": "Je suis Simon Subic, promoteur d'Artemis de la Cruz"
  },
  "mercado": {
   "url": "/tenerife/mercado/",
@@ -225,8 +226,8 @@
   "alts": {
    "F24": "Террасы домов на склоне в вечернем свете"
   },
-  "title": "Рынок и цена метра в La Quinta: цифры для Artemis",
-  "h1": "Рынок и цена метра: откуда цифры Artemis в La Quinta"
+  "title": "Marché et prix du mètre à La Quinta: les chiffres d'Artemis",
+  "h1": "Le marché et le prix du mètre: d'où viennent les chiffres d'Artemis à La Quinta"
  },
  "boris": {
   "url": "/tenerife/boris/",
@@ -243,7 +244,7 @@
   "alts": {
    "F18": "Общий бассейн в сумерках, свет в окнах домов"
   },
-  "title": "Boris Ribaut, главный строитель Artemis de la Cruz",
-  "h1": "Я Boris Ribaut, главный строитель Artemis de la Cruz"
+  "title": "Boris Ribaut, directeur de chantier d'Artemis de la Cruz",
+  "h1": "Je suis Boris Ribaut, directeur de chantier d'Artemis de la Cruz"
  }
 }

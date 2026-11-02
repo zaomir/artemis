@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
-SITE = ROOT / "app" / "tenerife_site"
+SITE = ROOT / "app" / "tenerife_site" / "ru"
 STATIC = ROOT / "app" / "static"
 PAGES = {"index": "/tenerife/", "norte": "/tenerife/norte/", "producto": "/tenerife/producto/",
          "construccion": "/tenerife/construccion/", "proceso": "/tenerife/proceso/", "faq": "/tenerife/faq/"}

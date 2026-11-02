@@ -197,8 +197,12 @@ def _finish(page: str) -> str:
     return page
 
 
-def _site_page(name: str):
-    f = SITE_DIR / f"{name}.html"
+LOCALES = ("ru", "es", "de", "fr")
+
+
+def _site_page(name: str, locale: str = "en"):
+    base = SITE_DIR if locale == "en" else SITE_DIR / locale
+    f = base / f"{name}.html"
     if not f.is_file():
         return make_response("Not found", 404)
     resp = make_response(_finish(f.read_text(encoding="utf-8")))
@@ -219,6 +223,22 @@ def site_index():
     return _site_page("index")
 
 
+@bp.route(SITE_PREFIX + "/<locale>/")
+def site_locale_index(locale: str):
+    if locale not in LOCALES:
+        return make_response("Not found", 404)
+    return _site_page("index", locale)
+
+
+@bp.route(SITE_PREFIX + "/<locale>/<page>/")
+def site_locale_page(locale: str, page: str):
+    if locale not in LOCALES:
+        return make_response("Not found", 404)
+    if page not in SITE_PAGES and page not in LEGAL_PAGES:
+        return make_response("Not found", 404)
+    return _site_page(page, locale)
+
+
 @bp.route(SITE_PREFIX + "/impressum/")
 @bp.route(SITE_PREFIX + "/privacy/")
 def legal_page():
@@ -229,6 +249,8 @@ def legal_page():
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
+    if page in LOCALES:
+        return redirect(f"{SITE_PREFIX}/{page}/", code=301)
     if page not in SITE_PAGES:
         return make_response("Not found", 404)
     return _site_page(page)

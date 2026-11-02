@@ -11,16 +11,17 @@
 
 {#- C1 header: 7 links + «Ещё» from 1024 px; below — «Меню» (no JS: anchor to the footer page list) -#}
 {#- C1: solid by default and without JS; site.js adds .is-over only while the hero picture is under it -#}
-{% macro header(menu, nav, url) -%}
+{% macro header(menu, nav, url, home_url, langs, menu_more_label) -%}
 <header class="header" id="site-header">
   <div class="wrap header__in">
-    <a class="brand" href="/tenerife/"{% if url == "/tenerife/" %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
-    <nav class="nav" aria-label="Основное меню">
+    <a class="brand" href="{{ home_url }}"{% if url == home_url %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
+    <nav class="langs" aria-label="Language">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
+    <nav class="nav" aria-label="Main menu">
       <ul>
 {% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        <li><details><summary>Информация</summary>
+        <li><details><summary>{{ menu_more_label }}</summary>
           <ul>
 {% for n in menu.more %}
             <li>{{ navlink(n, url) }}</li>
@@ -393,6 +394,7 @@
     <div class="f-legal">
       <p><strong>Компания.</strong> {{ f.company }}</p>
       <p><strong>Документы.</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">Русский</a></p>
     </div>
   </div>
 </footer>

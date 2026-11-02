@@ -1,12 +1,118 @@
 {
  "_comment": "Портфель команды на главной: семь объектов, девелопмент и строительный надзор. status = баннер на картинке.",
  "items": [
-  {"img": "crete",      "name": "Artemis Resort & Spa",           "place": "Греция · Крит, Герани",       "status": "Строится"},
-  {"img": "montenegro", "name": "Iberostar Selection Montenegro", "place": "Черногория · Ратац",          "status": "Открытие 2026"},
-  {"img": "filario",    "name": "Filario Hotel & Residences",     "place": "Италия · озеро Комо",         "status": "Завершён"},
-  {"img": "paris",      "name": "Four Seasons Hotel George V",    "place": "Франция · Париж",             "status": "Завершён"},
-  {"img": "paraiso",    "name": "Residencial Paraíso de San Juan","place": "Испания · Тенерифе",          "status": "Завершён"},
-  {"img": "aneto",      "name": "Residencial Aneto",              "place": "Испания · Тенерифе",          "status": "Строится"},
-  {"img": "iconic",     "name": "ICONIC",                         "place": "Испания · Тенерифе, Адехе",   "status": "Строится"}
- ]
+  {
+   "img": "crete",
+   "name": "Artemis Resort & Spa",
+   "place": "Греция · Крит, Герани",
+   "status": "Строится",
+   "status_by_locale": {
+    "ru": "Строится",
+    "en": "Under construction",
+    "es": "En obra",
+    "de": "Im Bau",
+    "fr": "En chantier"
+   }
+  },
+  {
+   "img": "montenegro",
+   "name": "Iberostar Selection Montenegro",
+   "place": "Черногория · Ратац",
+   "status": "Открытие 2026",
+   "status_by_locale": {
+    "ru": "Открытие 2026",
+    "en": "Opening 2026",
+    "es": "Apertura 2026",
+    "de": "Eröffnung 2026",
+    "fr": "Ouverture 2026"
+   }
+  },
+  {
+   "img": "filario",
+   "name": "Filario Hotel & Residences",
+   "place": "Италия · озеро Комо",
+   "status": "Завершён",
+   "status_by_locale": {
+    "ru": "Завершён",
+    "en": "Completed",
+    "es": "Terminado",
+    "de": "Fertiggestellt",
+    "fr": "Achevé"
+   }
+  },
+  {
+   "img": "paris",
+   "name": "Four Seasons Hotel George V",
+   "place": "Франция · Париж",
+   "status": "Завершён",
+   "status_by_locale": {
+    "ru": "Завершён",
+    "en": "Completed",
+    "es": "Terminado",
+    "de": "Fertiggestellt",
+    "fr": "Achevé"
+   }
+  },
+  {
+   "img": "paraiso",
+   "name": "Residencial Paraíso de San Juan",
+   "place": "Испания · Тенерифе",
+   "status": "Завершён",
+   "status_by_locale": {
+    "ru": "Завершён",
+    "en": "Completed",
+    "es": "Terminado",
+    "de": "Fertiggestellt",
+    "fr": "Achevé"
+   }
+  },
+  {
+   "img": "aneto",
+   "name": "Residencial Aneto",
+   "place": "Испания · Тенерифе",
+   "status": "Строится",
+   "status_by_locale": {
+    "ru": "Строится",
+    "en": "Under construction",
+    "es": "En obra",
+    "de": "Im Bau",
+    "fr": "En chantier"
+   }
+  },
+  {
+   "img": "iconic",
+   "name": "ICONIC",
+   "place": "Испания · Тенерифе, Адехе",
+   "status": "Строится",
+   "status_by_locale": {
+    "ru": "Строится",
+    "en": "Under construction",
+    "es": "En obra",
+    "de": "Im Bau",
+    "fr": "En chantier"
+   }
+  }
+ ],
+ "labels": {
+  "ru": {
+   "title": "Портфель команды",
+   "lead": "Семь объектов, на которых мы девелопер и строительный надзор."
+  },
+  "en": {
+   "title": "Team portfolio",
+   "lead": "Seven projects where we act as developer and construction supervisor."
+  },
+  "es": {
+   "title": "Cartera del equipo",
+   "lead": "Siete proyectos en los que somos promotor y supervisor de obra."
+  },
+  "de": {
+   "title": "Portfolio des Teams",
+   "lead": "Sieben Projekte, bei denen wir Entwickler und Bauüberwacher sind."
+  },
+  "fr": {
+   "title": "Portefeuille de l'équipe",
+   "lead": "Sept projets où nous sommes développeur et maître d'œuvre."
+  }
+ }
 }
