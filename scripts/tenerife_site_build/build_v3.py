@@ -956,7 +956,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
 
 
 LEGAL_TEMPLATES = Path(__file__).resolve().parents[2] / "app" / "templates" / "tenerife"
-LEGAL = {"impressum": "Правовая информация — Artemis Tenerife", "privacy": "Конфиденциальность — Artemis Tenerife"}
+LEGAL = {"impressum": "Правовая информация — Artemis de la Cruz", "privacy": "Конфиденциальность — Artemis de la Cruz"}
 NOTICE_SLOTS = ('<h1 id="h1">{{NOTICE_TITLE}}</h1>\n<p class="hero__lead">{{NOTICE_TEXT}}</p>\n'
                 '<p class="back"><a href="{{NOTICE_BACK}}">{{NOTICE_BACK_LABEL}}</a></p>')
 
@@ -997,7 +997,7 @@ def simple_pages(env, nav, menu, footer):
         out[name] = wrap(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
                                     description=html.escape(legal_meta(name), quote=True),
                                     body=legal_body(name), nav=nav, menu=menu, footer=footer))
-    out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis Tenerife", canonical=None, url="",
+    out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis de la Cruz", canonical=None, url="",
                                      kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer))
     return out
 
