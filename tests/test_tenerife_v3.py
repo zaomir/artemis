@@ -185,7 +185,7 @@ class V3BuildTest(unittest.TestCase):
         for name, page in self.pages.items():
             want = copy_words(shown_copy(name))
             # портфель команды генерируется из cases.json (не из копии) — исключаем его из сравнения
-            page = re.sub(r'<section class="section rule-top s--cases".*?</section>', "", page, flags=re.S)
+            page = re.sub(r'<section class="section rule-top s--(cases|person)".*?</section>', "", page, flags=re.S)
             got = words(main_text(page))
             self.assertEqual(got, want, f"{name}: first diff at "
                              f"{next((i for i, (a, b) in enumerate(zip(got, want, strict=False)) if a != b),

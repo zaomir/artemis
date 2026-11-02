@@ -761,7 +761,8 @@ def case_css():
     for items in people.values():
         if isinstance(items, list):
             for it in items:
-                rules.append(f".tperson__ph--{it['img']}{{background-image:url('/static/tenerife/site/img/{it['img']}-1024.webp')}}")
+                if isinstance(it, dict) and "img" in it:
+                    rules.append(f".tperson__ph--{it['img']}{{background-image:url('/static/tenerife/site/img/{it['img']}-1024.webp')}}")
     return "\n".join(rules) + "\n"
 
 
@@ -802,17 +803,60 @@ def ladder_css(model):
 
 
 
+PEOPLE_LINKS = (("Simon Subic", "/tenerife/simon/"), ("Boris Ribaut", "/tenerife/boris/"))
+
+
+def link_people(html_text):
+    """Имена команды в тексте — ссылки на их страницы; внутри <a> и в атрибутах не трогаем."""
+    parts = re.split(r"(<[^>]+>)", html_text)
+    depth = 0
+    out = []
+    for part in parts:
+        if part.startswith("<"):
+            tag = part.lower()
+            if tag.startswith("<a ") or tag == "<a>":
+                depth += 1
+            elif tag.startswith("</a"):
+                depth = max(0, depth - 1)
+            out.append(part)
+            continue
+        if depth == 0:
+            for name, href in PEOPLE_LINKS:
+                part = part.replace(name, f'<a href="{href}">{name}</a>')
+        out.append(part)
+    return "".join(out)
+
+
 def team_gallery(page_name):
-    """Фотогалерея страницы человека (Simon / Boris): картинки CSS-фоном, некликабельны."""
+    """Страница человека: фотографии (CSS-фон) и полоса его кейсов из cases.json."""
     cfg = json.loads((HERE / "people.json").read_text(encoding="utf-8"))
-    items = cfg.get(page_name, [])
-    if not items:
+    cases_cfg = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))
+    photos = cfg.get(page_name, [])
+    case_ids = cfg.get(f"{page_name}_cases", [])
+    if not photos and not case_ids:
         return ""
-    cards = "".join(
-        f'<div class="tperson__ph tperson__ph--{it["img"]}" role="img" aria-label="{html.escape(it["alt"], quote=True)}"></div>'
-        for it in items)
+    by_id = {it["img"]: it for it in cases_cfg["items"]}
+    blocks = []
+    if photos:
+        cards = "".join(
+            f'<div class="tperson__ph tperson__ph--{it["img"]}" role="img" aria-label="{html.escape(it["alt"], quote=True)}"></div>'
+            for it in photos)
+        blocks.append('<div class="tperson">' + cards + '</div>')
+    if case_ids:
+        cards = []
+        for cid in case_ids:
+            it = by_id.get(cid)
+            if not it:
+                continue
+            cards.append('<div class="case case--static">'
+                         f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{html.escape(it["name"], quote=True)}"></div>'
+                         f'<span class="case__badge">{it.get("status_by_locale", {}).get(LOCALE, it["status"])}</span>'
+                         f'<div class="case__cap"><b>{it["name"]}</b><span>{it["place"]}</span></div></div>')
+        title = "Портфель команды"
+        blocks.append('<h3 class="tperson__h">' + title + '</h3>'
+                      '<div class="cases cases--person">' + "".join(cards) + '</div>')
     return ('<section class="section rule-top s--person" aria-labelledby="s-person">'
-            '<div class="wrap"><div class="tperson">' + cards + '</div></div></section>')
+            '<div class="wrap">' + "".join(blocks) + '</div></section>')
 
 
 def portfolio_html():
