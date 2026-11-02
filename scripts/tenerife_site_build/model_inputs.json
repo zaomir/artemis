@@ -1,32 +1,33 @@
 {
- "_comment": "Единственный источник цифр сайта /tenerife/ (RU v3). Правка цены = правка здесь, затем: python3 scripts/tenerife_site_build/make_model.py && python3 scripts/tenerife_site_build/build_v3.py. Значения ниже = модель copy_v3/numbers.md (PROPOSAL, ждут ОК основателя).",
+ "_comment": "Единственный источник цифр сайта /tenerife/ (RU v3). 02.11.2026: цены — пределами (пять ступеней), дивиденд в % и €, шесть платежей со скидкой 5 %. Правка: python3 scripts/tenerife_site_build/make_numbers.py && make_model.py && build_v3.py",
  "stages": [
   [
    "Очередь",
-   2950
-  ],
-  [
-   "Разрешение",
+   2900,
    3100
   ],
   [
+   "Разрешение",
+   3100,
+   3300
+  ],
+  [
    "Фундамент",
-   3250
+   3300,
+   3500
   ],
   [
    "Коробка и кровля",
-   3450
-  ],
-  [
-   "Отделка",
-   3650
+   3500,
+   3700
   ],
   [
    "Ввод",
-   3850
+   3700,
+   3900
   ]
  ],
- "installment_months": 12,
+ "installment_months": 6,
  "rent_mid": 13.5,
  "rent_range": [
   12,
@@ -124,7 +125,6 @@
   "permit",
   "foundation",
   "shell_roof",
-  "finishing",
   "handover"
  ],
  "stage_events": [
@@ -132,7 +132,6 @@
   "получена лицензия на строительство",
   "основание и каменный цоколь готовы",
   "стены, перекрытия, кровля с панелями",
-  "фасад, инженерия, интерьеры, бассейн",
   "разрешение на ввод в эксплуатацию"
  ],
  "current_stage": 0,
@@ -140,5 +139,6 @@
   "one_bed",
   "two_bed",
   "large"
- ]
+ ],
+ "installment_discount_pct": 5
 }

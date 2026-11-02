@@ -30,7 +30,7 @@ def model():
 
 
 def good(**kw):
-    d = {"calc_m2": "72", "calc_step": "queue", "calc_pay": "m12"}
+    d = {"calc_m2": "72", "calc_step": "queue", "calc_pay": "m6"}
     d.update(kw)
     return d
 
@@ -54,15 +54,17 @@ class CheckCalcTest(unittest.TestCase):
             calc, problems = self.check(d)
             self.assertEqual(problems, [], d)
             self.assertEqual(calc, {
-                "calc_status": "ok", "calc_note": None, "calc_m2": 72, "calc_step": "queue", "calc_pay": "m12",
-                "calc_m2_server": 72, "calc_step_server": "queue", "calc_pay_server": "m12",
-                "calc_type": "two_bed", "calc_shares": 72, "calc_price_eur_m2": 2950, "calc_amount": 212400,
-                "calc_month_eur": 17700, "calc_model_version": self.m["version"]})
+                "calc_status": "ok", "calc_note": None, "calc_m2": 72, "calc_step": "queue", "calc_pay": "m6",
+                "calc_m2_server": 72, "calc_step_server": "queue", "calc_pay_server": "m6",
+                "calc_type": "two_bed", "calc_shares": 72,
+                "calc_price_eur_m2": 2900, "calc_price_eur_m2_max": 3100,
+                "calc_amount": 208800, "calc_amount_max": 223200,
+                "calc_month_eur": 33060, "calc_month_max": 35340, "calc_model_version": self.m["version"]})
 
     def test_recomputed_from_model_half_up(self):
         # copy_v3 rounding example: 57 m² × 2 950 ÷ 12 = 14 012,5 -> 14 013 €
         calc, _ = self.check(good(calc_m2="57"))
-        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"], calc["calc_type"]), (168150, 14013, None))
+        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"], calc["calc_type"]), (165300, 26173, None))
         calc, _ = self.check(good(calc_m2="52", calc_step="permit", calc_pay="now"))
         self.assertEqual((calc["calc_type"], calc["calc_price_eur_m2"], calc["calc_amount"], calc["calc_month_eur"]),
                          ("one_bed", 3100, 161200, None))
@@ -77,7 +79,7 @@ class CheckCalcTest(unittest.TestCase):
         self.assertEqual((calc["calc_m2_server"], calc["calc_step_server"], calc["calc_pay_server"]),
                          (100, "queue", "now"))
         self.assertEqual(calc["calc_note"], "calc_m2: 120 → 100; calc_step: handover → queue; calc_pay: m24 → now")
-        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"]), (295000, None))
+        self.assertEqual((calc["calc_amount"], calc["calc_month_eur"]), (290000, None))
         self.assertEqual(problems, ["расчёт не совпадает: " + calc["calc_note"]])
         calc, _ = self.check(good(calc_m2="47"))
         self.assertEqual((calc["calc_status"], calc["calc_m2_server"]), ("mismatch", 48))
@@ -113,7 +115,7 @@ class CheckCalcTest(unittest.TestCase):
             calc, problems = self.check(d)
             self.assertEqual((calc["calc_status"], calc["calc_note"]), ("invalid", f"{field}: нет"))
             self.assertIn(f"{field}: нет", problems)
-        calc, _ = self.check({"calc_pay": "m12"})
+        calc, _ = self.check({"calc_pay": "m6"})
         self.assertEqual(calc["calc_note"], "calc_m2: нет; calc_step: нет")
 
 
@@ -157,9 +159,9 @@ class WaitlistCalcApiTest(unittest.TestCase):
         row = self.rows()[0]
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"], row["calc_type"],
                           row["calc_shares"], row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         ("ok", 72, "queue", "m12", "two_bed", 72, 212400, 17700, model()["version"]))
+                         ("ok", 72, "queue", "m6", "two_bed", 72, 208800, 33060, model()["version"]))
         kw = nl.call_args.kwargs
-        self.assertEqual((kw["calc"]["calc_status"], kw["calc"]["calc_amount"]), ("ok", 212400))
+        self.assertEqual((kw["calc"]["calc_status"], kw["calc"]["calc_amount"]), ("ok", 208800))
         self.assertEqual(kw["model"]["version"], model()["version"])
 
     def test_no_js_form_post_with_calc(self):
@@ -174,7 +176,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
         row = self.rows()[0]
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_m2_server"], row["calc_step"],
                           row["calc_step_server"], row["calc_pay"], row["calc_pay_server"], row["calc_amount"]),
-                         ("mismatch", 120, 100, "handover", "queue", "m24", "now", 295000))
+                         ("mismatch", 120, 100, "handover", "queue", "m24", "now", 290000))
         self.assertIn("calc mismatch: расчёт не совпадает: calc_m2: 120 → 100", "\n".join(cm.output))
         self.assertEqual(nl.call_args.kwargs["calc"]["calc_status"], "mismatch")
 
@@ -196,7 +198,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
 
     def test_missing_calc_field_lead_kept(self):
         with self.assertLogs(self.mod.app.logger, level="WARNING"):
-            r, _ = self.post({"calc_m2": "72", "calc_pay": "m12"})
+            r, _ = self.post({"calc_m2": "72", "calc_pay": "m6"})
         self.assertEqual(r.get_json(), {"ok": True})
         self.assertEqual((self.rows()[0]["calc_status"], self.rows()[0]["calc_note"]), ("invalid", "calc_step: нет"))
 
@@ -230,7 +232,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
         rows = self.rows()
         self.assertEqual([r["name"] for r in rows], ["Old", "Анна", "Анна"])
         self.assertIsNone(rows[0]["calc_status"])
-        self.assertEqual(rows[2]["calc_amount"], 212400)
+        self.assertEqual(rows[2]["calc_amount"], 208800)
         c = sqlite3.connect(self.mod.DB)
         cols = [r[1] for r in c.execute("PRAGMA table_info(tenerife_waitlist)")]
         c.close()
@@ -268,9 +270,9 @@ class TelegramTextTest(unittest.TestCase):
     def test_matching_lead_lines(self):
         self.assertEqual(self.lines(calc_row()), [
             "Калькулятор: 72 м², акций: 72, тип: Две спальни",
-            "Ступень: Очередь — 2 950 €/м²",
-            "Сумма: 212 400 €",
-            "Оплата: рассрочка 12 мес. — 17 700 €/мес.",
+            "Ступень: Очередь — 2 900 €–3 100 €/м²",
+            "Сумма: 208 800 €",
+            "Оплата: рассрочка 6 мес. — 33 060 €/мес.",
             f"Модель: {model()['version']}",
         ])
 
@@ -280,8 +282,8 @@ class TelegramTextTest(unittest.TestCase):
             "Прислано: 120 м², ступень handover, оплата рассрочка 24 мес.",
             "Пересчёт: 100 м², ступень queue, оплата сразу",
             "Калькулятор: 100 м², акций: 100, тип: Большой дом",
-            "Ступень: Очередь — 2 950 €/м²",
-            "Сумма: 295 000 €",
+            "Ступень: Очередь — 2 900 €–3 100 €/м²",
+            "Сумма: 290 000 €",
             "Оплата: сразу",
             f"Модель: {model()['version']}",
         ])

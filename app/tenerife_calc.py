@@ -42,8 +42,10 @@ ID_RE = re.compile(r"^[a-z][a-z0-9_]{0,31}$")
 COLUMNS = (("calc_status", "TEXT"), ("calc_note", "TEXT"),
            ("calc_m2", "INTEGER"), ("calc_step", "TEXT"), ("calc_pay", "TEXT"),
            ("calc_m2_server", "INTEGER"), ("calc_step_server", "TEXT"), ("calc_pay_server", "TEXT"),
-           ("calc_type", "TEXT"), ("calc_shares", "INTEGER"), ("calc_price_eur_m2", "INTEGER"),
-           ("calc_amount", "INTEGER"), ("calc_month_eur", "INTEGER"), ("calc_model_version", "TEXT"))
+           ("calc_type", "TEXT"), ("calc_shares", "INTEGER"),
+           ("calc_price_eur_m2", "INTEGER"), ("calc_price_eur_m2_max", "INTEGER"),
+           ("calc_amount", "INTEGER"), ("calc_amount_max", "INTEGER"),
+           ("calc_month_eur", "INTEGER"), ("calc_month_max", "INTEGER"), ("calc_model_version", "TEXT"))
 
 _cache: dict = {}
 
@@ -95,15 +97,22 @@ def pay_options(model: dict) -> tuple:
 
 
 def compute(m2: int, step: str, pay: str, model: dict) -> dict:
-    """The calculation for valid model inputs (as calc.js does it)."""
-    price = next(s["price_eur_m2"] for s in model["steps"] if s["id"] == step)
+    """The calculation for valid model inputs (as calc.js does it). 2026-11-02: prices are RANGES —
+    the low bound goes to the single-value columns, the high bound to the *_max columns."""
+    st = next(s for s in model["steps"] if s["id"] == step)
+    lo, hi = st["price_min_eur_m2"], st["price_max_eur_m2"]
     ctype = next((t["id"] for t in model["types"] if t["min"] <= m2 <= t["max"]), None)
-    amount = half_up(Decimal(m2) * price)
-    month = None
+    amount, amount_max = half_up(Decimal(m2) * lo), half_up(Decimal(m2) * hi)
+    month = month_max = None
     if pay != "now":
-        month = half_up(Decimal(m2) * price / Decimal(model["installments"]["months"]))
+        months = Decimal(model["installments"]["months"])
+        keep = Decimal(1) - Decimal(str(model["installments"].get("discount_pct", 0))) / Decimal(100)
+        month = half_up(Decimal(amount) * keep / months)
+        month_max = half_up(Decimal(amount_max) * keep / months)
     return {"calc_type": ctype, "calc_shares": m2 // int(model.get("share_m2", 1)),
-            "calc_price_eur_m2": price, "calc_amount": amount, "calc_month_eur": month}
+            "calc_price_eur_m2": lo, "calc_price_eur_m2_max": hi,
+            "calc_amount": amount, "calc_amount_max": amount_max,
+            "calc_month_eur": month, "calc_month_max": month_max}
 
 
 def check_calc(data: dict, model: dict) -> tuple[dict | None, list[str]]:

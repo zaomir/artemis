@@ -244,9 +244,9 @@ class V3BuildTest(unittest.TestCase):
         joined = "\n".join(outputs.values())
         self.assertNotIn("2 950", joined)
         self.assertNotIn("2\u00a0950", joined)
-        self.assertIn("216 000", outputs["index"])          # 72 × 3 000 (mini calculation)
+        self.assertIn("216 000", outputs["index"])          # 72 × 3 000 — нижняя граница предела
         self.assertIn("216\u00a0000", outputs["calculadora"])  # calculator default, server-rendered
-        self.assertIn('"price_eur_m2":3000', outputs["calculadora"])
+        self.assertIn('"min":3000', outputs["calculadora"])
 
     def test_no_hardcoded_figures_in_templates_and_js(self):
         model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
@@ -513,7 +513,7 @@ class V3BuildTest(unittest.TestCase):
         calc, problems = tenerife_calc.check_calc(hidden, model)
         self.assertEqual((problems, calc["calc_status"]), ([], "ok"))
         self.assertEqual((calc["calc_m2"], calc["calc_step"], calc["calc_pay"], calc["calc_model_version"]),
-                         (model["area_m2"]["default"], "queue", "m12", model["version"]))
+                         (model["area_m2"]["default"], "queue", "m6", model["version"]))
         for name, other in self.pages.items():
             if name != build_v3.CALC_PAGE:
                 self.assertNotIn('name="calc_', other, name)

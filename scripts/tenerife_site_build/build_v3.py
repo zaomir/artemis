@@ -37,7 +37,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "d50ee7e4962a7fbbceec800dc7e9fcbc2c922dab79fb370ed0de4114c9f6be79"
+COPY_SHA256_DEFAULT = "aa60aa17f516bb836fcf5b27d91689b59dfaaea91872a3ed8fd9472356fbb21d"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -475,7 +475,8 @@ def c11_people(body):
     return out
 
 
-SHORT_RX = re.compile(r"^<strong>([^<]+):</strong> [\d\u00a0 ]+\u00a0?€ (.+?) [\d\u00a0 ]+\u00a0?€ (.+)\.$")
+SHORT_RX = re.compile(r"^<strong>([^<]+):</strong> [\d\u00a0 ]+(?:–[\d\u00a0 ]+)?\u00a0?€ (.+?) "
+                      r"[\d\u00a0 ]+(?:–[\d\u00a0 ]+)?\u00a0?€ (.+)\.$")
 
 
 def short_labels(page):
@@ -495,7 +496,9 @@ def mini_ladder(model):
     """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it."""
     def eur(v):
         return fmt_int(v) + NBSP + "€"
-    return [{"name": st["name"], "price": eur(st["price_eur_m2"]), "current": bool(st.get("current"))}
+    def rng(st):
+        return f'{fmt_int(st["price_min_eur_m2"])}–{fmt_int(st["price_max_eur_m2"])}{NBSP}€'
+    return [{"name": st["name"], "price": rng(st), "current": bool(st.get("current"))}
             for st in model["steps"]]
 
 
@@ -712,26 +715,44 @@ def fmt_pct(x):
 
 
 def calc_view(model):
-    """C9 defaults rendered into the HTML (no CLS, correct without JS) + the inline #cs-model island data."""
+    """C9 defaults rendered into the HTML (no CLS, correct without JS) + the inline #cs-model island data.
+    2026-11-02: цены — пределами, дивиденд в % и €, шесть платежей со скидкой 5 %."""
     steps = model["steps"]
     m2 = model["area_m2"]["default"]
     cur = next(st for st in steps if st.get("current"))
     hand = next(st for st in steps if not st["entry"])
-    total = m2 * cur["price_eur_m2"]
     d = model["dividend_eur_per_share_year"]
     months = model["installments"]["months"]
+    disc = model["installments"].get("discount_pct", 0) / 100.0
+    pct_min, pct_max = model.get("dividend_pct_range", [d / cur["price_max_eur_m2"] * 100,
+                                                        d / cur["price_min_eur_m2"] * 100])
+
     def eur(v):
         return fmt_int(v) + NBSP + "€"
-    island = {"steps": [{k: st[k] for k in ("id", "price_eur_m2", "entry") if k in st}
-                        | ({"current": True} if st.get("current") else {}) for st in steps],
-              "installments": {"months": months}, "dividend_eur_per_share_year": d,
+
+    def rng(a, b):
+        return f"{fmt_int(a)}–{fmt_int(b)}{NBSP}€"
+
+    def rng_pct(a, b):
+        return f"{fmt_pct(a)}–{fmt_pct(b)}"
+
+    total_min, total_max = m2 * cur["price_min_eur_m2"], m2 * cur["price_max_eur_m2"]
+    month_min = total_min * (1 - disc) / months
+    month_max = total_max * (1 - disc) / months
+    island = {"steps": [{"id": st["id"], "min": st["price_min_eur_m2"], "max": st["price_max_eur_m2"],
+                         "entry": st["entry"], **({"current": True} if st.get("current") else {})} for st in steps],
+              "installments": {"months": months, "discount_pct": model["installments"].get("discount_pct", 0)},
+              "dividend_eur_per_share_year": d, "dividend_pct_range": [pct_min, pct_max],
               "area_m2": model["area_m2"], "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
     return {"m2": m2, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"], "months": months,
             "types": [dict(t, checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
-            "steps": [dict(st, label=st["name"] + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
+            "steps": [dict(st, label=st["name"] + " — " +
+                           f'{fmt_int(st["price_min_eur_m2"])}–{fmt_int(st["price_max_eur_m2"])}{NBSP}€')
+                      for st in steps if st["entry"]],
             "current": cur["id"],
-            "sum": eur(total), "month": eur(total / months), "handover": eur(m2 * hand["price_eur_m2"]),
-            "div": eur(m2 * d), "pct": fmt_pct(d / cur["price_eur_m2"] * 100),
+            "sum": rng(total_min, total_max), "month": rng(month_min, month_max),
+            "handover": rng(m2 * hand["price_min_eur_m2"], m2 * hand["price_max_eur_m2"]),
+            "div": eur(m2 * d), "pct": rng_pct(pct_min, pct_max),
             "m2_out": f"{m2} м²",
             "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
@@ -780,8 +801,10 @@ def calc_labels(page):
 def ladder_css(model):
     """C8 bar heights ∝ price / max price (from zero), generated from model.json: CSP forbids style=""."""
     steps = model["steps"]
-    top = max(st["price_eur_m2"] for st in steps)
-    rules = [f".ladder li:nth-child({i}){{--p:{st['price_eur_m2'] / top:.4f};--i:{i - 1}}}"
+    # 2026-11-02: цена — предел; высота столбика считается по середине предела
+    mid = lambda st: (st["price_min_eur_m2"] + st["price_max_eur_m2"]) / 2
+    top = max(mid(st) for st in steps)
+    rules = [f".ladder li:nth-child({i}){{--p:{mid(st) / top:.4f};--i:{i - 1}}}"
              for i, st in enumerate(steps, 1)]
     return "/* C8 ladder: generated by build_v3.py from model.json */\n" + "\n".join(rules) + "\n"
 

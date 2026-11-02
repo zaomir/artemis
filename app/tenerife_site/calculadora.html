@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Калькулятор акций Artemis Tenerife: сумма, платёж, дивиденд</title>
-<meta name="description" content="Выберите площадь, ступень и способ оплаты: сумма покупки акций, платёж в месяц за 12 месяцев, цена тех же метров на вводе и расчётный дивиденд в год.">
+<meta name="description" content="Выберите площадь, ступень и способ оплаты: сумма покупки акций, платёж в месяц, шесть платежей, цена тех же метров на вводе и расчётный дивиденд в год.">
 <link rel="canonical" href="https://artemisresort.com/tenerife/calculadora/">
 <link rel="alternate" hreflang="ru" href="https://artemisresort.com/tenerife/calculadora/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artemis Tenerife">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Посчитайте свои акции Artemis Tenerife">
-<meta property="og:description" content="Выберите площадь, ступень и способ оплаты: сумма покупки акций, платёж в месяц за 12 месяцев, цена тех же метров на вводе и расчётный дивиденд в год.">
+<meta property="og:description" content="Выберите площадь, ступень и способ оплаты: сумма покупки акций, платёж в месяц, шесть платежей, цена тех же метров на вводе и расчётный дивиденд в год.">
 <meta property="og:url" content="https://artemisresort.com/tenerife/calculadora/">
 <meta property="og:image" content="https://artemisresort.com/static/tenerife/site/img/og-tenerife-1200x630.jpg">
 <meta property="og:image:width" content="1200">
@@ -75,7 +75,7 @@
   <div class="wrap">
     <div class="col-text bar-under">
       <h1 id="h1">Калькулятор: ваши метры акциями компании-застройщика</h1>
-      <p class="hero__lead">Выберите площадь или тип резиденции, ступень входа и способ оплаты. Калькулятор покажет сумму покупки акций компании-застройщика, платёж в месяц при оплате за 12 месяцев, цену тех же метров на ступени «Ввод» и дивиденд в евро в год. Одна акция — один квадратный метр.</p>
+      <p class="hero__lead">Выберите площадь или тип резиденции, ступень входа и способ оплаты. Калькулятор покажет сумму покупки акций компании-застройщика, платёж в месяц при оплате за шесть платежей, цену тех же метров на ступени «Ввод» и дивиденд в евро в год. Одна акция — один квадратный метр.</p>
     </div>
   </div>
 </section>
@@ -99,33 +99,32 @@
       <fieldset>
         <legend>Ступень входа</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Очередь — 2 950 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="permit"><span>Разрешение — 3 100 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="foundation"><span>Фундамент — 3 250 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Коробка и кровля — 3 450 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="finishing"><span>Отделка — 3 650 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Очередь — 2 900–3 100 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="permit"><span>Разрешение — 3 100–3 300 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="foundation"><span>Фундамент — 3 300–3 500 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Коробка и кровля — 3 500–3 700 €</span></label>
         </div>
       </fieldset>
       <fieldset>
         <legend>Способ оплаты</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="pay" value="now"><span>Сразу</span></label>
-          <label class="opt"><input type="radio" name="pay" value="m12" checked><span>Равными частями за 12 месяцев. Бонус за полную оплату и вариант «за полгода» калькулятор пока не считает</span></label>
+          <label class="opt"><input type="radio" name="pay" value="now"><span>Сразу (скидка на цену входа)</span></label>
+          <label class="opt"><input type="radio" name="pay" value="m12" checked><span>Шестью равными платежами со скидкой 5 %</span></label>
         </div>
       </fieldset>
     </div>
     <div class="calc__out" aria-live="polite">
       <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Сумма покупки</dt><dd data-k="sum">212 400 €</dd></div>
-        <div><dt>Платёж в месяц</dt><dd data-k="month">17 700 €</dd></div>
-        <div><dt>Цена ступени «Ввод» за те же метры</dt><dd data-k="handover">277 200 €</dd></div>
+        <div class="res__main"><dt>Сумма покупки</dt><dd data-k="sum">208 800–223 200 €</dd></div>
+        <div><dt>Платёж в месяц</dt><dd data-k="month">33 060–35 340 €</dd></div>
+        <div><dt>Цена ступени «Ввод» за те же метры</dt><dd data-k="handover">266 400–280 800 €</dd></div>
         <div><dt>Дивиденд в год, до налога на прибыль компании</dt><dd data-k="div">6 264 €</dd></div>
-        <div><dt>Дивиденд к вложенному</dt><dd data-k="pct">2,9%</dd></div>
+        <div><dt>Дивиденд к вложенному</dt><dd data-k="pct">2,2%–3,0%</dd></div>
         <div class="res__paths"><dt>Два пути после ввода</dt><dd>получать дивиденд или обменять акции на метры своей резиденции</dd></div>
       </dl>
     </div>
   </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","price_eur_m2":2950,"entry":true,"current":true},{"id":"permit","price_eur_m2":3100,"entry":true},{"id":"foundation","price_eur_m2":3250,"entry":true},{"id":"shell_roof","price_eur_m2":3450,"entry":true},{"id":"finishing","price_eur_m2":3650,"entry":true},{"id":"handover","price_eur_m2":3850,"entry":false}],"installments":{"months":12},"dividend_eur_per_share_year":87,"area_m2":{"min":48,"max":100,"default":72},"types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","min":2900,"max":3100,"entry":true,"current":true},{"id":"permit","min":3100,"max":3300,"entry":true},{"id":"foundation","min":3300,"max":3500,"entry":true},{"id":"shell_roof","min":3500,"max":3700,"entry":true},{"id":"handover","min":3700,"max":3900,"entry":false}],"installments":{"months":6,"discount_pct":5},"dividend_eur_per_share_year":87,"dividend_pct_range":[2.2,3.0],"area_m2":{"min":48,"max":100,"default":72},"types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
 </section>
 <section class="section rule-top s--head" aria-labelledby="s1">
   <div class="wrap grid split-head bar-under">
@@ -133,8 +132,8 @@
     <div class="split-head__body">
 <p><strong>Площадь.</strong> От 48 до 100 м² — или тип резиденции:</p>
 <ul class="list"><li>одна спальня, 48–55 м²;</li><li>две спальни, 68–78 м²;</li><li>большой дом, 85–100 м².</li></ul>
-<p><strong>Ступень входа.</strong> Очередь — 2 950 €, разрешение — 3 100 €, фундамент — 3 250 €, коробка и кровля — 3 450 €, отделка — 3 650 €.</p>
-<p><strong>Способ оплаты.</strong> Сразу или равными частями за 12 месяцев. Бонус за полную оплату и вариант «за полгода» калькулятор пока не считает.</p>
+<p><strong>Ступень входа.</strong> Очередь — 2 900–3 100 €, разрешение — 3 100–3 300 €, фундамент — 3 300–3 500 €, коробка и кровля — 3 500–3 700 €.</p>
+<p><strong>Способ оплаты.</strong> Сразу (скидка на цену входа) или шестью равными платежами со скидкой 5 %.</p>
 
     </div>
   </div>
@@ -147,8 +146,8 @@
     <div class="split-head__body">
 <ul class="ledger">
   <li><strong>Сумма покупки</strong><span>— сколько стоят ваши акции на выбранной ступени.</span></li>
-  <li><strong>Платёж в месяц</strong><span>— если платите за 12 месяцев.</span></li>
-  <li><strong>Цена ступени «Ввод» за те же метры</strong><span>— по 3 850 € за метр.</span></li>
+  <li><strong>Платёж в месяц</strong><span>— если платите за шесть платежей.</span></li>
+  <li><strong>Цена ступени «Ввод» за те же метры</strong><span>— по 3 700–3 900 € за метр.</span></li>
   <li><strong>Дивиденд в год</strong><span>— расчётно 87 € на каждую акцию, до налога на прибыль компании.</span></li>
   <li><strong>Дивиденд к вложенному</strong><span>— в процентах от суммы покупки.</span></li>
   <li><strong>Два пути после ввода</strong><span>— получать дивиденд или обменять акции на метры своей резиденции.</span></li>
@@ -166,8 +165,8 @@
 <p>Всё считается открыто, без скрытых коэффициентов:</p>
 <ul class="ledger">
   <li><strong>Сумма</strong><span>= м² × цена ступени.</span></li>
-  <li><strong>Платёж в месяц</strong><span>= сумма ÷ 12.</span></li>
-  <li><strong>Цена на вводе</strong><span>= м² × 3 850 €.</span></li>
+  <li><strong>Платёж в месяц</strong><span>= сумма ÷ 6.</span></li>
+  <li><strong>Цена на вводе</strong><span>= м² × 3 700–3 900 €.</span></li>
   <li><strong>Дивиденд в год</strong><span>= м² × 87 €, расчётно, до налога на прибыль компании.</span></li>
   <li><strong>Дивиденд к вложенному</strong><span>= 87 € ÷ цена ступени, расчётно.</span></li>
 </ul>
@@ -185,19 +184,19 @@
   <table class="dt dt--stack">
     <thead><tr><td></td><th scope="col" class="num">48 м²</th><th scope="col" class="num">72 м²</th><th scope="col" class="num">100 м²</th></tr></thead>
     <tbody>
-      <tr><th scope="row">Сумма по 2 950 €</th><td class="num" data-label="48 м²">141 600 €</td><td class="num" data-label="72 м²">212 400 €</td><td class="num" data-label="100 м²">295 000 €</td></tr>
-      <tr><th scope="row">Платёж за 12 месяцев</th><td class="num" data-label="48 м²">11 800 €</td><td class="num" data-label="72 м²">17 700 €</td><td class="num" data-label="100 м²">24 583 €</td></tr>
-      <tr><th scope="row">Те же метры по 3 850 €</th><td class="num" data-label="48 м²">184 800 €</td><td class="num" data-label="72 м²">277 200 €</td><td class="num" data-label="100 м²">385 000 €</td></tr>
-      <tr><th scope="row">Разница</th><td class="num" data-label="48 м²">43 200 €</td><td class="num" data-label="72 м²">64 800 €</td><td class="num" data-label="100 м²">90 000 €</td></tr>
+      <tr><th scope="row">Сумма по 2 900–3 100 €</th><td class="num" data-label="48 м²">139 200–148 800 €</td><td class="num" data-label="72 м²">208 800–223 200 €</td><td class="num" data-label="100 м²">290 000–310 000 €</td></tr>
+      <tr><th scope="row">Платёж за шесть платежей</th><td class="num" data-label="48 м²">22 040–23 560 €</td><td class="num" data-label="72 м²">33 060–35 340 €</td><td class="num" data-label="100 м²">45 917–49 083 €</td></tr>
+      <tr><th scope="row">Те же метры по 3 700–3 900 €</th><td class="num" data-label="48 м²">184 800 €</td><td class="num" data-label="72 м²">266 400–280 800 €</td><td class="num" data-label="100 м²">385 000 €</td></tr>
+      <tr><th scope="row">Разница</th><td class="num" data-label="48 м²">43 200 €</td><td class="num" data-label="72 м²">43 200–72 000 €</td><td class="num" data-label="100 м²">90 000 €</td></tr>
       <tr><th scope="row">Дивиденд в год, расчётно 87 € на акцию до налога на прибыль компании</th><td class="num" data-label="48 м²">4 176 €</td><td class="num" data-label="72 м²">6 264 €</td><td class="num" data-label="100 м²">8 700 €</td></tr>
       <tr><th scope="row">Дивиденд в месяц, расчётно</th><td class="num" data-label="48 м²">348 €</td><td class="num" data-label="72 м²">522 €</td><td class="num" data-label="100 м²">725 €</td></tr>
       <tr><th scope="row">К вложенному, расчётно</th><td class="num" data-label="48 м²">2,9%</td><td class="num" data-label="72 м²">2,9%</td><td class="num" data-label="100 м²">2,9%</td></tr>
     </tbody>
   </table>
 </div>
-<p><strong>48 метров</strong> — дом с одной спальней. Вход из очереди — 141 600 €, или 11 800 € в месяц. После ввода — расчётно 4 176 € дивиденда в год до налога на прибыль компании или ваш собственный дом.</p>
-<p><strong>72 метра</strong> — дом с двумя спальнями. 212 400 €, или 17 700 € в месяц. Дивиденд — расчётно 6 264 € в год до налога на прибыль компании.</p>
-<p><strong>100 метров</strong> — большой дом. 295 000 €, или около 24 583 € в месяц. Дивиденд — расчётно 8 700 € в год до налога на прибыль компании.</p>
+<p><strong>48 метров</strong> — дом с одной спальней. Вход из очереди — 139 200–148 800 €, или 22 040–23 560 € в месяц. После ввода — расчётно 4 176 € дивиденда в год до налога на прибыль компании или ваш собственный дом.</p>
+<p><strong>72 метра</strong> — дом с двумя спальнями. 208 800–223 200 €, или 33 060–35 340 € в месяц. Дивиденд — расчётно 6 264 € в год до налога на прибыль компании.</p>
+<p><strong>100 метров</strong> — большой дом. 290 000–310 000 €, или около 45 917–49 083 € в месяц. Дивиденд — расчётно 8 700 € в год до налога на прибыль компании.</p>
 
     </div>
   </div>
@@ -208,7 +207,7 @@
   <div class="wrap grid split-head">
     <h2 id="s5">Почему дивиденд в евро, а не в процентах</h2>
     <div class="split-head__body">
-<p>Одна акция — один метр. Каждый метр сдаётся в долгую аренду одинаково, поэтому и дивиденд на каждую акцию одинаковый: расчётно 87 € в год до налога на прибыль компании. Кто вошёл в очереди по 2 950 €, получает те же 87 €, что и тот, кто вошёл на отделке по 3 650 €. К вложенному это 2,9% и 2,4%. Ранний вход виден в цифрах.</p>
+<p>Одна акция — один метр. Каждый метр сдаётся в долгую аренду одинаково, поэтому и дивиденд на каждую акцию одинаковый: расчётно 87 € в год до налога на прибыль компании. Кто вошёл в очереди по 2 900–3 100 €, получает те же 87 €, что и тот, кто вошёл на отделке по 3 650 €. К вложенному это 2,9% и 2,4%. Ранний вход виден в цифрах.</p>
 <p>Откуда расчётные 87 €: долгая аренда в Santa Úrsula — 12–15 € за метр в месяц. В середине вилки, 13,5 €, это 162 € в год с метра. Расходы по статьям — 46,3%, 75 € с метра: IBI 3,75 €, взносы сообщества 34,1 €, управление арендой с IGIC 17,3 €, простой 6,75 €, страховка 3,5 €, резерв на ремонт 8,1 €, сбор за мусор 1,5 €. Остаётся 87 € до налога на прибыль компании.</p>
 
     </div>
@@ -220,7 +219,7 @@
   <div class="wrap grid split-head bar-under">
     <h2 id="s6">Если ступень уже позже</h2>
     <div class="split-head__body">
-<p>Калькулятор считает любую ступень. Пример: 72 метра на ступени «Коробка и кровля» — 72 × 3 450 € = 248 400 €, или 20 700 € в месяц. Те же метры по цене ввода — 277 200 €. Дивиденд тот же: расчётно 6 264 € в год до налога на прибыль компании, к вложенному — 2,5%.</p>
+<p>Калькулятор считает любую ступень. Пример: 72 метра на ступени «Коробка и кровля» — 72 × 3 500–3 700 € = 252 000–266 400 €, или 39 900–42 180 € в месяц. Те же метры по цене ввода — 266 400–280 800 €. Дивиденд тот же: расчётно 6 264 € в год до налога на прибыль компании, к вложенному — 2,5%.</p>
 
     </div>
   </div>
@@ -231,7 +230,7 @@
   <div class="wrap grid split-head">
     <h2 id="s7">Порядок входа</h2>
     <div class="split-head__body">
-<p>Запись в очередь — бесплатно. Сейчас мы выбираем участок в районе La Quinta, Santa Úrsula, и обсуждаем варианты с участниками очереди. Денег до выбора участка не берём: инвестиционный договор приходит, когда участок одобрит большинство очереди. По договору вы покупаете акции компании-застройщика по цене текущей ступени: одна акция — один метр. Сразу полностью — бонус 10%, частями за полгода — бонус 5%, частями за год — без бонуса. Каждую неделю стройки — отчёт. После ввода дома — дивиденд в евро на каждую акцию из долгосрочной аренды за вычетом расходов, расчётно, до налога на прибыль компании, или обмен акций на метры своей резиденции.</p>
+<p>Запись в очередь — бесплатно. Сейчас мы выбираем участок в районе La Quinta, Santa Úrsula, и обсуждаем варианты с участниками очереди. Денег до выбора участка не берём: инвестиционный договор приходит, когда участок одобрит большинство очереди. По договору вы покупаете акции компании-застройщика по цене текущей ступени: одна акция — один метр. Сразу полностью — скидка на цену входа. Шестью равными платежами, первый при подписании договора, без стартового взноса — скидка 5 % от всей цены. Без скидки — платёж по договору. Каждую неделю стройки — отчёт. После ввода дома — дивиденд в евро на каждую акцию из долгосрочной аренды за вычетом расходов, расчётно, до налога на прибыль компании, или обмен акций на метры своей резиденции.</p>
 
     </div>
   </div>
@@ -275,7 +274,7 @@
     <h2 class="visually-hidden">Подвал сайта</h2>
     <div class="grid">
       <div class="f-about">
-        <p><strong>Artemis Tenerife</strong> — двадцать резиденций на севере Тенерифе, участок выбираем в районе La Quinta, Santa Úrsula. Акции компании-застройщика от 2 950 € за метр. Запись в очередь — бесплатно, денег до выбора участка не берём.</p>
+        <p><strong>Artemis Tenerife</strong> — двадцать резиденций на севере Тенерифе, участок выбираем в районе La Quinta, Santa Úrsula. Акции компании-застройщика от 2 900–3 100 € за метр. Запись в очередь — бесплатно, денег до выбора участка не берём.</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="Страницы">
         <p><strong>Страницы.</strong></p>

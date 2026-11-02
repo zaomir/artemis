@@ -70,7 +70,9 @@ def format_calc(c: dict, model: dict | None = None) -> list[str]:
         head += f", тип: {_clean(types.get(c['calc_type']) or c['calc_type'], 40)}"
     lines.append(head)
     step = _clean(steps.get(c["calc_step_server"]) or c["calc_step_server"], 40)
-    lines.append(f"Ступень: {step} — {_eur(c['calc_price_eur_m2'])}/м²")
+    _pmax = c.get("calc_price_eur_m2_max")
+    _ptxt = f"{_eur(c['calc_price_eur_m2'])}–{_eur(_pmax)}" if _pmax and _pmax != c["calc_price_eur_m2"] else _eur(c['calc_price_eur_m2'])
+    lines.append(f"Ступень: {step} — {_ptxt}/м²")
     lines.append(f"Сумма: {_eur(c['calc_amount'])}")
     pay = f"Оплата: {_pay(c['calc_pay_server'])}"
     if c.get("calc_month_eur") is not None:
