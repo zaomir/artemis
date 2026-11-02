@@ -18,7 +18,7 @@
    "F02": "Въезд в комплекс: базальтовые пилоны и бронзовые ворота",
    "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
   },
-  "title": "Artemis Tenerife — 20 резиденций в La Quinta, север Тенерифе",
+  "title": "Artemis de la Cruz — 20 резиденций в La Quinta, север Тенерифе",
   "h1": "20 резиденций в La Quinta — от 153 400 €"
  },
  "norte": {
@@ -96,7 +96,7 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Калькулятор акций Artemis Tenerife: сумма, платёж, дивиденд",
+  "title": "Калькулятор акций Artemis de la Cruz: сумма, платёж, дивиденд",
   "h1": "Калькулятор: ваши метры акциями компании-застройщика"
  },
  "alquiler": {
@@ -151,7 +151,7 @@
   "alts": {
    "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
   },
-  "title": "Стройка Artemis Tenerife: 9 стадий и отчёт каждую неделю",
+  "title": "Стройка Artemis de la Cruz: 9 стадий и отчёт каждую неделю",
   "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
  },
  "proceso": {
@@ -171,7 +171,7 @@
   "alts": {
    "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
   },
-  "title": "Сделка Artemis Tenerife: от очереди до ключей шаг за шагом",
+  "title": "Сделка Artemis de la Cruz: от очереди до ключей шаг за шагом",
   "h1": "От очереди до ключей: шесть шагов сделки Artemis"
  },
  "faq": {
@@ -189,8 +189,8 @@
   "alts": {
    "F03": "Общий бассейн и дома Canary Stone"
   },
-  "title": "Вопросы об Artemis Tenerife: акции, цена, дивиденд, стройка",
-  "h1": "Вопросы перед входом в Artemis Tenerife — и прямые ответы"
+  "title": "Вопросы об Artemis de la Cruz: акции, цена, дивиденд, стройка",
+  "h1": "Вопросы перед входом в Artemis de la Cruz — и прямые ответы"
  },
  "simon": {
   "url": "/tenerife/simon/",
@@ -205,8 +205,8 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Simon Subic, девелопер Artemis Tenerife",
-  "h1": "Я Simon Subic, девелопер Artemis Tenerife"
+  "title": "Simon Subic, девелопер Artemis de la Cruz",
+  "h1": "Я Simon Subic, девелопер Artemis de la Cruz"
  },
  "mercado": {
   "url": "/tenerife/mercado/",
@@ -243,7 +243,7 @@
   "alts": {
    "F18": "Общий бассейн в сумерках, свет в окнах домов"
   },
-  "title": "Boris Ribaut, главный строитель Artemis Tenerife",
-  "h1": "Я Boris Ribaut, главный строитель Artemis Tenerife"
+  "title": "Boris Ribaut, главный строитель Artemis de la Cruz",
+  "h1": "Я Boris Ribaut, главный строитель Artemis de la Cruz"
  }
 }
