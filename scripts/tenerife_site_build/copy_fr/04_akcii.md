@@ -75,7 +75,7 @@ Si les acquéreurs sont plus nombreux que les biens, nous pouvons proposer aux i
 
 Choisissez la surface, le palier d’entrée et le paiement dans le calculateur. Il affiche le montant d’achat, le paiement en six échéances et le prix de livraison de la même surface; le dividende estimé reste indicatif. [Explication des résultats et des formules](/tenerife/calculadora/).
 
-[КАДР F16]
+
 
 ### Suivi et équipe
 

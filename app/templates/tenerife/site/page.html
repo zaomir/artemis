@@ -47,6 +47,7 @@
 {% for s in page.sections %}
 {{ c.section(s, loop.first and not page.facts and not calc, calc if name == 'inversores' else calc_short, calc_labels if name == 'inversores' else calc_short_labels) }}
 {% endfor %}
+{% if profile_cases|default(false) %}{{ profile_cases|safe }}{% endif %}
 {{ c.cta(page.cta_section, page.button, url, calc) }}
 </main>
 {{ c.footer(footer, nav, url) }}

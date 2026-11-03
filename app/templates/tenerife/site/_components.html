@@ -44,7 +44,19 @@
     No photo for the hero slot (designer r2: one photo once per page, F13/F18/F19/F20 have none) -> text hero,
     no figure, the basalt bar (.bar-under) under the text. -#}
 {% macro hero(h) -%}
-{% if h.kind == "text" %}
+{% if h.kind == "profile" %}
+<section class="hero-profile" aria-labelledby="h1">
+  <div class="wrap grid profile-hero">
+    <div class="profile-hero__text">
+      <h1 id="h1">{{ h.h1 }}</h1>
+{% for p in h.intro %}
+      <p class="hero__lead">{{ p }}</p>
+{% endfor %}
+    </div>
+    {{ frame(h.img, " profile-photo profile-hero__photo") }}
+  </div>
+</section>
+{% elif h.kind == "text" %}
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
     <div class="col-text{% if h.bar %} bar-under{% endif %}">
@@ -130,7 +142,7 @@
 
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}
-<figure class="frame{{ extra }}"><div class="frame__media r-{{ img.ratio }}">{{ picture(img) }}</div></figure>
+<figure class="frame{{ extra }}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div></figure>
 {%- endmacro %}
 
 {% macro frames(s) -%}
@@ -200,16 +212,34 @@
 {{ calc_short(k, res) }}
 {% endif %}
 {% if s.calc_full and k %}
-{{ calculator(k, res, s.id) }}
+{{ calculator(k, res, s.id, true) }}
 {% endif %}
 {%- endmacro %}
 
 {#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13).
     s.bar: its [КАДР] slots have no photo -> no figure, 6 px basalt bar under the text block -#}
 {% macro section(s, first, k=none, res=none) -%}
-<section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}" aria-labelledby="{{ s.id }}">
+<section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}{% if s.profile|default(false) %} profile-section{% endif %}" aria-labelledby="{{ s.id }}">
 {% for old in s.aliases %}<span class="anchor-alias" id="{{ old }}" aria-hidden="true"></span>{% endfor %}
-{% if s.layout == "split" %}
+{% if s.layout == "profile-story" %}
+  <div class="wrap grid profile-story{% if s.rev %} profile-story--rev{% endif %}">
+    <div class="profile-story__text">
+      {{ heading(s) }}
+{{ body_items(s.body, s.id) }}
+    </div>
+    {{ frame(s.imgs[0], " profile-photo") }}
+  </div>
+{% elif s.layout == "illustrated" %}
+{% for panel in s.panels %}
+  <div class="wrap grid ti illustrated-panel{% if not loop.first %} ti--rev{% endif %}">
+    <div class="ti__text">
+{% if loop.first %}      {{ heading(s) }}{% endif %}
+{{ body_items(panel.body, s.id) }}
+    </div>
+    {{ frame(panel.img) }}
+  </div>
+{% endfor %}
+{% elif s.layout == "split" %}
   <div class="wrap grid ti{% if s.rev %} ti--rev{% endif %}">
     <div class="ti__text">
       {{ heading(s) }}
@@ -263,8 +293,8 @@
 
 {#- C9 calculator (05): defaults rendered server-side; calc.js reads the #cs-model island (= model.json).
     The inputs sit in a group, not a <form>: every <form> on the site posts to the waitlist handler. -#}
-{% macro calculator(k, res, label_id='h1') -%}
-<section class="section calc-sec" id="calc" aria-labelledby="{{ label_id }}">
+{% macro calculator(k, res, label_id='h1', embedded=false) -%}
+<{{ 'div' if embedded else 'section' }} class="{{ 'calc-sec calc-sec--embedded' if embedded else 'section calc-sec' }}" id="calc"{% if embedded %} role="group"{% endif %} aria-labelledby="{{ label_id }}">
   <div class="wrap grid calc">
     <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
       <fieldset>
@@ -307,7 +337,7 @@
     </div>
   </div>
   <script type="application/json" id="cs-model">{{ k.island }}</script>
-</section>
+</{{ 'div' if embedded else 'section' }}>
 {%- endmacro %}
 
 {#- C9 short (04): area only, the current step and 12 months; same calc.js and #cs-model island, no form button.

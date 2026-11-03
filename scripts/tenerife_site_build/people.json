@@ -1,41 +1,86 @@
 {
- "_comment": "Фотогалерея страниц Developer (simon) и Supervisor (boris). Реальные фото Simon — из site-simon/assets/photos, остальное генерируется.",
+ "_comment": "Фотографии сопровождают указанные разделы персональных страниц. Только кейсы остаются горизонтальной лентой. Внешность сохраняется по утвержденным референсам; одежда, выражение, поза и ситуация проверяются отдельно для каждого опубликованного кадра.",
  "simon": [
   {
    "img": "simon-portrait",
-   "alt": "Simon Subic, девелопер Artemis de la Cruz"
+   "alt": "Simon Subic, девелопер Artemis de la Cruz",
+   "section": "hero",
+   "context": "introduction",
+   "wardrobe": "navy knit, white shirt",
+   "expression": "calm direct gaze",
+   "pose": "seated, hands resting on the desk"
   },
   {
-   "img": "simon-street",
-   "alt": "Simon Subic на улице у дома"
+   "img": "simon-permits-1e06e2",
+   "alt_key": "simon-permits",
+   "alt": "Simon Subic обсуждает проектные документы и чертежи с архитектором",
+   "section": "Как я веду разрешения",
+   "context": "permits",
+   "wardrobe": "light taupe blazer, white linen shirt",
+   "expression": "engaged conversational smile",
+   "pose": "seated sideways, explaining a document"
   },
   {
    "img": "simon-rooftop",
-   "alt": "Simon Subic на крыше с видом на город"
+   "alt": "Simon Subic на крыше с видом на город",
+   "section": "Чем я занимаюсь",
+   "context": "owner-development",
+   "wardrobe": "black overcoat, rust shirt",
+   "expression": "thoughtful profile",
+   "pose": "standing, leaning on a railing"
   },
   {
    "img": "simon-site",
-   "alt": "Simon Subic на площадке комплекса Canary Stone с чертежами"
+   "alt": "Simon Subic на площадке комплекса Canary Stone с чертежами",
+   "section": "Как я связываю деньги и стройку",
+   "context": "site-delivery",
+   "wardrobe": "green field jacket, blue shirt",
+   "expression": "slight smile, looking toward the work",
+   "pose": "standing, holding rolled drawings"
   }
  ],
  "boris": [
   {
    "img": "boris-portrait",
-   "alt": "Boris Ribaut, строительный надзор Artemis de la Cruz"
+   "alt": "Boris Ribaut, строительный надзор Artemis de la Cruz",
+   "section": "hero",
+   "context": "introduction",
+   "wardrobe": "blue shirt, yellow safety vest",
+   "expression": "welcoming direct smile",
+   "pose": "standing with arms crossed"
   },
   {
-   "img": "boris-formwork",
-   "alt": "Приёмка опалубки и бетона на площадке Artemis de la Cruz"
+   "img": "boris-formwork-43f3d5",
+   "alt_key": "boris-formwork",
+   "alt": "Boris Ribaut проверяет размеры опалубки и арматуру до заливки бетона",
+   "section": "Как я работаю",
+   "context": "structural-check",
+   "wardrobe": "olive work jacket, ivory shirt, orange safety vest",
+   "expression": "serious attention to the measurement",
+   "pose": "crouching and measuring the formwork"
   },
   {
-   "img": "boris-roof",
-   "alt": "Проверка кровли с солнечными панелями по планшету"
+   "img": "boris-roof-9e3265",
+   "alt_key": "boris-roof",
+   "alt": "Boris Ribaut проверяет крепление солнечных панелей на плоской кровле",
+   "section": "Кровля и панели",
+   "context": "roof-and-solar",
+   "wardrobe": "slate technical jacket, rust polo, gray reflective vest",
+   "expression": "focused mid-explanation",
+   "pose": "side profile, indicating a mounting detail"
   },
   {
-   "img": "boris-drawings",
-   "alt": "Разбор чертежей с подрядчиком на площадке"
+   "img": "boris-drawings-d9ba7e",
+   "alt_key": "boris-drawings",
+   "alt": "Boris Ribaut разбирает чертежи с подрядчиком в рабочем помещении",
+   "section": "Чертежи",
+   "context": "drawings-and-coordination",
+   "wardrobe": "burgundy checked shirt, rolled sleeves, no helmet indoors",
+   "expression": "animated conversational smile",
+   "pose": "seated, explaining a drawing with a pencil"
   }
  ],
+ "boris_project_photo_section": "Что вы получаете на ключе",
  "simon_cases": [
   "crete",
   "montenegro",

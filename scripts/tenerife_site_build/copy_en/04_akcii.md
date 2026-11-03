@@ -75,7 +75,7 @@ If there are more buyers than units, we may offer investors the chance to assign
 
 Choose the area, entry step and payment method in the calculator. It shows the purchase amount, payment in six instalments and the handover-step price for the same area; the dividend estimate remains an indication. [Results and formula explanations](/tenerife/calculadora/).
 
-[КАДР F16]
+
 
 ### Oversight and team
 

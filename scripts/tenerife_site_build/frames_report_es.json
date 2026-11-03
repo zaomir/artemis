@@ -71,15 +71,13 @@
    "F01": null,
    "F15": null,
    "F17": null,
-   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
    "F17"
   ],
   "alts": {
-   "F14": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela",
-   "F16": "Cubierta plana con borde de bronce, paneles solares antes del montaje"
+   "F14": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela"
   },
   "title": "Inversores — acciones de Artemis de la Cruz en La Quinta",
   "h1": "Inversores: participar en Artemis de la Cruz antes de la entrega"
@@ -124,7 +122,7 @@
   "frames": {
    "F11": "green-hill-3f3856",
    "F13": "solar-flat-2b8f04",
-   "F16": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null,
    "F01": null,
    "F22": null
@@ -132,7 +130,8 @@
   "hidden": [],
   "alts": {
    "F11": "Casas entre vegetación en la ladera sobre el océano",
-   "F13": "Paneles solares a ras de la cubierta plana con borde de bronce"
+   "F13": "Paneles solares a ras de la cubierta plana con borde de bronce",
+   "F16": "Cubierta plana con borde de bronce, paneles solares antes del montaje"
   },
   "title": "La energía de una casa Artemis: sol en la cubierta y piedra",
   "h1": "Cubierta solar, perímetro de piedra: una casa que guarda el calor sola"

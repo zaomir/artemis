@@ -118,11 +118,15 @@
   "aerial-complex-3d9e50": "50% 50%",
   "simon-portrait": "50% 30%",
   "simon-street": "50% 30%",
-  "simon-rooftop": "50% 40%",
+  "simon-rooftop": "70% 40%",
   "simon-site": "50% 40%",
   "boris-portrait": "50% 35%",
   "boris-formwork": "50% 35%",
   "boris-roof": "50% 35%",
-  "boris-drawings": "50% 35%"
+  "boris-drawings": "50% 35%",
+  "boris-formwork-43f3d5": "50% 40%",
+  "boris-roof-9e3265": "50% 40%",
+  "boris-drawings-d9ba7e": "50% 40%",
+  "simon-permits-1e06e2": "50% 40%"
  }
 }

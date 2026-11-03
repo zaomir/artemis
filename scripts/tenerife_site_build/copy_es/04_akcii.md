@@ -75,7 +75,7 @@ Si hay más compradores que unidades, podemos ofrecer a los inversores la cesió
 
 Elija superficie, tramo de entrada y forma de pago en la calculadora. Muestra el importe de compra, el pago en seis cuotas y el precio de entrega de la misma superficie; el dividendo estimado sigue siendo orientativo. [Explicación de resultados y fórmulas](/tenerife/calculadora/).
 
-[КАДР F16]
+
 
 ### Seguimiento y equipo
 

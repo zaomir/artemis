@@ -75,7 +75,7 @@ Wenn es mehr Käufer als Objekte gibt, können wir Investoren anbieten, ihr Obje
 
 Wählen Sie Fläche, Einstiegsstufe und Zahlungsweise im Rechner. Er zeigt Kaufsumme, Zahlung in sechs Raten und den Preis derselben Fläche bei Fertigstellung; die Dividendenschätzung bleibt ein Richtwert. [Ergebnisse und Formeln erklärt](/tenerife/calculadora/).
 
-[КАДР F16]
+
 
 ### Kontrolle und Team
 
