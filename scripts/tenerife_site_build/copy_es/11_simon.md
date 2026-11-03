@@ -46,23 +46,16 @@ Al final llega la licencia de primera ocupación. Desde ese momento las acciones
 
 La obra se financia con dos flujos: las acciones de la sociedad promotora y la venta de viviendas. Mi tarea es que cada euro vaya a la fase que se ejecuta en la obra. El tramo de precio sube cuando la fase está cerrada en la obra y se ve en el informe, no por calendario.
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
-| Qué | Cuándo |
-|---|---|
-| Inscripción en la lista de espera | ahora, gratis |
-| Compra de acciones | tras la aprobación de la parcela por la mayoría de la lista: al contado, en seis meses o en un año |
-| Inicio de la obra | según el plan, principios de 2027 |
-| Entrega | según el plan, finales de 2028 – mediados de 2029 |
-| Tras la entrega | dividendo por acción o canje por metros |
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
 ### Orden de las fases y tramos de precio
 
-Terreno, cimentación, estructura, cubierta con placas, instalaciones, fachada, interior, piscina y urbanización. Nueve fases. La parcela la dirige Boris Ribaut. Cada fase la ven el accionista y el comprador de la vivienda en el informe semanal.
+Las nueve fases, las fechas previstas y el formato del informe semanal están en [Avance del proyecto](/tenerife/construccion/).
 
-Seis tramos: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €; entrega, 3 850 € por metro. Cuanto más avanza la obra, más caro es entrar.
+El modelo de participación, los precios por fases y los dos resultados están en la página de [inversores](/tenerife/inversores/).
 
 ### Qué recibe de mi trabajo
 
@@ -98,5 +91,5 @@ Pregúnteme por la parcela, por las licencias, por los plazos y por lo que pasar
 
 **¿A quién escribir si el informe no coincide con lo que veo en la obra?** A mí.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

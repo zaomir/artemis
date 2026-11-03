@@ -56,11 +56,7 @@ Inside, tall windows set deep into the wall. In summer the depth holds the shade
 
 ### The order of stages
 
-Ground. Foundation. Shell. Roof with panels. Services. Façade. Interior works. Pool. Plot. The report will come every week. Shareholders and house buyers receive it.
-
-The stages also move the share price: the permit raises the metre to 3 100 €, the foundation to 3 250 €, the shell and roof to 3 450 €, the finishing to 3 650 €, handover to 3 850 €. That is why I close every stage with an inspection, not with words.
-
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+The nine stages, planned dates and weekly report format are in [Project progress](/tenerife/construccion/).
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -104,5 +100,5 @@ Directly. Ask about the foundation, the roof, how the services were closed in. I
 
 **When is handover?** As planned, late 2028 – mid 2029.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

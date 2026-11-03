@@ -56,11 +56,7 @@ Innen — hohe Fenster, tief in die Wand gesetzt. Im Sommer hält die Tiefe den 
 
 ### Die Reihenfolge der Phasen
 
-Grundstück. Fundament. Rohbau. Dach mit Modulen. Technik. Fassade. Innenausbau. Pool. Außenanlagen. Der Bericht erscheint jede Woche. Den Bericht erhalten Aktionäre und Hauskäufer.
-
-Die Phasen bewegen auch den Aktienpreis: Die Baugenehmigung hebt den Meter auf 3 100 €, das Fundament auf 3 250 €, Rohbau und Dach auf 3 450 €, der Ausbau auf 3 650 €, die Fertigstellung auf 3 850 €. Deshalb schließe ich jede Phase mit einer Prüfung ab, nicht mit Worten.
-
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die neun Phasen, geplanten Termine und das Format des Wochenberichts stehen unter [Projektverlauf](/tenerife/construccion/).
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -104,5 +100,5 @@ Direkt. Fragen Sie nach dem Fundament, nach dem Dach, danach, wie die Technik ab
 
 **Wann die Fertigstellung?** Nach Plan — Ende 2028 – Mitte 2029.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

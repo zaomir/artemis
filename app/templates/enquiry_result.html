@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ t.enquiry_title }} | Artemis Resort &amp; Spa</title>
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<style>
+*{box-sizing:border-box}body{margin:0;padding:48px 20px;background:#0d1b2a;color:#e8e0d0;font-family:Georgia,serif;line-height:1.7}main{max-width:760px;margin:0 auto}a{color:#C4A35A}a:focus-visible{outline:2px solid #e8c97a;outline-offset:4px}.logo{display:inline-block;margin-bottom:32px;font-weight:bold;letter-spacing:2px;text-decoration:none}h1{color:#fff;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:400;line-height:1.25}p{font:1rem/1.7 Arial,sans-serif;overflow-wrap:anywhere}.actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}.actions a{display:inline-flex;align-items:center;min-height:44px;font-family:Arial,sans-serif}.retry{padding:12px 20px;background:#C4A35A;color:#0d1b2a;text-decoration:none}
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="/{{ lang }}/">ARTEMIS RESORT &amp; SPA</a>
+  <h1>{{ t.enquiry_title }}</h1>
+  <p role="{{ 'status' if success else 'alert' }}">{{ message }}</p>
+  <div class="actions">
+    {% if not success %}<a class="retry" href="/{{ lang }}/#enquiry">{{ t.cta_request }}</a>{% endif %}
+    <a href="/{{ lang }}/">{{ t.legal_nav_home }}</a>
+  </div>
+</main>
+</body>
+</html>

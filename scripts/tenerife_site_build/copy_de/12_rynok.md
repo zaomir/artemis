@@ -27,6 +27,8 @@ Das sind überwiegend Bestandsimmobilien: Häuser und Wohnungen unterschiedliche
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
+Die ursprünglichen Datenzeiträume unterscheiden sich: Fotocasa — Oktober 2026; Engel & Völkers und RealAdvisor — 2026. Die Kelify-Mietbeispiele stammen vom 31.10.2026, der Bezirksindex vom März 2026. Dies sind historische Stände aus den Projektunterlagen, keine neuen Messungen am Abrufdatum. Herausgeber und Zeiträume stehen in den Tabellen; Angebotspreise sind keine abgeschlossenen Transaktionspreise.
+
 ### Wie der Preis steigt
 
 Santa Úrsula ist binnen eines Jahres nach dem Fotocasa-Index um 13,7% teurer geworden. Wohnungen in Santa Úrsula sind nach Daten von Engel & Völkers 2024 um 14,27% und 2025 um 17,72% gestiegen. Der Norden Teneriffas verteuert sich schneller, als diejenigen denken, die nur die Südküste kennen.
@@ -44,18 +46,7 @@ Die benachbarten Neubauten La Quinta wurden zu 3 360–3 870 € pro Meter angeb
 
 ### Die Stufen von Artemis neben dem Markt
 
-| Stufe | € pro m² |
-|---|---|
-| Warteliste | 2 950 |
-| Baugenehmigung | 3 100 |
-| Fundament | 3 250 |
-| Rohbau und Dach | 3 450 |
-| Ausbau | 3 650 |
-| Fertigstellung | 3 850 |
-
-Der Markt zum Vergleich steht in den Tabellen oben: Bestandsimmobilien im Gebiet La Quinta — 2 812 € pro Meter, Angebotspreise der benachbarten Neubauten — 3 360–3 870 €.
-
-Der Einstieg in die Warteliste kostet so viel wie eine Bestandswohnung im Viertel, der Meter bei der Fertigstellung so viel wie ein Neubau. Der Unterschied zwischen beiden ist der Bau, den Sie gemeinsam mit dem Unternehmen durchlaufen. Ein Kauf in der Projektphase ist in Spanien üblicherweise 10–20% günstiger als eine fertige Wohnung — so ist der Markt, nicht nur Artemis.
+Die Tabellen vergleichen unterschiedliche Segmente: Bestandswohnungen in La Quinta mit 2 812 € je m² und Angebotspreise benachbarter Neubauten mit 3 360–3 870 €. Das sind Marktreferenzen, nicht der Aktienpreis der Gesellschaft. Die vollständige Leiter und ihre Auslöser stehen unter [Für Investoren](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -73,25 +64,7 @@ Zum Beispiel Angebote in La Quinta selbst auf Kelify (Stand 31.10.2026): 80 m² 
 
 ### Von der Miete zur Dividende
 
-Das kanarische Gesetz Ley 6/2025 schließt die kurzfristige touristische Vermietung in Neubauten aus. Deshalb wird die Dividende von Artemis nur aus der langfristigen Vermietung berechnet:
-
-- Miete: 13,5 € pro Meter im Monat — die Mitte der marktüblichen 12–15 €;
-- im Jahr: 13,5 × 12 = 162 € pro Meter;
-- minus 46,3% Kosten nach sieben Positionen, 75 € pro Meter;
-- es bleibt die Miete nach Abzug der Kosten; die Dividende wird als Prozentsatz veröffentlicht — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
-
-| Position | € pro Meter im Jahr | % von 162 € | Berechnungsgrundlage |
-|---|---|---|---|
-| IBI, Grundsteuer | 3,75 | 2,3% | 300 € im Jahr für 80 m² auf Teneriffa; Satz in Santa Úrsula — 0,40% |
-| Gemeinschaftsbeiträge | 34,1 | 21,0% | 200–400 € im Monat in Anlagen mit beheiztem Pool; in der Rechnung 200 € für ein mittleres Haus mit etwa 70 m² |
-| Mietverwaltung | 17,3 | 10,7% | 8–12% der Miete plus IGIC 7%; in der Rechnung 10% |
-| Leerstand zwischen Mietern | 6,75 | 4,2% | ein halber Monat im Jahr bei hoher Nachfrage |
-| Versicherung | 3,5 | 2,2% | 280 € im Jahr für 80 m² auf Teneriffa |
-| Instandhaltungsrücklage | 8,1 | 5,0% | 4–6% der Miete bei einem neuen Haus |
-| Müllgebühr (basura) | 1,5 | 0,9% | 100–150 € im Jahr, zahlt der Eigentümer; in der Rechnung 120 € für 80 m² |
-| **Gesamt** | **75,0** | **46,3%** | |
-
-Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Haus, 75,5 m², Verwaltung 8%, Instandhaltung 4% — liegen die Kosten bei 41,8% und rechnerisch bei etwa 94 € je Aktie. Im strengen — Miete 12 € pro Meter, 200 € Beiträge für ein kleineres Haus, 65,4 m², Verwaltung 12%, ein Monat Leerstand, Instandhaltung 6% — bei 58,7% und etwa 59 €. Die rechnerische Dividende — 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
+Langfristige Vermietung, Kosten und Rechenannahmen erklärt das [Mietmodell](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,13 +75,15 @@ Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Hau
 | Bund 10 Jahre, 30.10.2026 | 3,34% |
 | Festgeld auf 1 Jahr, Durchschnitt Top-10 | 3,52% |
 | Bruttorendite der Vermietung, 52 größte Städte Deutschlands, H1 2026 | 4,17% |
-| Rechnerische Dividende auf den Einstiegspreis | 2,5–3,5% im Jahr |
+| Artemis-Dividendenschätzung | 2,5–3,5% im Jahr |
 
-Die Dividende je Aktie ist gleich, der Prozentsatz auf das eingesetzte Kapital hängt von der Einstiegsstufe ab. Die Zahl ist eine Rechnung vor Körperschaftsteuer der Gesellschaft.
+Die Artemis-Dividende ist eine Projektschätzung von 2,5–3,5 % jährlich vor Körperschaftsteuer, ohne Garantie. Sie ist eine eigene Kennzahl: Beim Vergleich mit Festgeld oder Bruttomietrendite sind Berechnungsbasis und Kosten zu berücksichtigen. [Mietmodell und Annahmen](/tenerife/alquiler/).
 
 ### So funktioniert es
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
+
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
@@ -122,5 +97,5 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Woher kommt der Prozentsatz?** Die Dividende wird aus der langfristigen Miete eines Meters nach Abzug der Kosten gerechnet: IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr. Ergebnis: rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

@@ -18,7 +18,7 @@ Santa Úrsula se situe entre Puerto de la Cruz et la capitale de l'île. La Quin
 
 | Destination | Distance | En voiture |
 |---|---|---|
-| Playa del Ancón | environ 3 km | quelques minutes |
+| Playa del Ancón | environ 3 km jusqu’au secteur d’accès | en voiture jusqu’au départ du sentier, puis à pied |
 | Lago Martiánez, Puerto de la Cruz | environ 5 km | — |
 | Puerto de la Cruz | 8 km par la TF-5 | 10–15 minutes |
 | La Orotava | — | environ 15 minutes |
@@ -26,7 +26,9 @@ Santa Úrsula se situe entre Puerto de la Cruz et la capitale de l'île. La Quin
 | Santa Cruz de Tenerife | — | 25–30 minutes |
 | Aéroport de Tenerife Sud | environ 84 km | environ une heure |
 
-Sans voiture aussi: depuis La Quinta, la ligne de bus 30 rejoint Tenerife Norte en environ 20 minutes, avec un départ chaque heure. Les bus TITSA 102 et 30 traversent la commune entre Santa Cruz et Puerto de la Cruz.
+On descend à Playa del Ancón à pied. Le portail officiel du tourisme décrit un accès d’environ 25 minutes de marche après le stationnement; le trajet depuis le terrain sera précisé après son choix. [Accès à Ancón](https://www.holaislascanarias.com/playas/tenerife/playa-del-ancon/).
+
+La ligne TITSA 30 passe par La Quinta vers Tenerife Norte. Les intervalles varient: consultez les [horaires du transporteur](https://movil.titsa.com/horariosmovil.php?IdLinea=30&idioma=2). Le trajet n’inclut pas la marche jusqu’à l’arrêt.
 
 [КАДР F23] <!-- служебная пометка, не публикуется -->
 
@@ -58,35 +60,23 @@ Les vingt maisons Artemis forment un ensemble à taille humaine, pas une barre d
 
 ### Le marché à proximité
 
-Les prix alentour servent de vitrine: c'est sur ce fond que l'on voit ce que signifie entrer tôt.
-
-| Quoi | Prix du mètre |
-|---|---|
-| Santa Úrsula, tous logements (Fotocasa, octobre 2026) | 2 405 €, +13,7% sur un an |
-| La Quinta, tous logements (Fotocasa, octobre 2026) | 2 812 € |
-| Santa Úrsula, appartements (Engel & Völkers) | 3 132 € |
-| Puerto de la Cruz (Fotocasa, octobre 2026) | 3 596 € |
-| Prix de présentation des programmes voisins La Quinta III et La Quinta 2 (les deux sont vendus) | 3 360–3 870 € |
-| **Actions Artemis sur la liste d'attente** | **2 950 €** |
-| **Maison Artemis à la livraison** | **à partir de 3 800 €** |
-
-Les programmes voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre, et les deux sont déjà vendus. L'action de la société promotrice, sur la liste d'attente: 2 950 €. C'est le prix d'entrée dans la société au démarrage, pas un rabais sur une maison achevée.
+Les logements existants de La Quinta et les programmes neufs voisins sont des segments différents. Prix historiques, périodes et comparaisons sur [Marché et prix au mètre](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Pourquoi les prix montent au nord
 
-Le nord n'est plus « l'autre côté de l'île où l'on va en excursion ». Selon Engel & Völkers, les appartements de Santa Úrsula ont augmenté de 14,27% en 2024 et de 17,72% en 2025. Tous logements confondus à Santa Úrsula, Fotocasa affiche +13,7% sur la dernière année.
+Les indices historiques et l’évolution des prix, avec sources et périodes, figurent sur la page [marché](/tenerife/mercado/).
 
 ### La location au nord
 
-La location longue durée à Santa Úrsula: environ 12 € le mètre par mois selon Fotocasa, 15,04 € pour les appartements selon Engel & Völkers. À Puerto de la Cruz: environ 17 €. Le rendement brut de la location à Santa Úrsula, selon Mesurae: 5,8%. Pour une maison de 72 mètres à 12–15 € le mètre, cela fait 864–1 080 € par mois. C'est de cette location longue durée que se calcule le dividende de l'actionnaire Artemis.
+Location de longue durée, charges et hypothèses de calcul sont détaillées dans le [modèle locatif](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Comment se passe l'entrée
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -102,5 +92,5 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **Pourquoi pas le sud?** Au sud, on passe des vacances. Au nord, on vit.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

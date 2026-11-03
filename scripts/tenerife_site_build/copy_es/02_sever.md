@@ -18,7 +18,7 @@ Santa Úrsula se extiende entre Puerto de la Cruz y la capital de la isla. La Qu
 
 | Adónde | Distancia | En coche |
 |---|---|---|
-| Playa del Ancón | unos 3 km | pocos minutos |
+| Playa del Ancón | unos 3 km hasta la zona de acceso | en coche hasta el inicio del sendero y después a pie |
 | Lago Martiánez, Puerto de la Cruz | unos 5 km | — |
 | Puerto de la Cruz | 8 km por la TF-5 | 10–15 minutos |
 | La Orotava | — | unos 15 minutos |
@@ -26,7 +26,9 @@ Santa Úrsula se extiende entre Puerto de la Cruz y la capital de la isla. La Qu
 | Santa Cruz de Tenerife | — | 25–30 minutos |
 | Aeropuerto de Tenerife Sur | unos 84 km | alrededor de una hora |
 
-También se puede ir sin coche: desde La Quinta hasta Tenerife Norte hay un autobús de la línea 30, unos 20 minutos y una salida cada hora. Por el municipio pasan los autobuses TITSA 102 y 30 entre Santa Cruz y Puerto de la Cruz.
+A Playa del Ancón se baja a pie. El portal oficial de turismo describe uno de los accesos como unos 25 minutos caminando después de aparcar; concretaremos el trayecto desde la parcela cuando se elija. [Acceso a Ancón](https://www.holaislascanarias.com/playas/tenerife/playa-del-ancon/).
+
+La línea 30 de TITSA pasa por La Quinta hacia Tenerife Norte. Los intervalos varían: consulte el [horario del operador](https://movil.titsa.com/horariosmovil.php?IdLinea=30&idioma=2). El tiempo de viaje no incluye el camino hasta la parada.
 
 [КАДР F23] <!-- служебная пометка, не публикуется -->
 
@@ -58,35 +60,23 @@ Las veinte casas de Artemis son un conjunto íntimo, no un bloque de viviendas. 
 
 ### El mercado cerca
 
-Los precios del entorno son el escaparate que muestra qué significa entrar pronto.
-
-| Qué | Precio del metro |
-|---|---|
-| Santa Úrsula, toda la vivienda (Fotocasa, octubre de 2026) | 2 405 €, +13,7% en un año |
-| La Quinta, toda la vivienda (Fotocasa, octubre de 2026) | 2 812 € |
-| Santa Úrsula, pisos (Engel & Völkers) | 3 132 € |
-| Puerto de la Cruz (Fotocasa, octubre de 2026) | 3 596 € |
-| Precios de oferta de las obras nuevas vecinas La Quinta III y La Quinta 2 (los dos proyectos, vendidos) | 3 360–3 870 € |
-| **Acciones de Artemis en la lista de espera** | **2 950 €** |
-| **Casa Artemis en la entrega** | **desde 3 800 €** |
-
-Las obras nuevas vecinas de La Quinta se ofrecían a 3 360–3 870 € por metro y los dos proyectos ya están vendidos. La acción de la sociedad promotora en la lista de espera cuesta 2 950 €. Es el precio de entrada en la sociedad al principio, no un descuento sobre una casa terminada.
+La vivienda existente de La Quinta y las promociones nuevas vecinas son segmentos distintos. Precios históricos, periodos y comparaciones en [Mercado y precio por metro](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Por qué suben los precios en el norte
 
-El norte ha dejado de ser «el lado de la isla al que se va de excursión». Los pisos de Santa Úrsula, según Engel & Völkers, subieron un 14,27% en 2024 y un 17,72% en 2025. Toda la vivienda de Santa Úrsula según Fotocasa, +13,7% en el último año.
+Los índices históricos y la evolución de precios, con fuentes y periodos, figuran en [Mercado](/tenerife/mercado/).
 
 ### El alquiler en el norte
 
-El alquiler de larga duración en Santa Úrsula ronda los 12 € por metro al mes según Fotocasa; los pisos, según Engel & Völkers, 15,04 €. En Puerto de la Cruz, unos 17 €. La rentabilidad bruta del alquiler en Santa Úrsula, según Mesurae, es del 5,8%. Para una casa de 72 metros a 12–15 € por metro, son 864–1 080 € al mes. De ese alquiler de larga duración se calcula el dividendo del accionista de Artemis.
+Alquiler de larga duración, gastos y supuestos del cálculo se detallan en el [modelo de alquiler](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Cómo se entra
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -102,5 +92,5 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿Por qué no el sur?** En el sur se descansa. En el norte se vive.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

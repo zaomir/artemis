@@ -167,7 +167,7 @@ class FormPayloadTest(AppCase):
         for name in PAGES:
             d = self.form_payload(name)
             self.assertEqual(d["page"], PAGES[name], name)
-            if name != "calculadora":
+            if name not in {"calculadora", "inversores"}:
                 self.assertFalse([k for k in d if k.startswith("calc_")], name)
 
 
@@ -320,14 +320,13 @@ class MenuScriptTest(unittest.TestCase):
 
 # ---------------------------------------------------------------- T3-07 / T3-11
 class ComponentsTest(unittest.TestCase):
-    def test_steps_log_people_mini_ladder_short_calc(self):
-        self.assertIn('<ol class="ladder ladder--mini"', page("index"))
-        for name in ("construccion", "mercado"):
-            self.assertIn('<ol class="ladder ladder--mini"', page(name), name)
+    def test_steps_log_people_mini_ladder_full_investor_calc(self):
+        # Home now summarises participation; the full stage data belongs to investors.
+        self.assertIn(f'href="{RU}/inversores/"', page("index"))
+        self.assertIn('<ol class="ladder"', page("inversores"))
         # C10 hidden (designer 20:23): copy_v3 has no confirmed log entries; the copy stays as an ordinary table,
         # no log markup and no anchor to it anywhere
-        heads = {"index": '<th scope="col">Когда, по плану</th>',
-                 "construccion": '<th scope="col">Дата, по плану</th>'}
+        heads = {"construccion": '<th scope="col">Дата, по плану</th>'}
         for name, th in heads.items():
             self.assertIn(th, page(name), name)
         for f in SITE.glob("*.html"):
@@ -343,11 +342,14 @@ class ComponentsTest(unittest.TestCase):
         self.assertIsNone(re.search(r"<section[^>]*>\s*</section>", page("index")))
         for href in (f"{RU}/simon/", f"{RU}/boris/"):
             self.assertIn(f'<li><a href="{href}">', page("index"))
-        a = page("acciones")
-        self.assertIn('class="wrap grid calc calc--short" id="calc"', a)
+        a = page("inversores")
+        self.assertIn('id="calc-form"', a)
+        self.assertIn('name="step"', a)
+        self.assertIn('name="pay"', a)
+        self.assertNotIn('calc--short', a)
         self.assertIn('<script type="application/json" id="cs-model">', a)
         self.assertIn('<script src="/static/tenerife/site/calc.js"', a)
-        self.assertNotIn("Сумма", re.sub(r"<script.*?</script>", "", a, flags=re.S))
+        self.assertIn('data-k="sum"', a)
         self.assertIn('<ol class="grid steps">', page("proceso"))  # 09: numbered paragraphs
         # Kimi r18: the «Порядок входа» / «Как устроен вход» paragraphs of 02 04 05 06 09 12 now have 7 sentences;
         # C7 is 3–6 steps (DESIGN.md), so they stay one paragraph (text as in the copy, not split)
@@ -445,7 +447,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "e50088725a11bca90d3c62fe50ef2489963615599fb4cfda12cf05e1867acedb")
+                         "e3ff61c82508b332baa52c39f526d11c3e634d0307f01750072393d39b42d084")
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
@@ -473,7 +475,7 @@ class KimiTextsTest(unittest.TestCase):
             self.assertIsNone(re.search(r"[Лл]ист\w* ожидани", f.read_text(encoding="utf-8")), f.name)
 
     def test_consent_wording_and_link(self):
-        """QA R12 item 5: the consent line on all 13 pages == copy_v3/17_forma.md line 7 (read from the copy file,
+        """QA R12 item 5: the consent line on all content pages == copy_v3/17_forma.md line 7 (read from the copy file,
         so a later copy change fails here until the pages are rebuilt)."""
         line7 = (BUILD / "copy_v3/17_forma.md").read_text(encoding="utf-8").splitlines()[6]
         m = re.fullmatch(r"\*\*Согласие\.\*\* (.+)", line7)
@@ -483,7 +485,7 @@ class KimiTextsTest(unittest.TestCase):
         links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", md)
         self.assertEqual(links, [("политике конфиденциальности", "/tenerife/privacy/")])
         want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', md) + "</span>"
-        self.assertEqual(len(PAGES), 13)
+        self.assertEqual(set(PAGES), {name for _, name in build_v3.PAGES})
         # на RU-страницах ссылка на политику ведёт в RU-версию (/tenerife/ru/privacy/)
         want_ru = want.replace('href="/tenerife/privacy/"', f'href="{RU}/privacy/"')
         for name in PAGES:

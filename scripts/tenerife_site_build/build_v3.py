@@ -45,15 +45,16 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "e50088725a11bca90d3c62fe50ef2489963615599fb4cfda12cf05e1867acedb"
+COPY_SHA256_DEFAULT = "e3ff61c82508b332baa52c39f526d11c3e634d0307f01750072393d39b42d084"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
 # copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Слаг»
 PAGES = [("01_glavnaya.md", "index"), ("02_sever.md", "norte"), ("03_rezidencii.md", "producto"),
-         ("04_akcii.md", "acciones"), ("05_kalkulyator.md", "calculadora"), ("06_arenda.md", "alquiler"),
+         ("04_akcii.md", "inversores"), ("05_kalkulyator.md", "calculadora"), ("06_arenda.md", "alquiler"),
          ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"), ("09_sdelka.md", "proceso"),
-         ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris")]
+         ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris"),
+         ("19_komanda.md", "equipo")]
 FOOTER = "14_podval.md"
 WA_TOKEN = "WhatsApp: {номер из TENERIFE_WHATSAPP}"  # 14_podval.md «Контакты.»
 WA_RX = re.compile(r"\+[1-9]\d{7,14}")  # E.164, same rule as app/tenerife.py whatsapp_number()
@@ -70,11 +71,12 @@ def check_whatsapp_env():
     if not WA_RX.fullmatch(v):
         raise BuildError("TENERIFE_WHATSAPP is invalid (expected E.164: + then 8–15 digits); value not shown")
 # footer «Страницы.» names -> output name (names are the copy's; order is the copy's)
-NAV = {"Главная": "index", "Локация": "norte", "Резиденция": "producto", "Оплата": "acciones",
-       "Калькулятор": "calculadora", "Аренда": "alquiler", "Энергия": "energia", "Стройка": "construccion",
+NAV = {"Главная": "index", "Локация": "norte", "Резиденции": "producto", "Инвесторам": "inversores",
+       "Калькулятор": "calculadora", "Аренда": "alquiler", "Энергия": "energia", "Ход проекта": "construccion",
        "Сделка": "proceso", "Вопросы": "faq", "Рынок и цена метра": "mercado", "Developer": "simon",
-       "Supervisor": "boris"}
+       "Supervisor": "boris", "Команда": "equipo"}
 CALC_PAGE = "calculadora"
+CALC_PAGES = {CALC_PAGE, "inversores"}
 FORM_HOST_PAGE = "/tenerife/proceso/"
 
 # DESIGN.md §5: pages 11 and 13 are long text (solid header, 760 px column); 05 and 10 have a short hero
@@ -122,9 +124,23 @@ def prefix_internal_links(out, locale=None):
 
 
 MORE_LABEL = {"ru": "Информация", "en": "Information", "es": "Información", "de": "Informationen", "fr": "Informations"}
-NAV_FUTURE = {"Инвесторам": "inversores"}
-NAV_PRIMARY = ["producto", "norte", "acciones", "proceso"]
-NAV_MORE = ["calculadora", "construccion", "faq", "alquiler", "energia", "mercado", "simon", "boris"]
+NAV_FUTURE = {}
+NAV_PRIMARY = ["producto", "inversores", "norte", "construccion", "equipo"]
+NAV_MORE = ["calculadora", "alquiler", "energia", "proceso", "faq", "mercado", "simon", "boris"]
+FOOTER_GROUPS = [("project", ("index", "producto", "norte", "construccion", "energia")),
+                 ("participation", ("inversores", "calculadora", "proceso", "alquiler", "mercado", "faq")),
+                 ("team", ("equipo", "simon", "boris"))]
+
+# Stable investor section IDs; legacy anchors refer to the material's new owner, never to its old ordinal.
+INVESTOR_SECTIONS = {
+    "Проект и текущая стадия": ("overview", ("s2", "s10")),
+    "Инвестиция или покупка резиденции": ("comparison", ("s1",)),
+    "Шесть ступеней цены": ("price-stages", ("s3", "s4")),
+    "Два результата участия": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
+    "Рассчитайте свою площадь": ("calculate", ()),
+    "Контроль и команда": ("control", ()),
+    "Документы и вопросы": ("documents", ("s9", "s12", "s13")),
+}
 
 SIZES = {
     # must match site.css (DESIGN.md C2, C15): hero full-bleed (4:5 crop of a 16:9 photo below 768 px),
@@ -474,7 +490,7 @@ LOG_SECTIONS = set()  # C10
 TEAM_SECTIONS = set()                                                       # C11
 HIDDEN_SECTIONS = {("index", "Команда и компания")}
 PEOPLE = {"Simon Subic": "/tenerife/simon/", "Boris Ribaut": "/tenerife/boris/"}
-CALC_SHORT = {("acciones", "Пример на 72 метрах")}                       # C9 short (04)
+CALC_SHORT = set()  # The investor page uses the same complete calculator as /calculadora/.
 
 
 def plain(fragment):
@@ -635,10 +651,11 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
     # the last section is the waitlist text (C13) when it is plain text (01 «Очередь»)
     cta_section = None
     last = sections[-1] if sections else None
-    if last and not last["frames"] and all(i["kind"] in ("p", "ul") for i in last["body"]) \
+    last_title = (alias or {}).get(plain(last["title"]), plain(last["title"])) if last else ""
+    if (name != "inversores" or last_title == "Получить расчёт") and last and not last["frames"] and all(i["kind"] in ("p", "ul") for i in last["body"]) \
             and not all(i["kind"] == "p" and QA_RX.match(i["html"]) for i in last["body"]):
         cta_section = sections.pop()
-        cta_section["id"] = f"s{len(sections) + 1}"
+        cta_section["id"] = "request" if name in ("inversores", "equipo") else f"s{len(sections) + 1}"
     for s in sections:
         title = plain(s["title"])
         key = (name, (alias or {}).get(title, title))
@@ -652,6 +669,14 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
     split_n = 0
     for n, s in enumerate(sections, 1):
         s["id"] = f"s{n}"
+        master_title = (alias or {}).get(plain(s["title"]), plain(s["title"]))
+        semantic, legacy = INVESTOR_SECTIONS.get(master_title, (f"section-{n}", ()))
+        s["aliases"] = list(legacy) if name == "inversores" else []
+        if name == "inversores":
+            s["id"] = semantic
+        elif name == "equipo":
+            s["id"] = ("roles", "responsibility", "profiles", "contact")[min(n - 1, 3)]
+        s["calc_full"] = name == "inversores" and semantic == "calculate"
         s["rev"], s["qa"] = False, []
         s["frames"] = [f for f in s["frames"] if f not in hidden]
         s["bar"] = bool(s["frames"]) and all(frames[f] is None for f in s["frames"])
@@ -1034,8 +1059,8 @@ def portfolio_html():
             '<h2 id="s-cases">' + labels["title"] + '</h2>'
             '<p class="cases__lead">' + labels["lead"] + '</p>'
             '</div>'
-            '<div class="cases__viewport">'
-            '<div class="cases__track">' + group + group + '</div>'
+            '<div class="cases__viewport" role="region" tabindex="0" aria-label="' + html.escape(labels["title"], quote=True) + '">'
+            '<div class="cases__track">' + group + '</div>'
             '</div>'
             '</section>')
 
@@ -1174,6 +1199,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
     env.globals["form_ui"] = form_ui()
     env.globals["calc_ui"] = calc_ui()
+    env.globals["nav_ui"] = locale_cfg.NAV_UI[LOCALE]
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
         md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
@@ -1188,11 +1214,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
                for lbl in footer["pages"]]
     else:
         labels = list(footer["pages"])
-        # «Инвесторам» — страница-черновик, её нет в сборке: строку подвала выбрасываем по позиции
-        order = [n for n in locale_cfg.PAGE_ORDER if n != "investors"]
-        if len(labels) == len(order) + 1:
-            drop = list(locale_cfg.PAGE_ORDER).index("investors")
-            labels = [x for i, x in enumerate(labels) if i != drop]
+        order = list(locale_cfg.PAGE_ORDER)
         if len(labels) != len(order):
             raise BuildError(f"{LOCALE}: footer lists {len(labels)} pages, expected {len(order)}")
         nav = [{"label": html.escape(lbl), "url": locale_path(slugs[n]), "name": n}
@@ -1200,7 +1222,9 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     by_name = {x["name"]: x for x in nav}
     if set(NAV_PRIMARY) | set(NAV_MORE) | {"index"} != set(by_name):
         raise BuildError("header nav (NAV_PRIMARY + NAV_MORE) must cover the footer pages")
-    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE]}
+    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE],
+            "groups": [{"id": key, "label": locale_cfg.NAV_UI[LOCALE][key],
+                        "links": [by_name[n] for n in names]} for key, names in FOOTER_GROUPS]}
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
@@ -1212,13 +1236,22 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         for f, nm in PAGES:
             m0, b0 = parse_page(apply_figures((HERE / "copy_v3" / f).read_text(encoding="utf-8"), figure_map(model), figure_regex(figure_map(model))))
             ru_parsed[nm] = [plain(b["text"]) for b in b0 if b["kind"] == "h"]
+    def heading_alias(name):
+        if LOCALE == "ru":
+            return None
+        local = [plain(b["text"]) for b in pblocks[name] if b["kind"] == "h"]
+        if len(ru_parsed[name]) != len(local):
+            raise BuildError(f"{LOCALE}/{name}: heading structure differs from RU")
+        return dict(zip(local, ru_parsed[name]))
+
+    # Result labels have one owner (05), shared verbatim by the two uses of C9.
+    calc_source = structure(pblocks[CALC_PAGE], site_frames[CALC_PAGE], alts, CALC_PAGE, model,
+                            alias=heading_alias(CALC_PAGE))
+    shared_calc_labels = calc_labels(calc_source, heading_alias(CALC_PAGE))
     for fname, name in PAGES:
         meta, blocks = metas[name], pblocks[name]
         frames = site_frames[name]
-        alias = None
-        if LOCALE != "ru":
-            local = [plain(b["text"]) for b in blocks if b["kind"] == "h"]
-            alias = {loc: ru for ru, loc in zip(ru_parsed[name], local)}
+        alias = heading_alias(name)
         page = structure(blocks, frames, alts, name, model, alias=alias)
         url = locale_path(slugs[name])
         langs = [{"code": code.upper(), "url": BASE_URL + lang_url(code, slugs[name]) + ("?lang=en" if code == "en" else ""), "current": code == LOCALE}
@@ -1236,8 +1269,8 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             og_title=html.escape(meta["OG title"], quote=True),
             og_image=BASE_URL + "/static/tenerife/site/img/og-tenerife-1200x630.jpg",
             nav=nav, menu=menu, footer=footer, page=page,
-            calc=calc_view(model) if name == CALC_PAGE else None,
-            calc_labels=calc_labels(page, alias) if name == CALC_PAGE else None,
+            calc=calc_view(model) if name in CALC_PAGES else None,
+            calc_labels=shared_calc_labels if name in CALC_PAGES else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
                              org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
             calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
@@ -1270,6 +1303,8 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         (STATIC / "tenerife" / "site" / "site.css").write_text(css, encoding="utf-8")
         for name, out in outputs.items():
             (Path(out_dir) / f"{name}.html").write_text(out, encoding="utf-8")
+        # The old slug is a redirect, never a second generated copy that can go stale.
+        (Path(out_dir) / "acciones.html").unlink(missing_ok=True)
     return outputs, report
 
 
@@ -1325,6 +1360,7 @@ def simple_pages(env, nav, menu, footer):
     langs = [{"code": c.upper(), "url": BASE_URL + lang_url(c, "/tenerife/") + ("?lang=en" if c == "en" else ""), "current": c == LOCALE}
              for c in ("en", "es", "de", "fr")]
     more = MORE_LABEL.get(LOCALE, "Информация")
+    env.globals["header_cta_url"] = locale_path("/tenerife/calculadora/#ochered")
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
     tpl = env.get_template("simple.html")
     out = {}
@@ -1346,6 +1382,14 @@ def simple_pages(env, nav, menu, footer):
                                      ui=locale_cfg.UI[LOCALE],
                                      html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
                                      hreflangs=hreflangs, x_default=x_default)))
+    title, message, back = locale_cfg.NOT_FOUND[LOCALE]
+    body = (f'<h1 id="h1">{html.escape(title)}</h1><p class="hero__lead">{html.escape(message)}</p>'
+            f'<p class="back"><a href="/tenerife/">{html.escape(back)}</a></p>')
+    out["_404"] = wrap(prefix_internal_links(tpl.render(
+        title=title + " — Artemis de la Cruz", canonical=None, url="", kind="notice", body=body,
+        nav=nav, menu=menu, footer=footer, home_url=home_url, langs=langs, menu_more_label=more,
+        ui=locale_cfg.UI[LOCALE], html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+        hreflangs=hreflangs, x_default=x_default)))
     return out
 
 

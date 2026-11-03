@@ -18,7 +18,7 @@ Santa Úrsula liegt zwischen Puerto de la Cruz und der Inselhauptstadt. La Quint
 
 | Ziel | Entfernung | Mit dem Auto |
 |---|---|---|
-| Playa del Ancón | rund 3 km | wenige Minuten |
+| Playa del Ancón | etwa 3 km bis zum Zugangsbereich | mit dem Auto zum Weganfang, danach zu Fuß |
 | Lago Martiánez, Puerto de la Cruz | rund 5 km | — |
 | Puerto de la Cruz | 8 km über die TF-5 | 10–15 Minuten |
 | La Orotava | — | rund 15 Minuten |
@@ -26,7 +26,9 @@ Santa Úrsula liegt zwischen Puerto de la Cruz und der Inselhauptstadt. La Quint
 | Santa Cruz de Tenerife | — | 25–30 Minuten |
 | Flughafen Tenerife Sur | rund 84 km | rund eine Stunde |
 
-Es geht auch ohne Auto: Von La Quinta zum Flughafen Tenerife Norte fährt die Buslinie 30 — rund 20 Minuten, eine Fahrt stündlich. Durch die Gemeinde fahren die TITSA-Busse 102 und 30 zwischen Santa Cruz und Puerto de la Cruz.
+Playa del Ancón wird zu Fuß erreicht. Das offizielle Tourismusportal beschreibt einen Zugang als etwa 25 Minuten Fußweg nach dem Parken; den Weg vom tatsächlichen Grundstück klären wir nach seiner Auswahl. [Zugang zu Ancón](https://www.holaislascanarias.com/playas/tenerife/playa-del-ancon/).
+
+Die TITSA-Linie 30 fährt über La Quinta Richtung Tenerife Norte. Die Abstände variieren: Prüfen Sie den [Fahrplan des Betreibers](https://movil.titsa.com/horariosmovil.php?IdLinea=30&idioma=2). Die Fahrzeit umfasst nicht den Weg zur Haltestelle.
 
 [КАДР F23] <!-- служебная пометка, не публикуется -->
 
@@ -58,35 +60,23 @@ Die zwanzig Häuser von Artemis bilden eine überschaubare Anlage, kein Mehrfami
 
 ### Der Markt in der Umgebung
 
-Die Preise ringsum sind ein Schaufenster, vor dessen Hintergrund sichtbar wird, was ein früher Einstieg bedeutet.
-
-| Was | Preis pro Meter |
-|---|---|
-| Santa Úrsula, alle Wohnimmobilien (Fotocasa, Oktober 2026) | 2 405 €, +13,7% im Jahr |
-| La Quinta, alle Wohnimmobilien (Fotocasa, Oktober 2026) | 2 812 € |
-| Santa Úrsula, Wohnungen (Engel & Völkers) | 3 132 € |
-| Puerto de la Cruz (Fotocasa, Oktober 2026) | 3 596 € |
-| Angebotspreise der benachbarten Neubauten La Quinta III und La Quinta 2 (beide Projekte ausverkauft) | 3 360–3 870 € |
-| **Artemis-Aktien in der Warteliste** | **2 950 €** |
-| **Artemis-Haus bei Fertigstellung** | **ab 3 800 €** |
-
-Die benachbarten Neubauten La Quinta wurden zu 3 360–3 870 € pro Meter angeboten, und beide Projekte sind bereits verkauft. Die Aktie der Bauträgergesellschaft in der Warteliste — 2 950 €. Das ist der Einstiegspreis in das Unternehmen am Start, kein Preisnachlass auf ein fertiges Haus.
+Bestandsimmobilien in La Quinta und benachbarte Neubauten sind verschiedene Segmente. Historische Preise, Zeiträume und Vergleiche stehen unter [Markt und Quadratmeterpreis](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Warum die Preise im Norden steigen
 
-Der Norden ist nicht mehr „die Seite der Insel, auf die man einen Ausflug macht“. Wohnungen in Santa Úrsula verteuerten sich nach Daten von Engel & Völkers 2024 um 14,27% und 2025 um 17,72%. Alle Wohnimmobilien in Santa Úrsula nach Fotocasa — +13,7% im letzten Jahr.
+Historische Indizes und Preisentwicklungen mit Quellen und Zeiträumen stehen auf der [Marktseite](/tenerife/mercado/).
 
 ### Mieten im Norden
 
-Die Dauervermietung in Santa Úrsula liegt nach Fotocasa bei rund 12 € pro Meter im Monat, Wohnungen nach Engel & Völkers bei 15,04 €. In Puerto de la Cruz bei rund 17 €. Die Bruttorendite der Vermietung in Santa Úrsula liegt nach Mesurae bei 5,8%. Für ein Haus mit 72 Metern bei 12–15 € pro Meter sind das 864–1 080 € im Monat. Genau aus dieser langfristigen Vermietung wird die Dividende der Artemis-Aktionäre berechnet.
+Langfristige Vermietung, Kosten und Rechenannahmen erklärt das [Mietmodell](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Wie der Einstieg aufgebaut ist
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -102,5 +92,5 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Warum nicht der Süden?** Im Süden erholt man sich. Im Norden lebt man.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

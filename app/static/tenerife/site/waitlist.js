@@ -10,6 +10,16 @@
   var ids={name:'wl-name',contact:'wl-contact',language:'wl-lang',consent:'wl-consent'};
   var fieldMsg={name:M.msgName,contact:M.msgContact,language:M.msgLanguage,consent:M.msgConsent};
   var okText=M.msgOkTitle+' '+M.msgOkNext;
+  function validContact(v){
+    if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return true;
+    var handle=v.charAt(0)==='@'?v.slice(1):'';
+    try{var u=new URL(v.indexOf('://')<0?'https://'+v:v);
+      if((u.protocol==='https:'||u.protocol==='http:')&&/^(t\.me|telegram\.me|www\.t\.me)$/.test(u.host.toLowerCase())) handle=u.pathname.replace(/^\/+|\/+$/g,'');
+    }catch(e){}
+    if(/^[A-Za-z][A-Za-z0-9_]{4,31}$/.test(handle)) return true;
+    var digits=v.replace(/\D/g,'');
+    return /^\+?[0-9\s().-]+$/.test(v)&&digits.length>=7&&digits.length<=15;
+  }
   function show(cls,t){m.className='msg '+cls;m.textContent=t;}
   function clear(){show('','');for(var k in ids){var el=document.getElementById(ids[k]);el.removeAttribute('aria-invalid');
     document.getElementById(ids[k]+'-err').textContent='';}}
@@ -26,7 +36,7 @@
     for(var i=0;i<el.length;i++){ if(/^calc_/.test(el[i].name)) d[el[i].name]=el[i].value; }
     clear();
     if(!d.name){fieldErr('name',fieldMsg.name);return;}
-    if(d.contact.length<5){fieldErr('contact',fieldMsg.contact);return;}
+    if(!validContact(d.contact)){fieldErr('contact',fieldMsg.contact);return;}
     if(!d.language){fieldErr('language',fieldMsg.language);return;}
     if(!d.consent){fieldErr('consent',fieldMsg.consent);return;}
     var label=b.textContent; b.disabled=true; b.textContent=M.msgSending;

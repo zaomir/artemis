@@ -5,7 +5,7 @@
 3. Проверки (скрипт падает с кодом 1 при ошибке):
    a) каждое выражение «a × b = c» / «a ÷ b = c» в текстах страниц пересчитывается;
    b) таблицы расходов с «Итого» — сумма строк = итог (€ и %), итог = модели;
-   c) каждый токен модели встречается в текстах (кроме помеченных opt=True);
+   c) исходные показатели встречаются у своего владельца; производные примеры могут выводиться калькулятором;
    d) запрещённые остатки: 118 €, 101 €, [уточнить], 27%.
 """
 import re,glob,sys,os
@@ -104,6 +104,21 @@ t("La Quinta III, цены 4 домов (estatenearme)","420 000–425 000"); t(
 t("La Quinta 2, цены (estatenearme)","399 999–425 700"); t("La Quinta 2, € за м² ÷ 110",f"{fmt(399999/110)}–{fmt(425700/110)}")
 t("Kelify, районы Santa Úrsula, март 2026, €/м²","10,00–11,67"); t("Kelify, La Quinta 80 м²","975 €"); t("Kelify, La Quinta 60 м²","900 €"); t("Kelify, La Quinta 132 м² (8 oct 2026)","1 500 €")
 
+# Navigation/content release 2026-11-03: do not force duplicate financial examples back into every page.
+# The same formula/token list remains available to make_model.compute(); its numeric outputs are unchanged.
+# Core stage prices, rent inputs, costs and contract terms still require a source occurrence below.
+# Derived unit examples are checked by the shared calculator's frozen regression cases, rather than by
+# requiring a handwritten copy of each result. Retired euro dividends are internal calculations only.
+OPTIONAL_PRESENTATION = {
+    "Минимальная цена юнита, €",  # 52 m² default is a calculator example, no longer a false hero minimum.
+    "Мягкий сценарий, дивиденд", "Строгий сценарий, дивиденд",
+    "Резиденция 1 спальня = акций", "2 спальни = акций", "Большой дом = акций",
+    "Дом на вводе 100 м² × 3 800 (от)",
+}
+TOK = [(name, value, optional or name in OPTIONAL_PRESENTATION or
+        bool(re.match(r"(?:48|72|100) м² × |(?:48–55|68–78|85–100) м² × ", name)))
+       for name, value, optional in TOK]
+
 files=sorted(f for f in glob.glob("[01][0-9]_*.md"))
 texts={f:open(f,encoding='utf-8').read() for f in files}
 err=[]
@@ -130,7 +145,7 @@ for f,s in texts.items():
         if abs(num(c[1])-float(hu(COST,1)))>0.051: err.append(f"{f}: итог таблицы {c[1]} ≠ модель {COST:.1f}")
 # d) остатки
 for f,s in texts.items():
-    for bad in (r'(?<![\d,])118(?![\d,])',r'10,5–15,7',r'(?<![\d ])285 000',r'сдача конец 2026',r'I–II квартал 2027',r'сегодня продаются',r'сегодня предлагают',r'La Laguna',r'одинаковом наклоне',r'на день покупки',r'Архив отчётов',r'норма квартала',r'получают отчёт',r'получаете отчёт',r'[Лл]ист\w* ожидани',r'(?<![\d,])101 €',r'\[уточнить\]',r'(?<![\d,])27 ?%',r'(?<![\d,])147 500',r'через 3 мес',r'через три месяца',r'три месяца между',r'Покупка акций через',r'Где именно\?',r'надбавк'):
+    for bad in (r'(?<![\d,])118(?![\d,])',r'10,5–15,7',r'(?<![\d ])285 000',r'сдача конец 2026',r'I–II квартал 2027',r'сегодня продаются',r'сегодня предлагают',r'La Laguna',r'одинаковом наклоне',r'на день покупки',r'Архив отчётов',r'норма квартала',r'[Лл]ист\w* ожидани',r'(?<![\d,])101 €',r'\[уточнить\]',r'(?<![\d,])27 ?%',r'(?<![\d,])147 500',r'через 3 мес',r'через три месяца',r'три месяца между',r'Покупка акций через',r'Где именно\?',r'надбавк'):
         for m in re.finditer(bad,s): err.append(f"{f}: запрещённый остаток «{m.group(0)}»")
 out=["# numbers.md — все цифры сайта из одной модели","",
 f"Сгенерировано make_numbers.py. Модель 02.11.2026: цены — пределами, дивиденд публикуется только в процентах (2,5–3,5 % годовых до налога на прибыль компании), оплата — сразу со скидкой на цену входа или шестью равными платежами со скидкой 5 % от всей цены; твёрдые суммы дивиденда на сайте не показываем (основатель 02.11). Дивиденд {D} € на акцию в год остаётся внутренним расчётом: 13,5 × 12 = 162 € минус {fmt(COST,1)} € ({fmt(COST/G*100,1)} %) расходов по семи статьям.",

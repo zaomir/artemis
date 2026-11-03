@@ -56,11 +56,7 @@ Por dentro, ventanas altas situadas a buena profundidad en el muro. En verano la
 
 ### El orden de las fases
 
-Terreno. Cimentación. Estructura. Cubierta con placas. Instalaciones. Fachada. Interior. Piscina. Urbanización. El informe saldrá cada semana. El informe lo reciben los accionistas y los compradores de vivienda.
-
-Las fases mueven también el precio de la acción: la licencia sube el metro a 3 100 €, la cimentación a 3 250 €, la estructura y cubierta a 3 450 €, los acabados a 3 650 € y la entrega a 3 850 €. Por eso cierro cada fase con una comprobación, no con palabras.
-
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+Las nueve fases, las fechas previstas y el formato del informe semanal están en [Avance del proyecto](/tenerife/construccion/).
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -104,5 +100,5 @@ Directamente. Pregúnteme por la cimentación, por la cubierta, por cómo quedan
 
 **¿Cuándo es la entrega?** Según el plan, entre finales de 2028 y mediados de 2029.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

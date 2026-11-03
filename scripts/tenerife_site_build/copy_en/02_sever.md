@@ -18,7 +18,7 @@ Santa Úrsula lies between Puerto de la Cruz and the island's capital. La Quinta
 
 | Where | Distance | By car |
 |---|---|---|
-| Playa del Ancón | about 3 km | a few minutes |
+| Playa del Ancón | about 3 km to the access area | drive to the start of the path, then walk |
 | Lago Martiánez, Puerto de la Cruz | about 5 km | — |
 | Puerto de la Cruz | 8 km on the TF-5 | 10–15 minutes |
 | La Orotava | — | about 15 minutes |
@@ -26,7 +26,9 @@ Santa Úrsula lies between Puerto de la Cruz and the island's capital. La Quinta
 | Santa Cruz de Tenerife | — | 25–30 minutes |
 | Tenerife Sur airport | about 84 km | about an hour |
 
-You can manage without a car too: bus line 30 runs from La Quinta to Tenerife Norte, about 20 minutes, once an hour. TITSA buses 102 and 30 run through the municipality between Santa Cruz and Puerto de la Cruz.
+Playa del Ancón is reached on foot. The official tourism portal describes one approach as about a 25-minute walk after parking; travel from the actual plot will be clarified once it is chosen. [Ancón access description](https://www.holaislascanarias.com/playas/tenerife/playa-del-ancon/).
+
+TITSA route 30 passes through La Quinta towards Tenerife Norte. Departures have varying intervals: check the [operator’s timetable](https://movil.titsa.com/horariosmovil.php?IdLinea=30&idioma=2). Journey time does not include the walk to the stop.
 
 [КАДР F23] <!-- служебная пометка, не публикуется -->
 
@@ -58,35 +60,23 @@ The twenty Artemis houses form a small, enclosed complex, not a tower block. One
 
 ### The market nearby
 
-The prices around us are the shop window that shows what early entry means.
-
-| What | Price per metre |
-|---|---|
-| Santa Úrsula, all housing (Fotocasa, October 2026) | 2 405 €, +13,7% over a year |
-| La Quinta, all housing (Fotocasa, October 2026) | 2 812 € |
-| Santa Úrsula, flats (Engel & Völkers) | 3 132 € |
-| Puerto de la Cruz (Fotocasa, October 2026) | 3 596 € |
-| Asking prices of the neighbouring new developments La Quinta III and La Quinta 2 (both projects sold) | 3 360–3 870 € |
-| **Artemis shares on the waiting list** | **2 950 €** |
-| **An Artemis house at handover** | **from 3 800 €** |
-
-The neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold. A share in the developer company on the waiting list is 2 950 €. That is the price of entry into the company at the start, not a discount on a finished house.
+Existing housing in La Quinta and neighbouring new developments are different segments. Historical prices, periods and comparisons are on the [market and price-per-metre page](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Why prices in the north are rising
 
-The north has stopped being “the side of the island people go to on an excursion”. Flats in Santa Úrsula, according to Engel & Völkers, rose by 14,27% in 2024 and by 17,72% in 2025. All housing in Santa Úrsula, according to Fotocasa, is +13,7% over the past year.
+Historical indices and price growth, with source names and periods, are on the [market page](/tenerife/mercado/).
 
 ### Letting in the north
 
-Long-term letting in Santa Úrsula is about 12 € per metre a month according to Fotocasa, and flats according to Engel & Völkers are 15,04 €. In Puerto de la Cruz it is about 17 €. The gross rental yield in Santa Úrsula, according to Mesurae, is 5,8%. For a house of 72 metres at 12–15 € per metre that is 864–1 080 € a month. The Artemis shareholder's dividend is calculated from exactly this long-term letting.
+Long-term letting, costs and calculation assumptions are explained in the [rental model](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### How entry works
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -102,5 +92,5 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **Why not the south?** In the south people rest. In the north people live.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

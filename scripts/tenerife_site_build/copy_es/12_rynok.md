@@ -27,6 +27,8 @@ Es sobre todo vivienda de segunda mano: casas y pisos de distintas épocas. La o
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
+Los periodos originales difieren: Fotocasa corresponde a octubre de 2026; Engel & Völkers y RealAdvisor, a 2026. Los ejemplos de alquiler de Kelify son una captura del 31.10.2026; su índice por barrios es de marzo de 2026. Son referencias históricas de los materiales del proyecto, no mediciones nuevas en la fecha de consulta. Las tablas indican editores y periodos; los precios de oferta no son precios de operaciones cerradas.
+
 ### Cómo sube el precio
 
 Santa Úrsula se ha encarecido un 13,7% en un año según el índice de Fotocasa. Los pisos de Santa Úrsula, según Engel & Völkers, subieron un 14,27% en 2024 y un 17,72% en 2025. El norte de Tenerife se encarece más deprisa de lo que suponen quienes solo conocen la costa sur.
@@ -44,18 +46,7 @@ Las obras nuevas vecinas de La Quinta se ofrecían a 3 360–3 870 € por metro
 
 ### Los tramos de Artemis junto al mercado
 
-| Tramo | € por m² |
-|---|---|
-| Lista de espera | 2 950 |
-| Licencia | 3 100 |
-| Cimentación | 3 250 |
-| Estructura y cubierta | 3 450 |
-| Acabados | 3 650 |
-| Entrega | 3 850 |
-
-El mercado con el que comparar está en las tablas de arriba: la vivienda de segunda mano de la zona de La Quinta, 2 812 € por metro, y los precios de oferta de las obras nuevas vecinas, 3 360–3 870 €.
-
-Entrar en la lista de espera cuesta como la vivienda usada del barrio, y el metro en la entrega, como la obra nueva. La diferencia entre ambos es la obra que usted recorre junto con la sociedad. Comprar en fase de proyecto en España suele salir un 10–20% más barato que la vivienda terminada: así funciona el mercado, no solo Artemis.
+Las tablas anteriores comparan segmentos distintos: vivienda existente en La Quinta a 2 812 € por m² y precios de oferta de promociones vecinas de 3 360–3 870 €. Son referencias de mercado, no el precio de la acción. La escala completa y sus hitos están en [Inversores](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -73,25 +64,7 @@ Por ejemplo, anuncios en la propia La Quinta en Kelify (captura del 31.10.2026):
 
 ### Del alquiler al dividendo
 
-La ley canaria Ley 6/2025 prohíbe el alquiler turístico de corta duración en obra nueva. Por eso el dividendo de Artemis se calcula solo a partir del alquiler de larga duración:
-
-- el alquiler: 13,5 € por metro al mes, el punto medio de los 12–15 € de mercado;
-- al año: 13,5 × 12 = 162 € por metro;
-- menos un 46,3% de gastos por siete partidas, 75 € por metro;
-- queda el alquiler después de los gastos; el dividendo se publica en porcentaje: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
-
-| Partida | € por metro al año | % sobre 162 € | Base del cálculo |
-|---|---|---|---|
-| IBI, impuesto sobre bienes inmuebles | 3,75 | 2,3% | 300 € al año por 80 m² en Tenerife; tipo de Santa Úrsula, 0,40% |
-| Cuotas de comunidad | 34,1 | 21,0% | 200–400 € al mes en conjuntos con piscina climatizada; en el cálculo, 200 € para una casa media de unos 70 m² |
-| Gestión del alquiler | 17,3 | 10,7% | 8–12% del alquiler más IGIC 7%; en el cálculo, 10% |
-| Periodos sin inquilino | 6,75 | 4,2% | medio mes al año con demanda alta |
-| Seguro | 3,5 | 2,2% | 280 € al año por 80 m² en Tenerife |
-| Reserva para reparaciones | 8,1 | 5,0% | 4–6% del alquiler en obra nueva |
-| Tasa de basura | 1,5 | 0,9% | 100–150 € al año, la paga el propietario; en el cálculo, 120 € por 80 m² |
-| **Total** | **75,0** | **46,3%** | |
-
-En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor, 75,5 m², gestión del 8% y reparaciones del 4%, los gastos son un 41,8% y unos 94 € por acción estimados. En el estricto, con alquiler de 12 € por metro, 200 € de cuotas para una casa algo menor, 65,4 m², gestión del 12%, un mes sin alquilar y reparaciones del 6%, los gastos son un 58,7% y unos 59 €. El dividendo estimado es un 2,5–3,5 % anual antes del impuesto sobre sociedades.
+Alquiler de larga duración, gastos y supuestos del cálculo se detallan en el [modelo de alquiler](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,13 +75,15 @@ En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor
 | Bund a 10 años, 30.10.2026 | 3,34% |
 | Festgeld a 1 año, media del top-10 | 3,52% |
 | Rentabilidad bruta del alquiler, 52 mayores ciudades de Alemania, H1 2026 | 4,17% |
-| Dividendo estimado sobre el precio de entrada | 2,5–3,5% anual |
+| Estimación del dividendo de Artemis | 2,5–3,5% anual |
 
-El dividendo por acción es igual; el porcentaje sobre lo invertido depende del tramo por el que se entró. La cifra es un cálculo antes del impuesto sobre sociedades.
+El dividendo de Artemis es una estimación del proyecto del 2,5–3,5 % anual antes del impuesto sobre sociedades, sin garantía. Es un indicador distinto: compararlo con un depósito o una rentabilidad bruta de alquiler exige considerar la base y los gastos. [Modelo de alquiler y supuestos](/tenerife/alquiler/).
 
 ### Cómo funciona
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+El modelo de participación, los precios por fases y los dos resultados están en la página de [inversores](/tenerife/inversores/).
+
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
@@ -122,5 +97,5 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿De dónde sale el porcentaje?** El dividendo se calcula a partir del alquiler de larga duración del metro una vez descontados los gastos: IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura. Resultado: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

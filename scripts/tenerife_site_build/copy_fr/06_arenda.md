@@ -108,7 +108,7 @@ Le nord est loué par ceux qui veulent la verdure et la ville, pas les transats:
 
 ### Ordre d'entrée
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
 ### En bref
 
@@ -120,5 +120,5 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **Combien sur 72 mètres?** Le dividende est de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés; le loyer de ces mêmes mètres sur le marché: 864–1 080 € par mois.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

@@ -8,63 +8,49 @@ OG title: Twenty residences from 48 to 100 m² in the north of Tenerife
 
 # Twenty residences from 48 to 100 metres, one Canary Stone façade
 
-Twenty Artemis residences at La Quinta, Santa Úrsula: six one-bedroom houses of 48–55 m², ten two-bedroom houses of 68–78 m² and four large houses of 85–100 m². A finished house at handover is 3 800–4 600 € per metre. The same metre as a share in the developer company, on the waiting list, is 2 950 €: one share is one square metre.
+Twenty Artemis residences in La Quinta, Santa Úrsula: six one-bedroom homes of 48–55 m², ten two-bedroom homes of 68–78 m² and four larger homes of 85–100 m². This page covers types, architecture and specifications; participation is explained on the [investor page](/tenerife/inversores/).
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Twenty out of twenty
 
-| Type | Out of 20 | Area | This residence = | In shares from the waiting list, 2 950 €/m² | House at handover, 3 800–4 600 €/m² |
-|---|---|---|---|---|---|
-| One bedroom | 6 | 48–55 m² | 48–55 shares | 141 600–162 250 € | 182 400–253 000 € |
-| Two bedrooms | 10 | 68–78 m² | 68–78 shares | 200 600–230 100 € | 258 400–358 800 € |
-| Large house | 4 | 85–100 m² | 85–100 shares | 250 750–295 000 € | 323 000–460 000 € |
+| Type | Out of 20 | Area | House at handover, 3 800–4 600 €/m² |
+| --- | --- | --- | --- |
+| One bedroom | 6 | 48–55 m² | 182 400–253 000 € |
+| Two bedrooms | 10 | 68–78 m² | 258 400–358 800 € |
+| Large house | 4 | 85–100 m² | 323 000–460 000 € |
 
-That is 1 308–1 510 m² of living area in total. A small, enclosed complex, not a neighbourhood of hundreds of flats.
+That is 1 308–1 510 m² construida excluding common areas in total. A small, enclosed complex, not a neighbourhood of hundreds of flats.
 
----
+
+For the one-share-to-one-m² relationship, the area is construida excluding common areas; it is not a separate statement of usable living space or terrace area.
 
 ## One bedroom · 48–55 m² · 6 of 20
-
-**This residence = 48–55 shares in the developer company.**
 
 For one person or for a couple. For someone who spends the winter in the north, works from home, or comes to their house several times a year. An open room where the living room and the kitchen are one space, a bedroom, a bathroom and a terrace behind glass.
 
 Nothing superfluous here: everything you need, and nothing you would pay for without using it. A small house is easier to keep, easier to close for a month and easier to let long term.
 
-**In figures.** 48 metres in shares from the waiting list come to 141 600 €, or 22 420 € a month in six instalments. 55 metres come to 162 250 €. The same 48–55 metres at the handover step come to 184 800–211 750 €. After handover you have 48–55 metres of your own house, or a dividend: an estimated 2,5–3,5 % a year before company profit tax. If you take the keys and let it yourself, long-term letting at the market rate of 12–15 € per metre gives 576–825 € a month.
-
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
----
 
 ## Two bedrooms · 68–78 m² · 10 of 20
-
-**This residence = 68–78 shares in the developer company.**
 
 Half of the complex. The second bedroom becomes a room for children, for guests, or a study. The living room opens onto the stone terrace, and light comes through tall windows in bronze frames set deep into the wall: in summer the reveal holds the shade, in winter it lets the low sun in.
 
 This is a house for a family moving to the north, and for someone who lives here for half the year and lets it the rest of the time. On a long let in the north, 72 metres at the market rate of 12–15 € per metre bring in 864–1 080 € a month.
 
-**In figures.** 72 metres in shares from the waiting list come to 212 400 €, or 33 630 € a month in six instalments. The whole range of 68–78 metres comes to 200 600–230 100 €. At the handover step, 72 metres come to 277 200 €. After handover you have your own house, or a dividend: an estimated 2,5–3,5 % a year before company profit tax.
-
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
 [КАДР F08] <!-- служебная пометка, не публикуется -->
 
----
 
 ## Large house · 85–100 m² · 4 of 20
 
-**This residence = 85–100 shares in the developer company.**
-
 Four houses in the whole complex. For those who come to the north in earnest and for good: more rooms, more terrace, more light, room for guests and for work. A house where people stay, rather than spend a holiday.
-
-**In figures.** 100 metres in shares from the waiting list come to 295 000 €, or about 46 708 € a month in six instalments. 85 metres come to 250 750 €. A finished house of 100 metres at handover is from 380 000 €. At the handover step the same 85–100 shares come to 327 250–385 000 €. After handover you have your own house, or a dividend on 85–100 shares: an estimated 7 395–8 700 € a year before company profit tax. A long let of such a house at the market rate of 12–15 € per metre gives 1 020–1 500 € a month.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 
----
 
 ### What all twenty have in common
 
@@ -83,9 +69,9 @@ Four houses in the whole complex. For those who come to the north in earnest and
 
 ### House or shares
 
-**A house.** A finished new build at handover at 3 800–4 600 € per metre, depending on the type, the floor and the view. For a house buyer our brokers help to obtain a mortgage at banks in Spain and in other European countries. An investor may put in 50% of their own money, and the rest can be covered by a mortgage once the building permit is in place.
+The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
 
-**Shares in the developer company.** Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 ### In short
 
@@ -97,5 +83,5 @@ Four houses in the whole complex. For those who come to the north in earnest and
 
 **What does a metre cost in shares?** 2 950 € on the waiting list.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

@@ -1,8 +1,8 @@
 """PR #23 c5: form_err_rate_limited is shown when /api/enquiry answers 429.
 
 Covers the app's own limiter (JSON {"code": "rate_limited", "error": "rate_limited"}) and an nginx
-limit_req 429 (HTML body). The Crete enquiry form is JS-only (button type=button + fetch), so the
-page script is executed in node against a stubbed DOM and fetch; no nginx is involved."""
+limit_req 429 (HTML body). The enhanced native form script is executed in node
+against a stubbed DOM and fetch; no nginx or real notification is involved."""
 import importlib
 import json
 import os
@@ -49,7 +49,8 @@ const els = {};
 function el(id){
   if(!els[id]){
     els[id] = {id, value: '', checked: false, textContent: '', style: {}, attrs: {},
-      setAttribute(k, v){ this.attrs[k] = v; }, removeAttribute(k){ delete this.attrs[k]; }, focus(){}};
+      setAttribute(k, v){ this.attrs[k] = v; }, removeAttribute(k){ delete this.attrs[k]; }, focus(){},
+      addEventListener(){}, querySelector(){return el('submit');}};
   }
   return els[id];
 }

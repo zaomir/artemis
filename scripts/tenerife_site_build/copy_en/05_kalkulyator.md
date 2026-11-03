@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/calculadora/
 Meta title: The Artemis de la Cruz share calculator: amount, payment, dividend
-Meta description: Choose an area, a step and a payment method: the amount for the shares, the monthly payment in six instalments, the price of the same metres at handover and the estimated dividend a year.
+Meta description: Choose area, entry step and payment: purchase amount, six instalments with a 5 % discount, handover price and the Artemis de la Cruz dividend estimate.
 OG title: Work out your Artemis de la Cruz shares
 -->
 
 # Calculator: your metres as shares in the developer company
 
-Choose an area or a residence type, an entry step and a payment method. The calculator shows the amount for the shares in the developer company, the monthly payment when paying in six instalments, the price of the same metres at the handover step and the dividend in euros a year. One share is one square metre.
+Choose an area or residence type, entry step and payment method. The calculator shows the purchase amount, payment in six instalments and the handover price for the same area. The dividend estimate is 2,5–3,5 % a year before company profit tax. One share corresponds to one square metre.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -21,7 +21,7 @@ Choose an area or a residence type, an entry step and a payment method. The calc
 
 **Entry step.** Waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell and roof 3 450 €, finishing 3 650 €.
 
-**Payment method.** In one payment or in six equal instalments. The bonus for full payment and the six-month option are not yet calculated by the calculator.
+**Payment method.** In full or in six equal instalments. The six-instalment payment includes the 5 % discount. The “In full” option shows the base purchase amount; the calculator does not deduct the full-payment discount.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -31,7 +31,7 @@ Choose an area or a residence type, an entry step and a payment method. The calc
 - **Monthly payment:** if you pay in six instalments.
 - **The price at the handover step for the same metres:** 3 850 € per metre.
 - **Dividend:** an estimated 2,5–3,5 % a year before company profit tax.
-- **Dividend against the money invested:** as a percentage of the purchase amount.
+- **Project estimate:** an indicative range, separate from the cost of the selected shares.
 - **Two paths after handover:** take the dividend, or exchange the shares for the metres of your own residence.
 
 ### Formulas
@@ -63,27 +63,25 @@ Everything is calculated openly, with no hidden coefficients:
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
-### Why the dividend is in euros, not in per cent
+### Dividend estimate
 
-One share is one metre. Every metre is let long term on the same terms, so the dividend per share is the same: **an estimated 2,5–3,5 % a year before company profit tax**. Whoever came in on the waiting list gets a larger percentage against the money invested than someone who came in later.
-
-Where the percentage comes from: the dividend is calculated from the long-term rent of a metre after costs — rent, community fees, management, vacancy, insurance, a repair reserve and the refuse charge. The result is an estimated 2,5–3,5 % a year before company profit tax, not a guarantee.
+An estimated 2,5–3,5 % a year before company profit tax is a project estimate, not a guaranteed payment. It is shown separately from the share cost and is not recalculated when the entry step changes in this calculator. Rental sources, costs and assumptions are in the [rental model](/tenerife/alquiler/).
 
 ### If the step is already later
 
-The calculator works at any step. For example: 72 metres at the shell and roof step come to 72 × 3 450 € = 248 400 €, or 20 700 € a month. The same metres at the handover price come to 277 200 €. The dividend is the same — an estimated 2,5–3,5 % a year before company profit tax.
+Choose the relevant step in the calculator: the amount and instalment update using the same formula. The full ladder and participation example are on the [investor page](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
 ### The order of entry
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 ### After the calculation
 
-Press the button and we will send your calculation by email together with the order of entry: the waiting list free, shares under the investment agreement once the majority of the waiting list approves the plot, a construction report every week, and after handover a dividend per share or an exchange for metres. You do not fill in an amount: we take the area, the step and the payment method from the calculator.
+Leave your name and contact details. We will send your calculation and discuss participation. The area, entry step and payment method come from the calculator; you do not enter an amount manually.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
-**Кнопка: «Get my calculation»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

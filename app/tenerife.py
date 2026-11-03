@@ -39,6 +39,7 @@ from flask import Blueprint, current_app, jsonify, make_response, redirect, rend
 import ratelimit
 from notify import notify_lead
 from tenerife_calc import COLUMNS as CALC_COLUMNS, check_calc, load_model, migrate as migrate_calc
+from contact_format import valid_contact
 
 bp = Blueprint("tenerife", __name__)
 
@@ -124,8 +125,10 @@ LEGAL_PAGES = ("impressum", "privacy")
 @bp.route(PREVIEW_PREFIX + "/")
 @bp.route(PREVIEW_PREFIX + "/<path:sub>")
 def preview_moved(sub: str = ""):
-    first = sub.strip("/").split("/", 1)[0]
-    target = f"/tenerife/{first}/" if first in LEGAL_PAGES + SITE_PAGES else "/tenerife/"
+    parts = sub.strip("/").split("/")
+    locale = parts.pop(0) if parts and parts[0] in ALL_LANGS else "en"
+    first = (parts[0] if parts else "index").removesuffix(".html")
+    target = _canonical_target(first, locale) or "/tenerife/"
     return redirect(_with_query(target), code=301)
 
 
@@ -137,8 +140,8 @@ def _with_query(url: str) -> str:
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energia", "construccion",
-              "proceso", "faq", "simon", "mercado", "boris")  # RU v3: scripts/tenerife_site_build/build_v3.py
+SITE_PAGES = ("norte", "producto", "inversores", "calculadora", "alquiler", "energia", "construccion",
+              "proceso", "faq", "simon", "mercado", "boris", "equipo")
 SITE_URL = "https://artemisresort.com"
 
 
@@ -233,12 +236,24 @@ def _site_page(name: str, locale: str = "en"):
     base = SITE_DIR if locale == "en" else SITE_DIR / locale
     f = base / f"{name}.html"
     if not f.is_file():
-        return make_response("Not found", 404)
+        return _not_found(locale)
     resp = make_response(_finish(f.read_text(encoding="utf-8")))
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
     resp.headers["Cache-Control"] = "public, max-age=300"
     if not tenerife_indexing():  # QA PS-03: header as well as the meta, legal pages included
         resp.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return resp
+
+
+def _not_found(locale: str = ""):
+    if locale not in ALL_LANGS:
+        parts = request.path.strip("/").split("/")
+        locale = parts[1] if len(parts) > 1 and parts[0] == "tenerife" and parts[1] in LOCALES else "en"
+    base = SITE_DIR if locale == "en" else SITE_DIR / locale
+    f = base / "_404.html"
+    body = _finish(f.read_text(encoding="utf-8")) if f.is_file() else "Not found"
+    resp = make_response(body, 404)
+    resp.headers["X-Robots-Tag"] = "noindex, nofollow"
     return resp
 
 
@@ -265,8 +280,16 @@ def site_index():
 # /tenerife/en/ -> /tenerife/ обрабатывается в site_page()/site_legacy().
 def _en_page_target(page: str) -> str | None:
     """Рабочий EN-URL страницы или None, если такой страницы нет (тогда 404, а не 301 в 404)."""
+    return _canonical_target(page)
+
+
+def _canonical_target(page: str, locale: str = "en") -> str | None:
+    page = "inversores" if page == "acciones" else page
+    prefix = f"{SITE_PREFIX}/" + (f"{locale}/" if locale != "en" else "")
+    if page == "index":
+        return prefix
     if page in SITE_PAGES or page in LEGAL_PAGES:
-        return f"{SITE_PREFIX}/{page}/"
+        return f"{prefix}{page}/"
     return None
 
 
@@ -277,25 +300,29 @@ def site_locale_legacy(locale: str, page: str):
     page = page[:-5] if page.endswith(".html") else page
     if locale == "en":   # /tenerife/en/simon[/.html] -> /tenerife/simon/ (P1-02, без промежуточного /en/)
         target = _en_page_target(page)
-        return redirect(_with_query(target), code=301) if target else make_response("Not found", 404)
+        return redirect(_with_query(target), code=301) if target else _not_found()
     if locale not in LOCALES:
-        return make_response("Not found", 404)
+        return _not_found()
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page, locale)), code=301)
     if page == "index":
         return redirect(_with_query(f"{SITE_PREFIX}/{locale}/"), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{locale}/{page}/"), code=301)
-    return make_response("Not found", 404)
+    return _not_found()
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>/")
 def site_locale_page(locale: str, page: str):
     if locale == "en":   # P1-02: /tenerife/en/<page>/ -> 301 /tenerife/<page>/ (14 URL больше не 404)
         target = _en_page_target(page)
-        return redirect(_with_query(target), code=301) if target else make_response("Not found", 404)
+        return redirect(_with_query(target), code=301) if target else _not_found()
     if locale not in LOCALES:
-        return make_response("Not found", 404)
+        return _not_found()
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page, locale)), code=301)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
-        return make_response("Not found", 404)
+        return _not_found()
     return _site_page(page, locale)
 
 
@@ -315,8 +342,10 @@ def site_page(page: str):
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)   # EN живёт в корне (P1-02)
     if page in LOCALES:
         return _site_page("index", page)
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page)), code=301)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
-        return make_response("Not found", 404)
+        return _not_found()
     return _site_page(page)
 
 
@@ -330,9 +359,11 @@ def site_legacy(page: str):
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
     if page in LOCALES:   # /tenerife/ru -> /tenerife/ru/
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page)), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
-    return make_response("Not found", 404)
+    return _not_found()
 
 
 def _safe_back(page: str) -> str:
@@ -473,7 +504,7 @@ def waitlist():
 
     if not name:
         return _reply(is_json, False, 400, _form_msg("name", loc), back, "name", locale=loc)
-    if len(contact) < 5:
+    if not valid_contact(contact):
         return _reply(is_json, False, 400, _form_msg("contact", loc), back, "contact", locale=loc)
     if language not in WAITLIST_LANGS:
         return _reply(is_json, False, 400, _form_msg("language", loc), back, "language", locale=loc)

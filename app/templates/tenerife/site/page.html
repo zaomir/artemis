@@ -41,11 +41,11 @@
 {% if page.facts %}
 {{ c.facts(page.facts) }}
 {% endif %}
-{% if calc %}
+{% if calc and name != 'inversores' %}
 {{ c.calculator(calc, calc_labels) }}
 {% endif %}
 {% for s in page.sections %}
-{{ c.section(s, loop.first and not page.facts and not calc, calc_short, calc_short_labels) }}
+{{ c.section(s, loop.first and not page.facts and not calc, calc if name == 'inversores' else calc_short, calc_labels if name == 'inversores' else calc_short_labels) }}
 {% endfor %}
 {{ c.cta(page.cta_section, page.button, url, calc) }}
 </main>

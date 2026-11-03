@@ -18,18 +18,18 @@ The price steps are named as they are on the shares page. When a construction st
 
 | Construction stage | What closes the stage | Share price step |
 |---|---|---|
-| — | the plot is approved by the majority of the waiting list, investment agreement | Waiting list · 2 950 € |
-| — | the building licence is obtained | Permit · 3 100 € |
-| 1. Ground | the plot is prepared on the slope | Permit · 3 100 € |
-| 2. Foundation | the base and the plinth of volcanic stone | Foundation · 3 250 € |
-| 3. Shell | walls, floors, openings for the tall windows | Shell and roof · 3 450 € |
-| 4. Roof with panels | flat roof, solar panels flush with the roof plane | Shell and roof · 3 450 € |
-| 5. Services | electrics, water, climate, connection of the panels | Finishing · 3 650 € |
-| 6. Façade | lime plaster, bronze windows, stone terraces | Finishing · 3 650 € |
-| 7. Interior works | floors, kitchens, bathrooms | Finishing · 3 650 € |
-| 8. Pool | shared heated pool | Finishing · 3 650 € |
-| 9. Plot | entrances, paths, planting | Finishing · 3 650 € |
-| — | the completion certificate | Handover · 3 850 € |
+| — | the plot is approved by the majority of the waiting list, investment agreement | Waiting list |
+| — | the building licence is obtained | Permit |
+| 1. Ground | the plot is prepared on the slope | Permit |
+| 2. Foundation | the base and the plinth of volcanic stone | Foundation |
+| 3. Shell | walls, floors, openings for the tall windows | Shell and roof |
+| 4. Roof with panels | flat roof, solar panels flush with the roof plane | Shell and roof |
+| 5. Services | electrics, water, climate, connection of the panels | Finishing |
+| 6. Façade | lime plaster, bronze windows, stone terraces | Finishing |
+| 7. Interior works | floors, kitchens, bathrooms | Finishing |
+| 8. Pool | shared heated pool | Finishing |
+| 9. Plot | entrances, paths, planting | Finishing |
+| — | the completion certificate | Handover |
 
 [КАДР F14] <!-- служебная пометка, не публикуется -->
 
@@ -92,17 +92,7 @@ One architectural language for all twenty houses: one technology, one team, one 
 
 ### The stage and your money
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
-
-The further the construction goes, the more expensive entry becomes. Here is what closes each step and what 72 metres cost at it:
-
-- **Permit:** the building licence, 223 200 €.
-- **Foundation:** the base and the stone plinth, 234 000 €.
-- **Shell and roof:** walls, floors, roof with panels, 248 400 €.
-- **Finishing:** façade, services, interiors, pool, 262 800 €.
-- **Handover:** the completion certificate, 277 200 €.
-
-Each of these points is an entry in the log and a line in the weekly report. The step rises when the stage is closed on site and that is visible in the report, not by the calendar: the date in the plan is a guide, the price is tied to the event. 72 metres on the waiting list are 212 400 €. The same 72 metres at the shell and roof step are 248 400 €, and at the handover step 277 200 €. Before construction, investors' money goes on the team, the design and the permits. The construction is paid for by shares in the developer company and by house sales.
+The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
 
 ### What you receive at handover
 
@@ -124,5 +114,5 @@ A new build, not someone else's renovation. A stone outline, a roof with solar p
 
 **Who is responsible for the site?** Boris Ribaut.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

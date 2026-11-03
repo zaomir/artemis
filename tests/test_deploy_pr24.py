@@ -1,6 +1,7 @@
 """PR #24 QA fixes (31.10.2026): no token in git URL/argv, nginx 429 JSON, log level, CF-Connecting-IP."""
 import re
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -82,6 +83,7 @@ class RealIpSnippetInstallTest(unittest.TestCase):
         # the snippet is installed before the nginx site config is written
         self.assertLess(s.index('cat > "$REALIP_SNIPPET"'), s.index("cat > /etc/nginx/sites-available/artemisresort.com"))
 
+    @unittest.skipIf(sys.platform == "darwin", "GNU install -D integration fixture runs on the Linux deployment host")
     def test_setup_server_installs_snippet_from_repo_or_fails(self):
         s = read("setup_server.sh")
         self.assertIn('REALIP_SRC="$SITE_DIR/deploy/' + SNIPPET_REL + '"', s)

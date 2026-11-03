@@ -7,7 +7,8 @@
    "F04": "private-te-6016b5",
    "F02": "gate-stone-4f1a2b",
    "F03": "pool-day-6b1c93",
-   "F17": null
+   "F17": null,
+   "F22": null
   },
   "hidden": [
    "F17"
@@ -19,7 +20,7 @@
    "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
   },
   "title": "Artemis de la Cruz — 20 резиденций в La Quinta, север Тенерифе",
-  "h1": "20 резиденций в La Quinta — от 153 400 €"
+  "h1": "20 резиденций в La Quinta, север Тенерифе"
  },
  "norte": {
   "url": "/tenerife/ru/norte/",
@@ -62,15 +63,15 @@
   "title": "Резиденции Artemis: 20 домов от 48 до 100 м² в La Quinta",
   "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
  },
- "acciones": {
-  "url": "/tenerife/ru/acciones/",
+ "inversores": {
+  "url": "/tenerife/ru/inversores/",
   "file": "04_akcii.md",
   "frames": {
    "F14": "build-pit-3ab7c2",
    "F01": null,
    "F15": null,
-   "F16": "roof-montazh-6d90ef",
    "F17": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
@@ -80,8 +81,8 @@
    "F14": "Котлован и фундамент домов на склоне, каменные террасы участка",
    "F16": "Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом"
   },
-  "title": "Акции компании-застройщика Artemis: 1 акция = 1 м²",
-  "h1": "Одна акция — один метр: акции компании-застройщика Artemis"
+  "title": "Инвесторам — акции Artemis de la Cruz в La Quinta",
+  "h1": "Инвесторам: участвовать в Artemis de la Cruz до ввода домов"
  },
  "calculadora": {
   "url": "/tenerife/ru/calculadora/",
@@ -245,5 +246,16 @@
   },
   "title": "Boris Ribaut, главный строитель Artemis de la Cruz",
   "h1": "Я Boris Ribaut, главный строитель Artemis de la Cruz"
+ },
+ "equipo": {
+  "url": "/tenerife/ru/equipo/",
+  "file": "19_komanda.md",
+  "frames": {
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Команда Artemis de la Cruz — роли и ответственность",
+  "h1": "Команда Artemis de la Cruz"
  }
 }

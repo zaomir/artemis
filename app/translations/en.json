@@ -11,7 +11,7 @@
   "nav_governance": "Governance",
   "nav_enquiry": "Enquire",
   "cta_request": "Request presentation",
-  "cta_status": "Calculate returns",
+  "cta_status": "Project status",
   "hero_eyebrow": "CRETE · INVESTMENT OPPORTUNITY",
   "hero_lead": "A 5★ hospitality development in Gerani, Platanias, Chania, Crete — 67 keys, beachfront context, construction programme underway. Project capital raise €20M · indicative exit €80M. Professional investors and partners welcome.",
   "glance_label": "Project at a glance",
@@ -48,7 +48,7 @@
   "concept_guest": "Guest experience, landscape and function spaces are defined through the design programme.",
   "invest_label": "Investment",
   "invest_title": "Capital structure and returns",
-  "invest_intro": "€20M project capital raise (attracted investment). Indicative exit / sale price €80M — distinct metrics; do not mix. Minimum ticket from €3M via SPV stake / equity participation. Preferred yield 10%; unit path guaranteed income 4%. Process: NDA → Proof of Funds → Term Sheet → SPV → funding tranches.",
+  "invest_intro": "The project is raising €20M. The indicative exit / sale price is €80M. Minimum ticket from €3M via SPV stake / equity participation. Preferred yield 10%; unit path guaranteed income 4%. Process: NDA → Proof of Funds → Term Sheet → SPV → funding tranches.",
   "invest_raise_l": "Raise",
   "invest_raise_v": "€20M",
   "invest_exit_l": "Indicative exit",
@@ -170,5 +170,7 @@
   "status_evidence_pending": "2026-10-30",
   "form_err_email": "Please enter a valid email address.",
   "form_err_amount": "Please enter the amount in figures, e.g. €3,000,000.",
-  "legal_body_pending": ""
+  "legal_body_pending": "",
+  "nav_menu": "Sections",
+  "skip_content": "Skip to content"
 }

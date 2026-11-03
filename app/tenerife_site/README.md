@@ -11,7 +11,7 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 | Copy | `scripts/tenerife_site_build/copy_v3/` | `copy_en/` | `copy_es/` | `copy_de/` | `copy_fr/` |
 
 - Build one language at a time (13 pages + impressum + privacy + `_notice.html` in each directory):
-  `TENERIFE_LOCALE=en python3 scripts/tenerife_site_build/build_v3.py` (same for `ru`, `es`, `de`, `fr`).
+  `TENERIFE_LOCALE=en python3 scripts/tenerife_site_build/build_v3.py` (same for `ru`, `es`, `de`, `fr`; Python 3.10+).
   `TENERIFE_COPY_DIR` / `TENERIFE_OUT_DIR` override the directories; by default they follow the locale.
 - RU is the master (sha256-pinned copy, hand-written). EN/ES/DE/FR are translations of the same 13 page files plus
   the footer; the build matches components by heading order (RU heading ↔ translated heading), so a translation must
@@ -20,9 +20,20 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 - `<html lang>`, `og:locale` and the `<link rel=alternate hreflang>` set (all five languages + `x-default` = EN) come
   from `build_v3.ALL_LANGS`; canonical is the page's own locale URL. The header switcher is EN/ES/DE/FR, the Russian
   version is a quiet «Русский» link in the footer.
+- Investor release 2026-11-03: 14 content pages, legal pages, `_notice.html` and `_404.html` per locale.
+  `04_akcii.md` is the sole source for `/inversores/`; `19_komanda.md` owns `/equipo/`.
+  The same complete C9 calculator serves `/inversores/#calculate` and `/calculadora/`, with identical model/JS,
+  labels from 05, and the existing waitlist endpoint/three calculator fields. Financial parameters and logic are unchanged.
+- Primary menu: producto / inversores / norte / construccion / equipo, then a request link to `#ochered`.
+  The footer owns the auxiliary links in Project / Participation / Team / Documents groups; mobile uses the same
+  primary hierarchy and exposes the four non-RU languages. Russian remains a quiet footer link.
+- Full entry procedure belongs to proceso, rental assumptions to alquiler, market comparisons to mercado,
+  price stages and participation to inversores. Other pages link to those owners instead of repeating the full copy.
+- All supported acciones slash/no-slash/HTML and locale/preview variants redirect once to the matching inversores
+  URL with query intact. Its semantic section IDs retain s1…s13 aliases. The builder deletes old acciones.html.
 - Interface strings (menu, footer labels, skip link, «сейчас», stage names of the mini ladder, portfolio places) live in
-  `locale_cfg.UI` / `locale_cfg.STAGE_NAMES` / `cases.json:place_by_locale`. The waitlist form and the calculator are
-  still Russian on every language: their texts come from `copy_v3/17_forma.md` and `FORM_MSG` in `app/tenerife.py`.
+  `locale_cfg.UI` / `locale_cfg.NAV_UI` / `locale_cfg.STAGE_NAMES` / `cases.json:place_by_locale`. Form, calculator,
+  messages, alt texts and legal are localized via `i18n_strings.json`; RU form copy remains in `copy_v3/17_forma.md`.
 - Routes: `app/tenerife.py` serves all five (locale roots, `/tenerife/en/` → `/tenerife/`, legacy `.html` → 301);
   `app/app.py` sitemap lists every locale. Smoke list: `TENERIFE_PATHS` in `deploy/artemis-deploy.sh`.
 
@@ -30,8 +41,9 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 
 - Source copy: `scripts/tenerife_site_build/copy_v3/` (01–13 pages + 14 footer, 15–16 legal, 17 form, `numbers.md`,
   `make_numbers.py`, `wc.py`), sha256 pinned in `build_v3.py` (`COPY_SHA256`, over the explicit list `copy_files()`:
-  01–17 only, a draft such as `18_investoram.md` is neither built nor hashed) — the build fails if the copy changes
-  without re-approval. Form messages (button while sending, success, errors) = `17_forma.md` «Сообщения формы»,
+  published page sources + footer/legal/form, now including 19; draft 18 is neither built nor hashed). The guard
+  fails on unexpected copy changes; an explicitly authorized content release updates the pins in the same change.
+  Form messages (button while sending, success, errors) = `17_forma.md` «Сообщения формы»,
   put on the form as `data-msg-*` for `waitlist.js`; `app/tenerife.py` `FORM_MSG` holds the same texts (tested).
   Text, title, description and H1 are transferred without edits.
 - Numbers: one data source. Edit `scripts/tenerife_site_build/model_inputs.json`, then

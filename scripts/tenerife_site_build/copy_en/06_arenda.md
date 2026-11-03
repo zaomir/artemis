@@ -108,7 +108,7 @@ The north is rented by people who want greenery and a town rather than sun loung
 
 ### The order of entry
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 ### In short
 
@@ -120,5 +120,5 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **How much on 72 metres?** The dividend is an estimated 2,5–3,5 % a year before company profit tax; the rent of the same metres on the market is 864–1 080 € a month.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

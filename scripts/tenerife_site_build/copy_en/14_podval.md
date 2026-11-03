@@ -7,7 +7,7 @@
 
 **Artemis de la Cruz** – twenty residences in the north of Tenerife, with the plot being chosen in the La Quinta area of Santa Úrsula. Shares in the developer company from 2 900–3 100 € per metre. Joining the waiting list is free; we take no money before the plot is chosen.
 
-**Страницы.** Home · Residences · Location · Payment · Calculator · Letting · Energy · Construction · Purchase · For investors · Questions · Market and price per metre · Developer · Supervisor
+**Страницы.** Home · Residences · For investors · Location · Project progress · Team · Calculator · Letting · Energy · Transaction · Questions · Market and price per metre · Developer · Supervisor
 
 **Контакты.** info@artemisresort.com · WhatsApp: {номер из TENERIFE_WHATSAPP}
 

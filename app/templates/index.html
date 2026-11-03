@@ -62,7 +62,12 @@ picture{display:block}img{height:auto}
 :root{--gold:#C4A35A;--gold2:#e8c97a;--dark:#0d1b2a;--dark2:#1a2f45;--dark3:#243d54;--text:#e8e0d0;--muted:#8a9bb0;--white:#fff}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{background:var(--dark);color:var(--text);font-family:Georgia,serif;line-height:1.6}
+.skip-link{position:fixed;top:8px;left:12px;z-index:200;transform:translateY(-180%);background:var(--gold);color:var(--dark);padding:10px 16px;font-family:Arial,sans-serif}
+.skip-link:focus{transform:translateY(0)}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:4px}
+main:focus,section[tabindex="-1"]:focus{outline:none}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(196,163,90,.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.menu-toggle{display:none}
 .logo{font-size:1.1rem;font-weight:bold;color:var(--gold);letter-spacing:2px;text-decoration:none}
 .nav-links{display:flex;gap:16px;list-style:none;margin:0;padding:0}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:1px;font-family:Arial,sans-serif;white-space:nowrap}
@@ -73,6 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.96
 .lang-switch a.on{color:var(--white);font-weight:bold}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 28px;background:var(--gold);color:var(--dark);font-family:Arial,sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;text-decoration:none;text-align:center}
 .btn:hover{background:var(--gold2)}
+.btn:disabled{opacity:.65;cursor:wait}
 .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
 .btn-outline:hover{background:var(--gold);color:var(--dark)}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -135,6 +141,15 @@ nav .btn{white-space:nowrap}
 @media(max-width:1439px){nav .btn .cta-long{display:none}nav .btn .cta-short{display:inline}}
 @media(max-width:1279px){.logo-rest{display:none}}
 @media(max-width:1099px){.nav-links{display:none}}
+@media(max-width:1099px){
+  html{scroll-padding-top:120px}
+  .menu-toggle{position:absolute;top:64px;left:0;width:100%;min-height:44px;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-bottom:1px solid rgba(196,163,90,.2);background:var(--dark);color:var(--gold);font:inherit;font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:1px;cursor:pointer}
+  .menu-toggle::after{content:'+';font-size:1.2rem;line-height:1}
+  .menu-toggle[aria-expanded="true"]::after{content:'−'}
+  nav.menu-open .nav-links{display:grid;position:absolute;top:108px;left:0;right:0;padding:12px 20px;gap:0;background:var(--dark);border-bottom:1px solid rgba(196,163,90,.2);max-height:calc(100dvh - 108px);overflow-y:auto}
+  .nav-links a{display:flex;align-items:center;min-height:44px;white-space:normal}
+  .hero-content{padding-top:136px}
+}
 @media(min-width:601px) and (max-width:1099px){nav .btn .cta-long{display:inline}nav .btn .cta-short{display:none}}
 .hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}
 .form-ok{display:none;padding:20px 0;font-family:Arial,sans-serif;color:var(--text)}
@@ -146,12 +161,14 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   nav{padding:0 16px}.nav-links{display:none}
   .sec,.sec-full{padding:56px 20px}
   .loc-grid{grid-template-columns:1fr}
-  .hero-content{padding-top:92px}
+  .hero-content{padding-top:136px}
   .hero-cta{flex-direction:column;align-items:center}
   .hero-cta .btn{width:100%;max-width:340px}
 }
 @media(max-width:600px){
   nav{padding:0 10px;height:60px;gap:6px}
+  .menu-toggle{top:60px}
+  nav.menu-open .nav-links{top:104px;max-height:calc(100dvh - 104px)}
   .logo{font-size:1rem;letter-spacing:1px}
   .nav-right{gap:8px}
   .lang-switch{gap:0}
@@ -166,6 +183,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   .status-table td::before{content:attr(data-label);display:block;color:var(--gold);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
   #enquiry-form-wrap .btn{width:100%}
 }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -179,9 +197,11 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 {%- endif -%}
 {%- endmacro %}
 
+<a class="skip-link" href="#main">{{ t.skip_content }}</a>
 <nav>
   <a class="logo" href="/{{ lang }}/">ARTEMIS<span class="logo-rest"> RESORT&nbsp;&amp;&nbsp;SPA</span></a>
-  <ul class="nav-links">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">{{ t.nav_menu }}</button>
+  <ul class="nav-links" id="primary-links">
     <li><a href="#glance">{{ t.nav_glance }}</a></li>
     <li><a href="#location">{{ t.nav_location }}</a></li>
     <li><a href="#concept">{{ t.nav_concept }}</a></li>
@@ -202,7 +222,8 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </nav>
 
-<section class="hero" id="top">
+<main id="main" tabindex="-1">
+<section class="hero" id="top" tabindex="-1">
   <div class="hero-bg" role="img" aria-label="{{ t.alt_hero }}">{{ pic("hero", "", "(max-aspect-ratio: 11/6) 184vh, 100vw", hero=True) }}</div>
   <div class="hero-content">
     <div class="hero-badge">{{ t.hero_eyebrow }}</div>
@@ -216,7 +237,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="glance" class="sec">
+<section id="glance" class="sec" tabindex="-1">
   <p class="sec-label">{{ t.glance_label }}</p>
   <h2 class="sec-title">{{ t.glance_title }}</h2>
   <div class="divider"></div>
@@ -230,7 +251,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="location" class="sec-full">
+<section id="location" class="sec-full" tabindex="-1">
   <div class="sec-inner">
     <p class="sec-label">{{ t.location_label }}</p>
     <h2 class="sec-title">{{ t.location_title }}</h2>
@@ -252,7 +273,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="concept" class="sec">
+<section id="concept" class="sec" tabindex="-1">
   <p class="sec-label">{{ t.concept_label }}</p>
   <h2 class="sec-title">{{ t.concept_title }}</h2>
   <div class="divider"></div>
@@ -261,7 +282,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <p class="lead">{{ t.concept_guest }}</p>
 </section>
 
-<section id="accommodation" class="sec-full">
+<section id="accommodation" class="sec-full" tabindex="-1">
   <div class="sec-inner">
     <p class="sec-label">{{ t.accommodation_label }}</p>
     <h2 class="sec-title">{{ t.accommodation_title }}</h2>
@@ -307,7 +328,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
 </section>
 
 
-<section id="invest" class="sec">
+<section id="invest" class="sec" tabindex="-1">
   <p class="sec-label">{{ t.invest_label }}</p>
   <h2 class="sec-title">{{ t.invest_title }}</h2>
   <div class="divider"></div>
@@ -320,7 +341,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="status" class="sec">
+<section id="status" class="sec" tabindex="-1">
   <p class="sec-label">{{ t.status_label }}</p>
   <h2 class="sec-title">{{ t.status_title }}</h2>
   <div class="divider"></div>
@@ -328,7 +349,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <div class="table-scroll">
   <table class="status-table">
     <thead>
-      <tr><th>{{ t.status_th_stream }}</th><th>{{ t.status_th_status }}</th><th>{{ t.status_th_evidence }}</th></tr>
+      <tr><th scope="col">{{ t.status_th_stream }}</th><th scope="col">{{ t.status_th_status }}</th><th scope="col">{{ t.status_th_evidence }}</th></tr>
     </thead>
     <tbody>
       <tr><td data-label="{{ t.status_th_stream }}">{{ t.status_site }}</td><td data-label="{{ t.status_th_status }}">{{ t.status_site_v }}</td><td data-label="{{ t.status_th_evidence }}">{{ t.status_evidence_pending }}</td></tr>
@@ -346,7 +367,7 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="governance" class="sec-full">
+<section id="governance" class="sec-full" tabindex="-1">
   <div class="sec-inner">
     <p class="sec-label">{{ t.gov_label }}</p>
     <h2 class="sec-title">{{ t.gov_title }}</h2>
@@ -364,20 +385,22 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   </div>
 </section>
 
-<section id="enquiry" class="sec">
+<section id="enquiry" class="sec" tabindex="-1">
   <p class="sec-label">{{ t.enquiry_label }}</p>
   <h2 class="sec-title">{{ t.enquiry_title }}</h2>
   <div class="divider"></div>
   <p class="lead">{{ t.enquiry_intro }}</p>
   <div class="warn">{{ t.enquiry_warn }}</div>
-  <div class="form-wrap" id="enquiry-form-wrap">
-    <div class="form-group"><label for="f-name">{{ t.form_name }}</label><input id="f-name" type="text" autocomplete="name" required aria-required="true" maxlength="120" placeholder="{{ t.ph_name }}"></div>
-    <div class="form-group"><label for="f-email">{{ t.form_email }}</label><input id="f-email" type="email" autocomplete="email" required aria-required="true" maxlength="254" aria-describedby="form-err" placeholder="{{ t.ph_email }}"></div>
-    <div class="form-group"><label for="f-org">{{ t.form_org }}</label><input id="f-org" type="text" autocomplete="organization" placeholder="{{ t.ph_org }}"></div>
-    <div class="form-group"><label for="f-role">{{ t.form_role }}</label><input id="f-role" type="text" placeholder="{{ t.ph_role }}"></div>
+  <form class="form-wrap" id="enquiry-form-wrap" method="post" action="/api/enquiry" novalidate>
+    <input type="hidden" name="lang" value="{{ lang }}">
+    <input type="hidden" name="page" value="/{{ lang }}/">
+    <div class="form-group"><label for="f-name">{{ t.form_name }}</label><input id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" maxlength="120" placeholder="{{ t.ph_name }}"></div>
+    <div class="form-group"><label for="f-email">{{ t.form_email }}</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" maxlength="254" aria-describedby="form-err" placeholder="{{ t.ph_email }}"></div>
+    <div class="form-group"><label for="f-org">{{ t.form_org }}</label><input id="f-org" name="organisation" type="text" autocomplete="organization" placeholder="{{ t.ph_org }}"></div>
+    <div class="form-group"><label for="f-role">{{ t.form_role }}</label><input id="f-role" name="role" type="text" placeholder="{{ t.ph_role }}"></div>
     <div class="form-group">
       <label for="f-type">{{ t.form_type }}</label>
-      <select id="f-type" required aria-required="true">
+      <select id="f-type" name="enquiry_type" required aria-required="true">
         <option value="">—</option>
         <option value="investor">{{ t.type_investor }}</option>
         <option value="project_adviser">{{ t.type_project_adviser }}</option>
@@ -389,16 +412,17 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
         <option value="other">{{ t.type_other }}</option>
       </select>
     </div>
-    <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" type="text" inputmode="decimal" maxlength="64" aria-describedby="form-err" placeholder="{{ t.ph_amount }}"></div>
-    <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" placeholder="{{ t.ph_message }}"></textarea></div>
-    <label class="consent"><input id="f-consent" type="checkbox"> <span>{{ t.form_consent }}</span></label>
+    <div class="form-group"><label for="f-amount">{{ t.form_amount }}</label><input id="f-amount" name="amount" type="text" inputmode="decimal" maxlength="64" aria-describedby="form-err" placeholder="{{ t.ph_amount }}"></div>
+    <div class="form-group"><label for="f-message">{{ t.form_message }}</label><textarea id="f-message" name="message" placeholder="{{ t.ph_message }}"></textarea></div>
+    <label class="consent"><input id="f-consent" name="consent" value="true" type="checkbox"> <span>{{ t.form_consent }}</span></label>
     <div class="hp" aria-hidden="true"><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
-    <button class="btn" type="button" onclick="submitEnquiry()">{{ t.form_submit }}</button>
+    <button class="btn" type="submit">{{ t.form_submit }}</button>
     <p class="form-err" id="form-err" role="alert" aria-live="assertive"></p>
-  </div>
-  <div class="form-ok" id="form-ok" role="status" aria-live="polite">{{ t.form_success }}</div>
+  </form>
+  <div class="form-ok" id="form-ok" role="status" aria-live="polite" tabindex="-1">{{ t.form_success }}</div>
   <p class="lead" style="margin-top:24px"><a href="mailto:{{ t.contact_email }}" style="color:var(--gold)">{{ t.contact_email }}</a></p>
 </section>
+</main>
 
 <footer>
   <div class="logo" style="font-size:1.2rem;margin-bottom:8px">ARTEMIS RESORT &amp; SPA</div>
@@ -410,6 +434,37 @@ footer{background:var(--dark);border-top:1px solid rgba(196,163,90,.12);padding:
   <p style="font-family:Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-top:16px">{{ version }}</p>
 </footer>
 
+<script>
+const sectionNav = document.querySelector('nav');
+const menuToggle = document.querySelector('.menu-toggle');
+function setSectionMenu(open, returnFocus){
+  sectionNav.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  if(returnFocus){ menuToggle.focus(); }
+}
+menuToggle.addEventListener('click', function(){
+  setSectionMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+});
+document.querySelectorAll('#primary-links a').forEach(function(link){
+  link.addEventListener('click', function(){
+    const wasOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    setSectionMenu(false);
+    const destination = document.querySelector(link.hash);
+    if(wasOpen && destination){ destination.focus({preventScroll:true}); }
+  });
+});
+document.addEventListener('keydown', function(event){
+  if(event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true'){
+    setSectionMenu(false, true);
+  }
+});
+document.addEventListener('click', function(event){
+  if(!sectionNav.contains(event.target)){ setSectionMenu(false); }
+});
+window.matchMedia('(min-width:1100px)').addEventListener('change', function(event){
+  if(event.matches){ setSectionMenu(false); }
+});
+</script>
 <script>
 const I18N = {
   required: {{ t.form_err_required | tojson }},
@@ -442,7 +497,14 @@ function fieldError(id, code){
   if(id){ const el = document.getElementById(id); el.setAttribute('aria-invalid', 'true'); el.focus(); }
   err.textContent = I18N[code] || I18N.generic; err.style.display = 'block';
 }
+let enquiryPending = false;
+let enquirySent = false;
+document.getElementById('enquiry-form-wrap').addEventListener('submit', function(event){
+  event.preventDefault();
+  submitEnquiry();
+});
 async function submitEnquiry(){
+  if(enquiryPending || enquirySent){ return; }
   const name = document.getElementById('f-name').value.trim();
   const emailEl = document.getElementById('f-email');
   const email = emailEl.value.trim();
@@ -461,6 +523,11 @@ async function submitEnquiry(){
   if(!consent){ return fieldError('f-consent', 'consent'); }
   document.querySelectorAll('#enquiry-form-wrap [aria-invalid]').forEach(function(el){ el.removeAttribute('aria-invalid'); });
   err.style.display = 'none'; err.textContent = '';
+  const form = document.getElementById('enquiry-form-wrap');
+  const submit = form.querySelector('button[type="submit"]');
+  enquiryPending = true;
+  submit.disabled = true;
+  form.setAttribute('aria-busy', 'true');
   try{
     const r = await fetch('/api/enquiry', {
       method: 'POST',
@@ -471,9 +538,11 @@ async function submitEnquiry(){
     // or nginx limit_req (HTML body), so the status is checked before the body is parsed as JSON
     if(r.status === 429){ return fieldError(null, 'rate_limited'); }
     const d = await r.json();
-    if(d.ok){
+    if(r.ok && d.ok){
+      enquirySent = true;
       document.getElementById('enquiry-form-wrap').style.display = 'none';
       document.getElementById('form-ok').style.display = 'block';
+      document.getElementById('form-ok').focus();
       if(window.dataLayer){ window.dataLayer.push({event: 'professional_enquiry_submit'}); }
     } else {
       const map = {name: 'f-name', email: 'f-email', amount: 'f-amount', consent: 'f-consent', enquiry_type: 'f-type'};
@@ -481,6 +550,10 @@ async function submitEnquiry(){
     }
   } catch(e){
     fieldError(null, 'network');
+  } finally {
+    enquiryPending = false;
+    submit.disabled = enquirySent;
+    form.removeAttribute('aria-busy');
   }
 }
 </script>

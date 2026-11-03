@@ -66,6 +66,12 @@ import tenerife  # noqa: E402  (blueprint: /tenerife-preview/, noindex)
 
 app.register_blueprint(tenerife.bp)
 
+
+@app.errorhandler(404)
+def page_not_found(error):
+    first = request.path.strip("/").split("/", 1)[0]
+    return tenerife._not_found(first if first in tenerife.ALL_LANGS else "")
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANS_DIR = os.path.join(BASE_DIR, "translations")
 SUPPORTED = ["ru", "en", "es", "fr"]
@@ -405,19 +411,64 @@ HONEYPOT_FIELD = "website"  # same name as the Tenerife waitlist honeypot
 _TEXT_FIELDS = ("name", "email", "organisation", "role", "enquiry_type", "message", "lang", "page")
 
 
+def _native_enquiry():
+    """Only the browser's native form body opts into HTML; JSON API clients keep JSON."""
+    return request.mimetype == "application/x-www-form-urlencoded"
+
+
+def _enquiry_language():
+    lang = request.form.get("lang", "")
+    return lang if lang in SUPPORTED else request.accept_languages.best_match(SUPPORTED) or DEFAULT
+
+
+def _enquiry_notice(lang, *, success=False, code="generic", status=200):
+    """A generic localized receipt/error, never containing submitted contact details."""
+    t = TRANSLATIONS[lang]
+    message = t["form_success"] if success else t.get(f"form_err_{code}", t["form_err_generic"])
+    body = _email_off(render_template("enquiry_result.html", lang=lang, t=t, success=success, message=message))
+    resp = no_cache(make_response(body, status))
+    resp.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return resp
+
+
+@app.route("/<lang>/enquiry-received/")
+def enquiry_received(lang):
+    if lang not in SUPPORTED:
+        abort(404)
+    return _enquiry_notice(lang, success=True)
+
+
+def _enquiry_success():
+    if _native_enquiry():
+        # POST/Redirect/GET: refreshing the receipt must not repeat a lead or notification.
+        resp = no_cache(redirect(f"/{_enquiry_language()}/enquiry-received/", code=303))
+        resp.headers["X-Robots-Tag"] = "noindex, nofollow"
+        return resp
+    return jsonify({"ok": True})
+
+
 def _enquiry_error(code: str, field: str, error: str):
+    if _native_enquiry():
+        return _enquiry_notice(_enquiry_language(), code=code, status=400)
     return jsonify({"ok": False, "code": code, "field": field, "error": error}), 400
 
 
 @app.route("/api/enquiry", methods=["POST"])
 def enquiry():
-    d = request.get_json(silent=True)
+    if _native_enquiry():
+        # Name/consent encoding is confined to this branch. In JSON, consent must still be boolean true.
+        if any(len(request.form.getlist(key)) != 1 for key in request.form):
+            return _enquiry_error("generic", "", "Invalid form fields")
+        d = request.form.to_dict()
+        d["consent"] = d.get("consent") == "true"
+    else:
+        d = request.get_json(silent=True)
     if not isinstance(d, dict):
         d = {}
     # QA P09 honeypot: the hidden "website" field is empty for people. Pretend success, store and send nothing.
     if str(d.get(HONEYPOT_FIELD) or "").strip():
         logging.info("crete enquiry: honeypot hit, dropped")
-        return jsonify({"ok": True})
+        return _enquiry_success()
     # QA -42: text fields must be JSON strings (or absent / null); lists, objects, numbers are rejected,
     # never stored as their Python repr. consent must be the JSON boolean true (not "false", 1, "yes").
     for key in _TEXT_FIELDS:
@@ -442,6 +493,8 @@ def enquiry():
         return _enquiry_error("email", "email", "Invalid email address")
     if not consent:
         return _enquiry_error("consent", "consent", "Consent is required")
+    if _native_enquiry() and not enquiry_type:
+        return _enquiry_error("required", "enquiry_type", "Enquiry type is required")
     if enquiry_type and enquiry_type not in ENQUIRY_TYPES:
         return _enquiry_error("generic", "enquiry_type", "Invalid enquiry type")
     if amount is None:
@@ -449,7 +502,8 @@ def enquiry():
 
     retry = ratelimit.hit(DB, "crete_enquiry", ratelimit.client_hash())
     if retry:
-        resp = jsonify({"ok": False, "code": "rate_limited", "error": "rate_limited"})
+        resp = (_enquiry_notice(_enquiry_language(), code="rate_limited", status=429) if _native_enquiry()
+                else jsonify({"ok": False, "code": "rate_limited", "error": "rate_limited"}))
         resp.status_code = 429
         resp.headers["Retry-After"] = str(retry)
         return resp
@@ -483,7 +537,7 @@ def enquiry():
         kw["test"] = True
     notify_lead("Crete enquiry", name, email, lang, page, **kw)
 
-    return jsonify({"ok": True})
+    return _enquiry_success()
 
 
 # Investor registration alias (restored — no longer 410)

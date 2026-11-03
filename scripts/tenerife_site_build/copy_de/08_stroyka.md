@@ -18,18 +18,18 @@ Die Namen der Preisstufen sind dieselben wie auf der Seite zu den Aktien. Eine B
 
 | Bauphase | Was die Phase abschließt | Preisstufe der Aktie |
 |---|---|---|
-| — | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | Warteliste · 2 950 € |
-| — | Baugenehmigung erteilt | Baugenehmigung · 3 100 € |
-| 1. Grundstück | Grundstück am Hang vorbereitet | Baugenehmigung · 3 100 € |
-| 2. Fundament | Gründung und Sockel aus Vulkangestein | Fundament · 3 250 € |
-| 3. Rohbau | Wände, Decken, Öffnungen für die hohen Fenster | Rohbau und Dach · 3 450 € |
-| 4. Dach mit Modulen | Flachdach, Solarmodule in der Dachebene | Rohbau und Dach · 3 450 € |
-| 5. Technik | Elektrik, Wasser, Klima, Anschluss der Module | Ausbau · 3 650 € |
-| 6. Fassade | Kalkputz, Bronzefenster, Steinterrassen | Ausbau · 3 650 € |
-| 7. Innenausbau | Böden, Küchen, Bäder | Ausbau · 3 650 € |
-| 8. Pool | gemeinschaftlicher beheizter Pool | Ausbau · 3 650 € |
-| 9. Außenanlagen | Zugänge, Wege, Grün | Ausbau · 3 650 € |
-| — | Nutzungsgenehmigung | Fertigstellung · 3 850 € |
+| — | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | Warteliste |
+| — | Baugenehmigung erteilt | Baugenehmigung |
+| 1. Grundstück | Grundstück am Hang vorbereitet | Baugenehmigung |
+| 2. Fundament | Gründung und Sockel aus Vulkangestein | Fundament |
+| 3. Rohbau | Wände, Decken, Öffnungen für die hohen Fenster | Rohbau und Dach |
+| 4. Dach mit Modulen | Flachdach, Solarmodule in der Dachebene | Rohbau und Dach |
+| 5. Technik | Elektrik, Wasser, Klima, Anschluss der Module | Ausbau |
+| 6. Fassade | Kalkputz, Bronzefenster, Steinterrassen | Ausbau |
+| 7. Innenausbau | Böden, Küchen, Bäder | Ausbau |
+| 8. Pool | gemeinschaftlicher beheizter Pool | Ausbau |
+| 9. Außenanlagen | Zugänge, Wege, Grün | Ausbau |
+| — | Nutzungsgenehmigung | Fertigstellung |
 
 [КАДР F14] <!-- служебная пометка, не публикуется -->
 
@@ -92,17 +92,7 @@ Eine architektonische Sprache für alle zwanzig Häuser — eine Technologie, ei
 
 ### Die Phase und Ihr Geld
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
-
-Je weiter der Bau, desto teurer der Einstieg. Das schließt jede Stufe ab, und so viel kosten 72 Meter darauf:
-
-- **Baugenehmigung** — die Baugenehmigung: 223 200 €.
-- **Fundament** — Gründung und steinerner Sockel: 234 000 €.
-- **Rohbau und Dach** — Wände, Decken, Dach mit Modulen: 248 400 €.
-- **Ausbau** — Fassade, Technik, Innenräume, Pool: 262 800 €.
-- **Fertigstellung** — die Nutzungsgenehmigung: 277 200 €.
-
-Jeder dieser Punkte ist ein Eintrag im Tagebuch und eine Zeile im wöchentlichen Bericht. Die Stufe steigt, wenn eine Phase auf der Baustelle abgeschlossen und im Bericht sichtbar ist, nicht nach Kalender: Das Datum im Plan ist eine Orientierung, der Preis hängt am Ereignis. 72 Meter in der Warteliste — 212 400 €. Dieselben 72 Meter auf der Stufe „Rohbau und Dach“ — 248 400 €, auf der Stufe „Fertigstellung“ — 277 200 €. Vor dem Bau gehen die Gelder der Investoren in das Team, die Planung und die Genehmigungen. Den Bau bezahlen die Aktien der Bauträgergesellschaft und der Verkauf der Häuser.
+Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
 
 ### Was Sie bei der Fertigstellung erhalten
 
@@ -124,5 +114,5 @@ Einen Neubau, keine fremde Sanierung. Steinerne Kontur, Dach mit Solarmodulen, s
 
 **Wer verantwortet die Baustelle?** Boris Ribaut.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

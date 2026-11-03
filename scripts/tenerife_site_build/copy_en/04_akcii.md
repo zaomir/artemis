@@ -1,32 +1,35 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
-Слаг: /tenerife/acciones/
-Meta title: Artemis developer shares: 1 share = 1 m²
-Meta description: Price steps from 2 950 to 3 850 € per m², the investment agreement after the plot is approved, payment in full with a 10% bonus, over six months 5%, over a year with no bonus.
-OG title: One share, one metre: how Artemis shares work
+Слаг: /tenerife/inversores/
+Meta title: For investors — Artemis de la Cruz shares in La Quinta
+Meta description: Participation in Artemis de la Cruz: prices by stage, comparison with buying a residence, two outcomes and a calculation for your chosen area.
+OG title: For investors — Artemis de la Cruz shares in La Quinta
 -->
 
-# One share, one metre: shares in the developer company Artemis
+# For investors: participate in Artemis de la Cruz before handover
 
-Shares in the developer company Artemis de la Cruz are sold at the price of the construction step: one share is one square metre. On the waiting list it is 2 950 € per metre; at handover of the house, 3 850 €. Payment comes after the majority of the waiting list approves the plot and the investment agreement arrives: in full with a 10% bonus, over six months with a 5% bonus, or over a year with no bonus. After handover: a dividend in euros on each share, or an exchange of shares for metres.
+Artemis de la Cruz is twenty residences in the La Quinta area of Santa Úrsula. We are currently choosing the plot. You can participate through shares in the developer company: one share corresponds to one square metre. Joining the waiting list is free; we take no money before the plot is chosen.
 
-[КАДР F14] <!-- служебная пометка, не публикуется -->
+[КАДР F14]
 
-### Why shares rather than a house
+### Project and current stage
+
+We discuss plot options with waiting-list members. Planned dates: construction starts in early 2027, with handover in late 2028 – mid 2029. Before construction, capital pays for the team, design and permits; developer shares and house sales finance the construction. [Current stage and reporting](/tenerife/construccion/).
+
+### Investment or a residence purchase
 
 A buyer of a finished house pays for a metre that already contains the permit, the foundation, the shell, the roof, the finishing and the pool: 3 800–4 600 €. A shareholder comes in earlier, when none of that exists yet, and pays the price of the step the construction has reached.
 
 Early entry is not a discount on a finished house. It is the price of entry into the company at the start. A finished metre costs more because completed work already stands behind it. You pay for the metre earlier, and you hold the share while that work appears.
 
-### How it works
+| | Shares in the developer company | Finished residence |
+|---|---|---|
+| What you acquire | participation in the company before handover | a finished house at handover |
+| Price | the current construction step | 3 800–4 600 € per m², depending on type, floor and view |
+| After handover | retain shares or exchange them for area | own the house and decide how to use it |
 
-1. **Waiting list.** Joining is free. There is nothing to pay now.
-2. **Plot and agreement.** We choose the plot, the majority of the waiting list approves it, you receive the investment agreement and buy shares at the price of the current step: one share is one metre.
-3. **Payment.** In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus.
-4. **A report every week.** Shareholders and house buyers see which stage the construction has reached.
-5. **After handover.** A dividend in euros on each share from long-term letting after costs, or an exchange of shares for the metres of your own residence.
+[Residence types and specifications](/tenerife/producto/). The full sequence and payment timing are in the [transaction process](/tenerife/proceso/).
 
-[КАДР F01] <!-- служебная пометка, не публикуется -->
+[КАДР F01]
 
 ### Six price steps
 
@@ -45,84 +48,52 @@ The step changes when an event happens on site, not when a date arrives. You see
 
 The step price is the price the company sets for its share at that stage. For comparison: the asking prices of the neighbouring new developments at La Quinta are 3 360–3 870 € per metre; both projects are already sold.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
-
-### An example at 72 metres
-
 A two-bedroom house of 72 metres is 72 shares.
 
-| Step | Price per metre | 72 shares |
-|---|---|---|
-| Waiting list | 2 950 € | 212 400 € |
-| Permit | 3 100 € | 223 200 € |
-| Foundation | 3 250 € | 234 000 € |
-| Shell and roof | 3 450 € | 248 400 € |
-| Finishing | 3 650 € | 262 800 € |
-| Handover | 3 850 € | 277 200 € |
 
-**Buying from the waiting list:** 212 400 € in one payment, or 33 630 € a month in six instalments.
+**Base amount from the waiting list:** 212 400 € before payment terms. With six instalments and a 5 % discount: 33 630 € a month.
 
 **The same 72 shares at the handover step:** 277 200 €. The difference from the waiting list is 64 800 €.
 
 **A finished house of the same area:** 273 600–331 200 €.
 
-### The dividend: the same euros on every share
+[КАДР F15]
 
-Shares that were not exchanged for metres at handover remain in the company. The company lets those metres on long-term contracts. The dividend is the rent of one metre after costs, before company profit tax, calculated per share. That is why it is the same for every share, whenever it was bought.
+### Two outcomes of participation
 
-**What makes it up.** The dividend is calculated from the long-term rent of a metre after costs: rent, community fees, management, vacancy, insurance, a repair reserve and the refuse charge. The result: **an estimated 2,5–3,5 % a year before company profit tax**. It is an indication, not a guarantee.
+**Retain the shares.** The company manages long-term letting. The dividend from income after costs is estimated at 2,5–3,5 % a year before company profit tax, not guaranteed. [Rental model and costs](/tenerife/alquiler/).
 
-On 72 shares the dividend is an estimated 2,5–3,5 % a year before company profit tax, not a guarantee.
-
-[КАДР F16] <!-- служебная пометка, не публикуется -->
-
-### What that is against the money invested
-
-The dividend per share is the same, but the entry price is not — so against the money invested it comes out differently. Early entry gives a higher percentage: **an estimated 2,5–3,5 % a year before company profit tax**. It is an indication, not a guarantee.
-
-For comparison: ten-year Bundesanleihen on 30 October 2026 were 3,34%, the best one-year Festgeld averaged 3,52%, and the gross rental yield across the 52 largest German cities was 4,17%.
-
-### Exchanging shares for metres
-
-After the completion certificate, shares can be exchanged for the metres of your own residence. 72 shares are 72 metres, a two-bedroom house. The exchange is formalised by a deed before a notary and an entry in the property register. The first transfer of new housing in the Canaries is subject to IGIC at the general rate of 7%, and the deed for such a transaction is subject to AJD of 1%.
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Buying more
+**Receive a residence.** After the completion certificate, shares can be exchanged for area: 72 shares correspond to 72 m². The deed, registration, taxes and mortgage possibilities are explained in the [transaction process](/tenerife/proceso/).
 
 Started with 50 shares and want a house of 72 metres? Buy 22 more shares at the price of the current step.
 
-**After handover.** Every share has two paths: a dividend in euros from long-term letting after costs, or an exchange for the metres of your own residence. Shares bought later follow the same rules.
-
-### Mortgage
-
-A mortgage is available to a house buyer. An investor may put in 50% of their own money, and the rest can be covered by a mortgage once the building permit is in place. Our brokers help with obtaining a mortgage at banks in Spain and in other European countries.
-
-### Where the construction money comes from
-
-Before construction, investors' money goes on the team, the design and the permits. The construction itself is financed by shares in the developer company and by house sales. Each step is a stage that goes up on site. **Simon Subic** links the money to the construction; **Boris Ribaut** will run the site.
-
-### Assignment to a buyer
-
 If there are more buyers than units, we may offer investors the chance to assign their unit to a buyer, at the price per square metre at the time of assignment. It is an opportunity, not a promise of return.
 
-[КАДР F12] <!-- служебная пометка, не публикуется -->
+[КАДР F17]
 
-### The order of entry
+### Calculate your area
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Choose the area, entry step and payment method in the calculator. It shows the purchase amount, payment in six instalments and the handover-step price for the same area; the dividend estimate remains an indication. [Results and formula explanations](/tenerife/calculadora/).
 
-### In short
+[КАДР F16]
 
-**What am I buying?** Shares in the developer company. One share is one metre.
+### Oversight and team
 
-**How much on the waiting list?** 2 950 € per metre.
+Simon Subic is responsible for the plot, permits, launch and linking finance to construction. Boris Ribaut is responsible for the site, structure, reports and handover. Shareholders and house buyers receive a construction report every week. [Team and responsibilities](/tenerife/equipo/).
 
-**When do I pay?** After the majority of the waiting list approves the plot and the investment agreement arrives: in full (10% bonus), over six months (5% bonus) or over a year with no bonus.
+### Documents and questions
 
-**What dividend?** An estimated 2,5–3,5 % a year before company profit tax, from long-term letting after costs, not a guarantee.
+**When do I pay?** After the majority of the waiting list approves the plot and you receive the investment agreement. Documents, payment options and formalities are in the [transaction process](/tenerife/proceso/).
 
-**Can I take the metres?** Yes, after the completion certificate.
+**Where do the benchmarks come from?** Comparisons and sources are on the [market page](/tenerife/mercado/).
 
-**Кнопка: «Join the waiting list»**
+**What else should I check?** The [short answers](/tenerife/faq/) link to the detailed material for each topic.
+
+[КАДР F12]
+
+### Get a calculation
+
+Leave your name and contact details. We will send a calculation for your chosen area and discuss participation. Joining is free; we take no money before the plot is chosen.
+
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

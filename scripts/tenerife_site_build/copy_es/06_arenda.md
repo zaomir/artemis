@@ -108,7 +108,7 @@ El norte lo alquilan quienes necesitan verde y ciudad, no tumbonas: Puerto de la
 
 ### El orden de entrada
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 ### En breve
 
@@ -120,5 +120,5 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿Cuánto sobre 72 metros?** El dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades; el alquiler de esos mismos metros en el mercado es de 864–1 080 € al mes.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

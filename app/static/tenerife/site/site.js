@@ -21,7 +21,7 @@
   /* QA T3-06: while the sheet is open it is a modal menu: everything else is inert (skip link, brand, desktop nav,
      main, footer), Tab cycles burger -> sheet links, Esc closes; on close focus returns to the burger. */
   function bg(){var r=[].slice.call(document.querySelectorAll('body > *:not(header):not(script)'));
-    [h.querySelector('.brand'),h.querySelector('.nav')].forEach(function(x){if(x) r.push(x);}); return r;}
+    [h.querySelector('.brand'),h.querySelector('.nav'),h.querySelector('.langs')].forEach(function(x){if(x) r.push(x);}); return r;}
   function ring(){return [b].concat([].slice.call(s.querySelectorAll('a[href]')));}
   function isOpen(){return s.classList.contains('is-open');}
   function setOpen(o,back){
@@ -34,6 +34,13 @@
     s.hidden=false; b.setAttribute('role','button');
     b.addEventListener('click',function(ev){ev.preventDefault();setOpen(!isOpen(),true);});
     b.addEventListener('keydown',function(ev){if(ev.key===' '){ev.preventDefault();setOpen(!isOpen(),true);}});
+    s.addEventListener('click',function(ev){
+      var a=ev.target.closest('a[href]');
+      if(!a||a.getAttribute('href').charAt(0)!=='#') return;
+      setOpen(false,false);
+      var target=document.querySelector(a.getAttribute('href'));
+      if(target){var input=target.querySelector('input:not([type=hidden])'); if(input) input.focus({preventScroll:true});}
+    });
     document.addEventListener('keydown',function(ev){
       if(!isOpen()) return;
       if(ev.key==='Escape'){ev.preventDefault();setOpen(false,true);return;}

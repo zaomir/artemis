@@ -1,5 +1,5 @@
-"""Tenerife RU v3 (copy_v3 + Canary Stone design system): 13 pages built by
-scripts/tenerife_site_build/build_v3.py. Re-runs every prod-site test over all 13 pages and checks
+"""Tenerife RU v3 (copy_v3 + Canary Stone design system): content pages built by
+scripts/tenerife_site_build/build_v3.py. Re-runs every prod-site test over all content pages and checks
 the v3 acceptance criteria: verbatim copy, one figure source (model.json), no markers, word counts,
 design tokens as is, CSP-safe markup."""
 import html as htmllib
@@ -51,7 +51,7 @@ WORD = re.compile(NUM + r"|[^\W_]+(?:[-’'.,][^\W_]+)*")
 
 
 class V3AllPagesTest(base.TenerifeSiteTest):
-    """Every test of the prod Tenerife suite, run over the 13 v3 pages (form lives on every page)."""
+    """Every test of the prod Tenerife suite, run over the v3 content pages (form lives on every page)."""
 
     @classmethod
     def setUpClass(cls):
@@ -66,9 +66,9 @@ class V3AllPagesTest(base.TenerifeSiteTest):
 
     def test_no_inline_script_for_csp(self):
         # script-src 'self': inline <script> only as non-executable data: the JSON island of C9 (calculadora,
-        # short on acciones) and JSON-LD (Organization on index, BreadcrumbList elsewhere, + FAQPage on faq)
+        # full on inversores) and JSON-LD (Organization on index, BreadcrumbList elsewhere, + FAQPage on faq)
         ld, island = '<script type="application/ld+json">', '<script type="application/json" id="cs-model">'
-        allowed = {"calculadora": [ld, island], "acciones": [ld, island], "faq": [ld, ld]}
+        allowed = {"calculadora": [ld, island], "inversores": [ld, island], "faq": [ld, ld]}
         for name, url in V3.items():
             page, _ = self.page(url)
             scripts = re.findall(r"<script(?![^>]*\ssrc=)[^>]*>", page)
@@ -188,31 +188,33 @@ class V3BuildTest(unittest.TestCase):
             # портфель команды генерируется из cases.json (не из копии) — исключаем его из сравнения
             page = re.sub(r'<section class="section rule-top s--(cases|person)".*?</section>', "", page, flags=re.S)
             got = words(main_text(page))
-            self.assertEqual(got, want, f"{name}: first diff at "
-                             f"{next((i for i, (a, b) in enumerate(zip(got, want, strict=False)) if a != b),
-                                     min(len(got), len(want)))}")
+            first_diff = next((i for i, (a, b) in enumerate(zip(got, want)) if a != b),
+                              min(len(got), len(want)))
+            self.assertEqual(got, want, f"{name}: first diff at {first_diff}")
 
-    def test_footer_is_the_copy(self):
-        # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}» = the WhatsApp slot (filled at runtime, test_tenerife_r4)
+    def test_footer_preserves_project_company_and_contact_copy(self):
+        # The approved navigation groups add labels and reorder page links. Project
+        # facts and contact/company text must still survive unchanged.
         md = (COPY / build_v3.FOOTER).read_text(encoding="utf-8")
-        self.assertEqual(md.count(" · " + build_v3.WA_TOKEN), 1)
-        md = md.replace(" · " + build_v3.WA_TOKEN, "")
-        for item in build_v3.NAV_FUTURE:  # Kimi r18 «Инвесторам»: hidden until page 18 is built (no broken link)
-            md = md.replace(" · " + item, "")
-        want = copy_words(md)
+        model = build_v3.load_model()
+        fmap = build_v3.figure_map(model)
+        data = build_v3.parse_footer(md, fmap, build_v3.figure_regex(fmap))
+        required = [" ".join(data["about"]), data["company"], *[label for label, _ in data["docs"]]]
         for name, page in self.pages.items():
             foot = re.search(r"<footer.*?</footer>", page, re.S).group(0)
             self.assertEqual(foot.count("<li data-tenerife-whatsapp hidden></li>"), 1, name)
-            # тихая ссылка на русскую версию — часть подвала, но не текст копирайта
             self.assertEqual(len(re.findall(r'<p class="lang-ru"><a href="/tenerife/ru/"', foot)), 1, name)
-            foot = re.sub(r'<p class="lang-ru">.*?</p>\n?', "", foot, flags=re.S)
-            got = words(htmllib.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<!--/?email_off-->", "", foot))))
-            self.assertEqual(got, want, name)
+            shown = " ".join(words(htmllib.unescape(re.sub(r"<[^>]+>", " ", foot))))
+            for fragment in required:
+                want = " ".join(words(htmllib.unescape(re.sub(r"<[^>]+>", " ", fragment))))
+                self.assertIn(want, shown, (name, want))
+            self.assertIn("mailto:info@artemisresort.com", foot, name)
 
     def test_one_main_cta_per_page(self):
         for name, page in self.pages.items():
-            self.assertEqual(len(re.findall(r'class="[^"]*\bcta-primary\b[^"]*"', page)), 1, name)
-            btn = re.search(r'class="[^"]*\bcta-primary\b[^"]*"[^>]*>([^<]+)<', page).group(1)
+            main = re.search(r"<main.*?</main>", page, re.S).group(0)
+            self.assertEqual(len(re.findall(r'class="[^"]*\bcta-primary\b[^"]*"', main)), 1, name)
+            btn = re.search(r'class="[^"]*\bcta-primary\b[^"]*"[^>]*>([^<]+)<', main).group(1)
             md = (COPY / FILES[name]).read_text(encoding="utf-8")
             self.assertIn(f"**Кнопка: «{htmllib.unescape(btn)}»**", md, name)
 
@@ -234,7 +236,7 @@ class V3BuildTest(unittest.TestCase):
 
     def test_build_is_reproducible(self):
         outputs, _ = build_v3.build(write=False)
-        for name, out in outputs.items():  # 13 pages + impressum, privacy, _notice (QA T3-05, T3-09)
+        for name, out in outputs.items():  # content pages + impressum, privacy, _notice (QA T3-05, T3-09)
             self.assertEqual(out, (base.SITE / f"{name}.html").read_text(encoding="utf-8"), name)
         self.assertEqual(build_v3.site_css(build_v3.load_model()),
                          (SITE_STATIC / "site.css").read_text(encoding="utf-8"))
@@ -250,9 +252,9 @@ class V3BuildTest(unittest.TestCase):
         joined = "\n".join(outputs.values())
         self.assertNotIn("2 950", joined)
         self.assertNotIn("2\u00a0950", joined)
-        self.assertIn("156 000", outputs["index"])          # 52 × 3 000 — минимальная цена юнита
-        self.assertIn("156\u00a0000", outputs["calculadora"])  # calculator default, server-rendered
-        self.assertIn('"price_eur_m2":3000', outputs["calculadora"])
+        for name in ("calculadora", "inversores"):
+            self.assertIn("156\u00a0000", outputs[name], name)  # 52 × 3 000, both server-rendered calculators
+            self.assertIn('"price_eur_m2":3000', outputs[name], name)
 
     def test_no_hardcoded_figures_in_templates_and_js(self):
         model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
@@ -317,7 +319,7 @@ class V3BuildTest(unittest.TestCase):
         cfg = json.loads((BUILD / "frames.json").read_text(encoding="utf-8"))
         self.assertEqual(cfg["prefer"]["F17"], [])
         with_f17 = {n for n, r in report.items() if "F17" in r["frames"]}
-        self.assertEqual(with_f17, {"index", "acciones", "calculadora", "construccion", "proceso", "mercado"})
+        self.assertEqual(with_f17, {name for name in FILES if "[КАДР F17]" in shown_copy(name)})
         for name in with_f17:
             self.assertIsNone(report[name]["frames"]["F17"], name)
             others = [s for f, s in report[name]["frames"].items() if f != "F17" and s]
@@ -521,7 +523,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertEqual((calc["calc_m2"], calc["calc_step"], calc["calc_pay"], calc["calc_model_version"]),
                          (model["area_m2"]["default"], "queue", "m6", model["version"]))
         for name, other in self.pages.items():
-            if name != build_v3.CALC_PAGE:
+            if name not in {build_v3.CALC_PAGE, "inversores"}:
                 self.assertNotIn('name="calc_', other, name)
         js = (SITE_STATIC / "calc.js").read_text(encoding="utf-8")
         self.assertIn("['m2','step','pay']", js)
@@ -530,12 +532,16 @@ class V3BuildTest(unittest.TestCase):
         self.assertIn("/^calc_/.test(el[i].name)", (SITE_STATIC / "waitlist.js").read_text(encoding="utf-8"))
 
     # ---- criterion 4: words
-    def test_visible_words_per_page(self):
+    def test_shortened_pages_have_substantial_visible_content(self):
+        # Editorial deduplication removes the old 700-word floor. Still catch an
+        # accidentally empty build or a page containing only menu and form text.
         for name, page in self.pages.items():
-            n = len(words(main_text(page)))
-            self.assertGreaterEqual(n, 500 if name == build_v3.CALC_PAGE else 700, f"{name}: {n}")
+            text = main_text(page)
+            self.assertGreater(len(words(text)), 80, name)
+            self.assertNotRegex(text, r"(?i)\b(?:TODO|TBD|lorem ipsum)\b", name)
 
     # ---- criterion 5: SEO, links, routes, deploy
+
     def test_hreflang_five_languages(self):
         # переключатель в шапке — EN/ES/DE/FR, но hreflang в <head> обязан покрывать все пять языков + x-default
         for name, page in self.pages.items():
@@ -560,15 +566,20 @@ class V3BuildTest(unittest.TestCase):
             for ref in re.findall(r'(?:href|src)="(/static/tenerife/site/[^"]+\.(?:css|js))"', page):
                 self.assertIn(ref, deploy, ref)
 
-    def test_header_nav_and_sheet_cover_all_pages(self):
+    def test_primary_menu_is_short_and_footer_covers_all_pages(self):
+        from test_tenerife_investors_architecture import Document, links, has_class
+        primary = [V3[n] for n in ("producto", "inversores", "norte", "construccion", "equipo")]
         for name, page in self.pages.items():
-            head = re.search(r"<header.*?</header>", page, re.S).group(0)
-            self.assertEqual(len(re.findall(r'class="[^"]*\bcta-primary\b[^"]*"', head)), 0, name)
-            self.assertIn('href="#footer-pages"', head)
-            for url in V3.values():
-                self.assertIn(f'href="{url}"', head, (name, url))
-            # desktop nav (or brand on index) + sheet
-            self.assertEqual(len(re.findall(r'aria-current="page"', head)), 2, name)
+            doc = Document(page).root
+            head = next(doc.nodes("header"))
+            nav = next(n for n in head.nodes("nav") if has_class(n, "nav"))
+            self.assertEqual(links(nav), primary + ["#ochered"], name)
+            sheet = head.by_id("sheet")
+            self.assertEqual([u for u in links(sheet) if not u.startswith("https://")],
+                             primary + ["#ochered"], name)
+            footer = next(doc.nodes("footer"))
+            self.assertCountEqual(links(footer.by_id("footer-pages")),
+                                  list(V3.values()) + [base.RU + "/impressum/", base.RU + "/privacy/"], name)
 
     def test_js_budget(self):
         total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js", "calc.js"))
@@ -639,7 +650,8 @@ class V3BuildTest(unittest.TestCase):
 
     def test_approved_exceptions_only_where_the_copy_has_them(self):
         allowed_text = ["4–6% аренды", "валовая доходность 5,8%"]
-        pages_for = {r"нельзя": {"alquiler"}, r"Сумма": {"calculadora", "index", "proceso"}}
+        pages_for = {r"нельзя": {name for name in FILES if re.search(r"нельзя", shown_copy(name))},
+                     r"Сумма": {"calculadora", "inversores", "index", "proceso"}}
         for name, page in self.pages.items():
             text = page
             for s in allowed_text:

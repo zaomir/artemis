@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/calculadora/
 Meta title: Aktienrechner Artemis de la Cruz: Summe, Rate, Dividende
-Meta description: Wählen Sie Fläche, Preisstufe und Zahlungsweise: Kaufsumme, Monatsrate in sechs Raten, Preis derselben Meter bei Fertigstellung und die Dividende im Jahr.
+Meta description: Fläche, Stufe und Zahlung wählen: Kaufsumme, sechs Raten mit 5 % Rabatt, Fertigstellungspreis und Dividendenschätzung von Artemis de la Cruz.
 OG title: Berechnen Sie Ihre Aktien bei Artemis de la Cruz
 -->
 
 # Rechner: Ihre Meter als Aktien der Bauträgergesellschaft
 
-Wählen Sie eine Fläche oder einen Residenztyp, die Einstiegsstufe und die Zahlungsweise. Der Rechner zeigt die Kaufsumme der Aktien der Bauträgergesellschaft, die Monatsrate bei Zahlung in sechs Raten, den Preis derselben Meter auf der Stufe „Fertigstellung“ und die Dividende in Euro im Jahr. Eine Aktie — ein Quadratmeter.
+Wählen Sie Fläche oder Residenztyp, Einstiegsstufe und Zahlungsweise. Der Rechner zeigt Kaufsumme, Zahlung in sechs Raten und den Fertigstellungspreis derselben Fläche. Die Dividendenschätzung beträgt 2,5–3,5 % jährlich vor Körperschaftsteuer. Eine Aktie entspricht einem Quadratmeter.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -21,7 +21,7 @@ Wählen Sie eine Fläche oder einen Residenztyp, die Einstiegsstufe und die Zahl
 
 **Einstiegsstufe.** Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €.
 
-**Zahlungsweise.** Sofort oder in sechs gleichen Raten. Den Bonus für vollständige Zahlung und die Variante „über ein halbes Jahr“ rechnet der Rechner noch nicht.
+**Zahlungsweise.** Sofort oder in sechs gleichen Raten. Die sechs Raten berücksichtigen den Rabatt von 5 %. „Sofort“ zeigt die Basiskaufsumme; der Rechner zieht den Rabatt für vollständige Zahlung nicht ab.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -31,7 +31,7 @@ Wählen Sie eine Fläche oder einen Residenztyp, die Einstiegsstufe und die Zahl
 - **Monatsrate** — wenn Sie in sechs Raten zahlen.
 - **Preis der Stufe „Fertigstellung“ für dieselben Meter** — zu 3 850 € pro Meter.
 - **Dividende** — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
-- **Dividende auf das eingesetzte Kapital** — in Prozent der Kaufsumme.
+- **Projektschätzung:** ein Richtwertbereich, getrennt von den Kosten der gewählten Aktien.
 - **Zwei Wege nach der Fertigstellung** — die Dividende beziehen oder die Aktien gegen Meter Ihrer Residenz tauschen.
 
 ### Formeln
@@ -63,27 +63,25 @@ Alles wird offen gerechnet, ohne versteckte Koeffizienten:
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
-### Warum die Dividende in Euro und nicht in Prozent
+### Dividendenschätzung
 
-Eine Aktie — ein Meter. Jeder Meter wird gleich langfristig vermietet, deshalb ist die Dividende je Aktie gleich: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**. Wer in der Warteliste eingestiegen ist, erhält auf das eingesetzte Kapital einen höheren Prozentsatz als derjenige, der später eingestiegen ist.
-
-Woher der Prozentsatz kommt: Die Dividende wird aus der langfristigen Vermietung eines Meters nach Abzug der Kosten gerechnet — Miete, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage und Müllgebühr. Das Ergebnis — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, keine Garantie.
+Rechnerisch 2,5–3,5 % jährlich vor Körperschaftsteuer sind eine Projektschätzung, keine garantierte Zahlung. Sie wird getrennt von den Aktienkosten gezeigt und bei Wechsel der Einstiegsstufe in diesem Rechner nicht neu berechnet. Mietquellen, Kosten und Annahmen stehen im [Mietmodell](/tenerife/alquiler/).
 
 ### Wenn die Stufe schon später ist
 
-Der Rechner rechnet jede Stufe. Beispiel: 72 Meter auf der Stufe „Rohbau und Dach“ — 72 × 3 450 € = 248 400 €, oder 20 700 € im Monat. Dieselben Meter zum Preis der Fertigstellung — 277 200 €. Die Dividende ist dieselbe — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
+Wählen Sie die passende Stufe im Rechner: Summe und Rate werden nach derselben Formel aktualisiert. Die vollständige Leiter und das Beteiligungsbeispiel finden Sie unter [Für Investoren](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
 ### So läuft der Einstieg
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
 ### Nach der Berechnung
 
-Klicken Sie auf die Schaltfläche — wir senden Ihnen Ihre Berechnung per E-Mail zusammen mit dem Ablauf des Einstiegs: Warteliste kostenlos, Aktien nach dem Investmentvertrag, sobald die Mehrheit der Warteliste das Grundstück freigegeben hat, Bericht über den Bau jede Woche, nach der Fertigstellung — Dividende je Aktie oder Tausch gegen Meter. Das Feld für die Summe füllen Sie nicht aus: Wir übernehmen Fläche, Stufe und Zahlungsweise aus dem Rechner.
+Hinterlassen Sie Namen und Kontakt. Wir senden Ihre Berechnung und besprechen die Beteiligung. Fläche, Stufe und Zahlungsweise werden aus dem Rechner übernommen; einen Betrag müssen Sie nicht selbst eingeben.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
-**Кнопка: «Meine Berechnung erhalten»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

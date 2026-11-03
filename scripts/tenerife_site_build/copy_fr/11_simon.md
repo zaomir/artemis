@@ -46,23 +46,16 @@ Les autorisations séparent le projet de l'image. Aucune étape ne commence avan
 
 Le chantier est financé par deux flux: les actions de la société promotrice et la vente des maisons. Mon travail: que chaque euro aille à l'étape qui se construit sur le terrain. Le palier monte quand l'étape est close sur le chantier et visible dans le rapport, non selon le calendrier.
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
-| Quoi | Quand |
-|---|---|
-| Inscription sur la liste d'attente | maintenant, gratuite |
-| Achat des actions | après approbation du terrain par la majorité de la liste: en une fois, sur six mois ou sur un an |
-| Démarrage du chantier | selon le plan, début 2027 |
-| Livraison | selon le plan, fin 2028 – mi-2029 |
-| Après la livraison | dividende par action ou échange contre des mètres |
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
 ### L'ordre des étapes et les paliers de prix
 
-Terrain, fondations, gros œuvre, toiture avec panneaux, installations techniques, façade, travaux intérieurs, piscine, aménagements extérieurs. Neuf étapes. Le chantier est dirigé par Boris Ribaut. Chaque étape est visible par l'actionnaire et par l'acquéreur dans le rapport hebdomadaire.
+Les neuf étapes, le calendrier prévu et le format du rapport hebdomadaire figurent dans [Avancement du projet](/tenerife/construccion/).
 
-Six paliers: liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €, livraison 3 850 € le mètre. Plus le chantier avance, plus l'entrée coûte cher.
+Le modèle de participation, les prix par étapes et les deux résultats figurent sur la page [Investisseurs](/tenerife/inversores/).
 
 ### Ce que mon travail vous apporte
 
@@ -98,5 +91,5 @@ Interrogez-moi sur le terrain, les autorisations, les délais et sur ce qui se p
 
 **À qui écrire si le rapport contredit ce que vous voyez sur le chantier?** À moi.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

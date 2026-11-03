@@ -16,18 +16,12 @@
   <div class="wrap header__in">
     <a class="brand" href="{{ home_url }}"{% if url == home_url %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
     <nav class="langs" aria-label="{{ ui.lang_aria }}">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
-    <nav class="nav" aria-label="Main menu">
+    <nav class="nav" aria-label="{{ nav_ui.main }}">
       <ul>
 {% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        <li><details><summary>{{ menu_more_label }}</summary>
-          <ul>
-{% for n in menu.more %}
-            <li>{{ navlink(n, url) }}</li>
-{% endfor %}
-          </ul>
-        </details></li>
+        <li><a class="header__cta" href="{{ header_cta_url|default('#ochered') }}">{{ nav_ui.calculation }}</a></li>
       </ul>
     </nav>
     <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>{{ ui.menu }}</a>
@@ -35,11 +29,13 @@
   <div class="sheet" id="sheet" hidden>
     <nav aria-label="{{ ui.menu_aria }}">
       <ul>
-{% for n in nav %}
+{% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
+        <li><a class="header__cta" href="{{ header_cta_url|default('#ochered') }}">{{ nav_ui.calculation }}</a></li>
       </ul>
     </nav>
+    <nav class="sheet__langs" aria-label="{{ ui.lang_aria }}">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
   </div>
 </header>
 {%- endmacro %}
@@ -203,12 +199,16 @@
 {% if s.calc_short and k %}
 {{ calc_short(k, res) }}
 {% endif %}
+{% if s.calc_full and k %}
+{{ calculator(k, res, s.id) }}
+{% endif %}
 {%- endmacro %}
 
 {#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13).
     s.bar: its [КАДР] slots have no photo -> no figure, 6 px basalt bar under the text block -#}
 {% macro section(s, first, k=none, res=none) -%}
 <section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}" aria-labelledby="{{ s.id }}">
+{% for old in s.aliases %}<span class="anchor-alias" id="{{ old }}" aria-hidden="true"></span>{% endfor %}
 {% if s.layout == "split" %}
   <div class="wrap grid ti{% if s.rev %} ti--rev{% endif %}">
     <div class="ti__text">
@@ -263,8 +263,8 @@
 
 {#- C9 calculator (05): defaults rendered server-side; calc.js reads the #cs-model island (= model.json).
     The inputs sit in a group, not a <form>: every <form> on the site posts to the waitlist handler. -#}
-{% macro calculator(k, res) -%}
-<section class="section calc-sec" id="calc" aria-labelledby="h1">
+{% macro calculator(k, res, label_id='h1') -%}
+<section class="section calc-sec" id="calc" aria-labelledby="{{ label_id }}">
   <div class="wrap grid calc">
     <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
       <fieldset>
@@ -375,12 +375,22 @@
         <p><strong>{{ f.about[0] }}</strong> {{ f.about[1] }}</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="{{ ui.pages }}">
-        <p><strong>{{ ui.pages }}</strong></p>
-        <ul>
-{% for n in nav %}
-          <li>{{ navlink(n, url) }}</li>
+        <div class="f-pages__groups">
+{% for group in menu.groups %}
+          <div class="f-pages__group">
+            <h3>{{ group.label }}</h3>
+            <ul>
+{% for n in group.links %}
+              <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        </ul>
+            </ul>
+          </div>
+{% endfor %}
+          <div class="f-pages__group">
+            <h3>{{ nav_ui.documents }}</h3>
+            <ul>{% for label, href in f.docs %}<li><a href="{{ href }}">{{ label }}</a></li>{% endfor %}</ul>
+          </div>
+        </div>
       </nav>
       <div class="f-contact">
         <p><strong>{{ ui.contacts }}</strong></p>
@@ -393,7 +403,6 @@
     </div>
     <div class="f-legal">
       <p><strong>{{ ui.company }}</strong> {{ f.company }}</p>
-      <p><strong>{{ ui.docs }}</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
       <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">{{ ui.lang_ru }}</a></p>
     </div>
   </div>

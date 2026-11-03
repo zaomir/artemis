@@ -2,7 +2,11 @@
 
 **Live:** https://artemisresort.com  
 **Source:** `zaomir/artemis` · **Mirror:** `site-artemis/` in grainee-v2  
-**Canon:** `docs/audits/artemis/04_SAFE_PUBLIC_COPY.md` · DEC-ARTEMIS-INVESTMENT-RESTORE-2026-10-30
+**Canon:** current project instructions in grainee-v2 `docs/projects/artemis/`; DEC-ARTEMIS-INVESTMENT-RESTORE-2026-10-30.
+
+Tenerife's five-language site: [`app/tenerife_site/README.md`](app/tenerife_site/README.md).
+The investor journey is `/tenerife/inversores/`; `/acciones/` and its locale/legacy variants redirect once.
+Primary navigation: residences → investors → location → project progress → team → calculation request.
 
 ## Stack
 

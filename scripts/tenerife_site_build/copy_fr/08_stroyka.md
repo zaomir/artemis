@@ -18,18 +18,18 @@ Les noms des paliers de prix sont ceux de la page des actions. Quand une étape 
 
 | Étape du chantier | Ce qui clôt l'étape | Palier de prix de l'action |
 |---|---|---|
-| — | terrain approuvé par la majorité de la liste, contrat d'investissement | Liste d'attente · 2 950 € |
-| — | permis de construire obtenu | Permis · 3 100 € |
-| 1. Terrain | terrain préparé sur le versant | Permis · 3 100 € |
-| 2. Fondations | assise et soubassement en pierre volcanique | Fondations · 3 250 € |
-| 3. Gros œuvre | murs, planchers, baies pour les hautes fenêtres | Gros œuvre et toiture · 3 450 € |
-| 4. Toiture avec panneaux | toit plat, panneaux solaires dans le plan de toiture | Gros œuvre et toiture · 3 450 € |
-| 5. Installations techniques | électricité, eau, climat, raccordement des panneaux | Finitions · 3 650 € |
-| 6. Façade | enduit à la chaux, fenêtres de bronze, terrasses de pierre | Finitions · 3 650 € |
-| 7. Travaux intérieurs | sols, cuisines, salles de bain | Finitions · 3 650 € |
-| 8. Piscine | piscine commune chauffée | Finitions · 3 650 € |
-| 9. Aménagements extérieurs | accès, allées, plantations | Finitions · 3 650 € |
-| — | permis d'habiter | Livraison · 3 850 € |
+| — | terrain approuvé par la majorité de la liste, contrat d'investissement | Liste d'attente |
+| — | permis de construire obtenu | Permis |
+| 1. Terrain | terrain préparé sur le versant | Permis |
+| 2. Fondations | assise et soubassement en pierre volcanique | Fondations |
+| 3. Gros œuvre | murs, planchers, baies pour les hautes fenêtres | Gros œuvre et toiture |
+| 4. Toiture avec panneaux | toit plat, panneaux solaires dans le plan de toiture | Gros œuvre et toiture |
+| 5. Installations techniques | électricité, eau, climat, raccordement des panneaux | Finitions |
+| 6. Façade | enduit à la chaux, fenêtres de bronze, terrasses de pierre | Finitions |
+| 7. Travaux intérieurs | sols, cuisines, salles de bain | Finitions |
+| 8. Piscine | piscine commune chauffée | Finitions |
+| 9. Aménagements extérieurs | accès, allées, plantations | Finitions |
+| — | permis d'habiter | Livraison |
 
 [КАДР F14] <!-- служебная пометка, не публикуется -->
 
@@ -92,17 +92,7 @@ Un seul langage architectural pour les vingt maisons: une technologie, une équi
 
 ### L'étape et votre argent
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
-
-Plus le chantier avance, plus l'entrée coûte cher. Voici ce qui clôt chaque palier et combien coûtent 72 mètres à ce palier:
-
-- **Permis**: le permis de construire, 223 200 €.
-- **Fondations**: assise et soubassement de pierre, 234 000 €.
-- **Gros œuvre et toiture**: murs, planchers, toiture avec panneaux, 248 400 €.
-- **Finitions**: façade, installations techniques, intérieurs, piscine, 262 800 €.
-- **Livraison**: le permis d'habiter, 277 200 €.
-
-Chacun de ces points est une fiche du journal et une ligne du rapport hebdomadaire. Le palier monte quand l'étape est close sur le chantier et que cela se voit dans le rapport, non selon le calendrier: la date du plan est un repère, le prix est lié à l'événement. 72 mètres sur la liste d'attente: 212 400 €. Les mêmes 72 mètres au palier « Gros œuvre et toiture »: 248 400 €; au palier « Livraison »: 277 200 €. Avant le chantier, les fonds des investisseurs financent l'équipe, la conception et les autorisations. Le chantier est payé par les actions de la société promotrice et par la vente des maisons.
+Le modèle de participation, les prix par étapes et les deux résultats figurent sur la page [Investisseurs](/tenerife/inversores/).
 
 ### Ce que vous recevez à la livraison
 
@@ -124,5 +114,5 @@ Un programme neuf, pas la rénovation de quelqu'un d'autre. Une enveloppe de pie
 
 **Qui répond du chantier?** Boris Ribaut.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.
