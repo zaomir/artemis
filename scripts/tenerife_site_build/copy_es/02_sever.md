@@ -2,7 +2,7 @@
 <!-- META
 Слаг: /tenerife/norte/
 Meta title: Norte de Tenerife: La Quinta, Santa Úrsula — Artemis
-Meta description: La Quinta, Santa Úrsula: 8 km y 10–15 minutos hasta Puerto de la Cruz, 15–20 minutos hasta Tenerife Norte y 3 km hasta la Playa del Ancón. Norte, no sur.
+Meta description: Vivir en España y Tenerife: eterna primavera, sanidad, colegios internacionales, servicios en inglés, comunidad europea y La Quinta en el norte verde de la isla.
 OG title: La Quinta, Santa Úrsula: el norte de Tenerife para vivir
 -->
 
@@ -11,6 +11,40 @@ OG title: La Quinta, Santa Úrsula: el norte de Tenerife para vivir
 La Quinta es un barrio residencial de Santa Úrsula en la ladera norte verde de Tenerife. Hasta Puerto de la Cruz hay 8 km, 10–15 minutos en coche; hasta el aeropuerto de Tenerife Norte, 15–20 minutos; hasta la Playa del Ancón, unos 3 km. Aquí estamos eligiendo la parcela para veinte residencias Artemis. Las acciones de la sociedad promotora en la lista de espera cuestan 2 950 € por metro.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
+
+### España: una base europea para la vida cotidiana
+
+España forma parte de la [Unión Europea, la zona del euro y el espacio Schengen](https://european-union.europa.eu/principles-countries-history/eu-countries/spain_en). Para el propietario de una vivienda, esto supone pagos en euros y el sistema español de compraventa: notario, Registro de la Propiedad, bancos y profesionales locales que acompañan la operación.
+
+Tenerife es parte de España. La vida junto al Atlántico cuenta con la infraestructura de un país europeo: sanidad, educación, transporte y comunicaciones.
+
+### Tenerife: primavera eterna en un país europeo
+
+Tenerife es conocida como la [isla de la eterna primavera](https://www.webtenerife.co.uk/tenerife/climatology/). El Atlántico y los alisios suavizan el verano y el invierno: disfrutar de la terraza, pasear junto al mar y practicar deporte al aire libre forma parte de la vida diaria durante todo el año.
+
+Canarias ofrece una combinación poco habitual en un país europeo: clima suave y vida junto al océano todo el año. El norte de Tenerife tiene más vegetación, nubes y humedad que el sur; la temperatura cambia con la altitud. Ese norte verde es el que hemos elegido para Artemis.
+
+### Infraestructura para vivir todo el año
+
+La isla dispone de dos aeropuertos, las vías TF-1 y TF-5, la red de autobuses TITSA y conexión de fibra óptica. En Puerto de la Cruz está el [Hospital Universitario Hospiten Bellevue](https://hospiten.com/hospitales/hospital-universitario-hospiten-bellevue); Santa Cruz cuenta con grandes hospitales públicos.
+
+Las familias tienen colegios públicos y privados, incluidos centros británicos, alemanes y franceses; para trabajar hay internet y espacios de coworking. La [guía Why Tenerife](https://www.whytenerife.com/wp-content/uploads/sites/4/2026/04/WhyTenerife-Express-Guide-To-Business.pdf) describe estos servicios. La vida cotidiana en La Quinta está conectada con Santa Úrsula, Puerto de la Cruz y La Orotava.
+
+### Servicios en inglés
+
+En Tenerife hay [abogados que atienden en inglés](https://decottalaw.com/es/office/tenerife/) y [empresas de actividades con atención en varios idiomas](https://www.webtenerife.co.uk/plan-trip/tourist-service-companies/activity-companies/el-cardon-educacion-ambiental/). El inglés facilita la organización de viajes y el asesoramiento para comprar una vivienda. Para cada servicio se puede elegir de antemano un profesional con quien comunicarse con comodidad; los documentos oficiales se redactan en español.
+
+### Una comunidad centroeuropea
+
+El norte de Tenerife mantiene vínculos históricos con Europa Central. Familias alemanas y suizas fundaron un colegio en Puerto de la Cruz en 1909; hoy la [Deutsche Schule Tenerife](https://www.dstenerife.eu/de/die-schule/geschichte-der-schule/) sigue activa en la isla.
+
+Los colegios internacionales, las comunidades locales y los servicios para residentes extranjeros ofrecen puntos de encuentro en un entorno nuevo. El colegio de los hijos, los idiomas, el deporte y los vecinos permiten conocer gente y mantener el vínculo con un círculo social europeo.
+
+### Fiscalidad canaria: IGIC en lugar de IVA
+
+En Canarias [no se aplica el IVA español](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). En su lugar se aplica el impuesto indirecto local IGIC: su [tipo general es del 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), frente al tipo general del IVA del 21% en la España peninsular.
+
+Determinados bienes y servicios tienen tipos diferentes. Los impuestos y gastos de la compra de un inmueble se calculan por separado según la operación; el tipo general del IGIC por sí solo no determina el coste total de adquirir una vivienda.
 
 ### Dónde está en el mapa
 

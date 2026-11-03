@@ -154,11 +154,24 @@ def copy_words(md):
     md = re.sub(r"^\[КАДР F\d\d\].*$", " ", md, flags=re.M)
     md = re.sub(r"^\*\*Кнопка: «(.+)»\*\*$", r"\1", md, flags=re.M)
     md = re.sub(r"^\|(?:\s*:?-+:?\s*\|)+\s*$", " ", md, flags=re.M)
-    md = re.sub(r"\[([^\]]+)\]\((/[^)\s]*)\)", r"\1", md)
+    md = re.sub(r"\[([^\]]+)\]\(((?:/(?!/)|https://)[^)\s]*)\)", r"\1", md)
     md = re.sub(r"^(?:#{1,3} |\d+\. |- )", " ", md, flags=re.M)
     md = md.replace("**", " ").replace("|", " ")
     md = re.sub(r"^---$", " ", md, flags=re.M)
     return words(md)
+
+
+class SourceLinksTest(unittest.TestCase):
+    def test_https_sources_render_as_escaped_links(self):
+        self.assertEqual(
+            build_v3.inline('[Tax & rates](https://example.org/?a=1&b="two")'),
+            '<a href="https://example.org/?a=1&amp;b=&quot;two&quot;">Tax &amp; rates</a>',
+        )
+
+    def test_unsupported_schemes_stay_plain_text(self):
+        for url in ('javascript:alert(1)', 'data:text/html,test', '//example.org/'):
+            with self.subTest(url=url):
+                self.assertNotIn('<a ', build_v3.inline(f'[Source]({url})'))
 
 
 class V3BuildTest(unittest.TestCase):

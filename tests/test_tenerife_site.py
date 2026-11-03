@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from test_tenerife_preview import REMOVED_DISCLAIMERS
 
@@ -49,6 +50,12 @@ FORBIDDEN = [
 # Cloudflare Email Obfuscation stays ON for the zone; Tenerife pages opt out per address with
 # <!--email_off-->…<!--/email_off--> so mailto works without JS (no /cdn-cgi/l/email-protection 404).
 CONTACT_EMAIL = "info@artemisresort.com"
+# Location copy cites these sources; assets must still be served locally.
+LOCATION_SOURCE_HOSTS = frozenset({
+    "european-union.europa.eu", "www.webtenerife.co.uk", "www.webtenerife.com",
+    "hospiten.com", "www.whytenerife.com", "decottalaw.com", "www.dstenerife.eu",
+    "sede.agenciatributaria.gob.es", "www.holaislascanarias.com", "movil.titsa.com",
+})
 EMAIL_OFF_LINK = ('<!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a>'
                   '<!--/email_off-->')
 LEGAL_AND_PREVIEW = [f"{RU}/impressum/", f"{RU}/privacy/"]  # /tenerife-preview/ is a 301 since T47
@@ -305,11 +312,15 @@ class TenerifeSiteTest(unittest.TestCase):
     def test_internal_links_and_assets_resolve(self):
         for name, url in SHIPPED.items():
             html, _ = self.page(url)
-            for ref in re.findall(r'(?:href|src)="([^"#?]+)', html):
+            for attribute, ref in re.findall(r'(href|src)="([^"#?]+)', html):
                 if ref == "mailto:" + CONTACT_EMAIL:  # wrapped in <!--email_off-->, see test_email_off_*
                     continue
                 if ref.startswith(("http://", "https://")):
-                    self.assertTrue(ref.startswith("https://artemisresort.com/tenerife/"), f"{name}: external {ref}")
+                    is_source = (attribute == "href" and name == "norte"
+                                 and urlsplit(ref).scheme == "https"
+                                 and urlsplit(ref).netloc in LOCATION_SOURCE_HOSTS)
+                    self.assertTrue(ref.startswith("https://artemisresort.com/tenerife/") or is_source,
+                                    f"{name}: external {ref}")
                     continue
                 self.assertTrue(ref.startswith("/"), f"{name}: relative link {ref}")
                 if ref.startswith("/static/"):

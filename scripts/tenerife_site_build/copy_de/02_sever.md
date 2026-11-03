@@ -2,7 +2,7 @@
 <!-- META
 Слаг: /tenerife/norte/
 Meta title: Nordteneriffa: La Quinta, Santa Úrsula — Artemis
-Meta description: La Quinta, Santa Úrsula: 8 km und 10–15 Minuten bis Puerto de la Cruz, 15–20 Minuten zum Flughafen Norte, rund 3 km bis Playa del Ancón. Norden, nicht Süden.
+Meta description: Leben in Spanien und auf Teneriffa: ewiger Frühling, Gesundheitsversorgung, internationale Schulen, englischer Service und La Quinta im grünen Norden.
 OG title: La Quinta, Santa Úrsula: Nordteneriffa zum Leben
 -->
 
@@ -11,6 +11,40 @@ OG title: La Quinta, Santa Úrsula: Nordteneriffa zum Leben
 La Quinta ist ein Wohnviertel von Santa Úrsula am grünen Nordhang Teneriffas. Bis Puerto de la Cruz sind es 8 km, 10–15 Minuten mit dem Auto, bis zum Flughafen Tenerife Norte 15–20 Minuten, bis zum Playa del Ancón rund 3 km. Hier wählen wir das Grundstück für zwanzig Residenzen Artemis. Aktien der Bauträgergesellschaft in der Warteliste — 2 950 € pro Meter.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
+
+### Spanien: eine europäische Grundlage für den Alltag
+
+Spanien gehört zur [Europäischen Union, zum Euroraum und zum Schengen-Raum](https://european-union.europa.eu/principles-countries-history/eu-countries/spain_en). Für Hauseigentümer bedeutet das Zahlungen in Euro und einen Immobilienkauf nach spanischem Recht: mit Notar, Grundbuch, Banken und Fachleuten vor Ort, die den Kauf begleiten.
+
+Teneriffa ist Teil Spaniens. Das Leben am Atlantik verbindet sich hier mit der Infrastruktur eines europäischen Landes: Gesundheitsversorgung, Bildung, Verkehr und Kommunikation.
+
+### Teneriffa: ewiger Frühling in einem europäischen Land
+
+Teneriffa ist als [Insel des ewigen Frühlings](https://www.webtenerife.co.uk/tenerife/climatology/) bekannt. Der Atlantik und die Passatwinde mildern Sommer und Winter: Die Terrasse, Spaziergänge am Meer und Sport im Freien gehören das ganze Jahr zum Alltag.
+
+Die Kanaren bieten eine für ein europäisches Land seltene Verbindung aus mildem Klima und ganzjährigem Leben am Meer. Teneriffas Norden ist grüner, wolkiger und feuchter als der Süden; die Temperaturen ändern sich mit der Höhenlage. Diesen grünen Norden haben wir für Artemis gewählt.
+
+### Infrastruktur für das ganze Jahr
+
+Die Insel verfügt über zwei Flughäfen, die Straßen TF-1 und TF-5, das TITSA-Busnetz und Glasfaseranschlüsse. In Puerto de la Cruz liegt das [Universitätskrankenhaus Hospiten Bellevue](https://hospiten.com/hospitales/hospital-universitario-hospiten-bellevue); Santa Cruz hat große öffentliche Krankenhäuser.
+
+Für Familien gibt es öffentliche und private Schulen, darunter britische, deutsche und französische Einrichtungen; zum Arbeiten stehen Internet und Coworking-Räume zur Verfügung. Der [Leitfaden Why Tenerife](https://www.whytenerife.com/wp-content/uploads/sites/4/2026/04/WhyTenerife-Express-Guide-To-Business.pdf) beschreibt diese Angebote. Der Alltag in La Quinta ist mit Santa Úrsula, Puerto de la Cruz und La Orotava verbunden.
+
+### Service auf Englisch
+
+Auf Teneriffa gibt es [englischsprachige Anwälte](https://decottalaw.com/es/office/tenerife/) und [Freizeitanbieter mit mehrsprachigem Service](https://www.webtenerife.co.uk/plan-trip/tourist-service-companies/activity-companies/el-cardon-educacion-ambiental/). Englisch erleichtert die Reiseplanung und die fachliche Begleitung beim Hauskauf. Für die jeweilige Dienstleistung lässt sich vorab jemand wählen, mit dem die Verständigung gut gelingt; amtliche Dokumente werden auf Spanisch erstellt.
+
+### Eine mitteleuropäische Gemeinschaft
+
+Der Norden Teneriffas ist seit Langem mit Mitteleuropa verbunden. Deutsche und Schweizer Familien gründeten 1909 eine Schule in Puerto de la Cruz; die [Deutsche Schule Teneriffa](https://www.dstenerife.eu/de/die-schule/geschichte-der-schule/) besteht bis heute auf der Insel.
+
+Internationale Schulen, lokale Gemeinschaften und Dienstleistungen für ausländische Einwohner bieten Anknüpfungspunkte im neuen Umfeld. Über die Schule der Kinder, Sprachen, Sport und Nachbarn lassen sich Kontakte knüpfen und Verbindungen zu einem europäischen Freundeskreis pflegen.
+
+### Kanarische Steuern: IGIC statt Mehrwertsteuer
+
+Die Kanaren liegen [außerhalb des Geltungsbereichs der spanischen Mehrwertsteuer IVA](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). Stattdessen gilt die lokale indirekte Steuer IGIC: Ihr [allgemeiner Satz beträgt 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), verglichen mit dem allgemeinen IVA-Satz von 21% auf dem spanischen Festland.
+
+Für bestimmte Waren und Dienstleistungen gelten andere Sätze. Steuern und Kosten beim Immobilienkauf werden je nach Art des Geschäfts gesondert berechnet; der allgemeine IGIC-Satz allein bestimmt nicht die gesamten Erwerbskosten eines Hauses.
 
 ### Wo das auf der Karte liegt
 
