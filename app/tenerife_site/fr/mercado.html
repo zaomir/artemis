@@ -71,7 +71,7 @@
   </div>
   <div class="hero__after">
     <div class="wrap grid">
-      <p class="hero__lead">Le calcul utilise 3 360 €/m² de référence, 2 352 € de prix initial et 6% de hausse annuelle pour les maisons non vendues. Ce sont des paramètres du modèle ; aucun tarif actuel comparable du neuf local n'est encore vérifié.</p>
+      <p class="hero__lead">Le plan financier utilise une référence provisoire de 3 360 €/m², un prix initial de 2 352 € par action et une hausse estimée de 6% par an pour les maisons non vendues.</p>
     </div>
   </div>
 </section>
@@ -81,7 +81,6 @@
     <h2 id="s1">Entrée 30% sous la référence</h2>
     <div class="split-head__body">
 <p>3 360 × 70% = 2 352 €. L'écart représente 30% de la référence. Le prix de l'action finance une participation ; la base par m² sert aux comparaisons et ventes, pas à promettre une maison contre des actions.</p>
-<p>Pour annoncer 30% sous le marché actuel, il faut actualiser les programmes comparables avec mêmes surfaces, état, équipements et date d'offre.</p>
 
     </div>
   </div>
@@ -92,7 +91,7 @@
   <div class="wrap grid split-head">
     <h2 id="s2">Ce que montrent les projets voisins</h2>
     <div class="split-head__body">
-<p><a href="https://residentenerife.com/obra-nueva">Reside Tenerife</a> indique La Quinta I, II, III et Lomo Román comme vendus, sans tarif actuel. Les anciennes annonces ne sont donc pas présentées comme valeur actuelle ni prix de revente promis.</p>
+<p><a href="https://residentenerife.com/obra-nueva">Reside Tenerife</a> indique La Quinta I, II, III et Lomo Román comme vendus. Ce sont des exemples de programmes voisins ; les calculs Artemis utilisent la référence provisoire du modèle.</p>
 
     </div>
   </div>
@@ -114,7 +113,7 @@
     </tbody>
   </table>
 </div>
-<p>Formule : 3 360 × (1 + 6%)^(mois / 12). Les ventes sont réparties aux mois 3–30, chacune fixant son prix. Le modèle ne vend pas tout au prix de fin de troisième année : total des contrats de 5 129 877 €.</p>
+<p>Formule : 3 360 × (1 + 6%)^(mois / 12). Les ventes sont prévues aux mois 3–30, chaque contrat fixant son prix. Total prévisionnel des contrats : 5 129 877 €.</p>
 
     </div>
   </div>
@@ -125,8 +124,8 @@
   <div class="wrap grid split-head">
     <h2 id="s4">Références de budget</h2>
     <div class="split-head__body">
-<p>Le cabinet local <a href="https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife">Urbara</a> publie des coûts indicatifs à Tenerife selon les finitions. Le scénario de base utilise 1 750 €/m² construit ; terrain, études, parties communes et réserve sont distincts. Le budget interne du projet n'est pas encore établi.</p>
-<p>À 2 100 €/m², le rachat cible n'est pas entièrement couvert. Architecture et équipements nécessitent donc un budget confirmé avant financement. <a href="/tenerife/fr/inversores/#assumptions">Budget et sensibilité</a>.</p>
+<p>Le cabinet local <a href="https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife">Urbara</a> publie des références de construction à Tenerife selon les finitions. Le budget estimatif utilise 1 750 €/m² construit ; terrain, études, parties communes et réserve sont calculés séparément.</p>
+<p>Le budget et les sources de paiement figurent dans <a href="/tenerife/fr/inversores/#funding">le financement du projet</a>.</p>
 
     </div>
   </div>
@@ -148,10 +147,10 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="s6">Demander un calcul</h2>
-<p>Demandez les paramètres et le calendrier d'encaissement. Nous préciserons les données de marché et coûts à confirmer.</p>
+<p>Recevez un calcul personnel avec prix d’entrée, objectif et calendrier d’encaissement.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Envoi…" data-msg-ok-title="Merci ! Vous êtes sur la liste." data-msg-ok-next="Votre demande est transmise à l&#x27;équipe du projet via Telegram et à info&#64;artemisresort.com. Nous vous contacterons." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Envoi…" data-msg-ok-title="Merci ! Vous êtes sur la liste." data-msg-ok-next="Nous vous contacterons pour discuter du projet et préparer votre calcul personnel." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
       <div class="field"><label for="wl-name">Nom</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contact — e-mail, téléphone ou Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Langue</label>

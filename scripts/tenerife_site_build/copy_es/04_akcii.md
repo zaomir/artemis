@@ -28,7 +28,7 @@ Una acción es una unidad de participación. Su precio se compara con una refere
 
 ### Precio inicial y referencia de comparación
 
-El precio inicial del modelo es @entry@ € por acción: el 70% de la referencia provisional de @market@ €/m², un @discount@% por debajo. No se ha confirmado una tarifa actual comparable de obra nueva local; @market@ €/m² es una hipótesis, no un precio de mercado actual verificado.
+El precio inicial del modelo es @entry@ € por acción: el 70% de la referencia provisional de @market@ €/m², un @discount@% por debajo.
 
 El modelo supone un crecimiento anual del @growth@% para viviendas aún no vendidas. El precio de cada comprador queda fijado al firmar y no aumenta después. [Referencia, fórmulas y fuentes](/tenerife/mercado/).
 
@@ -36,7 +36,7 @@ El modelo supone un crecimiento anual del @growth@% para viviendas aún no vendi
 
 Para 72 acciones: inversión completa de @entry_72@ €, cobro objetivo de @exit_72@ €, incluidos @gain_72@ € de rentabilidad. El aumento total es del @gain_pct@% en tres años, equivalente al @target@% anualizado con capitalización.
 
-Fórmula: **cobro a la salida = inversión × (1 + @target@%)³**. Es el objetivo del escenario base. El pago real depende de los cobros de ventas, los costes y el plazo de salida.
+Fórmula del escenario base: **cobro a la salida = inversión × (1 + @target@%)³**.
 
 ### Calcule su inversión
 
@@ -44,7 +44,7 @@ Elija el número de acciones. La calculadora muestra un pago completo y el resul
 
 ### Cómo se financia la obra
 
-Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las veinte viviendas. El modelo no incluye capital adicional del promotor ni deuda bancaria. La inversión no se contabiliza como ingresos de venta de viviendas.
+Dos fuentes: el fondo inicial de inversores y los pagos de compradores de veinte viviendas. El plan base no incluye aportación adicional del promotor ni crédito bancario.
 
 | Escenario base | Importe |
 |---|---|
@@ -55,13 +55,13 @@ Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las ve
 | Capital y rentabilidad objetivo al salir | @pool_exit@ € |
 | Saldo del proyecto tras liquidar | @surplus@ € |
 
-Los compradores pagan 40/30/10/20%. Quien firme tarde abona los hitos completados inmediatamente. El calendario mensual base no presenta déficit; su saldo mínimo es @minimum_cash@ €. Son cálculos, no dinero ya captado ni contratos ya firmados.
+Los compradores pagan por etapas: 40/30/10/20%. Quienes firmen después abonan de inmediato los hitos completados. El calendario mensual previsto vincula estos cobros con los gastos de obra y la liquidación de los inversores.
 
-### Qué afecta al resultado
+### Rentabilidad e impuestos
 
-Se supone construcción a @cost_m2@ €/m² construido y aproximadamente un contrato cada uno o dos meses. A 2 100 €/m² faltan @high_shortfall@ € para liquidar el objetivo completo; dos meses de retraso en ventas crean un déficit intermedio de @delay_gap@ €.
+La rentabilidad no está garantizada. El @target@% anualizado y la salida a @months@ meses son objetivos del escenario base. El importe y el plazo de devolución del capital y la rentabilidad dependen de las ventas y los costes reales del proyecto.
 
-Antes de captar inversión hacen falta parcela elegida, presupuesto confirmado y calendario viable de ventas y cobros. El @growth@% es una hipótesis de crecimiento y el @target@% un objetivo de rentabilidad; requieren ventas reales.
+No calculamos los impuestos individuales del inversor; los importes del sitio se muestran antes de dichos impuestos. Antes de participar, consulte de forma independiente a un abogado y a un asesor contable.
 
 ### Control y equipo
 
@@ -73,7 +73,7 @@ Antes del pago recibe su cálculo y las condiciones: importe, fecha de inicio, m
 
 ### Solicitar un cálculo
 
-Deje nombre y contacto. Calcularemos su importe y comentaremos qué parámetros necesitan confirmación antes de pagar.
+Deje su nombre y contacto. Recibirá un cálculo personal con el importe de participación, el resultado objetivo y el calendario del proyecto.
 
 **Кнопка: «Solicitar un cálculo»**
-Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

@@ -29,7 +29,7 @@ OXFORD FRAME REAL ASSETS LTD, England and Wales, Companies House No. 09153936. P
 
 ### Get a calculation
 
-Leave your name and contact details. We will send a calculation for your chosen area and discuss participation. Joining is free; we take no money before the plot is chosen.
+Leave your name and contact details. We will send a personal calculation and discuss participation.
 
 **Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+Free of charge. Payment follows approval of the plot and participation terms.

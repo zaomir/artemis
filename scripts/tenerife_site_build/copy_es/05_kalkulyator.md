@@ -42,11 +42,11 @@ Inversión = acciones × @entry@ €. Cobro = inversión × (1 + @target@%)³. R
 
 ### De dónde sale el dinero
 
-De los pagos de compradores de veinte residencias. En el escenario base cubren presupuesto y liquidación completa de inversores, sin capital adicional del promotor. [Financiación](/tenerife/inversores/#funding).
+De los pagos de compradores de veinte residencias. El calendario previsto reúne los pagos de obra y la liquidación de inversores. [Fuentes de financiación](/tenerife/inversores/#funding).
 
 ### Qué afecta al cálculo
 
-@market@ €/m² es una referencia provisional, el @growth@% una hipótesis de crecimiento anual y el @target@% anualizado un objetivo. Ventas, costes y plazo real pueden cambiar el pago. [Hipótesis y sensibilidad](/tenerife/inversores/#assumptions).
+El cálculo usa una referencia provisional de @market@ €/m², una subida anual del @growth@% en el plan de ventas y una rentabilidad objetivo del @target@% anualizado. [Rentabilidad e impuestos](/tenerife/inversores/#assumptions).
 
 ### Cómo entrar
 
@@ -57,4 +57,4 @@ Primero una solicitud gratuita; después, parcela y condiciones. El plazo de @mo
 Deje nombre y contacto para recibir un cálculo personal. La cantidad seleccionada y el resultado recalculado acompañan la solicitud; no necesita introducir el importe a mano.
 
 **Кнопка: «Solicitar un cálculo»**
-Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

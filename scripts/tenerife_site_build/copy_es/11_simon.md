@@ -8,7 +8,7 @@ OG title: Simon Subic: de la parcela y las licencias a la entrega de las viviend
 
 # Soy Simon Subic, promotor de Artemis de la Cruz
 
-Soy Development Principal y trabajo entre Londres y París. En Artemis de la Cruz dirijo parcela, preparación y financiación de veinte residencias. El modelo financia con inversión inicial y pagos de compradores, sin capital adicional del promotor. El calendario se concreta tras elegir la parcela.
+Soy Development Principal y trabajo entre Londres y París. En Artemis de la Cruz dirijo la selección de parcela, la preparación y la financiación de veinte residencias. Coordino la inversión inicial y los pagos de compradores con el calendario de obra.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -32,13 +32,13 @@ Soy ciudadano esloveno y trabajo con una plataforma londinense y en Francia.
 
 El norte de Tenerife es verde, no hace calor sofocante y no hay polvo. De La Quinta a Puerto de la Cruz hay 8 km, 10–15 minutos en coche; al aeropuerto de Tenerife Norte, 15–20 minutos; a Santa Cruz, 25–30 minutos. Aquí se vive todo el año. Construyo donde la gente vive, no donde pasa una semana.
 
-Veinte casas: seis de un dormitorio de 48–55 m², diez de dos dormitorios de 68–78 m² y cuatro grandes de 85–100 m². Un conjunto íntimo, no un barrio de cientos de pisos. Para comparar: las obras nuevas vecinas de La Quinta se ofrecían a 3 360–3 870 € por metro y los dos proyectos ya están vendidos; la casa Artemis terminada en la entrega cuesta 3 800–4 600 €.
+Veinte viviendas: seis de un dormitorio de 48–55 m², diez de dos dormitorios de 68–78 m² y cuatro grandes de 85–100 m². Un conjunto de escala reducida con una arquitectura e infraestructura comunes. [Residencias y cálculo de compra](/tenerife/producto/).
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
 ### Cómo llevo las licencias
 
-La preparación debe encajar con obras y gastos. Coordino documentos y secuencia con proyectistas. Los hitos se confirman en obra; el modelo nuevo no revaloriza acciones automáticamente en seis escalones.
+Coordino documentos y secuencia con los proyectistas. La preparación sigue el calendario de obra y gastos; la finalización de cada etapa se documenta en la parcela y en los informes.
 
 ### Cómo ligo el dinero y la obra
 
@@ -68,7 +68,7 @@ Dirijo parcela, preparación y financiación. Boris Ribaut supervisa obra, estru
 
 ### Qué espero de usted
 
-Pregunte antes de pagar por parcela, presupuesto, ventas y dinero de salida. Compare su cálculo con la calculadora. La solicitud gratuita permite entender estos datos.
+Comentaremos parcela, presupuesto, calendario y cálculo de participación. Puede empezar con una solicitud gratuita y una videollamada.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,4 +85,4 @@ Pregunte antes de pagar por parcela, presupuesto, ventas y dinero de salida. Com
 **¿A quién escribir si el informe no coincide con lo que veo en la obra?** A mí.
 
 **Кнопка: «Recibir un cálculo»**
-Gratis. No cobramos nada hasta elegir la parcela.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

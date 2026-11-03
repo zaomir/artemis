@@ -50,7 +50,7 @@ En la ladera norte de La Quinta, cada una de las veinte casas Artemis funcionar�
 | Ejemplo de un instalador: ahorro de una instalación | 600–1 000 € al año |
 | Ejemplo: factura sin placas en el mismo cálculo | 120 € al mes, 120 × 12 = 1 440 € al año |
 
-La potencia de la instalación y el consumo proceden de la guía española de instalaciones domésticas, no de datos de las islas. El ahorro y la factura son el ejemplo de un cálculo de un instalador, no una media. Para La Quinta en concreto, el cálculo PVGIS se basa en datos de satélite de 2005–2023. La comparación honesta es con la inclinación óptima de cada lugar (23° y 21°): 1 578 frente a 1 771 kWh. Una instalación plana, como la de las cubiertas de Artemis, da menos: unos 1 490.
+La producción de La Quinta se calcula en PVGIS con datos satelitales de 2005–2023: unos 1 490 kWh en plano y 1 578 kWh con una inclinación de 23°. Potencia y consumo proceden de una guía española de instalaciones domésticas; ahorro y factura corresponden al ejemplo de un instalador.
 
 El proyecto vecino La Quinta 2 también se anuncia con placas solares.
 
@@ -80,7 +80,7 @@ El equipamiento forma parte de la especificación prevista. Compra e inversión 
 
 ### Por qué importa para el accionista
 
-El inversor cobra a la salida con ventas, no con alquileres. Objetivo: @target@% anualizado en @months@ meses. Calidad y equipamiento ayudan a la demanda, pero no aseguran por sí solos el resultado.
+La calidad y el equipamiento forman el atractivo de la vivienda. Las ventas de residencias aportan los cobros para la salida en efectivo de los inversores. El modelo fija un objetivo del @target@% anualizado a @months@ meses. [Modelo de inversión](/tenerife/inversores/).
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -103,4 +103,4 @@ En la ladera norte el sol es más suave que en el sur, y por eso aquí no hace c
 **¿Cómo se relaciona con invertir?** El equipamiento influye en la demanda; el ingreso depende de ventas, costes y plazo.
 
 **Кнопка: «Recibir un cálculo»**
-Gratis. No cobramos nada hasta elegir la parcela.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

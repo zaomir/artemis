@@ -9,7 +9,7 @@ OG title: A home in northern Tenerife. Participation from @entry_48@ €
 
 Twenty residences in La Quinta, Santa Úrsula: stone terraces, tall windows and a shared heated pool. Choose a home for yourself or invest in its construction — from @entry_48@ €, targeting @target@% annualised with a cash exit after @months@ months.
 
-The model's early price is @entry@ € per share: @discount@% below an assumed reference of @market@ €/m². That reference is provisional. [Calculate an investment](/tenerife/inversores/#calculate) · [Explore the residences](/tenerife/producto/).
+The early price is @entry@ € per share: @discount@% below the model’s provisional @market@ €/m² reference. [Calculate an investment](/tenerife/inversores/#calculate) · [Explore the residences](/tenerife/producto/).
 
 [КАДР F01]
 
@@ -37,7 +37,7 @@ One, two or three bedrooms. Canary Stone architecture: lime plaster, volcanic st
 
 ### Current stage
 
-We are selecting a plot in La Quinta. The financial horizon is @months@ months from full payment to exit; calendar dates follow plot selection and an agreed programme. Investors and homebuyers fund construction, with no additional developer capital in the model.
+We are selecting a plot in La Quinta. The financial horizon is @months@ months from full payment to exit. The construction programme will be set for the selected plot, funded by investors and homebuyers.
 
 Follow the money as it becomes foundations, roofs and glass: weekly reporting is planned. [Project progress](/tenerife/construccion/).
 

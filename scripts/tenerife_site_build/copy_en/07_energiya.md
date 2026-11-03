@@ -50,7 +50,7 @@ On the northern slope at La Quinta, each of the twenty Artemis houses will work 
 | The installer's example: saving from one installation | 600–1 000 € a year |
 | Example: the bill without panels in the same calculation | 120 € a month, 120 × 12 = 1 440 € a year |
 
-The installation size and consumption come from the Spanish-wide guide to domestic installations, not from island data. The saving and the bill are one installer's example, not an average. For La Quinta itself the figure is a PVGIS calculation on satellite data from 2005–2023. An honest comparison uses the optimal tilt for each place (23° and 21°): 1 578 against 1 771 kWh. A flat installation, like those on Artemis roofs, gives less: about 1 490.
+La Quinta output is calculated in PVGIS using 2005–2023 satellite data: about 1 490 kWh for a flat installation and 1 578 kWh at a 23° tilt. System size and consumption come from a Spanish domestic-installation guide; savings and bills are an installer’s example.
 
 The neighbouring La Quinta 2 project is also advertised with solar panels.
 
@@ -80,7 +80,7 @@ The equipment is part of the proposed home specification. Home-purchase budgets 
 
 ### Why this matters for a shareholder
 
-Investors receive cash at exit from sales, not rents. The model targets @target@% annualised over @months@ months. Quality and equipment support buyer demand but do not by themselves secure that result.
+Quality and equipment shape a home’s appeal to buyers. Residence sales provide the receipts for investors’ cash exits. The model targets @target@% annualised over @months@ months. [Investment model](/tenerife/inversores/).
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -103,4 +103,4 @@ On the northern slope the sun is softer than in the south, which is why it is no
 **How does this relate to investing?** Equipment affects buyer appeal; investor income depends on sales, costs and exit timing.
 
 **Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+Free of charge. Payment follows approval of the plot and participation terms.

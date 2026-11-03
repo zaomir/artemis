@@ -28,7 +28,7 @@ Eine Aktie ist eine Beteiligungseinheit. Ihr Preis wird mit einer Basis je m² v
 
 ### Früher Preis und Vergleichsbasis
 
-Der frühe Modellpreis beträgt @entry@ € je Aktie: 70% der vorläufigen Basis von @market@ €/m², also @discount@% weniger. Eine aktuelle vergleichbare Preisliste lokaler Neubauten ist noch nicht bestätigt; @market@ €/m² ist eine Annahme, kein verifizierter heutiger Marktpreis.
+Der frühe Modellpreis beträgt @entry@ € je Aktie: 70% der vorläufigen Basis von @market@ €/m², also @discount@% darunter.
 
 Für unverkaufte Häuser rechnet das Modell mit @growth@% jährlichem Wachstum. Jeder Käufer fixiert seinen Preis bei Unterzeichnung; danach steigt er nicht weiter. [Basis, Formeln und Quellen](/tenerife/mercado/).
 
@@ -36,7 +36,7 @@ Für unverkaufte Häuser rechnet das Modell mit @growth@% jährlichem Wachstum. 
 
 Beispiel mit 72 Aktien: volle Investition @entry_72@ €, Zielauszahlung @exit_72@ €, davon @gain_72@ € Ertrag. Der Gesamtzuwachs beträgt @gain_pct@% in drei Jahren, entsprechend @target@% jährlich mit Zinseszinseffekt.
 
-Formel: **Auszahlung = Investition × (1 + @target@%)³**. Dies ist das Ziel des Basisszenarios. Die tatsächliche Zahlung hängt von Verkaufseingängen, Kosten und Ausstiegszeitpunkt ab.
+Formel des Basisszenarios: **Auszahlung = Investition × (1 + @target@%)³**.
 
 ### Berechnen Sie Ihre Beteiligung
 
@@ -44,7 +44,7 @@ Wählen Sie die Aktienzahl. Der Rechner zeigt eine vollständige Zahlung und das
 
 ### Wie der Bau finanziert wird
 
-Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zwanzig Häuser. Zusätzliches Entwicklerkapital und Bankkredite betragen im Modell null. Beteiligungskapital wird nicht als Hausverkaufserlös gezählt.
+Zwei Quellen: der anfängliche Investorenpool und Zahlungen der Käufer von zwanzig Häusern. Der Basisplan sieht keinen zusätzlichen Entwicklerbeitrag und keinen Bankkredit vor.
 
 | Basisszenario | Betrag |
 |---|---|
@@ -55,13 +55,13 @@ Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zw
 | Investorenkapital und Zielertrag beim Ausstieg | @pool_exit@ € |
 | Projektrest nach Abrechnung | @surplus@ € |
 
-Käufer zahlen 40/30/10/20%. Bei später Unterzeichnung sind abgeschlossene Abschnitte sofort fällig. Der monatliche Basisplan hat keine Finanzierungslücke; der niedrigste Kontostand beträgt @minimum_cash@ €. Das sind Berechnungen, kein bereits eingeworbenes Kapital oder abgeschlossene Verträge.
+Käufer zahlen in Stufen von 40/30/10/20%. Bei späterer Unterzeichnung werden abgeschlossene Stufen sofort bezahlt. Der geplante monatliche Zahlungsplan verbindet diese Einnahmen mit Bauausgaben und der Abrechnung für Investoren.
 
-### Was das Ergebnis beeinflusst
+### Rendite und Steuern
 
-Das Budget setzt @cost_m2@ €/m² errichteter Fläche und etwa einen Käufervertrag alle ein bis zwei Monate voraus. Bei 2 100 €/m² Baukosten fehlen @high_shortfall@ € für die volle Zielabrechnung; zwei Monate Verkaufsverzögerung erzeugen zwischenzeitlich eine Lücke von @delay_gap@ €.
+Die Rendite ist nicht garantiert. @target@% jährlich und ein Ausstieg nach @months@ Monaten sind Ziele des Basisszenarios. Höhe und Zeitpunkt der Kapitalrückzahlung und Erträge hängen von den tatsächlichen Verkäufen und Projektkosten ab.
 
-Vor Kapitalannahme braucht das Projekt Grundstück, bestätigtes Budget und einen tragfähigen Verkaufs- und Zahlungsplan. @growth@% Wachstum ist eine Annahme, @target@% eine Zielrendite. Beide brauchen tatsächliche Verkaufseingänge.
+Wir berechnen keine individuellen Steuern des Investors; die Beträge auf der Website verstehen sich vor diesen Steuern. Lassen Sie sich vor einer Beteiligung unabhängig von einem Rechtsanwalt und einem Steuerberater beraten.
 
 ### Kontrolle und Team
 
@@ -73,7 +73,7 @@ Vor Zahlung erhalten Sie Berechnung und Bedingungen: Betrag, Laufzeitbeginn, Aus
 
 ### Berechnung anfordern
 
-Hinterlassen Sie Namen und Kontakt. Wir berechnen Ihren Betrag und besprechen, welche Eingaben vor Zahlung zu bestätigen sind.
+Hinterlassen Sie Namen und Kontakt. Sie erhalten eine persönliche Berechnung mit Beteiligungsbetrag, Zielergebnis und Projektkalender.
 
 **Кнопка: «Berechnung anfordern»**
 Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

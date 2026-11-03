@@ -8,7 +8,7 @@ OG title: Simon Subic: vom Grundstück und den Genehmigungen bis zur Übergabe
 
 # Ich bin Simon Subic, Entwickler von Artemis de la Cruz
 
-Ich bin Development Principal zwischen London und Paris. Bei Artemis de la Cruz führe ich Grundstückswahl, Vorbereitung und Finanzierung von zwanzig Residenzen. Das Modell nutzt Anfangsinvestitionen und Käuferzahlungen ohne zusätzliches Entwicklerkapital. Termine folgen nach Grundstückswahl.
+Ich bin Development Principal und arbeite zwischen London und Paris. Bei Artemis de la Cruz führe ich Grundstückswahl, Projektvorbereitung und Finanzierung von zwanzig Residenzen. Ich verbinde Anfangsinvestitionen und Käuferzahlungen mit dem Bauablauf.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -32,13 +32,13 @@ Ich bin slowenischer Staatsbürger und arbeite auf einer Londoner Plattform und 
 
 Der Norden Teneriffas ist grün, nicht heiß, nicht staubig. Von La Quinta bis Puerto de la Cruz — 8 km, 10–15 Minuten mit dem Auto, bis zum Flughafen Tenerife Norte — 15–20 Minuten, bis Santa Cruz — 25–30 Minuten. Hier lebt man das ganze Jahr. Ich baue dort, wo Menschen leben, und nicht dort, wo sie eine Woche verbringen.
 
-Zwanzig Häuser: sechs mit einem Schlafzimmer auf 48–55 m², zehn mit zwei auf 68–78 m², vier große auf 85–100 m². Eine überschaubare Anlage, kein Quartier mit Hunderten Wohnungen. Zum Vergleich: Die benachbarten Neubauten La Quinta wurden zu 3 360–3 870 € pro Meter angeboten, und beide Projekte sind bereits verkauft; ein fertiges Haus Artemis bei der Fertigstellung — 3 800–4 600 €.
+Zwanzig Häuser: sechs mit einem Schlafzimmer auf 48–55 m², zehn mit zwei Schlafzimmern auf 68–78 m² und vier größere auf 85–100 m². Eine überschaubare Anlage mit gemeinsamer Architektursprache und Infrastruktur. [Residenzen und Kaufberechnung](/tenerife/producto/).
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
 ### Wie ich die Genehmigungen führe
 
-Projektvorbereitung muss zu Bau- und Zahlungsplan passen. Ich koordiniere Unterlagen und Reihenfolge mit Planern. Baufortschritt wird vor Ort belegt; das neue Modell kennt keine automatische Aktienaufwertung in sechs Preisstufen.
+Ich koordiniere Unterlagen und Reihenfolge mit den Planern. Die Projektvorbereitung ist mit Bau- und Ausgabenplan verbunden; abgeschlossene Baustufen werden vor Ort und in Berichten bestätigt.
 
 ### Wie ich Geld und Bau verbinde
 
@@ -68,7 +68,7 @@ Ich führe Grundstück, Vorbereitung und Finanzierung. Boris Ribaut betreut Baus
 
 ### Was ich von Ihnen erwarte
 
-Fragen Sie vor Zahlung nach Grundstück, Budget, Verkäufen und Ausstiegsfinanzierung. Vergleichen Sie die persönliche Berechnung mit dem Rechner. Die kostenlose Anfrage lässt Zeit dafür.
+Wir besprechen Grundstück, Budget, Kalender und Beteiligungsberechnung. Beginnen Sie mit einer kostenlosen Anfrage und einem Videogespräch.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,4 +85,4 @@ Fragen Sie vor Zahlung nach Grundstück, Budget, Verkäufen und Ausstiegsfinanzi
 **Wem schreiben, wenn der Bericht nicht zu dem passt, was Sie auf der Baustelle sehen?** Mir.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

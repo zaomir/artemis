@@ -42,11 +42,11 @@ Investition = Aktien × @entry@ €. Auszahlung = Investition × (1 + @target@%)
 
 ### Woher das Geld kommt
 
-Aus Zahlungen der Käufer von zwanzig Residenzen. Im Basisszenario decken sie Budget und vollständige Investorenabrechnung, ohne zusätzliches Entwicklerkapital. [Finanzierung](/tenerife/inversores/#funding).
+Aus den Zahlungen der Käufer von zwanzig Residenzen. Der geplante Zahlungskalender umfasst Bauzahlungen und die Abrechnung für Investoren. [Finanzierungsquellen](/tenerife/inversores/#funding).
 
 ### Was die Berechnung beeinflusst
 
-@market@ €/m² ist eine vorläufige Vergleichsbasis, @growth@% eine jährliche Wachstumsannahme und @target@% eine Zielrendite. Verkäufe, Kosten und tatsächliche Laufzeit können die Zahlung ändern. [Annahmen und Sensitivität](/tenerife/inversores/#assumptions).
+Die Berechnung nutzt eine vorläufige Basis von @market@ €/m², @growth@% jährliches Preiswachstum im Verkaufsplan und @target@% jährliche Zielrendite. [Rendite und Steuern](/tenerife/inversores/#assumptions).
 
 ### Einstieg
 

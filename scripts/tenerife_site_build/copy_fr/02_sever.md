@@ -92,13 +92,13 @@ Les vingt maisons Artemis forment un ensemble à taille humaine, pas une barre d
 
 ### Le marché à proximité
 
-Références de prix, limites et sources sur la page [marché](/tenerife/mercado/).
+Références de prix, calculs et sources sur la page [marché](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### La hausse dans le modèle
 
-La hausse annuelle de @growth@% est une hypothèse, pas un taux de marché mesuré. Le prix est fixé à la signature. [Formules](/tenerife/mercado/).
+Le plan financier retient une hausse annuelle de @growth@% jusqu’à la signature. Le contrat fixe le prix de chaque maison. [Formules](/tenerife/mercado/).
 
 ### La location au nord
 
@@ -125,4 +125,4 @@ Le calcul est gratuit. Paiement après validation du terrain et des conditions. 
 **Pourquoi pas le sud?** Au sud, on passe des vacances. Au nord, on vit.
 
 **Кнопка: «Recevoir un calcul»**
-Gratuit. Nous n'encaissons rien avant le choix du terrain.
+Gratuit. Paiement après validation du terrain et des conditions de participation.

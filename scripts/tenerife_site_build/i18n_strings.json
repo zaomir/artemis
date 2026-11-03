@@ -11,7 +11,7 @@
     "msgs": {
       "sending": "Sending…",
       "ok-title": "Thank you! You are on the list.",
-      "ok-next": "Your request goes to the project team on Telegram and to info@artemisresort.com. We will contact you.",
+      "ok-next": "We will contact you to discuss the project and prepare your personal calculation.",
       "server": "We could not send your request. Please try again or email us at info@artemisresort.com.",
       "network": "We could not reach the server. Check your internet connection and try again.",
       "rate": "Too many requests have been sent from this connection. Please try again later or email us at info@artemisresort.com.",
@@ -103,7 +103,7 @@
     "msgs": {
       "sending": "Enviando…",
       "ok-title": "¡Gracias! Ya está en la lista.",
-      "ok-next": "Su solicitud se envía al equipo del proyecto por Telegram y a info@artemisresort.com. Nos pondremos en contacto con usted.",
+      "ok-next": "Nos pondremos en contacto con usted para comentar el proyecto y preparar su cálculo personal.",
       "server": "No se pudo enviar la solicitud. Inténtelo de nuevo o escríbanos a info@artemisresort.com.",
       "network": "No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo.",
       "rate": "Desde esta conexión se han enviado demasiadas solicitudes. Vuelva a intentarlo más tarde o escríbanos a info@artemisresort.com.",
@@ -195,7 +195,7 @@
     "msgs": {
       "sending": "Wird gesendet…",
       "ok-title": "Danke! Sie stehen auf der Liste.",
-      "ok-next": "Ihre Anfrage geht per Telegram an das Projektteam und an info@artemisresort.com. Wir melden uns bei Ihnen.",
+      "ok-next": "Wir melden uns bei Ihnen, um das Projekt zu besprechen und Ihre persönliche Berechnung vorzubereiten.",
       "server": "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info@artemisresort.com.",
       "network": "Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
       "rate": "Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info@artemisresort.com.",
@@ -287,7 +287,7 @@
     "msgs": {
       "sending": "Envoi…",
       "ok-title": "Merci ! Vous êtes sur la liste.",
-      "ok-next": "Votre demande est transmise à l'équipe du projet via Telegram et à info@artemisresort.com. Nous vous contacterons.",
+      "ok-next": "Nous vous contacterons pour discuter du projet et préparer votre calcul personnel.",
       "server": "La demande n'a pas pu être envoyée. Réessayez ou écrivez-nous à info@artemisresort.com.",
       "network": "Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez.",
       "rate": "Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info@artemisresort.com.",

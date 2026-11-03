@@ -17,13 +17,13 @@ Les questions essentielles sur l'argent, le délai et le résultat. Le modèle d
 
 **Que signifie @target@% annualisé ?** Un objectif effectif avec capitalisation : @gain_pct@% en trois ans. Pour 72 actions, @entry_72@ € → @exit_72@ €.
 
-**Est-ce garanti ?** C'est l'objectif du scénario de base. Le paiement dépend des ventes réellement encaissées, du budget et du délai.
+**Où lire les conditions du calcul ?** Rendement, fiscalité et conseils indépendants sont présentés dans [une seule rubrique](/tenerife/inversores/#assumptions).
 
 **Puis-je payer en plusieurs fois ?** L'investissement exige le paiement intégral initial. Le 40/30/10/20% concerne les acheteurs de maisons.
 
 ### Prix et croissance
 
-**D'où vient le prix de @entry@ € ?** De 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins. Les prix actuels comparables du neuf local restent à confirmer.
+**D’où vient le prix initial de @entry@ € ?** De 70% de la référence provisoire du modèle de @market@ €/m², soit @discount@% de moins.
 
 **Que signifie la hausse de @growth@% ?** Une hypothèse annuelle pour les maisons non vendues. Le contrat signé fixe le prix. La hausse n'est ni rétroactive ni ajoutée au rendement de l'investisseur.
 
@@ -33,11 +33,8 @@ Les questions essentielles sur l'argent, le délai et le résultat. Le modèle d
 
 **Qui finance les travaux ?** Le fonds initial et les acheteurs des vingt maisons. Sans apport supplémentaire du promoteur ni crédit bancaire dans le modèle.
 
-**Le scénario de base est-il financé ?** Le calendrier mensuel couvre coûts et sortie visée, avec un minimum de @minimum_cash@ €. Cela suppose des ventes et paiements à temps.
+**Comment le budget de base est-il organisé ?** Le calendrier mensuel prévisionnel relie fonds d’investissement, paiements acheteurs, coûts et règlement visé à la sortie. [Budget du projet](/tenerife/inversores/#funding).
 
-**Et en cas de retard ou de surcoût ?** Il faut recalculer tout le calendrier. Deux mois de retard créent @delay_gap@ € de déficit ; à 2 100 €/m² de construction, le rachat cible n'est plus entièrement couvert. Aucun apport automatique du promoteur n'est prévu.
-
-**Et si le projet s'arrête ?** Montant et délai dépendent de l'état du projet, de la trésorerie et de la réalisation des actifs. Le modèle ne finance pas le remboursement immédiat de tout le capital et du gain. Le processus se discute avant paiement.
 
 ### Maison et investissement
 

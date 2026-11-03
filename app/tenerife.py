@@ -386,7 +386,7 @@ THANKS_URL = SITE_PREFIX + "/gracias/"
 # build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
 FORM_MSG = {
     "ok-title": "Спасибо! Вы в очереди.",
-    "ok-next": "Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.",
+    "ok-next": "Мы свяжемся с вами, чтобы обсудить проект и подготовить персональный расчёт.",
     "server": "Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.",
     "rate": "С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на "
             "info@artemisresort.com.",

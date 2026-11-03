@@ -50,7 +50,7 @@ Am Nordhang von La Quinta arbeitet jedes der zwanzig Häuser von Artemis für se
 | Beispiel eines Installateurs: Ersparnis einer Anlage | 600–1 000 € im Jahr |
 | Beispiel: Stromrechnung ohne Module in derselben Kalkulation | 120 € im Monat, 120 × 12 = 1 440 € im Jahr |
 
-Leistung der Anlage und Verbrauch stammen aus dem spanienweiten Leitfaden für Hausanlagen, nicht aus Daten zu den Inseln. Ersparnis und Stromrechnung sind das Beispiel einer einzigen Installateur-Kalkulation, kein Durchschnitt. Für La Quinta selbst — die PVGIS-Rechnung auf Satellitendaten der Jahre 2005–2023. Ein ehrlicher Vergleich ist bei optimaler Neigung für jeden Standort möglich (23° und 21°): 1 578 gegen 1 771 kWh. Eine flache Anlage, wie auf den Dächern von Artemis, liefert weniger — rund 1 490.
+Die PVGIS-Berechnung für La Quinta nutzt Satellitendaten von 2005–2023: etwa 1 490 kWh bei flacher Montage und 1 578 kWh bei 23° Neigung. Leistung und Verbrauch stammen aus einem spanischen Leitfaden für Hausanlagen; Einsparung und Rechnung aus einem Installateurbeispiel.
 
 Das benachbarte Projekt La Quinta 2 wird ebenfalls mit Solarmodulen angekündigt.
 
@@ -80,7 +80,7 @@ Die Technik gehört zur geplanten Ausstattung. Hauskauf und Beteiligung werden g
 
 ### Warum das für den Aktionär wichtig ist
 
-Investoren erhalten Geld beim Ausstieg aus Verkäufen, nicht aus Mieten. Ziel sind @target@% jährlich über @months@ Monate. Qualität und Ausstattung unterstützen die Nachfrage, sichern das Ergebnis allein aber nicht.
+Qualität und Ausstattung prägen die Attraktivität eines Hauses für Käufer. Residenzverkäufe liefern die Einnahmen für den Barausstieg der Investoren. Das Modell zielt auf @target@% jährlich über @months@ Monate. [Beteiligungsmodell](/tenerife/inversores/).
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -103,4 +103,4 @@ Am Nordhang ist die Sonne milder als im Süden — deshalb ist es hier nicht hei
 **Was hat das mit der Beteiligung zu tun?** Ausstattung beeinflusst die Nachfrage; Ertrag hängt von Verkäufen, Budget und Laufzeit ab.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

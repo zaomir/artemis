@@ -282,8 +282,9 @@ class FormServerTest(R4Case):
         self.assertEqual(r.status_code, 303)
         body = self.get(r.headers["Location"].replace("http://localhost", ""))
         self.assertIn("Спасибо! Вы в очереди.", body)
-        self.assertIn("Заявка уходит команде проекта в Telegram и на <!--email_off-->info@artemisresort.com"
-                      "<!--/email_off-->. Мы свяжемся с вами.", body)
+        self.assertIn("Мы свяжемся с вами, чтобы обсудить проект и подготовить персональный расчёт.", body)
+        self.assertIn('<!--email_off--><a href="mailto:info@artemisresort.com">'
+                      'info@artemisresort.com</a><!--/email_off-->', body)
         r = self.post(json_body=False, consent=False)
         self.assertIn("Отметьте согласие на обработку данных.", r.get_data(as_text=True))
 
@@ -474,7 +475,8 @@ class PhoneLiteralTest(R4Case):
                  *BUILD.glob("design/*"), *ROOT.glob("tests/test_tenerife*.py"), ROOT / "tests/test_lead_relay.py",
                  ROOT / "README.md"]
         for f in files:
-            if f.is_file():
+            # Integrity manifests contain hashes, not visitor-facing contact text.
+            if f.is_file() and f.name != "SHA256SUMS":
                 for m in build_v3.PHONE_RX.finditer(f.read_text(encoding="utf-8", errors="ignore")):
                     self.assertIn(re.sub(r"\D", "", m.group(0)), FAKE_DIGITS, f.name)
 

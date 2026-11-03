@@ -38,7 +38,7 @@ Wir wählen ein Grundstück für zwanzig Residenzen in La Quinta, Santa Úrsula.
 | Bis 33 | Hauptarbeiten und eingeplante Reserve bezahlt |
 | 36 | Käufer-Schlusszahlungen und Investorenausstieg |
 
-Dies ist der Modellkalender. Tatsächliche Termine hängen von Grundstück, Projektreife und Verkäufen ab.
+Der Projektkalender wird für das gewählte Grundstück auf Grundlage dieses Plans erstellt.
 
 [КАДР F16]
 
@@ -58,13 +58,13 @@ Boris Ribaut verantwortet Tragwerk, Baustelle und Berichte. Simon Subic führt G
 
 ### Wie die Arbeiten bezahlt werden
 
-Anfängliches Investorenkapital und Käuferzahlungen nach Baufortschritt decken das Budget. Kein zusätzliches Entwicklerkapital oder Bankkredit im Basismodell. Der Kaufpreis wird bei Unterzeichnung fixiert; Wachstum gilt nur davor.
+Die Arbeiten werden aus dem anfänglichen Investorenpool und den Käuferzahlungen nach Baufortschritt finanziert. Der Vertrag fixiert den Preis bei Unterzeichnung; geplantes Wachstum gilt bis zu diesem Datum. [Projektfinanzierung](/tenerife/inversores/#funding).
 
 [КАДР F12]
 
-### Wenn sich Termine ändern
+### Finanzkalender
 
-Verkaufsverzögerungen und Mehrkosten gehören in den aktualisierten Zahlungsplan. Jeder nächste Bauabschnitt braucht eine Finanzierungsquelle. [Finanzierung und Sensitivität](/tenerife/inversores/#funding).
+Wochenberichte zeigen bezahlte Arbeiten, Einnahmen und das Budget der nächsten Stufe. Der Kalender verbindet Bau, Verkäufe und die Abrechnung mit den Projektbeteiligten.
 
 ### Berechnung anfordern
 
