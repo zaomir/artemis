@@ -600,6 +600,10 @@ a:hover{color:var(--cs-ink)}
 @media (max-width:767px){
   .hero__media .fp-aerial-complex-3d9e50{object-position:50% 50%}
   .hero__media .fp-bedroom-sea-2a7f61{object-position:50% 50%}
+  .hero__media .fp-boris-drawings{object-position:50% 35%}
+  .hero__media .fp-boris-formwork{object-position:50% 35%}
+  .hero__media .fp-boris-portrait{object-position:50% 35%}
+  .hero__media .fp-boris-roof{object-position:50% 35%}
   .hero__media .fp-build-frame-5e6d77{object-position:50% 45%}
   .hero__media .fp-build-pit-3ab7c2{object-position:50% 45%}
   .hero__media .fp-communal-s-af42cd{object-position:40% 50%}

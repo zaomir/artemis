@@ -119,6 +119,10 @@
   "simon-portrait": "50% 30%",
   "simon-street": "50% 30%",
   "simon-rooftop": "50% 40%",
-  "simon-site": "50% 40%"
+  "simon-site": "50% 40%",
+  "boris-portrait": "50% 35%",
+  "boris-formwork": "50% 35%",
+  "boris-roof": "50% 35%",
+  "boris-drawings": "50% 35%"
  }
 }
