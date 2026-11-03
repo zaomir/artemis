@@ -115,6 +115,12 @@ class TenerifeSiteTest(unittest.TestCase):
         r = self.client.get("/tenerife/ru")
         self.assertEqual((r.status_code, r.headers["Location"].rsplit("/tenerife", 1)[1]), (301, "/ru/"))
         self.assertEqual(self.client.get("/tenerife/en/").headers["Location"].rsplit("/tenerife", 1)[1], "/")
+        for name, url in SHIPPED.items():
+            if name == "index":
+                continue
+            # P1-02: EN-подстраницы в корне, старый /tenerife/en/<page>/ -> 301, а не 404
+            r = self.client.get(f"/tenerife/en/{name}/")
+            self.assertEqual((r.status_code, r.headers["Location"]), (301, f"/tenerife/{name}/"), name)
         for name, url in SHIPPED.items():          # /tenerife/ru/<page>.html -> 301 /tenerife/ru/<page>/
             r = self.client.get(f"{RU}/{name}.html")
             self.assertEqual(r.status_code, 301, name)

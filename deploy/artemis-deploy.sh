@@ -121,14 +121,10 @@ smoke() {
   for p in "${PATHS[@]}" "${TENERIFE_PATHS[@]}"; do
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
     [[ "$code" == 200 ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
+    # P1-02 (06.11.2026): /tenerife/ — всегда 200 EN (canonical и hreflang en/x-default всех страниц),
+    # гео-редирект перенесён в корень сайта `/` (app.py:root -> tenerife.entry_target()), здесь 302 больше нет.
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "${PUBLIC}${p}" || true)
-    if [[ "$p" == "/tenerife/" && "$code" == 302 ]]; then
-      # Гео-открытие (02.11.2026): посетитель из ES/DE/FR получает 302 на свою языковую версию.
-      loc=$(curl -s -o /dev/null -w '%{redirect_url}' --max-time 15 "${PUBLIC}${p}" || true)
-      [[ "$loc" =~ /tenerife/(es|de|fr)/$ ]] || { log "SMOKE FAIL public ${p} -> 302 ${loc}"; fail=1; }
-    else
-      [[ "$code" == 200 ]] || { log "SMOKE FAIL public ${p} -> ${code}"; fail=1; }
-    fi
+    [[ "$code" == 200 ]] || { log "SMOKE FAIL public ${p} -> ${code}"; fail=1; }
   done
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "${PUBLIC}/tenerife/?lang=en" || true)
   [[ "$code" == 200 ]] || { log "SMOKE FAIL public /tenerife/?lang=en -> ${code}"; fail=1; }

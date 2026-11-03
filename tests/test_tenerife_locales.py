@@ -2,7 +2,8 @@
 
 Проверяет то, чего не видит русский набор: каждая локаль собирается в свой каталог, даёт 13 страниц + legal,
 ставит свой `<html lang>`, canonical и полный набор hreflang на пять языков, а меню ведёт внутрь своей локали.
-Плюс маршруты Flask: корень = EN, /tenerife/en/ → 301, неизвестная локаль → 404.
+Плюс маршруты Flask: корень = EN 200, /tenerife/en/ и /tenerife/en/<page>/ → 301 в корень (P1-02),
+canonical и hreflang en/x-default указывают на 200 EN-URL (не на редирект в DE), неизвестная локаль → 404.
 """
 import importlib
 import os
@@ -11,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -153,6 +155,68 @@ class LocaleRoutesTest(unittest.TestCase):
         self.assertIn('<html lang="en">', r.get_data(as_text=True))
         r = self.client.get("/tenerife/en/")
         self.assertEqual((r.status_code, r.headers["Location"].rsplit("/tenerife", 1)[1]), (301, "/"))
+
+    def test_en_prefixed_pages_redirect_to_unprefixed(self):
+        """P1-02: 14 URL /tenerife/en/* больше не 404 — один 301 на рабочий unprefixed URL (в т.ч. без слэша/.html)."""
+        for _f, name in list(PAGES) + [("", n) for n in LEGAL]:
+            if name == "index":
+                continue   # /tenerife/en/ проверяется ниже
+            target = url_of("en", name)
+            for src in (f"/tenerife/en/{name}/", f"/tenerife/en/{name}", f"/tenerife/en/{name}.html"):
+                r = self.client.get(src)
+                self.assertEqual(r.status_code, 301, src)
+                self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, target, src)
+            self.assertEqual(self.client.get(target).status_code, 200, target)
+        for src in ("/tenerife/en/", "/tenerife/en"):
+            r = self.client.get(src)
+            self.assertEqual(r.status_code, 301, src)
+            self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, "/tenerife/", src)
+        # query string сохраняется, как и у остальных 301
+        r = self.client.get("/tenerife/en/simon/?utm_source=x")
+        self.assertEqual(r.status_code, 301)
+        self.assertEqual(r.headers["Location"], "/tenerife/simon/?utm_source=x")
+
+    def test_en_unknown_page_is_404_not_a_redirect_into_404(self):
+        for src in ("/tenerife/en/nope/", "/tenerife/en/nope", "/tenerife/en/nope.html"):
+            self.assertEqual(self.client.get(src).status_code, 404, src)
+
+    def test_en_hreflang_and_canonical_resolve_to_200_english_urls(self):
+        """P1-02: canonical ведёт на 200-версию своей локали, hreflang en/x-default — на 200 EN-URL в корне,
+        а не на 302 в DE. Раньше /tenerife/ уводил в /tenerife/de/, и весь hreflang en указывал на редирект."""
+        for locale in ("en",) + LOCALES:
+            for _f, name in list(PAGES) + [("", n) for n in LEGAL]:
+                url = url_of(locale, name)
+                page = self.client.get(url).get_data(as_text=True)
+                head = page[:page.index("</head>")]
+                canonical = re.search(r'<link rel="canonical" href="([^"]+)">', head)
+                self.assertIsNotNone(canonical, (locale, name))
+                self.assertEqual(canonical.group(1), BASE + url, (locale, name))
+                r = self.client.get(urllib.parse.urlsplit(canonical.group(1)).path)
+                self.assertEqual(r.status_code, 200, (locale, name))
+                self.assertIn(f'<html lang="{locale}">', r.get_data(as_text=True), (locale, name))
+                alts = dict(re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">', head))
+                en_url = BASE + url_of("en", name)
+                self.assertEqual(alts["en"], en_url, (locale, name))
+                self.assertEqual(alts["x-default"], en_url, (locale, name))
+                for target in (alts["en"], alts["x-default"]):
+                    path = urllib.parse.urlsplit(target).path
+                    r = self.client.get(path)
+                    self.assertEqual(r.status_code, 200, (locale, name, path))
+                    self.assertIn('<html lang="en">', r.get_data(as_text=True), (locale, name, path))
+
+    def test_english_internal_links_are_unprefixed(self):
+        """P1-02: логотип, Home, Back и меню EN ведут на /tenerife/..., ни одной ссылки /tenerife/en/."""
+        for _f, name in list(PAGES) + [("", n) for n in LEGAL]:
+            page = self.client.get(url_of("en", name)).get_data(as_text=True)
+            hrefs = re.findall(r'href="(/tenerife/[^"#?]*)"', page)
+            self.assertTrue(hrefs, name)
+            for href in hrefs:
+                self.assertFalse(href.startswith("/tenerife/en/"), (name, href))
+            self.assertIn('class="brand" href="/tenerife/"', page, name)
+            self.assertIn('href="/tenerife/impressum/"', page, name)
+            self.assertIn('href="/tenerife/privacy/"', page, name)
+            for _f2, other in PAGES:
+                self.assertIn(f'href="{url_of("en", other)}"', page, (name, other))
 
     def test_unknown_locale_is_404(self):
         for url in ("/tenerife/xx/", "/tenerife/xx/norte/", "/tenerife/xx/norte"):

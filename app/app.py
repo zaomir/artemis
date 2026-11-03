@@ -183,7 +183,12 @@ def _render_legal(lang, page):
 
 @app.route("/")
 def root():
-    return redirect(f"/{_pick_language()}/", code=302)
+    # P1-02 (06.11.2026): страну/язык встречает корень. /tenerife/ — 200 EN (canonical + hreflang en/x-default),
+    # поэтому гео-редирект живёт здесь: ES/DE/FR -> /tenerife/<locale>/, неизвестная страна и EN -> /tenerife/.
+    # ?lang= сильнее страны (en -> /tenerife/, остальные локали -> их префикс); query сохраняется.
+    qs = request.query_string.decode("latin-1")
+    target = tenerife.entry_target()
+    return redirect(f"{target}?{qs}" if qs else target, code=302)
 
 
 @app.route("/<lang>/")

@@ -200,14 +200,32 @@ def _finish(page: str) -> str:
 ALL_LANGS = ("en", "ru", "es", "de", "fr")
 LOCALES = ("ru", "es", "de", "fr")   # EN — корень /tenerife/, остальные — /tenerife/<locale>/
 
-# Гео-открытие (02.11.2026): страна посетителя выбирает язык входа. Сайт не пишет cookie и не трогает
-# хранилище (privacy §7), поэтому выбор не запоминается: уйти с гео-редиректа можно ссылкой ?lang=en,
-# и переключатель языка ведёт на EN именно так. Cloudflare отдаёт страну в CF-IPCountry.
+# Гео-открытие (02.11.2026; P1-02 06.11.2026): страну посетителя встречает корень сайта `/`, а не /tenerife/.
+# /tenerife/ — канонический URL английской главной (canonical, hreflang en и x-default всех страниц ведут сюда),
+# поэтому он обязан отвечать 200 EN, а не 302 → DE. Сайт не пишет cookie и не трогает хранилище (privacy §7),
+# выбор не запоминается: уйти с гео-редиректа можно ссылкой /tenerife/?lang=en. Cloudflare отдаёт страну в CF-IPCountry.
 GEO_LOCALES = {
     "ES": "es",
     "DE": "de", "AT": "de", "CH": "de",
     "FR": "fr", "BE": "fr", "LU": "fr", "MC": "fr",
 }
+
+
+def geo_locale() -> str | None:
+    """Язык входа по стране Cloudflare: "es"/"de"/"fr" или None (EN / неизвестная страна)."""
+    return GEO_LOCALES.get((request.headers.get("CF-IPCountry") or "").strip().upper())
+
+
+def entry_target() -> str:
+    """Куда корень `/` уводит посетителя: язык страны, EN для неизвестной страны.
+    ?lang= сильнее страны: en → английская главная /tenerife/, остальные локали → их префикс."""
+    wanted = (request.args.get("lang") or "").strip().lower()
+    if wanted == "en":
+        return SITE_PREFIX + "/"
+    if wanted in ALL_LANGS:
+        return f"{SITE_PREFIX}/{wanted}/"
+    geo = geo_locale()
+    return f"{SITE_PREFIX}/{geo}/" if geo else SITE_PREFIX + "/"
 
 
 def _site_page(name: str, locale: str = "en"):
@@ -230,26 +248,37 @@ def site_noslash():
 
 @bp.route(SITE_PREFIX + "/")
 def site_index():
-    # ?lang=<code> сильнее географии: так переключатель уводит на выбранный язык и так же
-    # посетитель остаётся на EN, если страну определили как испаноязычную.
+    # P1-02: /tenerife/ — это EN-главная, canonical и hreflang en/x-default всех страниц, поэтому гео-редиректа
+    # здесь нет: он живёт в корне сайта (`/`, app.py:root -> tenerife.entry_target()). ?lang=<code> как раньше:
+    # en -> 200 /tenerife/, остальные локали -> 302 на свой префикс (так переключатель уводит на язык).
     wanted = (request.args.get("lang") or "").strip().lower()
     if wanted == "en":
         return _site_page("index")
     if wanted in ALL_LANGS:
         return redirect(_with_query(f"{SITE_PREFIX}/{wanted}/"), code=302)
-    geo = GEO_LOCALES.get((request.headers.get("CF-IPCountry") or "").strip().upper())
-    if geo:
-        return redirect(_with_query(f"{SITE_PREFIX}/{geo}/"), code=302)
     return _site_page("index")
+
+
+# P1-02: английская локаль живёт в корне (/tenerife/<page>/), а не под /en/. Старые /tenerife/en/* (их в отчёте 14:
+# 12 страниц + impressum + privacy) отвечают одним 301 на рабочий unprefixed URL, а не 404. EN-главная
+# /tenerife/en/ -> /tenerife/ обрабатывается в site_page()/site_legacy().
+def _en_page_target(page: str) -> str | None:
+    """Рабочий EN-URL страницы или None, если такой страницы нет (тогда 404, а не 301 в 404)."""
+    if page in SITE_PAGES or page in LEGAL_PAGES:
+        return f"{SITE_PREFIX}/{page}/"
+    return None
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>")
 @bp.route(SITE_PREFIX + "/<locale>/<page>.html")
 def site_locale_legacy(locale: str, page: str):
     """Clean URL of a locale page: /tenerife/de/norte and /tenerife/de/norte.html -> 301 /tenerife/de/norte/."""
+    page = page[:-5] if page.endswith(".html") else page
+    if locale == "en":   # /tenerife/en/simon[/.html] -> /tenerife/simon/ (P1-02, без промежуточного /en/)
+        target = _en_page_target(page)
+        return redirect(_with_query(target), code=301) if target else make_response("Not found", 404)
     if locale not in LOCALES:
         return make_response("Not found", 404)
-    page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(_with_query(f"{SITE_PREFIX}/{locale}/"), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
@@ -259,6 +288,9 @@ def site_locale_legacy(locale: str, page: str):
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>/")
 def site_locale_page(locale: str, page: str):
+    if locale == "en":   # P1-02: /tenerife/en/<page>/ -> 301 /tenerife/<page>/ (14 URL больше не 404)
+        target = _en_page_target(page)
+        return redirect(_with_query(target), code=301) if target else make_response("Not found", 404)
     if locale not in LOCALES:
         return make_response("Not found", 404)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
@@ -279,7 +311,7 @@ def site_page(page: str):
     """One segment under /tenerife/: the home of a locale (/tenerife/ru/), the EN home (/tenerife/),
     an EN page or legal page, everything else 404."""
     if page == "en":
-        return redirect(SITE_PREFIX + "/", code=301)   # EN живёт в корне
+        return redirect(_with_query(SITE_PREFIX + "/"), code=301)   # EN живёт в корне (P1-02)
     if page in LOCALES:
         return _site_page("index", page)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
@@ -292,6 +324,8 @@ def site_page(page: str):
 def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
+        return redirect(_with_query(SITE_PREFIX + "/"), code=301)
+    if page == "en":   # /tenerife/en -> /tenerife/ (P1-02; раньше 404)
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
     if page in LOCALES:   # /tenerife/ru -> /tenerife/ru/
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
