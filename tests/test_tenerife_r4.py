@@ -283,7 +283,8 @@ class FormServerTest(R4Case):
         body = self.get(r.headers["Location"].replace("http://localhost", ""))
         self.assertIn("Спасибо! Заявка на расчёт принята.", body)
         self.assertIn(self.tenerife.FORM_MSG["ok-next"], body)
-        self.assertIn("<!--email_off-->", body)
+        self.assertIn('<!--email_off--><a href="mailto:info@artemisresort.com">'
+                      'info@artemisresort.com</a><!--/email_off-->', body)
         r = self.post(json_body=False, consent=False)
         self.assertIn("Отметьте согласие на обработку данных.", r.get_data(as_text=True))
 
@@ -486,7 +487,7 @@ class PhoneLiteralTest(R4Case):
                  *BUILD.glob("design/*"), *ROOT.glob("tests/test_tenerife*.py"), ROOT / "tests/test_lead_relay.py",
                  ROOT / "README.md"]
         for f in files:
-            if f.is_file():
+            if f.is_file() and f.name != "SHA256SUMS":
                 for m in build_v3.PHONE_RX.finditer(f.read_text(encoding="utf-8", errors="ignore")):
                     self.assertIn(re.sub(r"\D", "", m.group(0)), FAKE_DIGITS, f.name)
 

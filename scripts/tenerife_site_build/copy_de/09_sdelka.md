@@ -19,7 +19,7 @@ Zuerst Projekt und Berechnung kennenlernen. Zahlung nach Freigabe von Grundstüc
 
 **3. Grundstück und Bedingungen.** Vor Zahlung prüfen Sie Objekt, Budget, Verkäufe und Barausstieg einschließlich Terminänderungen.
 
-**4. Vollständige Zahlung.** Der ganze Betrag wird eingezahlt. Ab diesem Tag beginnen @months@ Monate. Keine Investorenraten oder weiteren Boni neben dem frühen Preis.
+**4. Vollständige Zahlung.** Sie zahlen die gesamte Investition auf einmal. An diesem Tag beginnt die Modelllaufzeit von @months@ Monaten.
 
 **5. Bau und Verkauf.** Wochenberichte zu Arbeiten und Geld sind geplant. Investorenkapital und Käuferzahlungen finanzieren die Ausgaben.
 
@@ -37,9 +37,9 @@ Ein Hauskauf umfasst nicht zugleich den Geldrückkauf derselben Investition. [Ka
 
 Besprechen Sie das Projekt per Video und erhalten Sie Berechnung und Unterlagen zur Prüfung. Auf der Insel zeigen wir La Quinta und das gewählte Grundstück. Erforderliche Treffen richten sich nach Ihrem Beteiligungsweg.
 
-### Vor der Zahlung
+### Beteiligungsunterlagen
 
-Fragen Sie nach Budget, nötigen monatlichen Verkäufen, Ausstiegsfinanzierung und Folgen von Verzögerungen. [Fragen](/tenerife/faq/) · [Modell](/tenerife/inversores/).
+Die Beteiligungsbedingungen umfassen Ihre persönliche Berechnung, das Budget, den Projektkalender und den Ablauf des Barausstiegs. [Fragen](/tenerife/faq/) · [Annahmen und Ergebnis](/tenerife/inversores/#assumptions).
 
 ### Berechnung anfordern
 

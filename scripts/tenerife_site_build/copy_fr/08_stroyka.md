@@ -38,7 +38,7 @@ Nous sélectionnons un terrain pour vingt résidences à La Quinta, Santa Úrsul
 | Avant 33 | Travaux principaux et réserve budgétée payés |
 | 36 | Soldes acheteurs et sortie des investisseurs |
 
-C'est le calendrier prévu du modèle. Les dates réelles dépendent du terrain, de la préparation du projet et des ventes.
+Le calendrier du projet sera établi pour le terrain choisi à partir de ce programme prévisionnel.
 
 [КАДР F16]
 
@@ -58,13 +58,13 @@ Boris Ribaut supervise structure, chantier et rapports. Simon Subic dirige terra
 
 ### Payer les travaux
 
-Capital initial et paiements des acheteurs par étapes couvrent le budget. Sans apport supplémentaire du promoteur ni dette bancaire dans le modèle. Chaque contrat fixe le prix à la signature ; la hausse s'applique seulement avant.
+Les travaux sont financés par le fonds initial des investisseurs et les paiements des acheteurs par étapes. Le contrat fixe le prix à la signature ; la hausse prévue s’applique avant cette date. [Financement du projet](/tenerife/inversores/#funding).
 
 [КАДР F12]
 
-### Si le calendrier change
+### Calendrier financier
 
-Retards de ventes et surcoûts doivent apparaître dans le calendrier de trésorerie révisé. Chaque prochaine étape nécessite une source de paiement. [Financement et sensibilité](/tenerife/inversores/#funding).
+Les rapports hebdomadaires présentent les travaux payés, les encaissements et le budget de l’étape suivante. Le calendrier relie chantier, ventes et règlement des participants.
 
 ### Demander un calcul
 

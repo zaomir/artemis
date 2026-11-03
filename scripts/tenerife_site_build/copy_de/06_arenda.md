@@ -19,13 +19,13 @@ Helles Wohnzimmer, Terrasse, intelligente Klimasteuerung und beheizter Pool. Wä
 
 ### Zum langfristigen Vermieten
 
-Mieter vergleichen Grundriss, laufende Kosten und Stadtnähe. Prüfen Sie vor Kauf aktuelle Angebote gleichwertiger Häuser und berücksichtigen Sie Leerstand, Wartung und Reparaturen. Mieteingänge entsprechen nicht dem Ertrag nach Kosten.
+Grundriss, laufende Kosten und die Anbindung an die Stadt zählen bei längerem Wohnen. Eine Mietkalkulation umfasst Instandhaltung, Reparaturen und Zeiten zwischen Mietern.
 
 [КАДР F05]
 
 ### Für Investoren
 
-Das neue Modell hält kein Mietportfolio für jährliche Ausschüttungen. Der Investor zahlt vollständig und erhält beim Verkauf oder Rückkauf Geld. Ziel: @target@% jährlich über @months@ Monate. [Beteiligungsmodell](/tenerife/inversores/).
+Der Investor zahlt die Beteiligung einmalig und erhält beim Verkauf oder Rückkauf zum Ausstieg eine Geldabrechnung. Das Modell zielt auf @target@% jährlich über @months@ Monate. [Beteiligungsmodell](/tenerife/inversores/).
 
 [КАДР F03]
 

@@ -50,7 +50,7 @@ Sur le versant nord de La Quinta, chacune des vingt maisons Artemis couvrira une
 | Exemple d'un installateur: économie d'une installation | 600–1 000 € par an |
 | Exemple: facture sans panneaux dans le même calcul | 120 € par mois, 120 × 12 = 1 440 € par an |
 
-La puissance de l'installation et la consommation viennent d'un guide national espagnol sur les installations domestiques, non de données insulaires. L'économie et la facture sont l'exemple d'un seul calcul d'installateur, pas une moyenne. Pour La Quinta même: un calcul PVGIS fondé sur les données satellitaires de 2005–2023. La comparaison honnête se fait à l'inclinaison optimale de chaque lieu (23° et 21°): 1 578 contre 1 771 kWh. Une installation à plat, comme sur les toits Artemis, donne moins: environ 1 490.
+La production de La Quinta est calculée dans PVGIS avec les données satellitaires de 2005–2023 : environ 1 490 kWh à plat et 1 578 kWh à 23°. Puissance et consommation proviennent d’un guide espagnol des installations domestiques ; économies et facture sont l’exemple d’un installateur.
 
 Le programme voisin La Quinta 2 est lui aussi annoncé avec des panneaux solaires.
 
@@ -80,7 +80,7 @@ Les équipements font partie des prestations prévues. Achat et investissement s
 
 ### Pourquoi c'est important pour l'actionnaire
 
-L’investisseur reçoit des fonds à la sortie issus des ventes, pas des loyers. Objectif : @target@% annualisé sur @months@ mois. Qualité et équipements soutiennent la demande sans assurer seuls ce résultat.
+La qualité et les équipements contribuent à l’attrait de la maison. Les ventes des résidences apportent les encaissements pour la sortie en numéraire des investisseurs. Le modèle vise @target@% annualisé sur @months@ mois. [Modèle d’investissement](/tenerife/inversores/).
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 

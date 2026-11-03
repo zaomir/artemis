@@ -19,7 +19,7 @@ Empiece por conocer el proyecto y el cálculo. El pago sigue a la aprobación de
 
 **3. Parcela y condiciones.** Antes de pagar revise activo, presupuesto, calendario de ventas y salida en efectivo, incluidos los cambios de plazo.
 
-**4. Pago completo.** Abone toda la inversión. Ese día empieza el plazo de @months@ meses. No hay cuotas de inversor ni bonificaciones adicionales al precio inicial.
+**4. Pago completo.** Abona toda la inversión en un pago. El plazo de @months@ meses del modelo comienza en esa fecha.
 
 **5. Obra y ventas.** Se prevén informes semanales de trabajos y dinero. El fondo inicial y los pagos de compradores financian los gastos.
 
@@ -37,9 +37,9 @@ Comprar una casa no incluye a la vez la recompra en efectivo de la misma inversi
 
 Hablemos por videollamada y reciba cálculo y documentos para revisar. En la isla, visite La Quinta y la parcela elegida. Las reuniones necesarias dependen de su forma de participación.
 
-### Antes de pagar
+### Documentos de participación
 
-Pregunte qué presupuesto respalda el proyecto, qué ventas hacen falta cada mes, de dónde sale el dinero de salida y qué ocurre si se retrasa. [Preguntas](/tenerife/faq/) · [Modelo](/tenerife/inversores/).
+Las condiciones de participación incluyen su cálculo personal, presupuesto, calendario y proceso de salida en efectivo. [Preguntas](/tenerife/faq/) · [Hipótesis y resultado](/tenerife/inversores/#assumptions).
 
 ### Solicitar un cálculo
 

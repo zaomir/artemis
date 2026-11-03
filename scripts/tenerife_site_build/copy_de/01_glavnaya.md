@@ -9,7 +9,7 @@ OG title: Ein Zuhause auf Teneriffas Nordseite. Beteiligung ab @entry_48@ €
 
 Zwanzig Residenzen in La Quinta, Santa Úrsula: Steinterrassen, hohe Fenster und ein beheizter Gemeinschaftspool. Wählen Sie ein eigenes Zuhause oder beteiligen Sie sich am Bau — ab @entry_48@ €, mit @target@% jährlicher Zielrendite und Barausstieg nach @months@ Monaten.
 
-Der frühe Modellpreis beträgt @entry@ € je Aktie: @discount@% unter dem vorläufigen Vergleichswert von @market@ €/m². Dieser Wert ist noch zu bestätigen. [Beteiligung berechnen](/tenerife/inversores/#calculate) · [Residenzen ansehen](/tenerife/producto/).
+Der frühe Preis beträgt @entry@ € je Aktie: @discount@% unter der vorläufigen Modellbasis von @market@ €/m². [Beteiligung berechnen](/tenerife/inversores/#calculate) · [Residenzen ansehen](/tenerife/producto/).
 
 [КАДР F01]
 
@@ -37,7 +37,7 @@ Ein, zwei oder drei Schlafzimmer. Canary Stone: Kalkputz, Vulkanstein, Terrassen
 
 ### Aktueller Stand
 
-Wir wählen ein Grundstück in La Quinta. Der finanzielle Horizont beträgt @months@ Monate ab vollständiger Zahlung; Kalenderdaten folgen nach Grundstückswahl und abgestimmtem Ablauf. Investoren und Käufer finanzieren den Bau, ohne zusätzliches Entwicklerkapital im Modell.
+Wir wählen ein Grundstück in La Quinta. Der finanzielle Horizont beträgt @months@ Monate ab vollständiger Zahlung bis zum Ausstieg. Der Bauablauf wird für das gewählte Grundstück geplant und durch Investoren und Käufer finanziert.
 
 Verfolgen Sie, wie Geld zu Fundament, Dach und Glas wird: wöchentliche Berichte sind geplant. [Projektfortschritt](/tenerife/construccion/).
 

@@ -21,11 +21,11 @@ Elija un importe en euros. Verá su inversión, la rentabilidad objetivo y el co
 
 Para 72 acciones: inversión completa de @entry_72@ €, cobro objetivo de @exit_72@ €, incluidos @gain_72@ € de rentabilidad. El aumento total es del @gain_pct@% en tres años, equivalente al @target@% anualizado con capitalización.
 
-Fórmula: **cobro a la salida = inversión × (1 + @target@%)³**. Es el objetivo del escenario base. El pago real depende de los cobros de ventas, los costes y el plazo de salida.
+Fórmula del escenario base: **cobro a la salida = inversión × (1 + @target@%)³**.
 
 ### Cómo se financia la obra
 
-Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las veinte viviendas. El modelo no incluye capital adicional del promotor ni deuda bancaria. La inversión no se contabiliza como ingresos de venta de viviendas.
+Dos fuentes: el fondo inicial de inversores y los pagos de compradores de veinte viviendas. El plan base no incluye aportación adicional del promotor ni crédito bancario.
 
 | Escenario base | Importe |
 |---|---|
@@ -36,7 +36,7 @@ Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las ve
 | Capital y rentabilidad objetivo al salir | @pool_exit@ € |
 | Saldo del proyecto tras liquidar | @surplus@ € |
 
-Los compradores pagan 40/30/10/20%. Quien firme tarde abona los hitos completados inmediatamente. El calendario mensual base no presenta déficit; su saldo mínimo es @minimum_cash@ €. Son cálculos, no dinero ya captado ni contratos ya firmados.
+Los compradores pagan por etapas: 40/30/10/20%. Quienes firmen después abonan de inmediato los hitos completados. El calendario mensual previsto vincula estos cobros con los gastos de obra y la liquidación de los inversores.
 
 ### Proyecto y fase actual
 

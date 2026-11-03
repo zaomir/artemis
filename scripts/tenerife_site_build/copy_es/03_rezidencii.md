@@ -19,7 +19,7 @@ Para pasar el invierno en pareja, mudarse en familia o recibir invitados. Se pre
 | Dos dormitorios | 10 | 68–78 m² | @home_2_low@–@home_2_high@ € |
 | Casa grande | 4 | 85–100 m² | @home_3_low@–@home_3_high@ € |
 
-Son estimaciones del modelo, no una tarifa aprobada de viviendas concretas. Las superficies incluyen muros exteriores y excluyen zonas comunes; las terrazas se detallarán en los planos. El precio se fija al firmar. Hasta entonces, el modelo aumenta la referencia un @growth@% anual.
+Los presupuestos usan la referencia provisional del modelo. Las superficies incluyen muros exteriores y excluyen zonas comunes; los planos detallarán las terrazas. El precio se fija al firmar. Hasta esa fecha, el modelo aplica un crecimiento anual del @growth@%.
 
 ## Un dormitorio · 48–55 m²
 
@@ -53,7 +53,7 @@ Revoco de cal, zócalo de piedra volcánica, grandes ventanas con marcos de bron
 
 Calendario propuesto: 40% al firmar, otro 30% en cimentación, 10% en estructura y el 20% final al liquidar. Quien firme más tarde abona inmediatamente los hitos ya completados.
 
-Es la compra de una residencia concreta. La inversión con salida en efectivo se explica aparte y no incluye recibir una casa además de la recompra. [Inversores](/tenerife/inversores/) · [Proceso](/tenerife/proceso/).
+Compra la residencia elegida y recibe las llaves al finalizar el proyecto. La participación con salida en efectivo tiene un cálculo de inversión separado. [Inversores](/tenerife/inversores/) · [Proceso](/tenerife/proceso/).
 
 ### Solicitar un cálculo
 

@@ -19,7 +19,7 @@ Start with the project and a calculation. Payment follows approval of the plot a
 
 **3. Plot and terms.** Before payment, review the selected asset, budget, sales calendar and cash-exit process, including timetable changes.
 
-**4. Full payment.** Pay the entire investment. The @months@-month model period starts on this date. There are no investor instalments or extra bonuses beyond the early price.
+**4. Full payment.** Pay the entire investment in one payment. The @months@-month model period starts on this date.
 
 **5. Construction and sales.** Weekly reports on work and cash are planned. Investment capital and buyer payments fund expenses.
 
@@ -37,9 +37,9 @@ A home purchase does not simultaneously include a cash buyback of the same inves
 
 Discuss the project by video and receive calculations and documents to review. On the island, visit La Quinta and the selected site. Required meetings will depend on your participation route.
 
-### Before payment
+### Participation documents
 
-Ask which budget supports the project, which sales are needed each month, where exit funds come from and what happens if dates move. [Questions](/tenerife/faq/) · [Detailed model](/tenerife/inversores/).
+Participation terms cover your personal calculation, budget, project calendar and cash-exit process. [Questions](/tenerife/faq/) · [Assumptions and outcome](/tenerife/inversores/#assumptions).
 
 ### Request a calculation
 

@@ -7,7 +7,7 @@ OG title: Prix initial, croissance et sources
 
 # D'où viennent le prix initial et les ventes futures
 
-Le calcul utilise @market@ €/m² de référence, @entry@ € de prix initial et @growth@% de hausse annuelle pour les maisons non vendues. Ce sont des paramètres du modèle ; aucun tarif actuel comparable du neuf local n'est encore vérifié.
+Le plan financier utilise une référence provisoire de @market@ €/m², un prix initial de @entry@ € par action et une hausse estimée de @growth@% par an pour les maisons non vendues.
 
 [КАДР F24]
 
@@ -15,13 +15,12 @@ Le calcul utilise @market@ €/m² de référence, @entry@ € de prix initial e
 
 @market@ × 70% = @entry@ €. L'écart représente @discount@% de la référence. Le prix de l'action finance une participation ; la base par m² sert aux comparaisons et ventes, pas à promettre une maison contre des actions.
 
-Pour annoncer @discount@% sous le marché actuel, il faut actualiser les programmes comparables avec mêmes surfaces, état, équipements et date d'offre.
 
 [КАДР F01]
 
 ### Ce que montrent les projets voisins
 
-[Reside Tenerife](https://residentenerife.com/obra-nueva) indique La Quinta I, II, III et Lomo Román comme vendus, sans tarif actuel. Les anciennes annonces ne sont donc pas présentées comme valeur actuelle ni prix de revente promis.
+[Reside Tenerife](https://residentenerife.com/obra-nueva) indique La Quinta I, II, III et Lomo Román comme vendus. Ce sont des exemples de programmes voisins ; les calculs Artemis utilisent la référence provisoire du modèle.
 
 ### Comment la hausse annuelle de 6% s'applique
 
@@ -32,15 +31,15 @@ Pour annoncer @discount@% sous le marché actuel, il faut actualiser les program
 | Dans deux ans | @market_y2@ |
 | Dans trois ans | @market_y3@ |
 
-Formule : @market@ × (1 + @growth@%)^(mois / 12). Les ventes sont réparties aux mois 3–30, chacune fixant son prix. Le modèle ne vend pas tout au prix de fin de troisième année : total des contrats de @sales@ €.
+Formule : @market@ × (1 + @growth@%)^(mois / 12). Les ventes sont prévues aux mois 3–30, chaque contrat fixant son prix. Total prévisionnel des contrats : @sales@ €.
 
 [КАДР F12]
 
 ### Références de budget
 
-Le cabinet local [Urbara](https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife) publie des coûts indicatifs à Tenerife selon les finitions. Le scénario de base utilise @cost_m2@ €/m² construit ; terrain, études, parties communes et réserve sont distincts. Le budget interne du projet n'est pas encore établi.
+Le cabinet local [Urbara](https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife) publie des références de construction à Tenerife selon les finitions. Le budget estimatif utilise @cost_m2@ €/m² construit ; terrain, études, parties communes et réserve sont calculés séparément.
 
-À 2 100 €/m², le rachat cible n'est pas entièrement couvert. Architecture et équipements nécessitent donc un budget confirmé avant financement. [Budget et sensibilité](/tenerife/inversores/#assumptions).
+Le budget et les sources de paiement figurent dans [le financement du projet](/tenerife/inversores/#funding).
 
 ### Ce que cela signifie pour vous
 

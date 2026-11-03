@@ -21,11 +21,11 @@ Choisissez un montant en euros. Vous verrez votre investissement, le gain visé 
 
 Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
 
-Formule : **règlement de sortie = investissement × (1 + @target@%)³**. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.
+Formule du scénario de base : **règlement de sortie = investissement × (1 + @target@%)³**.
 
 ### Comment les travaux sont financés
 
-Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.
+Deux sources : le fonds initial des investisseurs et les paiements des acheteurs de vingt maisons. Le plan de base ne prévoit ni apport complémentaire du promoteur ni crédit bancaire.
 
 | Scénario de base | Montant |
 |---|---|
@@ -36,7 +36,7 @@ Deux sources : le fonds initial des investisseurs et les paiements des acheteurs
 | Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
 | Solde du projet après règlement | @surplus@ € |
 
-Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est @minimum_cash@ €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.
+Les acheteurs paient par étapes : 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel prévisionnel relie ces encaissements aux dépenses de construction et au règlement des investisseurs.
 
 ### Projet et stade actuel
 

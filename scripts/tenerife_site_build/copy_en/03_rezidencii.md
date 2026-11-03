@@ -19,7 +19,7 @@ For a winter together, a family move or a home with room for guests. The plan co
 | Two bedrooms | 10 | 68–78 m² | @home_2_low@–@home_2_high@ € |
 | Large home | 4 | 85–100 m² | @home_3_low@–@home_3_high@ € |
 
-These are model estimates, not an approved price list for specific homes. Areas include exterior walls and exclude communal areas; terrace treatment will be specified in the layouts. A home's price is locked at signing. Until then, the model increases the reference by @growth@% a year.
+Budgets use the model’s provisional reference. Areas include exterior walls and exclude communal areas; layouts will specify terrace areas. The chosen home’s price is fixed at signing. Until then, the model applies @growth@% annual growth.
 
 ## One bedroom · 48–55 m²
 
@@ -53,7 +53,7 @@ Lime plaster, a volcanic-stone plinth, tall bronze-framed windows and stone terr
 
 Proposed buyer schedule: 40% at signing, another 30% at foundations, 10% at shell completion and the final 20% at settlement. Buyers signing later pay completed milestones at signing.
 
-This is the purchase of a specific residence. A cash-exit investment is described separately and does not include receiving a home alongside a buyback. [Investors](/tenerife/inversores/) · [Process](/tenerife/proceso/).
+You purchase your chosen residence and receive the keys on completion. A separate investment calculation covers participation with a cash exit. [Investors](/tenerife/inversores/) · [Process](/tenerife/proceso/).
 
 ### Request a calculation
 

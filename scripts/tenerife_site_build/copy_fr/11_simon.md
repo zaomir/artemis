@@ -8,7 +8,7 @@ OG title: Simon Subic: du terrain et des autorisations à la livraison des maiso
 
 # Je suis Simon Subic, promoteur d'Artemis de la Cruz
 
-Je suis Development Principal entre Londres et Paris. Pour Artemis de la Cruz, je pilote terrain, préparation et financement de vingt résidences. Le modèle utilise investissement initial et paiements acheteurs sans apport complémentaire du promoteur. Le calendrier suit le choix du terrain.
+Je suis Development Principal et je travaille entre Londres et Paris. Pour Artemis de la Cruz, je pilote le choix du terrain, la préparation et le financement de vingt résidences. Je relie investissement initial et paiements des acheteurs au calendrier des travaux.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -32,13 +32,13 @@ Je suis citoyen slovène et je travaille via une plateforme londonienne et en Fr
 
 Le nord de Tenerife est vert, sans grande chaleur et sans poussière. Depuis La Quinta: 8 km et 10–15 minutes de route jusqu'à Puerto de la Cruz, 15–20 minutes jusqu'à l'aéroport de Tenerife Norte, 25–30 minutes jusqu'à Santa Cruz. On y vit toute l'année. Je construis là où les gens vivent, pas là où ils passent une semaine.
 
-Vingt maisons: six avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m². Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements. Pour comparaison: les programmes voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre, et les deux sont vendus; une maison Artemis achevée, à la livraison: 3 800–4 600 €.
+Vingt maisons : six avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m² et quatre grandes de 85–100 m². Un ensemble à taille humaine avec une architecture et des équipements communs. [Résidences et calcul d’achat](/tenerife/producto/).
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
 ### Comment je conduis les autorisations
 
-La préparation doit suivre le programme des travaux et dépenses. Je coordonne documents et séquence avec les concepteurs. Les étapes se constatent sur chantier ; le nouveau modèle n’a pas de revalorisation automatique en six paliers.
+Je coordonne les documents et l’enchaînement avec les concepteurs. La préparation suit le calendrier des travaux et des dépenses ; les étapes achevées sont constatées sur le chantier et dans les rapports.
 
 ### Comment je relie les fonds et le chantier
 
@@ -68,7 +68,7 @@ Je pilote terrain, préparation et financement. Boris Ribaut supervise chantier,
 
 ### Ce que j'attends de vous
 
-Avant paiement, questionnez terrain, budget, ventes et financement de sortie. Comparez le calcul personnel au calculateur. La demande gratuite laisse le temps de comprendre.
+Échangeons sur le terrain, le budget, le calendrier et le calcul de participation. Commencez par une demande gratuite et un appel vidéo.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 

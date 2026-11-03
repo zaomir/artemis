@@ -19,13 +19,13 @@ A bright living room, terrace, smart climate and heated pool. Choose your size: 
 
 ### For long-term letting
 
-Future tenants will compare the layout, running costs and access to town. Before buying, check current listings for equivalent homes and allow for vacancy, maintenance and repairs. Rent collected is different from an owner's income after expenses.
+Layout, running costs and access to town matter for a long stay. A letting calculation includes home maintenance, repairs and periods between tenants.
 
 [КАДР F05]
 
 ### For investors
 
-The new model does not retain a rental portfolio for annual distributions. The investor pays in full and receives cash on sale or buyback at exit. The target is @target@% annualised over @months@ months. [Investment model](/tenerife/inversores/).
+The investor pays for participation once and receives a cash settlement on sale or buyback at exit. The model targets @target@% annualised over @months@ months. [Investment model](/tenerife/inversores/).
 
 [КАДР F03]
 

@@ -40,11 +40,11 @@ Investissement = actions × @entry@ €. Règlement = investissement × (1 + @ta
 
 ### D'où vient l'argent de sortie
 
-Des acheteurs de vingt résidences. Le scénario de base couvre budget et règlement complet des investisseurs sans apport supplémentaire du promoteur. [Financement](/tenerife/inversores/#funding).
+Des paiements des acheteurs de vingt résidences. Le calendrier prévisionnel réunit les paiements de construction et le règlement des investisseurs. [Sources de financement](/tenerife/inversores/#funding).
 
 ### Ce qui affecte le calcul
 
-@market@ €/m² est une référence provisoire, @growth@% une hypothèse de hausse annuelle et @target@% un rendement cible. Ventes, coûts et délai réel peuvent modifier le paiement. [Hypothèses et sensibilité](/tenerife/inversores/#assumptions).
+Le calcul utilise une référence provisoire de @market@ €/m², une hausse annuelle de @growth@% dans le plan de ventes et un rendement cible de @target@% annualisé. [Hypothèses et résultat](/tenerife/inversores/#assumptions).
 
 ### Entrer dans le projet
 

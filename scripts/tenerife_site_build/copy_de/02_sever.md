@@ -92,13 +92,13 @@ Die zwanzig Häuser von Artemis bilden eine überschaubare Anlage, kein Mehrfami
 
 ### Der Markt in der Umgebung
 
-Preisgrundlagen, Grenzen und Quellen auf der [Marktseite](/tenerife/mercado/).
+Preisbasis, Berechnungen und Quellen stehen auf der [Marktseite](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Wachstum im Modell
 
-@growth@% jährlich ist eine Modellannahme, keine gemessene Marktrate. Hauspreise werden bei Unterzeichnung fixiert. [Formeln](/tenerife/mercado/).
+Der Finanzplan rechnet mit @growth@% jährlichem Preiswachstum bis zur Unterzeichnung. Der Vertrag legt den Hauspreis fest. [Formeln](/tenerife/mercado/).
 
 ### Mieten im Norden
 

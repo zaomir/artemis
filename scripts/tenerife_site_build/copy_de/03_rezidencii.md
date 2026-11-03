@@ -19,7 +19,7 @@ Für den Winter zu zweit, den Umzug mit Familie oder ein Zuhause mit Platz für 
 | Zwei Schlafzimmer | 10 | 68–78 m² | @home_2_low@–@home_2_high@ € |
 | Großes Haus | 4 | 85–100 m² | @home_3_low@–@home_3_high@ € |
 
-Dies sind Modellwerte, keine freigegebene Preisliste bestimmter Häuser. Die Flächen umfassen Außenwände, ohne Gemeinschaftsflächen; Terrassen werden im Grundriss erläutert. Der Preis wird bei Unterzeichnung festgelegt. Bis dahin erhöht das Modell die Basis um @growth@% jährlich.
+Die Budgets beruhen auf der vorläufigen Modellbasis. Flächen umfassen Außenwände und schließen Gemeinschaftsflächen aus; Terrassen werden in den Grundrissen ausgewiesen. Der Hauspreis wird bei Unterzeichnung fixiert. Bis dahin rechnet das Modell mit @growth@% Wachstum jährlich.
 
 ## Ein Schlafzimmer · 48–55 m²
 
@@ -53,7 +53,7 @@ Kalkputz, Vulkansteinsockel, hohe Fenster mit Bronzerahmen und Steinterrassen. S
 
 Vorgeschlagen: 40% bei Unterzeichnung, weitere 30% beim Fundament, 10% beim Rohbau und 20% bei Schlussabrechnung. Späte Käufer zahlen bereits erreichte Bauabschnitte sofort.
 
-Sie kaufen eine bestimmte Residenz. Eine Beteiligung mit Barausstieg wird separat beschrieben und umfasst kein Haus zusätzlich zum Rückkauf. [Investoren](/tenerife/inversores/) · [Ablauf](/tenerife/proceso/).
+Sie kaufen die gewählte Residenz und erhalten nach Fertigstellung die Schlüssel. Für eine Beteiligung mit Barausstieg gibt es eine separate Berechnung. [Investoren](/tenerife/inversores/) · [Ablauf](/tenerife/proceso/).
 
 ### Berechnung anfordern
 

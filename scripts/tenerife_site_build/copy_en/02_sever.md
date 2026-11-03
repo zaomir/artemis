@@ -92,13 +92,13 @@ The twenty Artemis houses form a small, enclosed complex, not a tower block. One
 
 ### The market nearby
 
-Price references, their limits and sources are on the [market page](/tenerife/mercado/).
+Price references, calculations and sources are on the [market page](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Growth in the model
 
-The @growth@% annual increase is a financial-model assumption, not a measured market growth rate. Home prices lock at signing. [Formulas](/tenerife/mercado/).
+The financial plan assumes @growth@% annual price growth until signing. Each home’s price is fixed in its contract. [Formulas](/tenerife/mercado/).
 
 ### Letting in the north
 

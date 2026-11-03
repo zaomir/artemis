@@ -17,13 +17,13 @@ Key questions about money, timing and results. The base investment model has one
 
 **What does @target@% annualised mean?** A target effective return with compounding. Three years means @gain_pct@% above investment: @entry_72@ € → @exit_72@ € for 72 shares.
 
-**Is that result guaranteed?** It is the base scenario's target. Payment depends on actual sales receipts, the budget and exit timing.
+**Where can I read the calculation terms?** Actual sales, costs and exit timing determine the outcome. [Assumptions and outcome](/tenerife/inversores/#assumptions).
 
 **Can investors pay in instalments?** The model requires full upfront investment. The 40/30/10/20% milestones apply to homebuyers.
 
 ### Price and growth
 
-**Where does the @entry@ € early price come from?** It is 70% of the provisional @market@ €/m² reference, or @discount@% below it. Current comparable local new-build prices still need confirmation.
+**Where does the @entry@ € early price come from?** It is 70% of the model’s provisional @market@ €/m² reference, or @discount@% below it.
 
 **What does @growth@% growth mean?** An assumption for annual changes in unsold homes' prices. A signed contract fixes the price; growth is neither added retrospectively nor added to the investor's return.
 
@@ -33,11 +33,8 @@ Key questions about money, timing and results. The base investment model has one
 
 **Who funds construction?** The early investment pool and payments from buyers of twenty homes. The model includes no additional developer capital or bank debt.
 
-**Is the base scenario fully funded?** Its monthly schedule covers expenses and the target exit, with a minimum cash balance of @minimum_cash@ €. That calculation assumes sales and payments arrive on schedule.
+**How is the base budget structured?** The planned monthly calendar links the investment pool, buyer payments, costs and target exit settlement. [Project budget](/tenerife/inversores/#funding).
 
-**What if sales are delayed or costs rise?** The whole cash calendar needs recalculation. A two-month sales delay creates a @delay_gap@ € gap; at 2 100 €/m² construction cost the target buyback is not fully covered. No automatic developer top-up is modeled.
-
-**What if the project stops?** Return timing and amount will depend on the project's position, available cash and asset sales. The model does not fund an immediate return of all capital and income. Discuss the response before payment.
 
 ### Homes and investment
 

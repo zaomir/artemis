@@ -21,11 +21,11 @@ Choose an amount in euros. See your investment, target income and total exit pro
 
 For 72 shares: full investment @entry_72@ €, target exit proceeds @exit_72@ €, including income of @gain_72@ €. The total increase is @gain_pct@% over three years, equivalent to @target@% annualised with compounding.
 
-Formula: **exit proceeds = investment × (1 + @target@%)³**. This is the base scenario's target result. Actual payment depends on sales receipts, costs and exit timing.
+Base-scenario formula: **exit proceeds = investment × (1 + @target@%)³**.
 
 ### How construction is funded
 
-Two sources: the initial investment pool and payments from buyers of all twenty homes. Additional developer capital and bank debt are zero in the model. Investment capital is not home-sale revenue.
+Two sources: the initial investment pool and payments from buyers of twenty homes. The base funding plan includes no additional developer contribution or bank debt.
 
 | Base scenario | Amount |
 |---|---|
@@ -36,7 +36,7 @@ Two sources: the initial investment pool and payments from buyers of all twenty 
 | Investor capital and target income at exit | @pool_exit@ € |
 | Project balance after settlement | @surplus@ € |
 
-Buyer payments follow 40/30/10/20%. A late-signing buyer pays completed milestones immediately. The base monthly cash schedule has no funding gap; its lowest balance is @minimum_cash@ €. These are calculations, not capital already raised or contracts already signed.
+Buyers pay in stages of 40/30/10/20%. Buyers signing later pay completed milestones immediately. The planned monthly cash calendar links these receipts with construction spending and investor settlement.
 
 ### Project and current stage
 

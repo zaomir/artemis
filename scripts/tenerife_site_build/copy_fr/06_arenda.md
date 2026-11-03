@@ -19,13 +19,13 @@ Séjour lumineux, terrasse, climat intelligent et piscine chauffée. Choisissez 
 
 ### Pour louer à long terme
 
-Les locataires compareront plans, charges et accès à la ville. Avant d'acheter, consultez les annonces actuelles de biens équivalents et comptez vacance, entretien et réparations. Les loyers encaissés ne sont pas le revenu après dépenses.
+L’agencement, les charges et l’accès à la ville comptent pour un séjour long. Le calcul locatif tient compte de l’entretien, des réparations et des périodes entre locataires.
 
 [КАДР F05]
 
 ### Pour l'investisseur
 
-Le nouveau modèle ne conserve pas de portefeuille locatif pour des versements annuels. L'investisseur paie intégralement et reçoit de l'argent à la vente ou au rachat. Objectif : @target@% annualisé sur @months@ mois. [Modèle](/tenerife/inversores/).
+L’investisseur paie sa participation en une fois et reçoit un règlement en numéraire lors de la vente ou du rachat à la sortie. Le modèle vise @target@% annualisé sur @months@ mois. [Modèle d’investissement](/tenerife/inversores/).
 
 [КАДР F03]
 

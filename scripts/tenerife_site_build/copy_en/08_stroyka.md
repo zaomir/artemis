@@ -38,7 +38,7 @@ We are selecting a plot for twenty residences in La Quinta, Santa Úrsula. The p
 | By 33 | Main works and budgeted contingency paid |
 | 36 | Final buyer settlements and investor exit |
 
-This is the model's planned calendar. Actual dates depend on the plot, project readiness and sales.
+The project programme will be set for the selected plot using this planned schedule.
 
 [КАДР F16]
 
@@ -58,13 +58,13 @@ Boris Ribaut leads the structure, site and reporting. Simon Subic leads plot sel
 
 ### Paying for the works
 
-Initial investor capital and buyer milestone payments cover the budget. The base model includes no additional developer capital or bank debt. Each home-sale contract fixes the price at signing; growth is applied only before that date.
+Works are funded by the initial investment pool and buyer milestone payments. Contracts fix each home’s price at signing; planned growth applies before that date. [Project funding](/tenerife/inversores/#funding).
 
 [КАДР F12]
 
-### If the schedule changes
+### The cash calendar
 
-Sales delays or higher costs must be reflected in the updated cash schedule. Each next stage needs a funding source. [Funding and sensitivity](/tenerife/inversores/#funding).
+Weekly reports show paid works, receipts and the next stage’s budget. The calendar links construction, sales and settlement with project participants.
 
 ### Request a calculation
 

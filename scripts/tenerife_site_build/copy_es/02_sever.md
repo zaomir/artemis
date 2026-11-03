@@ -92,13 +92,13 @@ Las veinte casas de Artemis son un conjunto íntimo, no un bloque de viviendas. 
 
 ### El mercado cerca
 
-Referencias de precios, límites y fuentes en [mercado](/tenerife/mercado/).
+Referencias de precios, cálculos y fuentes en la página de [mercado](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
 ### Crecimiento en el modelo
 
-El @growth@% anual es una hipótesis del modelo, no una tasa de mercado medida. El precio se fija al firmar. [Fórmulas](/tenerife/mercado/).
+El plan financiero supone una subida anual del @growth@% hasta la firma. El contrato fija el precio de cada vivienda. [Fórmulas](/tenerife/mercado/).
 
 ### El alquiler en el norte
 

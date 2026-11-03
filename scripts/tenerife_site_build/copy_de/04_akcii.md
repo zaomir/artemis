@@ -21,11 +21,11 @@ Wählen Sie einen Betrag in Euro. Sie sehen Ihre Investition, den angestrebten E
 
 Beispiel mit 72 Aktien: volle Investition @entry_72@ €, Zielauszahlung @exit_72@ €, davon @gain_72@ € Ertrag. Der Gesamtzuwachs beträgt @gain_pct@% in drei Jahren, entsprechend @target@% jährlich mit Zinseszinseffekt.
 
-Formel: **Auszahlung = Investition × (1 + @target@%)³**. Dies ist das Ziel des Basisszenarios. Die tatsächliche Zahlung hängt von Verkaufseingängen, Kosten und Ausstiegszeitpunkt ab.
+Formel des Basisszenarios: **Auszahlung = Investition × (1 + @target@%)³**.
 
 ### Wie der Bau finanziert wird
 
-Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zwanzig Häuser. Zusätzliches Entwicklerkapital und Bankkredite betragen im Modell null. Beteiligungskapital wird nicht als Hausverkaufserlös gezählt.
+Zwei Quellen: der anfängliche Investorenpool und Zahlungen der Käufer von zwanzig Häusern. Der Basisplan sieht keinen zusätzlichen Entwicklerbeitrag und keinen Bankkredit vor.
 
 | Basisszenario | Betrag |
 |---|---|
@@ -36,7 +36,7 @@ Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zw
 | Investorenkapital und Zielertrag beim Ausstieg | @pool_exit@ € |
 | Projektrest nach Abrechnung | @surplus@ € |
 
-Käufer zahlen 40/30/10/20%. Bei später Unterzeichnung sind abgeschlossene Abschnitte sofort fällig. Der monatliche Basisplan hat keine Finanzierungslücke; der niedrigste Kontostand beträgt @minimum_cash@ €. Das sind Berechnungen, kein bereits eingeworbenes Kapital oder abgeschlossene Verträge.
+Käufer zahlen in Stufen von 40/30/10/20%. Bei späterer Unterzeichnung werden abgeschlossene Stufen sofort bezahlt. Der geplante monatliche Zahlungsplan verbindet diese Einnahmen mit Bauausgaben und der Abrechnung für Investoren.
 
 ### Projekt und aktueller Stand
 
