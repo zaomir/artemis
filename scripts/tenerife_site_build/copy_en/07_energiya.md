@@ -76,11 +76,11 @@ The Artemis dividend is calculated from long-term letting after costs: the house
 
 ### Why this matters for the price per metre
 
-A new house with sun on the roof and a stone outline costs more than an old flat of the same area and costs less to run. The neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre; both projects are sold. A finished Artemis house at handover is 3 800–4 600 € per metre. The same metre as a share in the developer company, on the waiting list, is 2 950 €: the energy performance of the house is part of the metre you pay for at the first-step price.
+The specification affects the home’s running costs and is already part of the residence. Finished-house prices and the comparison with share participation are on the [investor page](/tenerife/inversores/).
 
 ### Why this matters for a shareholder
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 The dividend is rent minus costs. The less the houses spend on electricity, water and the pool, the more of the rent remains. The estimated dividend is 2,5–3,5 % a year before company profit tax. The largest line is community fees at 21,0%, which cover the shared heated pool and the upkeep of the grounds. The less the shared systems draw from the grid, the lower that line.
 
@@ -104,5 +104,5 @@ On the northern slope the sun is softer than in the south, which is why it is no
 
 **How does this relate to the dividend?** Lower costs leave more of the rent for every share.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

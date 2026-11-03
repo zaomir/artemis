@@ -20,7 +20,7 @@
    "F03": "Piscina común de día, solado de piedra y casas Canary Stone"
   },
   "title": "Artemis de la Cruz — 20 residencias en La Quinta, Tenerife",
-  "h1": "20 residencias en La Quinta — desde 153 400 €"
+  "h1": "20 residencias en La Quinta, norte de Tenerife"
  },
  "norte": {
   "url": "/tenerife/es/norte/",
@@ -63,15 +63,15 @@
   "title": "Residencias Artemis: 20 casas de 48 a 100 m² en La Quinta",
   "h1": "Veinte residencias de 48 a 100 metros, una sola fachada Canary Stone"
  },
- "acciones": {
-  "url": "/tenerife/es/acciones/",
+ "inversores": {
+  "url": "/tenerife/es/inversores/",
   "file": "04_akcii.md",
   "frames": {
    "F14": "build-pit-3ab7c2",
    "F01": null,
    "F15": null,
-   "F16": "roof-montazh-6d90ef",
    "F17": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
@@ -81,8 +81,8 @@
    "F14": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela",
    "F16": "Cubierta plana con borde de bronce, paneles solares antes del montaje"
   },
-  "title": "Acciones de la sociedad promotora Artemis: 1 acción = 1 m²",
-  "h1": "Una acción, un metro: las acciones de la sociedad promotora Artemis"
+  "title": "Inversores — acciones de Artemis de la Cruz en La Quinta",
+  "h1": "Inversores: participar en Artemis de la Cruz antes de la entrega"
  },
  "calculadora": {
   "url": "/tenerife/es/calculadora/",
@@ -246,5 +246,16 @@
   },
   "title": "Boris Ribaut, jefe de obra de Artemis de la Cruz",
   "h1": "Soy Boris Ribaut, jefe de obra de Artemis de la Cruz"
+ },
+ "equipo": {
+  "url": "/tenerife/es/equipo/",
+  "file": "19_komanda.md",
+  "frames": {
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Equipo de Artemis de la Cruz — funciones y responsabilidades",
+  "h1": "El equipo de Artemis de la Cruz"
  }
 }

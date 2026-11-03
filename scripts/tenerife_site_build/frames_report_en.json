@@ -20,7 +20,7 @@
    "F03": "Communal pool by day, stone deck and Canary Stone houses"
   },
   "title": "Artemis de la Cruz – 20 residences at La Quinta, north Tenerife",
-  "h1": "20 residences at La Quinta – from 153 400 €"
+  "h1": "20 residences in La Quinta, northern Tenerife"
  },
  "norte": {
   "url": "/tenerife/norte/",
@@ -63,15 +63,15 @@
   "title": "Artemis residences: 20 houses from 48 to 100 m² at La Quinta",
   "h1": "Twenty residences from 48 to 100 metres, one Canary Stone façade"
  },
- "acciones": {
-  "url": "/tenerife/acciones/",
+ "inversores": {
+  "url": "/tenerife/inversores/",
   "file": "04_akcii.md",
   "frames": {
    "F14": "build-pit-3ab7c2",
    "F01": null,
    "F15": null,
-   "F16": "roof-montazh-6d90ef",
    "F17": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
@@ -81,8 +81,8 @@
    "F14": "Foundation pit and footings on the slope, stone terraces of the plot",
    "F16": "Flat roof with a bronze edge, solar panels ready for installation"
   },
-  "title": "Artemis developer shares: 1 share = 1 m²",
-  "h1": "One share, one metre: shares in the developer company Artemis"
+  "title": "For investors — Artemis de la Cruz shares in La Quinta",
+  "h1": "For investors: participate in Artemis de la Cruz before handover"
  },
  "calculadora": {
   "url": "/tenerife/calculadora/",
@@ -246,5 +246,16 @@
   },
   "title": "Boris Ribaut, chief builder of Artemis de la Cruz",
   "h1": "I am Boris Ribaut, chief builder of Artemis de la Cruz"
+ },
+ "equipo": {
+  "url": "/tenerife/equipo/",
+  "file": "19_komanda.md",
+  "frames": {
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Artemis de la Cruz team — roles and responsibilities",
+  "h1": "The Artemis de la Cruz team"
  }
 }

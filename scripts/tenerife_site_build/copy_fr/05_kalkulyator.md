@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/calculadora/
 Meta title: Calculatrice des actions Artemis de la Cruz: montant, versement, dividende
-Meta description: Choisissez la surface, le palier et le mode de paiement: montant de l'achat des actions, versement mensuel en six versements, prix des mêmes mètres à la livraison et dividende annuel estimé.
+Meta description: Choisissez surface, palier et paiement: montant d’achat, six échéances avec réduction de 5 %, prix de livraison et dividende estimé d’Artemis de la Cruz.
 OG title: Calculez vos actions Artemis de la Cruz
 -->
 
 # Calculatrice: vos mètres en actions de la société promotrice
 
-Choisissez une surface ou un type de résidence, un palier d'entrée et un mode de paiement. La calculatrice affiche le montant de l'achat des actions de la société promotrice, le versement mensuel pour un paiement en six versements, le prix des mêmes mètres au palier « Livraison » et le dividende en euros par an. Une action pour un mètre carré.
+Choisissez la surface ou le type de résidence, le palier d’entrée et le paiement. Le calculateur affiche le montant d’achat, le paiement en six échéances et le prix de livraison de la même surface. Le dividende est estimé à 2,5–3,5 % par an avant impôt sur les sociétés. Une action correspond à un mètre carré.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -21,7 +21,7 @@ Choisissez une surface ou un type de résidence, un palier d'entrée et un mode 
 
 **Le palier d'entrée.** Liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €.
 
-**Le mode de paiement.** En une fois ou en six versements égaux. La calculatrice ne calcule pas encore le bonus pour paiement intégral ni l'option « sur six mois ».
+**Mode de paiement.** Au comptant ou en six échéances égales. Les six échéances tiennent compte de la réduction de 5 %. «Au comptant» affiche le montant d’achat de base; le calculateur ne déduit pas la réduction pour paiement intégral.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -31,7 +31,7 @@ Choisissez une surface ou un type de résidence, un palier d'entrée et un mode 
 - **Le versement mensuel**: si vous payez en six versements.
 - **Le prix des mêmes mètres au palier « Livraison »**: 3 850 € le mètre.
 - **Le dividende**: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
-- **Le dividende rapporté à l'apport**: en pourcentage du montant de l'achat.
+- **Estimation du projet:** une fourchette indicative, distincte du coût des actions choisies.
 - **Deux voies après la livraison**: percevoir le dividende ou échanger les actions contre les mètres de votre résidence.
 
 ### Les formules
@@ -63,27 +63,25 @@ Tout est calculé ouvertement, sans coefficient caché:
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
-### Pourquoi le dividende est en euros et non en pourcentage
+### Estimation du dividende
 
-Une action, un mètre. Chaque mètre se loue de la même manière en longue durée; le dividende par action est donc identique: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés**. Celui qui est entré sur la liste d'attente obtient un pourcentage plus élevé sur son apport que celui qui est entré plus tard.
-
-D'où vient le pourcentage: le dividende se calcule à partir de la location longue durée du mètre, après déduction des charges — loyer, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien et taxe sur les déchets. Le résultat: 2,5–3,5 % par an en estimation avant impôt sur les sociétés, ce n'est pas une garantie.
+Les 2,5–3,5 % par an avant impôt sur les sociétés sont une estimation du projet, pas un paiement garanti. Elle est présentée séparément du coût des actions et n’est pas recalculée lors d’un changement de palier dans ce calculateur. Sources locatives, charges et hypothèses figurent dans le [modèle locatif](/tenerife/alquiler/).
 
 ### Si le palier est déjà plus avancé
 
-La calculatrice traite n'importe quel palier. Exemple: 72 mètres au palier « Gros œuvre et toiture »: 72 × 3 450 € = 248 400 €, soit 20 700 € par mois. Les mêmes mètres au prix de livraison: 277 200 €. Le dividende est le même: 2,5–3,5 % par an en estimation avant impôt sur les sociétés.
+Choisissez le palier correspondant dans le calculateur: montant et échéance sont actualisés selon la même formule. L’échelle complète et l’exemple de participation sont sur [Investisseurs](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
 ### Ordre d'entrée
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
 ### Après le calcul
 
-Appuyez sur le bouton: nous vous envoyons votre calcul par e-mail, avec la procédure d'entrée. La liste d'attente est gratuite, les actions s'achètent par contrat d'investissement après approbation du terrain par la majorité de la liste, le rapport de chantier arrive chaque semaine et, après la livraison, vous choisissez le dividende par action ou l'échange contre des mètres. Vous ne remplissez pas de champ de montant: nous reprenons la surface, le palier et le mode de paiement de la calculatrice.
+Laissez votre nom et vos coordonnées. Nous enverrons votre calcul et discuterons de la participation. La surface, le palier et le paiement proviennent du calculateur; vous ne saisissez pas de montant manuellement.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
-**Кнопка: «Recevoir mon calcul»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

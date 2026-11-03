@@ -46,23 +46,16 @@ At the end comes the completion certificate. From that moment the shares can be 
 
 The construction is financed by two flows: shares in the developer company and house sales. My job is to make every euro go into the stage that is rising on site. The price step rises when the stage is closed on site and visible in the report, not by the calendar.
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
-| What | When |
-|---|---|
-| Joining the waiting list | now, free of charge |
-| Buying shares | after the plot is approved by the majority of the waiting list: in full, over six months or over a year |
-| Construction start | as planned, early 2027 |
-| Handover | as planned, late 2028 – mid 2029 |
-| After handover | a dividend per share or an exchange for metres |
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
 ### The order of stages and the price steps
 
-Ground, foundation, shell, roof with panels, services, façade, interior works, pool, plot. Nine stages. The site is run by Boris Ribaut. The shareholder and the house buyer see every stage in the weekly report.
+The nine stages, planned dates and weekly report format are in [Project progress](/tenerife/construccion/).
 
-Six steps: waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell and roof 3 450 €, finishing 3 650 €, handover 3 850 € per metre. The further the construction goes, the more expensive entry becomes.
+The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
 
 ### What you get from my work
 
@@ -98,5 +91,5 @@ Ask me about the plot, the permits, the timetable, and what happens if a stage s
 
 **Who do I write to if the report differs from what I see on site?** Me.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

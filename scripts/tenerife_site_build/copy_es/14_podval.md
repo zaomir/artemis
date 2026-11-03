@@ -7,7 +7,7 @@
 
 **Artemis de la Cruz** — veinte residencias en el norte de Tenerife, con la parcela por elegir en el entorno de La Quinta, Santa Úrsula. Acciones de la sociedad promotora desde 2 900–3 100 € por metro. La inscripción en la lista de espera es gratuita: no cobramos nada hasta elegir la parcela.
 
-**Páginas.** Inicio · Residencia · Ubicación · Pago · Calculadora · Alquiler · Energía · Obra · Proceso · Inversores · Preguntas · Mercado y precio del m² · Promotor · Supervisor
+**Páginas.** Inicio · Residencias · Inversores · Ubicación · Avance del proyecto · Equipo · Calculadora · Alquiler · Energía · Operación · Preguntas · Mercado y precio por metro · Developer · Supervisor
 
 **Contactos.** info@artemisresort.com · WhatsApp: {номер из TENERIFE_WHATSAPP}
 

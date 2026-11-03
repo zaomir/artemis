@@ -8,63 +8,49 @@ OG title: Veinte residencias de 48 a 100 m² en el norte de Tenerife
 
 # Veinte residencias de 48 a 100 metros, una sola fachada Canary Stone
 
-Veinte residencias Artemis en La Quinta, Santa Úrsula: seis casas de un dormitorio de 48–55 m², diez de dos dormitorios de 68–78 m² y cuatro grandes de 85–100 m². La casa terminada en la entrega cuesta 3 800–4 600 € por metro. Ese mismo metro en acciones de la sociedad promotora dentro de la lista de espera cuesta 2 950 €: una acción es un metro cuadrado.
+Veinte residencias Artemis en La Quinta, Santa Úrsula: seis viviendas de un dormitorio de 48–55 m², diez de dos dormitorios de 68–78 m² y cuatro grandes de 85–100 m². Aquí se presentan tipos, arquitectura y equipamiento; la participación se explica en [Inversores](/tenerife/inversores/).
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Veinte de veinte
 
-| Tipo | De 20 | Superficie | Esta residencia = | En acciones de la lista de espera, 2 950 €/m² | Casa en la entrega, 3 800–4 600 €/m² |
-|---|---|---|---|---|---|
-| Un dormitorio | 6 | 48–55 m² | 48–55 acciones | 141 600–162 250 € | 182 400–253 000 € |
-| Dos dormitorios | 10 | 68–78 m² | 68–78 acciones | 200 600–230 100 € | 258 400–358 800 € |
-| Casa grande | 4 | 85–100 m² | 85–100 acciones | 250 750–295 000 € | 323 000–460 000 € |
+| Tipo | De 20 | Superficie | Casa en la entrega, 3 800–4 600 €/m² |
+| --- | --- | --- | --- |
+| Un dormitorio | 6 | 48–55 m² | 182 400–253 000 € |
+| Dos dormitorios | 10 | 68–78 m² | 258 400–358 800 € |
+| Casa grande | 4 | 85–100 m² | 323 000–460 000 € |
 
-En total, 1 308–1 510 m² de superficie habitable. Un conjunto íntimo, no un bloque de cientos de viviendas.
+En total, 1 308–1 510 m² construidos sin zonas comunes. Un conjunto íntimo, no un bloque de cientos de viviendas.
 
----
+
+Para la relación de una acción por m², la superficie es construida sin zonas comunes; no equivale a una declaración independiente de superficie útil o de terraza.
 
 ## Un dormitorio · 48–55 m² · 6 de 20
-
-**Esta residencia = 48–55 acciones de la sociedad promotora.**
 
 Para una persona sola o para una pareja. Para quien pasa el invierno en el norte, trabaja desde casa o viene a su casa varias veces al año. Una estancia abierta donde el salón y la cocina son un solo espacio, un dormitorio, un baño y una terraza tras el vidrio.
 
 Aquí no sobra nada: está lo necesario y nada por lo que hubiera que pagar sin usarlo. Una casa pequeña se mantiene mejor, se cierra con más facilidad un mes y se alquila con menos esfuerzo por temporadas largas.
 
-**En cifras.** 48 metros en acciones de la lista de espera son 141 600 €, o 22 420 € al mes en seis plazos. 55 metros son 162 250 €. Esos mismos 48–55 metros al precio del tramo «Entrega» son 184 800–211 750 €. Tras la entrega, 48–55 metros de su propia casa o un dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades. Si recoge las llaves y alquila por su cuenta, el alquiler de larga duración a los 12–15 € por metro de mercado da 576–825 € al mes.
-
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
----
 
 ## Dos dormitorios · 68–78 m² · 10 de 20
-
-**Esta residencia = 68–78 acciones de la sociedad promotora.**
 
 La mitad del conjunto. El segundo dormitorio se convierte en habitación para los niños, para invitados o en despacho. El salón se abre a la terraza de piedra y la luz entra por ventanas altas con carpintería de bronce, situadas a buena profundidad en el muro: en verano el hueco da sombra, en invierno deja pasar el sol bajo.
 
 Es la casa para una familia que se traslada al norte y para quien vive aquí medio año y alquila el resto. En alquiler de larga duración, 72 metros en el norte a los 12–15 € por metro de mercado rentan 864–1 080 € al mes.
 
-**En cifras.** 72 metros en acciones de la lista de espera son 212 400 €, o 33 630 € al mes en seis plazos. Todo el rango de 68–78 metros, 200 600–230 100 €. Al precio del tramo «Entrega», 72 metros son 277 200 €. Tras la entrega, su casa o un dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
-
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
 [КАДР F08] <!-- служебная пометка, не публикуется -->
 
----
 
 ## Casa grande · 85–100 m² · 4 de 20
 
-**Esta residencia = 85–100 acciones de la sociedad promotora.**
-
 Cuatro casas en todo el conjunto. Para quien llega al norte en serio y para quedarse: más habitaciones, más terraza, más luz, sitio para invitados y para trabajar. Una casa en la que se permanece, no en la que se pasan las vacaciones.
-
-**En cifras.** 100 metros en acciones de la lista de espera son 295 000 €, o unos 46 708 € al mes en seis plazos. 85 metros son 250 750 €. La casa terminada de 100 metros en la entrega, desde 380 000 €. Al precio del tramo «Entrega», esas 85–100 acciones son 327 250–385 000 €. Tras la entrega, su casa o un dividendo sobre 85–100 acciones: 7 395–8 700 € al año estimados antes del impuesto sobre sociedades. El alquiler de larga duración de una casa así a los 12–15 € por metro de mercado da 1 020–1 500 € al mes.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 
----
 
 ### Lo que comparten las veinte
 
@@ -83,9 +69,9 @@ Cuatro casas en todo el conjunto. Para quien llega al norte en serio y para qued
 
 ### Casa o acciones
 
-**La casa.** Obra nueva terminada en la entrega a 3 800–4 600 € por metro, según el tipo, la planta y las vistas. Al comprador de una vivienda, nuestros brókers le ayudan a obtener una hipoteca en bancos de España y de otros países de Europa. El inversor puede aportar el 50% con fondos propios y cubrir el resto con una hipoteca cuando llegue la licencia de obra.
+El modelo de participación, los precios por fases y los dos resultados están en la página de [inversores](/tenerife/inversores/).
 
-**Acciones de la sociedad promotora.** La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 ### En breve
 
@@ -97,5 +83,5 @@ Cuatro casas en todo el conjunto. Para quien llega al norte en serio y para qued
 
 **¿Cuánto cuesta el metro en acciones?** 2 950 € en la lista de espera.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

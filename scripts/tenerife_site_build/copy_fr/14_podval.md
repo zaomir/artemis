@@ -7,7 +7,7 @@
 
 **Artemis de la Cruz**: vingt résidences dans le nord de Tenerife, terrain en cours de choix dans le secteur de La Quinta, à Santa Úrsula. Actions de la société promotrice à partir de 2 900–3 100 € le mètre. L'inscription sur la liste d'attente est gratuite et nous n'encaissons rien avant le choix du terrain.
 
-**Страницы.** Accueil · Résidence · Emplacement · Paiement · Calculatrice · Location · Énergie · Chantier · Transaction · Investisseurs · Questions · Marché et prix du mètre · Developer · Supervisor
+**Страницы.** Accueil · Résidences · Investisseurs · Le lieu · Avancement du projet · Équipe · Calculateur · Location · Énergie · Opération · Questions · Marché et prix au mètre · Developer · Supervisor
 
 **Контакты.** info@artemisresort.com · WhatsApp: {номер из TENERIFE_WHATSAPP}
 

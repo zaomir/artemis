@@ -76,11 +76,11 @@ Le dividende Artemis se calcule sur la location longue durée après charges: la
 
 ### Pourquoi c'est important pour le prix du mètre
 
-Une maison neuve avec le soleil sur le toit et une enveloppe de pierre coûte plus cher qu'un appartement ancien de même surface, et moins cher à entretenir. Les programmes voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre; les deux sont vendus. Une maison Artemis achevée, à la livraison: 3 800–4 600 € le mètre. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €. L'énergie de la maison fait partie du prix du mètre que vous payez au premier palier.
+Les équipements influent sur les charges du logement et font déjà partie de la résidence. Prix des maisons achevées et comparaison avec la participation par actions sur [Investisseurs](/tenerife/inversores/).
 
 ### Pourquoi c'est important pour l'actionnaire
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
 Le dividende, c'est le loyer moins les charges. Moins les maisons dépensent en électricité, en eau et pour la piscine, plus il reste du loyer. Le dividende estimé: 2,5–3,5 % par an avant impôt sur les sociétés. Le poste le plus lourd, les charges de copropriété, 21,0%: elles couvrent la piscine commune chauffée et l'entretien des extérieurs. Moins les équipements communs consomment sur le réseau, plus ce poste baisse.
 
@@ -104,5 +104,5 @@ Sur le versant nord, le soleil est plus doux qu'au sud, et c'est pourquoi l'endr
 
 **Quel lien avec le dividende?** Moins de charges, plus de loyer restant par action.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

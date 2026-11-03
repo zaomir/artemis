@@ -409,3 +409,29 @@ a:hover{color:var(--cs-ink)}
 .lang-ru a{color:inherit;text-decoration:none}
 .lang-ru a:hover{opacity:1;text-decoration:underline}
 @media (max-width:767px){.langs{display:none}}
+
+/* Investor navigation: the existing Canary Stone tokens, with one clear primary hierarchy. */
+.header__in{gap:var(--space-3)}
+.brand{order:0;flex-shrink:0}
+.nav{order:1;margin-left:auto}
+.langs{order:2;margin-left:0;margin-right:0;gap:var(--space-1)}
+.langs a{display:inline-flex;align-items:center;justify-content:center;min-height:var(--touch-min);padding-inline:var(--space-2)}
+.burger{order:3}
+.nav .header__cta,.sheet .header__cta{font-weight:600;text-decoration:underline;text-underline-offset:var(--underline-offset-nav)}
+.sheet__langs{display:flex;gap:var(--space-3);margin-top:var(--space-5)}
+.sheet__langs a{min-width:var(--touch-min);justify-content:center}
+@media (min-width:1024px) and (max-width:1279px){.nav{display:none}.burger{display:inline-flex}}
+@media (max-width:1279px){.langs{margin-left:auto}}
+.anchor-alias{display:block;block-size:0;inline-size:0;overflow:hidden;scroll-margin-top:calc(var(--header-h) + var(--space-4))}
+.section > .calc-sec > .wrap{padding-inline:0}
+.f-pages__groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
+.f-pages__group h3{font-family:var(--font-text);font-size:var(--fs-body);margin:0 0 var(--space-3);font-weight:600}
+.f-pages ul{columns:1}
+.f-pages a{display:inline-flex;align-items:center;min-height:var(--touch-min);max-inline-size:100%;overflow-wrap:anywhere}
+.f-about{order:1}.f-contact{order:2}.f-pages{order:3;grid-column:1/-1}
+@media (min-width:768px){.f-about{grid-column:span 4}.f-contact{grid-column:span 4}.f-pages__groups{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1024px){.f-about{grid-column:1/span 8}.f-contact{grid-column:10/span 3}.f-pages{grid-column:1/-1}}
+/* The portfolio stays in the same horizontal composition, under the reader's control. */
+.s--cases .cases__viewport{overflow-x:auto;scroll-snap-type:x proximity}
+.cases__track{animation:none}
+.case{scroll-snap-align:start}

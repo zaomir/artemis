@@ -20,7 +20,7 @@
    "F03": "Gemeinschaftspool am Tag, Steinplatten und Canary-Stone-Häuser"
   },
   "title": "Artemis de la Cruz — 20 Residenzen in La Quinta, Teneriffa",
-  "h1": "20 Residenzen in La Quinta — ab 153 400 €"
+  "h1": "20 Residenzen in La Quinta im Norden Teneriffas"
  },
  "norte": {
   "url": "/tenerife/de/norte/",
@@ -63,15 +63,15 @@
   "title": "Residenzen Artemis: 20 Häuser von 48 bis 100 m²",
   "h1": "Zwanzig Residenzen von 48 bis 100 Metern, eine Fassade: Canary Stone"
  },
- "acciones": {
-  "url": "/tenerife/de/acciones/",
+ "inversores": {
+  "url": "/tenerife/de/inversores/",
   "file": "04_akcii.md",
   "frames": {
    "F14": "build-pit-3ab7c2",
    "F01": null,
    "F15": null,
-   "F16": "roof-montazh-6d90ef",
    "F17": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
@@ -81,8 +81,8 @@
    "F14": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks",
    "F16": "Flachdach mit Bronzekante, Solarmodule vor der Montage"
   },
-  "title": "Artemis-Aktien der Bauträgergesellschaft: 1 Aktie = 1 m²",
-  "h1": "Eine Aktie — ein Meter: die Aktien der Bauträgergesellschaft Artemis"
+  "title": "Für Investoren — Artemis-de-la-Cruz-Aktien in La Quinta",
+  "h1": "Für Investoren: vor der Fertigstellung an Artemis de la Cruz beteiligen"
  },
  "calculadora": {
   "url": "/tenerife/de/calculadora/",
@@ -246,5 +246,16 @@
   },
   "title": "Boris Ribaut, leitender Bauleiter bei Artemis de la Cruz",
   "h1": "Ich bin Boris Ribaut, leitender Bauleiter von Artemis de la Cruz"
+ },
+ "equipo": {
+  "url": "/tenerife/de/equipo/",
+  "file": "19_komanda.md",
+  "frames": {
+   "F22": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Das Team von Artemis de la Cruz — Rollen und Verantwortung",
+  "h1": "Das Team von Artemis de la Cruz"
  }
 }

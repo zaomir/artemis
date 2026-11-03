@@ -46,23 +46,16 @@ Am Ende steht die Nutzungsgenehmigung. Von diesem Moment an können die Aktien g
 
 Der Bau wird aus zwei Strömen finanziert: den Aktien der Bauträgergesellschaft und dem Verkauf der Häuser. Meine Aufgabe ist, dass jeder Euro in die Phase geht, die auf dem Grundstück entsteht. Die Preisstufe steigt, wenn eine Phase auf der Baustelle abgeschlossen und im Bericht sichtbar ist, nicht nach Kalender.
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
-| Was | Wann |
-|---|---|
-| Eintragung in die Warteliste | jetzt, kostenlos |
-| Kauf der Aktien | nach Freigabe des Grundstücks durch die Mehrheit der Warteliste: sofort, über ein halbes Jahr oder über ein Jahr |
-| Baubeginn | nach Plan Anfang 2027 |
-| Fertigstellung | nach Plan Ende 2028 – Mitte 2029 |
-| Nach der Fertigstellung | Dividende je Aktie oder Tausch gegen Meter |
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
 ### Reihenfolge der Phasen und die Preisstufen
 
-Grundstück, Fundament, Rohbau, Dach mit Modulen, Technik, Fassade, Innenausbau, Pool, Außenanlagen. Neun Phasen. Die Baustelle führt Boris Ribaut. Jede Phase sehen der Aktionär und der Hauskäufer im wöchentlichen Bericht.
+Die neun Phasen, geplanten Termine und das Format des Wochenberichts stehen unter [Projektverlauf](/tenerife/construccion/).
 
-Sechs Stufen: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €, Fertigstellung — 3 850 € pro Meter. Je weiter der Bau, desto teurer der Einstieg.
+Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
 
 ### Was Sie durch meine Arbeit erhalten
 
@@ -98,5 +91,5 @@ Fragen Sie mich nach dem Grundstück, den Genehmigungen, den Terminen und danach
 
 **Wem schreiben, wenn der Bericht nicht zu dem passt, was Sie auf der Baustelle sehen?** Mir.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

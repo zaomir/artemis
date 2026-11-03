@@ -134,10 +134,10 @@ class IndexingDefaultTest(R4Case):
             self.assertLess(body.index(ROBOTS), body.index("</head>"), url)
 
     def test_every_tenerife_page_x_robots_tag(self):
-        """QA PS-03: unset TENERIFE_INDEXING -> header too, on all 13 pages + impressum/privacy (+ gracias)."""
+        """QA PS-03: unset TENERIFE_INDEXING -> header too, on all content pages + impressum/privacy (+ gracias)."""
         self.assertIn("/tenerife/impressum/", URLS)
         self.assertIn("/tenerife/privacy/", URLS)
-        self.assertEqual(len(URLS), 16)
+        self.assertEqual(len(URLS), len(build_v3.PAGES) + 3)
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)
@@ -427,7 +427,8 @@ class BuildWhatsAppTokenTest(unittest.TestCase):
 
     def test_draft_18_is_not_built_or_hashed(self):
         names = [f.name for f in build_v3.copy_files()]
-        self.assertEqual(len(names), 17)
+        self.assertEqual(set(names), {f for f, _ in build_v3.PAGES} |
+                         {build_v3.FOOTER, "15_impressum.md", "16_privacy.md", build_v3.FORMA})
         self.assertFalse(any(n.startswith("18_") for n in names))
         self.assertNotIn("investoram", " ".join(n for _f, n in build_v3.PAGES))
         self.assertFalse((SITE / "investoram.html").exists())

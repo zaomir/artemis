@@ -76,11 +76,11 @@ El dividendo de Artemis se calcula a partir del alquiler de larga duración una 
 
 ### Por qué importa para el precio del metro
 
-Una casa nueva con sol en la cubierta y perímetro de piedra cuesta más que un piso antiguo de la misma superficie y menos de mantener. Las obras nuevas vecinas de La Quinta se ofrecían a 3 360–3 870 € por metro y los dos proyectos están vendidos. La casa Artemis terminada en la entrega cuesta 3 800–4 600 € por metro. Ese mismo metro en acciones de la sociedad promotora dentro de la lista de espera cuesta 2 950 €: la energía de la casa forma parte del precio del metro que usted paga al precio del primer tramo.
+El equipamiento influye en los gastos de mantenimiento y forma parte de la residencia. Precios de viviendas terminadas y comparación con la participación en acciones en [Inversores](/tenerife/inversores/).
 
 ### Por qué importa para el accionista
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 El dividendo es el alquiler menos los gastos. Cuanto menos gastan las casas en electricidad, agua y piscina, más queda del alquiler. El dividendo estimado es de un 2,5–3,5 % anual antes del impuesto sobre sociedades. La partida mayor son las cuotas de comunidad, un 21,0%: incluyen la piscina climatizada y el mantenimiento de la urbanización. Cuanto menos consumen los sistemas comunes de la red, más baja es esa partida.
 
@@ -104,5 +104,5 @@ En la ladera norte el sol es más suave que en el sur, y por eso aquí no hace c
 
 **¿Cómo se relaciona con el dividendo?** Menos gastos significan más alquiler disponible por cada acción.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

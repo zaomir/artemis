@@ -91,7 +91,7 @@ Un no residente que financie el 70% del precio necesita aportar de su bolsillo u
 
 ### El dinero de la obra
 
-La obra la pagan las acciones de la sociedad promotora y la venta de viviendas. Cada fase de obra cambia el tramo de precio: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €; entrega, 3 850 € por metro.
+El modelo de participación, los precios por fases y los dos resultados están en la página de [inversores](/tenerife/inversores/).
 
 ### Quién lleva la operación
 
@@ -101,7 +101,7 @@ La obra la pagan las acciones de la sociedad promotora y la venta de viviendas. 
 
 ### El orden de entrada
 
-La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la parcela en el entorno de La Quinta, Santa Úrsula, y hablamos de las opciones con quienes están en la lista. No cobramos nada hasta elegir la parcela: el contrato de inversión llega cuando la mayoría de la lista apruebe la parcela. Con ese contrato usted compra acciones de la sociedad promotora al precio del tramo vigente: una acción es un metro. Al contado, una bonificación del 10%; a plazos en seis meses, del 5%; a plazos en un año, sin bonificación. Cada semana de obra hay un informe y, tras la entrega de la vivienda, un dividendo en euros por cada acción procedente del alquiler de larga duración una vez descontados los gastos, estimado, antes del impuesto sobre sociedades, o el canje de acciones por metros de su residencia.
+La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
 
 ### En breve
 
@@ -115,5 +115,5 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿Qué impuestos tiene el canje?** IGIC 7% y AJD 1%, más notario y registro.
 
-**Кнопка: «Apuntarme a la lista de espera»**
+**Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

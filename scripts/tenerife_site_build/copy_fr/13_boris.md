@@ -56,11 +56,7 @@ De l'intérieur: de hautes fenêtres, profondément encastrées dans le mur. En 
 
 ### L'ordre des étapes
 
-Le terrain. Les fondations. Le gros œuvre. La toiture avec panneaux. Les installations techniques. La façade. Les travaux intérieurs. La piscine. Les aménagements extérieurs. Le rapport paraîtra chaque semaine. Les actionnaires et les acquéreurs le reçoivent.
-
-Les étapes font aussi monter le prix de l'action: le permis porte le mètre à 3 100 €, les fondations à 3 250 €, le gros œuvre et la toiture à 3 450 €, les finitions à 3 650 €, la livraison à 3 850 €. C'est pourquoi je clos chaque étape par un contrôle, et non par des paroles.
-
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+Les neuf étapes, le calendrier prévu et le format du rapport hebdomadaire figurent dans [Avancement du projet](/tenerife/construccion/).
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -104,5 +100,5 @@ Directement. Interrogez-moi sur les fondations, sur la toiture, sur la manière 
 
 **Quand la livraison?** Selon le plan: fin 2028 – mi-2029.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

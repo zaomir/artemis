@@ -218,7 +218,7 @@ class LayoutMarkupTest(Base):
         h = self.page("/en/")
         self.assertRegex(h, r"\.btn\{[^}]*min-height:44px")
         self.assertRegex(h, r"#enquiry-form-wrap \.btn\{[^}]*min-height:48px")
-        self.assertIn('<button class="btn" type="button" onclick="submitEnquiry()">', h)
+        self.assertIn('<button class="btn" type="submit">', h)
 
     def test_compact_mobile_header(self):
         for lang in LANGS:

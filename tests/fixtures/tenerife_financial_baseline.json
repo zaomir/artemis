@@ -1,0 +1,485 @@
+{
+  "model_sha256": "d1771ba8a3fe890c7a2e4f42d0273eef7d027b927410e668765bc773db4fd39c",
+  "cases": [
+    {
+      "m2": 48,
+      "step": "queue",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 141600,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 48,
+      "step": "queue",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 141600,
+        "calc_month_eur": 22420
+      }
+    },
+    {
+      "m2": 48,
+      "step": "permit",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 148800,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 48,
+      "step": "permit",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 148800,
+        "calc_month_eur": 23560
+      }
+    },
+    {
+      "m2": 48,
+      "step": "foundation",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 156000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 48,
+      "step": "foundation",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 156000,
+        "calc_month_eur": 24700
+      }
+    },
+    {
+      "m2": 48,
+      "step": "shell_roof",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 165600,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 48,
+      "step": "shell_roof",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 165600,
+        "calc_month_eur": 26220
+      }
+    },
+    {
+      "m2": 48,
+      "step": "finishing",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 175200,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 48,
+      "step": "finishing",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 48,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 175200,
+        "calc_month_eur": 27740
+      }
+    },
+    {
+      "m2": 52,
+      "step": "queue",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 153400,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 52,
+      "step": "queue",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 153400,
+        "calc_month_eur": 24288
+      }
+    },
+    {
+      "m2": 52,
+      "step": "permit",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 161200,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 52,
+      "step": "permit",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 161200,
+        "calc_month_eur": 25523
+      }
+    },
+    {
+      "m2": 52,
+      "step": "foundation",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 169000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 52,
+      "step": "foundation",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 169000,
+        "calc_month_eur": 26758
+      }
+    },
+    {
+      "m2": 52,
+      "step": "shell_roof",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 179400,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 52,
+      "step": "shell_roof",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 179400,
+        "calc_month_eur": 28405
+      }
+    },
+    {
+      "m2": 52,
+      "step": "finishing",
+      "pay": "now",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 189800,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 52,
+      "step": "finishing",
+      "pay": "m6",
+      "result": {
+        "calc_type": "one_bed",
+        "calc_shares": 52,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 189800,
+        "calc_month_eur": 30052
+      }
+    },
+    {
+      "m2": 72,
+      "step": "queue",
+      "pay": "now",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 212400,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 72,
+      "step": "queue",
+      "pay": "m6",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 212400,
+        "calc_month_eur": 33630
+      }
+    },
+    {
+      "m2": 72,
+      "step": "permit",
+      "pay": "now",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 223200,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 72,
+      "step": "permit",
+      "pay": "m6",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 223200,
+        "calc_month_eur": 35340
+      }
+    },
+    {
+      "m2": 72,
+      "step": "foundation",
+      "pay": "now",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 234000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 72,
+      "step": "foundation",
+      "pay": "m6",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 234000,
+        "calc_month_eur": 37050
+      }
+    },
+    {
+      "m2": 72,
+      "step": "shell_roof",
+      "pay": "now",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 248400,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 72,
+      "step": "shell_roof",
+      "pay": "m6",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 248400,
+        "calc_month_eur": 39330
+      }
+    },
+    {
+      "m2": 72,
+      "step": "finishing",
+      "pay": "now",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 262800,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 72,
+      "step": "finishing",
+      "pay": "m6",
+      "result": {
+        "calc_type": "two_bed",
+        "calc_shares": 72,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 262800,
+        "calc_month_eur": 41610
+      }
+    },
+    {
+      "m2": 100,
+      "step": "queue",
+      "pay": "now",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 295000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 100,
+      "step": "queue",
+      "pay": "m6",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 2950,
+        "calc_amount": 295000,
+        "calc_month_eur": 46708
+      }
+    },
+    {
+      "m2": 100,
+      "step": "permit",
+      "pay": "now",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 310000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 100,
+      "step": "permit",
+      "pay": "m6",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3100,
+        "calc_amount": 310000,
+        "calc_month_eur": 49083
+      }
+    },
+    {
+      "m2": 100,
+      "step": "foundation",
+      "pay": "now",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 325000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 100,
+      "step": "foundation",
+      "pay": "m6",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3250,
+        "calc_amount": 325000,
+        "calc_month_eur": 51458
+      }
+    },
+    {
+      "m2": 100,
+      "step": "shell_roof",
+      "pay": "now",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 345000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 100,
+      "step": "shell_roof",
+      "pay": "m6",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3450,
+        "calc_amount": 345000,
+        "calc_month_eur": 54625
+      }
+    },
+    {
+      "m2": 100,
+      "step": "finishing",
+      "pay": "now",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 365000,
+        "calc_month_eur": null
+      }
+    },
+    {
+      "m2": 100,
+      "step": "finishing",
+      "pay": "m6",
+      "result": {
+        "calc_type": "large",
+        "calc_shares": 100,
+        "calc_price_eur_m2": 3650,
+        "calc_amount": 365000,
+        "calc_month_eur": 57792
+      }
+    }
+  ]
+}

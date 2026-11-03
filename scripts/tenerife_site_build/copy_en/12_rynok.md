@@ -27,6 +27,8 @@ This is mostly second-hand housing: houses and flats of various ages. A new buil
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
+The original data periods differ: Fotocasa is October 2026; Engel & Völkers and RealAdvisor are 2026. The Kelify rental examples below are a snapshot of 31.10.2026; its district index is March 2026. These are historical snapshots from the project’s source material, not new measurements on the viewing date. Publishers and periods are named in the tables; asking prices are not completed transaction prices.
+
 ### How the price is rising
 
 Santa Úrsula rose by 13,7% over the year on the Fotocasa index. Flats in Santa Úrsula, according to Engel & Völkers, rose by 14,27% in 2024 and by 17,72% in 2025. The north of Tenerife is becoming more expensive faster than those who know only the southern coast are used to thinking.
@@ -44,18 +46,7 @@ The neighbouring new developments at La Quinta were offered at 3 360–3 870 €
 
 ### The Artemis steps next to the market
 
-| Step | € per m² |
-|---|---|
-| Waiting list | 2 950 |
-| Permit | 3 100 |
-| Foundation | 3 250 |
-| Shell and roof | 3 450 |
-| Finishing | 3 650 |
-| Handover | 3 850 |
-
-The market for comparison is in the tables above: second-hand housing in the La Quinta district at 2 812 € per metre, and the asking prices of the neighbouring new developments at 3 360–3 870 €.
-
-Entry on the waiting list costs as much as second-hand housing in the district, and a metre at handover as much as a new build. The difference between them is the construction you go through together with the company. Buying at the project stage in Spain usually costs 10–20% less than finished housing: that is how the market works, not only Artemis.
+The tables above compare different segments: existing housing in La Quinta at 2 812 € per m² and neighbouring new-development asking prices of 3 360–3 870 €. These are market benchmarks, not the company’s share price. The detailed ladder and its trigger events are on the [investor page](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -73,25 +64,7 @@ For example, listings in La Quinta itself on Kelify (snapshot 31.10.2026): 80 m�
 
 ### From rent to dividend
 
-The Canary Islands law Ley 6/2025 rules out short-term holiday letting in new builds. The Artemis dividend is therefore calculated from long-term letting only:
-
-- rent: 13,5 € per metre a month, the midpoint of the market's 12–15 €;
-- over a year: 13,5 × 12 = 162 € per metre;
-- less 46,3% of costs across seven lines, 75 € per metre;
-- what remains is the rent after costs; the dividend is published as a percentage — an estimated 2,5–3,5 % a year before company profit tax.
-
-| Line | € per metre a year | % of 162 € | Basis of the calculation |
-|---|---|---|---|
-| IBI, property tax | 3,75 | 2,3% | 300 € a year for 80 m² in Tenerife; the Santa Úrsula rate is 0,40% |
-| Community fees | 34,1 | 21,0% | 200–400 € a month in complexes with a heated pool; the calculation uses 200 € for an average house of about 70 m² |
-| Letting management | 17,3 | 10,7% | 8–12% of the rent plus IGIC 7%; the calculation uses 10% |
-| Vacancy between tenants | 6,75 | 4,2% | half a month a year in a strong market |
-| Insurance | 3,5 | 2,2% | 280 € a year for 80 m² in Tenerife |
-| Repair reserve | 8,1 | 5,0% | 4–6% of the rent for a new house |
-| Refuse charge (basura) | 1,5 | 0,9% | 100–150 € a year, paid by the owner; the calculation uses 120 € for 80 m² |
-| **Total** | **75,0** | **46,3%** | |
-
-In the mild scenario, with the same 200 € of fees on a larger house of 75,5 m², management at 8% and repairs at 4%, costs are 41,8% and the estimate is about 94 € per share. In the strict one, with rent of 12 € per metre, 200 € of fees on a smaller house of 65,4 m², management at 12%, a month of vacancy and repairs at 6%, costs are 58,7% and the figure is about 59 €. The estimated dividend is 2,5–3,5 % a year before company profit tax.
+Long-term letting, costs and calculation assumptions are explained in the [rental model](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,13 +75,15 @@ In the mild scenario, with the same 200 € of fees on a larger house of 75,5 m�
 | 10-year Bund, 30.10.2026 | 3,34% |
 | 1-year Festgeld, top-10 average | 3,52% |
 | Gross rental yield, the 52 largest German cities, H1 2026 | 4,17% |
-| Estimated dividend against the entry price | 2,5–3,5% a year |
+| Artemis dividend estimate | 2,5–3,5% a year |
 
-The dividend per share is the same, while the percentage against the money invested depends on the step at which you entered. The figure is calculated before company profit tax.
+The Artemis dividend is a project estimate of 2,5–3,5 % a year before company profit tax, not guaranteed. It is a separate measure: comparison with a deposit rate or gross rental yield requires attention to the basis and costs. [Rental model and assumptions](/tenerife/alquiler/).
 
 ### How it works
 
-Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
+The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
+
+Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
@@ -122,5 +97,5 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **Where does the percentage come from?** The dividend is calculated from the long-term rent of a metre after costs: IBI, community fees, management, vacancy, insurance, repair reserve, refuse charge. The result: an estimated 2,5–3,5 % a year before company profit tax.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

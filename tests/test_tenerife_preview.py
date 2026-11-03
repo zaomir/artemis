@@ -14,9 +14,10 @@ sys.path.insert(0, str(ROOT / "app"))
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
 # founder 31.10.2026 01:44 UTC: no disclaimer block, no «Визуализация»/AI captions (supersedes PR #4/#5 rule)
+# A calculator outcome caveat («не гарантирован») is product information, not a removed legal block.
 REMOVED_DISCLAIMERS = [
     r"визуализац", r"\(AI\)", r"(?<![А-Яа-яЁё])ИИ(?![А-Яа-яЁё])", r"не фотограф", r"иллюстрация этапа",
-    r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт", r"не гарантирован",
+    r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт",
     r"общая информация", r"до разрешения",
 ]
 

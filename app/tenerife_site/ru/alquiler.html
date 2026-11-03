@@ -35,24 +35,14 @@
   <div class="wrap header__in">
     <a class="brand" href="/tenerife/ru/">Artemis de la Cruz</a>
     <nav class="langs" aria-label="Язык"><a href="https://artemisresort.com/tenerife/alquiler/?lang=en">EN</a><a href="https://artemisresort.com/tenerife/es/alquiler/">ES</a><a href="https://artemisresort.com/tenerife/de/alquiler/">DE</a><a href="https://artemisresort.com/tenerife/fr/alquiler/">FR</a></nav>
-    <nav class="nav" aria-label="Main menu">
+    <nav class="nav" aria-label="Основное меню">
       <ul>
-        <li><a href="/tenerife/ru/producto/">Резиденция</a></li>
+        <li><a href="/tenerife/ru/producto/">Резиденции</a></li>
+        <li><a href="/tenerife/ru/inversores/">Инвесторам</a></li>
         <li><a href="/tenerife/ru/norte/">Локация</a></li>
-        <li><a href="/tenerife/ru/acciones/">Оплата</a></li>
-        <li><a href="/tenerife/ru/proceso/">Сделка</a></li>
-        <li><details><summary>Информация</summary>
-          <ul>
-            <li><a href="/tenerife/ru/calculadora/">Калькулятор</a></li>
-            <li><a href="/tenerife/ru/construccion/">Стройка</a></li>
-            <li><a href="/tenerife/ru/faq/">Вопросы</a></li>
-            <li><a href="/tenerife/ru/alquiler/" aria-current="page">Аренда</a></li>
-            <li><a href="/tenerife/ru/energia/">Энергия</a></li>
-            <li><a href="/tenerife/ru/mercado/">Рынок и цена метра</a></li>
-            <li><a href="/tenerife/ru/simon/">Developer</a></li>
-            <li><a href="/tenerife/ru/boris/">Supervisor</a></li>
-          </ul>
-        </details></li>
+        <li><a href="/tenerife/ru/construccion/">Ход проекта</a></li>
+        <li><a href="/tenerife/ru/equipo/">Команда</a></li>
+        <li><a class="header__cta" href="#ochered">Получить расчёт</a></li>
       </ul>
     </nav>
     <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>Меню</a>
@@ -60,21 +50,15 @@
   <div class="sheet" id="sheet" hidden>
     <nav aria-label="Меню">
       <ul>
-        <li><a href="/tenerife/ru/">Главная</a></li>
-        <li><a href="/tenerife/ru/producto/">Резиденция</a></li>
+        <li><a href="/tenerife/ru/producto/">Резиденции</a></li>
+        <li><a href="/tenerife/ru/inversores/">Инвесторам</a></li>
         <li><a href="/tenerife/ru/norte/">Локация</a></li>
-        <li><a href="/tenerife/ru/acciones/">Оплата</a></li>
-        <li><a href="/tenerife/ru/calculadora/">Калькулятор</a></li>
-        <li><a href="/tenerife/ru/alquiler/" aria-current="page">Аренда</a></li>
-        <li><a href="/tenerife/ru/energia/">Энергия</a></li>
-        <li><a href="/tenerife/ru/construccion/">Стройка</a></li>
-        <li><a href="/tenerife/ru/proceso/">Сделка</a></li>
-        <li><a href="/tenerife/ru/faq/">Вопросы</a></li>
-        <li><a href="/tenerife/ru/mercado/">Рынок и цена метра</a></li>
-        <li><a href="/tenerife/ru/simon/">Developer</a></li>
-        <li><a href="/tenerife/ru/boris/">Supervisor</a></li>
+        <li><a href="/tenerife/ru/construccion/">Ход проекта</a></li>
+        <li><a href="/tenerife/ru/equipo/">Команда</a></li>
+        <li><a class="header__cta" href="#ochered">Получить расчёт</a></li>
       </ul>
     </nav>
+    <nav class="sheet__langs" aria-label="Язык"><a href="https://artemisresort.com/tenerife/alquiler/?lang=en">EN</a><a href="https://artemisresort.com/tenerife/es/alquiler/">ES</a><a href="https://artemisresort.com/tenerife/de/alquiler/">DE</a><a href="https://artemisresort.com/tenerife/fr/alquiler/">FR</a></nav>
   </div>
 </header>
 <main id="main">
@@ -245,7 +229,7 @@
   <div class="wrap grid split-head">
     <h2 id="s10">Порядок входа</h2>
     <div class="split-head__body">
-<p>Запись в очередь — бесплатно. Сейчас мы выбираем участок в районе La Quinta, Santa Úrsula, и обсуждаем варианты с участниками очереди. Денег до выбора участка не берём: инвестиционный договор приходит, когда участок одобрит большинство очереди. По договору вы покупаете акции компании-застройщика по цене текущей ступени: одна акция — один метр. Сразу полностью — бонус 10%, частями за полгода — бонус 5%, частями за год — без бонуса. Каждую неделю стройки — отчёт. После ввода дома — дивиденд в евро на каждую акцию из долгосрочной аренды за вычетом расходов, расчётно, до налога на прибыль компании, или обмен акций на метры своей резиденции.</p>
+<p>Запись в очередь бесплатна; денег до выбора участка не берём. Документы, момент оплаты и оформление после ввода — в <a href="/tenerife/ru/proceso/">порядке сделки</a>.</p>
 
     </div>
   </div>
@@ -265,7 +249,7 @@
 
 
 </section>
-<section class="section section--sand" id="ochered" aria-label="Записать меня в очередь">
+<section class="section section--sand" id="ochered" aria-label="Получить расчёт">
   <div class="wrap grid wl wl--solo" id="waitlist">
     <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Заявка уходит команде проекта в Telegram и на info&#64;artemisresort.com. Мы свяжемся с вами." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
       <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
@@ -276,7 +260,7 @@
       <input type="hidden" name="page" value="/tenerife/ru/alquiler/">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/ru/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Записать меня в очередь</button></div>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить расчёт</button></div>
       <p class="micro">Бесплатно. Денег до выбора участка не берём.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
@@ -291,22 +275,41 @@
         <p><strong>Artemis de la Cruz</strong> — двадцать резиденций на севере Тенерифе, участок выбираем в районе La Quinta, Santa Úrsula. Акции компании-застройщика от 2 900–3 100 € за метр. Запись в очередь — бесплатно, денег до выбора участка не берём.</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="Страницы.">
-        <p><strong>Страницы.</strong></p>
-        <ul>
-          <li><a href="/tenerife/ru/">Главная</a></li>
-          <li><a href="/tenerife/ru/producto/">Резиденция</a></li>
-          <li><a href="/tenerife/ru/norte/">Локация</a></li>
-          <li><a href="/tenerife/ru/acciones/">Оплата</a></li>
-          <li><a href="/tenerife/ru/calculadora/">Калькулятор</a></li>
-          <li><a href="/tenerife/ru/alquiler/" aria-current="page">Аренда</a></li>
-          <li><a href="/tenerife/ru/energia/">Энергия</a></li>
-          <li><a href="/tenerife/ru/construccion/">Стройка</a></li>
-          <li><a href="/tenerife/ru/proceso/">Сделка</a></li>
-          <li><a href="/tenerife/ru/faq/">Вопросы</a></li>
-          <li><a href="/tenerife/ru/mercado/">Рынок и цена метра</a></li>
-          <li><a href="/tenerife/ru/simon/">Developer</a></li>
-          <li><a href="/tenerife/ru/boris/">Supervisor</a></li>
-        </ul>
+        <div class="f-pages__groups">
+          <div class="f-pages__group">
+            <h3>Проект</h3>
+            <ul>
+              <li><a href="/tenerife/ru/">Главная</a></li>
+              <li><a href="/tenerife/ru/producto/">Резиденции</a></li>
+              <li><a href="/tenerife/ru/norte/">Локация</a></li>
+              <li><a href="/tenerife/ru/construccion/">Ход проекта</a></li>
+              <li><a href="/tenerife/ru/energia/">Энергия</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Участие</h3>
+            <ul>
+              <li><a href="/tenerife/ru/inversores/">Инвесторам</a></li>
+              <li><a href="/tenerife/ru/calculadora/">Калькулятор</a></li>
+              <li><a href="/tenerife/ru/proceso/">Сделка</a></li>
+              <li><a href="/tenerife/ru/alquiler/" aria-current="page">Аренда</a></li>
+              <li><a href="/tenerife/ru/mercado/">Рынок и цена метра</a></li>
+              <li><a href="/tenerife/ru/faq/">Вопросы</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Команда</h3>
+            <ul>
+              <li><a href="/tenerife/ru/equipo/">Команда</a></li>
+              <li><a href="/tenerife/ru/simon/">Developer</a></li>
+              <li><a href="/tenerife/ru/boris/">Supervisor</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Документы</h3>
+            <ul><li><a href="/tenerife/ru/impressum/">Impressum</a></li><li><a href="/tenerife/ru/privacy/">Конфиденциальность</a></li></ul>
+          </div>
+        </div>
       </nav>
       <div class="f-contact">
         <p><strong>Контакты.</strong></p>
@@ -316,7 +319,6 @@
     </div>
     <div class="f-legal">
       <p><strong>Компания.</strong> OXFORD FRAME REAL ASSETS LTD. Зарегистрирована в Англии и Уэльсе, Companies House № 09153936. Юридический адрес: Drovers, Preston Candover, Basingstoke, RG25 2EE, United Kingdom.</p>
-      <p><strong>Документы.</strong> <a href="/tenerife/ru/impressum/">Impressum</a> · <a href="/tenerife/ru/privacy/">Конфиденциальность</a></p>
       <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">RU</a></p>
     </div>
   </div>

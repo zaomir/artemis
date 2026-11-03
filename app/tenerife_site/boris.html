@@ -38,21 +38,11 @@
     <nav class="nav" aria-label="Main menu">
       <ul>
         <li><a href="/tenerife/producto/">Residences</a></li>
+        <li><a href="/tenerife/inversores/">For investors</a></li>
         <li><a href="/tenerife/norte/">Location</a></li>
-        <li><a href="/tenerife/acciones/">Payment</a></li>
-        <li><a href="/tenerife/proceso/">Purchase</a></li>
-        <li><details><summary>Information</summary>
-          <ul>
-            <li><a href="/tenerife/calculadora/">Calculator</a></li>
-            <li><a href="/tenerife/construccion/">Construction</a></li>
-            <li><a href="/tenerife/faq/">Questions</a></li>
-            <li><a href="/tenerife/alquiler/">Letting</a></li>
-            <li><a href="/tenerife/energia/">Energy</a></li>
-            <li><a href="/tenerife/mercado/">Market and price per metre</a></li>
-            <li><a href="/tenerife/simon/">Developer</a></li>
-            <li><a href="/tenerife/boris/" aria-current="page">Supervisor</a></li>
-          </ul>
-        </details></li>
+        <li><a href="/tenerife/construccion/">Project progress</a></li>
+        <li><a href="/tenerife/equipo/">Team</a></li>
+        <li><a class="header__cta" href="#ochered">Get a calculation</a></li>
       </ul>
     </nav>
     <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>Menu</a>
@@ -60,21 +50,15 @@
   <div class="sheet" id="sheet" hidden>
     <nav aria-label="Menu">
       <ul>
-        <li><a href="/tenerife/">Home</a></li>
         <li><a href="/tenerife/producto/">Residences</a></li>
+        <li><a href="/tenerife/inversores/">For investors</a></li>
         <li><a href="/tenerife/norte/">Location</a></li>
-        <li><a href="/tenerife/acciones/">Payment</a></li>
-        <li><a href="/tenerife/calculadora/">Calculator</a></li>
-        <li><a href="/tenerife/alquiler/">Letting</a></li>
-        <li><a href="/tenerife/energia/">Energy</a></li>
-        <li><a href="/tenerife/construccion/">Construction</a></li>
-        <li><a href="/tenerife/proceso/">Purchase</a></li>
-        <li><a href="/tenerife/faq/">Questions</a></li>
-        <li><a href="/tenerife/mercado/">Market and price per metre</a></li>
-        <li><a href="/tenerife/simon/">Developer</a></li>
-        <li><a href="/tenerife/boris/" aria-current="page">Supervisor</a></li>
+        <li><a href="/tenerife/construccion/">Project progress</a></li>
+        <li><a href="/tenerife/equipo/">Team</a></li>
+        <li><a class="header__cta" href="#ochered">Get a calculation</a></li>
       </ul>
     </nav>
+    <nav class="sheet__langs" aria-label="Language"><a href="https://artemisresort.com/tenerife/boris/?lang=en" aria-current="true">EN</a><a href="https://artemisresort.com/tenerife/es/boris/">ES</a><a href="https://artemisresort.com/tenerife/de/boris/">DE</a><a href="https://artemisresort.com/tenerife/fr/boris/">FR</a></nav>
   </div>
 </header>
 <main id="main">
@@ -181,9 +165,7 @@
   <div class="wrap">
     <div class="col-text bar-under">
       <h2 id="s9">The order of stages</h2>
-<p>Ground. Foundation. Shell. Roof with panels. Services. Façade. Interior works. Pool. Plot. The report will come every week. Shareholders and house buyers receive it.</p>
-<p>The stages also move the share price: the permit raises the metre to 3 100 €, the foundation to 3 250 €, the shell and roof to 3 450 €, the finishing to 3 650 €, handover to 3 850 €. That is why I close every stage with an inspection, not with words.</p>
-<p>Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.</p>
+<p>The nine stages, planned dates and weekly report format are in <a href="/tenerife/construccion/">Project progress</a>.</p>
 
     </div>
   </div>
@@ -249,7 +231,7 @@
 
 
 </section>
-<section class="section section--sand" id="ochered" aria-label="Join the waiting list">
+<section class="section section--sand" id="ochered" aria-label="Get a calculation">
   <div class="wrap grid wl wl--solo" id="waitlist">
     <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Sending…" data-msg-ok-title="Thank you! You are on the list." data-msg-ok-next="Your request goes to the project team on Telegram and to info&#64;artemisresort.com. We will contact you." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
@@ -260,7 +242,7 @@
       <input type="hidden" name="page" value="/tenerife/boris/">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href="/tenerife/privacy/">privacy policy</a>. Consent can be withdrawn at any time.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Join the waiting list</button></div>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Get a calculation</button></div>
       <p class="micro">Free of charge. We take no money before the plot is chosen.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
@@ -275,22 +257,41 @@
         <p><strong>Artemis de la Cruz</strong> – twenty residences in the north of Tenerife, with the plot being chosen in the La Quinta area of Santa Úrsula. Shares in the developer company from 2 900–3 100 € per metre. Joining the waiting list is free; we take no money before the plot is chosen.</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="Pages.">
-        <p><strong>Pages.</strong></p>
-        <ul>
-          <li><a href="/tenerife/">Home</a></li>
-          <li><a href="/tenerife/producto/">Residences</a></li>
-          <li><a href="/tenerife/norte/">Location</a></li>
-          <li><a href="/tenerife/acciones/">Payment</a></li>
-          <li><a href="/tenerife/calculadora/">Calculator</a></li>
-          <li><a href="/tenerife/alquiler/">Letting</a></li>
-          <li><a href="/tenerife/energia/">Energy</a></li>
-          <li><a href="/tenerife/construccion/">Construction</a></li>
-          <li><a href="/tenerife/proceso/">Purchase</a></li>
-          <li><a href="/tenerife/faq/">Questions</a></li>
-          <li><a href="/tenerife/mercado/">Market and price per metre</a></li>
-          <li><a href="/tenerife/simon/">Developer</a></li>
-          <li><a href="/tenerife/boris/" aria-current="page">Supervisor</a></li>
-        </ul>
+        <div class="f-pages__groups">
+          <div class="f-pages__group">
+            <h3>Project</h3>
+            <ul>
+              <li><a href="/tenerife/">Home</a></li>
+              <li><a href="/tenerife/producto/">Residences</a></li>
+              <li><a href="/tenerife/norte/">Location</a></li>
+              <li><a href="/tenerife/construccion/">Project progress</a></li>
+              <li><a href="/tenerife/energia/">Energy</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Participation</h3>
+            <ul>
+              <li><a href="/tenerife/inversores/">For investors</a></li>
+              <li><a href="/tenerife/calculadora/">Calculator</a></li>
+              <li><a href="/tenerife/proceso/">Transaction</a></li>
+              <li><a href="/tenerife/alquiler/">Letting</a></li>
+              <li><a href="/tenerife/mercado/">Market and price per metre</a></li>
+              <li><a href="/tenerife/faq/">Questions</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Team</h3>
+            <ul>
+              <li><a href="/tenerife/equipo/">Team</a></li>
+              <li><a href="/tenerife/simon/">Developer</a></li>
+              <li><a href="/tenerife/boris/" aria-current="page">Supervisor</a></li>
+            </ul>
+          </div>
+          <div class="f-pages__group">
+            <h3>Documents</h3>
+            <ul><li><a href="/tenerife/impressum/">Impressum</a></li><li><a href="/tenerife/privacy/">Privacy</a></li></ul>
+          </div>
+        </div>
       </nav>
       <div class="f-contact">
         <p><strong>Contacts.</strong></p>
@@ -300,7 +301,6 @@
     </div>
     <div class="f-legal">
       <p><strong>Company.</strong> OXFORD FRAME REAL ASSETS LTD. Registered in England and Wales, Companies House No. 09153936. Registered address: Drovers, Preston Candover, Basingstoke, RG25 2EE, United Kingdom.</p>
-      <p><strong>Documents.</strong> <a href="/tenerife/impressum/">Impressum</a> · <a href="/tenerife/privacy/">Privacy</a></p>
       <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">RU</a></p>
     </div>
   </div>

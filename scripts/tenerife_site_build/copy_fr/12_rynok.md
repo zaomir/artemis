@@ -27,6 +27,8 @@ Il s'agit surtout de logements anciens: maisons et appartements d'âges divers. 
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
+Les périodes d’origine diffèrent: Fotocasa — octobre 2026; Engel & Völkers et RealAdvisor — 2026. Les exemples locatifs Kelify sont un relevé du 31.10.2026, son indice par quartier de mars 2026. Ce sont des données historiques des documents du projet, pas de nouvelles mesures à la date de consultation. Éditeurs et périodes figurent dans les tableaux; les prix demandés ne sont pas ceux de transactions conclues.
+
 ### Comment le prix monte
 
 Santa Úrsula a gagné 13,7% en un an selon l'indice Fotocasa. Les appartements de Santa Úrsula, selon Engel & Völkers, ont progressé de 14,27% en 2024 et de 17,72% en 2025. Le nord de Tenerife renchérit plus vite que ne le pensent ceux qui ne connaissent que la côte sud.
@@ -44,18 +46,7 @@ Les programmes neufs voisins de La Quinta étaient proposés à 3 360–3 870 �
 
 ### Les paliers Artemis face au marché
 
-| Palier | € par m² |
-|---|---|
-| Liste d'attente | 2 950 |
-| Permis | 3 100 |
-| Fondations | 3 250 |
-| Gros œuvre et toiture | 3 450 |
-| Finitions | 3 650 |
-| Livraison | 3 850 |
-
-Le marché de comparaison figure dans les tableaux ci-dessus: le logement ancien du quartier de La Quinta à 2 812 € le mètre, les prix de présentation des programmes voisins à 3 360–3 870 €.
-
-Entrer sur la liste d'attente coûte le prix de l'ancien du quartier, et le mètre à la livraison celui du neuf. La différence entre les deux, c'est le chantier que vous traversez avec la société. En Espagne, acheter au stade du projet revient généralement 10–20% moins cher qu'un logement achevé: c'est le marché qui fonctionne ainsi, pas seulement Artemis.
+Les tableaux comparent des segments distincts: logements existants à La Quinta à 2 812 € par m² et prix demandés des programmes neufs voisins à 3 360–3 870 €. Ce sont des repères de marché, pas le prix de l’action. L’échelle complète et ses événements déclencheurs figurent sur [Investisseurs](/tenerife/inversores/).
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -73,25 +64,7 @@ Par exemple, les annonces de La Quinta même sur Kelify (relevé du 31.10.2026):
 
 ### Du loyer au dividende
 
-La loi canarienne Ley 6/2025 ferme la location touristique de courte durée dans les constructions neuves. Le dividende Artemis se calcule donc uniquement sur la location longue durée:
-
-- loyer: 13,5 € le mètre par mois, au milieu des 12–15 € du marché;
-- sur un an: 13,5 × 12 = 162 € par mètre;
-- moins 46,3% de charges sur sept postes, 75 € par mètre;
-- il reste le loyer après charges; le dividende se publie en pourcentage: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
-
-| Poste | € par mètre et par an | % de 162 € | Base du calcul |
-|---|---|---|---|
-| IBI, impôt foncier | 3,75 | 2,3% | 300 € par an pour 80 m² à Tenerife; taux de Santa Úrsula: 0,40% |
-| Charges de copropriété | 34,1 | 21,0% | 200–400 € par mois dans les ensembles avec piscine chauffée; dans le calcul, 200 € pour une maison moyenne d'environ 70 m² |
-| Gestion locative | 17,3 | 10,7% | 8–12% du loyer plus IGIC 7%; dans le calcul, 10% |
-| Vacance entre locataires | 6,75 | 4,2% | un demi-mois par an, avec une forte demande |
-| Assurance | 3,5 | 2,2% | 280 € par an pour 80 m² à Tenerife |
-| Réserve d'entretien | 8,1 | 5,0% | 4–6% du loyer pour une maison neuve |
-| Taxe sur les déchets (basura) | 1,5 | 0,9% | 100–150 € par an, à la charge du propriétaire; dans le calcul, 120 € pour 80 m² |
-| **Total** | **75,0** | **46,3%** | |
-
-Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus grande, 75,5 m², gestion 8%, entretien 4%), les charges atteignent 41,8% et le dividende environ 94 € par action. Dans le scénario strict (loyer 12 € le mètre, 200 € de charges pour une maison un peu plus petite, 65,4 m², gestion 12%, un mois de vacance, entretien 6%), les charges atteignent 58,7% et le dividende environ 59 €. Le dividende estimé est de 2,5–3,5 % par an, avant impôt sur les sociétés.
+Location de longue durée, charges et hypothèses de calcul sont détaillées dans le [modèle locatif](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,13 +75,15 @@ Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus 
 | Bund à 10 ans, 30.10.2026 | 3,34% |
 | Dépôt à terme 1 an, moyenne du top 10 | 3,52% |
 | Rendement brut de la location, 52 plus grandes villes d'Allemagne, H1 2026 | 4,17% |
-| Dividende estimé rapporté au prix d'entrée | 2,5–3,5% par an |
+| Estimation du dividende Artemis | 2,5–3,5% par an |
 
-Le dividende par action est identique; le pourcentage rapporté à l'apport dépend du palier d'entrée. Le chiffre est une estimation avant impôt sur les sociétés.
+Le dividende Artemis est une estimation du projet de 2,5–3,5 % par an avant impôt sur les sociétés, sans garantie. C’est un indicateur distinct: toute comparaison avec un dépôt ou un rendement locatif brut doit tenir compte de la base et des charges. [Modèle locatif et hypothèses](/tenerife/alquiler/).
 
 ### Comment cela fonctionne
 
-L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
+Le modèle de participation, les prix par étapes et les deux résultats figurent sur la page [Investisseurs](/tenerife/inversores/).
+
+L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
@@ -122,5 +97,5 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **D'où vient le pourcentage?** Le dividende se calcule à partir de la location longue durée du mètre après déduction des charges: IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien, taxe sur les déchets. Résultat: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
-**Кнопка: «M'inscrire sur la liste d'attente»**
+**Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

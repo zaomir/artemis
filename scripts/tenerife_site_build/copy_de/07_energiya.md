@@ -76,11 +76,11 @@ Die Dividende von Artemis wird aus der langfristigen Vermietung nach Kosten bere
 
 ### Warum das für den Preis des Meters wichtig ist
 
-Ein neues Haus mit Sonne auf dem Dach und steinerner Kontur kostet mehr als eine alte Wohnung derselben Fläche und ist im Unterhalt günstiger. Die benachbarten Neubauten La Quinta wurden zu 3 360–3 870 € pro Meter angeboten; beide Projekte sind verkauft. Ein fertiges Haus Artemis bei der Fertigstellung — 3 800–4 600 € pro Meter. Derselbe Meter als Aktie der Bauträgergesellschaft in der Warteliste — 2 950 €: Die Energie des Hauses ist im Preis des Meters enthalten, den Sie zum Preis der ersten Stufe zahlen.
+Die Ausstattung beeinflusst die Betriebskosten des Hauses und gehört bereits zur Residenz. Preise fertiger Häuser und den Vergleich mit der Aktienbeteiligung finden Sie unter [Für Investoren](/tenerife/inversores/).
 
 ### Warum das für den Aktionär wichtig ist
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
 Die Dividende ist die Miete minus Kosten. Je weniger die Häuser für Strom, Wasser und Pool ausgeben, desto mehr bleibt von der Miete. Die rechnerische Dividende — 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft. Die größte Position sind die Gemeinschaftsbeiträge mit 21,0%: darin stecken der gemeinschaftliche beheizte Pool und die Pflege der Anlage. Je weniger die gemeinsamen Systeme aus dem Netz nehmen, desto niedriger diese Position.
 
@@ -104,5 +104,5 @@ Am Nordhang ist die Sonne milder als im Süden — deshalb ist es hier nicht hei
 
 **Wie hängt das mit der Dividende zusammen?** Weniger Kosten — mehr bleibt von der Miete je Aktie.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

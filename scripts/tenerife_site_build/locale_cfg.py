@@ -8,8 +8,29 @@ LOCALES = ("en", "es", "de", "fr")
 
 # порядок страниц в подвале/меню — тот же, что в русском мастере
 # порядок строк в подвале (= порядок меню); INVESTORS не построен и скрывается
-PAGE_ORDER = ("index", "producto", "norte", "acciones", "calculadora", "alquiler", "energia",
-              "construccion", "proceso", "investors", "faq", "mercado", "simon", "boris")
+PAGE_ORDER = ("index", "producto", "inversores", "norte", "construccion", "equipo", "calculadora",
+              "alquiler", "energia", "proceso", "faq", "mercado", "simon", "boris")
+
+NAV_UI = {
+    "ru": {"main": "Основное меню", "calculation": "Получить расчёт", "project": "Проект",
+           "participation": "Участие", "team": "Команда", "documents": "Документы"},
+    "en": {"main": "Main menu", "calculation": "Get a calculation", "project": "Project",
+           "participation": "Participation", "team": "Team", "documents": "Documents"},
+    "es": {"main": "Menú principal", "calculation": "Recibir cálculo", "project": "Proyecto",
+           "participation": "Participación", "team": "Equipo", "documents": "Documentos"},
+    "de": {"main": "Hauptmenü", "calculation": "Berechnung erhalten", "project": "Projekt",
+           "participation": "Beteiligung", "team": "Team", "documents": "Dokumente"},
+    "fr": {"main": "Menu principal", "calculation": "Obtenir un calcul", "project": "Projet",
+           "participation": "Participation", "team": "Équipe", "documents": "Documents"},
+}
+
+NOT_FOUND = {
+    "ru": ("Страница не найдена", "Проверьте адрес или вернитесь к проекту Artemis de la Cruz.", "На главную"),
+    "en": ("Page not found", "Check the address or return to the Artemis de la Cruz project.", "Back to the project"),
+    "es": ("Página no encontrada", "Compruebe la dirección o vuelva al proyecto Artemis de la Cruz.", "Volver al proyecto"),
+    "de": ("Seite nicht gefunden", "Prüfen Sie die Adresse oder kehren Sie zum Projekt Artemis de la Cruz zurück.", "Zurück zum Projekt"),
+    "fr": ("Page introuvable", "Vérifiez l’adresse ou revenez au projet Artemis de la Cruz.", "Revenir au projet"),
+}
 
 # шапка таблицы ступеней: первая колонка и колонка роста
 LADDER_HEAD = {

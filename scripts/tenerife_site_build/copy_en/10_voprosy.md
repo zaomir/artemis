@@ -14,87 +14,67 @@ These are the questions people ask before buying a house in Tenerife and before 
 
 ### Location
 
-**In which area?** La Quinta, Santa Úrsula, the northern slope of Tenerife, exit 29 off the TF-5. We choose the specific plot together with waiting-list members and put it to a majority vote.
+**Where is the project?** In the La Quinta area of Santa Úrsula. We choose the actual plot with waiting-list members.
 
-**How far to the sea, the town and the airport?** Playa del Ancón is about 3 km away. Puerto de la Cruz is 8 km, 10–15 minutes by car. Tenerife Norte airport is 15–20 minutes, Santa Cruz de Tenerife 25–30 minutes, Tenerife Sur airport about an hour.
+**How do I get there?** Routes, walking access to the beach and surroundings are on the [location page](/tenerife/norte/).
 
-**Why not the south?** In the south people rest for a week; in the north people live. The north is green, neither hot nor dusty, with towns where life goes on all year round. That is exactly what long-term letting and your own life need.
-
-**What about winter?** Evenings in the north can be cool. That is why the house has deep windows, a stone outline and smart climate, and the shared pool is heated.
+**What about winter?** Climate, the solar roof and heated pool are covered under [energy and specifications](/tenerife/energia/).
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
 ### What I am buying
 
-**What are shares in the developer company?** They are an entry into the company that builds the twenty Artemis residences. One share is one square metre.
+**What is a share?** Participation in the developer company: one share corresponds to one m² construida excluding common areas.
 
-**How does it work?** Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
-
-**How does a share differ from a house?** You buy a house at handover at 3 800–4 600 € per metre. A share, on the waiting list, at 2 950 € per metre. A share gives you a choice after handover: the dividend or metres.
-
-**What is the price now and at the end?** On the waiting list, 2 950 € per metre. At the handover step, 3 850 €. A finished house at handover, 3 800–4 600 € per metre.
+**How does participation differ from buying a house?** The asset purchased and two participation outcomes are compared on the [investor page](/tenerife/inversores/).
 
 ### Price and early entry
 
-**Why is early entry cheaper?** The share price rises with the construction stages: waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell and roof 3 450 €, finishing 3 650 €, handover 3 850 €. With every stage closed the project risk is lower, and the metre becomes more expensive. Early entry is the price of entry into the company, not a discount on a finished house. 72 metres on the waiting list are 212 400 €, at the handover step 277 200 €.
+**How does the price change?** By construction events rather than dates. [Price ladder and example](/tenerife/inversores/).
 
-**Can I pay in instalments?** Yes: over six months with a 5% bonus, over a year with no bonus. In full straight away with a 10% bonus. 72 metres over a year is 33 630 € a month.
+**How do I calculate payments?** Choose your area and step in the [calculator](/tenerife/calculadora/).
 
-**When do I pay?** Only after the majority of the waiting list approves the plot and you sign the investment agreement. When you join you pay nothing.
+**When do I pay?** After the majority of the waiting list approves the plot and the investment agreement. [Documents and payment timing](/tenerife/proceso/).
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
 ### The dividend
 
-**How does the dividend work?** The dividend is the same per share. It is calculated from long-term letting after costs — rent, community fees, management, vacancy, insurance, a repair reserve and the refuse charge — and is published as a percentage: **an estimated 2,5–3,5 % a year before company profit tax**.
+**What dividend?** An estimated 2,5–3,5 % a year before company profit tax, not guaranteed.
 
-**How much is that on 72 shares?** The dividend is an estimated 2,5–3,5 % a year before company profit tax, not a guarantee.
-
-**Where does the rent figure come from?** From the market: long-term letting in Santa Úrsula is about 12 € per metre, flats about 15 €, and in Puerto de la Cruz about 17 €.
-
-**Why only long-term letting?** The Canary Islands law Ley 6/2025 rules out short-term holiday letting in new builds. The Artemis dividend is therefore calculated from long-term letting only.
-
-**Why is the dividend in euros rather than a percentage?** Because the euros per share are the same for everyone, while the percentage depends on the step at which you entered: an estimated 2,9% against the waiting-list price, 2,3% against the handover price, before company profit tax.
+**What is the estimate based on?** Long-term letting after costs. [Rental market, costs and assumptions](/tenerife/alquiler/).
 
 ### Metres
 
-**How do I exchange shares for metres?** After the completion certificate: a deed before a notary for your residence and an entry in the property register. 72 shares are 72 metres. The deed carries IGIC of 7% and AJD of 1%.
+**How do I receive a residence?** After the completion certificate, the exchange is formalised before a notary and in the register. [Formalities, taxes and mortgage](/tenerife/proceso/).
 
-**Can I buy more shares?** Yes, at the price of the current step. If you started with 50 shares and want 72 metres, you buy 22 more.
+**Can I buy more shares?** At the current step price; the [investor page](/tenerife/inversores/) contains a top-up example.
 
-**What can I do with the shares after handover?** Two paths: receive the dividend in euros on each share, or exchange the shares for the metres of your own residence.
-
-**Will you help with a mortgage?** Yes. A mortgage is available to a house buyer. An investor may put in 50% of their own money, and the rest can be covered by a mortgage once the building permit is in place. Our brokers help with obtaining a mortgage at banks in Spain and in other European countries.
-
-**Can I sell my unit before handover?** If there are more buyers than units, we may offer investors the chance to assign their unit to a buyer, at the price per square metre at the time of assignment. It is an opportunity, not a promise of return.
+**Is assignment possible before handover?** If buyers outnumber units, the company may offer an assignment. It is an opportunity, not a promise of return; see the [transaction details](/tenerife/proceso/).
 
 [КАДР F15] <!-- служебная пометка, не публикуется -->
 
 ### Construction and reports
 
-**When is the construction and when the keys?** Start, as planned, in early 2027. Handover, as planned, late 2028 – mid 2029.
+**When are construction and handover?** The plan is a start in early 2027 and handover in late 2028 – mid 2029.
 
-**Who sees the reports?** Shareholders and house buyers. The report will come every week: the stage, what has been done, what comes next.
-
-**How do I watch the site from Germany?** Through the weekly report: the stage, what was done during the week, what comes next.
-
-**What will I receive at handover?** A new build, not someone else's renovation: a stone outline, solar panels flush with the roof plane, smart climate and lighting, a shared heated pool.
+**Who receives reports?** Shareholders and house buyers, every week. [Stages and report format](/tenerife/construccion/).
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### People
 
-**Who runs the project?** **Simon Subic**, developer: choosing the plot, permits, launch, linking the money and the construction. **Boris Ribaut**, chief builder: the site, the structure, the reports, handover of the house.
+**Who is responsible?** Simon Subic’s and Boris Ribaut’s roles are in the [team section](/tenerife/equipo/).
 
-**Who is the company?** OXFORD FRAME REAL ASSETS LTD, England and Wales, Companies House No. 09153936.
+**Which company?** OXFORD FRAME REAL ASSETS LTD. [Company details](/tenerife/impressum/).
 
-**How many houses, and what kind?** Twenty: six one-bedroom of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m².
+**What homes?** [Residence types, areas and specifications](/tenerife/producto/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### In short
 
-**What should I do now?** Join the waiting list, which is free. You will see the plot options and tell us what you think of them.
+**What should I do now?** Request a calculation and discuss plot options. Joining the waiting list is free; we take no money before the plot is chosen.
 
-**Кнопка: «Join the waiting list»**
+**Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

@@ -54,16 +54,20 @@ PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/pr
 # Tenerife RU prod (/tenerife/): must be 200 locally and via Cloudflare.
 # Pages the author has not delivered yet (producto, construccion, proceso, faq) are
 # added here when they ship (see app/tenerife_site/README.md).
-TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/calculadora/
+TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/inversores/ /tenerife/calculadora/
   /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
   /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/impressum/ /tenerife/privacy/
-  /tenerife/ru/ /tenerife/ru/norte/ /tenerife/ru/producto/ /tenerife/ru/acciones/ /tenerife/ru/calculadora/
+  /tenerife/ru/ /tenerife/ru/norte/ /tenerife/ru/producto/ /tenerife/ru/inversores/ /tenerife/ru/calculadora/
   /tenerife/ru/alquiler/ /tenerife/ru/energia/ /tenerife/ru/construccion/ /tenerife/ru/proceso/
   /tenerife/ru/faq/ /tenerife/ru/simon/ /tenerife/ru/mercado/ /tenerife/ru/boris/
   /tenerife/ru/impressum/ /tenerife/ru/privacy/
   /tenerife/es/ /tenerife/es/norte/ /tenerife/es/impressum/ /tenerife/es/privacy/
   /tenerife/de/ /tenerife/de/norte/ /tenerife/de/impressum/ /tenerife/de/privacy/
   /tenerife/fr/ /tenerife/fr/norte/ /tenerife/fr/impressum/ /tenerife/fr/privacy/
+  /tenerife/equipo/ /tenerife/ru/equipo/
+  /tenerife/es/inversores/ /tenerife/es/equipo/ /tenerife/es/calculadora/
+  /tenerife/de/inversores/ /tenerife/de/equipo/ /tenerife/de/calculadora/
+  /tenerife/fr/inversores/ /tenerife/fr/equipo/ /tenerife/fr/calculadora/
   /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
   /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})

@@ -21,9 +21,11 @@ class SecurityHeadersTest(unittest.TestCase):
         self.assertIn("object-src 'none'", crete)
         self.assertIn("base-uri 'self'", crete)
         self.assertIn("form-action 'self'", crete)
-        # Crete templates use inline <script>/onclick and inline styles -> policy must allow them
+        # Crete still uses inline script blocks/styles; native form submission stays on this origin.
         html = (ROOT / "app" / "templates" / "index.html").read_text(encoding="utf-8")
-        self.assertIn("onclick=", html)
+        self.assertIn("<script>", html)
+        self.assertNotIn("onclick=", html)
+        self.assertIn('method="post" action="/api/enquiry"', html)
         self.assertRegex(crete, r"script-src [^;]*'unsafe-inline'")
         self.assertRegex(crete, r"style-src [^;]*'unsafe-inline'")
         self.assertNotIn("https://fonts.", html)       # nothing external the policy would block

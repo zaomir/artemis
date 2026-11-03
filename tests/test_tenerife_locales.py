@@ -1,6 +1,6 @@
 """Локали сайта Тенерифе (2026-11-02): EN в корне /tenerife/, RU/ES/DE/FR — под своим префиксом.
 
-Проверяет то, чего не видит русский набор: каждая локаль собирается в свой каталог, даёт 13 страниц + legal,
+Проверяет то, чего не видит русский набор: каждая локаль собирается в свой каталог, даёт страницы из PAGES + legal,
 ставит свой `<html lang>`, canonical и полный набор hreflang на пять языков, а меню ведёт внутрь своей локали.
 Плюс маршруты Flask: корень = EN 200, /tenerife/en/ и /tenerife/en/<page>/ → 301 в корень (P1-02),
 canonical и hreflang en/x-default указывают на 200 EN-URL (не на редирект в DE), неизвестная локаль → 404.
@@ -37,7 +37,7 @@ def url_of(locale, name):
 
 
 class FiveBuildsTest(unittest.TestCase):
-    """Каждая локаль собирается отдельной командой в свой каталог: 13 страниц + impressum + privacy + _notice."""
+    """Каждая локаль собирается отдельной командой в свой каталог: страницы PAGES + impressum + privacy + _notice."""
 
     @classmethod
     def setUpClass(cls):
@@ -62,13 +62,13 @@ class FiveBuildsTest(unittest.TestCase):
     def page(self, locale, name):
         return (self.out[locale] / f"{name}.html").read_text(encoding="utf-8")
 
-    def test_thirteen_pages_and_legal(self):
-        want = {f"{name}.html" for _f, name in PAGES} | {f"{n}.html" for n in LEGAL} | {"_notice.html"}
+    def test_all_content_pages_and_legal(self):
+        want = {f"{name}.html" for _f, name in PAGES} | {f"{n}.html" for n in LEGAL} | {"_notice.html", "_404.html"}
         for locale in LOCALES:
             got = {p.name for p in self.out[locale].glob("*.html")}
             self.assertEqual(got, want, locale)
             self.assertEqual(len([n for n in got if not n.startswith("_") and n not in {f"{x}.html" for x in LEGAL}]),
-                             13, locale)
+                             len(PAGES), locale)
 
     def test_lang_oglocale_canonical_hreflang(self):
         for locale in LOCALES:
@@ -89,8 +89,12 @@ class FiveBuildsTest(unittest.TestCase):
             page = self.page(locale, "index")
             head = page[:page.index("</head>")]
             nav = page[page.index('<header'):page.index("</header>")]
-            for _f, name in PAGES:                       # меню и лист ведут внутрь своей локали
+            for name in ("producto", "inversores", "norte", "construccion", "equipo"):
                 self.assertIn(f'href="{url_of(locale, name)}"', nav, (locale, name))
+            self.assertIn('href="#ochered"', nav, locale)
+            footer = page[page.index("<footer"):page.index("</footer>")]
+            for _f, name in PAGES:
+                self.assertIn(f'href="{url_of(locale, name)}"', footer, (locale, name))
             # EN-ссылка несёт ?lang=en: она сильнее гео-редиректа по стране (см. tests/test_tenerife_geo.py)
             self.assertIn(f'<a href="{BASE}/tenerife/?lang=en"', nav, locale)
             self.assertRegex(nav, r'<a href="https://artemisresort\.com/tenerife/\?lang=en"[^>]*>EN</a>', locale)
@@ -121,14 +125,14 @@ class FiveBuildsTest(unittest.TestCase):
                 self.assertEqual(cyr, [], (locale, name, cyr[:3]))
 
     def test_interface_strings_are_localised(self):
-        from locale_cfg import UI
+        from locale_cfg import UI, NAV_UI
         for locale in LOCALES:
             ui = UI[locale]
             page = self.page(locale, "index")
             self.assertIn(f'<a class="skip" href="#main">{ui["skip"]}</a>', page, locale)
             self.assertIn(f'<span class="burger__icon" aria-hidden="true"></span>{ui["menu"]}</a>', page, locale)
-            self.assertIn(f'<p><strong>{ui["pages"]}</strong></p>', page, locale)
-            self.assertIn(f'<p><strong>{ui["docs"]}</strong>', page, locale)
+            self.assertIn('id="footer-pages"', page, locale)
+            self.assertIn(f'<h3>{NAV_UI[locale]["documents"]}</h3>', page, locale)
 
 
 class LocaleRoutesTest(unittest.TestCase):

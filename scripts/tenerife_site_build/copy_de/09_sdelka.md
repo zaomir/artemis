@@ -91,7 +91,7 @@ Bei einem Kredit über 70% des Preises braucht ein Nichtresident 40–45% des Pr
 
 ### Das Geld für den Bau
 
-Den Bau bezahlen die Aktien der Bauträgergesellschaft und der Verkauf der Häuser. Jede Bauphase ändert die Preisstufe: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €, Fertigstellung — 3 850 € pro Meter.
+Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
 
 ### Wer das Geschäft führt
 
@@ -101,7 +101,7 @@ Den Bau bezahlen die Aktien der Bauträgergesellschaft und der Verkauf der Häus
 
 ### So läuft der Einstieg
 
-Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundstück im Gebiet La Quinta, Santa Úrsula, und besprechen die Varianten mit den Teilnehmern der Warteliste. Vor der Grundstückswahl nehmen wir kein Geld: Der Investmentvertrag kommt, wenn die Mehrheit der Warteliste das Grundstück freigibt. Nach dem Vertrag kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus. Jede Bauwoche — ein Bericht. Nach der Fertigstellung des Hauses — eine Dividende in Euro je Aktie aus der langfristigen Vermietung abzüglich Kosten, rechnerisch, vor Körperschaftsteuer der Gesellschaft, oder der Tausch der Aktien gegen Meter Ihrer Residenz.
+Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
 
 ### Kurz gefasst
 
@@ -115,5 +115,5 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Welche Steuern beim Tausch?** IGIC 7% und AJD 1%, dazu Notar und Grundbuch.
 
-**Кнопка: «In die Warteliste eintragen»**
+**Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
