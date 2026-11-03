@@ -46,9 +46,9 @@ Hier sind die Fragen gesammelt, die man vor dem Kauf eines Hauses auf Teneriffa 
 
 ### Dividende
 
-**Wie ist die Dividende aufgebaut?** Die Dividende — in Euro je Aktie, gleich für alle Aktien. Sie wird aus der langfristigen Vermietung nach Kosten berechnet: 13,5 € Miete pro Meter im Monat × 12 = 162 €, minus 46,3% Kosten nach Positionen — IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr — rechnerisch 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+**Wie ist die Dividende aufgebaut?** Die Dividende ist je Aktie gleich. Sie wird aus der langfristigen Vermietung nach Abzug der Kosten berechnet — Miete, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr — und als Prozentsatz veröffentlicht: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**.
 
-**Wie viel ist das bei 72 Aktien?** Rechnerisch 72 × 87 € = 6 264 € im Jahr, 522 € im Monat, vor Körperschaftsteuer der Gesellschaft.
+**Wie viel ist das bei 72 Aktien?** Die Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, keine Garantie.
 
 **Woher kommt die Zahl für die Miete?** Aus dem Markt: Die langfristige Vermietung in Santa Úrsula — rund 12 € pro Meter, Wohnungen — rund 15 €, in Puerto de la Cruz — rund 17 €.
 

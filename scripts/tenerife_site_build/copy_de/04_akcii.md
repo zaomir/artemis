@@ -70,24 +70,15 @@ Ein Haus mit zwei Schlafzimmern auf 72 Metern — das sind 72 Aktien.
 
 Aktien, die nach der Fertigstellung nicht gegen Meter getauscht wurden, bleiben im Unternehmen. Das Unternehmen vermietet diese Meter langfristig. Die Dividende ist die Miete eines Meters nach Kosten, vor Körperschaftsteuer der Gesellschaft, gerechnet auf eine Aktie. Deshalb ist sie für alle Aktien gleich, wann immer sie gekauft wurden.
 
-**Wie sie berechnet wird.** Die langfristige Vermietung in Santa Úrsula — 12–15 € pro Meter im Monat. Die Mitte — 13,5 €. Im Jahr sind das 162 € pro Meter. Die Kosten nach Positionen — 75 € pro Meter, 46,3%: IBI 2,3%, Gemeinschaftsbeiträge 21,0%, Mietverwaltung mit IGIC 10,7%, Leerstand 4,2%, Versicherung 2,2%, Instandhaltungsrücklage 5,0%, Müllgebühr 0,9%. Es bleiben 87 € pro Meter. Daraus ergibt sich die rechnerische Dividende — **87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft**.
+**Woraus sie besteht.** Die Dividende wird aus der langfristigen Miete eines Meters nach Abzug der Kosten gerechnet: Miete, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage und Müllgebühr. Ergebnis: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**. Das ist eine Orientierung, keine Garantie.
 
-Bei 72 Aktien sind das rechnerisch 6 264 € im Jahr, 522 € im Monat, vor Körperschaftsteuer der Gesellschaft.
+Bei 72 Aktien beträgt die Dividende rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, keine Garantie.
 
 [КАДР F16] <!-- служебная пометка, не публикуется -->
 
 ### Wie viel das auf das eingesetzte Kapital ist
 
-Die Dividende in Euro ist gleich, der Einstiegspreis ist unterschiedlich. Auf das eingesetzte Geld ergibt sich daher ein unterschiedlicher Wert — und das zeigt ehrlich, warum der frühe Einstieg einen höheren Prozentsatz auf das eingesetzte Kapital bringt:
-
-| Einstiegsstufe | Preis der Aktie | Rechnerisch 87 € auf den Aktienpreis, vor Körperschaftsteuer der Gesellschaft |
-|---|---|---|
-| Warteliste | 2 950 € | 2,9% |
-| Baugenehmigung | 3 100 € | 2,8% |
-| Fundament | 3 250 € | 2,7% |
-| Rohbau und Dach | 3 450 € | 2,5% |
-| Ausbau | 3 650 € | 2,4% |
-| Fertigstellung | 3 850 € | 2,3% |
+Die Dividende je Aktie ist gleich, der Einstiegspreis ist unterschiedlich — auf das eingesetzte Geld ergibt sich daher ein anderer Wert. Der frühe Einstieg bringt einen höheren Prozentsatz: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**. Das ist eine Orientierung, keine Garantie.
 
 Zum Vergleich: zehnjährige Bundesanleihen am 30. Oktober 2026 — 3,34%, die besten Festgeldangebote auf ein Jahr — im Durchschnitt 3,52%, die Bruttorendite der Vermietung in den 52 größten Städten Deutschlands — 4,17%.
 
@@ -129,7 +120,7 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Wann zahle ich?** Nachdem die Mehrheit der Warteliste das Grundstück freigegeben hat und der Investmentvertrag vorliegt: sofort (10% Bonus), in einem halben Jahr (5% Bonus) oder in einem Jahr ohne Bonus.
 
-**Welche Dividende?** Rechnerisch 87 € je Aktie im Jahr aus der langfristigen Vermietung nach Kosten, vor Körperschaftsteuer der Gesellschaft.
+**Welche Dividende?** Rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, aus der langfristigen Vermietung nach Kosten, keine Garantie.
 
 **Kann ich die Meter nehmen?** Ja, nach der Nutzungsgenehmigung.
 

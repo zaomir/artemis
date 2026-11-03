@@ -34,10 +34,10 @@ Une transaction avec Artemis de la Cruz commence par une inscription gratuite su
 |---|---|---|
 | Inscription | liste d'attente | 0 € |
 | Achat en une fois | 72 actions × 2 950 € | 212 400 € |
-| Ou sur 12 mois | 212 400 € ÷ 12 | 17 700 € par mois |
+| Ou en six versements | 212 400 € avec 5 % de remise ÷ 6 | 33 630 € par mois |
 | Palier « Livraison » pour les mêmes 72 mètres | 72 × 3 850 € | 277 200 € |
-| Après la livraison: dividende, en estimation, avant impôt sur les sociétés | 72 × 87 € | 6 264 € par an |
-| Ou échange | 72 actions | 72 м² de votre résidence |
+| Après la livraison: dividende, en estimation, avant impôt sur les sociétés | 2,5–3,5% par an | pas une garantie |
+| Ou échange | 72 actions | 72 m² de votre résidence |
 
 Les mêmes étapes valent pour toute surface. 48 actions sur la liste d'attente: 141 600 €, soit 11 800 € par mois sur 12 mois. 100 actions: 295 000 €, soit environ 24 583 € par mois.
 
@@ -65,7 +65,7 @@ L'inscription sur le site est le premier pas. Ensuite vient une conversation ré
 
 L'échange des actions contre des mètres se formalise comme l'achat d'une résidence neuve au promoteur. Aux Canaries, l'IGIC remplace la TVA: la première transmission d'un logement neuf y est soumise au taux général de 7%. S'y ajoute l'AJD, droit de timbre sur l'acte d'une opération soumise à l'IGIC, à 1%. Plus le notaire et l'inscription. Dans le calcul, nous prenons les taxes sur la valeur des mètres au prix du palier « Livraison », et non sur la somme que vous avez payée pour les actions sur la liste d'attente.
 
-| Exemple | 72 м² au prix du palier « Livraison » |
+| Exemple | 72 m² au prix du palier « Livraison » |
 |---|---|
 | Valeur des mètres | 277 200 € |
 | IGIC 7% | 19 404 € |
@@ -95,7 +95,7 @@ Le chantier est payé par les actions de la société promotrice et par la vente
 
 ### Qui conduit la transaction
 
-**Simon Subic**, promoteur: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. **Boris Ribaut**, directeur de chantier: chantier, structure, rapports, livraison des maisons. Les calculs pour votre surface, nous les envoyons selon une seule formule pour tous: montant = mètres × prix du palier, versement = montant ÷ 12, dividende = actions × 87 €, en estimation, avant impôt sur les sociétés.
+**Simon Subic**, promoteur: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. **Boris Ribaut**, directeur de chantier: chantier, structure, rapports, livraison des maisons. Les calculs pour votre surface, nous les envoyons selon une seule formule pour tous: montant = mètres × prix du palier, versement = montant avec 5 % de remise ÷ 6, dividende — 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 

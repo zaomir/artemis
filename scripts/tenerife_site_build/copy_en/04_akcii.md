@@ -1,8 +1,8 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/acciones/
-Meta title: Artemis developer shares: 1 share = 1 м²
-Meta description: Price steps from 2 950 to 3 850 € per м², the investment agreement after the plot is approved, payment in full with a 10% bonus, over six months 5%, over a year with no bonus.
+Meta title: Artemis developer shares: 1 share = 1 m²
+Meta description: Price steps from 2 950 to 3 850 € per m², the investment agreement after the plot is approved, payment in full with a 10% bonus, over six months 5%, over a year with no bonus.
 OG title: One share, one metre: how Artemis shares work
 -->
 
@@ -70,24 +70,15 @@ A two-bedroom house of 72 metres is 72 shares.
 
 Shares that were not exchanged for metres at handover remain in the company. The company lets those metres on long-term contracts. The dividend is the rent of one metre after costs, before company profit tax, calculated per share. That is why it is the same for every share, whenever it was bought.
 
-**How it is calculated.** Long-term letting in Santa Úrsula is 12–15 € per metre a month. The midpoint is 13,5 €. Over a year that is 162 € per metre. Costs by line come to 75 € per metre, 46,3%: IBI 2,3%, community fees 21,0%, letting management with IGIC 10,7%, vacancy 4,2%, insurance 2,2%, repair reserve 5,0%, refuse charge 0,9%. That leaves 87 € per metre. Hence the estimated dividend: **87 € per share a year before company profit tax**.
+**What makes it up.** The dividend is calculated from the long-term rent of a metre after costs: rent, community fees, management, vacancy, insurance, a repair reserve and the refuse charge. The result: **an estimated 2,5–3,5 % a year before company profit tax**. It is an indication, not a guarantee.
 
-On 72 shares that is an estimated 6 264 € a year, 522 € a month, before company profit tax.
+On 72 shares the dividend is an estimated 2,5–3,5 % a year before company profit tax, not a guarantee.
 
 [КАДР F16] <!-- служебная пометка, не публикуется -->
 
 ### What that is against the money invested
 
-The dividend in euros is the same, but the entry price is not. Against the money invested it therefore comes out differently, and that honestly shows why early entry gives a higher percentage on the money invested:
-
-| Entry step | Share price | The estimated 87 € against the share price, before company profit tax |
-|---|---|---|
-| Waiting list | 2 950 € | 2,9% |
-| Permit | 3 100 € | 2,8% |
-| Foundation | 3 250 € | 2,7% |
-| Shell and roof | 3 450 € | 2,5% |
-| Finishing | 3 650 € | 2,4% |
-| Handover | 3 850 € | 2,3% |
+The dividend per share is the same, but the entry price is not — so against the money invested it comes out differently. Early entry gives a higher percentage: **an estimated 2,5–3,5 % a year before company profit tax**. It is an indication, not a guarantee.
 
 For comparison: ten-year Bundesanleihen on 30 October 2026 were 3,34%, the best one-year Festgeld averaged 3,52%, and the gross rental yield across the 52 largest German cities was 4,17%.
 
@@ -129,7 +120,7 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **When do I pay?** After the majority of the waiting list approves the plot and the investment agreement arrives: in full (10% bonus), over six months (5% bonus) or over a year with no bonus.
 
-**What dividend?** An estimated 87 € per share a year from long-term letting after costs, before company profit tax.
+**What dividend?** An estimated 2,5–3,5 % a year before company profit tax, from long-term letting after costs, not a guarantee.
 
 **Can I take the metres?** Yes, after the completion certificate.
 

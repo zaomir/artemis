@@ -42,7 +42,7 @@ Electrics, water, smart climate and lighting, connection of the panels. All of i
 
 ### Drawings
 
-Every house begins on paper. Six one-bedroom houses of 48–55 м², ten two-bedroom of 68–78 м², four large of 85–100 м². I build what is drawn. The drawing, the site and the report tell one story, and if one differs from another I find out why before you do.
+Every house begins on paper. Six one-bedroom houses of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m². I build what is drawn. The drawing, the site and the report tell one story, and if one differs from another I find out why before you do.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 

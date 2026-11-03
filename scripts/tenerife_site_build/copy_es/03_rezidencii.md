@@ -46,7 +46,7 @@ La mitad del conjunto. El segundo dormitorio se convierte en habitación para lo
 
 Es la casa para una familia que se traslada al norte y para quien vive aquí medio año y alquila el resto. En alquiler de larga duración, 72 metros en el norte a los 12–15 € por metro de mercado rentan 864–1 080 € al mes.
 
-**En cifras.** 72 metros en acciones de la lista de espera son 212 400 €, o 17 700 € al mes durante doce meses. Todo el rango de 68–78 metros, 200 600–230 100 €. Al precio del tramo «Entrega», 72 metros son 277 200 €. Tras la entrega, su casa o un dividendo: 72 × 87 € = 6 264 € al año estimados antes del impuesto sobre sociedades; para todo el rango de 68–78 acciones, 5 916–6 786 €.
+**En cifras.** 72 metros en acciones de la lista de espera son 212 400 €, o 17 700 € al mes durante doce meses. Todo el rango de 68–78 metros, 200 600–230 100 €. Al precio del tramo «Entrega», 72 metros son 277 200 €. Tras la entrega, su casa o un dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 

@@ -14,7 +14,7 @@ Le prix de l'action de la société promotrice Artemis: 2 950 € le mètre sur 
 
 ### Combien coûte le mètre au nord
 
-| Quoi | € par м² | Source |
+| Quoi | € par m² | Source |
 |---|---|---|
 | Santa Úrsula, tous logements | 2 405 | Fotocasa, octobre 2026 |
 | Santa Úrsula, quartier de La Quinta | 2 812 | Fotocasa, octobre 2026 |
@@ -33,10 +33,10 @@ Santa Úrsula a gagné 13,7% en un an selon l'indice Fotocasa. Les appartements 
 
 ### Les programmes neufs voisins de La Quinta: prix de présentation
 
-| Projet | Prix de présentation | € par м² |
+| Projet | Prix de présentation | € par m² |
 |---|---|---|
-| La Quinta III | 4 maisons de 125 м², 420 000–425 000 €, vendu | 3 360–3 400 |
-| La Quinta 2 | maisons de 110 м², 399 999–425 700 €, vendu | 3 636–3 870 |
+| La Quinta III | 4 maisons de 125 m², 420 000–425 000 €, vendu | 3 360–3 400 |
+| La Quinta 2 | maisons de 110 m², 399 999–425 700 €, vendu | 3 636–3 870 |
 
 Les programmes neufs voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre, et les deux sont déjà vendus. Une maison Artemis achevée, à la livraison: 3 800–4 600 € le mètre. Le palier « Livraison » des actions de la société promotrice: 3 850 €, soit le haut de la fourchette des prix de présentation des projets voisins, et non un prix inférieur au marché.
 
@@ -44,7 +44,7 @@ Les programmes neufs voisins de La Quinta étaient proposés à 3 360–3 870 �
 
 ### Les paliers Artemis face au marché
 
-| Palier | € par м² |
+| Palier | € par m² |
 |---|---|
 | Liste d'attente | 2 950 |
 | Permis | 3 100 |
@@ -61,7 +61,7 @@ Entrer sur la liste d'attente coûte le prix de l'ancien du quartier, et le mèt
 
 ### La location longue durée
 
-| Quoi | € par м² par mois | Source |
+| Quoi | € par m² par mois | Source |
 |---|---|---|
 | Santa Úrsula | 12 | Fotocasa |
 | Santa Úrsula, maisons / appartements | 11,31 / 15,04 | Engel & Völkers |
@@ -69,7 +69,7 @@ Entrer sur la liste d'attente coûte le prix de l'ancien du quartier, et le mèt
 | Santa Úrsula, par quartier, mars 2026 | 10,00–11,67 | Kelify |
 | Puerto de la Cruz | 17 | Fotocasa |
 
-Par exemple, les annonces de La Quinta même sur Kelify (relevé du 31.10.2026): 80 м² à 975 € par mois, 60 м² à 900 €, 132 м² à 1 500 €. Pour une maison de 72 mètres, cela fait 864–1 080 € par mois à 12–15 € le mètre.
+Par exemple, les annonces de La Quinta même sur Kelify (relevé du 31.10.2026): 80 m² à 975 € par mois, 60 m² à 900 €, 132 m² à 1 500 €. Pour une maison de 72 mètres, cela fait 864–1 080 € par mois à 12–15 € le mètre.
 
 ### Du loyer au dividende
 
@@ -78,20 +78,20 @@ La loi canarienne Ley 6/2025 ferme la location touristique de courte durée dans
 - loyer: 13,5 € le mètre par mois, au milieu des 12–15 € du marché;
 - sur un an: 13,5 × 12 = 162 € par mètre;
 - moins 46,3% de charges sur sept postes, 75 € par mètre;
-- il reste 87 € par action et par an en estimation, avant impôt sur les sociétés.
+- il reste le loyer après charges; le dividende se publie en pourcentage: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
 | Poste | € par mètre et par an | % de 162 € | Base du calcul |
 |---|---|---|---|
-| IBI, impôt foncier | 3,75 | 2,3% | 300 € par an pour 80 м² à Tenerife; taux de Santa Úrsula: 0,40% |
-| Charges de copropriété | 34,1 | 21,0% | 200–400 € par mois dans les ensembles avec piscine chauffée; dans le calcul, 200 € pour une maison moyenne d'environ 70 м² |
+| IBI, impôt foncier | 3,75 | 2,3% | 300 € par an pour 80 m² à Tenerife; taux de Santa Úrsula: 0,40% |
+| Charges de copropriété | 34,1 | 21,0% | 200–400 € par mois dans les ensembles avec piscine chauffée; dans le calcul, 200 € pour une maison moyenne d'environ 70 m² |
 | Gestion locative | 17,3 | 10,7% | 8–12% du loyer plus IGIC 7%; dans le calcul, 10% |
 | Vacance entre locataires | 6,75 | 4,2% | un demi-mois par an, avec une forte demande |
-| Assurance | 3,5 | 2,2% | 280 € par an pour 80 м² à Tenerife |
+| Assurance | 3,5 | 2,2% | 280 € par an pour 80 m² à Tenerife |
 | Réserve d'entretien | 8,1 | 5,0% | 4–6% du loyer pour une maison neuve |
-| Taxe sur les déchets (basura) | 1,5 | 0,9% | 100–150 € par an, à la charge du propriétaire; dans le calcul, 120 € pour 80 м² |
+| Taxe sur les déchets (basura) | 1,5 | 0,9% | 100–150 € par an, à la charge du propriétaire; dans le calcul, 120 € pour 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus grande, 75,5 м², gestion 8%, entretien 4%), les charges atteignent 41,8% et le dividende environ 94 € par action. Dans le scénario strict (loyer 12 € le mètre, 200 € de charges pour une maison un peu plus petite, 65,4 м², gestion 12%, un mois de vacance, entretien 6%), les charges atteignent 58,7% et le dividende environ 59 €. Le milieu estimé: 87 € par action et par an, avant impôt sur les sociétés.
+Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus grande, 75,5 m², gestion 8%, entretien 4%), les charges atteignent 41,8% et le dividende environ 94 € par action. Dans le scénario strict (loyer 12 € le mètre, 200 € de charges pour une maison un peu plus petite, 65,4 m², gestion 12%, un mois de vacance, entretien 6%), les charges atteignent 58,7% et le dividende environ 59 €. Le dividende estimé est de 2,5–3,5 % par an, avant impôt sur les sociétés.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,10 +102,9 @@ Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus 
 | Bund à 10 ans, 30.10.2026 | 3,34% |
 | Dépôt à terme 1 an, moyenne du top 10 | 3,52% |
 | Rendement brut de la location, 52 plus grandes villes d'Allemagne, H1 2026 | 4,17% |
-| Dividende estimé de 87 € rapporté au prix de la liste d'attente, 2 950 € | 2,9% |
-| Dividende estimé de 87 € rapporté au prix du palier « Livraison », 3 850 € | 2,3% |
+| Dividende estimé rapporté au prix d'entrée | 2,5–3,5% par an |
 
-Le dividende en euros est identique pour chaque action; le pourcentage dépend du palier auquel vous êtes entré. Nous montrons donc le dividende en euros et le pourcentage comme conséquence. Les deux chiffres sont des estimations avant impôt sur les sociétés.
+Le dividende par action est identique; le pourcentage rapporté à l'apport dépend du palier d'entrée. Le chiffre est une estimation avant impôt sur les sociétés.
 
 ### Comment cela fonctionne
 
@@ -121,7 +120,7 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **Quel loyer au nord?** 12–15 € le mètre par mois à Santa Úrsula, 17 € à Puerto de la Cruz.
 
-**D'où viennent les 87 €?** 13,5 € × 12 = 162 € moins 46,3% de charges: IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien, taxe sur les déchets. C'est une estimation avant impôt sur les sociétés.
+**D'où vient le pourcentage?** Le dividende se calcule à partir de la location longue durée du mètre après déduction des charges: IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien, taxe sur les déchets. Résultat: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
 **Кнопка: «M'inscrire sur la liste d'attente»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

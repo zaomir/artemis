@@ -32,7 +32,7 @@ Le soubassement est en pierre volcanique sombre. C'est le matériau de l'île, l
 
 ### Toiture et panneaux
 
-La toiture est plate, avec un fin liseré de bronze. Les panneaux solaires sont posés dans le plan du toit, et non suspendus au-dessus comme un accessoire. Depuis la rue, la maison reste nette, et le toit travaille toute la journée. À La Quinta, un kilowatt de panneaux dans le plan de toiture donne, selon PVGIS, environ 1 490 кВт·ч par an.
+La toiture est plate, avec un fin liseré de bronze. Les panneaux solaires sont posés dans le plan du toit, et non suspendus au-dessus comme un accessoire. Depuis la rue, la maison reste nette, et le toit travaille toute la journée. À La Quinta, un kilowatt de panneaux dans le plan de toiture donne, selon PVGIS, environ 1 490 kWh par an.
 
 ### Les installations techniques
 
@@ -42,7 +42,7 @@ La toiture est plate, avec un fin liseré de bronze. Les panneaux solaires sont 
 
 ### Les plans
 
-Chaque maison commence sur le papier. Six maisons avec une chambre de 48–55 м², dix avec deux chambres de 68–78 м², quatre grandes de 85–100 м². Je construis ce qui est dessiné. Le plan, le chantier et le rapport racontent une seule histoire; si l'un contredit l'autre, je cherche pourquoi avant vous.
+Chaque maison commence sur le papier. Six maisons avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m². Je construis ce qui est dessiné. Le plan, le chantier et le rapport racontent une seule histoire; si l'un contredit l'autre, je cherche pourquoi avant vous.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 

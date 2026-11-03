@@ -3,17 +3,18 @@
     No figures here: every number comes from the copy via model.json. -#}
 {% import "_components.html" as c with context %}
 <!doctype html>
-<html lang="ru">
+<html lang="{{ html_lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <link rel="canonical" href="{{ canonical }}">
-<link rel="alternate" hreflang="ru" href="{{ canonical }}">
+{% for h in hreflangs %}<link rel="alternate" hreflang="{{ h.code }}" href="{{ h.url }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ x_default }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artemis de la Cruz">
-<meta property="og:locale" content="ru_RU">
+<meta property="og:locale" content="{{ og_locale }}">
 <meta property="og:title" content="{{ og_title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ canonical }}">
@@ -33,7 +34,7 @@
 {% endfor %}
 </head>
 <body>
-<a class="skip" href="#main">К содержанию</a>
+<a class="skip" href="#main">{{ ui.skip }}</a>
 {{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
 {{ c.hero(page.hero) }}

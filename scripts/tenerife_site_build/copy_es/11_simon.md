@@ -76,7 +76,7 @@ Seis tramos: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 25
 
 ### Cómo trabajamos
 
-Yo llevo el proyecto: elección de la parcela, licencias, puesta en marcha y coordinación entre el dinero y la obra. Boris Ribaut construye: ejecución, estructura, informes y entrega de la vivienda. Los cálculos para cada accionista los hacemos con una sola fórmula: metros × precio del tramo, pago = importe ÷ 12, dividendo = acciones × euros por acción. Dos áreas de responsabilidad y ninguna pregunta sin dueño.
+Yo llevo el proyecto: elección de la parcela, licencias, puesta en marcha y coordinación entre el dinero y la obra. Boris Ribaut construye: ejecución, estructura, informes y entrega de la vivienda. Los cálculos para cada accionista los hacemos con una sola fórmula: metros × precio del tramo, pago = seis plazos iguales con el 5 % de descuento sobre el precio total. Dos áreas de responsabilidad y ninguna pregunta sin dueño.
 
 ### Qué espero de usted
 

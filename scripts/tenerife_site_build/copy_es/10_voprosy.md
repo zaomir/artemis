@@ -46,9 +46,9 @@ Aquí están las preguntas que se hacen antes de comprar una casa en Tenerife y 
 
 ### El dividendo
 
-**¿Cómo funciona el dividendo?** El dividendo va en euros por cada acción y es igual para todas. Se calcula a partir del alquiler de larga duración una vez descontados los gastos: 13,5 € de alquiler por metro y mes × 12 = 162 €, menos un 46,3% de gastos por partidas (IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura), es decir, 87 € por acción al año estimados antes del impuesto sobre sociedades.
+**¿Cómo funciona el dividendo?** El dividendo es igual por acción. Se calcula a partir del alquiler de larga duración una vez descontados los gastos — alquiler, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura — y se publica en porcentaje: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**.
 
-**¿Cuánto es con 72 acciones?** 72 × 87 € = 6 264 € al año, 522 € al mes, estimados y antes del impuesto sobre sociedades.
+**¿Cuánto es con 72 acciones?** El dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, no es una garantía.
 
 **¿De dónde sale la cifra del alquiler?** Del mercado: el alquiler de larga duración en Santa Úrsula ronda los 12 € por metro; los pisos, unos 15 €; en Puerto de la Cruz, unos 17 €.
 

@@ -46,7 +46,7 @@ Die Hälfte der Anlage. Das zweite Schlafzimmer wird zum Kinderzimmer, Gästezim
 
 Das ist ein Haus für eine Familie, die in den Norden zieht, und für alle, die hier ein halbes Jahr leben und die übrige Zeit vermieten. In der langfristigen Vermietung im Norden bringen 72 Meter bei marktüblichen 12–15 € pro Meter 864–1 080 € im Monat.
 
-**In Zahlen.** 72 Meter als Aktien aus der Warteliste — 212 400 €, oder 17 700 € im Monat über zwölf Monate. Die ganze Spanne von 68–78 Metern — 200 600–230 100 €. Zum Preis der Stufe „Fertigstellung“ kosten 72 Meter 277 200 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende: rechnerisch 72 × 87 € = 6 264 € im Jahr vor Körperschaftsteuer der Gesellschaft, für die ganze Spanne von 68–78 Aktien — 5 916–6 786 €.
+**In Zahlen.** 72 Meter als Aktien aus der Warteliste — 212 400 €, oder 17 700 € im Monat über zwölf Monate. Die ganze Spanne von 68–78 Metern — 200 600–230 100 €. Zum Preis der Stufe „Fertigstellung“ kosten 72 Meter 277 200 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende: rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 

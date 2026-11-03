@@ -65,10 +65,10 @@ En un párrafo: la inscripción en la lista de espera es gratuita. Ahora estamos
 **Cálculo breve sobre 72 metros: 72 acciones:**
 
 - **Importe** = 72 × 2 950 € = 212 400 €.
-- **Pago en 12 meses** = 212 400 € ÷ 12 = 17 700 € al mes.
-- **Tras la entrega** = 72 × 87 € = 6 264 € de dividendo estimado al año antes del impuesto sobre sociedades, o 72 metros de su propia residencia.
+- **Pago** = 212 400 € con el 5 % de descuento ÷ 6 = 33 630 € al mes.
+- **Tras la entrega** — un dividendo estimado del 2,5–3,5 % anual antes del impuesto sobre sociedades, o 72 metros de su propia residencia.
 
-El precio de la acción sube por tramos según la obra: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €; entrega, 3 850 €. Esos mismos 72 metros al precio del tramo «Entrega» son 277 200 €. El dividendo es de 87 € por acción al año, estimado y antes del impuesto sobre sociedades: un alquiler de 13,5 € por metro y mes × 12 = 162 €, menos un 46,3% de gastos por partidas: IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura.
+El precio de la acción sube por tramos según la obra: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €; entrega, 3 850 €. Esos mismos 72 metros al precio del tramo «Entrega» son 277 200 €. El dividendo es de un 2,5–3,5 % anual estimado y antes del impuesto sobre sociedades: se calcula a partir del alquiler del metro una vez descontados los gastos — IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura.
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -98,7 +98,7 @@ Sociedad: OXFORD FRAME REAL ASSETS LTD, Inglaterra y Gales, Companies House nº 
 
 **¿Cuándo se paga?** Cuando la mayoría de la lista apruebe la parcela y llegue el contrato de inversión: al contado (bonificación del 10%), en seis meses (bonificación del 5%) o en un año sin bonificación.
 
-**¿Cómo funciona el dividendo?** Los mismos euros por cada acción, procedentes del alquiler de larga duración una vez descontados los gastos: 87 € al año estimados, antes del impuesto sobre sociedades.
+**¿Cómo funciona el dividendo?** Un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, procedente del alquiler de larga duración una vez descontados los gastos; no es una garantía.
 
 **¿Cómo se canjean las acciones por metros?** Tras la licencia de primera ocupación: escritura ante notario e inscripción en el Registro.
 

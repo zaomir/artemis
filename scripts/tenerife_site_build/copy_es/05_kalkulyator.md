@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/calculadora/
 Meta title: Calculadora de acciones Artemis: importe, pago y dividendo
-Meta description: Elija superficie, tramo y forma de pago: importe de las acciones, pago mensual en 12 meses, precio en la entrega y dividendo estimado al año.
+Meta description: Elija superficie, tramo y forma de pago: importe de las acciones, pago mensual en seis plazos, precio en la entrega y dividendo estimado al año.
 OG title: Calcule sus acciones de Artemis de la Cruz
 -->
 
 # Calculadora: sus metros en acciones de la sociedad promotora
 
-Elija una superficie o un tipo de residencia, el tramo de entrada y la forma de pago. La calculadora mostrará el importe de compra de las acciones de la sociedad promotora, el pago mensual si se paga en 12 meses, el precio de esos mismos metros en el tramo «Entrega» y el dividendo en euros al año. Una acción es un metro cuadrado.
+Elija una superficie o un tipo de residencia, el tramo de entrada y la forma de pago. La calculadora mostrará el importe de compra de las acciones de la sociedad promotora, el pago mensual si se paga en seis plazos, el precio de esos mismos metros en el tramo «Entrega» y el dividendo en euros al año. Una acción es un metro cuadrado.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -21,16 +21,16 @@ Elija una superficie o un tipo de residencia, el tramo de entrada y la forma de 
 
 **Tramo de entrada.** Lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €.
 
-**Forma de pago.** Al contado o en 12 cuotas iguales. La bonificación por pago completo y la opción de seis meses todavía no las calcula.
+**Forma de pago.** Al contado o en seis cuotas iguales. La bonificación por pago completo y la opción de seis meses todavía no las calcula.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Qué ve
 
 - **Importe de compra:** cuánto cuestan sus acciones en el tramo elegido.
-- **Pago mensual:** si paga en 12 meses.
+- **Pago mensual:** si paga en seis plazos.
 - **Precio del tramo «Entrega» para esos mismos metros:** a 3 850 € por metro.
-- **Dividendo anual:** 87 € por cada acción, estimados, antes del impuesto sobre sociedades.
+- **Dividendo:** un 2,5–3,5 % anual estimado, antes del impuesto sobre sociedades.
 - **Dividendo sobre lo invertido:** en porcentaje del importe de compra.
 - **Dos caminos tras la entrega:** cobrar el dividendo o canjear las acciones por metros de su residencia.
 
@@ -39,10 +39,9 @@ Elija una superficie o un tipo de residencia, el tramo de entrada y la forma de 
 Todo se calcula de forma abierta, sin coeficientes ocultos:
 
 - **Importe** = m² × precio del tramo.
-- **Pago mensual** = importe ÷ 12.
+- **Pago mensual** = importe con el 5 % de descuento ÷ 6.
 - **Precio en la entrega** = m² × 3 850 €.
-- **Dividendo anual** = m² × 87 €, estimado, antes del impuesto sobre sociedades.
-- **Dividendo sobre lo invertido** = 87 € ÷ precio del tramo, estimado.
+- **Dividendo** — un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, no es una garantía.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -51,30 +50,28 @@ Todo se calcula de forma abierta, sin coeficientes ocultos:
 | | 48 m² | 72 m² | 100 m² |
 |---|---|---|---|
 | Importe a 2 950 € | 141 600 € | 212 400 € | 295 000 € |
-| Pago en 12 meses | 11 800 € | 17 700 € | 24 583 € |
+| Pago en seis plazos con el 5 % de descuento | 11 800 € | 17 700 € | 24 583 € |
 | Esos mismos metros a 3 850 € | 184 800 € | 277 200 € | 385 000 € |
 | Diferencia | 43 200 € | 64 800 € | 90 000 € |
-| Dividendo anual, 87 € por acción estimados antes del impuesto sobre sociedades | 4 176 € | 6 264 € | 8 700 € |
-| Dividendo mensual, estimado | 348 € | 522 € | 725 € |
-| Sobre lo invertido, estimado | 2,9% | 2,9% | 2,9% |
+| Dividendo estimado, antes del impuesto sobre sociedades | 2,5–3,5% anual | 2,5–3,5% anual | 2,5–3,5% anual |
 
-**48 metros** — casa de un dormitorio. Entrada desde la lista de espera, 141 600 €, o 11 800 € al mes. Tras la entrega, 4 176 € de dividendo estimado al año antes del impuesto sobre sociedades, o su propia casa.
+**48 metros** — casa de un dormitorio. Entrada desde la lista de espera, 141 600 €, o 11 800 € al mes. Tras la entrega, un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, o su propia casa.
 
-**72 metros** — casa de dos dormitorios. 212 400 €, o 17 700 € al mes. Dividendo: 6 264 € al año estimados antes del impuesto sobre sociedades.
+**72 metros** — casa de dos dormitorios. 212 400 €, o 17 700 € al mes. Dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
-**100 metros** — casa grande. 295 000 €, o unos 24 583 € al mes. Dividendo: 8 700 € al año estimados antes del impuesto sobre sociedades.
+**100 metros** — casa grande. 295 000 €, o unos 24 583 € al mes. Dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
 ### Por qué el dividendo va en euros y no en porcentajes
 
-Una acción es un metro. Todos los metros se alquilan en larga duración igual, así que el dividendo por acción es el mismo para todas: 87 € al año estimados antes del impuesto sobre sociedades. Quien entró en la lista de espera a 2 950 € recibe los mismos 87 € que quien entró en acabados a 3 650 €. Sobre lo invertido eso es un 2,9% y un 2,4%. La entrada temprana se ve en las cifras.
+Una acción es un metro. Todos los metros se alquilan en larga duración igual, así que el dividendo por acción es el mismo: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**. Quien entró en la lista de espera obtiene un porcentaje mayor sobre lo invertido que quien entró más tarde.
 
-De dónde salen los 87 €: el alquiler de larga duración en Santa Úrsula es de 12–15 € por metro al mes. En el punto medio, 13,5 €, son 162 € al año por metro. Los gastos por partidas, un 46,3%, 75 € por metro: IBI 3,75 €, cuotas de comunidad 34,1 €, gestión del alquiler con IGIC 17,3 €, periodos sin alquilar 6,75 €, seguro 3,5 €, reserva para reparaciones 8,1 € y tasa de basura 1,5 €. Quedan 87 € antes del impuesto sobre sociedades.
+De dónde sale el porcentaje: el dividendo se calcula a partir del alquiler de larga duración del metro una vez descontados los gastos — alquiler, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura. El resultado es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, no es una garantía.
 
 ### Si el tramo ya es posterior
 
-La calculadora admite cualquier tramo. Ejemplo: 72 metros en el tramo «Estructura y cubierta», 72 × 3 450 € = 248 400 €, o 20 700 € al mes. Esos mismos metros al precio de la entrega, 277 200 €. El dividendo es el mismo: 6 264 € al año estimados antes del impuesto sobre sociedades; sobre lo invertido, un 2,5%.
+La calculadora admite cualquier tramo. Ejemplo: 72 metros en el tramo «Estructura y cubierta», 72 × 3 450 € = 248 400 €, o 20 700 € al mes. Esos mismos metros al precio de la entrega, 277 200 €. El dividendo es el mismo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 

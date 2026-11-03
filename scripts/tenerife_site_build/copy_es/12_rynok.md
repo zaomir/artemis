@@ -78,7 +78,7 @@ La ley canaria Ley 6/2025 prohíbe el alquiler turístico de corta duración en 
 - el alquiler: 13,5 € por metro al mes, el punto medio de los 12–15 € de mercado;
 - al año: 13,5 × 12 = 162 € por metro;
 - menos un 46,3% de gastos por siete partidas, 75 € por metro;
-- quedan 87 € por acción al año estimados, antes del impuesto sobre sociedades.
+- queda el alquiler después de los gastos; el dividendo se publica en porcentaje: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 | Partida | € por metro al año | % sobre 162 € | Base del cálculo |
 |---|---|---|---|
@@ -91,7 +91,7 @@ La ley canaria Ley 6/2025 prohíbe el alquiler turístico de corta duración en 
 | Tasa de basura | 1,5 | 0,9% | 100–150 € al año, la paga el propietario; en el cálculo, 120 € por 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor, 75,5 m², gestión del 8% y reparaciones del 4%, los gastos son un 41,8% y unos 94 € por acción estimados. En el estricto, con alquiler de 12 € por metro, 200 € de cuotas para una casa algo menor, 65,4 m², gestión del 12%, un mes sin alquilar y reparaciones del 6%, los gastos son un 58,7% y unos 59 €. El punto medio estimado son 87 € por acción al año antes del impuesto sobre sociedades.
+En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor, 75,5 m², gestión del 8% y reparaciones del 4%, los gastos son un 41,8% y unos 94 € por acción estimados. En el estricto, con alquiler de 12 € por metro, 200 € de cuotas para una casa algo menor, 65,4 m², gestión del 12%, un mes sin alquilar y reparaciones del 6%, los gastos son un 58,7% y unos 59 €. El dividendo estimado es un 2,5–3,5 % anual antes del impuesto sobre sociedades.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,10 +102,9 @@ En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor
 | Bund a 10 años, 30.10.2026 | 3,34% |
 | Festgeld a 1 año, media del top-10 | 3,52% |
 | Rentabilidad bruta del alquiler, 52 mayores ciudades de Alemania, H1 2026 | 4,17% |
-| Dividendo estimado de 87 € sobre el precio de la lista de espera, 2 950 € | 2,9% |
-| Dividendo estimado de 87 € sobre el precio del tramo «Entrega», 3 850 € | 2,3% |
+| Dividendo estimado sobre el precio de entrada | 2,5–3,5% anual |
 
-El dividendo en euros es igual para cada acción y el porcentaje depende del tramo por el que se entró. Por eso mostramos el dividendo en euros y el porcentaje como consecuencia. Las dos cifras son un cálculo antes del impuesto sobre sociedades.
+El dividendo por acción es igual; el porcentaje sobre lo invertido depende del tramo por el que se entró. La cifra es un cálculo antes del impuesto sobre sociedades.
 
 ### Cómo funciona
 
@@ -121,7 +120,7 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿Cómo es el alquiler en el norte?** 12–15 € por metro al mes en Santa Úrsula y 17 € en Puerto de la Cruz.
 
-**¿De dónde salen los 87 €?** 13,5 € × 12 = 162 € menos un 46,3% de gastos: IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura. Es un cálculo antes del impuesto sobre sociedades.
+**¿De dónde sale el porcentaje?** El dividendo se calcula a partir del alquiler de larga duración del metro una vez descontados los gastos: IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura. Resultado: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 **Кнопка: «Apuntarme a la lista de espera»**
 Gratis. No cobramos nada hasta elegir la parcela.

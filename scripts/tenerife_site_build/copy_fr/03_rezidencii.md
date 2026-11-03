@@ -1,30 +1,30 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/producto/
-Meta title: Résidences Artemis: 20 maisons de 48 à 100 м² à La Quinta
-Meta description: Six maisons avec une chambre, dix de deux chambres, quatre grandes de 85–100 м². Canary Stone, panneaux solaires, piscine chauffée. Une résidence = 48–100 actions.
-OG title: Vingt résidences de 48 à 100 м² dans le nord de Tenerife
+Meta title: Résidences Artemis: 20 maisons de 48 à 100 m² à La Quinta
+Meta description: Six maisons avec une chambre, dix de deux chambres, quatre grandes de 85–100 m². Canary Stone, panneaux solaires, piscine chauffée. Une résidence = 48–100 actions.
+OG title: Vingt résidences de 48 à 100 m² dans le nord de Tenerife
 -->
 
 # Vingt résidences de 48 à 100 mètres, une seule façade Canary Stone
 
-Vingt résidences Artemis à La Quinta, Santa Úrsula: six maisons avec une chambre de 48–55 м², dix avec deux chambres de 68–78 м², quatre grandes de 85–100 м². Une maison achevée à la livraison: 3 800–4 600 € le mètre. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €, une action pour un mètre carré.
+Vingt résidences Artemis à La Quinta, Santa Úrsula: six maisons avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m². Une maison achevée à la livraison: 3 800–4 600 € le mètre. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €, une action pour un mètre carré.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Vingt sur vingt
 
-| Type | Sur 20 | Surface | Cette résidence = | En actions depuis la liste d'attente, 2 950 €/м² | Maison à la livraison, 3 800–4 600 €/м² |
+| Type | Sur 20 | Surface | Cette résidence = | En actions depuis la liste d'attente, 2 950 €/m² | Maison à la livraison, 3 800–4 600 €/m² |
 |---|---|---|---|---|---|
-| Une chambre | 6 | 48–55 м² | 48–55 actions | 141 600–162 250 € | 182 400–253 000 € |
-| Deux chambres | 10 | 68–78 м² | 68–78 actions | 200 600–230 100 € | 258 400–358 800 € |
-| Grande maison | 4 | 85–100 м² | 85–100 actions | 250 750–295 000 € | 323 000–460 000 € |
+| Une chambre | 6 | 48–55 m² | 48–55 actions | 141 600–162 250 € | 182 400–253 000 € |
+| Deux chambres | 10 | 68–78 m² | 68–78 actions | 200 600–230 100 € | 258 400–358 800 € |
+| Grande maison | 4 | 85–100 m² | 85–100 actions | 250 750–295 000 € | 323 000–460 000 € |
 
-Au total, 1 308–1 510 м² de surface habitable. Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements.
+Au total, 1 308–1 510 m² de surface habitable. Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements.
 
 ---
 
-## Une chambre · 48–55 м² · 6 sur 20
+## Une chambre · 48–55 m² · 6 sur 20
 
 **Cette résidence = 48–55 actions de la société promotrice.**
 
@@ -38,7 +38,7 @@ Rien de superflu: tout ce qui est nécessaire, et rien pour quoi il faudrait pay
 
 ---
 
-## Deux chambres · 68–78 м² · 10 sur 20
+## Deux chambres · 68–78 m² · 10 sur 20
 
 **Cette résidence = 68–78 actions de la société promotrice.**
 
@@ -46,7 +46,7 @@ La moitié de l'ensemble. La seconde chambre devient une chambre d'enfants, d'am
 
 C'est la maison d'une famille qui s'installe au nord, et de celui qui y vit six mois et loue le reste du temps. En location longue durée au nord, 72 mètres à 12–15 € le mètre de marché rapportent 864–1 080 € par mois.
 
-**En chiffres.** 72 mètres en actions depuis la liste d'attente: 212 400 €, soit 17 700 € par mois sur douze mois. Toute la plage de 68–78 mètres: 200 600–230 100 €. Au prix du palier « Livraison », 72 mètres: 277 200 €. Après la livraison: votre maison, ou un dividende, soit 72 × 87 € = 6 264 € par an en estimation avant impôt sur les sociétés; sur toute la plage de 68–78 actions: 5 916–6 786 €.
+**En chiffres.** 72 mètres en actions depuis la liste d'attente: 212 400 €, soit 17 700 € par mois sur douze mois. Toute la plage de 68–78 mètres: 200 600–230 100 €. Au prix du palier « Livraison », 72 mètres: 277 200 €. Après la livraison: votre maison, ou un dividende de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -54,7 +54,7 @@ C'est la maison d'une famille qui s'installe au nord, et de celui qui y vit six 
 
 ---
 
-## Grande maison · 85–100 м² · 4 sur 20
+## Grande maison · 85–100 m² · 4 sur 20
 
 **Cette résidence = 85–100 actions de la société promotrice.**
 

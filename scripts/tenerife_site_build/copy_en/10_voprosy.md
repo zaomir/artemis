@@ -46,9 +46,9 @@ These are the questions people ask before buying a house in Tenerife and before 
 
 ### The dividend
 
-**How does the dividend work?** The dividend is in euros on each share, the same for every share. It is calculated from long-term letting after costs: 13,5 € of rent per metre a month × 12 = 162 €, less 46,3% of costs by line (IBI, community fees, management, vacancy, insurance, repair reserve, refuse charge), an estimated 87 € per share a year before company profit tax.
+**How does the dividend work?** The dividend is the same per share. It is calculated from long-term letting after costs — rent, community fees, management, vacancy, insurance, a repair reserve and the refuse charge — and is published as a percentage: **an estimated 2,5–3,5 % a year before company profit tax**.
 
-**How much is that on 72 shares?** An estimated 72 × 87 € = 6 264 € a year, 522 € a month, before company profit tax.
+**How much is that on 72 shares?** The dividend is an estimated 2,5–3,5 % a year before company profit tax, not a guarantee.
 
 **Where does the rent figure come from?** From the market: long-term letting in Santa Úrsula is about 12 € per metre, flats about 15 €, and in Puerto de la Cruz about 17 €.
 
@@ -88,7 +88,7 @@ These are the questions people ask before buying a house in Tenerife and before 
 
 **Who is the company?** OXFORD FRAME REAL ASSETS LTD, England and Wales, Companies House No. 09153936.
 
-**How many houses, and what kind?** Twenty: six one-bedroom of 48–55 м², ten two-bedroom of 68–78 м², four large of 85–100 м².
+**How many houses, and what kind?** Twenty: six one-bedroom of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m².
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 

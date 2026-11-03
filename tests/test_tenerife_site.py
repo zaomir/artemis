@@ -18,8 +18,10 @@ os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app 
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
 SITE = ROOT / "app" / "tenerife_site" / "ru"
 STATIC = ROOT / "app" / "static"
-PAGES = {"index": "/tenerife/", "norte": "/tenerife/norte/", "producto": "/tenerife/producto/",
-         "construccion": "/tenerife/construccion/", "proceso": "/tenerife/proceso/", "faq": "/tenerife/faq/"}
+# RU живёт под /tenerife/ru/ (EN — корень /tenerife/, ES/DE/FR — свои подкаталоги); файлы — app/tenerife_site/ru/
+RU = "/tenerife/ru"
+PAGES = {"index": f"{RU}/", "norte": f"{RU}/norte/", "producto": f"{RU}/producto/",
+         "construccion": f"{RU}/construccion/", "proceso": f"{RU}/proceso/", "faq": f"{RU}/faq/"}
 SHIPPED = {k: v for k, v in PAGES.items() if (SITE / f"{k}.html").is_file()}
 FORM_HOST = "proceso" if "proceso" in SHIPPED else "index"  # until proceso.html arrives the form lives on /tenerife/
 
@@ -49,7 +51,7 @@ FORBIDDEN = [
 CONTACT_EMAIL = "info@artemisresort.com"
 EMAIL_OFF_LINK = ('<!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a>'
                   '<!--/email_off-->')
-LEGAL_AND_PREVIEW = ["/tenerife/impressum/", "/tenerife/privacy/"]  # /tenerife-preview/ is a 301 since T47
+LEGAL_AND_PREVIEW = [f"{RU}/impressum/", f"{RU}/privacy/"]  # /tenerife-preview/ is a 301 since T47
 
 
 # founder 31.10.2026: no public disclaimers on the live Tenerife pages
@@ -110,11 +112,18 @@ class TenerifeSiteTest(unittest.TestCase):
     def test_redirects(self):
         r = self.client.get("/tenerife")
         self.assertEqual((r.status_code, r.headers["Location"].rsplit("/tenerife", 1)[1]), (301, "/"))
-        for name, url in SHIPPED.items():
-            r = self.client.get(f"/tenerife/{name}.html")
+        r = self.client.get("/tenerife/ru")
+        self.assertEqual((r.status_code, r.headers["Location"].rsplit("/tenerife", 1)[1]), (301, "/ru/"))
+        self.assertEqual(self.client.get("/tenerife/en/").headers["Location"].rsplit("/tenerife", 1)[1], "/")
+        for name, url in SHIPPED.items():          # /tenerife/ru/<page>.html -> 301 /tenerife/ru/<page>/
+            r = self.client.get(f"{RU}/{name}.html")
+            self.assertEqual(r.status_code, 301, name)
+            self.assertTrue(r.headers["Location"].endswith(url), (name, r.headers["Location"]))
+            r = self.client.get(f"{RU}/{name}")
             self.assertEqual(r.status_code, 301, name)
             self.assertTrue(r.headers["Location"].endswith(url), (name, r.headers["Location"]))
         self.assertEqual(self.client.get("/tenerife/nope/").status_code, 404)
+        self.assertEqual(self.client.get(f"{RU}/nope/").status_code, 404)
         self.assertEqual(self.client.get("/tenerife/../app.py").status_code, 404)
 
     def test_no_forbidden_content(self):
@@ -143,12 +152,12 @@ class TenerifeSiteTest(unittest.TestCase):
                 self.assertIsNone(re.search(rx, html), f"{url}: {rx}")
 
     def test_legal_pages_only_known_data(self):
-        imp = self.client.get("/tenerife/impressum/").get_data(as_text=True)
+        imp = self.client.get(f"{RU}/impressum/").get_data(as_text=True)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "info@artemisresort.com"):
             self.assertIn(must, imp)
         for gone in ("Телефон", "VAT", "MStV", 'class="todo"'):
             self.assertNotIn(gone, imp)
-        prv = self.client.get("/tenerife/privacy/").get_data(as_text=True)
+        prv = self.client.get(f"{RU}/privacy/").get_data(as_text=True)
         self.assertIn("info@artemisresort.com", prv)
         self.assertNotIn('class="todo"', prv)
 
@@ -254,16 +263,17 @@ class TenerifeSiteTest(unittest.TestCase):
             html, _ = self.page(url)
             for pat in REMOVED_DISCLAIMERS:
                 self.assertIsNone(re.search(pat, html, re.I), f"{name}: {pat}")
-            for s in ('href="/tenerife/impressum/"', 'href="/tenerife/privacy/"',
+            for s in (f'href="{RU}/impressum/"', f'href="{RU}/privacy/"',
                       "OXFORD FRAME REAL ASSETS LTD", "09153936"):
                 self.assertIn(s, html, f"{name}: {s}")
             self.assertNotIn("/tenerife-preview/", html, name)
 
     def test_legal_pages_prod_indexable_canonical(self):
-        # 31.10.2026: Impressum / privacy live at /tenerife/<name>/ (indexable, canonical, in sitemap)
+        # 31.10.2026: Impressum / privacy live at /tenerife/<name>/ (indexable, canonical, in sitemap);
+        # since the locale branch the RU pair sits under /tenerife/ru/<name>/ with its own canonical
         locs = re.findall(r"<loc>([^<]+)</loc>", self.client.get("/sitemap.xml").get_data(as_text=True))
         for name in ("impressum", "privacy"):
-            url = f"/tenerife/{name}/"
+            url = f"{RU}/{name}/"
             html, r = self.page(url)
             self.assertNotIn("X-Robots-Tag", r.headers, url)
             self.assertNotIn("noindex", html, url)
@@ -283,8 +293,8 @@ class TenerifeSiteTest(unittest.TestCase):
                     self.assertTrue((STATIC / ref[len("/static/"):]).is_file(), f"{url}: missing {ref}")
                 else:
                     self.assertEqual(self.client.get(ref).status_code, 200, f"{url}: {ref}")
-            self.assertIn(self.client.get(f"/tenerife/{name}").status_code, (301, 308))
-            self.assertEqual(self.client.get(f"/tenerife/{name}.html").status_code, 301)
+            self.assertIn(self.client.get(f"{RU}/{name}").status_code, (301, 308))
+            self.assertEqual(self.client.get(f"{RU}/{name}.html").status_code, 301)
 
     def test_internal_links_and_assets_resolve(self):
         for name, url in SHIPPED.items():
@@ -361,10 +371,10 @@ class TenerifeSiteTest(unittest.TestCase):
     def test_waitlist_submit_from_site_and_no_js_redirect(self):
         r = self.client.post("/api/tenerife/waitlist", data={
             "name": "Anna", "contact": "anna@example.de", "language": "ru", "consent": "1",
-            "page": "/tenerife/proceso/"}, headers={"CF-Connecting-IP": "9.9.9.9"})
+            "page": f"{RU}/proceso/"}, headers={"CF-Connecting-IP": "9.9.9.9"})
         self.assertEqual(r.status_code, 303)
         # QA T3-05: no-JS thank-you page with the way back to the page the form was sent from
-        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2Fproceso%2F"))
+        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2Fru%2Fproceso%2F"))
         r = self.client.post("/api/tenerife/waitlist", data={
             "name": "Bob", "contact": "bob@example.de", "language": "ru", "consent": "1",
             "page": "//evil.example/x"}, headers={"CF-Connecting-IP": "9.9.9.8"})

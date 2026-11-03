@@ -227,10 +227,15 @@ def sitemap_paths() -> list[str]:
     paths = [f"/{lang}/" for lang in SUPPORTED]
     if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
         return paths
-    for name in ("index",) + tenerife.SITE_PAGES:
-        if (tenerife.SITE_DIR / f"{name}.html").is_file():
-            paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
-    paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES]
+    # every language of the site: EN at the root, RU/ES/DE/FR under /tenerife/<locale>/ (hreflang set on each page)
+    for locale in ("en",) + tenerife.LOCALES:
+        base = tenerife.SITE_DIR if locale == "en" else tenerife.SITE_DIR / locale
+        prefix = "" if locale == "en" else f"{locale}/"
+        for name in ("index",) + tenerife.SITE_PAGES:
+            if (base / f"{name}.html").is_file():
+                paths.append(f"/tenerife/{prefix}" if name == "index" else f"/tenerife/{prefix}{name}/")
+        paths += [f"/tenerife/{prefix}{name}/" for name in tenerife.LEGAL_PAGES
+                  if (base / f"{name}.html").is_file()]
     return paths
 
 

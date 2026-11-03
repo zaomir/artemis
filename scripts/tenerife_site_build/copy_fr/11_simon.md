@@ -32,7 +32,7 @@ Je suis citoyen slovène et je travaille via une plateforme londonienne et en Fr
 
 Le nord de Tenerife est vert, sans grande chaleur et sans poussière. Depuis La Quinta: 8 km et 10–15 minutes de route jusqu'à Puerto de la Cruz, 15–20 minutes jusqu'à l'aéroport de Tenerife Norte, 25–30 minutes jusqu'à Santa Cruz. On y vit toute l'année. Je construis là où les gens vivent, pas là où ils passent une semaine.
 
-Vingt maisons: six avec une chambre de 48–55 м², dix avec deux chambres de 68–78 м², quatre grandes de 85–100 м². Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements. Pour comparaison: les programmes voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre, et les deux sont vendus; une maison Artemis achevée, à la livraison: 3 800–4 600 €.
+Vingt maisons: six avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m². Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements. Pour comparaison: les programmes voisins de La Quinta étaient proposés à 3 360–3 870 € le mètre, et les deux sont vendus; une maison Artemis achevée, à la livraison: 3 800–4 600 €.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -76,7 +76,7 @@ Six paliers: liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, 
 
 ### Comment nous travaillons
 
-Je conduis le projet: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. Boris Ribaut construit: chantier, structure, rapports, livraison des maisons. Pour chaque actionnaire, nous calculons selon une seule formule: mètres × prix du palier, versement = montant ÷ 12, dividende = actions × euros par action. Deux zones de responsabilité, aucune question sans responsable.
+Je conduis le projet: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. Boris Ribaut construit: chantier, structure, rapports, livraison des maisons. Pour chaque actionnaire, nous calculons selon une seule formule: mètres × prix du palier, versement = six versements égaux avec 5 % de remise sur le prix total. Deux zones de responsabilité, aucune question sans responsable.
 
 ### Ce que j'attends de vous
 

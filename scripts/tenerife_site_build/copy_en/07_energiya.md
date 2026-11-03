@@ -82,7 +82,7 @@ A new house with sun on the roof and a stone outline costs more than an old flat
 
 Joining the waiting list is free. We are currently choosing the plot in the La Quinta area of Santa Úrsula and discussing the options with waiting-list members. We take no money before the plot is chosen: the investment agreement arrives when the majority of the waiting list approves the plot. Under the agreement you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus. Every week of construction: a report. After handover: a dividend in euros on each share from long-term letting less costs, estimated, before company profit tax, or an exchange of shares for the metres of your own residence.
 
-The dividend is rent minus costs. The less the houses spend on electricity, water and the pool, the more of the rent remains. The estimated dividend is 87 € per share a year before company profit tax: 13,5 € of rent per metre a month × 12 = 162 €, less 46,3% of costs by line. The largest line is community fees at 21,0%, which cover the shared heated pool and the upkeep of the grounds. The less the shared systems draw from the grid, the lower that line.
+The dividend is rent minus costs. The less the houses spend on electricity, water and the pool, the more of the rent remains. The estimated dividend is 2,5–3,5 % a year before company profit tax. The largest line is community fees at 21,0%, which cover the shared heated pool and the upkeep of the grounds. The less the shared systems draw from the grid, the lower that line.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 

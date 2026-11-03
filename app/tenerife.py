@@ -197,7 +197,7 @@ def _finish(page: str) -> str:
     return page
 
 
-LOCALES = ("ru", "es", "de", "fr")
+LOCALES = ("ru", "es", "de", "fr")   # EN — корень /tenerife/, остальные — /tenerife/<locale>/
 
 
 def _site_page(name: str, locale: str = "en"):
@@ -223,11 +223,18 @@ def site_index():
     return _site_page("index")
 
 
-@bp.route(SITE_PREFIX + "/<locale>/")
-def site_locale_index(locale: str):
+@bp.route(SITE_PREFIX + "/<locale>/<page>")
+@bp.route(SITE_PREFIX + "/<locale>/<page>.html")
+def site_locale_legacy(locale: str, page: str):
+    """Clean URL of a locale page: /tenerife/de/norte and /tenerife/de/norte.html -> 301 /tenerife/de/norte/."""
     if locale not in LOCALES:
         return make_response("Not found", 404)
-    return _site_page("index", locale)
+    page = page[:-5] if page.endswith(".html") else page
+    if page == "index":
+        return redirect(_with_query(f"{SITE_PREFIX}/{locale}/"), code=301)
+    if page in SITE_PAGES or page in LEGAL_PAGES:
+        return redirect(_with_query(f"{SITE_PREFIX}/{locale}/{page}/"), code=301)
+    return make_response("Not found", 404)
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>/")
@@ -249,9 +256,13 @@ def legal_page():
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
+    """One segment under /tenerife/: the home of a locale (/tenerife/ru/), the EN home (/tenerife/),
+    an EN page or legal page, everything else 404."""
+    if page == "en":
+        return redirect(SITE_PREFIX + "/", code=301)   # EN живёт в корне
     if page in LOCALES:
-        return redirect(f"{SITE_PREFIX}/{page}/", code=301)
-    if page not in SITE_PAGES:
+        return _site_page("index", page)
+    if page not in SITE_PAGES and page not in LEGAL_PAGES:
         return make_response("Not found", 404)
     return _site_page(page)
 
@@ -262,6 +273,8 @@ def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
+    if page in LOCALES:   # /tenerife/ru -> /tenerife/ru/
+        return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     return make_response("Not found", 404)
@@ -306,7 +319,8 @@ _EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 
 
 def _notice(status: int, title: str, text: str, back: str, back_label: str):
-    shell = _finish((SITE_DIR / "_notice.html").read_text(encoding="utf-8"))
+    notice = SITE_DIR / "ru" / "_notice.html"
+    shell = _finish((notice if notice.is_file() else SITE_DIR / "_notice.html").read_text(encoding="utf-8"))
     if not text:  # error answers: the message is the heading, no empty lead paragraph
         shell = shell.replace('<p class="hero__lead">{{NOTICE_TEXT}}</p>\n', "")
     for key, val in (("TITLE", title), ("TEXT", text), ("BACK", back), ("BACK_LABEL", back_label)):

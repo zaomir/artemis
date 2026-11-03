@@ -14,7 +14,7 @@ A share in the developer company Artemis costs 2 950 € per metre on the waitin
 
 ### What a metre costs in the north
 
-| What | € per м² | Source |
+| What | € per m² | Source |
 |---|---|---|
 | Santa Úrsula, all housing | 2 405 | Fotocasa, October 2026 |
 | Santa Úrsula, La Quinta district | 2 812 | Fotocasa, October 2026 |
@@ -33,10 +33,10 @@ Santa Úrsula rose by 13,7% over the year on the Fotocasa index. Flats in Santa 
 
 ### The neighbouring La Quinta developments: asking prices
 
-| Project | Asking price | € per м² |
+| Project | Asking price | € per m² |
 |---|---|---|
-| La Quinta III | 4 houses of 125 м², 420 000–425 000 €, sold | 3 360–3 400 |
-| La Quinta 2 | houses of 110 м², 399 999–425 700 €, sold | 3 636–3 870 |
+| La Quinta III | 4 houses of 125 m², 420 000–425 000 €, sold | 3 360–3 400 |
+| La Quinta 2 | houses of 110 m², 399 999–425 700 €, sold | 3 636–3 870 |
 
 The neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold. A finished Artemis house at handover is 3 800–4 600 € per metre. The handover step for shares in the developer company is 3 850 €: at the upper edge of the asking prices of the neighbouring projects, not below the market.
 
@@ -44,7 +44,7 @@ The neighbouring new developments at La Quinta were offered at 3 360–3 870 €
 
 ### The Artemis steps next to the market
 
-| Step | € per м² |
+| Step | € per m² |
 |---|---|
 | Waiting list | 2 950 |
 | Permit | 3 100 |
@@ -61,7 +61,7 @@ Entry on the waiting list costs as much as second-hand housing in the district, 
 
 ### Long-term letting
 
-| What | € per м² a month | Source |
+| What | € per m² a month | Source |
 |---|---|---|
 | Santa Úrsula | 12 | Fotocasa |
 | Santa Úrsula, houses / flats | 11,31 / 15,04 | Engel & Völkers |
@@ -69,7 +69,7 @@ Entry on the waiting list costs as much as second-hand housing in the district, 
 | Santa Úrsula, by district, March 2026 | 10,00–11,67 | Kelify |
 | Puerto de la Cruz | 17 | Fotocasa |
 
-For example, listings in La Quinta itself on Kelify (snapshot 31.10.2026): 80 м² for 975 € a month, 60 м² for 900 €, 132 м² for 1 500 €. For a house of 72 metres that is 864–1 080 € a month at 12–15 € per metre.
+For example, listings in La Quinta itself on Kelify (snapshot 31.10.2026): 80 m² for 975 € a month, 60 m² for 900 €, 132 m² for 1 500 €. For a house of 72 metres that is 864–1 080 € a month at 12–15 € per metre.
 
 ### From rent to dividend
 
@@ -78,20 +78,20 @@ The Canary Islands law Ley 6/2025 rules out short-term holiday letting in new bu
 - rent: 13,5 € per metre a month, the midpoint of the market's 12–15 €;
 - over a year: 13,5 × 12 = 162 € per metre;
 - less 46,3% of costs across seven lines, 75 € per metre;
-- an estimated 87 € per share a year remains, before company profit tax.
+- what remains is the rent after costs; the dividend is published as a percentage — an estimated 2,5–3,5 % a year before company profit tax.
 
 | Line | € per metre a year | % of 162 € | Basis of the calculation |
 |---|---|---|---|
-| IBI, property tax | 3,75 | 2,3% | 300 € a year for 80 м² in Tenerife; the Santa Úrsula rate is 0,40% |
-| Community fees | 34,1 | 21,0% | 200–400 € a month in complexes with a heated pool; the calculation uses 200 € for an average house of about 70 м² |
+| IBI, property tax | 3,75 | 2,3% | 300 € a year for 80 m² in Tenerife; the Santa Úrsula rate is 0,40% |
+| Community fees | 34,1 | 21,0% | 200–400 € a month in complexes with a heated pool; the calculation uses 200 € for an average house of about 70 m² |
 | Letting management | 17,3 | 10,7% | 8–12% of the rent plus IGIC 7%; the calculation uses 10% |
 | Vacancy between tenants | 6,75 | 4,2% | half a month a year in a strong market |
-| Insurance | 3,5 | 2,2% | 280 € a year for 80 м² in Tenerife |
+| Insurance | 3,5 | 2,2% | 280 € a year for 80 m² in Tenerife |
 | Repair reserve | 8,1 | 5,0% | 4–6% of the rent for a new house |
-| Refuse charge (basura) | 1,5 | 0,9% | 100–150 € a year, paid by the owner; the calculation uses 120 € for 80 м² |
+| Refuse charge (basura) | 1,5 | 0,9% | 100–150 € a year, paid by the owner; the calculation uses 120 € for 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-In the mild scenario, with the same 200 € of fees on a larger house of 75,5 м², management at 8% and repairs at 4%, costs are 41,8% and the estimate is about 94 € per share. In the strict one, with rent of 12 € per metre, 200 € of fees on a smaller house of 65,4 м², management at 12%, a month of vacancy and repairs at 6%, costs are 58,7% and the figure is about 59 €. The estimated midpoint is 87 € per share a year before company profit tax.
+In the mild scenario, with the same 200 € of fees on a larger house of 75,5 m², management at 8% and repairs at 4%, costs are 41,8% and the estimate is about 94 € per share. In the strict one, with rent of 12 € per metre, 200 € of fees on a smaller house of 65,4 m², management at 12%, a month of vacancy and repairs at 6%, costs are 58,7% and the figure is about 59 €. The estimated dividend is 2,5–3,5 % a year before company profit tax.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,10 +102,9 @@ In the mild scenario, with the same 200 € of fees on a larger house of 75,5 м
 | 10-year Bund, 30.10.2026 | 3,34% |
 | 1-year Festgeld, top-10 average | 3,52% |
 | Gross rental yield, the 52 largest German cities, H1 2026 | 4,17% |
-| Estimated dividend of 87 € against the waiting-list price of 2 950 € | 2,9% |
-| Estimated dividend of 87 € against the handover price of 3 850 € | 2,3% |
+| Estimated dividend against the entry price | 2,5–3,5% a year |
 
-The dividend in euros is the same on every share, while the percentage depends on the step at which you entered. That is why we show the dividend in euros and the percentage as a consequence. Both figures are calculated before company profit tax.
+The dividend per share is the same, while the percentage against the money invested depends on the step at which you entered. The figure is calculated before company profit tax.
 
 ### How it works
 
@@ -121,7 +120,7 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **What is letting like in the north?** 12–15 € per metre a month in Santa Úrsula, 17 € in Puerto de la Cruz.
 
-**Where does the 87 € come from?** 13,5 € × 12 = 162 €, less 46,3% of costs: IBI, community fees, management, vacancy, insurance, repair reserve, refuse charge. This is calculated before company profit tax.
+**Where does the percentage come from?** The dividend is calculated from the long-term rent of a metre after costs: IBI, community fees, management, vacancy, insurance, repair reserve, refuse charge. The result: an estimated 2,5–3,5 % a year before company profit tax.
 
 **Кнопка: «Join the waiting list»**
 Free of charge. We take no money before the plot is chosen.

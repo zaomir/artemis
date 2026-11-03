@@ -12,7 +12,7 @@ Artemis de la Cruz, ce sont vingt résidences dans le nord verdoyant de Tenerife
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
-**20 résidences · 48–100 м² · 1 action = 1 м² · inscription gratuite, paiement après l'accord sur le terrain**
+**20 résidences · 48–100 m² · 1 action = 1 m² · inscription gratuite, paiement après l'accord sur le terrain**
 
 ### L'emplacement
 
@@ -43,11 +43,11 @@ Vingt résidences dans un même langage architectural, Canary Stone. Enduit à l
 
 | Type | Nombre | Surface | Cette résidence = |
 |---|---|---|---|
-| Une chambre | 6 sur 20 | 48–55 м² | 48–55 actions |
-| Deux chambres | 10 sur 20 | 68–78 м² | 68–78 actions |
-| Grande maison | 4 sur 20 | 85–100 м² | 85–100 actions |
+| Une chambre | 6 sur 20 | 48–55 m² | 48–55 actions |
+| Deux chambres | 10 sur 20 | 68–78 m² | 68–78 actions |
+| Grande maison | 4 sur 20 | 85–100 m² | 85–100 actions |
 
-Au total, 1 308–1 510 м² de surface habitable. Une maison achevée à la livraison coûte 3 800–4 600 € le mètre, selon le type, l'étage et la vue. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €.
+Au total, 1 308–1 510 m² de surface habitable. Une maison achevée à la livraison coûte 3 800–4 600 € le mètre, selon le type, l'étage et la vue. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €.
 
 Le type le plus fréquent est la maison avec deux chambres de 68–78 mètres: dix sur vingt. La seconde chambre sert aux enfants, aux invités ou de bureau, et le séjour ouvre sur une terrasse de pierre.
 
@@ -65,10 +65,10 @@ En un paragraphe: l'inscription sur la liste d'attente est gratuite. Nous choisi
 **Mini-calcul sur 72 mètres, 72 actions:**
 
 - **Montant** = 72 × 2 950 € = 212 400 €.
-- **Versement sur 12 mois** = 212 400 € ÷ 12 = 17 700 € par mois.
-- **Après la livraison** = 72 × 87 € = 6 264 € de dividende par an en estimation, avant impôt sur les sociétés, ou 72 mètres de votre résidence.
+- **Versement** = 212 400 € avec 5 % de remise ÷ 6 = 33 630 € par mois.
+- **Après la livraison** — un dividende de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés, ou 72 mètres de votre résidence.
 
-Le prix de l'action monte avec les paliers du chantier: liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €, livraison 3 850 €. Les mêmes 72 mètres au prix du palier « Livraison »: 277 200 €. Dividende: 87 € par action et par an en estimation, avant impôt sur les sociétés, soit un loyer de 13,5 € par mètre et par mois × 12 = 162 €, moins 46,3% de charges détaillées: IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien et taxe sur les déchets.
+Le prix de l'action monte avec les paliers du chantier: liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €, livraison 3 850 €. Les mêmes 72 mètres au prix du palier « Livraison »: 277 200 €. Dividende: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés; il se calcule à partir du loyer du mètre après déduction des charges — IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien et taxe sur les déchets.
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -98,7 +98,7 @@ Société: OXFORD FRAME REAL ASSETS LTD, Angleterre et pays de Galles, Companies
 
 **Quand dois-je payer?** Après que la majorité de la liste a approuvé le terrain et que le contrat d'investissement est arrivé: immédiatement (bonus de 10%), sur six mois (bonus de 5%) ou sur un an sans bonus.
 
-**Comment fonctionne le dividende?** Les mêmes euros pour chaque action, issus de la location longue durée après charges: 87 € par an en estimation, avant impôt sur les sociétés.
+**Comment fonctionne le dividende?** 2,5–3,5 % par an en estimation, avant impôt sur les sociétés, issus de la location longue durée après charges; ce n'est pas une garantie.
 
 **Comment échanger les actions contre des mètres?** Après le permis d'habiter: acte notarié et inscription au registre foncier.
 

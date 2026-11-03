@@ -29,8 +29,14 @@ sys.path.insert(0, str(HERE))
 from email_off import unprotected, wrap  # noqa: E402
 
 LOCALE = os.environ.get("TENERIFE_LOCALE", "ru").strip().lower() or "ru"
-COPY = Path(os.environ.get("TENERIFE_COPY_DIR", str(HERE / "copy_v3")))
-SITE = Path(os.environ.get("TENERIFE_OUT_DIR", str(ROOT / "app" / "tenerife_site")))
+# RU is the master copy (copy_v3); every other language reads its own translated copy_<loc>/.
+COPY = Path(os.environ.get("TENERIFE_COPY_DIR", "").strip() or
+            str(HERE / ("copy_v3" if LOCALE == "ru" else f"copy_{LOCALE}")))
+# EN lives at the root of app/tenerife_site (URL /tenerife/), every other language in its own subdirectory
+# (/tenerife/ru/…). TENERIFE_OUT_DIR still overrides it (tests, preview builds).
+SITE_DEFAULT = ROOT / "app" / "tenerife_site"
+SITE = Path(os.environ.get("TENERIFE_OUT_DIR", "").strip() or
+            str(SITE_DEFAULT if LOCALE == "en" else SITE_DEFAULT / LOCALE))
 STATIC = ROOT / "app" / "static"
 IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
@@ -81,6 +87,38 @@ def lang_url(code, url):
     """URL той же страницы на другом языке: EN без префикса, остальные — /tenerife/<code>/…"""
     tail = url[len("/tenerife/"):] if url.startswith("/tenerife/") else url
     return ("/tenerife/" if code == "en" else f"/tenerife/{code}/") + tail
+
+
+# Все языки сайта: EN — корень, остальные — свой префикс. Порядок = порядок hreflang в <head>.
+ALL_LANGS = ("en", "es", "de", "fr", "ru")
+OG_LOCALE = {"ru": "ru_RU", "en": "en_GB", "es": "es_ES", "de": "de_DE", "fr": "fr_FR"}
+
+
+def hreflang_links(url):
+    """<link rel=alternate hreflang> на все пять языков + x-default (EN) для одной и той же страницы."""
+    return ([{"code": code, "url": BASE_URL + lang_url(code, url)} for code in ALL_LANGS],
+            BASE_URL + lang_url("en", url))
+
+
+def locale_path(url, locale=None):
+    """Нейтральный слаг /tenerife/<page>/ -> путь этого языка: /tenerife/de/<page>/ (EN остаётся в корне)."""
+    code = locale or LOCALE
+    if code == "en" or not url.startswith("/tenerife/"):
+        return url
+    return f"/tenerife/{code}/{url[len('/tenerife/'):]}"
+
+
+# Ссылки на корни языков (/tenerife/ru/, /tenerife/es/ …) не переписываются префиксом страницы.
+LOCALE_ROOT_RX = re.compile(r'href="/tenerife/(?!(?:en|es|de|fr|ru)/)')
+
+
+def prefix_internal_links(out, locale=None):
+    """Внутренние ссылки из текста/подвала (/tenerife/<page>/) получают префикс языка; переключатель и
+    русская ссылка, которые ведут на корни языков, остаются как есть."""
+    code = locale or LOCALE
+    if code == "en":
+        return out
+    return LOCALE_ROOT_RX.sub(f'href="/tenerife/{code}/', out)
 
 
 MORE_LABEL = {"ru": "Информация", "en": "Information", "es": "Información", "de": "Informationen", "fr": "Informations"}
@@ -503,11 +541,14 @@ def short_labels(page):
 
 
 def mini_ladder(model):
-    """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it."""
+    """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it.
+    Названия ступеней берутся из locale_cfg.STAGE_NAMES (те же слова, что в таблице copy_<loc>/04)."""
+    names = locale_cfg.STAGE_NAMES.get(LOCALE, locale_cfg.STAGE_NAMES["ru"])
+
     def eur(v):
         return fmt_int(v) + NBSP + "€"
-    return [{"name": st["name"], "price": eur(st["price_eur_m2"]), "current": bool(st.get("current"))}
-            for st in model["steps"]]
+    return [{"name": names[i] if i < len(names) else st["name"], "price": eur(st["price_eur_m2"]),
+             "current": bool(st.get("current"))} for i, st in enumerate(model["steps"])]
 
 
 # Designer r3 (31.10.2026): F17 («отделка») never shows a finished-house photo. On construccion the slot is a
@@ -895,8 +936,9 @@ def team_gallery(page_name):
             cards.append('<div class="case case--static">'
                          f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{html.escape(it["name"], quote=True)}"></div>'
                          f'<span class="case__badge">{it.get("status_by_locale", {}).get(LOCALE, it["status"])}</span>'
-                         f'<div class="case__cap"><b>{it["name"]}</b><span>{it["place"]}</span></div></div>')
-        title = "Портфель команды"
+                         f'<div class="case__cap"><b>{it["name"]}</b>'
+                         f'<span>{html.escape(it.get("place_by_locale", {}).get(LOCALE, it["place"]))}</span></div></div>')
+        title = cases_cfg.get("labels", {}).get(LOCALE, cases_cfg["labels"]["ru"])["title"]
         blocks.append('<h3 class="tperson__h">' + title + '</h3>'
                       '<div class="cases cases--person">' + "".join(cards) + '</div>')
     return ('<section class="section rule-top s--person" aria-labelledby="s-person">'
@@ -917,7 +959,8 @@ def portfolio_html():
                 '<div class="case">'
                 f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{name}"></div>'
                 f'<span class="case__badge">{it.get("status_by_locale", {}).get(LOCALE, it["status"])}</span>'
-                f'<div class="case__cap"><b>{it["name"]}</b><span>{it["place"]}</span></div>'
+                f'<div class="case__cap"><b>{it["name"]}</b>'
+                f'<span>{html.escape(it.get("place_by_locale", {}).get(LOCALE, it["place"]), quote=False)}</span></div>'
                 '</div>')
         return "".join(out)
 
@@ -1069,18 +1112,18 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             raise BuildError(f"{fname}: Слаг {slug} != {expected}")
         slugs[name], metas[name], parsed[name] = slug, meta, blocks
     if LOCALE == "ru":
-        nav = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in footer["pages"]]
+        nav = [{"label": html.escape(lbl), "url": locale_path(slugs[NAV[lbl]]), "name": NAV[lbl]}
+               for lbl in footer["pages"]]
     else:
         labels = list(footer["pages"])
-        order = list(locale_cfg.PAGE_ORDER)
-        if len(labels) == len(order) - 0 and "investors" in order:
-            # в подвале есть строка «Инвесторам» (страница не построена) — выбрасываем её по позиции
-            drop = order.index("investors")
-            order = [n for n in order if n != "investors"]
+        # «Инвесторам» — страница-черновик, её нет в сборке: строку подвала выбрасываем по позиции
+        order = [n for n in locale_cfg.PAGE_ORDER if n != "investors"]
+        if len(labels) == len(order) + 1:
+            drop = list(locale_cfg.PAGE_ORDER).index("investors")
             labels = [x for i, x in enumerate(labels) if i != drop]
         if len(labels) != len(order):
             raise BuildError(f"{LOCALE}: footer lists {len(labels)} pages, expected {len(order)}")
-        nav = [{"label": html.escape(lbl), "url": slugs[n], "name": n}
+        nav = [{"label": html.escape(lbl), "url": locale_path(slugs[n]), "name": n}
                for lbl, n in zip(labels, order)]
     by_name = {x["name"]: x for x in nav}
     if set(NAV_PRIMARY) | set(NAV_MORE) | {"index"} != set(by_name):
@@ -1105,13 +1148,15 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             local = [plain(b["text"]) for b in blocks if b["kind"] == "h"]
             alias = {loc: ru for ru, loc in zip(ru_parsed[name], local)}
         page = structure(blocks, frames, alts, name, model, alias=alias)
-        url = slugs[name]
-        prefix = "" if LOCALE == "en" else f"/{LOCALE}"
-        langs = [{"code": code.upper(), "url": lang_url(code, url), "current": code == LOCALE}
+        url = locale_path(slugs[name])
+        langs = [{"code": code.upper(), "url": BASE_URL + lang_url(code, slugs[name]), "current": code == LOCALE}
                  for code in ("en", "es", "de", "fr")]
+        hreflangs, x_default = hreflang_links(slugs[name])
         out = tpl.render(
-            name=name, url=url, canonical=BASE_URL + prefix + url,
-            home_url=("/tenerife/" if not prefix else f"/tenerife/{LOCALE}/"),
+            html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE], hreflangs=hreflangs, x_default=x_default,
+            ui=locale_cfg.UI[LOCALE],
+            name=name, url=url, canonical=BASE_URL + url,
+            home_url=locale_path("/tenerife/"),
             langs=langs, menu_more_label=MORE_LABEL.get(LOCALE, "Информация"),
             months=model["installments"]["months"],
             title=html.escape(meta["Meta title"], quote=True),
@@ -1126,10 +1171,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
             calc_short_labels=short_labels(page),
         )
-        out = wrap(out)
-        if LOCALE != "en":
-            out = out.replace('href="/tenerife/', f'href="/tenerife/{LOCALE}/')
-            out = out.replace('https://artemisresort.com/tenerife/', f'https://artemisresort.com/tenerife/{LOCALE}/')
+        out = wrap(prefix_internal_links(out))
         if name == "index":
             marker = '<section class="plinth"'
             if marker in out:
@@ -1152,6 +1194,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)
     if write:
+        Path(out_dir).mkdir(parents=True, exist_ok=True)   # app/tenerife_site/<locale>/ создаётся при первой сборке
         (STATIC / "tenerife" / "site" / "site.css").write_text(css, encoding="utf-8")
         for name, out in outputs.items():
             (Path(out_dir) / f"{name}.html").write_text(out, encoding="utf-8")
@@ -1192,23 +1235,30 @@ def legal_meta(name, path=LEGAL_META):
 
 
 def simple_pages(env, nav, menu, footer):
-    prefix = "" if LOCALE == "en" else f"/{LOCALE}"
-    home_url = "/tenerife/" if not prefix else f"/tenerife/{LOCALE}/"
-    langs = [{"code": c.upper(), "url": lang_url(c, "/tenerife/"), "current": c == LOCALE}
+    home_url = locale_path("/tenerife/")
+    langs = [{"code": c.upper(), "url": BASE_URL + lang_url(c, "/tenerife/"), "current": c == LOCALE}
              for c in ("en", "es", "de", "fr")]
     more = MORE_LABEL.get(LOCALE, "Информация")
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
     tpl = env.get_template("simple.html")
     out = {}
     for name, title in LEGAL.items():
-        url = f"/tenerife/{name}/"
-        out[name] = wrap(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
+        url = locale_path(f"/tenerife/{name}/")
+        hreflangs, x_default = hreflang_links(f"/tenerife/{name}/")
+        out[name] = wrap(prefix_internal_links(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
                                     description=html.escape(legal_meta(name), quote=True),
                                     body=legal_body(name), nav=nav, menu=menu, footer=footer,
-                                    home_url=home_url, langs=langs, menu_more_label=more))
-    out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis de la Cruz", canonical=None, url="",
+                                    home_url=home_url, langs=langs, menu_more_label=more,
+                                    ui=locale_cfg.UI[LOCALE],
+                                    html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+                                    hreflangs=hreflangs, x_default=x_default)))
+    hreflangs, x_default = hreflang_links("/tenerife/")
+    out["_notice"] = wrap(prefix_internal_links(tpl.render(title="{{NOTICE_TITLE}} — Artemis de la Cruz", canonical=None, url="",
                                      kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer,
-                                     home_url=home_url, langs=langs, menu_more_label=more))
+                                     home_url=home_url, langs=langs, menu_more_label=more,
+                                     ui=locale_cfg.UI[LOCALE],
+                                     html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+                                     hreflangs=hreflangs, x_default=x_default)))
     return out
 
 
@@ -1222,7 +1272,10 @@ def main():
         fr = " ".join(f"{k}->{'-'.join(v.split('-')[:2]) if v else ('(hidden)' if k in r['hidden'] else '(text)')}"
                       for k, v in r["frames"].items())
         print(f"{r['url']:28} {len(outputs[name]):6d} B  {fr}")
-    (HERE / "frames_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # frames_report.json — отчёт RU-мастера (его читают тесты); у остальных языков свой файл, чтобы сборки не затирали
+    # отчёт друг друга: теперь один каталог собирается пять раз.
+    name = "frames_report.json" if LOCALE == "ru" else f"frames_report_{LOCALE}.json"
+    (HERE / name).write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
