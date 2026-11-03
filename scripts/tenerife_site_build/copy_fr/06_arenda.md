@@ -1,14 +1,14 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/alquiler/
-Meta title: Location dans le nord de Tenerife: 12–15 € le м² par mois — Artemis
-Meta description: La location longue durée à Santa Úrsula: 12–15 € le м² par mois, environ 17 € à Puerto de la Cruz. Comment s'en calcule le dividende estimé et ce que rapporte une maison.
+Meta title: Location dans le nord de Tenerife: 12–15 € le m² par mois — Artemis
+Meta description: La location longue durée à Santa Úrsula: 12–15 € le m² par mois, environ 17 € à Puerto de la Cruz. Comment s'en calcule le dividende estimé et ce que rapporte une maison.
 OG title: Comment une maison de La Quinta gagne après la livraison
 -->
 
 # Comment une maison de La Quinta gagne de l'argent après la livraison
 
-La location longue durée à Santa Úrsula: 12–15 € le mètre par mois; à Puerto de la Cruz, juste à côté: environ 17 €. Pour une maison de 72 mètres, cela fait 864–1 080 € par mois. C'est de cette même location longue durée que se calcule le dividende des actions de la société promotrice Artemis: 87 € par action et par an en estimation, avant impôt sur les sociétés.
+La location longue durée à Santa Úrsula: 12–15 € le mètre par mois; à Puerto de la Cruz, juste à côté: environ 17 €. Pour une maison de 72 mètres, cela fait 864–1 080 € par mois. C'est de cette même location longue durée que se calcule le dividende des actions de la société promotrice Artemis, publié en pourcentage: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés**.
 
 [КАДР F10] <!-- служебная пометка, не публикуется -->
 
@@ -22,7 +22,7 @@ La location longue durée à Santa Úrsula: 12–15 € le mètre par mois; à P
 
 | Source | Santa Úrsula | Puerto de la Cruz |
 |---|---|---|
-| Fotocasa, octobre 2026 | environ 12 € le м² par mois | environ 17 € |
+| Fotocasa, octobre 2026 | environ 12 € le m² par mois | environ 17 € |
 | Engel & Völkers | appartements 15,04 €, maisons 11,31 € | — |
 | Mesurae | 12,1 €, rendement brut 5,8% | 16,5 €, 5,7% |
 
@@ -32,11 +32,11 @@ Kelify, par quartier de Santa Úrsula (mars 2026), donne 10,00–11,67 € le m�
 
 ### Les fourchettes du mois
 
-| Maison | Surface | Santa Úrsula, 12–15 €/м² | Puerto de la Cruz, environ 17 €/м² |
+| Maison | Surface | Santa Úrsula, 12–15 €/m² | Puerto de la Cruz, environ 17 €/m² |
 |---|---|---|---|
-| Une chambre | 50 м² | 600–750 € | environ 850 € |
-| Deux chambres | 72 м² | 864–1 080 € | environ 1 224 € |
-| Grande maison | 95 м² | 1 140–1 425 € | environ 1 615 € |
+| Une chambre | 50 m² | 600–750 € | environ 850 € |
+| Deux chambres | 72 m² | 864–1 080 € | environ 1 224 € |
+| Grande maison | 95 m² | 1 140–1 425 € | environ 1 615 € |
 
 Une maison neuve avec panneaux solaires, climat intelligent et piscine chauffée est un argument pour un locataire qui la compare à un appartement ancien.
 
@@ -51,20 +51,20 @@ Avec les chiffres:
 - loyer: le milieu de la fourchette de Santa Úrsula, 13,5 € le mètre par mois;
 - sur un an: 13,5 × 12 = 162 € par mètre;
 - charges sur sept postes: 46,3%, 75 € par mètre;
-- il reste **87 € par mètre et par an, soit le dividende estimé par action avant impôt sur les sociétés.**
+- il reste le loyer après charges, d'où se calcule le dividende: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés.**
 
 | Poste | € par mètre et par an | % de 162 € | Base du calcul |
 |---|---|---|---|
-| IBI, impôt foncier | 3,75 | 2,3% | 300 € par an pour 80 м² à Tenerife; taux de Santa Úrsula: 0,40% |
-| Charges de copropriété | 34,1 | 21,0% | 200–400 € par mois dans les ensembles avec piscine chauffée; dans le calcul, 200 € pour une maison moyenne d'environ 70 м² |
+| IBI, impôt foncier | 3,75 | 2,3% | 300 € par an pour 80 m² à Tenerife; taux de Santa Úrsula: 0,40% |
+| Charges de copropriété | 34,1 | 21,0% | 200–400 € par mois dans les ensembles avec piscine chauffée; dans le calcul, 200 € pour une maison moyenne d'environ 70 m² |
 | Gestion locative | 17,3 | 10,7% | 8–12% du loyer plus IGIC 7%; dans le calcul, 10% |
 | Vacance entre locataires | 6,75 | 4,2% | un demi-mois par an, avec une forte demande |
-| Assurance | 3,5 | 2,2% | 280 € par an pour 80 м² à Tenerife |
+| Assurance | 3,5 | 2,2% | 280 € par an pour 80 m² à Tenerife |
 | Réserve d'entretien | 8,1 | 5,0% | 4–6% du loyer pour une maison neuve |
-| Taxe sur les déchets (basura) | 1,5 | 0,9% | 100–150 € par an, à la charge du propriétaire; dans le calcul, 120 € pour 80 м² |
+| Taxe sur les déchets (basura) | 1,5 | 0,9% | 100–150 € par an, à la charge du propriétaire; dans le calcul, 120 € pour 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus grande, 75,5 м², gestion 8%, entretien 4%), les charges atteignent 41,8% et le dividende environ 94 € par action. Dans le scénario strict (loyer 12 € le mètre, 200 € de charges pour une maison un peu plus petite, 65,4 м², gestion 12%, un mois de vacance, entretien 6%), les charges atteignent 58,7% et le dividende environ 59 €. Le milieu estimé: 87 € par action et par an, avant impôt sur les sociétés.
+Dans le scénario souple (mêmes 200 € de charges pour une maison un peu plus grande, 75,5 m², gestion 8%, entretien 4%), les charges atteignent 41,8% et le dividende environ 94 € par action. Dans le scénario strict (loyer 12 € le mètre, 200 € de charges pour une maison un peu plus petite, 65,4 m², gestion 12%, un mois de vacance, entretien 6%), les charges atteignent 58,7% et le dividende environ 59 €. Le dividende estimé est de 2,5–3,5 % par an, avant impôt sur les sociétés.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -74,7 +74,7 @@ Aux Canaries, la loi Ley 6/2025 interdit d'exploiter les logements neufs en loca
 
 ### L'année en chiffres: 72 mètres
 
-**L'actionnaire entré depuis la liste d'attente.** Il a investi 212 400 €, soit 72 actions à 2 950 €. Dividende: 72 × 87 € = 6 264 € par an en estimation, 522 € par mois, avant impôt sur les sociétés. Soit 2,9% de l'apport. Il n'a ni locataire, ni travaux, ni factures.
+**L'actionnaire entré depuis la liste d'attente.** Il a investi 212 400 €, soit 72 actions à 2 950 €. Le dividende est de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés. Il n'a ni locataire, ni travaux, ni factures.
 
 **Le propriétaire des clés.** Une maison de 72 mètres à la livraison: 273 600–331 200 €. En location longue durée: 864–1 080 € par mois, 10 368–12 960 € par an avant ses charges.
 
@@ -116,9 +116,9 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **D'où vient le dividende?** De la location longue durée des mètres non échangés, après charges et avant impôt sur les sociétés.
 
-**Combien par action?** 87 € par an en estimation, avant impôt sur les sociétés.
+**Combien par action?** 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
-**Combien sur 72 mètres?** 6 264 € par an de dividende en estimation avant impôt sur les sociétés, ou 864–1 080 € de loyer par mois.
+**Combien sur 72 mètres?** Le dividende est de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés; le loyer de ces mêmes mètres sur le marché: 864–1 080 € par mois.
 
 **Кнопка: «M'inscrire sur la liste d'attente»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

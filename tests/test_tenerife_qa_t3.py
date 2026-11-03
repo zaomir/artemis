@@ -19,14 +19,15 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(ROOT / "scripts" / "tenerife_site_build"))
-SITE = ROOT / "app" / "tenerife_site"
+SITE = ROOT / "app" / "tenerife_site" / "ru"
 BUILD = ROOT / "scripts" / "tenerife_site_build"
 ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "TENERIFE_WHATSAPP", "TENERIFE_INDEXING")
 
 import build_v3  # noqa: E402
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
-PAGES = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
+RU = "/tenerife/ru"   # RU сайт живёт под /tenerife/ru/; файлы — app/tenerife_site/ru/
+PAGES = {name: (RU + "/" if name == "index" else f"{RU}/{name}/") for _f, name in build_v3.PAGES}
 
 
 def page(name):
@@ -53,7 +54,7 @@ class AppCase(unittest.TestCase):
 
     def lead(self, headers=None, remote="10.9.9.9", json_body=True, **kw):
         d = {"name": "Анна", "contact": "anna@example.de", "language": "ru", "consent": True,
-             "page": "/tenerife/proceso/", "website": "", **kw}
+             "page": f"{RU}/proceso/", "website": "", **kw}
         env = {"REMOTE_ADDR": remote}
         if json_body:
             return self.client.post("/api/tenerife/waitlist", json=d, headers=headers or {}, environ_base=env)
@@ -149,7 +150,7 @@ class FormPayloadTest(AppCase):
     def test_calculadora_form_stores_calc_columns(self):
         d = self.form_payload("calculadora")
         self.assertEqual(sorted(k for k in d if k.startswith("calc_")), ["calc_m2", "calc_pay", "calc_step"])
-        self.assertEqual(d["page"], "/tenerife/calculadora/")
+        self.assertEqual(d["page"], f"{RU}/calculadora/")
         r = self.client.post("/api/tenerife/waitlist", json=d, headers={"X-Real-IP": "203.0.113.5"})
         self.assertEqual(r.get_json(), {"ok": True})
         row = self.rows()[0]
@@ -171,15 +172,15 @@ class FormPayloadTest(AppCase):
 # ---------------------------------------------------------------- T3-05 / T3-10
 class NoJsAnswerTest(AppCase):
     def test_success_redirects_to_gracias(self):
-        r = self.lead(json_body=False, page="/tenerife/faq/")
+        r = self.lead(json_body=False, page=f"{RU}/faq/")
         self.assertEqual(r.status_code, 303)
-        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2Ffaq%2F"))
-        g = self.client.get("/tenerife/gracias/?back=%2Ftenerife%2Ffaq%2F")
+        self.assertTrue(r.headers["Location"].endswith("/tenerife/gracias/?back=%2Ftenerife%2Fru%2Ffaq%2F"))
+        g = self.client.get("/tenerife/gracias/?back=%2Ftenerife%2Fru%2Ffaq%2F")
         body = g.get_data(as_text=True)
         self.assertEqual(g.status_code, 200)
         self.assertIn("noindex", g.headers.get("X-Robots-Tag", "") + body)
         self.assertIn("Спасибо! Вы в очереди.", body)
-        self.assertIn('<a href="/tenerife/faq/">← К сайту проекта</a>', body)
+        self.assertIn(f'<a href="{RU}/faq/">← К сайту проекта</a>', body)
         self.assertIn('<link rel="stylesheet" href="/static/tenerife/site/site.css">', body)
         self.assertNotIn("{{NOTICE_", body)
 
@@ -191,11 +192,11 @@ class NoJsAnswerTest(AppCase):
             self.assertIn('<a href="/tenerife/">', body, bad)
 
     def test_error_page_v2_shell_status_and_back_to_form(self):
-        r = self.lead(json_body=False, consent=False, page="/tenerife/proceso/")
+        r = self.lead(json_body=False, consent=False, page=f"{RU}/proceso/")
         body = r.get_data(as_text=True)
         self.assertEqual(r.status_code, 400)
         self.assertIn("Отметьте согласие на обработку данных.", body)
-        self.assertIn('<a href="/tenerife/proceso/#ochered">← Назад к форме</a>', body)
+        self.assertIn(f'<a href="{RU}/proceso/#ochered">← Назад к форме</a>', body)
         self.assertNotIn('<p class="hero__lead"></p>', body)
         self.assertIn('class="header', body)
         self.assertIn("noindex", r.headers.get("X-Robots-Tag", "") + body)
@@ -338,7 +339,7 @@ class ComponentsTest(unittest.TestCase):
             self.assertNotIn('class="people', page(name), name)
         self.assertNotIn("Команда и компания", page("index"))
         self.assertIsNone(re.search(r"<section[^>]*>\s*</section>", page("index")))
-        for href in ("/tenerife/simon/", "/tenerife/boris/"):
+        for href in (f"{RU}/simon/", f"{RU}/boris/"):
             self.assertIn(f'<li><a href="{href}">', page("index"))
         a = page("acciones")
         self.assertIn('class="wrap grid calc calc--short" id="calc"', a)
@@ -385,7 +386,7 @@ class JsonLdTest(unittest.TestCase):
             bc = [x for x in self.lds(name) if x["@type"] == "BreadcrumbList"]
             self.assertEqual(len(bc), 1, name)
             items = bc[0]["itemListElement"]
-            self.assertEqual(items[0]["item"], "https://artemisresort.com/tenerife/", name)
+            self.assertEqual(items[0]["item"], "https://artemisresort.com" + RU + "/", name)
             self.assertEqual(items[-1]["item"], "https://artemisresort.com" + url, name)
             self.assertEqual([i["position"] for i in items], list(range(1, len(items) + 1)), name)
 
@@ -394,8 +395,9 @@ class JsonLdTest(unittest.TestCase):
 class LegalPagesTest(AppCase):
     def test_v2_layout_and_text_verbatim(self):
         for name in ("impressum", "privacy"):
-            body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
-            self.assertIn(build_v3.legal_body(name), body, name)
+            body = self.client.get(f"{RU}/{name}/").get_data(as_text=True)
+            # текст правовой страницы дословный; внутренние ссылки получают префикс языка (/tenerife/ru/…)
+            self.assertIn(build_v3.prefix_internal_links(build_v3.legal_body(name), "ru"), body, name)
             self.assertIn('class="header', body)
             self.assertIn('<footer', body)
             self.assertNotIn("cloudflareinsights", body)
@@ -480,10 +482,12 @@ class KimiTextsTest(unittest.TestCase):
         self.assertEqual(links, [("политике конфиденциальности", "/tenerife/privacy/")])
         want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', md) + "</span>"
         self.assertEqual(len(PAGES), 13)
+        # на RU-страницах ссылка на политику ведёт в RU-версию (/tenerife/ru/privacy/)
+        want_ru = want.replace('href="/tenerife/privacy/"', f'href="{RU}/privacy/"')
         for name in PAGES:
             html = page(name)
             self.assertEqual(html.count('id="wl-consent"'), 1, name)
-            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [want], name)
+            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [want_ru], name)
         for f in ("app/templates/tenerife/preview.html", "scripts/tenerife_site_build/_waitlist.html"):
             self.assertIn(want, (ROOT / f).read_text(encoding="utf-8"), f)
 

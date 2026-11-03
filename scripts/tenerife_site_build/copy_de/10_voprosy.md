@@ -38,7 +38,7 @@ Hier sind die Fragen gesammelt, die man vor dem Kauf eines Hauses auf Teneriffa 
 
 **Warum ist der frühe Einstieg günstiger?** Der Aktienpreis steigt mit den Bauphasen: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €, Fertigstellung — 3 850 €. Mit jeder abgeschlossenen Phase sinkt das Projektrisiko, und der Meter wird teurer. Der frühe Einstieg ist der Einstiegspreis in das Unternehmen, kein Preisnachlass auf ein fertiges Haus. 72 Meter in der Warteliste — 212 400 €, auf der Stufe „Fertigstellung“ — 277 200 €.
 
-**Kann ich in Raten zahlen?** Ja: über ein halbes Jahr — 5% Bonus, über ein Jahr — ohne Bonus. Sofort vollständig — 10% Bonus. 72 Meter über ein Jahr — 17 700 € im Monat.
+**Kann ich in Raten zahlen?** Ja: über ein halbes Jahr — 5% Bonus, über ein Jahr — ohne Bonus. Sofort vollständig — 10% Bonus. 72 Meter über ein Jahr — 33 630 € im Monat.
 
 **Wann zahle ich?** Erst nachdem die Mehrheit der Warteliste das Grundstück freigegeben hat und Sie den Investmentvertrag unterschrieben haben. Bei der Eintragung zahlen Sie nichts.
 
@@ -46,9 +46,9 @@ Hier sind die Fragen gesammelt, die man vor dem Kauf eines Hauses auf Teneriffa 
 
 ### Dividende
 
-**Wie ist die Dividende aufgebaut?** Die Dividende — in Euro je Aktie, gleich für alle Aktien. Sie wird aus der langfristigen Vermietung nach Kosten berechnet: 13,5 € Miete pro Meter im Monat × 12 = 162 €, minus 46,3% Kosten nach Positionen — IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr — rechnerisch 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+**Wie ist die Dividende aufgebaut?** Die Dividende ist je Aktie gleich. Sie wird aus der langfristigen Vermietung nach Abzug der Kosten berechnet — Miete, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr — und als Prozentsatz veröffentlicht: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**.
 
-**Wie viel ist das bei 72 Aktien?** Rechnerisch 72 × 87 € = 6 264 € im Jahr, 522 € im Monat, vor Körperschaftsteuer der Gesellschaft.
+**Wie viel ist das bei 72 Aktien?** Die Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, keine Garantie.
 
 **Woher kommt die Zahl für die Miete?** Aus dem Markt: Die langfristige Vermietung in Santa Úrsula — rund 12 € pro Meter, Wohnungen — rund 15 €, in Puerto de la Cruz — rund 17 €.
 

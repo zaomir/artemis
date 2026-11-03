@@ -1,6 +1,6 @@
 {
  "index": {
-  "url": "/tenerife/",
+  "url": "/tenerife/ru/",
   "file": "01_glavnaya.md",
   "frames": {
    "F01": "modern-low-6e9d80",
@@ -22,7 +22,7 @@
   "h1": "20 резиденций в La Quinta — от 153 400 €"
  },
  "norte": {
-  "url": "/tenerife/norte/",
+  "url": "/tenerife/ru/norte/",
   "file": "02_sever.md",
   "frames": {
    "F21": "hillside-row-71c3ab",
@@ -42,7 +42,7 @@
   "h1": "La Quinta, Santa Úrsula: север, где на Тенерифе живут"
  },
  "producto": {
-  "url": "/tenerife/producto/",
+  "url": "/tenerife/ru/producto/",
   "file": "03_rezidencii.md",
   "frames": {
    "F05": "interior-o-74f891",
@@ -63,7 +63,7 @@
   "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
  },
  "acciones": {
-  "url": "/tenerife/acciones/",
+  "url": "/tenerife/ru/acciones/",
   "file": "04_akcii.md",
   "frames": {
    "F14": "build-pit-3ab7c2",
@@ -84,7 +84,7 @@
   "h1": "Одна акция — один метр: акции компании-застройщика Artemis"
  },
  "calculadora": {
-  "url": "/tenerife/calculadora/",
+  "url": "/tenerife/ru/calculadora/",
   "file": "05_kalkulyator.md",
   "frames": {
    "F20": null,
@@ -100,7 +100,7 @@
   "h1": "Калькулятор: ваши метры акциями компании-застройщика"
  },
  "alquiler": {
-  "url": "/tenerife/alquiler/",
+  "url": "/tenerife/ru/alquiler/",
   "file": "06_arenda.md",
   "frames": {
    "F10": "terrace-view-7c2d15",
@@ -118,7 +118,7 @@
   "h1": "Как дом в La Quinta зарабатывает после ввода"
  },
  "energia": {
-  "url": "/tenerife/energia/",
+  "url": "/tenerife/ru/energia/",
   "file": "07_energiya.md",
   "frames": {
    "F11": "green-hill-3f3856",
@@ -137,7 +137,7 @@
   "h1": "Солнечная крыша, каменный контур: дом, который сам держит тепло"
  },
  "construccion": {
-  "url": "/tenerife/construccion/",
+  "url": "/tenerife/ru/construccion/",
   "file": "08_stroyka.md",
   "frames": {
    "F15": "build-frame-5e6d77",
@@ -155,7 +155,7 @@
   "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
  },
  "proceso": {
-  "url": "/tenerife/proceso/",
+  "url": "/tenerife/ru/proceso/",
   "file": "09_sdelka.md",
   "frames": {
    "F02": "entrance-o-9abe9d",
@@ -175,7 +175,7 @@
   "h1": "От очереди до ключей: шесть шагов сделки Artemis"
  },
  "faq": {
-  "url": "/tenerife/faq/",
+  "url": "/tenerife/ru/faq/",
   "file": "10_voprosy.md",
   "frames": {
    "F03": "communal-s-af42cd",
@@ -193,7 +193,7 @@
   "h1": "Вопросы перед входом в Artemis de la Cruz — и прямые ответы"
  },
  "simon": {
-  "url": "/tenerife/simon/",
+  "url": "/tenerife/ru/simon/",
   "file": "11_simon.md",
   "frames": {
    "F19": null,
@@ -209,7 +209,7 @@
   "h1": "Я Simon Subic, девелопер Artemis de la Cruz"
  },
  "mercado": {
-  "url": "/tenerife/mercado/",
+  "url": "/tenerife/ru/mercado/",
   "file": "12_rynok.md",
   "frames": {
    "F24": "golden-hou-d4cc25",
@@ -229,7 +229,7 @@
   "h1": "Рынок и цена метра: откуда цифры Artemis в La Quinta"
  },
  "boris": {
-  "url": "/tenerife/boris/",
+  "url": "/tenerife/ru/boris/",
   "file": "13_boris.md",
   "frames": {
    "F18": "pool-dusk-4d7e12",

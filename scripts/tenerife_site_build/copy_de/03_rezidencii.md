@@ -32,7 +32,7 @@ Für eine Person oder ein Paar. Für alle, die den Winter im Norden verbringen, 
 
 Hier gibt es nichts Überflüssiges: alles, was man braucht, und nichts, wofür man zahlen müsste, ohne es zu nutzen. Ein kleines Haus ist einfacher zu halten, einfacher für einen Monat zu schließen und einfacher langfristig zu vermieten.
 
-**In Zahlen.** 48 Meter als Aktien aus der Warteliste — 141 600 €, oder 11 800 € im Monat über zwölf Monate. 55 Meter — 162 250 €. Dieselben 48–55 Meter zum Preis der Stufe „Fertigstellung“ — 184 800–211 750 €. Nach der Fertigstellung — 48–55 Meter Ihres Hauses oder eine Dividende auf 48–55 Aktien: rechnerisch 4 176–4 785 € im Jahr, 87 € je Aktie vor Körperschaftsteuer der Gesellschaft. Wenn Sie die Schlüssel nehmen und selbst vermieten, bringt die langfristige Vermietung bei marktüblichen 12–15 € pro Meter 576–825 € im Monat.
+**In Zahlen.** 48 Meter als Aktien aus der Warteliste — 141 600 €, oder 22 420 € im Monat in sechs Raten. 55 Meter — 162 250 €. Dieselben 48–55 Meter zum Preis der Stufe „Fertigstellung“ — 184 800–211 750 €. Nach der Fertigstellung — 48–55 Meter Ihres Hauses oder eine Dividende: rechnerisch 2,5–3,5 % pro Jahr vor Körperschaftsteuer der Gesellschaft. Wenn Sie die Schlüssel nehmen und selbst vermieten, bringt die langfristige Vermietung bei marktüblichen 12–15 € pro Meter 576–825 € im Monat.
 
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
@@ -46,7 +46,7 @@ Die Hälfte der Anlage. Das zweite Schlafzimmer wird zum Kinderzimmer, Gästezim
 
 Das ist ein Haus für eine Familie, die in den Norden zieht, und für alle, die hier ein halbes Jahr leben und die übrige Zeit vermieten. In der langfristigen Vermietung im Norden bringen 72 Meter bei marktüblichen 12–15 € pro Meter 864–1 080 € im Monat.
 
-**In Zahlen.** 72 Meter als Aktien aus der Warteliste — 212 400 €, oder 17 700 € im Monat über zwölf Monate. Die ganze Spanne von 68–78 Metern — 200 600–230 100 €. Zum Preis der Stufe „Fertigstellung“ kosten 72 Meter 277 200 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende: rechnerisch 72 × 87 € = 6 264 € im Jahr vor Körperschaftsteuer der Gesellschaft, für die ganze Spanne von 68–78 Aktien — 5 916–6 786 €.
+**In Zahlen.** 72 Meter als Aktien aus der Warteliste — 212 400 €, oder 33 630 € im Monat in sechs Raten. Die ganze Spanne von 68–78 Metern — 200 600–230 100 €. Zum Preis der Stufe „Fertigstellung“ kosten 72 Meter 277 200 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende: rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -60,7 +60,7 @@ Das ist ein Haus für eine Familie, die in den Norden zieht, und für alle, die 
 
 Vier Häuser in der ganzen Anlage. Für diejenigen, die ernsthaft und für lange Zeit in den Norden kommen: mehr Zimmer, mehr Terrasse, mehr Licht, Platz für Gäste und für die Arbeit. Ein Haus, in dem man bleibt, statt Urlaub zu machen.
 
-**In Zahlen.** 100 Meter als Aktien aus der Warteliste — 295 000 €, oder rund 24 583 € im Monat über zwölf Monate. 85 Meter — 250 750 €. Ein fertiges Haus mit 100 Metern bei der Fertigstellung — ab 380 000 €. Zum Preis der Stufe „Fertigstellung“ dieselben 85–100 Aktien — 327 250–385 000 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende auf 85–100 Aktien: rechnerisch 7 395–8 700 € im Jahr vor Körperschaftsteuer der Gesellschaft. Die langfristige Vermietung eines solchen Hauses bei marktüblichen 12–15 € pro Meter — 1 020–1 500 € im Monat.
+**In Zahlen.** 100 Meter als Aktien aus der Warteliste — 295 000 €, oder rund 46 708 € im Monat in sechs Raten. 85 Meter — 250 750 €. Ein fertiges Haus mit 100 Metern bei der Fertigstellung — ab 380 000 €. Zum Preis der Stufe „Fertigstellung“ dieselben 85–100 Aktien — 327 250–385 000 €. Nach der Fertigstellung — Ihr Haus oder eine Dividende auf 85–100 Aktien: rechnerisch 7 395–8 700 € im Jahr vor Körperschaftsteuer der Gesellschaft. Die langfristige Vermietung eines solchen Hauses bei marktüblichen 12–15 € pro Meter — 1 020–1 500 € im Monat.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 

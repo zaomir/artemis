@@ -38,7 +38,7 @@ Voici les questions que l'on pose avant d'acheter une maison à Tenerife et avan
 
 **Pourquoi entrer tôt coûte-t-il moins cher?** Le prix de l'action monte avec les étapes du chantier: liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €, livraison 3 850 €. Chaque étape close réduit le risque du projet, et le mètre renchérit. Entrer tôt, c'est le prix d'entrée dans la société, pas un rabais sur une maison achevée. 72 mètres sur la liste d'attente: 212 400 €; au palier « Livraison »: 277 200 €.
 
-**Peut-on payer par fractions?** Oui: sur six mois, bonus de 5%; sur un an, sans bonus. En une fois: bonus de 10%. 72 mètres sur un an: 17 700 € par mois.
+**Peut-on payer par fractions?** Oui: sur six mois, bonus de 5%; sur un an, sans bonus. En une fois: bonus de 10%. 72 mètres sur un an: 33 630 € par mois.
 
 **Quand est-ce que je paie?** Uniquement après que la majorité de la liste a approuvé le terrain et que vous avez signé le contrat d'investissement. À l'inscription, vous ne payez rien.
 
@@ -46,9 +46,9 @@ Voici les questions que l'on pose avant d'acheter une maison à Tenerife et avan
 
 ### Le dividende
 
-**Comment fonctionne le dividende?** Le dividende est en euros par action, identique pour toutes les actions. Il se calcule sur la location longue durée après charges: 13,5 € de loyer par mètre et par mois × 12 = 162 €, moins 46,3% de charges détaillées (IBI, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien, taxe sur les déchets), soit 87 € par action et par an en estimation, avant impôt sur les sociétés.
+**Comment fonctionne le dividende?** Le dividende est identique par action. Il se calcule sur la location longue durée après déduction des charges — loyer, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien, taxe sur les déchets — et se publie en pourcentage: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés**.
 
-**Combien cela fait-il sur 72 actions?** 72 × 87 € = 6 264 € par an en estimation, 522 € par mois, avant impôt sur les sociétés.
+**Combien cela fait-il sur 72 actions?** Le dividende est de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés; ce n'est pas une garantie.
 
 **D'où vient le chiffre du loyer?** Du marché: la location longue durée à Santa Úrsula est d'environ 12 € le mètre, les appartements environ 15 €, à Puerto de la Cruz environ 17 €.
 
@@ -88,7 +88,7 @@ Voici les questions que l'on pose avant d'acheter une maison à Tenerife et avan
 
 **Quelle est la société?** OXFORD FRAME REAL ASSETS LTD, Angleterre et pays de Galles, Companies House № 09153936.
 
-**Combien de maisons et lesquelles?** Vingt: six avec une chambre de 48–55 м², dix avec deux chambres de 68–78 м², quatre grandes de 85–100 м².
+**Combien de maisons et lesquelles?** Vingt: six avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m².
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 

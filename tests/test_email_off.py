@@ -115,7 +115,7 @@ class BuildGateTest(unittest.TestCase):
             f"<main>{body}</main><footer>x</footer></body></html>", encoding="utf-8")
         r = subprocess.run([sys.executable, str(BUILD / "build.py"), str(src), str(repo), "--allow-missing"],
                            capture_output=True, text=True, timeout=60)
-        return r, repo / "app" / "tenerife_site" / "index.html"
+        return r, repo / "app" / "tenerife_site" / "ru" / "index.html"
 
     def test_ok_page_builds(self):
         r, out = self.run_build(f"<p>{A}</p>")

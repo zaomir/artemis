@@ -8,7 +8,7 @@ OG title: Wie ein Haus in La Quinta nach der Fertigstellung verdient
 
 # Wie ein Haus in La Quinta nach der Fertigstellung verdient
 
-Die langfristige Vermietung in Santa Úrsula — 12–15 € pro Meter im Monat, im benachbarten Puerto de la Cruz — rund 17 €. Für ein Haus mit 72 Metern sind das 864–1 080 € im Monat. Aus derselben langfristigen Vermietung wird die Dividende auf die Aktien der Bauträgergesellschaft Artemis berechnet: rechnerisch 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+Die langfristige Vermietung in Santa Úrsula — 12–15 € pro Meter im Monat, im benachbarten Puerto de la Cruz — rund 17 €. Für ein Haus mit 72 Metern sind das 864–1 080 € im Monat. Aus derselben langfristigen Vermietung wird die Dividende auf die Aktien der Bauträgergesellschaft Artemis berechnet und als Prozentsatz veröffentlicht: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft**.
 
 [КАДР F10] <!-- служебная пометка, не публикуется -->
 
@@ -51,7 +51,7 @@ Mit Zahlen:
 - Miete — die Mitte der Spanne in Santa Úrsula, 13,5 € pro Meter im Monat;
 - im Jahr — 13,5 × 12 = 162 € pro Meter;
 - Kosten nach sieben Positionen — 46,3%, 75 € pro Meter;
-- es bleiben **87 € pro Meter im Jahr — das ist die rechnerische Dividende je Aktie vor Körperschaftsteuer der Gesellschaft.**
+- es bleibt die Miete nach Abzug der Kosten — daraus wird die Dividende gerechnet: **rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.**
 
 | Position | € pro Meter im Jahr | % von 162 € | Berechnungsgrundlage |
 |---|---|---|---|
@@ -64,7 +64,7 @@ Mit Zahlen:
 | Müllgebühr (basura) | 1,5 | 0,9% | 100–150 € im Jahr, zahlt der Eigentümer; in der Rechnung 120 € für 80 m² |
 | **Gesamt** | **75,0** | **46,3%** | |
 
-Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Haus, 75,5 m², Verwaltung 8%, Instandhaltung 4% — liegen die Kosten bei 41,8% und rechnerisch bei etwa 94 € je Aktie. Im strengen — Miete 12 € pro Meter, 200 € Beiträge für ein kleineres Haus, 65,4 m², Verwaltung 12%, ein Monat Leerstand, Instandhaltung 6% — bei 58,7% und etwa 59 €. Die rechnerische Mitte — 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Haus, 75,5 m², Verwaltung 8%, Instandhaltung 4% — liegen die Kosten bei 41,8% und rechnerisch bei etwa 94 € je Aktie. Im strengen — Miete 12 € pro Meter, 200 € Beiträge für ein kleineres Haus, 65,4 m², Verwaltung 12%, ein Monat Leerstand, Instandhaltung 6% — bei 58,7% und etwa 59 €. Die rechnerische Dividende — 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -74,7 +74,7 @@ Neue Häuser auf den Kanaren dürfen nach dem Gesetz Ley 6/2025 zehn Jahre lang 
 
 ### Das Jahresbild: 72 Meter
 
-**Aktionär aus der Warteliste.** Hat 212 400 € eingebracht — 72 Aktien zu 2 950 €. Dividende — rechnerisch 72 × 87 € = 6 264 € im Jahr, 522 € im Monat, vor Körperschaftsteuer der Gesellschaft. Das sind rechnerisch 2,9% auf das eingesetzte Kapital. Mieter, Reparaturen und Rechnungen hat er nicht.
+**Aktionär aus der Warteliste.** Hat 212 400 € eingebracht — 72 Aktien zu 2 950 €. Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft. Mieter, Reparaturen und Rechnungen hat er nicht.
 
 **Wer die Schlüssel hat.** Ein Haus mit 72 Metern bei der Fertigstellung — 273 600–331 200 €. Langfristige Vermietung — 864–1 080 € im Monat, 10 368–12 960 € im Jahr vor seinen Kosten.
 
@@ -116,9 +116,9 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Woraus entsteht die Dividende?** Aus der langfristigen Vermietung der Meter, die nicht getauscht wurden, nach Kosten und vor Körperschaftsteuer der Gesellschaft.
 
-**Wie viel je Aktie?** Rechnerisch 87 € im Jahr vor Körperschaftsteuer der Gesellschaft.
+**Wie viel je Aktie?** Rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
-**Wie viel bei 72 Metern?** Rechnerisch 6 264 € Dividende im Jahr vor Körperschaftsteuer der Gesellschaft oder 864–1 080 € Miete im Monat.
+**Wie viel bei 72 Metern?** Die Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft; die Miete derselben Meter am Markt — 864–1 080 € im Monat.
 
 **Кнопка: «In die Warteliste eintragen»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

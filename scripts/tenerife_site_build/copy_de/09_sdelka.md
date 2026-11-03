@@ -34,12 +34,12 @@ Das Geschäft mit Artemis de la Cruz beginnt mit der kostenlosen Eintragung in d
 |---|---|---|
 | Eintragung | Warteliste | 0 € |
 | Kauf sofort | 72 Aktien × 2 950 € | 212 400 € |
-| Oder über 12 Monate | 212 400 € ÷ 12 | 17 700 € im Monat |
+| Oder in sechs Raten | 212 400 € mit 5 % Rabatt ÷ 6 | 33 630 € im Monat |
 | Stufe „Fertigstellung“ für dieselben 72 Meter | 72 × 3 850 € | 277 200 € |
-| Nach der Fertigstellung: Dividende, rechnerisch, vor Körperschaftsteuer der Gesellschaft | 72 × 87 € | 6 264 € im Jahr |
+| Nach der Fertigstellung: Dividende, rechnerisch, vor Körperschaftsteuer der Gesellschaft | 2,5–3,5% im Jahr | keine Garantie |
 | Oder Tausch | 72 Aktien | 72 m² Ihrer Residenz |
 
-Dieselben Schritte gelten für jede Fläche. 48 Aktien in der Warteliste — 141 600 €, oder 11 800 € im Monat über 12 Monate. 100 Aktien — 295 000 €, oder rund 24 583 € im Monat.
+Dieselben Schritte gelten für jede Fläche. 48 Aktien in der Warteliste — 141 600 €, oder 22 420 € im Monat über 12 Monate. 100 Aktien — 295 000 €, oder rund 46 708 € im Monat.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -95,7 +95,7 @@ Den Bau bezahlen die Aktien der Bauträgergesellschaft und der Verkauf der Häus
 
 ### Wer das Geschäft führt
 
-**Simon Subic**, Entwickler — Wahl des Grundstücks, Genehmigungen, Start, Verbindung von Geld und Bau. **Boris Ribaut**, leitender Bauleiter — Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für Ihre Fläche senden wir — nach einer Formel für alle: Summe = Meter × Preis der Stufe, Rate = Summe ÷ 12, Dividende = Aktien × 87 €, rechnerisch, vor Körperschaftsteuer der Gesellschaft.
+**Simon Subic**, Entwickler — Wahl des Grundstücks, Genehmigungen, Start, Verbindung von Geld und Bau. **Boris Ribaut**, leitender Bauleiter — Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für Ihre Fläche senden wir — nach einer Formel für alle: Summe = Meter × Preis der Stufe, Rate = Summe mit 5 % Rabatt ÷ 6, Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 

@@ -60,7 +60,7 @@ Una casa de dos dormitorios de 72 metros son 72 acciones.
 | Acabados | 3 650 € | 262 800 € |
 | Entrega | 3 850 € | 277 200 € |
 
-**Compra desde la lista de espera:** 212 400 € al contado o 17 700 € al mes durante doce meses.
+**Compra desde la lista de espera:** 212 400 € al contado o 33 630 € al mes en seis plazos.
 
 **Esas mismas 72 acciones al precio del tramo «Entrega»:** 277 200 €. La diferencia con la lista de espera es de 64 800 €.
 
@@ -70,24 +70,15 @@ Una casa de dos dormitorios de 72 metros son 72 acciones.
 
 Las acciones que tras la entrega no se han canjeado por metros permanecen en la sociedad. La sociedad alquila esos metros en régimen de larga duración. El dividendo es el alquiler de un metro una vez descontados los gastos, antes del impuesto sobre sociedades, por acción. Por eso es igual para todas las acciones, se hayan comprado cuando se hayan comprado.
 
-**Cómo se calcula.** El alquiler de larga duración en Santa Úrsula es de 12–15 € por metro al mes. El punto medio, 13,5 €. Al año son 162 € por metro. Los gastos por partidas suman 75 € por metro, un 46,3%: IBI 2,3%, cuotas de comunidad 21,0%, gestión del alquiler con IGIC 10,7%, periodos sin alquilar 4,2%, seguro 2,2%, reserva para reparaciones 5,0% y tasa de basura 0,9%. Quedan 87 € por metro. De ahí el dividendo estimado: **87 € por acción al año antes del impuesto sobre sociedades**.
+**De qué se compone.** El dividendo se calcula a partir del alquiler de larga duración del metro una vez descontados los gastos: alquiler, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura. Resultado: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**. Es una orientación, no una garantía.
 
-Con 72 acciones son 6 264 € al año estimados, 522 € al mes, antes del impuesto sobre sociedades.
+Con 72 acciones el dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, no es una garantía.
 
 [КАДР F16] <!-- служебная пометка, не публикуется -->
 
 ### Cuánto supone sobre lo invertido
 
-El dividendo en euros es el mismo, pero el precio de entrada no. Por eso sobre el dinero invertido sale distinto, y eso muestra con honestidad por qué entrar antes da un porcentaje mayor sobre lo invertido:
-
-| Tramo de entrada | Precio de la acción | 87 € estimados sobre el precio de la acción, antes del impuesto sobre sociedades |
-|---|---|---|
-| Lista de espera | 2 950 € | 2,9% |
-| Licencia | 3 100 € | 2,8% |
-| Cimentación | 3 250 € | 2,7% |
-| Estructura y cubierta | 3 450 € | 2,5% |
-| Acabados | 3 650 € | 2,4% |
-| Entrega | 3 850 € | 2,3% |
+El dividendo por acción es el mismo, pero el precio de entrada no, así que sobre el dinero invertido sale distinto. Entrar antes da un porcentaje mayor: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**. Es una orientación, no una garantía.
 
 Para comparar: los Bundesanleihen a diez años el 30 de octubre de 2026 rendían un 3,34%, los mejores Festgeld a un año, una media del 3,52%, y la rentabilidad bruta del alquiler en las 52 mayores ciudades de Alemania, un 4,17%.
 
@@ -129,7 +120,7 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿Cuándo se paga?** Cuando la mayoría de la lista apruebe la parcela y llegue el contrato de inversión: al contado (bonificación del 10%), en seis meses (bonificación del 5%) o en un año sin bonificación.
 
-**¿Qué dividendo?** 87 € por acción al año, estimados, procedentes del alquiler de larga duración una vez descontados los gastos, antes del impuesto sobre sociedades.
+**¿Qué dividendo?** Un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, procedente del alquiler de larga duración una vez descontados los gastos; no es una garantía.
 
 **¿Puedo quedarme con los metros?** Sí, tras la licencia de primera ocupación.
 

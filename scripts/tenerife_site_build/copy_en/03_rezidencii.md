@@ -1,30 +1,30 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/producto/
-Meta title: Artemis residences: 20 houses from 48 to 100 м² at La Quinta
-Meta description: Six one-bedroom houses, ten with two bedrooms, four large ones of 85–100 м². Canary Stone, solar panels, a heated pool. A residence = 48–100 shares.
-OG title: Twenty residences from 48 to 100 м² in the north of Tenerife
+Meta title: Artemis residences: 20 houses from 48 to 100 m² at La Quinta
+Meta description: Six one-bedroom houses, ten with two bedrooms, four large ones of 85–100 m². Canary Stone, solar panels, a heated pool. A residence = 48–100 shares.
+OG title: Twenty residences from 48 to 100 m² in the north of Tenerife
 -->
 
 # Twenty residences from 48 to 100 metres, one Canary Stone façade
 
-Twenty Artemis residences at La Quinta, Santa Úrsula: six one-bedroom houses of 48–55 м², ten two-bedroom houses of 68–78 м² and four large houses of 85–100 м². A finished house at handover is 3 800–4 600 € per metre. The same metre as a share in the developer company, on the waiting list, is 2 950 €: one share is one square metre.
+Twenty Artemis residences at La Quinta, Santa Úrsula: six one-bedroom houses of 48–55 m², ten two-bedroom houses of 68–78 m² and four large houses of 85–100 m². A finished house at handover is 3 800–4 600 € per metre. The same metre as a share in the developer company, on the waiting list, is 2 950 €: one share is one square metre.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Twenty out of twenty
 
-| Type | Out of 20 | Area | This residence = | In shares from the waiting list, 2 950 €/м² | House at handover, 3 800–4 600 €/м² |
+| Type | Out of 20 | Area | This residence = | In shares from the waiting list, 2 950 €/m² | House at handover, 3 800–4 600 €/m² |
 |---|---|---|---|---|---|
-| One bedroom | 6 | 48–55 м² | 48–55 shares | 141 600–162 250 € | 182 400–253 000 € |
-| Two bedrooms | 10 | 68–78 м² | 68–78 shares | 200 600–230 100 € | 258 400–358 800 € |
-| Large house | 4 | 85–100 м² | 85–100 shares | 250 750–295 000 € | 323 000–460 000 € |
+| One bedroom | 6 | 48–55 m² | 48–55 shares | 141 600–162 250 € | 182 400–253 000 € |
+| Two bedrooms | 10 | 68–78 m² | 68–78 shares | 200 600–230 100 € | 258 400–358 800 € |
+| Large house | 4 | 85–100 m² | 85–100 shares | 250 750–295 000 € | 323 000–460 000 € |
 
-That is 1 308–1 510 м² of living area in total. A small, enclosed complex, not a neighbourhood of hundreds of flats.
+That is 1 308–1 510 m² of living area in total. A small, enclosed complex, not a neighbourhood of hundreds of flats.
 
 ---
 
-## One bedroom · 48–55 м² · 6 of 20
+## One bedroom · 48–55 m² · 6 of 20
 
 **This residence = 48–55 shares in the developer company.**
 
@@ -32,13 +32,13 @@ For one person or for a couple. For someone who spends the winter in the north, 
 
 Nothing superfluous here: everything you need, and nothing you would pay for without using it. A small house is easier to keep, easier to close for a month and easier to let long term.
 
-**In figures.** 48 metres in shares from the waiting list come to 141 600 €, or 11 800 € a month over twelve months. 55 metres come to 162 250 €. The same 48–55 metres at the handover step come to 184 800–211 750 €. After handover you have 48–55 metres of your own house, or a dividend on 48–55 shares: an estimated 4 176–4 785 € a year, 87 € per share before company profit tax. If you take the keys and let it yourself, long-term letting at the market rate of 12–15 € per metre gives 576–825 € a month.
+**In figures.** 48 metres in shares from the waiting list come to 141 600 €, or 22 420 € a month in six instalments. 55 metres come to 162 250 €. The same 48–55 metres at the handover step come to 184 800–211 750 €. After handover you have 48–55 metres of your own house, or a dividend: an estimated 2,5–3,5 % a year before company profit tax. If you take the keys and let it yourself, long-term letting at the market rate of 12–15 € per metre gives 576–825 € a month.
 
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
 ---
 
-## Two bedrooms · 68–78 м² · 10 of 20
+## Two bedrooms · 68–78 m² · 10 of 20
 
 **This residence = 68–78 shares in the developer company.**
 
@@ -46,7 +46,7 @@ Half of the complex. The second bedroom becomes a room for children, for guests,
 
 This is a house for a family moving to the north, and for someone who lives here for half the year and lets it the rest of the time. On a long let in the north, 72 metres at the market rate of 12–15 € per metre bring in 864–1 080 € a month.
 
-**In figures.** 72 metres in shares from the waiting list come to 212 400 €, or 17 700 € a month over twelve months. The whole range of 68–78 metres comes to 200 600–230 100 €. At the handover step, 72 metres come to 277 200 €. After handover you have your own house, or a dividend: an estimated 72 × 87 € = 6 264 € a year before company profit tax, and across the whole range of 68–78 shares 5 916–6 786 €.
+**In figures.** 72 metres in shares from the waiting list come to 212 400 €, or 33 630 € a month in six instalments. The whole range of 68–78 metres comes to 200 600–230 100 €. At the handover step, 72 metres come to 277 200 €. After handover you have your own house, or a dividend: an estimated 2,5–3,5 % a year before company profit tax.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -54,13 +54,13 @@ This is a house for a family moving to the north, and for someone who lives here
 
 ---
 
-## Large house · 85–100 м² · 4 of 20
+## Large house · 85–100 m² · 4 of 20
 
 **This residence = 85–100 shares in the developer company.**
 
 Four houses in the whole complex. For those who come to the north in earnest and for good: more rooms, more terrace, more light, room for guests and for work. A house where people stay, rather than spend a holiday.
 
-**In figures.** 100 metres in shares from the waiting list come to 295 000 €, or about 24 583 € a month over twelve months. 85 metres come to 250 750 €. A finished house of 100 metres at handover is from 380 000 €. At the handover step the same 85–100 shares come to 327 250–385 000 €. After handover you have your own house, or a dividend on 85–100 shares: an estimated 7 395–8 700 € a year before company profit tax. A long let of such a house at the market rate of 12–15 € per metre gives 1 020–1 500 € a month.
+**In figures.** 100 metres in shares from the waiting list come to 295 000 €, or about 46 708 € a month in six instalments. 85 metres come to 250 750 €. A finished house of 100 metres at handover is from 380 000 €. At the handover step the same 85–100 shares come to 327 250–385 000 €. After handover you have your own house, or a dividend on 85–100 shares: an estimated 7 395–8 700 € a year before company profit tax. A long let of such a house at the market rate of 12–15 € per metre gives 1 020–1 500 € a month.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 

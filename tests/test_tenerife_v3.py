@@ -28,7 +28,8 @@ os.environ.setdefault("TENERIFE_WHATSAPP", "+440000000000")
 import build_v3  # noqa: E402
 import make_model  # noqa: E402
 
-V3 = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
+# RU живёт под /tenerife/ru/ (EN — корень, ES/DE/FR — свои подкаталоги), файлы — app/tenerife_site/ru/
+V3 = {name: (base.RU + "/" if name == "index" else f"{base.RU}/{name}/") for _f, name in build_v3.PAGES}
 FILES = {name: f for f, name in build_v3.PAGES}
 
 
@@ -202,6 +203,9 @@ class V3BuildTest(unittest.TestCase):
         for name, page in self.pages.items():
             foot = re.search(r"<footer.*?</footer>", page, re.S).group(0)
             self.assertEqual(foot.count("<li data-tenerife-whatsapp hidden></li>"), 1, name)
+            # тихая ссылка на русскую версию — часть подвала, но не текст копирайта
+            self.assertEqual(len(re.findall(r'<p class="lang-ru"><a href="/tenerife/ru/"', foot)), 1, name)
+            foot = re.sub(r'<p class="lang-ru">.*?</p>\n?', "", foot, flags=re.S)
             got = words(htmllib.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<!--/?email_off-->", "", foot))))
             self.assertEqual(got, want, name)
 
@@ -438,7 +442,7 @@ class V3BuildTest(unittest.TestCase):
             store.write_text((BUILD / "alts.json").read_text(encoding="utf-8"), encoding="utf-8")
             self.assertEqual(alts_tool.import_md(md, store), 0)
             self.assertEqual(store.read_text(encoding="utf-8"), (BUILD / "alts.json").read_text(encoding="utf-8"))
-            row = "| index | /tenerife/ | F01 | modern-low-6e9d80.jpg | "
+            row = "| index | /tenerife/ru/ | F01 | modern-low-6e9d80.jpg | "
             md.write_text(text.replace(row + "Невысокие дома террасами на склоне над океаном |",
                                        row + "Новый alt | с чертой |"), encoding="utf-8")
             with self.assertRaises(SystemExit):     # an unescaped «|» breaks the row -> refused, nothing written
@@ -509,7 +513,7 @@ class V3BuildTest(unittest.TestCase):
                                  form))
         self.assertEqual(set(hidden), {"page", "calc_m2", "calc_step", "calc_pay"})
         self.assertEqual(tenerife_calc.FIELDS, ("calc_m2", "calc_step", "calc_pay"))
-        self.assertEqual(hidden["page"], "/tenerife/calculadora/")
+        self.assertEqual(hidden["page"], V3[build_v3.CALC_PAGE])
         model = tenerife_calc.load_model(SITE_STATIC / "model.json")
         self.assertNotIn(model["version"], form)          # the version stays server-side
         calc, problems = tenerife_calc.check_calc(hidden, model)
@@ -532,11 +536,19 @@ class V3BuildTest(unittest.TestCase):
             self.assertGreaterEqual(n, 500 if name == build_v3.CALC_PAGE else 700, f"{name}: {n}")
 
     # ---- criterion 5: SEO, links, routes, deploy
-    def test_hreflang_ru_only_and_no_other_languages(self):
+    def test_hreflang_five_languages(self):
+        # переключатель в шапке — EN/ES/DE/FR, но hreflang в <head> обязан покрывать все пять языков + x-default
         for name, page in self.pages.items():
-            self.assertEqual(re.findall(r'hreflang="([^"]+)"', page), ["ru"], name)
-            self.assertIsNone(re.search(r'href="/(?:es|de|fr|en)/', page), name)
+            head = page[:page.index("</head>")]
+            self.assertEqual(re.findall(r'hreflang="([^"]+)"', head),
+                             ["en", "es", "de", "fr", "ru", "x-default"], name)
+            alts = dict(re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">', head))
+            self.assertEqual(alts["ru"], "https://artemisresort.com" + V3[name], name)
+            self.assertEqual(alts["en"], "https://artemisresort.com" + V3[name].replace("/tenerife/ru/", "/tenerife/"))
+            self.assertEqual(alts["de"], ("https://artemisresort.com" + V3[name]).replace("/tenerife/ru/", "/tenerife/de/"))
+            self.assertEqual(alts["x-default"], alts["en"], name)
             self.assertIn('<html lang="ru">', page)
+            self.assertIn('<meta property="og:locale" content="ru_RU">', page)
 
     def test_routes_sitemap_deploy(self):
         import tenerife

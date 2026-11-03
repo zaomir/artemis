@@ -65,10 +65,10 @@ In einem Absatz: Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen
 **Mini-Berechnung auf 72 Metern — 72 Aktien:**
 
 - **Summe** = 72 × 2 950 € = 212 400 €.
-- **Zahlung über 12 Monate** = 212 400 € ÷ 12 = 17 700 € im Monat.
-- **Nach der Fertigstellung** = rechnerisch 72 × 87 € = 6 264 € Dividende im Jahr vor Körperschaftsteuer der Gesellschaft — oder 72 Meter Ihrer eigenen Residenz.
+- **Zahlung** = 212 400 € mit 5 % Rabatt ÷ 6 = 33 630 € im Monat.
+- **Nach der Fertigstellung** — rechnerisch 2,5–3,5 % Dividende im Jahr vor Körperschaftsteuer der Gesellschaft — oder 72 Meter Ihrer eigenen Residenz.
 
-Der Aktienpreis steigt mit den Bauphasen: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €, Fertigstellung — 3 850 €. Dieselben 72 Meter zum Preis der Stufe „Fertigstellung“ — 277 200 €. Die Dividende — rechnerisch 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft: Miete pro Meter 13,5 € im Monat × 12 = 162 €, minus 46,3% Kosten nach Positionen — IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage und Müllgebühr.
+Der Aktienpreis steigt mit den Bauphasen: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €, Fertigstellung — 3 850 €. Dieselben 72 Meter zum Preis der Stufe „Fertigstellung“ — 277 200 €. Die Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft: sie wird aus der Miete eines Meters nach Abzug der Kosten gerechnet — IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage und Müllgebühr.
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -98,7 +98,7 @@ Unternehmen: OXFORD FRAME REAL ASSETS LTD, England und Wales, Companies House Nr
 
 **Wann zahle ich?** Nachdem die Mehrheit der Warteliste das Grundstück freigegeben hat und der Investmentvertrag vorliegt: sofort (10% Bonus), in einem halben Jahr (5% Bonus) oder in einem Jahr ohne Bonus.
 
-**Wie ist die Dividende aufgebaut?** Gleiche Euro je Aktie aus der langfristigen Vermietung nach Kosten — rechnerisch 87 € im Jahr vor Körperschaftsteuer der Gesellschaft.
+**Wie ist die Dividende aufgebaut?** Rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft — aus der langfristigen Vermietung nach Kosten, keine Garantie.
 
 **Wie tausche ich Aktien gegen Meter?** Nach der Nutzungsgenehmigung: notarieller Kaufvertrag und Grundbucheintrag.
 

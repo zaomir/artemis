@@ -76,7 +76,7 @@ Sechs Stufen: Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament 
 
 ### Wie wir arbeiten
 
-Ich führe das Projekt: Grundstückswahl, Genehmigungen, Start, Verbindung von Geld und Bau. Boris Ribaut baut: Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für jeden Aktionär machen wir nach einer Formel: Meter × Preis der Stufe, Rate — Summe ÷ 12, Dividende — Aktien × Euro je Aktie. Zwei Verantwortungsbereiche, keine Frage ohne Zuständigen.
+Ich führe das Projekt: Grundstückswahl, Genehmigungen, Start, Verbindung von Geld und Bau. Boris Ribaut baut: Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für jeden Aktionär machen wir nach einer Formel: Meter × Preis der Stufe, Zahlung — sechs gleiche Raten mit 5 % Rabatt auf den Gesamtpreis. Zwei Verantwortungsbereiche, keine Frage ohne Zuständigen.
 
 ### Was ich von Ihnen erwarte
 

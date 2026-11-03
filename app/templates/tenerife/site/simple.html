@@ -3,7 +3,7 @@
     verbatim) and the no-JS form answers (_notice.html: Flask fills the {{ "{{NOTICE_*}}" }} slots, escaped). -#}
 {% import "_components.html" as c with context %}
 <!doctype html>
-<html lang="ru">
+<html lang="{{ html_lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,8 @@
 {% if description is defined %}<meta name="description" content="{{ description }}">
 {% endif %}{% if canonical %}
 <link rel="canonical" href="{{ canonical }}">
+{% for h in hreflangs %}<link rel="alternate" hreflang="{{ h.code }}" href="{{ h.url }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ x_default }}">
 {% else %}
 <meta name="robots" content="noindex, nofollow">
 {% endif %}
@@ -20,8 +22,8 @@
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 </head>
 <body>
-<a class="skip" href="#main">К содержанию</a>
-{{ c.header(menu, nav, url) }}
+<a class="skip" href="#main">{{ ui.skip }}</a>
+{{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
 <section class="hero-text {{ kind }}" aria-labelledby="h1">
   <div class="wrap">

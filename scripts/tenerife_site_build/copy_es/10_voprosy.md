@@ -38,7 +38,7 @@ Aquí están las preguntas que se hacen antes de comprar una casa en Tenerife y 
 
 **¿Por qué entrar antes es más barato?** El precio de la acción sube por fases de obra: lista de espera, 2 950 €; licencia, 3 100 €; cimentación, 3 250 €; estructura y cubierta, 3 450 €; acabados, 3 650 €; entrega, 3 850 €. Con cada fase cerrada el riesgo del proyecto es menor y el metro se encarece. Entrar antes es el precio de entrada en la sociedad, no un descuento sobre una casa terminada. 72 metros en la lista de espera son 212 400 €; en el tramo «Entrega», 277 200 €.
 
-**¿Se puede pagar a plazos?** Sí: en seis meses, con una bonificación del 5%; en un año, sin bonificación. Al contado, una bonificación del 10%. 72 metros en un año son 17 700 € al mes.
+**¿Se puede pagar a plazos?** Sí: en seis meses, con una bonificación del 5%; en un año, sin bonificación. Al contado, una bonificación del 10%. 72 metros en un año son 33 630 € al mes.
 
 **¿Cuándo pago?** Solo cuando la mayoría de la lista apruebe la parcela y usted firme el contrato de inversión. Al inscribirse no paga nada.
 
@@ -46,9 +46,9 @@ Aquí están las preguntas que se hacen antes de comprar una casa en Tenerife y 
 
 ### El dividendo
 
-**¿Cómo funciona el dividendo?** El dividendo va en euros por cada acción y es igual para todas. Se calcula a partir del alquiler de larga duración una vez descontados los gastos: 13,5 € de alquiler por metro y mes × 12 = 162 €, menos un 46,3% de gastos por partidas (IBI, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura), es decir, 87 € por acción al año estimados antes del impuesto sobre sociedades.
+**¿Cómo funciona el dividendo?** El dividendo es igual por acción. Se calcula a partir del alquiler de larga duración una vez descontados los gastos — alquiler, cuotas de comunidad, gestión, periodos sin alquilar, seguro, reserva para reparaciones y tasa de basura — y se publica en porcentaje: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**.
 
-**¿Cuánto es con 72 acciones?** 72 × 87 € = 6 264 € al año, 522 € al mes, estimados y antes del impuesto sobre sociedades.
+**¿Cuánto es con 72 acciones?** El dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades, no es una garantía.
 
 **¿De dónde sale la cifra del alquiler?** Del mercado: el alquiler de larga duración en Santa Úrsula ronda los 12 € por metro; los pisos, unos 15 €; en Puerto de la Cruz, unos 17 €.
 

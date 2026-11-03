@@ -12,7 +12,7 @@ Artemis de la Cruz is twenty residences in the green north of Tenerife. We are c
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
-**20 residences · 48–100 м² · 1 share = 1 м² · waiting list free, money only after the plot is approved**
+**20 residences · 48–100 m² · 1 share = 1 m² · waiting list free, money only after the plot is approved**
 
 ### Location
 
@@ -43,11 +43,11 @@ Inside there is an open room opening onto the terrace, light through deep window
 
 | Type | How many | Area | This residence = |
 |---|---|---|---|
-| One bedroom | 6 of 20 | 48–55 м² | 48–55 shares |
-| Two bedrooms | 10 of 20 | 68–78 м² | 68–78 shares |
-| Large house | 4 of 20 | 85–100 м² | 85–100 shares |
+| One bedroom | 6 of 20 | 48–55 m² | 48–55 shares |
+| Two bedrooms | 10 of 20 | 68–78 m² | 68–78 shares |
+| Large house | 4 of 20 | 85–100 m² | 85–100 shares |
 
-That is 1 308–1 510 м² of living area in total. A finished house at handover costs 3 800–4 600 € per metre, depending on the type, the floor and the view. The same metre as a share in the developer company, on the waiting list, is 2 950 €.
+That is 1 308–1 510 m² of living area in total. A finished house at handover costs 3 800–4 600 € per metre, depending on the type, the floor and the view. The same metre as a share in the developer company, on the waiting list, is 2 950 €.
 
 The most common type is the two-bedroom house of 68–78 metres: ten out of twenty. The second bedroom serves as a children's room, a guest room or a study, and the living room opens onto the stone terrace.
 
@@ -65,10 +65,10 @@ In one paragraph: joining the waiting list is free. We are currently choosing th
 **A quick calculation at 72 metres, 72 shares:**
 
 - **Amount** = 72 × 2 950 € = 212 400 €.
-- **Payment over 12 months** = 212 400 € ÷ 12 = 17 700 € a month.
-- **After handover** = an estimated 72 × 87 € = 6 264 € of dividend a year before company profit tax, or 72 metres of your own residence.
+- **Payment** = 212 400 € with the 5 % discount ÷ 6 = 33 630 € a month.
+- **After handover** — an estimated dividend of 2,5–3,5 % a year before company profit tax, or 72 metres of your own residence.
 
-The share price rises with the construction steps: waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell and roof 3 450 €, finishing 3 650 €, handover 3 850 €. The same 72 metres at the handover step come to 277 200 €. The dividend is an estimated 87 € per share a year before company profit tax: rent of a metre at 13,5 € a month × 12 = 162 €, less 46,3% of costs by line: IBI, community fees, management, vacancy, insurance, a repair reserve and the refuse charge.
+The share price rises with the construction steps: waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell and roof 3 450 €, finishing 3 650 €, handover 3 850 €. The same 72 metres at the handover step come to 277 200 €. The dividend is an estimated 2,5–3,5 % a year before company profit tax: it is calculated from the rent of a metre after costs — IBI, community fees, management, vacancy, insurance, a repair reserve and the refuse charge.
 
 [КАДР F17] <!-- служебная пометка, не публикуется -->
 
@@ -98,7 +98,7 @@ Company: OXFORD FRAME REAL ASSETS LTD, England and Wales, Companies House No. 09
 
 **When do I pay?** After the majority of the waiting list approves the plot and the investment agreement arrives: in full (10% bonus), over six months (5% bonus) or over a year with no bonus.
 
-**How does the dividend work?** Equal euros on every share from long-term letting after costs: an estimated 87 € a year before company profit tax.
+**How does the dividend work?** An estimated 2,5–3,5 % a year before company profit tax, from long-term letting after costs, not a guarantee.
 
 **How do I exchange shares for metres?** After the completion certificate: a deed before a notary and an entry in the register.
 

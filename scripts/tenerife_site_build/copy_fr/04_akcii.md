@@ -1,8 +1,8 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/acciones/
-Meta title: Actions de la société promotrice Artemis: 1 action = 1 м²
-Meta description: Paliers de prix de 2 950 à 3 850 € le м², contrat d'investissement après accord sur le terrain, paiement immédiat avec bonus de 10%, sur six mois 5%, sur un an sans bonus.
+Meta title: Actions de la société promotrice Artemis: 1 action = 1 m²
+Meta description: Paliers de prix de 2 950 à 3 850 € le m², contrat d'investissement après accord sur le terrain, paiement immédiat avec bonus de 10%, sur six mois 5%, sur un an sans bonus.
 OG title: Une action pour un mètre: comment fonctionnent les actions Artemis
 -->
 
@@ -60,7 +60,7 @@ Une maison avec deux chambres de 72 mètres, c'est 72 actions.
 | Finitions | 3 650 € | 262 800 € |
 | Livraison | 3 850 € | 277 200 € |
 
-**Achat depuis la liste d'attente:** 212 400 € en une fois, ou 17 700 € par mois sur douze mois.
+**Achat depuis la liste d'attente:** 212 400 € en une fois, ou 33 630 € par mois en six versements.
 
 **Les mêmes 72 actions au prix du palier « Livraison »:** 277 200 €. La différence avec la liste d'attente: 64 800 €.
 
@@ -70,24 +70,15 @@ Une maison avec deux chambres de 72 mètres, c'est 72 actions.
 
 Les actions qui n'ont pas été échangées contre des mètres après la livraison restent dans la société. La société loue ces mètres en longue durée. Le dividende, c'est le loyer d'un mètre après charges, avant impôt sur les sociétés, rapporté à une action. Il est donc identique pour toutes les actions, quelle que soit la date d'achat.
 
-**Comment il est calculé.** La location longue durée à Santa Úrsula: 12–15 € le mètre par mois. Le milieu de la fourchette: 13,5 €. Sur un an, cela fait 162 € par mètre. Les charges détaillées: 75 € par mètre, 46,3%: IBI 2,3%, charges de copropriété 21,0%, gestion locative avec IGIC 10,7%, vacance locative 4,2%, assurance 2,2%, réserve d'entretien 5,0%, taxe sur les déchets 0,9%. Il reste 87 € par mètre. D'où un dividende estimé à **87 € par action et par an, avant impôt sur les sociétés**.
+**Ce qui le compose.** Le dividende se calcule à partir de la location longue durée du mètre, après déduction des charges: loyer, charges de copropriété, gestion, vacance locative, assurance, réserve d'entretien et taxe sur les déchets. Résultat: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés**. C'est une orientation, pas une garantie.
 
-Sur 72 actions, cela représente 6 264 € par an en estimation, 522 € par mois, avant impôt sur les sociétés.
+Sur 72 actions, le dividende est de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés; ce n'est pas une garantie.
 
 [КАДР F16] <!-- служебная пометка, не публикуется -->
 
 ### Combien cela rapporte par rapport à l'apport
 
-Le dividende en euros est identique, mais le prix d'entrée diffère. Rapporté à l'apport, il ressort donc différemment, ce qui montre honnêtement pourquoi entrer tôt donne un pourcentage plus élevé:
-
-| Palier d'entrée | Prix de l'action | 87 € estimés rapportés au prix de l'action, avant impôt sur les sociétés |
-|---|---|---|
-| Liste d'attente | 2 950 € | 2,9% |
-| Permis | 3 100 € | 2,8% |
-| Fondations | 3 250 € | 2,7% |
-| Gros œuvre et toiture | 3 450 € | 2,5% |
-| Finitions | 3 650 € | 2,4% |
-| Livraison | 3 850 € | 2,3% |
+Le dividende par action est identique, mais le prix d'entrée diffère: rapporté à l'apport, il ressort donc différemment. Entrer tôt donne un pourcentage plus élevé: **2,5–3,5 % par an en estimation, avant impôt sur les sociétés**. C'est une orientation, pas une garantie.
 
 Pour comparaison: les Bunds à dix ans au 30 octobre 2026: 3,34%; les meilleurs dépôts à terme d'un an: 3,52% en moyenne; le rendement brut de la location dans les 52 plus grandes villes d'Allemagne: 4,17%.
 
@@ -129,7 +120,7 @@ L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement
 
 **Quand payer?** Après que la majorité de la liste a approuvé le terrain et que le contrat d'investissement est arrivé: immédiatement (bonus de 10%), sur six mois (bonus de 5%) ou sur un an sans bonus.
 
-**Quel dividende?** 87 € par action et par an en estimation, issus de la location longue durée après charges, avant impôt sur les sociétés.
+**Quel dividende?** 2,5–3,5 % par an en estimation, avant impôt sur les sociétés, issus de la location longue durée après charges; ce n'est pas une garantie.
 
 **Peut-on récupérer les mètres?** Oui, après le permis d'habiter.
 

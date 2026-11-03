@@ -78,7 +78,7 @@ Das kanarische Gesetz Ley 6/2025 schließt die kurzfristige touristische Vermiet
 - Miete: 13,5 € pro Meter im Monat — die Mitte der marktüblichen 12–15 €;
 - im Jahr: 13,5 × 12 = 162 € pro Meter;
 - minus 46,3% Kosten nach sieben Positionen, 75 € pro Meter;
-- es bleiben rechnerisch 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+- es bleibt die Miete nach Abzug der Kosten; die Dividende wird als Prozentsatz veröffentlicht — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 | Position | € pro Meter im Jahr | % von 162 € | Berechnungsgrundlage |
 |---|---|---|---|
@@ -91,7 +91,7 @@ Das kanarische Gesetz Ley 6/2025 schließt die kurzfristige touristische Vermiet
 | Müllgebühr (basura) | 1,5 | 0,9% | 100–150 € im Jahr, zahlt der Eigentümer; in der Rechnung 120 € für 80 m² |
 | **Gesamt** | **75,0** | **46,3%** | |
 
-Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Haus, 75,5 m², Verwaltung 8%, Instandhaltung 4% — liegen die Kosten bei 41,8% und rechnerisch bei etwa 94 € je Aktie. Im strengen — Miete 12 € pro Meter, 200 € Beiträge für ein kleineres Haus, 65,4 m², Verwaltung 12%, ein Monat Leerstand, Instandhaltung 6% — bei 58,7% und etwa 59 €. Die rechnerische Mitte — 87 € je Aktie im Jahr vor Körperschaftsteuer der Gesellschaft.
+Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Haus, 75,5 m², Verwaltung 8%, Instandhaltung 4% — liegen die Kosten bei 41,8% und rechnerisch bei etwa 94 € je Aktie. Im strengen — Miete 12 € pro Meter, 200 € Beiträge für ein kleineres Haus, 65,4 m², Verwaltung 12%, ein Monat Leerstand, Instandhaltung 6% — bei 58,7% und etwa 59 €. Die rechnerische Dividende — 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
@@ -102,10 +102,9 @@ Im milden Szenario — dieselben 200 € Beiträge für ein etwas größeres Hau
 | Bund 10 Jahre, 30.10.2026 | 3,34% |
 | Festgeld auf 1 Jahr, Durchschnitt Top-10 | 3,52% |
 | Bruttorendite der Vermietung, 52 größte Städte Deutschlands, H1 2026 | 4,17% |
-| Rechnerische Dividende 87 € auf den Preis der Warteliste 2 950 € | 2,9% |
-| Rechnerische Dividende 87 € auf den Preis der Stufe „Fertigstellung“ 3 850 € | 2,3% |
+| Rechnerische Dividende auf den Einstiegspreis | 2,5–3,5% im Jahr |
 
-Die Dividende in Euro ist je Aktie gleich, der Prozentsatz hängt davon ab, auf welcher Stufe Sie eingestiegen sind. Deshalb zeigen wir die Dividende in Euro und den Prozentsatz als Folge. Beide Zahlen sind eine Rechnung vor Körperschaftsteuer der Gesellschaft.
+Die Dividende je Aktie ist gleich, der Prozentsatz auf das eingesetzte Kapital hängt von der Einstiegsstufe ab. Die Zahl ist eine Rechnung vor Körperschaftsteuer der Gesellschaft.
 
 ### So funktioniert es
 
@@ -121,7 +120,7 @@ Die Eintragung in die Warteliste ist kostenlos. Derzeit wählen wir ein Grundst�
 
 **Wie hoch ist die Miete im Norden?** 12–15 € pro Meter im Monat in Santa Úrsula, 17 € in Puerto de la Cruz.
 
-**Woher kommen die 87 €?** 13,5 € × 12 = 162 € minus 46,3% Kosten: IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr. Das ist eine Rechnung vor Körperschaftsteuer der Gesellschaft.
+**Woher kommt der Prozentsatz?** Die Dividende wird aus der langfristigen Miete eines Meters nach Abzug der Kosten gerechnet: IBI, Gemeinschaftsbeiträge, Verwaltung, Leerstand, Versicherung, Instandhaltungsrücklage, Müllgebühr. Ergebnis: rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
 
 **Кнопка: «In die Warteliste eintragen»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

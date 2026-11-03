@@ -1,30 +1,30 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/producto/
-Meta title: Résidences Artemis: 20 maisons de 48 à 100 м² à La Quinta
-Meta description: Six maisons avec une chambre, dix de deux chambres, quatre grandes de 85–100 м². Canary Stone, panneaux solaires, piscine chauffée. Une résidence = 48–100 actions.
-OG title: Vingt résidences de 48 à 100 м² dans le nord de Tenerife
+Meta title: Résidences Artemis: 20 maisons de 48 à 100 m² à La Quinta
+Meta description: Six maisons avec une chambre, dix de deux chambres, quatre grandes de 85–100 m². Canary Stone, panneaux solaires, piscine chauffée. Une résidence = 48–100 actions.
+OG title: Vingt résidences de 48 à 100 m² dans le nord de Tenerife
 -->
 
 # Vingt résidences de 48 à 100 mètres, une seule façade Canary Stone
 
-Vingt résidences Artemis à La Quinta, Santa Úrsula: six maisons avec une chambre de 48–55 м², dix avec deux chambres de 68–78 м², quatre grandes de 85–100 м². Une maison achevée à la livraison: 3 800–4 600 € le mètre. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €, une action pour un mètre carré.
+Vingt résidences Artemis à La Quinta, Santa Úrsula: six maisons avec une chambre de 48–55 m², dix avec deux chambres de 68–78 m², quatre grandes de 85–100 m². Une maison achevée à la livraison: 3 800–4 600 € le mètre. Le même mètre en actions de la société promotrice, sur la liste d'attente: 2 950 €, une action pour un mètre carré.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
 ### Vingt sur vingt
 
-| Type | Sur 20 | Surface | Cette résidence = | En actions depuis la liste d'attente, 2 950 €/м² | Maison à la livraison, 3 800–4 600 €/м² |
+| Type | Sur 20 | Surface | Cette résidence = | En actions depuis la liste d'attente, 2 950 €/m² | Maison à la livraison, 3 800–4 600 €/m² |
 |---|---|---|---|---|---|
-| Une chambre | 6 | 48–55 м² | 48–55 actions | 141 600–162 250 € | 182 400–253 000 € |
-| Deux chambres | 10 | 68–78 м² | 68–78 actions | 200 600–230 100 € | 258 400–358 800 € |
-| Grande maison | 4 | 85–100 м² | 85–100 actions | 250 750–295 000 € | 323 000–460 000 € |
+| Une chambre | 6 | 48–55 m² | 48–55 actions | 141 600–162 250 € | 182 400–253 000 € |
+| Deux chambres | 10 | 68–78 m² | 68–78 actions | 200 600–230 100 € | 258 400–358 800 € |
+| Grande maison | 4 | 85–100 m² | 85–100 actions | 250 750–295 000 € | 323 000–460 000 € |
 
-Au total, 1 308–1 510 м² de surface habitable. Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements.
+Au total, 1 308–1 510 m² de surface habitable. Un ensemble à taille humaine, pas un quartier de plusieurs centaines d'appartements.
 
 ---
 
-## Une chambre · 48–55 м² · 6 sur 20
+## Une chambre · 48–55 m² · 6 sur 20
 
 **Cette résidence = 48–55 actions de la société promotrice.**
 
@@ -32,13 +32,13 @@ Pour une personne seule ou pour un couple. Pour qui passe l'hiver au nord, trava
 
 Rien de superflu: tout ce qui est nécessaire, et rien pour quoi il faudrait payer sans s'en servir. Une petite maison est plus simple à entretenir, plus simple à fermer un mois et plus simple à louer sur la durée.
 
-**En chiffres.** 48 mètres en actions depuis la liste d'attente: 141 600 €, soit 11 800 € par mois sur douze mois. 55 mètres: 162 250 €. Les mêmes 48–55 mètres au prix du palier « Livraison »: 184 800–211 750 €. Après la livraison: 48–55 mètres de votre maison, ou un dividende sur 48–55 actions, soit 4 176–4 785 € par an en estimation, 87 € par action avant impôt sur les sociétés. Si vous prenez les clés et louez vous-même, la location longue durée à 12–15 € le mètre de marché représente 576–825 € par mois.
+**En chiffres.** 48 mètres en actions depuis la liste d'attente: 141 600 €, soit 22 420 € par mois en six versements. 55 mètres: 162 250 €. Les mêmes 48–55 mètres au prix du palier « Livraison »: 184 800–211 750 €. Après la livraison: 48–55 mètres de votre maison, ou un dividende: 2,5–3,5 % par an en estimation avant impôt sur les sociétés. Si vous prenez les clés et louez vous-même, la location longue durée à 12–15 € le mètre de marché représente 576–825 € par mois.
 
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
 ---
 
-## Deux chambres · 68–78 м² · 10 sur 20
+## Deux chambres · 68–78 m² · 10 sur 20
 
 **Cette résidence = 68–78 actions de la société promotrice.**
 
@@ -46,7 +46,7 @@ La moitié de l'ensemble. La seconde chambre devient une chambre d'enfants, d'am
 
 C'est la maison d'une famille qui s'installe au nord, et de celui qui y vit six mois et loue le reste du temps. En location longue durée au nord, 72 mètres à 12–15 € le mètre de marché rapportent 864–1 080 € par mois.
 
-**En chiffres.** 72 mètres en actions depuis la liste d'attente: 212 400 €, soit 17 700 € par mois sur douze mois. Toute la plage de 68–78 mètres: 200 600–230 100 €. Au prix du palier « Livraison », 72 mètres: 277 200 €. Après la livraison: votre maison, ou un dividende, soit 72 × 87 € = 6 264 € par an en estimation avant impôt sur les sociétés; sur toute la plage de 68–78 actions: 5 916–6 786 €.
+**En chiffres.** 72 mètres en actions depuis la liste d'attente: 212 400 €, soit 33 630 € par mois en six versements. Toute la plage de 68–78 mètres: 200 600–230 100 €. Au prix du palier « Livraison », 72 mètres: 277 200 €. Après la livraison: votre maison, ou un dividende de 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -54,13 +54,13 @@ C'est la maison d'une famille qui s'installe au nord, et de celui qui y vit six 
 
 ---
 
-## Grande maison · 85–100 м² · 4 sur 20
+## Grande maison · 85–100 m² · 4 sur 20
 
 **Cette résidence = 85–100 actions de la société promotrice.**
 
 Quatre maisons pour tout l'ensemble. Pour ceux qui viennent au nord sérieusement et pour longtemps: plus de pièces, plus de terrasse, plus de lumière, de la place pour les invités et pour travailler. Une maison où l'on reste, où l'on ne passe pas des vacances.
 
-**En chiffres.** 100 mètres en actions depuis la liste d'attente: 295 000 €, soit environ 24 583 € par mois sur douze mois. 85 mètres: 250 750 €. Une maison achevée de 100 mètres à la livraison: à partir de 380 000 €. Au prix du palier « Livraison », les mêmes 85–100 actions: 327 250–385 000 €. Après la livraison: votre maison, ou un dividende sur 85–100 actions, soit 7 395–8 700 € par an en estimation avant impôt sur les sociétés. La location longue durée d'une telle maison à 12–15 € le mètre de marché: 1 020–1 500 € par mois.
+**En chiffres.** 100 mètres en actions depuis la liste d'attente: 295 000 €, soit environ 46 708 € par mois en six versements. 85 mètres: 250 750 €. Une maison achevée de 100 mètres à la livraison: à partir de 380 000 €. Au prix du palier « Livraison », les mêmes 85–100 actions: 327 250–385 000 €. Après la livraison: votre maison, ou un dividende sur 85–100 actions, soit 7 395–8 700 € par an en estimation avant impôt sur les sociétés. La location longue durée d'une telle maison à 12–15 € le mètre de marché: 1 020–1 500 € par mois.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 

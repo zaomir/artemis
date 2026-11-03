@@ -16,7 +16,7 @@ A purchase from Artemis de la Cruz begins with free entry to the waiting list an
 
 **1. Joining the waiting list.** You leave your name and a contact. It is free, and there is nothing to pay now.
 
-**2. The email with the calculation.** We send a calculation for your area: how many shares, which step price, the amount in one payment and the payment over 12 months, the estimated dividend after handover.
+**2. The email with the calculation.** We send a calculation for your area: how many shares, which step price, the amount in one payment and the payment in six instalments, the estimated dividend after handover.
 
 **3. Plot and agreement.** When the majority of the waiting list approves the plot, we send the investment agreement. Under it you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus.
 
@@ -34,12 +34,12 @@ A purchase from Artemis de la Cruz begins with free entry to the waiting list an
 |---|---|---|
 | Joining | waiting list | 0 € |
 | Purchase in one payment | 72 shares × 2 950 € | 212 400 € |
-| Or over 12 months | 212 400 € ÷ 12 | 17 700 € a month |
+| Or in six instalments | 212 400 € with the 5 % discount ÷ 6 | 33 630 € a month |
 | The handover step for the same 72 metres | 72 × 3 850 € | 277 200 € |
-| After handover: the dividend, estimated, before company profit tax | 72 × 87 € | 6 264 € a year |
-| Or the exchange | 72 shares | 72 м² of your own residence |
+| After handover: the dividend, estimated, before company profit tax | 2,5–3,5% a year | not a guarantee |
+| Or the exchange | 72 shares | 72 m² of your own residence |
 
-The same steps apply to any area. 48 shares on the waiting list come to 141 600 €, or 11 800 € a month over 12 months. 100 shares come to 295 000 €, or about 24 583 € a month.
+The same steps apply to any area. 48 shares on the waiting list come to 141 600 €, or 22 420 € a month in six instalments. 100 shares come to 295 000 €, or about 46 708 € a month.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -65,7 +65,7 @@ Joining on the website is the first step. After that comes a real conversation w
 
 The exchange of shares for metres is formalised as the purchase of a new residence from the developer. In the Canaries IGIC applies instead of VAT: the first transfer of new housing is subject to it at the general rate of 7%. On top comes AJD, the stamp duty on the deed for a transaction subject to IGIC, at 1%. Plus the notary and the registration. In the calculation we take the taxes on the value of the metres at the handover step, not on the amount you paid for the shares on the waiting list.
 
-| Example | 72 м² at the handover step |
+| Example | 72 m² at the handover step |
 |---|---|
 | Value of the metres | 277 200 € |
 | IGIC 7% | 19 404 € |
@@ -95,7 +95,7 @@ The construction is paid for by shares in the developer company and by house sal
 
 ### Who handles the purchase
 
-**Simon Subic**, developer: choosing the plot, permits, launch, linking the money and the construction. **Boris Ribaut**, chief builder: the site, the structure, the reports, handover of the house. We send the calculations for your area, on one formula for everyone: amount = metres × the step price, payment = amount ÷ 12, dividend = shares × 87 €, estimated, before company profit tax.
+**Simon Subic**, developer: choosing the plot, permits, launch, linking the money and the construction. **Boris Ribaut**, chief builder: the site, the structure, the reports, handover of the house. We send the calculations for your area, on one formula for everyone: amount = metres × the step price, payment = amount with the 5 % discount ÷ 6, dividend — an estimated 2,5–3,5 % a year before company profit tax.
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 

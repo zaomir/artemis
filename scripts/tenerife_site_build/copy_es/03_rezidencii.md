@@ -32,7 +32,7 @@ Para una persona sola o para una pareja. Para quien pasa el invierno en el norte
 
 Aquí no sobra nada: está lo necesario y nada por lo que hubiera que pagar sin usarlo. Una casa pequeña se mantiene mejor, se cierra con más facilidad un mes y se alquila con menos esfuerzo por temporadas largas.
 
-**En cifras.** 48 metros en acciones de la lista de espera son 141 600 €, o 11 800 € al mes durante doce meses. 55 metros son 162 250 €. Esos mismos 48–55 metros al precio del tramo «Entrega» son 184 800–211 750 €. Tras la entrega, 48–55 metros de su propia casa o un dividendo sobre 48–55 acciones: 4 176–4 785 € al año estimados, 87 € por acción antes del impuesto sobre sociedades. Si recoge las llaves y alquila por su cuenta, el alquiler de larga duración a los 12–15 € por metro de mercado da 576–825 € al mes.
+**En cifras.** 48 metros en acciones de la lista de espera son 141 600 €, o 22 420 € al mes en seis plazos. 55 metros son 162 250 €. Esos mismos 48–55 metros al precio del tramo «Entrega» son 184 800–211 750 €. Tras la entrega, 48–55 metros de su propia casa o un dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades. Si recoge las llaves y alquila por su cuenta, el alquiler de larga duración a los 12–15 € por metro de mercado da 576–825 € al mes.
 
 [КАДР F06] <!-- служебная пометка, не публикуется -->
 
@@ -46,7 +46,7 @@ La mitad del conjunto. El segundo dormitorio se convierte en habitación para lo
 
 Es la casa para una familia que se traslada al norte y para quien vive aquí medio año y alquila el resto. En alquiler de larga duración, 72 metros en el norte a los 12–15 € por metro de mercado rentan 864–1 080 € al mes.
 
-**En cifras.** 72 metros en acciones de la lista de espera son 212 400 €, o 17 700 € al mes durante doce meses. Todo el rango de 68–78 metros, 200 600–230 100 €. Al precio del tramo «Entrega», 72 metros son 277 200 €. Tras la entrega, su casa o un dividendo: 72 × 87 € = 6 264 € al año estimados antes del impuesto sobre sociedades; para todo el rango de 68–78 acciones, 5 916–6 786 €.
+**En cifras.** 72 metros en acciones de la lista de espera son 212 400 €, o 33 630 € al mes en seis plazos. Todo el rango de 68–78 metros, 200 600–230 100 €. Al precio del tramo «Entrega», 72 metros son 277 200 €. Tras la entrega, su casa o un dividendo: un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 [КАДР F07] <!-- служебная пометка, не публикуется -->
 
@@ -60,7 +60,7 @@ Es la casa para una familia que se traslada al norte y para quien vive aquí med
 
 Cuatro casas en todo el conjunto. Para quien llega al norte en serio y para quedarse: más habitaciones, más terraza, más luz, sitio para invitados y para trabajar. Una casa en la que se permanece, no en la que se pasan las vacaciones.
 
-**En cifras.** 100 metros en acciones de la lista de espera son 295 000 €, o unos 24 583 € al mes durante doce meses. 85 metros son 250 750 €. La casa terminada de 100 metros en la entrega, desde 380 000 €. Al precio del tramo «Entrega», esas 85–100 acciones son 327 250–385 000 €. Tras la entrega, su casa o un dividendo sobre 85–100 acciones: 7 395–8 700 € al año estimados antes del impuesto sobre sociedades. El alquiler de larga duración de una casa así a los 12–15 € por metro de mercado da 1 020–1 500 € al mes.
+**En cifras.** 100 metros en acciones de la lista de espera son 295 000 €, o unos 46 708 € al mes en seis plazos. 85 metros son 250 750 €. La casa terminada de 100 metros en la entrega, desde 380 000 €. Al precio del tramo «Entrega», esas 85–100 acciones son 327 250–385 000 €. Tras la entrega, su casa o un dividendo sobre 85–100 acciones: 7 395–8 700 € al año estimados antes del impuesto sobre sociedades. El alquiler de larga duración de una casa así a los 12–15 € por metro de mercado da 1 020–1 500 € al mes.
 
 [КАДР F09] <!-- служебная пометка, не публикуется -->
 

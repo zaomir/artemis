@@ -11,7 +11,7 @@ from pathlib import Path
 PAGES = ["index", "norte", "producto", "construccion", "proceso", "faq"]
 SRC, REPO = Path(sys.argv[1]), Path(sys.argv[2])
 ALLOW_MISSING = "--allow-missing" in sys.argv
-OUT_PAGES = REPO / "app/tenerife_site"
+OUT_PAGES = REPO / "app/tenerife_site" / "ru"   # RU живёт под /tenerife/ru/ (EN — корень каталога)
 OUT_STATIC = REPO / "app/static/tenerife/site"
 FONTS = Path(__file__).resolve().parent  # fonts.css lives here; woff2 files are already in app/static/tenerife/site/fonts
 URL = lambda p: "/tenerife/" if p == "index" else f"/tenerife/{p}/"

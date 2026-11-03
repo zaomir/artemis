@@ -34,12 +34,12 @@ La operación con Artemis de la Cruz empieza con una inscripción gratuita en la
 |---|---|---|
 | Inscripción | lista de espera | 0 € |
 | Compra al contado | 72 acciones × 2 950 € | 212 400 € |
-| O en 12 meses | 212 400 € ÷ 12 | 17 700 € al mes |
+| O en seis plazos | 212 400 € con el 5 % de descuento ÷ 6 | 33 630 € al mes |
 | Tramo «Entrega» para esos mismos 72 metros | 72 × 3 850 € | 277 200 € |
-| Tras la entrega: dividendo, estimado, antes del impuesto sobre sociedades | 72 × 87 € | 6 264 € al año |
+| Tras la entrega: dividendo, estimado, antes del impuesto sobre sociedades | 2,5–3,5% anual | no es una garantía |
 | O canje | 72 acciones | 72 m² de su residencia |
 
-Los mismos pasos sirven para cualquier superficie. 48 acciones en la lista de espera son 141 600 €, o 11 800 € al mes durante 12 meses. 100 acciones son 295 000 €, o unos 24 583 € al mes.
+Los mismos pasos sirven para cualquier superficie. 48 acciones en la lista de espera son 141 600 €, o 22 420 € al mes durante 12 meses. 100 acciones son 295 000 €, o unos 46 708 € al mes.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
@@ -95,7 +95,7 @@ La obra la pagan las acciones de la sociedad promotora y la venta de viviendas. 
 
 ### Quién lleva la operación
 
-**Simon Subic**, promotor: elección de la parcela, licencias, puesta en marcha y coordinación entre el dinero y la obra. **Boris Ribaut**, jefe de obra: ejecución, estructura, informes y entrega de la vivienda. Los cálculos para su superficie los enviamos nosotros, con una sola fórmula para todos: importe = metros × precio del tramo, pago = importe ÷ 12, dividendo = acciones × 87 €, estimado, antes del impuesto sobre sociedades.
+**Simon Subic**, promotor: elección de la parcela, licencias, puesta en marcha y coordinación entre el dinero y la obra. **Boris Ribaut**, jefe de obra: ejecución, estructura, informes y entrega de la vivienda. Los cálculos para su superficie los enviamos nosotros, con una sola fórmula para todos: importe = metros × precio del tramo, pago = importe con el 5 % de descuento ÷ 6, dividendo — un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 

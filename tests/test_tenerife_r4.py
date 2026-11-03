@@ -26,7 +26,7 @@ os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app 
 
 import build_v3  # noqa: E402
 
-SITE = ROOT / "app" / "tenerife_site"
+SITE = ROOT / "app" / "tenerife_site" / "ru"
 BUILD = ROOT / "scripts" / "tenerife_site_build"
 FAKE = "+440000000000"
 SLOT = '<li data-tenerife-whatsapp hidden></li>'
@@ -188,6 +188,8 @@ class FormTextsTest(unittest.TestCase):
         md = (BUILD / "copy_v3" / "17_forma.md").read_text(encoding="utf-8")
         want = re.search(r"^\*\*Согласие\.\*\* (.+)$", md, re.M).group(1)
         want = re.sub(r"\[([^\]]+)\]\((/[^)]+)\)", r'<a href="\2">\1</a>', want)
+        # ссылка на политику внутри строки согласия ведёт в RU-версию той же страницы
+        want = want.replace('href="/tenerife/privacy/"', 'href="/tenerife/ru/privacy/"')
         forms = 0
         for f in SITE.glob("*.html"):
             t = f.read_text(encoding="utf-8")
@@ -648,7 +650,7 @@ class SiteWideImageUniquenessTest(unittest.TestCase):
 
     def test_built_pages_use_each_photo_once(self):
         stems = []
-        for f in sorted((ROOT / "app" / "tenerife_site").glob("*.html")):
+        for f in sorted((ROOT / "app" / "tenerife_site" / "ru").glob("*.html")):
             stems += build_v3.IMG_SRC_RX.findall(f.read_text(encoding="utf-8"))
         self.assertTrue(stems)
         self.assertEqual(len(stems), len(set(stems)), stems)

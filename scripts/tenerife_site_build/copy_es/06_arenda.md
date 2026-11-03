@@ -8,7 +8,7 @@ OG title: Cómo renta una casa en La Quinta tras la entrega
 
 # Cómo gana una casa de La Quinta después de la entrega
 
-El alquiler de larga duración en Santa Úrsula va de 12 a 15 € por metro al mes; en Puerto de la Cruz, al lado, ronda los 17 €. Para una casa de 72 metros son 864–1 080 € al mes. De ese mismo alquiler de larga duración se calcula el dividendo de las acciones de la sociedad promotora Artemis: 87 € por acción al año estimados, antes del impuesto sobre sociedades.
+El alquiler de larga duración en Santa Úrsula va de 12 a 15 € por metro al mes; en Puerto de la Cruz, al lado, ronda los 17 €. Para una casa de 72 metros son 864–1 080 € al mes. De ese mismo alquiler de larga duración se calcula el dividendo de las acciones de la sociedad promotora Artemis, que se publica en porcentaje: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades**.
 
 [КАДР F10] <!-- служебная пометка, не публикуется -->
 
@@ -51,7 +51,7 @@ Con cifras:
 - el alquiler: el punto medio de la horquilla de Santa Úrsula, 13,5 € por metro al mes;
 - al año: 13,5 × 12 = 162 € por metro;
 - los gastos por siete partidas: un 46,3%, 75 € por metro;
-- quedan **87 € por metro al año, que es el dividendo estimado por acción antes del impuesto sobre sociedades.**
+- queda el alquiler después de los gastos; de ahí se calcula el dividendo: **un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.**
 
 | Partida | € por metro al año | % sobre 162 € | Base del cálculo |
 |---|---|---|---|
@@ -64,7 +64,7 @@ Con cifras:
 | Tasa de basura | 1,5 | 0,9% | 100–150 € al año, la paga el propietario; en el cálculo, 120 € por 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor, 75,5 m², gestión del 8% y reparaciones del 4%, los gastos son un 41,8% y unos 94 € por acción estimados. En el estricto, con alquiler de 12 € por metro, 200 € de cuotas para una casa algo menor, 65,4 m², gestión del 12%, un mes sin alquilar y reparaciones del 6%, los gastos son un 58,7% y unos 59 €. El punto medio estimado son 87 € por acción al año antes del impuesto sobre sociedades.
+En el escenario suave, con las mismas cuotas de 200 € para una casa algo mayor, 75,5 m², gestión del 8% y reparaciones del 4%, los gastos son un 41,8% y unos 94 € por acción estimados. En el estricto, con alquiler de 12 € por metro, 200 € de cuotas para una casa algo menor, 65,4 m², gestión del 12%, un mes sin alquilar y reparaciones del 6%, los gastos son un 58,7% y unos 59 €. El dividendo estimado es un 2,5–3,5 % anual antes del impuesto sobre sociedades.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -74,7 +74,7 @@ La ley canaria Ley 6/2025 no permite destinar las viviendas nuevas de Canarias a
 
 ### El año en cifras: 72 metros
 
-**Accionista desde la lista de espera.** Aportó 212 400 €, 72 acciones a 2 950 €. El dividendo es de 72 × 87 € = 6 264 € al año, 522 € al mes, estimados y antes del impuesto sobre sociedades. Sobre lo invertido, un 2,9% estimado. No tiene inquilino, ni reparaciones, ni facturas.
+**Accionista desde la lista de espera.** Aportó 212 400 €, 72 acciones a 2 950 €. El dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades. No tiene inquilino, ni reparaciones, ni facturas.
 
 **Dueño de las llaves.** La casa de 72 metros en la entrega cuesta 273 600–331 200 €. El alquiler de larga duración da 864–1 080 € al mes, 10 368–12 960 € al año antes de sus gastos.
 
@@ -116,9 +116,9 @@ La inscripción en la lista de espera es gratuita. Ahora estamos eligiendo la pa
 
 **¿De qué sale el dividendo?** Del alquiler de larga duración de los metros que no se canjearon, una vez descontados los gastos y antes del impuesto sobre sociedades.
 
-**¿Cuánto por acción?** 87 € al año estimados, antes del impuesto sobre sociedades.
+**¿Cuánto por acción?** Un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades.
 
-**¿Cuánto sobre 72 metros?** 6 264 € al año de dividendo estimado antes del impuesto sobre sociedades, o 864–1 080 € de alquiler al mes.
+**¿Cuánto sobre 72 metros?** El dividendo es un 2,5–3,5 % anual estimado antes del impuesto sobre sociedades; el alquiler de esos mismos metros en el mercado es de 864–1 080 € al mes.
 
 **Кнопка: «Apuntarme a la lista de espera»**
 Gratis. No cobramos nada hasta elegir la parcela.

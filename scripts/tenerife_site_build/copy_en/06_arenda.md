@@ -1,14 +1,14 @@
 <!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/alquiler/
-Meta title: Letting in north Tenerife: 12–15 € per м² a month – Artemis
-Meta description: Long-term letting in Santa Úrsula is 12–15 € per м² a month, in Puerto de la Cruz about 17 €. How the estimated dividend is calculated from it, and what a house earns.
+Meta title: Letting in north Tenerife: 12–15 € per m² a month – Artemis
+Meta description: Long-term letting in Santa Úrsula is 12–15 € per m² a month, in Puerto de la Cruz about 17 €. How the estimated dividend is calculated from it, and what a house earns.
 OG title: How a house at La Quinta earns after handover
 -->
 
 # How a house at La Quinta earns after handover
 
-Long-term letting in Santa Úrsula is 12–15 € per metre a month, and in neighbouring Puerto de la Cruz about 17 €. For a house of 72 metres that is 864–1 080 € a month. The dividend on shares in the developer company Artemis is calculated from the same long-term letting: an estimated 87 € per share a year before company profit tax.
+Long-term letting in Santa Úrsula is 12–15 € per metre a month, and in neighbouring Puerto de la Cruz about 17 €. For a house of 72 metres that is 864–1 080 € a month. The dividend on shares in the developer company Artemis is calculated from the same long-term letting and is published as a percentage: **an estimated 2,5–3,5 % a year before company profit tax**.
 
 [КАДР F10] <!-- служебная пометка, не публикуется -->
 
@@ -22,7 +22,7 @@ Long-term letting in Santa Úrsula is 12–15 € per metre a month, and in neig
 
 | Source | Santa Úrsula | Puerto de la Cruz |
 |---|---|---|
-| Fotocasa, October 2026 | about 12 € per м² a month | about 17 € |
+| Fotocasa, October 2026 | about 12 € per m² a month | about 17 € |
 | Engel & Völkers | flats 15,04 €, houses 11,31 € | — |
 | Mesurae | 12,1 €, gross yield 5,8% | 16,5 €, 5,7% |
 
@@ -32,11 +32,11 @@ Kelify by district in Santa Úrsula (March 2026) gives 10,00–11,67 € per met
 
 ### Working monthly ranges
 
-| House | Area | Santa Úrsula, 12–15 €/м² | Puerto de la Cruz, about 17 €/м² |
+| House | Area | Santa Úrsula, 12–15 €/m² | Puerto de la Cruz, about 17 €/m² |
 |---|---|---|---|
-| One bedroom | 50 м² | 600–750 € | about 850 € |
-| Two bedrooms | 72 м² | 864–1 080 € | about 1 224 € |
-| Large house | 95 м² | 1 140–1 425 € | about 1 615 € |
+| One bedroom | 50 m² | 600–750 € | about 850 € |
+| Two bedrooms | 72 m² | 864–1 080 € | about 1 224 € |
+| Large house | 95 m² | 1 140–1 425 € | about 1 615 € |
 
 A new house with solar panels, smart climate and a heated pool is an argument for a tenant comparing it with an old flat.
 
@@ -51,20 +51,20 @@ With the numbers:
 - rent: the midpoint of the Santa Úrsula range, 13,5 € per metre a month;
 - over a year: 13,5 × 12 = 162 € per metre;
 - costs across seven lines: 46,3%, 75 € per metre;
-- that leaves **87 € per metre a year, and that is the estimated dividend per share before company profit tax.**
+- what is left is the rent after costs, and the dividend is calculated from it: **an estimated 2,5–3,5 % a year before company profit tax.**
 
 | Line | € per metre a year | % of 162 € | Basis of the calculation |
 |---|---|---|---|
-| IBI, property tax | 3,75 | 2,3% | 300 € a year for 80 м² in Tenerife; the Santa Úrsula rate is 0,40% |
-| Community fees | 34,1 | 21,0% | 200–400 € a month in complexes with a heated pool; the calculation uses 200 € for an average house of about 70 м² |
+| IBI, property tax | 3,75 | 2,3% | 300 € a year for 80 m² in Tenerife; the Santa Úrsula rate is 0,40% |
+| Community fees | 34,1 | 21,0% | 200–400 € a month in complexes with a heated pool; the calculation uses 200 € for an average house of about 70 m² |
 | Letting management | 17,3 | 10,7% | 8–12% of the rent plus IGIC 7%; the calculation uses 10% |
 | Vacancy between tenants | 6,75 | 4,2% | half a month a year in a strong market |
-| Insurance | 3,5 | 2,2% | 280 € a year for 80 м² in Tenerife |
+| Insurance | 3,5 | 2,2% | 280 € a year for 80 m² in Tenerife |
 | Repair reserve | 8,1 | 5,0% | 4–6% of the rent for a new house |
-| Refuse charge (basura) | 1,5 | 0,9% | 100–150 € a year, paid by the owner; the calculation uses 120 € for 80 м² |
+| Refuse charge (basura) | 1,5 | 0,9% | 100–150 € a year, paid by the owner; the calculation uses 120 € for 80 m² |
 | **Total** | **75,0** | **46,3%** | |
 
-In the mild scenario, with the same 200 € of fees on a larger house of 75,5 м², management at 8% and repairs at 4%, costs are 41,8% and the estimate is about 94 € per share. In the strict one, with rent of 12 € per metre, 200 € of fees on a smaller house of 65,4 м², management at 12%, a month of vacancy and repairs at 6%, costs are 58,7% and the figure is about 59 €. The estimated midpoint is 87 € per share a year before company profit tax.
+In the mild scenario, with the same 200 € of fees on a larger house of 75,5 m², management at 8% and repairs at 4%, costs are 41,8% and the estimate is about 94 € per share. In the strict one, with rent of 12 € per metre, 200 € of fees on a smaller house of 65,4 m², management at 12%, a month of vacancy and repairs at 6%, costs are 58,7% and the figure is about 59 €. The estimated dividend is 2,5–3,5 % a year before company profit tax.
 
 [КАДР F05] <!-- служебная пометка, не публикуется -->
 
@@ -74,7 +74,7 @@ Under Ley 6/2025, new houses in the Canaries cannot be used for short-term holid
 
 ### The year in figures: 72 metres
 
-**A shareholder from the waiting list.** Invested 212 400 €: 72 shares at 2 950 €. The dividend is an estimated 72 × 87 € = 6 264 € a year, 522 € a month, before company profit tax. That is an estimated 2,9% against the money invested. He has no tenant, no repairs and no bills.
+**A shareholder from the waiting list.** Invested 212 400 €: 72 shares at 2 950 €. The dividend is an estimated 2,5–3,5 % a year before company profit tax. He has no tenant, no repairs and no bills.
 
 **The owner with the keys.** A house of 72 metres at handover is 273 600–331 200 €. A long let brings 864–1 080 € a month, 10 368–12 960 € a year before his costs.
 
@@ -116,9 +116,9 @@ Joining the waiting list is free. We are currently choosing the plot in the La Q
 
 **What is the dividend made of?** Long-term letting of the metres that were not exchanged, after costs and before company profit tax.
 
-**How much per share?** An estimated 87 € a year before company profit tax.
+**How much per share?** An estimated 2,5–3,5 % a year before company profit tax.
 
-**How much on 72 metres?** An estimated 6 264 € a year of dividend before company profit tax, or 864–1 080 € of rent a month.
+**How much on 72 metres?** The dividend is an estimated 2,5–3,5 % a year before company profit tax; the rent of the same metres on the market is 864–1 080 € a month.
 
 **Кнопка: «Join the waiting list»**
 Free of charge. We take no money before the plot is chosen.

@@ -11,16 +11,17 @@
 
 {#- C1 header: 7 links + «Ещё» from 1024 px; below — «Меню» (no JS: anchor to the footer page list) -#}
 {#- C1: solid by default and without JS; site.js adds .is-over only while the hero picture is under it -#}
-{% macro header(menu, nav, url) -%}
+{% macro header(menu, nav, url, home_url, langs, menu_more_label) -%}
 <header class="header" id="site-header">
   <div class="wrap header__in">
-    <a class="brand" href="/tenerife/"{% if url == "/tenerife/" %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
-    <nav class="nav" aria-label="Основное меню">
+    <a class="brand" href="{{ home_url }}"{% if url == home_url %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
+    <nav class="langs" aria-label="{{ ui.lang_aria }}">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
+    <nav class="nav" aria-label="Main menu">
       <ul>
 {% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        <li><details><summary>Информация</summary>
+        <li><details><summary>{{ menu_more_label }}</summary>
           <ul>
 {% for n in menu.more %}
             <li>{{ navlink(n, url) }}</li>
@@ -29,10 +30,10 @@
         </details></li>
       </ul>
     </nav>
-    <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>Меню</a>
+    <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>{{ ui.menu }}</a>
   </div>
   <div class="sheet" id="sheet" hidden>
-    <nav aria-label="Меню">
+    <nav aria-label="{{ ui.menu_aria }}">
       <ul>
 {% for n in nav %}
         <li>{{ navlink(n, url) }}</li>
@@ -84,7 +85,7 @@
 
 {#- C3 key figures on the basalt plinth (copy line, split into value + label) -#}
 {% macro facts(items) -%}
-<section class="plinth" aria-label="Ключевые цифры">
+<section class="plinth" aria-label="{{ ui.plinth }}">
   <ul class="wrap grid figures figures--{{ items|length }}">
 {% for it in items %}
 {% if it.value %}
@@ -117,7 +118,7 @@
 {% macro ladder(rows) -%}
 <ol class="ladder" id="ladder" aria-hidden="true">
 {% for r in rows %}
-  <li{% if loop.first %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}{% if loop.first %}<span class="ladder__now">сейчас</span>{% endif %}</span><span class="ladder__event">{{ r.event }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__grow">{{ r.grow }}</span><span class="ladder__bar"><i></i></span></li>
+  <li{% if loop.first %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}{% if loop.first %}<span class="ladder__now">{{ ui.now }}</span>{% endif %}</span><span class="ladder__event">{{ r.event }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__grow">{{ r.grow }}</span><span class="ladder__bar"><i></i></span></li>
 {% endfor %}
 </ol>
 {%- endmacro %}
@@ -373,8 +374,8 @@
       <div class="f-about">
         <p><strong>{{ f.about[0] }}</strong> {{ f.about[1] }}</p>
       </div>
-      <nav class="f-pages" id="footer-pages" aria-label="Страницы">
-        <p><strong>Страницы.</strong></p>
+      <nav class="f-pages" id="footer-pages" aria-label="{{ ui.pages }}">
+        <p><strong>{{ ui.pages }}</strong></p>
         <ul>
 {% for n in nav %}
           <li>{{ navlink(n, url) }}</li>
@@ -382,7 +383,7 @@
         </ul>
       </nav>
       <div class="f-contact">
-        <p><strong>Контакты.</strong></p>
+        <p><strong>{{ ui.contacts }}</strong></p>
         <ul>
 {% for cn in f.contacts %}
           {% if cn == "whatsapp" %}<li data-tenerife-whatsapp hidden></li>{% else %}<li>{% if "@" in cn %}<a href="mailto:{{ cn }}">{{ cn }}</a>{% else %}{{ cn }}{% endif %}</li>{% endif %}
@@ -391,8 +392,9 @@
       </div>
     </div>
     <div class="f-legal">
-      <p><strong>Компания.</strong> {{ f.company }}</p>
-      <p><strong>Документы.</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      <p><strong>{{ ui.company }}</strong> {{ f.company }}</p>
+      <p><strong>{{ ui.docs }}</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">{{ ui.lang_ru }}</a></p>
     </div>
   </div>
 </footer>

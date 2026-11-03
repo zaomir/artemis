@@ -8,7 +8,7 @@ OG title: Toit solaire et enveloppe de pierre: l'énergie de la maison Artemis
 
 # Toit solaire, enveloppe de pierre: une maison qui garde sa chaleur
 
-Sur le versant nord de La Quinta, chacune des vingt maisons Artemis couvrira une partie de sa facture d'électricité: panneaux solaires affleurant le plan de toiture, climat et éclairage intelligents, fenêtres encastrées, enveloppe de pierre et piscine commune chauffée. Pour La Quinta, le calcul PVGIS de la Commission européenne donne environ 1 578 кВт·ч par an et par kilowatt de panneaux à l'inclinaison optimale de 23°, contre environ 1 771 кВт·ч en moyenne aux Canaries à l'inclinaison optimale de 21°. Les panneaux Artemis sont posés à plat, dans le plan de toiture, et PVGIS leur donne environ 1 490 кВт·ч. Nous comptons selon notre site et selon notre installation.
+Sur le versant nord de La Quinta, chacune des vingt maisons Artemis couvrira une partie de sa facture d'électricité: panneaux solaires affleurant le plan de toiture, climat et éclairage intelligents, fenêtres encastrées, enveloppe de pierre et piscine commune chauffée. Pour La Quinta, le calcul PVGIS de la Commission européenne donne environ 1 578 kWh par an et par kilowatt de panneaux à l'inclinaison optimale de 23°, contre environ 1 771 kWh en moyenne aux Canaries à l'inclinaison optimale de 21°. Les panneaux Artemis sont posés à plat, dans le plan de toiture, et PVGIS leur donne environ 1 490 kWh. Nous comptons selon notre site et selon notre installation.
 
 [КАДР F11] <!-- служебная пометка, не публикуется -->
 
@@ -42,15 +42,15 @@ Sur le versant nord de La Quinta, chacune des vingt maisons Artemis couvrira une
 
 | Indicateur | Valeur |
 |---|---|
-| Production de 1 кВт de panneaux, moyenne aux Canaries, inclinaison optimale 21° | environ 1 771 кВт·ч par an |
-| Production de 1 кВт de panneaux, La Quinta, PVGIS, inclinaison optimale 23° | environ 1 578 кВт·ч par an |
-| Production de 1 кВт de panneaux dans le plan de toiture, La Quinta, PVGIS | environ 1 490 кВт·ч par an |
+| Production de 1 kW de panneaux, moyenne aux Canaries, inclinaison optimale 21° | environ 1 771 kWh par an |
+| Production de 1 kW de panneaux, La Quinta, PVGIS, inclinaison optimale 23° | environ 1 578 kWh par an |
+| Production de 1 kW de panneaux dans le plan de toiture, La Quinta, PVGIS | environ 1 490 kWh par an |
 | Installation domestique, guide national espagnol | de 3 à 4 kilowatts |
-| Consommation annuelle pour laquelle elle est dimensionnée, même guide | 2 500–4 500 кВт·ч |
+| Consommation annuelle pour laquelle elle est dimensionnée, même guide | 2 500–4 500 kWh |
 | Exemple d'un installateur: économie d'une installation | 600–1 000 € par an |
 | Exemple: facture sans panneaux dans le même calcul | 120 € par mois, 120 × 12 = 1 440 € par an |
 
-La puissance de l'installation et la consommation viennent d'un guide national espagnol sur les installations domestiques, non de données insulaires. L'économie et la facture sont l'exemple d'un seul calcul d'installateur, pas une moyenne. Pour La Quinta même: un calcul PVGIS fondé sur les données satellitaires de 2005–2023. La comparaison honnête se fait à l'inclinaison optimale de chaque lieu (23° et 21°): 1 578 contre 1 771 кВт·ч. Une installation à plat, comme sur les toits Artemis, donne moins: environ 1 490.
+La puissance de l'installation et la consommation viennent d'un guide national espagnol sur les installations domestiques, non de données insulaires. L'économie et la facture sont l'exemple d'un seul calcul d'installateur, pas une moyenne. Pour La Quinta même: un calcul PVGIS fondé sur les données satellitaires de 2005–2023. La comparaison honnête se fait à l'inclinaison optimale de chaque lieu (23° et 21°): 1 578 contre 1 771 kWh. Une installation à plat, comme sur les toits Artemis, donne moins: environ 1 490.
 
 Le programme voisin La Quinta 2 est lui aussi annoncé avec des panneaux solaires.
 
@@ -82,7 +82,7 @@ Une maison neuve avec le soleil sur le toit et une enveloppe de pierre coûte pl
 
 L'inscription sur la liste d'attente est gratuite. Nous choisissons actuellement le terrain dans le secteur de La Quinta, à Santa Úrsula, et discutons des options avec les inscrits. Nous n'encaissons rien avant le choix du terrain: le contrat d'investissement arrive lorsque la majorité de la liste a approuvé le terrain. Par ce contrat, vous achetez des actions de la société promotrice au prix du palier en cours: une action pour un mètre. Paiement immédiat et intégral: bonus de 10%; paiement échelonné sur six mois: bonus de 5%; sur un an: sans bonus. Chaque semaine de chantier, un rapport. Après la livraison de la maison: un dividende en euros par action, issu de la location longue durée après déduction des charges, en estimation, avant impôt sur les sociétés, ou l'échange des actions contre les mètres carrés de votre résidence.
 
-Le dividende, c'est le loyer moins les charges. Moins les maisons dépensent en électricité, en eau et pour la piscine, plus il reste du loyer. Le dividende estimé: 87 € par action et par an avant impôt sur les sociétés, soit 13,5 € de loyer par mètre et par mois × 12 = 162 €, moins 46,3% de charges détaillées. Le poste le plus lourd, les charges de copropriété, 21,0%: elles couvrent la piscine commune chauffée et l'entretien des extérieurs. Moins les équipements communs consomment sur le réseau, plus ce poste baisse.
+Le dividende, c'est le loyer moins les charges. Moins les maisons dépensent en électricité, en eau et pour la piscine, plus il reste du loyer. Le dividende estimé: 2,5–3,5 % par an avant impôt sur les sociétés. Le poste le plus lourd, les charges de copropriété, 21,0%: elles couvrent la piscine commune chauffée et l'entretien des extérieurs. Moins les équipements communs consomment sur le réseau, plus ce poste baisse.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -96,7 +96,7 @@ Sur le versant nord, le soleil est plus doux qu'au sud, et c'est pourquoi l'endr
 
 **Qu'y a-t-il sur le toit?** Des panneaux solaires dans le plan de toiture.
 
-**Combien le soleil donne-t-il?** À La Quinta, selon PVGIS, environ 1 490 кВт·ч par an pour chaque kilowatt de panneaux dans le plan de toiture.
+**Combien le soleil donne-t-il?** À La Quinta, selon PVGIS, environ 1 490 kWh par an pour chaque kilowatt de panneaux dans le plan de toiture.
 
 **Qu'est-ce qui garde la chaleur?** Les fenêtres encastrées, l'enveloppe de pierre et le climat intelligent.
 

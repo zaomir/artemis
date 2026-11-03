@@ -32,7 +32,7 @@ I am a Slovenian citizen, working on a London platform and in France.
 
 The north of Tenerife is green, not hot, not dusty. From La Quinta to Puerto de la Cruz it is 8 km, 10–15 minutes by car; to Tenerife Norte airport 15–20 minutes; to Santa Cruz 25–30 minutes. People live here all year round. I build where people live, not where they spend a week.
 
-Twenty houses: six one-bedroom of 48–55 м², ten two-bedroom of 68–78 м², four large of 85–100 м². A small, enclosed complex, not a neighbourhood of hundreds of flats. For comparison: the neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold; a finished Artemis house at handover is 3 800–4 600 €.
+Twenty houses: six one-bedroom of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m². A small, enclosed complex, not a neighbourhood of hundreds of flats. For comparison: the neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold; a finished Artemis house at handover is 3 800–4 600 €.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -76,7 +76,7 @@ Six steps: waiting list 2 950 €, permit 3 100 €, foundation 3 250 €, shell
 
 ### How we work
 
-I lead the project: choosing the plot, permits, launch, linking the money and the construction. Boris Ribaut builds: the site, the structure, the reports, handover of the house. We make the calculations for every shareholder on one formula: metres × the step price, the payment = amount ÷ 12, the dividend = shares × euros per share. Two areas of responsibility, and no question without an owner.
+I lead the project: choosing the plot, permits, launch, linking the money and the construction. Boris Ribaut builds: the site, the structure, the reports, handover of the house. We make the calculations for every shareholder on one formula: metres × the step price, the payment = six equal instalments with a 5 % discount on the whole price. Two areas of responsibility, and no question without an owner.
 
 ### What I expect from you
 

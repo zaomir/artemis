@@ -1,6 +1,30 @@
-# Artemis Tenerife — RU prod pages (`/tenerife/`)
+# Artemis Tenerife — prod pages in five languages (`/tenerife/`)
 
 Generated files. Do not edit by hand: edit the source and rebuild.
+
+## Locales (2026-11-02)
+
+| What | RU | EN | ES | DE | FR |
+|---|---|---|---|---|---|
+| URL | `/tenerife/ru/…` | `/tenerife/…` | `/tenerife/es/…` | `/tenerife/de/…` | `/tenerife/fr/…` |
+| Files | `app/tenerife_site/ru/` | `app/tenerife_site/` | `app/tenerife_site/es/` | `app/tenerife_site/de/` | `app/tenerife_site/fr/` |
+| Copy | `scripts/tenerife_site_build/copy_v3/` | `copy_en/` | `copy_es/` | `copy_de/` | `copy_fr/` |
+
+- Build one language at a time (13 pages + impressum + privacy + `_notice.html` in each directory):
+  `TENERIFE_LOCALE=en python3 scripts/tenerife_site_build/build_v3.py` (same for `ru`, `es`, `de`, `fr`).
+  `TENERIFE_COPY_DIR` / `TENERIFE_OUT_DIR` override the directories; by default they follow the locale.
+- RU is the master (sha256-pinned copy, hand-written). EN/ES/DE/FR are translations of the same 13 page files plus
+  the footer; the build matches components by heading order (RU heading ↔ translated heading), so a translation must
+  keep the heading structure. Files 15–17 in `copy_<loc>/` are not read: legal text and the form come from
+  `app/templates/tenerife/` and `copy_v3/17_forma.md`.
+- `<html lang>`, `og:locale` and the `<link rel=alternate hreflang>` set (all five languages + `x-default` = EN) come
+  from `build_v3.ALL_LANGS`; canonical is the page's own locale URL. The header switcher is EN/ES/DE/FR, the Russian
+  version is a quiet «Русский» link in the footer.
+- Interface strings (menu, footer labels, skip link, «сейчас», stage names of the mini ladder, portfolio places) live in
+  `locale_cfg.UI` / `locale_cfg.STAGE_NAMES` / `cases.json:place_by_locale`. The waitlist form and the calculator are
+  still Russian on every language: their texts come from `copy_v3/17_forma.md` and `FORM_MSG` in `app/tenerife.py`.
+- Routes: `app/tenerife.py` serves all five (locale roots, `/tenerife/en/` → `/tenerife/`, legacy `.html` → 301);
+  `app/app.py` sitemap lists every locale. Smoke list: `TENERIFE_PATHS` in `deploy/artemis-deploy.sh`.
 
 ## RU v3 (current): 13 pages from `copy_v3`
 
@@ -36,8 +60,9 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 - JS (all external, CSP `script-src 'self'`): `site.js` (C1: header solid by default and without JS, `.is-over`
   only while the hero picture is under it; mobile sheet, no-JS = anchor to `#footer-pages`; ladder rise only
   without reduced motion), `waitlist.js` (prod, unchanged), `calc.js` (05 only).
-- Served by `app/tenerife.py` (`SITE_PAGES`; sitemap in `app/app.py`): `/tenerife/`, `/tenerife/<page>/`
-  (clean URLs, canonical, hreflang ru only); `/tenerife/<page>.html` and `/tenerife/<page>` → 301.
+- Served by `app/tenerife.py` (`SITE_PAGES`; sitemap in `app/app.py`): `/tenerife/<page>/` (EN), `/tenerife/<locale>/`
+  and `/tenerife/<locale>/<page>/` (RU/ES/DE/FR) — clean URLs, canonical per locale, hreflang on five languages;
+  `/tenerife/<page>.html`, `/tenerife/<page>`, `/tenerife/<locale>/<page>.html` → 301.
 - Waitlist form on every page (`#ochered`, form `#waitlist` kept for the no-JS redirect) → `POST /api/tenerife/waitlist` (unchanged endpoint).
 - Tests: `tests/test_tenerife_v3.py` (+ `tests/test_tenerife_site.py`). Smoke: `TENERIFE_PATHS` in `deploy/artemis-deploy.sh`.
 - `scripts/tenerife_site_build/build.py` is the previous builder (author HTML from `zaomir/grainee-v2`);
