@@ -71,15 +71,13 @@
    "F01": null,
    "F15": null,
    "F17": null,
-   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
    "F17"
   ],
   "alts": {
-   "F14": "Fouille et fondations sur la pente, terrasses de pierre de la parcelle",
-   "F16": "Toiture plate à bordure de bronze, panneaux solaires avant pose"
+   "F14": "Fouille et fondations sur la pente, terrasses de pierre de la parcelle"
   },
   "title": "Investisseurs — actions Artemis de la Cruz à La Quinta",
   "h1": "Investisseurs: participer à Artemis de la Cruz avant la livraison"
@@ -124,7 +122,7 @@
   "frames": {
    "F11": "green-hill-3f3856",
    "F13": "solar-flat-2b8f04",
-   "F16": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null,
    "F01": null,
    "F22": null
@@ -132,7 +130,8 @@
   "hidden": [],
   "alts": {
    "F11": "Maisons dans la verdure sur la pente au-dessus de l'océan",
-   "F13": "Panneaux solaires affleurant la toiture plate et sa bordure en bronze"
+   "F13": "Panneaux solaires affleurant la toiture plate et sa bordure en bronze",
+   "F16": "Toiture plate à bordure de bronze, panneaux solaires avant pose"
   },
   "title": "L'énergie de la maison Artemis: le soleil sur le toit et la pierre",
   "h1": "Toit solaire, enveloppe de pierre: une maison qui garde sa chaleur"

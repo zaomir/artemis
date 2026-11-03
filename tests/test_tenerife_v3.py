@@ -82,7 +82,7 @@ class V3AllPagesTest(base.TenerifeSiteTest):
         for name, url in V3.items():
             page, _ = self.page(url)
             imgs = re.findall(r"<img[^>]+>", page)  # T47: may be empty (one photo = one slot site-wide)
-            hero_img = re.search(r'<div class="hero__media"><picture>|<figure class="frame hero-text__frame">', page)
+            hero_img = re.search(r'<div class="hero__media"><picture>|<figure class="frame (?:hero-text__frame|profile-photo profile-hero__photo)"', page)
             for i, tag in enumerate(imgs):
                 self.assertRegex(tag, r'width="\d+" height="\d+"', f"{name}: no size {tag}")
                 if i == 0 and hero_img:
@@ -186,7 +186,7 @@ class V3BuildTest(unittest.TestCase):
         for name, page in self.pages.items():
             want = copy_words(shown_copy(name))
             # портфель команды генерируется из cases.json (не из копии) — исключаем его из сравнения
-            page = re.sub(r'<section class="section rule-top s--(cases|person)".*?</section>', "", page, flags=re.S)
+            page = re.sub(r'<section class="section rule-top s--(?:cases|person)\b[^\"]*".*?</section>', "", page, flags=re.S)
             got = words(main_text(page))
             first_diff = next((i for i, (a, b) in enumerate(zip(got, want)) if a != b),
                               min(len(got), len(want)))
@@ -292,7 +292,8 @@ class V3BuildTest(unittest.TestCase):
             ids = re.findall(r"^\[КАДР (F\d\d)\]", md, re.M)
             self.assertEqual(list(report[name]["frames"]), ids, name)
             stems = [s for s in report[name]["frames"].values() if s]
-            self.assertEqual(len(re.findall(r"<img ", page)), len(stems), name)
+            personal_photos = re.findall(r'<figure[^>]+data-person-photo=', page)
+            self.assertEqual(len(re.findall(r"<img ", page)), len(stems) + len(personal_photos), name)
             for fid, stem in report[name]["frames"].items():
                 if stem is None:
                     continue
@@ -377,6 +378,11 @@ class V3BuildTest(unittest.TestCase):
             hero_slot = groups[0][0]
             groups = [groups[0][:1]] + ([groups[0][1:]] if groups[0][1:] else []) + groups[1:]
             expected = sum(1 for g in groups if g and all(report[name]["frames"][f] is None for f in g))
+            if name in ("simon", "boris"):
+                # The founder's 03.11 profile brief replaces empty image slots with relevant personal photos.
+                self.assertNotIn('class="tperson"', page, name)
+                self.assertEqual(len(re.findall(r'data-person-photo=', page)), 4, name)
+                continue
             self.assertEqual(page.count(" bar-under"), expected, name)
             for chunk in re.split(r"(?=<section\b)", page):
                 if " bar-under" in chunk:
@@ -438,7 +444,9 @@ class V3BuildTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             md, store = Path(tmp) / "alt_review.md", Path(tmp) / "alts.json"
             n = alts_tool.export(md)
-            self.assertEqual(n, sum(p.count("<img ") for p in self.pages.values()))
+            # Project-frame alts belong to alts.json; personal-photo alts remain in
+            # people.json/i18n_strings.json and are checked by ProfileLayoutTest.
+            self.assertEqual(n, sum(p.count("<img ") - p.count("data-person-photo=") for p in self.pages.values()))
             text = md.read_text(encoding="utf-8")
             self.assertIn("| Страница | URL | Слот | Файл | Alt |", text)
             store.write_text((BUILD / "alts.json").read_text(encoding="utf-8"), encoding="utf-8")

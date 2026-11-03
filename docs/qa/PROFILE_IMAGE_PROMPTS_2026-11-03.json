@@ -1,0 +1,66 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Identity-preserving editorial profile photographs for the founder's layout brief",
+  "prompts": [
+    {
+      "asset": "boris-formwork-v2",
+      "references": [
+        "app/static/tenerife/site/img/boris-portrait-640.webp",
+        "app/static/tenerife/site/img/boris-formwork-640.webp"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: editorial photograph accompanying a construction supervisor's method and structural inspection text on the Artemis Tenerife website. Input image 1 is the identity reference; image 2 is the scene/edit target. Preserve exactly the older silver-haired clean-shaven man's facial identity and age from image 1; he must remain clearly the same man. Replace the repetitive posed smiling photograph with a natural candid structural inspection. He wears a dark olive work jacket over an ivory shirt, an orange reflective safety waistcoat, work trousers, protective gloves and a properly fitted white hard hat. He is crouching in three-quarter view, using a measuring tape to check timber formwork and rebar alignment BEFORE concrete is poured. Serious, attentive expression, eyes looking down at the measurement, no smile and no eye contact with camera. Realistic safe construction site with basalt retaining walls and green north Tenerife hillside; accurate plausible formwork/rebar details, no finished house that suggests this unbuilt project has been completed. Documentary photography, natural overcast daylight, restrained limestone/basalt colors matching reference, real skin texture. Portrait 4:5 composition, hands and work visible, no collage, no labels/text/logos, no watermark. One single photo. Face identity is invariant; outfit, expression, pose and composition deliberately differ from all references.",
+      "published_master": "app/static/tenerife/site/img/boris-formwork-43f3d5.jpg",
+      "responsive_widths": [
+        640,
+        800,
+        1024,
+        1600
+      ]
+    },
+    {
+      "asset": "boris-roof-v2",
+      "references": [
+        "app/static/tenerife/site/img/boris-portrait-640.webp",
+        "app/static/tenerife/site/img/boris-roof-640.webp"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: single editorial portrait-format 4:5 photograph illustrating a construction supervisor checking flat roofing and solar-panel installation. Input image 1: authoritative facial identity reference. Input image 2: edit target and north Tenerife roof context. Preserve precisely the older silver-haired clean-shaven man's recognizable face, age, proportions and natural skin texture. Change the repeated light-blue shirt/yellow vest outfit to a slate-gray technical jacket over a dark rust polo shirt and a pale gray reflective safety vest; white hard hat. The man stands in side profile on a safely guarded flat roof, body turned away from camera, one hand indicates a solar-panel mounting detail while the other holds a tablet low at his side. Concentrated mid-explanation expression, slightly raised eyebrows, lips just parted; looking toward the mounting detail, not camera and not smiling at a screen. Show useful roofing detail, subtle bronze roof edge, a few flat-installed panels, guardrail, green north Tenerife and ocean in soft background. Restrained natural daylight and documentary editorial style consistent with the reference project. Clear anatomically correct hands, realistic tools and construction. No extra foreground people, no collage, text, logos or watermark. Face identity unchanged; clothing, expression, pose and camera angle must be visibly different from the reference.",
+      "published_master": "app/static/tenerife/site/img/boris-roof-9e3265.jpg",
+      "responsive_widths": [
+        640,
+        800,
+        1024,
+        1600
+      ]
+    },
+    {
+      "asset": "boris-drawings-v2",
+      "references": [
+        "app/static/tenerife/site/img/boris-portrait-640.webp",
+        "app/static/tenerife/site/img/boris-drawings-640.webp"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: single editorial 4:5 photograph accompanying text about drawings and coordination with contractors. Image 1 is the authoritative reference for the older silver-haired clean-shaven supervisor's face and age. Image 2 is the existing discussion scene to recompose. Preserve that man's exact recognizable facial identity. Move the discussion into a modest daylight-lit construction site office with pale mineral walls, wood table, plans, sample materials, and a window looking onto green north Tenerife. He wears a burgundy-and-cream small-check work shirt, sleeves rolled, with no jacket, no fluorescent vest and no hard hat indoors. He is seated, leaning forward diagonally across the table, looking attentively toward the contractor at the edge of frame, with an animated friendly expression and small open-mouth conversational smile, one hand explaining a detail on the unfolded house drawings with a pencil. The contractor may appear only partly from behind so the supervisor is unambiguous. Different pose from arms crossed, crouching or standing with tablet. Drawings and interaction must be visually clear and believable; no readable invented project names or official stamps. Natural candid editorial photograph, subtle materials palette, realistic skin and hands. No collage, text overlay, watermark or logos.",
+      "published_master": "app/static/tenerife/site/img/boris-drawings-d9ba7e.jpg",
+      "responsive_widths": [
+        640,
+        800,
+        1024,
+        1600
+      ]
+    },
+    {
+      "asset": "simon-permits-v2",
+      "references": [
+        "app/static/tenerife/site/img/simon-portrait-640.webp",
+        "app/static/tenerife/site/img/simon-street-640.webp"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: single editorial 4:5 photograph illustrating a development principal's work coordinating permissions and reviewing project documents. Input image 1 is the authoritative facial reference for Simon, the middle-aged brown-haired man with dark rectangular glasses and a short salt-and-pepper beard. Input image 2 is an additional identity reference and the image to replace; preserve precisely his recognizable face, age, glasses and beard. New situation: natural candid meeting in a calm contemporary European architect's office with limestone-colored walls, an architectural site plan and building sections spread over a large desk, soft daylight. Simon wears a light taupe unstructured blazer over a white open-neck linen shirt, with no navy sweater, black overcoat or green field jacket. He is seated sideways at the desk, torso turned toward an architect just outside frame, holding one document at an angle and gesturing with the free hand. His expression is engaged and approachable, a lively small smile with eyes turned toward the colleague, not a stiff portrait or direct gaze at camera. Clearly different pose, expression, clothing and setting from all references. Credible planning review without readable invented permits, approvals, signatures, seals or logos. Editorial documentary photography, realistic skin/hands, restrained warm palette consistent with Canary Stone website. One portrait-format photo, no collage, text overlays or watermarks.",
+      "published_master": "app/static/tenerife/site/img/simon-permits-1e06e2.jpg",
+      "responsive_widths": [
+        640,
+        800,
+        1024,
+        1600
+      ]
+    }
+  ]
+}

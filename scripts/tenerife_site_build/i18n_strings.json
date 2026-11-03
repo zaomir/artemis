@@ -53,9 +53,10 @@
    "simon-rooftop": "Simon Subic on a rooftop overlooking the town",
    "simon-site": "Simon Subic on the Canary Stone site with drawings",
    "boris-portrait": "Boris Ribaut, construction supervisor at Artemis de la Cruz",
-   "boris-formwork": "Checking formwork and concrete on an Artemis de la Cruz site",
-   "boris-roof": "Checking a roof with solar panels against the tablet",
-   "boris-drawings": "Going through the drawings with the contractor on site"
+   "boris-formwork": "Boris Ribaut checks formwork dimensions and reinforcement before concrete is poured",
+   "boris-roof": "Boris Ribaut checks solar-panel mounting on a flat roof",
+   "boris-drawings": "Boris Ribaut reviews drawings with a contractor in the site office",
+   "simon-permits": "Simon Subic discusses project documents and drawings with an architect"
   },
   "calc": {
    "ui": {
@@ -148,9 +149,10 @@
    "simon-rooftop": "Simon Subic en una azotea con vistas a la ciudad",
    "simon-site": "Simon Subic en la obra de Canary Stone con planos",
    "boris-portrait": "Boris Ribaut, jefe de obra de Artemis de la Cruz",
-   "boris-formwork": "Revisión del encofrado y el hormigón en una obra de Artemis de la Cruz",
-   "boris-roof": "Comprobación de la cubierta con paneles solares en la tablet",
-   "boris-drawings": "Revisión de los planos con el contratista en la obra"
+   "boris-formwork": "Boris Ribaut comprueba las dimensiones del encofrado y la armadura antes del hormigonado",
+   "boris-roof": "Boris Ribaut revisa la fijación de los paneles solares en una cubierta plana",
+   "boris-drawings": "Boris Ribaut revisa los planos con un contratista en la oficina de obra",
+   "simon-permits": "Simon Subic revisa documentos y planos del proyecto con un arquitecto"
   },
   "calc": {
    "ui": {
@@ -243,9 +245,10 @@
    "simon-rooftop": "Simon Subic auf einem Dach mit Blick über die Stadt",
    "simon-site": "Simon Subic auf der Baustelle Canary Stone mit Plänen",
    "boris-portrait": "Boris Ribaut, Bauleiter von Artemis de la Cruz",
-   "boris-formwork": "Abnahme von Schalung und Beton auf einer Baustelle von Artemis de la Cruz",
-   "boris-roof": "Prüfung des Dachs mit Solarmodulen am Tablet",
-   "boris-drawings": "Durchsprache der Pläne mit dem Bauunternehmer auf der Baustelle"
+   "boris-formwork": "Boris Ribaut prüft Schalungsmaße und Bewehrung vor dem Betonieren",
+   "boris-roof": "Boris Ribaut prüft die Befestigung der Solarmodule auf einem Flachdach",
+   "boris-drawings": "Boris Ribaut bespricht Zeichnungen mit einem Bauunternehmer im Baubüro",
+   "simon-permits": "Simon Subic bespricht Projektunterlagen und Pläne mit einem Architekten"
   },
   "calc": {
    "ui": {
@@ -338,9 +341,10 @@
    "simon-rooftop": "Simon Subic sur un toit avec vue sur la ville",
    "simon-site": "Simon Subic sur le chantier Canary Stone avec des plans",
    "boris-portrait": "Boris Ribaut, chef de chantier d'Artemis de la Cruz",
-   "boris-formwork": "Contrôle du coffrage et du béton sur un chantier d'Artemis de la Cruz",
-   "boris-roof": "Vérification de la toiture avec panneaux solaires sur la tablette",
-   "boris-drawings": "Revue des plans avec l'entrepreneur sur le chantier"
+   "boris-formwork": "Boris Ribaut contrôle les dimensions du coffrage et les armatures avant le coulage du béton",
+   "boris-roof": "Boris Ribaut vérifie la fixation des panneaux solaires sur une toiture plate",
+   "boris-drawings": "Boris Ribaut examine les plans avec un entrepreneur dans le bureau de chantier",
+   "simon-permits": "Simon Subic examine les documents et les plans du projet avec un architecte"
   },
   "calc": {
    "ui": {

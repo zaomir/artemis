@@ -71,15 +71,13 @@
    "F01": null,
    "F15": null,
    "F17": null,
-   "F16": "roof-montazh-6d90ef",
    "F12": null
   },
   "hidden": [
    "F17"
   ],
   "alts": {
-   "F14": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks",
-   "F16": "Flachdach mit Bronzekante, Solarmodule vor der Montage"
+   "F14": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks"
   },
   "title": "Für Investoren — Artemis-de-la-Cruz-Aktien in La Quinta",
   "h1": "Für Investoren: vor der Fertigstellung an Artemis de la Cruz beteiligen"
@@ -124,7 +122,7 @@
   "frames": {
    "F11": "green-hill-3f3856",
    "F13": "solar-flat-2b8f04",
-   "F16": null,
+   "F16": "roof-montazh-6d90ef",
    "F12": null,
    "F01": null,
    "F22": null
@@ -132,7 +130,8 @@
   "hidden": [],
   "alts": {
    "F11": "Häuser im Grünen am Hang über dem Ozean",
-   "F13": "Solarmodule bündig im Flachdach mit Bronzekante"
+   "F13": "Solarmodule bündig im Flachdach mit Bronzekante",
+   "F16": "Flachdach mit Bronzekante, Solarmodule vor der Montage"
   },
   "title": "Energie im Haus Artemis: Sonne auf dem Dach und Stein",
   "h1": "Sonnendach, steinerne Kontur: ein Haus, das die Wärme selbst hält"

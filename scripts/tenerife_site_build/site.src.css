@@ -14,7 +14,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:var(--fw-display);letter-sp
 h1{font-size:var(--fs-display);line-height:var(--lh-display)}
 h2{font-size:var(--fs-h2);line-height:var(--lh-heading)}
 h3{font-size:var(--fs-h3);line-height:var(--lh-tight)}
-p{margin:0 0 var(--space-4);max-width:var(--measure)}
+p{margin:0 0 var(--space-4);max-width:var(--measure);text-wrap:pretty}
 p:last-child{margin-bottom:0}
 strong{font-weight:var(--fw-strong)}
 a{color:var(--cs-bronze-deep);text-decoration:underline;text-decoration-thickness:var(--hairline);text-underline-offset:var(--underline-offset);transition:color var(--dur-micro) var(--ease-std)}
@@ -143,7 +143,7 @@ a:hover{color:var(--cs-ink)}
 @media (max-width:767px){.r-21x9{aspect-ratio:16/9}}
 
 /* ===== text + image split ===== */
-.ti{row-gap:var(--space-6);align-items:end}
+.ti{row-gap:var(--space-6);align-items:start}
 /* T47: 1024-1279 the text gets the full measure and the picture goes under it; >=1280 text and picture 6 + 6 */
 @media (min-width:1024px){
   .ti>.ti__text,.ti--rev>.ti__text,.ti>.frame,.ti--rev>.frame{grid-column:1/-1;order:0}
@@ -155,9 +155,11 @@ a:hover{color:var(--cs-ink)}
   .ti--rev>.frame{grid-column:1/span 6;order:1}
 }
 .ti__text h2{margin-bottom:var(--space-5)}
+.illustrated-panel+.illustrated-panel{margin-top:var(--space-7)}
 
 /* ===== data table ===== */
 .table-wrap{margin-top:var(--space-6)}
+.table-wrap:first-child{margin-top:0}
 .dt{width:100%;border-collapse:collapse;font-size:var(--fs-small);font-variant-numeric:tabular-nums}
 .dt caption{text-align:left;font-weight:var(--fw-strong);margin-bottom:var(--space-3);font-size:var(--fs-body)}
 .dt th,.dt td{text-align:left;padding:var(--space-3) var(--space-3) var(--space-3) 0;border-bottom:var(--border-hair);vertical-align:top}
@@ -320,6 +322,7 @@ a:hover{color:var(--cs-ink)}
 .stack>h2{margin-bottom:var(--space-5);max-width:var(--grid-text)}
 .stack>p,.stack>.list{max-width:var(--measure)}
 .stack>.table-wrap,.stack>.ledger{margin-bottom:var(--space-6)}
+.stack>:last-child,.split-head__body>:last-child,.ti__text>:last-child,.col-text>:last-child{margin-bottom:0}
 .stack>.steps{margin-bottom:var(--space-7)}
 .stack>.ladder{margin-bottom:var(--space-7)}
 .list{margin:0 0 var(--space-4);padding-left:1.25em;max-width:var(--measure)}
@@ -335,6 +338,8 @@ a:hover{color:var(--cs-ink)}
 .frames--col{display:block}
 .frames--col>.frame{max-width:var(--grid-text);margin-bottom:var(--space-6)}
 .calc-sec .calc{margin-top:0}
+.calc-sec--embedded{margin-top:var(--space-7)}
+.calc fieldset:last-child{margin-bottom:0}
 .f-about strong{font-family:var(--font-display);font-weight:var(--fw-display);font-size:var(--fs-h3);display:block;margin-bottom:var(--space-2)}
 .wl--solo>.wl__form{grid-column:1/-1;max-width:var(--grid-text)}
 .msg:empty{display:none}
@@ -366,7 +371,7 @@ a:hover{color:var(--cs-ink)}
 .legal h2{margin-top:var(--space-7)}
 .legal .muted,.legal .src{color:var(--cs-ink-soft);font-size:var(--fs-small)}
 .legal .back,.notice .back{margin-top:var(--space-7)}
-.legal .back a,.notice .back a,.legal .src a{display:inline-flex;align-items:center;min-height:var(--touch-min)}
+.legal .back a,.notice .back a{display:inline-flex;align-items:center;min-height:var(--touch-min)}
 .legal li{margin-bottom:var(--space-2)}
 .legal p,.legal li{max-width:68ch} /* T47: legal text ~75 chars per line */
 /* T3-10: per-field error under the field (aria-describedby), --cs-error */
@@ -394,12 +399,27 @@ a:hover{color:var(--cs-ink)}
 @keyframes cases-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.cases__track{animation:none}.s--cases .cases__viewport{overflow-x:auto}}
 
-/* Фотогалерея страниц Developer / Supervisor (2026-11-02) */
-.tperson{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.tperson__ph{aspect-ratio:4/5;background:var(--cs-sand,#E8E2D6) center/cover no-repeat;border-radius:2px}
-.tperson__ph--simon-rooftop{object-position:50% 40%}
-.tperson__h{font-family:var(--font-display,inherit);font-size:clamp(18px,2vw,24px);margin:26px 0 14px}
-.s--person .cases--person{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* Personal photographs belong to the introduction or a relevant story, never a photo strip. */
+.hero-profile{padding-block:calc(var(--header-h) + var(--section-y-tight)) var(--section-y-tight)}
+.profile-hero,.profile-story{row-gap:var(--space-6);align-items:center}
+.profile-hero__text h1{max-inline-size:22ch}
+.profile-hero__text .hero__lead{margin-top:var(--space-5);color:var(--cs-ink-soft)}
+.profile-story__text h2{margin-bottom:var(--space-5)}
+.profile-story__text>:last-child{margin-bottom:0}
+.profile-photo{inline-size:100%;max-inline-size:calc(var(--grid-text) * 3 / 5);justify-self:center}
+.profile-section:not(.s--profile-story){padding-block:var(--section-y-tight)}
+.s--profile-cases h2{margin-bottom:var(--space-6)}
+.s--profile-cases .cases__track{gap:var(--space-5)}
+@media (min-width:768px){
+  .profile-hero__text,.profile-story__text{grid-column:1/span 5}
+  .profile-hero>.profile-photo,.profile-story>.profile-photo{grid-column:6/span 3}
+}
+@media (min-width:1024px){
+  .profile-hero__text,.profile-story__text{grid-column:1/span 7}
+  .profile-hero>.profile-photo,.profile-story>.profile-photo{grid-column:9/span 4}
+  .profile-story--rev>.profile-story__text{grid-column:6/span 7;grid-row:1}
+  .profile-story--rev>.profile-photo{grid-column:1/span 4;grid-row:1}
+}
 /* Переключатель языков (2026-11-02): EN/ES/DE/FR в шапке, русский — только ссылкой в подвале */
 .langs{display:flex;gap:10px;margin-left:auto;margin-right:14px;font-size:13px;letter-spacing:.06em}
 .langs a{color:inherit;opacity:.75;text-decoration:none;text-shadow:0 1px 2px rgba(0,0,0,.35)}
@@ -423,7 +443,6 @@ a:hover{color:var(--cs-ink)}
 @media (min-width:1024px) and (max-width:1279px){.nav{display:none}.burger{display:inline-flex}}
 @media (max-width:1279px){.langs{margin-left:auto}}
 .anchor-alias{display:block;block-size:0;inline-size:0;overflow:hidden;scroll-margin-top:calc(var(--header-h) + var(--space-4))}
-.section > .calc-sec > .wrap{padding-inline:0}
 .f-pages__groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
 .f-pages__group h3{font-family:var(--font-text);font-size:var(--fs-body);margin:0 0 var(--space-3);font-weight:600}
 .f-pages ul{columns:1}

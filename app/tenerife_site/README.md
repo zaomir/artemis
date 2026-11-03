@@ -31,6 +31,10 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   price stages and participation to inversores. Other pages link to those owners instead of repeating the full copy.
 - All supported acciones slash/no-slash/HTML and locale/preview variants redirect once to the matching inversores
   URL with query intact. Its semantic section IDs retain s1…s13 aliases. The builder deletes old acciones.html.
+- Profile/spacing release 2026-11-03: `people.json` assigns a portrait and three contextual photos to the
+  Simon/Boris introduction and named sections. Photos use responsive picture elements; only case portfolios
+  form horizontal strips. The calculator embeds without another padded section, and uses the standard gutters.
+  Photo review, ownership and validation: `docs/qa/LAYOUT_PROFILE_QA_2026-11-03.md` in the repository root.
 - Interface strings (menu, footer labels, skip link, «сейчас», stage names of the mini ladder, portfolio places) live in
   `locale_cfg.UI` / `locale_cfg.NAV_UI` / `locale_cfg.STAGE_NAMES` / `cases.json:place_by_locale`. Form, calculator,
   messages, alt texts and legal are localized via `i18n_strings.json`; RU form copy remains in `copy_v3/17_forma.md`.

@@ -25,6 +25,7 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/simon-portrait-640.webp 640w, /static/tenerife/site/img/simon-portrait-800.webp 800w, /static/tenerife/site/img/simon-portrait-1024.webp 1024w, /static/tenerife/site/img/simon-portrait-1600.webp 1600w" imagesizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Startseite","item":"https://artemisresort.com/tenerife/de/"},{"@type":"ListItem","position":2,"name":"Developer","item":"https://artemisresort.com/tenerife/de/simon/"}]}</script>
 </head>
@@ -61,18 +62,19 @@
   </div>
 </header>
 <main id="main">
-<section class="hero-text" aria-labelledby="h1">
-  <div class="wrap">
-    <div class="col-text bar-under">
+<section class="hero-profile" aria-labelledby="h1">
+  <div class="wrap grid profile-hero">
+    <div class="profile-hero__text">
       <h1 id="h1">Ich bin Simon Subic, Entwickler von Artemis de la Cruz</h1>
       <p class="hero__lead">Ich bin Development Principal und arbeite zwischen London und Paris. Bei Artemis de la Cruz — zwanzig Residenzen in La Quinta, Santa Úrsula, am Nordhang Teneriffas — verantworte ich die Grundstückswahl, die Genehmigungen, den Start und die Verbindung von Geld und Bau. Das Geld für den Bau sind die Aktien der Bauträgergesellschaft und der Verkauf der Häuser. Der Start — nach Plan Anfang 2027. Die Fertigstellung — nach Plan Ende 2028 bis Mitte 2029.</p>
     </div>
+    <figure class="frame profile-photo profile-hero__photo" data-person-photo="simon" data-photo-context="introduction"><div class="frame__media r-4x5"><picture><source type="image/webp" srcset="/static/tenerife/site/img/simon-portrait-640.webp 640w, /static/tenerife/site/img/simon-portrait-800.webp 800w, /static/tenerife/site/img/simon-portrait-1024.webp 1024w, /static/tenerife/site/img/simon-portrait-1600.webp 1600w" sizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw"><img class="fp-simon-portrait" src="/static/tenerife/site/img/simon-portrait.jpg" alt="Simon Subic, Entwickler von Artemis de la Cruz" width="1600" height="2844" fetchpriority="high" decoding="async"></picture></div></figure>
   </div>
-</section><section class="section rule-top s--person" aria-labelledby="s-person"><div class="wrap"><div class="tperson"><div class="tperson__ph tperson__ph--simon-portrait" role="img" aria-label="Simon Subic, Entwickler von Artemis de la Cruz"></div><div class="tperson__ph tperson__ph--simon-street" role="img" aria-label="Simon Subic auf der Straße vor einem Haus"></div><div class="tperson__ph tperson__ph--simon-rooftop" role="img" aria-label="Simon Subic auf einem Dach mit Blick über die Stadt"></div><div class="tperson__ph tperson__ph--simon-site" role="img" aria-label="Simon Subic auf der Baustelle Canary Stone mit Plänen"></div></div><h3 class="tperson__h">Portfolio des Teams</h3><div class="cases cases--person"><div class="case case--static"><div class="case__media case__media--crete" role="img" aria-label="Artemis Resort &amp; Spa"></div><span class="case__badge">Im Bau</span><div class="case__cap"><b>Artemis Resort & Spa</b><span>Griechenland · Kreta, Gerani</span></div></div><div class="case case--static"><div class="case__media case__media--montenegro" role="img" aria-label="Iberostar Selection Montenegro"></div><span class="case__badge">Eröffnung 2026</span><div class="case__cap"><b>Iberostar Selection Montenegro</b><span>Montenegro · Ratac</span></div></div><div class="case case--static"><div class="case__media case__media--filario" role="img" aria-label="Filario Hotel &amp; Residences"></div><span class="case__badge">Fertiggestellt</span><div class="case__cap"><b>Filario Hotel & Residences</b><span>Italien · Comer See</span></div></div><div class="case case--static"><div class="case__media case__media--paris" role="img" aria-label="Four Seasons Hotel George V"></div><span class="case__badge">Fertiggestellt</span><div class="case__cap"><b>Four Seasons Hotel George V</b><span>Frankreich · Paris</span></div></div></div></div></section>
+</section>
 
-<section class="section s--long" aria-labelledby="s1">
-  <div class="wrap">
-    <div class="col-text bar-under">
+<section class="section s--profile-story profile-section" aria-labelledby="s1">
+  <div class="wrap grid profile-story">
+    <div class="profile-story__text">
       <h2 id="s1">Womit ich mich befasse</h2>
 <p>Ich führe Entwicklungsprojekte auf der Eigentümerseite: von der Auswahl des Assets bis zu dem Moment, in dem das Haus funktioniert. Meine Kette sieht so aus:</p>
 <p><strong>Projektkriterien → Grundstückssuche → Prüfung des Assets → Investmentlogik → Struktur des Geschäfts → Genehmigungen → Kapital → Entwicklungsplattform → Baustart → Betrieb, Refinanzierung oder Exit.</strong></p>
@@ -85,14 +87,13 @@
 <p>Ich bin slowenischer Staatsbürger und arbeite auf einer Londoner Plattform und in Frankreich.</p>
 
     </div>
+    <figure class="frame profile-photo" data-person-photo="simon" data-photo-context="owner-development"><div class="frame__media r-4x5"><picture><source type="image/webp" srcset="/static/tenerife/site/img/simon-rooftop-640.webp 640w, /static/tenerife/site/img/simon-rooftop-800.webp 800w, /static/tenerife/site/img/simon-rooftop-1024.webp 1024w, /static/tenerife/site/img/simon-rooftop-1600.webp 1600w" sizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw"><img class="fp-simon-rooftop" src="/static/tenerife/site/img/simon-rooftop.jpg" alt="Simon Subic auf einem Dach mit Blick über die Stadt" width="1600" height="1200" loading="lazy" decoding="async"></picture></div></figure>
   </div>
-
-
 </section>
-<section class="section rule-top s--long" aria-labelledby="s2">
-  <div class="wrap">
-    <div class="col-text bar-under">
-      <h2 id="s2">Warum La Quinta</h2>
+<section class="section rule-top s--head profile-section" aria-labelledby="s2">
+  <div class="wrap grid split-head">
+    <h2 id="s2">Warum La Quinta</h2>
+    <div class="split-head__body">
 <p>Der Norden Teneriffas ist grün, nicht heiß, nicht staubig. Von La Quinta bis Puerto de la Cruz — 8 km, 10–15 Minuten mit dem Auto, bis zum Flughafen Tenerife Norte — 15–20 Minuten, bis Santa Cruz — 25–30 Minuten. Hier lebt man das ganze Jahr. Ich baue dort, wo Menschen leben, und nicht dort, wo sie eine Woche verbringen.</p>
 <p>Zwanzig Häuser: sechs mit einem Schlafzimmer auf 48–55 m², zehn mit zwei auf 68–78 m², vier große auf 85–100 m². Eine überschaubare Anlage, kein Quartier mit Hunderten Wohnungen. Zum Vergleich: Die benachbarten Neubauten La Quinta wurden zu 3 360–3 870 € pro Meter angeboten, und beide Projekte sind bereits verkauft; ein fertiges Haus Artemis bei der Fertigstellung — 3 800–4 600 €.</p>
 
@@ -101,34 +102,32 @@
 
 
 </section>
-<section class="section rule-top s--long" aria-labelledby="s3">
-  <div class="wrap">
-    <div class="col-text">
+<section class="section rule-top s--profile-story profile-section" aria-labelledby="s3">
+  <div class="wrap grid profile-story profile-story--rev">
+    <div class="profile-story__text">
       <h2 id="s3">Wie ich die Genehmigungen führe</h2>
 <p>Genehmigungen trennen das Projekt vom Bild. Keine Phase beginnt, bevor es für sie ein Recht gibt. Die Baugenehmigung ist die erste Preisstufe der Aktie nach der Warteliste: Der Meter steigt von 2 950 € auf 3 100 €, weil das Projekt das Recht zu bauen erhalten hat. Für 72 Meter sind das 10 800 € Unterschied: 212 400 € in der Warteliste und 223 200 € auf der Stufe „Baugenehmigung“.</p>
 <p>Am Ende steht die Nutzungsgenehmigung. Von diesem Moment an können die Aktien gegen Meter Ihrer Residenz getauscht werden.</p>
 
     </div>
+    <figure class="frame profile-photo" data-person-photo="simon" data-photo-context="permits"><div class="frame__media r-4x5"><picture><source type="image/webp" srcset="/static/tenerife/site/img/simon-permits-1e06e2-640.webp 640w, /static/tenerife/site/img/simon-permits-1e06e2-800.webp 800w, /static/tenerife/site/img/simon-permits-1e06e2-1024.webp 1024w, /static/tenerife/site/img/simon-permits-1e06e2-1600.webp 1600w" sizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw"><img class="fp-simon-permits-1e06e2" src="/static/tenerife/site/img/simon-permits-1e06e2.jpg" alt="Simon Subic bespricht Projektunterlagen und Pläne mit einem Architekten" width="1122" height="1402" loading="lazy" decoding="async"></picture></div></figure>
   </div>
-
-
 </section>
-<section class="section rule-top s--long" aria-labelledby="s4">
-  <div class="wrap">
-    <div class="col-text bar-under">
+<section class="section rule-top s--profile-story profile-section" aria-labelledby="s4">
+  <div class="wrap grid profile-story">
+    <div class="profile-story__text">
       <h2 id="s4">Wie ich Geld und Bau verbinde</h2>
 <p>Der Bau wird aus zwei Strömen finanziert: den Aktien der Bauträgergesellschaft und dem Verkauf der Häuser. Meine Aufgabe ist, dass jeder Euro in die Phase geht, die auf dem Grundstück entsteht. Die Preisstufe steigt, wenn eine Phase auf der Baustelle abgeschlossen und im Bericht sichtbar ist, nicht nach Kalender.</p>
 <p>Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der <a href="/tenerife/de/proceso/">Transaktionsablauf</a>.</p>
 
     </div>
+    <figure class="frame profile-photo" data-person-photo="simon" data-photo-context="site-delivery"><div class="frame__media r-4x5"><picture><source type="image/webp" srcset="/static/tenerife/site/img/simon-site-640.webp 640w, /static/tenerife/site/img/simon-site-800.webp 800w, /static/tenerife/site/img/simon-site-1024.webp 1024w, /static/tenerife/site/img/simon-site-1600.webp 1600w" sizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw"><img class="fp-simon-site" src="/static/tenerife/site/img/simon-site.jpg" alt="Simon Subic auf der Baustelle Canary Stone mit Plänen" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
   </div>
-
-
 </section>
-<section class="section rule-top s--long" aria-labelledby="s5">
-  <div class="wrap">
-    <div class="col-text">
-      <h2 id="s5">Reihenfolge der Phasen und die Preisstufen</h2>
+<section class="section rule-top s--head profile-section" aria-labelledby="s5">
+  <div class="wrap grid split-head">
+    <h2 id="s5">Reihenfolge der Phasen und die Preisstufen</h2>
+    <div class="split-head__body">
 <p>Die neun Phasen, geplanten Termine und das Format des Wochenberichts stehen unter <a href="/tenerife/de/construccion/">Projektverlauf</a>.</p>
 <p>Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter <a href="/tenerife/de/inversores/">Für Investoren</a>.</p>
 
@@ -137,10 +136,10 @@
 
 
 </section>
-<section class="section rule-top s--long" aria-labelledby="s6">
-  <div class="wrap">
-    <div class="col-text bar-under">
-      <h2 id="s6">Was Sie durch meine Arbeit erhalten</h2>
+<section class="section rule-top s--head profile-section" aria-labelledby="s6">
+  <div class="wrap grid split-head">
+    <h2 id="s6">Was Sie durch meine Arbeit erhalten</h2>
+    <div class="split-head__body">
 <p><strong>Termin.</strong> Nach Plan Start — Anfang 2027, Fertigstellung — Ende 2028 – Mitte 2029.</p>
 <p><strong>Ordnung.</strong> Neun Phasen, eine nach der anderen, Bericht jede Woche.</p>
 <p><strong>Einen Menschen.</strong> Wenn der Bericht nicht zu dem passt, was Sie auf der Baustelle sehen, sprechen Sie mit mir. Ich kläre, warum, und antworte Ihnen.</p>
@@ -150,10 +149,10 @@
 
 
 </section>
-<section class="section rule-top s--long" aria-labelledby="s7">
-  <div class="wrap">
-    <div class="col-text">
-      <h2 id="s7">Wie wir arbeiten</h2>
+<section class="section rule-top s--head profile-section" aria-labelledby="s7">
+  <div class="wrap grid split-head">
+    <h2 id="s7">Wie wir arbeiten</h2>
+    <div class="split-head__body">
 <p>Ich führe das Projekt: Grundstückswahl, Genehmigungen, Start, Verbindung von Geld und Bau. Boris Ribaut baut: Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für jeden Aktionär machen wir nach einer Formel: Meter × Preis der Stufe, Zahlung — sechs gleiche Raten mit 5 % Rabatt auf den Gesamtpreis. Zwei Verantwortungsbereiche, keine Frage ohne Zuständigen.</p>
 
     </div>
@@ -161,10 +160,10 @@
 
 
 </section>
-<section class="section rule-top s--long" aria-labelledby="s8">
-  <div class="wrap">
-    <div class="col-text bar-under">
-      <h2 id="s8">Was ich von Ihnen erwarte</h2>
+<section class="section rule-top s--head profile-section" aria-labelledby="s8">
+  <div class="wrap grid split-head">
+    <h2 id="s8">Was ich von Ihnen erwarte</h2>
+    <div class="split-head__body">
 <p>Fragen. Je mehr Sie vor dem Kauf der Aktien fragen, desto ruhiger werden Sie während des Baus sein. Dafür gibt es die Zeit zwischen der Eintragung in die Warteliste und dem Investmentvertrag: Wir besprechen Grundstücksvarianten in der geschlossenen Gruppe der Teilnehmer, Sie erhalten eine Berechnung für Ihre Fläche, gleichen sie mit dem Rechner ab und stellen Fragen an mich und Boris Ribaut. Vor der Grundstückswahl muss nichts gezahlt werden.</p>
 <p>Fragen Sie mich nach dem Grundstück, den Genehmigungen, den Terminen und danach, was passiert, wenn eine Phase sich verschiebt. Ich antworte direkt.</p>
 
@@ -173,7 +172,7 @@
 
 
 </section>
-<section class="section rule-top s--faq" aria-labelledby="s9">
+<section class="section rule-top s--faq profile-section" aria-labelledby="s9">
   <div class="wrap grid split-head">
     <h2 id="s9">Kurz gefasst</h2>
     <div class="split-head__body faq">
@@ -187,7 +186,7 @@
 
 
 </section>
-<section class="section section--sand" id="ochered" aria-label="Berechnung anfordern">
+<section class="section rule-top s--cases s--profile-cases" aria-labelledby="s-person-cases"><div class="wrap"><h2 id="s-person-cases">Portfolio des Teams</h2><div class="cases__viewport" role="region" aria-labelledby="s-person-cases" tabindex="0"><div class="cases__track"><div class="case case--static"><div class="case__media case__media--crete" role="img" aria-label="Artemis Resort &amp; Spa"></div><span class="case__badge">Im Bau</span><div class="case__cap"><b>Artemis Resort & Spa</b><span>Griechenland · Kreta, Gerani</span></div></div><div class="case case--static"><div class="case__media case__media--montenegro" role="img" aria-label="Iberostar Selection Montenegro"></div><span class="case__badge">Eröffnung 2026</span><div class="case__cap"><b>Iberostar Selection Montenegro</b><span>Montenegro · Ratac</span></div></div><div class="case case--static"><div class="case__media case__media--filario" role="img" aria-label="Filario Hotel &amp; Residences"></div><span class="case__badge">Fertiggestellt</span><div class="case__cap"><b>Filario Hotel & Residences</b><span>Italien · Comer See</span></div></div><div class="case case--static"><div class="case__media case__media--paris" role="img" aria-label="Four Seasons Hotel George V"></div><span class="case__badge">Fertiggestellt</span><div class="case__cap"><b>Four Seasons Hotel George V</b><span>Frankreich · Paris</span></div></div></div></div></div></section><section class="section section--sand" id="ochered" aria-label="Berechnung anfordern">
   <div class="wrap grid wl wl--solo" id="waitlist">
     <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Wird gesendet…" data-msg-ok-title="Danke! Sie stehen auf der Liste." data-msg-ok-next="Ihre Anfrage geht per Telegram an das Projektteam und an info&#64;artemisresort.com. Wir melden uns bei Ihnen." data-msg-server="Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info&#64;artemisresort.com." data-msg-network="Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut." data-msg-rate="Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info&#64;artemisresort.com." data-msg-name="Bitte geben Sie Ihren Namen an." data-msg-contact="Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram." data-msg-language="Bitte wählen Sie die Sprache." data-msg-consent="Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.">
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>

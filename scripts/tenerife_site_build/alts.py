@@ -1,4 +1,5 @@
-"""Alt texts of the RU v3 photos — review list for the editor (designer r2, item 4).
+"""Alt texts of the RU v3 project-frame photos — review list for the editor (designer r2, item 4).
+Personal-photo alts have a separate owner: people.json and i18n_strings.json.
 
   python3 scripts/tenerife_site_build/alts.py export OUT.md   # table page | slot | file | alt (final, after the build)
   python3 scripts/tenerife_site_build/alts.py import IN.md    # apply an edited table to alts.json, then rebuild
