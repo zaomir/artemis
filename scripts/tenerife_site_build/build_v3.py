@@ -916,16 +916,24 @@ def calc_labels(page, alias=None):
     rests = [x["rest"] for x in led]
     if len(leads) != 6:
         raise BuildError("calculator: «Что вы видите» must list 6 results")
-    pay = next((re.sub(r"^<strong>.+?</strong> ", "", i["html"]) for s in page["sections"] for i in s["body"]
-                if i["kind"] == "p" and re.match(r"^<strong>.+?</strong> ", i["html"])
-                and re.search(r" (или|or|o|oder|ou) ", i["html"])), None)
-    if pay is None:
-        raise BuildError("calculator: payment methods line not found")
-    now, parts = re.split(r" (?:или|or|o|oder|ou) ", pay.rstrip("."), maxsplit=1)
+    if LOCALE == "ru":
+        # RU: строка именно «Способ оплаты.» — раньше брали любой абзац с «или» и подставляли
+        # «От 48 до 100 м² — / Тип резиденции:» (найдено 03.11.2026 на живом калькуляторе)
+        pay = next((re.sub(r"^<strong>.+?</strong> ", "", i["html"]) for s in page["sections"] for i in s["body"]
+                    if i["kind"] == "p" and re.match(r"^<strong>Способ оплаты\.</strong> ", i["html"])), None)
+        if pay is None:
+            raise BuildError("calculator: payment methods line not found")
+        now, parts = re.split(r" (?:или|or|o|oder|ou) ", pay.rstrip("."), maxsplit=1)
+        parts = re.split(r"\.\s+", parts, maxsplit=1)[0].rstrip(".")   # только сама формулировка, без хвоста
+        pay_now, pay_parts = now, parts[:1].upper() + parts[1:]
+    else:
+        # у локалей формулировки способа оплаты берём из словаря: строка копирайта в переводе
+        # может совпасть с другим абзацем (02.11-03.11, DE/ES подставляли «Von 48 bis 100 m² …»)
+        pay_now, pay_parts = i18n_strings()[LOCALE]["calc"]["pay"]["pay_now"], i18n_strings()[LOCALE]["calc"]["pay"]["pay_parts"]
     return {"sum": leads[0], "month": leads[1], "handover": leads[2],
             "div": leads[3] + "," + rests[3].rsplit(",", 1)[1].rstrip("."), "pct": leads[4],
             "paths": leads[5], "paths_dd": re.sub(r"^— ", "", rests[5]).rstrip("."),
-            "pay_now": now, "pay_parts": parts[:1].upper() + parts[1:]}
+            "pay_now": pay_now, "pay_parts": pay_parts}
 
 
 def ladder_css(model):

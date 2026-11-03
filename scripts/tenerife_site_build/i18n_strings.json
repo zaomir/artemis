@@ -78,6 +78,10 @@
     "shell_roof": "Shell and roof",
     "finishing": "Finishing",
     "handover": "Handover"
+   },
+   "pay": {
+    "pay_now": "Pay in full",
+    "pay_parts": "In six instalments with a 5 % discount"
    }
   },
   "legal": {
@@ -169,6 +173,10 @@
     "shell_roof": "Estructura y cubierta",
     "finishing": "Acabados",
     "handover": "Entrega"
+   },
+   "pay": {
+    "pay_now": "Pago único",
+    "pay_parts": "En seis plazos con un 5 % de descuento"
    }
   },
   "legal": {
@@ -260,6 +268,10 @@
     "shell_roof": "Rohbau und Dach",
     "finishing": "Ausbau",
     "handover": "Fertigstellung"
+   },
+   "pay": {
+    "pay_now": "Sofort zahlen",
+    "pay_parts": "In sechs Raten mit 5 % Rabatt"
    }
   },
   "legal": {
@@ -351,6 +363,10 @@
     "shell_roof": "Gros œuvre et toiture",
     "finishing": "Finitions",
     "handover": "Livraison"
+   },
+   "pay": {
+    "pay_now": "Paiement unique",
+    "pay_parts": "En six versements avec 5 % de remise"
    }
   },
   "legal": {
