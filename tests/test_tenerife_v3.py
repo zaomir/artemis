@@ -118,7 +118,7 @@ class _Text(HTMLParser):
         a = dict(attrs)
         cls = (a.get("class") or "").split()
         hide = (a.get("aria-hidden") == "true" or a.get("id") == "calc" or tag in ("script", "style")
-                or "visually-hidden" in cls)
+                or "visually-hidden" in cls or "price-curve" in cls)
         keep = "cta-primary" in cls or "micro" in cls
         self.stack.append((tag, hide, keep))
 
@@ -356,6 +356,10 @@ class V3BuildTest(unittest.TestCase):
             figs = re.findall(r"<figure\b.*?</figure>", page, re.S)
             self.assertEqual(len(figs), page.count("<figure"), name)
             for f in figs:
+                if f.startswith('<figure class="price-curve"'):
+                    self.assertIn('<svg class="price-curve__svg', f, name)
+                    self.assertIn('class="price-curve__line"', f, name)
+                    continue  # Data figures are checked separately from photographic frames.
                 self.assertRegex(f, r"<picture><source [^>]+><img [^>]+></picture>", f"{name}: empty figure {f[:120]}")
                 self.assertNotIn("<figcaption", f, name)
             heroes = page.count('class="hero__media')
@@ -386,7 +390,7 @@ class V3BuildTest(unittest.TestCase):
             self.assertEqual(page.count(" bar-under"), expected, name)
             for chunk in re.split(r"(?=<section\b)", page):
                 if " bar-under" in chunk:
-                    self.assertNotIn("<figure", chunk.split("</section>")[0], name)
+                    self.assertNotIn('<figure class="frame', chunk.split("</section>")[0], name)
             if report[name]["frames"][hero_slot] is None:
                 self.assertNotIn('id="hero"', page, name)
                 self.assertIn('<section class="hero-text"', page, name)

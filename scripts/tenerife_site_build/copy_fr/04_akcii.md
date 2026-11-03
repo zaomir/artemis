@@ -33,14 +33,16 @@ Entrer tôt n'est pas une remise sur une maison achevée. C'est le prix d'entré
 
 ### Six paliers de prix
 
-| Palier | Ce qui doit arriver | Prix de l'action = prix du mètre | Hausse jusqu'au prix de livraison |
+| Palier | Ce qui doit arriver | Prix de l'action = prix du mètre | Sous le prix à la livraison |
 |---|---|---|---|
-| Liste d'attente | terrain approuvé par la majorité de la liste, contrat d'investissement | 2 950 € | +30,5% |
-| Permis | permis de construire obtenu | 3 100 € | +24,2% |
-| Fondations | assise et soubassement de pierre achevés | 3 250 € | +18,5% |
-| Gros œuvre et toiture | murs, planchers, toiture avec panneaux | 3 450 € | +11,6% |
-| Finitions | façade, installations techniques, intérieurs, piscine | 3 650 € | +5,5% |
+| Entrée initiale | terrain approuvé par la majorité de la liste, contrat d'investissement | 2 950 € | 23,4% |
+| Permis | permis de construire obtenu | 3 100 € | 19,5% |
+| Fondations | assise et soubassement de pierre achevés | 3 250 € | 15,6% |
+| Gros œuvre et toiture | murs, planchers, toiture avec panneaux | 3 450 € | 10,4% |
+| Finitions | façade, installations techniques, intérieurs, piscine | 3 650 € | 5,2% |
 | Livraison | permis d'habiter | 3 850 € | — |
+
+La comparaison porte sur le prix de l’action à la livraison : 3 850 €/m². Le pourcentage est calculé sur ce prix.
 
 Les dates de référence du projet sont un plan: démarrage du chantier début 2027, livraison fin 2028 – mi-2029.
 

@@ -33,14 +33,16 @@ Entrar antes no es un descuento sobre una casa terminada. Es el precio de entrad
 
 ### Seis tramos de precio
 
-| Tramo | Qué debe ocurrir | Precio de la acción = precio del metro | Subida hasta el precio de entrega |
+| Tramo | Qué debe ocurrir | Precio de la acción = precio del metro | Menos que en la entrega |
 |---|---|---|---|
-| Lista de espera | la mayoría de la lista aprueba la parcela, contrato de inversión | 2 950 € | +30,5% |
-| Licencia | licencia de obra concedida | 3 100 € | +24,2% |
-| Cimentación | cimentación y zócalo de piedra volcánica terminados | 3 250 € | +18,5% |
-| Estructura y cubierta | muros, forjados, cubierta con placas | 3 450 € | +11,6% |
-| Acabados | fachada, instalaciones, interiores, piscina | 3 650 € | +5,5% |
+| Entrada inicial | la mayoría de la lista aprueba la parcela, contrato de inversión | 2 950 € | 23,4% |
+| Licencia | licencia de obra concedida | 3 100 € | 19,5% |
+| Cimentación | cimentación y zócalo de piedra volcánica terminados | 3 250 € | 15,6% |
+| Estructura y cubierta | muros, forjados, cubierta con placas | 3 450 € | 10,4% |
+| Acabados | fachada, instalaciones, interiores, piscina | 3 650 € | 5,2% |
 | Entrega | licencia de primera ocupación | 3 850 € | — |
+
+La comparación se hace con el precio de la acción en la entrega: 3 850 €/m². El porcentaje se calcula sobre ese precio.
 
 Las fechas de referencia del proyecto son un plan: inicio de obra a principios de 2027 y entrega entre finales de 2028 y mediados de 2029.
 

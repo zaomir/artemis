@@ -189,32 +189,35 @@ a:hover{color:var(--cs-ink)}
 .ledger li:first-child{border-top:var(--border-ink)}
 @media (min-width:768px){.ledger li{grid-template-columns:var(--ledger-label) 1fr;gap:var(--space-5)}}
 
-/* ===== ladder (signature) ===== */
-.ladder{list-style:none;margin:var(--space-7) 0 0;padding:0;display:grid;gap:0}
-.ladder li{display:grid;grid-template-columns:1fr auto;column-gap:var(--space-4);row-gap:var(--space-2);padding:var(--space-4) 0;border-bottom:var(--border-hair)}
-.ladder__name{font-family:var(--font-display);font-size:var(--fs-h3);line-height:var(--lh-tight)}
-.ladder__event{grid-column:1/-1;font-size:var(--fs-small);color:var(--cs-ink-soft);order:3}
-.ladder__price{font-family:var(--font-display);font-size:var(--fs-h3);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
-.ladder__grow{grid-column:1/-1;order:4;font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-ink-soft)}
-.ladder__bar{grid-column:1/-1;order:2;height:var(--ladder-bar-h);background:var(--cs-lime);position:relative}
-.ladder__bar i{position:absolute;inset:0 auto 0 0;width:calc(var(--p) * 100%);background:var(--cs-basalt);transform-origin:left;transition:transform var(--dur-reveal) var(--ease-out);transition-delay:calc(var(--i) * var(--stagger))}
-.ladder li.is-current .ladder__bar i{background:var(--cs-ocean)}
-.ladder__now{display:inline-block;margin-left:var(--space-2);font-family:var(--font-text);font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-on-dark);background:var(--cs-ocean);padding:0 var(--space-2);vertical-align:middle;border-radius:var(--radius-1)}
-@media (min-width:1024px){
-  .ladder{grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--grid-gutter-desktop);align-items:end;container-type:inline-size;border-bottom:var(--plinth) solid var(--cs-basalt)}
-  /* v3: самое длинное слово «Разрешение» ≈ 6,3 em; колонка 1/6 ладдера при 1024 = 135 px → кегль ограничен 2,2cqi (≈ 20,5 px при 1024), чтобы слово не рвалось */
-  .ladder__name{font-size:min(var(--fs-h3),var(--ladder-name-cap))}
-  .ladder li{display:flex;flex-direction:column;justify-content:flex-end;border:0;padding:0;height:100%}
-  .ladder__name{order:1}
-  .ladder__event{order:2;min-height:calc(2em*var(--lh-body))}
-  .ladder__price{order:3;text-align:left;font-size:var(--fs-h2);margin-top:var(--space-3)}
-  .ladder__grow{order:4;margin-bottom:var(--space-3)}
-  .ladder__bar{order:5;height:calc(var(--p) * var(--ladder-h));background:none;margin-top:0}
-  .ladder__bar i{inset:0;width:100%;background:var(--cs-basalt);transform-origin:bottom}
+/* ===== six-stage price curve: explicitly cropped 2900–3900 EUR axis ===== */
+.price-curve{max-inline-size:var(--grid-text);margin:var(--space-7) auto;color:var(--cs-ink)}
+.price-curve__svg{display:block;inline-size:100%;block-size:auto;aspect-ratio:1;overflow:visible}
+.price-curve__svg--compact{display:none}
+.price-curve text{font-family:var(--font-text);font-size:var(--fs-small);fill:var(--cs-ink-soft)}
+.price-curve__grid{stroke:var(--cs-line);stroke-width:1;vector-effect:non-scaling-stroke}
+.price-curve__baseline{stroke:var(--cs-ink-soft)}
+.price-curve__gradient-top{stop-color:var(--cs-ocean);stop-opacity:.3}
+.price-curve__gradient-bottom{stop-color:var(--cs-ocean);stop-opacity:0}
+.price-curve__line{fill:none;stroke:var(--cs-ocean);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.price-curve__point{fill:var(--cs-ocean);stroke:var(--cs-sand);stroke-width:2;vector-effect:non-scaling-stroke}
+.price-curve__point--min{fill:var(--cs-bronze-deep);stroke:var(--cs-lime);stroke-width:3}
+.price-curve__point--max{fill:var(--cs-ocean);stroke:var(--cs-lime);stroke-width:3}
+.price-curve text.price-curve__value{font-family:var(--font-display);font-weight:var(--fw-display);font-size:var(--fs-h2);fill:var(--cs-ink)}
+.price-curve text.price-curve__point-value{font-size:var(--fs-body);fill:var(--cs-ink)}
+.price-curve__caption strong{color:var(--cs-bronze-deep);font-weight:var(--fw-strong)}
+.price-curve__key{display:none}
+.price-curve__caption{margin:var(--space-2) 0 0;font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft)}
+.extras>.price-curve{margin-block:0}
+@media (max-width:767px){
+  .price-curve{max-inline-size:420px}
+  .price-curve__svg--full{display:none}
+  .price-curve__svg--compact{display:block}
+  .price-curve__svg--compact text.price-curve__value{font-size:28px}
+  .price-curve__key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3) var(--space-4);list-style:none;margin:var(--space-5) 0 0;padding:0;font-size:var(--fs-small);line-height:var(--lh-tight)}
+  .price-curve__key li{display:flex;gap:var(--space-2)}
+  .price-curve__index{color:var(--cs-bronze-deep);font-weight:var(--fw-strong)}
+  .price-curve__key b{display:block;font-weight:var(--fw-strong);color:var(--cs-ink)}
 }
-.js-rise .ladder__bar i{transform:scaleX(0)}
-@media (min-width:1024px){.js-rise .ladder__bar i{transform:scaleY(0)}}
-.js-rise.is-in .ladder__bar i{transform:none}
 .note-plan{margin-top:var(--space-6);color:var(--cs-ink-soft)}
 
 /* ===== calculator ===== */
@@ -324,7 +327,7 @@ a:hover{color:var(--cs-ink)}
 .stack>.table-wrap,.stack>.ledger{margin-bottom:var(--space-6)}
 .stack>:last-child,.split-head__body>:last-child,.ti__text>:last-child,.col-text>:last-child{margin-bottom:0}
 .stack>.steps{margin-bottom:var(--space-7)}
-.stack>.ladder{margin-bottom:var(--space-7)}
+
 .list{margin:0 0 var(--space-4);padding-left:1.25em;max-width:var(--measure)}
 .list li{margin-bottom:var(--space-2)}
 .list li::marker{color:var(--cs-bronze-deep)}
@@ -352,10 +355,7 @@ a:hover{color:var(--cs-ink)}
 .bar-under::after{content:"";display:block;grid-column:1/-1;height:var(--plinth);background:var(--cs-basalt);margin-top:var(--space-6)}
 /* QA T3-07 (DESIGN.md §5): C7 with 5–6 steps — 3 in a row on desktop */
 @media (min-width:1024px){.steps:has(li:nth-child(5)) li{grid-column:span 4}}
-/* C8 mini (01, 08, 12): names + prices + bars, desktop terraces at half height */
 .extras{margin-top:var(--space-7)}
-.ladder--mini .ladder__name,.ladder--mini .ladder__price{font-size:var(--fs-body)}
-@media (min-width:1024px){.ladder--mini .ladder__price{font-size:var(--fs-h3)}.ladder--mini .ladder__bar{height:calc(var(--p) * var(--ladder-h) / 2)}}
 /* C10: the copy's column names above the designer's log, on the same columns (DESIGN.md C10 has no head row) */
 .log__head{margin:var(--space-6) 0 0;font-size:var(--fs-label);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--cs-ink-soft)}
 .log__head+.log{margin-top:var(--space-2)}

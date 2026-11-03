@@ -19,6 +19,7 @@ import os
 import re
 import sys
 from pathlib import Path
+from price_curve import build_curve, percent, reduction_percent
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
@@ -45,7 +46,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "3ff173feb07a622f674d67e4da323ca874a643ba7b9760a3d6e67b61202552aa"
+COPY_SHA256_DEFAULT = "45226f38b912462aefaa3da9a04480e8842983f80fcd1321126e54257ddecd0b"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -449,13 +450,26 @@ def table_item(b):
             "plain_head": [re.sub(r"<[^>]+>", "", h) for h in head]}
 
 
-def ladder_from(table, locale=None):
-    """C8 from the copy's own price-step table (Ступень | событие | цена | рост)."""
+def ladder_from(table, locale=None, model=None):
+    """Price curve from the model; the copy's table must state the same prices and comparison basis."""
     loc = locale or LOCALE
-    first, rise = locale_cfg.LADDER_HEAD.get(loc, locale_cfg.LADDER_HEAD["ru"])
-    if table["plain_head"][0] != first or len(table["head"]) != 4 or rise not in table["plain_head"][3]:
+    first, comparison = locale_cfg.LADDER_HEAD.get(loc, locale_cfg.LADDER_HEAD["ru"])
+    if table["plain_head"][0] != first or len(table["head"]) != 4 or comparison not in table["plain_head"][3]:
         return None
-    return [{"name": r[0], "event": r[1], "price": r[2], "grow": r[3]} for r in table["rows"]]
+    model = model or load_model()
+    steps = model["steps"]
+    if len(table["rows"]) != len(steps):
+        raise BuildError("price curve: exactly six stage rows required")
+    baseline = json.loads((HERE / "model_inputs.baseline.json").read_text(encoding="utf-8"))["stages"]
+    for index, (row, step) in enumerate(zip(table["rows"], steps)):
+        price = int(re.sub(r"[^0-9]", "", plain(row[2])))
+        expected = percent(reduction_percent(step["price_eur_m2"], steps[-1]["price_eur_m2"]), loc)
+        approved = percent(reduction_percent(baseline[index][1], baseline[-1][1]), loc)
+        if price != step["price_eur_m2"] or plain(row[3]) != ("—" if index == len(steps) - 1 else approved):
+            raise BuildError("price curve: table price or percentage differs from the model / handover denominator")
+        # The approved copy is checked above; derived comparisons follow a model price edit.
+        row[3] = "—" if index == len(steps) - 1 else expected
+    return build_curve(steps, [plain(r[0]) for r in table["rows"]], loc)
 
 
 def body_item(b):
@@ -562,10 +576,7 @@ def mini_ladder(model):
     Названия ступеней берутся из locale_cfg.STAGE_NAMES (те же слова, что в таблице copy_<loc>/04)."""
     names = locale_cfg.STAGE_NAMES.get(LOCALE, locale_cfg.STAGE_NAMES["ru"])
 
-    def eur(v):
-        return fmt_int(v) + NBSP + "€"
-    return [{"name": names[i] if i < len(names) else st["name"], "price": eur(st["price_eur_m2"]),
-             "current": bool(st.get("current"))} for i, st in enumerate(model["steps"])]
+    return build_curve(model["steps"], names, LOCALE, with_table=False, key="price-stages-mini")
 
 
 # Designer r3 (31.10.2026): F17 («отделка») never shows a finished-house photo. On construccion the slot is a
@@ -684,7 +695,7 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
         s["frames"] = [f for f in s["frames"] if frames[f] is not None]
         body = s["body"]
         qa = [QA_RX.match(i["html"]) if i["kind"] == "p" else None for i in body]
-        s["ladder"] = next((ladder_from(i, LOCALE) for i in body if i["kind"] == "table" and ladder_from(i, LOCALE)), None)
+        s["ladder"] = next(filter(None, (ladder_from(i, LOCALE, model) for i in body if i["kind"] == "table")), None)
         if body and all(qa):
             s["layout"] = "faq"
             s["qa"] = [{"q": m.group(1), "a": m.group(2)} for m in qa]
@@ -812,7 +823,7 @@ def calc_ui():
     """Подписи калькулятора: у RU — свои (в шаблоне и в модели), у локалей — из i18n_strings.json."""
     if LOCALE == "ru":
         return {"aria": "Калькулятор", "area": "Площадь", "area_label": "Площадь, м²", "step": "Ступень входа",
-                "pay": "Способ оплаты", "unit": "м²", "types": {}, "steps": {}}
+                "pay": "Способ оплаты", "unit": "м²", "types": {}, "steps": {"queue": locale_cfg.STAGE_NAMES["ru"][0]}}
     c = i18n_strings()[LOCALE]["calc"]
     return dict(c["ui"], types=c["types"], steps=c["steps"])
 
@@ -930,7 +941,7 @@ def site_css(model, frames_cfg=None):
     + photo focal points."""
     frames_cfg = frames_cfg or json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     parts = [(DESIGN / "fonts.css").read_text(encoding="utf-8"), (DESIGN / "tokens.css").read_text(encoding="utf-8"),
-             (HERE / "site.src.css").read_text(encoding="utf-8"), ladder_css(model), focal_css(frames_cfg),
+             (HERE / "site.src.css").read_text(encoding="utf-8"), focal_css(frames_cfg),
              case_css()]
     return "\n".join(parts)
 
@@ -962,16 +973,6 @@ def calc_labels(page, alias=None):
             "div": leads[3] + "," + rests[3].rsplit(",", 1)[1].rstrip("."), "pct": leads[4],
             "paths": leads[5], "paths_dd": re.sub(r"^— ", "", rests[5]).rstrip("."),
             "pay_now": pay_now, "pay_parts": pay_parts}
-
-
-def ladder_css(model):
-    """C8 bar heights ∝ price / max price (from zero), generated from model.json: CSP forbids style=""."""
-    steps = model["steps"]
-    top = max(st["price_eur_m2"] for st in steps)
-    rules = [f".ladder li:nth-child({i}){{--p:{st['price_eur_m2'] / top:.4f};--i:{i - 1}}}"
-             for i, st in enumerate(steps, 1)]
-    return "/* C8 ladder: generated by build_v3.py from model.json */\n" + "\n".join(rules) + "\n"
-
 
 
 PEOPLE_LINKS = (("Simon Subic", "/tenerife/simon/"), ("Boris Ribaut", "/tenerife/boris/"))
