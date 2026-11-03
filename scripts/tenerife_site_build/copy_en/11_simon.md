@@ -8,7 +8,7 @@ OG title: Simon Subic: from plot and permits to handover of the houses
 
 # I am Simon Subic, developer of Artemis de la Cruz
 
-I am a Development Principal working between London and Paris. At Artemis de la Cruz I lead plot selection, project preparation and funding for twenty residences. The model funds construction with initial investments and buyer payments, without additional developer capital. The calendar follows plot selection.
+I am a Development Principal working between London and Paris. At Artemis de la Cruz I lead plot selection, project preparation and funding for twenty residences. I connect initial investment and buyer payments with the work programme.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -32,13 +32,13 @@ I am a Slovenian citizen, working on a London platform and in France.
 
 The north of Tenerife is green, not hot, not dusty. From La Quinta to Puerto de la Cruz it is 8 km, 10–15 minutes by car; to Tenerife Norte airport 15–20 minutes; to Santa Cruz 25–30 minutes. People live here all year round. I build where people live, not where they spend a week.
 
-Twenty houses: six one-bedroom of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m². A small, enclosed complex, not a neighbourhood of hundreds of flats. For comparison: the neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold; a finished Artemis house at handover is 3 800–4 600 €.
+Twenty homes: six one-bedroom residences of 48–55 m², ten two-bedroom homes of 68–78 m² and four larger homes of 85–100 m². A small development with a shared architectural language and infrastructure. [Residences and purchase calculations](/tenerife/producto/).
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
 ### How I handle the permits
 
-Project preparation must align with the work and spending schedule. I coordinate documents and sequencing with designers. Site work confirms construction stages; the new model has no automatic six-stage share revaluation.
+I coordinate documents and sequencing with designers. Project preparation follows the work and spending programme; completion of construction stages is recorded on site and in reports.
 
 ### How I link the money and the construction
 
@@ -68,7 +68,7 @@ I lead the plot, preparation and funding. Boris Ribaut oversees the site, struct
 
 ### What I expect from you
 
-Ask before paying: about the plot, budget, sales and source of exit cash. Compare the personal calculation with the calculator. A free enquiry gives time to understand these inputs.
+Let’s discuss the plot, budget, programme and participation calculation. Start with a free enquiry and a video conversation.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,4 +85,4 @@ Ask before paying: about the plot, budget, sales and source of exit cash. Compar
 **Who do I write to if the report differs from what I see on site?** Me.
 
 **Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+Free of charge. Payment follows approval of the plot and participation terms.

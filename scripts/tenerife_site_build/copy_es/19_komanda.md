@@ -29,7 +29,7 @@ OXFORD FRAME REAL ASSETS LTD, Inglaterra y Gales, Companies House n.º 09153936.
 
 ### Recibir un cálculo
 
-Deje su nombre y contacto. Le enviaremos un cálculo para su superficie y comentaremos la participación. La inscripción es gratuita; no recibimos dinero antes de elegir la parcela.
+Deje su nombre y contacto. Le enviaremos un cálculo personal y comentaremos la participación.
 
 **Кнопка: «Recibir un cálculo»**
-Gratis. No recibimos dinero antes de elegir la parcela.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

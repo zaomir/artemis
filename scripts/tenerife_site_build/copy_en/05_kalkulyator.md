@@ -42,11 +42,11 @@ Investment = shares × @entry@ €. Exit proceeds = investment × (1 + @target@%
 
 ### Where the exit money comes from
 
-Payments from buyers of twenty residences. In the base scenario these cover the budget and full investor settlement, without additional developer capital. [Funding sources](/tenerife/inversores/#funding).
+From payments by buyers of twenty residences. The planned cash calendar covers construction payments and investor settlement. [Funding sources](/tenerife/inversores/#funding).
 
 ### What affects the calculation
 
-@market@ €/m² is a provisional comparison reference, @growth@% is an annual growth assumption and @target@% annualised is a target. Sales, costs and actual timing can change the payment. [Assumptions and sensitivity](/tenerife/inversores/#assumptions).
+The calculation uses a provisional @market@ €/m² reference, @growth@% annual price growth in the sales plan and a @target@% annualised target return. [Returns and taxes](/tenerife/inversores/#assumptions).
 
 ### Entry process
 

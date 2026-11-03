@@ -28,7 +28,7 @@ A share is a unit of participation. Its price is compared with a reference per m
 
 ### Early price and comparison reference
 
-The model's early price is @entry@ € per share: 70% of a provisional @market@ €/m² reference, or @discount@% below it. An up-to-date comparable price list for local new-build homes has not yet been confirmed; @market@ €/m² is an assumption, not a verified current market price.
+The model’s early price is @entry@ € per share: 70% of the provisional @market@ €/m² reference, or @discount@% below it.
 
 For unsold homes, the model assumes @growth@% annual growth. Each buyer's price is fixed at signing and does not rise afterwards. [Reference, formulas and sources](/tenerife/mercado/).
 
@@ -36,7 +36,7 @@ For unsold homes, the model assumes @growth@% annual growth. Each buyer's price 
 
 For 72 shares: full investment @entry_72@ €, target exit proceeds @exit_72@ €, including income of @gain_72@ €. The total increase is @gain_pct@% over three years, equivalent to @target@% annualised with compounding.
 
-Formula: **exit proceeds = investment × (1 + @target@%)³**. This is the base scenario's target result. Actual payment depends on sales receipts, costs and exit timing.
+Base-scenario formula: **exit proceeds = investment × (1 + @target@%)³**.
 
 ### Calculate your investment
 
@@ -44,7 +44,7 @@ Choose a share quantity. The calculator shows one upfront payment and the target
 
 ### How construction is funded
 
-Two sources: the initial investment pool and payments from buyers of all twenty homes. Additional developer capital and bank debt are zero in the model. Investment capital is not home-sale revenue.
+Two sources: the initial investment pool and payments from buyers of twenty homes. The base funding plan includes no additional developer contribution or bank debt.
 
 | Base scenario | Amount |
 |---|---|
@@ -55,13 +55,13 @@ Two sources: the initial investment pool and payments from buyers of all twenty 
 | Investor capital and target income at exit | @pool_exit@ € |
 | Project balance after settlement | @surplus@ € |
 
-Buyer payments follow 40/30/10/20%. A late-signing buyer pays completed milestones immediately. The base monthly cash schedule has no funding gap; its lowest balance is @minimum_cash@ €. These are calculations, not capital already raised or contracts already signed.
+Buyers pay in stages of 40/30/10/20%. Buyers signing later pay completed milestones immediately. The planned monthly cash calendar links these receipts with construction spending and investor settlement.
 
-### What affects the result
+### Returns and taxes
 
-The budget assumes @cost_m2@ €/m² of built area and roughly one buyer contract every one to two months. At 2 100 €/m² construction costs, @high_shortfall@ € is missing from the full target settlement; a two-month sales delay creates an interim funding gap of @delay_gap@ €.
+Returns are not guaranteed. @target@% annualised and an exit after @months@ months are base-scenario targets. The amount and timing of capital and income payments depend on actual project sales and costs.
 
-Before taking investment, the project needs a selected plot, a confirmed cost plan and a workable sales and payment schedule. @growth@% growth is an assumption and @target@% is a return target; both require actual sales receipts.
+We do not calculate each investor’s individual taxes; website figures are before those taxes. Before participating, obtain independent advice from a lawyer and an accountant.
 
 ### Oversight and team
 
@@ -73,7 +73,7 @@ Before payment, receive a personal calculation and participation terms covering 
 
 ### Request a calculation
 
-Leave your name and contact. We will calculate your amount and discuss which inputs still need confirmation before payment.
+Leave your name and contact. Receive a personal calculation with the participation amount, target result and project calendar.
 
 **Кнопка: «Request a calculation»**
 Free of charge. Payment follows approval of the plot and participation terms.

@@ -19,7 +19,7 @@ Commencez par le projet et le calcul. Le paiement suit la validation du terrain 
 
 **3. Terrain et conditions.** Avant paiement, examinez actif, budget, ventes et sortie en numéraire, y compris les changements de calendrier.
 
-**4. Paiement intégral.** Versez tout l'investissement. Les @months@ mois commencent ce jour. Aucune mensualité ni bonus ajouté au prix initial.
+**4. Paiement intégral.** Vous versez tout l’investissement en une fois. La période de @months@ mois du modèle commence à cette date.
 
 **5. Chantier et ventes.** Rapports hebdomadaires prévus sur travaux et trésorerie. Le fonds initial et les acheteurs financent les dépenses.
 
@@ -37,9 +37,9 @@ L'achat ne comprend pas en plus le rachat en numéraire du même investissement.
 
 Échangeons en vidéo ; vous recevrez calcul et documents à consulter. Sur l'île, visitez La Quinta et le terrain choisi. Les rencontres nécessaires dépendent de votre parcours.
 
-### Avant de payer
+### Documents de participation
 
-Demandez le budget, les ventes nécessaires chaque mois, le financement de sortie et les conséquences d'un retard. [Questions](/tenerife/faq/) · [Modèle](/tenerife/inversores/).
+Les conditions de participation couvrent votre calcul personnel, le budget, le calendrier et le processus de sortie en numéraire. [Questions](/tenerife/faq/) · [Rendement et fiscalité](/tenerife/inversores/#assumptions).
 
 ### Demander un calcul
 

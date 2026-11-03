@@ -17,13 +17,13 @@ Die wichtigsten Fragen zu Geld, Laufzeit und Ergebnis. Das Basismodell hat eine 
 
 **Was bedeuten @target@% jährlich?** Eine effektive Zielrendite mit Zinseszinseffekt: @gain_pct@% in drei Jahren. Für 72 Aktien: @entry_72@ € → @exit_72@ €.
 
-**Ist das garantiert?** Es ist das Ziel des Basisszenarios. Die Zahlung hängt von tatsächlichen Verkaufseingängen, Budget und Zeitpunkt ab.
+**Wo stehen die Bedingungen der Berechnung?** Rendite, Steuern und unabhängige Beratung sind in [einem Abschnitt](/tenerife/inversores/#assumptions) beschrieben.
 
 **Kann ich in Raten zahlen?** Die Beteiligung verlangt volle Einmalzahlung. 40/30/10/20% gelten für Hauskäufer.
 
 ### Preis und Wachstum
 
-**Woher kommt der Preis @entry@ €?** 70% der vorläufigen Basis @market@ €/m², also @discount@% darunter. Aktuelle vergleichbare lokale Neubaupreise müssen noch bestätigt werden.
+**Woher kommt der frühe Preis von @entry@ €?** 70% der vorläufigen Modellbasis von @market@ €/m², also @discount@% darunter.
 
 **Was bedeutet @growth@% Wachstum?** Eine jährliche Annahme für unverkaufte Häuser. Unterzeichnete Verträge fixieren den Preis. Wachstum gilt weder rückwirkend noch zusätzlich zur Investorenrendite.
 
@@ -33,11 +33,8 @@ Die wichtigsten Fragen zu Geld, Laufzeit und Ergebnis. Das Basismodell hat eine 
 
 **Wer finanziert den Bau?** Früher Investorenpool und Käufer von zwanzig Häusern. Kein zusätzliches Entwicklerkapital oder Bankkredit im Modell.
 
-**Ist das Basisszenario finanziert?** Der Monatsplan deckt Ausgaben und Zielausstieg bei mindestens @minimum_cash@ € Liquidität. Dafür müssen Verkäufe und Zahlungen planmäßig erfolgen.
+**Wie ist das Basisbudget aufgebaut?** Der geplante Monatskalender verbindet Investorenpool, Käuferzahlungen, Kosten und Zielabrechnung beim Ausstieg. [Projektbudget](/tenerife/inversores/#funding).
 
-**Was passiert bei Verzögerungen oder Mehrkosten?** Der gesamte Zahlungsplan muss neu berechnet werden. Zwei Monate Verkaufsverzögerung erzeugen @delay_gap@ € Fehlbetrag. Bei 2 100 €/m² Baukosten ist der Zielrückkauf nicht voll gedeckt. Eine automatische Entwicklereinlage ist nicht vorgesehen.
-
-**Was passiert bei Projektstopp?** Betrag und Zeitpunkt hängen von Projektstand, Liquidität und Vermögensverkäufen ab. Das Modell finanziert keine sofortige vollständige Rückzahlung mit Ertrag. Das Vorgehen wird vor Zahlung besprochen.
 
 ### Haus und Beteiligung
 

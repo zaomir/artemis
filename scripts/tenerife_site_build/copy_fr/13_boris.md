@@ -101,4 +101,4 @@ Directement. Interrogez-moi sur les fondations, sur la toiture, sur la manière 
 **Quand la livraison ?** Elle sera précisée au programme ; le modèle investisseur prévoit sortie @months@ mois après paiement intégral.
 
 **Кнопка: «Recevoir un calcul»**
-Gratuit. Nous n'encaissons rien avant le choix du terrain.
+Gratuit. Paiement après validation du terrain et des conditions de participation.

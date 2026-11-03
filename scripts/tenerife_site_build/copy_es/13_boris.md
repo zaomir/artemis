@@ -101,4 +101,4 @@ Directamente. Pregúnteme por la cimentación, por la cubierta, por cómo quedan
 **¿Cuándo termina?** La entrega se concretará en el programa; el inversor supone salida @months@ meses tras pago íntegro.
 
 **Кнопка: «Recibir un cálculo»**
-Gratis. No cobramos nada hasta elegir la parcela.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

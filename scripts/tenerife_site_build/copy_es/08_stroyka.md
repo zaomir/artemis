@@ -38,7 +38,7 @@ Seleccionamos una parcela para veinte residencias en La Quinta, Santa Úrsula. T
 | Hasta 33 | Obras principales y reserva presupuestada pagadas |
 | 36 | Liquidación de compradores y salida de inversores |
 
-Es el calendario previsto del modelo. Las fechas reales dependen de la parcela, el proyecto y las ventas.
+El calendario del proyecto se prepara para la parcela elegida a partir de este plan.
 
 [КАДР F16]
 
@@ -58,17 +58,17 @@ Boris Ribaut supervisa estructura, obra e informes. Simon Subic dirige parcela, 
 
 ### Cómo se pagan los trabajos
 
-El capital inicial y los pagos por hitos cubren el presupuesto. El modelo base no incluye capital adicional del promotor ni crédito bancario. Cada contrato fija el precio al firmar; el crecimiento se aplica solo antes.
+Las obras se financian con el fondo inicial de inversores y los pagos por etapas de los compradores. El contrato fija el precio al firmar; la subida prevista se aplica hasta esa fecha. [Financiación](/tenerife/inversores/#funding).
 
 [КАДР F12]
 
-### Si cambia el calendario
+### Calendario financiero
 
-Los retrasos de ventas y mayores costes deben reflejarse en el flujo de caja actualizado. Cada etapa necesita una fuente de pago. [Financiación y sensibilidad](/tenerife/inversores/#funding).
+Los informes semanales muestran obras pagadas, cobros y presupuesto de la siguiente etapa. El calendario conecta obra, ventas y liquidaciones con los participantes.
 
 ### Solicitar un cálculo
 
 Solicite una inversión con horizonte de @months@ meses o el calendario de compra de su residencia.
 
 **Кнопка: «Solicitar un cálculo»**
-Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.
+Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.

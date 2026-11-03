@@ -101,4 +101,4 @@ Direkt. Fragen Sie nach dem Fundament, nach dem Dach, danach, wie die Technik ab
 **Wann ist die Fertigstellung?** Die Übergabe folgt dem Projektplan; das Investorenmodell sieht Ausstieg @months@ Monate nach voller Zahlung vor.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

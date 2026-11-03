@@ -101,4 +101,4 @@ Directly. Ask about the foundation, the roof, how the services were closed in. I
 **When is completion?** Handover will be set by the project programme; the investor model assumes exit @months@ months after full payment.
 
 **Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+Free of charge. Payment follows approval of the plot and participation terms.

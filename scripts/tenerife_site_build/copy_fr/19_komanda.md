@@ -29,7 +29,7 @@ OXFORD FRAME REAL ASSETS LTD, Angleterre et pays de Galles, Companies House n° 
 
 ### Recevoir un calcul
 
-Laissez votre nom et vos coordonnées. Nous enverrons un calcul pour votre surface et discuterons de la participation. L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain.
+Laissez votre nom et vos coordonnées. Nous enverrons un calcul personnel et discuterons de la participation.
 
 **Кнопка: «Recevoir un calcul»**
-Gratuit. Aucun paiement avant le choix du terrain.
+Gratuit. Paiement après validation du terrain et des conditions de participation.

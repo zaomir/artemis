@@ -46,7 +46,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "c662ed4cf3a8136847cdb2601e75ccc2e4b7d31306aa0c5ac61d15f7ea7ebdb8"
+COPY_SHA256_DEFAULT = "48d5cb14980ee8b89141621f236e09128db52012105e4e7529787862d260079f"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -141,7 +141,7 @@ INVESTOR_SECTIONS = {
     "Денежный выход через 36 месяцев": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
     "Рассчитайте инвестицию": ("calculate", ()),
     "Как финансируется стройка": ("funding", ()),
-    "Что влияет на результат": ("assumptions", ()),
+    "Доходность и налоги": ("assumptions", ()),
     "Контроль и команда": ("control", ()),
     "Документы и вопросы": ("documents", ("s9", "s12", "s13")),
 }

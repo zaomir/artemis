@@ -9,7 +9,7 @@ OG title: Une maison au nord de Tenerife. Participation dès @entry_48@ €
 
 Vingt résidences à La Quinta, Santa Úrsula : terrasses en pierre, hautes fenêtres et piscine commune chauffée. Choisissez votre maison ou participez à sa construction dès @entry_48@ €, avec un objectif de @target@% annualisé et une sortie en numéraire à @months@ mois.
 
-Le prix initial du modèle est de @entry@ € par action, soit @discount@% sous la référence provisoire de @market@ €/m². Cette référence reste à confirmer. [Calculer un investissement](/tenerife/inversores/#calculate) · [Voir les résidences](/tenerife/producto/).
+Le prix initial est de @entry@ € par action, soit @discount@% sous la référence provisoire du modèle de @market@ €/m². [Calculer un investissement](/tenerife/inversores/#calculate) · [Voir les résidences](/tenerife/producto/).
 
 [КАДР F01]
 
@@ -37,7 +37,7 @@ Une, deux ou trois chambres. Architecture Canary Stone : enduit à la chaux, pie
 
 ### Stade actuel
 
-Nous sélectionnons un terrain à La Quinta. L'horizon financier est de @months@ mois après paiement intégral ; les dates seront précisées après le choix du terrain et l'accord sur le programme. Le modèle finance les travaux par les investisseurs et les acheteurs, sans apport complémentaire du promoteur.
+Nous sélectionnons un terrain à La Quinta. L’horizon financier est de @months@ mois entre paiement intégral et sortie. Le calendrier des travaux sera établi pour ce terrain, avec un financement associant investisseurs et acheteurs.
 
 Suivez l'argent qui devient fondations, toiture et verre : un rapport hebdomadaire est prévu. [Avancement](/tenerife/construccion/).
 

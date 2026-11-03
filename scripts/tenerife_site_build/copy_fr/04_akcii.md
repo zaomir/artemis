@@ -28,7 +28,7 @@ Une action est une unité de participation. Son prix est comparé à une référ
 
 ### Prix initial et référence de comparaison
 
-Le prix initial du modèle est de @entry@ € par action : 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins. Aucun tarif actuel comparable de programmes neufs locaux n'a encore été confirmé. @market@ €/m² est une hypothèse, pas un prix actuel vérifié.
+Le prix initial du modèle est de @entry@ € par action : 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins.
 
 Pour les maisons non vendues, le modèle prévoit @growth@% de hausse annuelle. Le prix de chaque acheteur est fixé à la signature et n'augmente plus ensuite. [Référence, formules et sources](/tenerife/mercado/).
 
@@ -36,7 +36,7 @@ Pour les maisons non vendues, le modèle prévoit @growth@% de hausse annuelle. 
 
 Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
 
-Formule : **règlement de sortie = investissement × (1 + @target@%)³**. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.
+Formule du scénario de base : **règlement de sortie = investissement × (1 + @target@%)³**.
 
 ### Calculez votre investissement
 
@@ -44,7 +44,7 @@ Choisissez le nombre d'actions. Le calculateur affiche un paiement intégral et 
 
 ### Comment les travaux sont financés
 
-Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.
+Deux sources : le fonds initial des investisseurs et les paiements des acheteurs de vingt maisons. Le plan de base ne prévoit ni apport complémentaire du promoteur ni crédit bancaire.
 
 | Scénario de base | Montant |
 |---|---|
@@ -55,13 +55,13 @@ Deux sources : le fonds initial des investisseurs et les paiements des acheteurs
 | Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
 | Solde du projet après règlement | @surplus@ € |
 
-Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est @minimum_cash@ €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.
+Les acheteurs paient par étapes : 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel prévisionnel relie ces encaissements aux dépenses de construction et au règlement des investisseurs.
 
-### Ce qui affecte le résultat
+### Rendement et fiscalité
 
-Le budget retient @cost_m2@ €/m² construit et environ un contrat tous les un à deux mois. À 2 100 €/m², il manque @high_shortfall@ € pour le règlement cible complet. Un retard de ventes de deux mois crée un déficit intermédiaire de @delay_gap@ €.
+Le rendement n’est pas garanti. @target@% annualisé et une sortie à @months@ mois sont les objectifs du scénario de base. Le montant et le délai de remboursement du capital et du gain dépendent des ventes et des coûts réels du projet.
 
-Avant tout investissement, il faut un terrain choisi, un budget confirmé et un calendrier viable de ventes et de paiements. @growth@% est une hypothèse de hausse, @target@% un objectif de rendement ; ils nécessitent des ventes réelles.
+Nous ne calculons pas les impôts individuels de l’investisseur ; les montants du site sont présentés avant ces impôts. Avant de participer, consultez un avocat et un expert-comptable indépendants.
 
 ### Suivi et équipe
 
@@ -73,7 +73,7 @@ Avant paiement, vous recevez calcul personnel et conditions : montant, début de
 
 ### Demander un calcul
 
-Laissez nom et contact. Nous calculerons votre montant et préciserons les paramètres à confirmer avant paiement.
+Laissez votre nom et vos coordonnées. Vous recevrez un calcul personnel avec le montant de participation, l’objectif et le calendrier du projet.
 
 **Кнопка: «Demander un calcul»**
 Gratuit. Paiement après validation du terrain et des conditions de participation.

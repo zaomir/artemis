@@ -19,7 +19,7 @@ Pour un hiver à deux, un déménagement en famille ou une maison pour recevoir.
 | Deux chambres | 10 | 68–78 m² | @home_2_low@–@home_2_high@ € |
 | Grande maison | 4 | 85–100 m² | @home_3_low@–@home_3_high@ € |
 
-Ce sont des estimations du modèle, pas un tarif approuvé de maisons précises. Les surfaces comprennent les murs extérieurs, hors parties communes ; les terrasses seront détaillées dans les plans. Le prix est fixé à la signature. Jusque-là, le modèle augmente la référence de @growth@% par an.
+Les budgets utilisent la référence provisoire du modèle. Les surfaces incluent les murs extérieurs et excluent les parties communes ; les plans préciseront les terrasses. Le prix est fixé à la signature. Jusqu’à cette date, le modèle applique @growth@% de hausse annuelle.
 
 ## Une chambre · 48–55 m²
 
@@ -53,7 +53,7 @@ Enduit à la chaux, soubassement en pierre volcanique, hautes fenêtres à cadre
 
 Échéancier proposé : 40% à la signature, 30% aux fondations, 10% au gros œuvre et 20% au règlement final. Un acheteur tardif règle immédiatement les étapes déjà achevées.
 
-Il s'agit de l'achat d'une résidence précise. L'investissement avec sortie en numéraire est présenté séparément et ne donne pas une maison en plus du rachat. [Investisseurs](/tenerife/inversores/) · [Parcours](/tenerife/proceso/).
+Vous achetez la résidence choisie et recevez les clés à l’achèvement du projet. La participation avec sortie en numéraire fait l’objet d’un calcul distinct. [Investisseurs](/tenerife/inversores/) · [Parcours](/tenerife/proceso/).
 
 ### Demander un calcul
 
