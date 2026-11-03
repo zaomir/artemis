@@ -589,7 +589,7 @@ a:hover{color:var(--cs-ink)}
 .s--person .cases--person{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 /* Переключатель языков (2026-11-02): EN/ES/DE/FR в шапке, русский — только ссылкой в подвале */
 .langs{display:flex;gap:10px;margin-left:auto;margin-right:14px;font-size:13px;letter-spacing:.06em}
-.langs a{opacity:.6;text-decoration:none}
+.langs a{color:inherit;opacity:.75;text-decoration:none;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .langs a[aria-current="true"]{opacity:1;text-decoration:underline;text-underline-offset:3px}
 .langs a:hover{opacity:1}
 .lang-ru{margin-top:6px;font-size:12px;opacity:.45}
