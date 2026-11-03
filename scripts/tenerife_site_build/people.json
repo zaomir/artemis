@@ -18,7 +18,24 @@
    "alt": "Simon Subic на площадке комплекса Canary Stone с чертежами"
   }
  ],
- "boris": [],
+ "boris": [
+  {
+   "img": "boris-portrait",
+   "alt": "Boris Ribaut, строительный надзор Artemis de la Cruz"
+  },
+  {
+   "img": "boris-formwork",
+   "alt": "Приёмка опалубки и бетона на площадке Artemis de la Cruz"
+  },
+  {
+   "img": "boris-roof",
+   "alt": "Проверка кровли с солнечными панелями по планшету"
+  },
+  {
+   "img": "boris-drawings",
+   "alt": "Разбор чертежей с подрядчиком на площадке"
+  }
+ ],
  "simon_cases": [
   "crete",
   "montenegro",
