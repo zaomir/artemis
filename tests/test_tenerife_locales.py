@@ -89,8 +89,9 @@ class FiveBuildsTest(unittest.TestCase):
             nav = page[page.index('<header'):page.index("</header>")]
             for _f, name in PAGES:                       # меню и лист ведут внутрь своей локали
                 self.assertIn(f'href="{url_of(locale, name)}"', nav, (locale, name))
-            self.assertIn(f'<a href="{BASE}/tenerife/"', nav, locale)
-            self.assertRegex(nav, r'<a href="https://artemisresort\.com/tenerife/"[^>]*>EN</a>', locale)
+            # EN-ссылка несёт ?lang=en: она сильнее гео-редиректа по стране (см. tests/test_tenerife_geo.py)
+            self.assertIn(f'<a href="{BASE}/tenerife/?lang=en"', nav, locale)
+            self.assertRegex(nav, r'<a href="https://artemisresort\.com/tenerife/\?lang=en"[^>]*>EN</a>', locale)
             for other in ("es", "de", "fr"):
                 self.assertRegex(nav, rf'<a href="{BASE}/tenerife/{other}/"( aria-current="true")?>', (locale, other))
             self.assertIn('class="lang-ru"', page, locale)   # русская версия — тихо в подвале

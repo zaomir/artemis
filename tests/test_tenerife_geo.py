@@ -52,18 +52,20 @@ class GeoRedirectTest(unittest.TestCase):
                 self.assertEqual(r.status_code, 200, country)
                 self.assertIn(b'lang="en"', r.data)
 
-    def test_choice_beats_geo(self):
-        c = self.client()
-        c.set_cookie("art_lang", "en", domain="localhost")
-        r = c.get("/tenerife/", headers={"CF-IPCountry": "ES"})
+    def test_lang_param_beats_geo(self):
+        r = self.client().get("/tenerife/?lang=en", headers={"CF-IPCountry": "ES"})
         self.assertEqual(r.status_code, 200)
         self.assertIn(b'lang="en"', r.data)
 
-    def test_locale_page_remembers_choice(self):
-        r = self.client().get("/tenerife/de/", headers={"CF-IPCountry": "ES"})
-        self.assertEqual(r.status_code, 200)
-        cookies = r.headers.getlist("Set-Cookie")
-        self.assertTrue(any("art_lang=de" in c for c in cookies), cookies)
+    def test_lang_param_goes_to_that_locale(self):
+        r = self.client().get("/tenerife/?lang=de", headers={"CF-IPCountry": "US"})
+        self.assertEqual(r.status_code, 302)
+        self.assertIn("/tenerife/de/", r.headers["Location"])
+
+    def test_geo_redirect_sets_no_cookie(self):
+        r = self.client().get("/tenerife/", headers={"CF-IPCountry": "ES"})
+        self.assertEqual(r.status_code, 302)
+        self.assertIsNone(r.headers.get("Set-Cookie"))
 
     def test_query_kept_on_geo_redirect(self):
         r = self.client().get("/tenerife/?utm_source=x", headers={"CF-IPCountry": "FR"})

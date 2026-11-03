@@ -197,17 +197,17 @@ def _finish(page: str) -> str:
     return page
 
 
+ALL_LANGS = ("en", "ru", "es", "de", "fr")
 LOCALES = ("ru", "es", "de", "fr")   # EN — корень /tenerife/, остальные — /tenerife/<locale>/
 
-# Гео-открытие (02.11.2026): страна посетителя выбирает язык входа, но только до первого выбора.
-# Cloudflare отдаёт CF-IPCountry; cookie art_lang ставится ответом любой локали и отменяет редирект.
+# Гео-открытие (02.11.2026): страна посетителя выбирает язык входа. Сайт не пишет cookie и не трогает
+# хранилище (privacy §7), поэтому выбор не запоминается: уйти с гео-редиректа можно ссылкой ?lang=en,
+# и переключатель языка ведёт на EN именно так. Cloudflare отдаёт страну в CF-IPCountry.
 GEO_LOCALES = {
     "ES": "es",
     "DE": "de", "AT": "de", "CH": "de",
     "FR": "fr", "BE": "fr", "LU": "fr", "MC": "fr",
 }
-LANG_COOKIE = "art_lang"
-LANG_COOKIE_MAX_AGE = 365 * 24 * 3600
 
 
 def _site_page(name: str, locale: str = "en"):
@@ -218,8 +218,6 @@ def _site_page(name: str, locale: str = "en"):
     resp = make_response(_finish(f.read_text(encoding="utf-8")))
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
     resp.headers["Cache-Control"] = "public, max-age=300"
-    resp.set_cookie(LANG_COOKIE, locale, max_age=LANG_COOKIE_MAX_AGE,
-                    samesite="Lax", secure=request.is_secure, httponly=False)
     if not tenerife_indexing():  # QA PS-03: header as well as the meta, legal pages included
         resp.headers["X-Robots-Tag"] = "noindex, nofollow"
     return resp
@@ -232,12 +230,16 @@ def site_noslash():
 
 @bp.route(SITE_PREFIX + "/")
 def site_index():
-    # Гео-вход: без cookie и с известной страной — на языковую версию; выбор в переключателе
-    # (cookie ставит ответ локали) сильнее географии.
-    if not request.cookies.get(LANG_COOKIE):
-        geo = GEO_LOCALES.get((request.headers.get("CF-IPCountry") or "").strip().upper())
-        if geo:
-            return redirect(_with_query(f"{SITE_PREFIX}/{geo}/"), code=302)
+    # ?lang=<code> сильнее географии: так переключатель уводит на выбранный язык и так же
+    # посетитель остаётся на EN, если страну определили как испаноязычную.
+    wanted = (request.args.get("lang") or "").strip().lower()
+    if wanted == "en":
+        return _site_page("index")
+    if wanted in ALL_LANGS:
+        return redirect(_with_query(f"{SITE_PREFIX}/{wanted}/"), code=302)
+    geo = GEO_LOCALES.get((request.headers.get("CF-IPCountry") or "").strip().upper())
+    if geo:
+        return redirect(_with_query(f"{SITE_PREFIX}/{geo}/"), code=302)
     return _site_page("index")
 
 

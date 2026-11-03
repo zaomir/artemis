@@ -1149,7 +1149,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             alias = {loc: ru for ru, loc in zip(ru_parsed[name], local)}
         page = structure(blocks, frames, alts, name, model, alias=alias)
         url = locale_path(slugs[name])
-        langs = [{"code": code.upper(), "url": BASE_URL + lang_url(code, slugs[name]), "current": code == LOCALE}
+        langs = [{"code": code.upper(), "url": BASE_URL + lang_url(code, slugs[name]) + ("?lang=en" if code == "en" else ""), "current": code == LOCALE}
                  for code in ("en", "es", "de", "fr")]
         hreflangs, x_default = hreflang_links(slugs[name])
         out = tpl.render(
@@ -1236,7 +1236,7 @@ def legal_meta(name, path=LEGAL_META):
 
 def simple_pages(env, nav, menu, footer):
     home_url = locale_path("/tenerife/")
-    langs = [{"code": c.upper(), "url": BASE_URL + lang_url(c, "/tenerife/"), "current": c == LOCALE}
+    langs = [{"code": c.upper(), "url": BASE_URL + lang_url(c, "/tenerife/") + ("?lang=en" if c == "en" else ""), "current": c == LOCALE}
              for c in ("en", "es", "de", "fr")]
     more = MORE_LABEL.get(LOCALE, "Информация")
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
