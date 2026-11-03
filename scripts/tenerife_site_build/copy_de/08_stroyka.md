@@ -1,118 +1,74 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/construccion/
-Meta title: Bau Artemis de la Cruz: 9 Phasen, Bericht jede Woche
-Meta description: Nach Plan Start Anfang 2027, Fertigstellung Ende 2028 – Mitte 2029. Neun Phasen, Tagebuch „Datum → Phase → Erledigtes“, Bericht jede Woche an die Aktionäre.
-OG title: Bau Artemis: neun Phasen, Tagebuch und Bericht jede Woche
+Meta title: Neun Stufen vom Grundstück zum fertigen Haus — Artemis de la Cruz
+Meta description: Bauabschnitte, Wochenberichte und @months@ Monate finanzieller Horizont. Investoren und Käufer finanzieren das Projekt ohne zusätzliches Entwicklerkapital.
+OG title: Neun Stufen vom Grundstück zum fertigen Haus
 -->
 
-# Bau nach Plan 2027–2029: neun Phasen und ein Bericht jede Woche
+# Neun Stufen vom Boden bis zum Schlüssel — mit Wochenberichten
 
-Artemis de la Cruz geht nach der Wahl des Grundstücks im Gebiet La Quinta, Santa Úrsula, und der Baugenehmigung auf die Baustelle — nach Plan Anfang 2027. Neun Phasen — vom Grundstück und Fundament bis zum Pool und den Außenanlagen. Die Fertigstellung — nach Plan Ende 2028 bis Mitte 2029. Jede Phase hebt den Preis der Aktie der Bauträgergesellschaft um eine Stufe, und jede Woche erhalten Aktionäre und Hauskäufer einen Bericht.
+Wir wählen ein Grundstück für zwanzig Residenzen in La Quinta, Santa Úrsula. Danach wird der Ablauf konkretisiert. Das Finanzmodell sieht @months@ Monate von voller Einzahlung bis Barausstieg vor.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+[КАДР F15]
 
-### Neun Phasen und die Preisstufen
+### Neun Bauabschnitte
 
-Die Namen der Preisstufen sind dieselben wie auf der Seite zu den Aktien. Eine Bauphase wird abgeschlossen — die Stufe ändert sich.
-
-| Bauphase | Was die Phase abschließt | Preisstufe der Aktie |
-|---|---|---|
-| — | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | Warteliste |
-| — | Baugenehmigung erteilt | Baugenehmigung |
-| 1. Grundstück | Grundstück am Hang vorbereitet | Baugenehmigung |
-| 2. Fundament | Gründung und Sockel aus Vulkangestein | Fundament |
-| 3. Rohbau | Wände, Decken, Öffnungen für die hohen Fenster | Rohbau und Dach |
-| 4. Dach mit Modulen | Flachdach, Solarmodule in der Dachebene | Rohbau und Dach |
-| 5. Technik | Elektrik, Wasser, Klima, Anschluss der Module | Ausbau |
-| 6. Fassade | Kalkputz, Bronzefenster, Steinterrassen | Ausbau |
-| 7. Innenausbau | Böden, Küchen, Bäder | Ausbau |
-| 8. Pool | gemeinschaftlicher beheizter Pool | Ausbau |
-| 9. Außenanlagen | Zugänge, Wege, Grün | Ausbau |
-| — | Nutzungsgenehmigung | Fertigstellung |
-
-[КАДР F14] <!-- служебная пометка, не публикуется -->
-
-### Bautagebuch
-
-Das Tagebuch wird mit Einträgen in einem Format geführt: **Datum → Phase → was erledigt wurde**. Die Einträge beginnen mit dem Start auf der Baustelle. Bis zum Start stehen im Tagebuch nur die Eckdaten des Projekts, in der Reihenfolge und nach Plan:
-
-| Datum, nach Plan | Eckpunkt | Was geschieht |
-|---|---|---|
-| Anfang 2027 | Baubeginn | Start auf der Baustelle in La Quinta |
-| Ende 2028 – Mitte 2029 | Fertigstellung | Nutzungsgenehmigung, Wahl: Dividende oder Meter |
-
-Nach dem Start kommen ins Tagebuch nur die tatsächlich erledigten Schritte, und jeder Eintrag erscheint im wöchentlichen Bericht. Ein Rendering erscheint im Tagebuch nie — nur das, was auf der Baustelle gemacht wurde.
-
-[КАДР F16] <!-- служебная пометка, не публикуется -->
-
-### Was Sie jede Woche erhalten
-
-**Der Baubericht.** Welche Phase läuft, was in der Woche abgeschlossen wurde, was als Nächstes kommt, wann die nächste Preisstufe erreicht ist.
-
-**Ein Bericht für alle.** Den Bericht erhalten Aktionäre und Hauskäufer — vom ersten Kauf bis zur Schlüsselübergabe.
-
-Sie warten nicht zwei Jahre blind auf die Schlüssel. Jede Woche sehen Sie, wie aus Ihrem Geld Beton, Dach und Glas werden.
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Termine
-
-| Was | Wann |
+| Abschnitt | Ergebnis |
 |---|---|
-| Eintragung in die Warteliste | jetzt, kostenlos |
-| Kauf der Aktien | nach Freigabe des Grundstücks durch die Mehrheit der Warteliste: sofort, über ein halbes Jahr oder über ein Jahr |
-| Baubeginn | Anfang 2027, Plan |
-| Fertigstellung | Ende 2028 – Mitte 2029, Plan |
-| Tausch der Aktien gegen Meter | nach der Nutzungsgenehmigung |
+| 1. Erdarbeiten | Baustelle vorbereitet |
+| 2. Fundament | Basis und Sockel fertig |
+| 3. Rohbau | Wände und Decken |
+| 4. Dach | Dach und Module |
+| 5. Technik | Wasser, Strom und Klima |
+| 6. Fassade | Putz, Fenster und Terrassen |
+| 7. Innenausbau | Oberflächen, Küchen und Bäder |
+| 8. Pool | Beheizter Gemeinschaftsbereich |
+| 9. Außenanlage | Wege, Zugänge und Begrünung |
+
+[КАДР F14]
+
+### Meilensteine des Finanzmodells
+
+| Monat ab voller Zahlung | Ereignis im Basisszenario |
+|---|---|
+| 0 | Früher Pool vollständig, Grundstückskauf |
+| 3–30 | Zwanzig Käuferverträge |
+| 8 | Fundament: Käuferzahlungen insgesamt 70% |
+| 18 | Rohbau: Käuferzahlungen insgesamt 80% |
+| Bis 33 | Hauptarbeiten und eingeplante Reserve bezahlt |
+| 36 | Käufer-Schlusszahlungen und Investorenausstieg |
+
+Dies ist der Modellkalender. Tatsächliche Termine hängen von Grundstück, Projektreife und Verkäufen ab.
+
+[КАДР F16]
+
+### Ihr wöchentlicher Bericht
+
+Erledigte Arbeiten, bezahlte Beträge, Käuferzahlungen und Projektkontostand. Das Protokoll folgt: Datum → Abschnitt → Ergebnis → nächster Schritt.
+
+Verfolgen Sie, wie Geld zu Fundament, Dach und Glas wird. Investoren erhalten Berichte bis zur Geldabrechnung, Käufer bis zur Übergabe.
+
+[КАДР F17]
 
 ### Wer die Baustelle führt
 
-Die Baustelle führt der leitende Bauleiter **Boris Ribaut**: Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Wahl des Grundstücks, die Genehmigungen, den Start und die Verbindung von Geld und Bau — der Entwickler **Simon Subic**.
+Boris Ribaut verantwortet Tragwerk, Baustelle und Berichte. Simon Subic führt Grundstück, Start und Finanzierung. [Profile und Aufgaben](/tenerife/equipo/).
 
-Wenn im Bericht etwas unklar ist oder er nicht zu dem passt, was Sie auf der Baustelle gesehen haben, wissen Sie, wem Sie schreiben. Und es antwortet ein Mensch, keine Abteilung.
+[КАДР F18]
 
-**Der Generalunternehmer.** Den Generalunternehmer wählen wir nach dem Projekt und der Baugenehmigung, in einem offenen Wettbewerb unter geprüften lokalen Unternehmen: bester Preis, richtige Qualität, nötige Termine. Einen Lieblingsunternehmer haben wir nicht. Die Kandidatur stimmen wir mit den Investoren ab, die ein Stimmrecht haben.
+### Wie die Arbeiten bezahlt werden
 
-**Kameras.** Auf der Baustelle installieren wir Videokameras, und die wöchentlichen Berichte der Planer und Unternehmer geben wir an die Investoren weiter.
+Anfängliches Investorenkapital und Käuferzahlungen nach Baufortschritt decken das Budget. Kein zusätzliches Entwicklerkapital oder Bankkredit im Basismodell. Der Kaufpreis wird bei Unterzeichnung fixiert; Wachstum gilt nur davor.
 
-[КАДР F18] <!-- служебная пометка, не публикуется -->
+[КАДР F12]
 
-### Woraus wir bauen
+### Wenn sich Termine ändern
 
-- **Dunkles Vulkangestein** im Sockel — das Material der Insel, schwer und dauerhaft.
-- **Kalkputz** — eine helle, warme Fassade, die in der Sonne ruhig altert.
-- **Flachdach** mit schmaler Bronzekante und dunklen Solarmodulen in der Dachebene.
-- **Hohe Fenster** in schmalen Bronzerahmen, tief in die Wand gesetzt.
-- **Steinterrassen**, Bronzegeländer und Glas.
+Verkaufsverzögerungen und Mehrkosten gehören in den aktualisierten Zahlungsplan. Jeder nächste Bauabschnitt braucht eine Finanzierungsquelle. [Finanzierung und Sensitivität](/tenerife/inversores/#funding).
 
-Eine architektonische Sprache für alle zwanzig Häuser — eine Technologie, ein Team, ein Standard vom ersten bis zum zwanzigsten Haus.
+### Berechnung anfordern
 
-[КАДР F12] <!-- служебная пометка, не публикуется -->
-
-### Die Phase und Ihr Geld
-
-Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
-
-### Was Sie bei der Fertigstellung erhalten
-
-Einen Neubau, keine fremde Sanierung. Steinerne Kontur, Dach mit Solarmodulen, smartes Klima und Licht, tiefe Fenster, gemeinschaftlicher beheizter Pool.
-
-### Kurz gefasst
-
-**Wann ist der Start?** Nach Plan — Anfang 2027.
-
-**Wann die Fertigstellung?** Nach Plan — Ende 2028 – Mitte 2029.
-
-**Wie viele Phasen?** Neun: Grundstück, Fundament, Rohbau, Dach mit Modulen, Technik, Fassade, Innenausbau, Pool, Außenanlagen.
-
-**Wie sehe ich den Bau?** Bericht jede Woche und Tagebuch „Datum → Phase → was erledigt wurde“.
-
-**Was steht vor dem Start im Tagebuch?** Nur die Eckdaten nach Plan. Einträge über erledigte Schritte beginnen mit dem Start auf der Baustelle.
-
-**Wann ändert sich der Aktienpreis?** Wenn eine Phase auf der Baustelle abgeschlossen und im Bericht sichtbar ist, nicht nach Kalender.
-
-**Wer verantwortet die Baustelle?** Boris Ribaut.
+Fordern Sie eine Beteiligungsberechnung über @months@ Monate oder den Zahlungsplan Ihrer gewählten Residenz an.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

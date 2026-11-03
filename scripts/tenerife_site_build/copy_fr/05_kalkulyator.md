@@ -1,87 +1,60 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/calculadora/
-Meta title: Calculatrice des actions Artemis de la Cruz: montant, versement, dividende
-Meta description: Choisissez surface, palier et paiement: montant d’achat, six échéances avec réduction de 5 %, prix de livraison et dividende estimé d’Artemis de la Cruz.
-OG title: Calculez vos actions Artemis de la Cruz
+Meta title: Calculez investissement et règlement de sortie — Artemis de la Cruz
+Meta description: Un paiement intégral, @months@ mois et un objectif de @target@% annualisé. Capital et gain séparés. Sans versement annuel ni échange contre une maison.
+OG title: Calculez investissement et règlement de sortie
 -->
 
-# Calculatrice: vos mètres en actions de la société promotrice
+# Combien investir maintenant et recevoir à la sortie
 
-Choisissez la surface ou le type de résidence, le palier d’entrée et le paiement. Le calculateur affiche le montant d’achat, le paiement en six échéances et le prix de livraison de la même surface. Le dividende est estimé à 2,5–3,5 % par an avant impôt sur les sociétés. Une action correspond à un mètre carré.
+Choisissez de 48 à 100 actions à @entry@ € l'unité. Le calculateur affiche investissement, règlement visé et gain à @months@ mois pour @target@% annualisé. Le montant entier est payé une seule fois.
 
-[КАДР F20] <!-- служебная пометка, не публикуется -->
+[КАДР F20]
 
-### Ce que vous saisissez
+### Vos données
 
-**La surface.** De 48 à 100 m², ou un type de résidence:
-- une chambre, 48–55 m²;
-- deux chambres, 68–78 m²;
-- grande maison, 85–100 m².
+**Nombre d'actions.** Choisissez 48, 72 ou 100, ou déplacez le curseur. Il définit la taille de l'investissement, pas une surface de maison réservée.
 
-**Le palier d'entrée.** Liste d'attente 2 950 €, permis 3 100 €, fondations 3 250 €, gros œuvre et toiture 3 450 €, finitions 3 650 €.
+**Paiement.** Intégral à l'entrée. Le modèle ne prévoit ni mensualités d'investisseur ni versements intermédiaires.
 
-**Mode de paiement.** Au comptant ou en six échéances égales. Les six échéances tiennent compte de la réduction de 5 %. «Au comptant» affiche le montant d’achat de base; le calculateur ne déduit pas la réduction pour paiement intégral.
+### Vos résultats
 
-[КАДР F05] <!-- служебная пометка, не публикуется -->
+- **Investissement** — un paiement à l'entrée.
+- **Règlement de sortie** — capital et gain visé réunis.
+- **Gain total** — règlement moins investissement.
+- **Rendement cible** — @target@% annualisé.
+- **Progression totale** — @gain_pct@% sur trois ans.
+- **Source du règlement** — vente ou rachat financé par les ventes de maisons.
 
-### Ce que vous voyez
+### Formules
 
-- **Le montant de l'achat**: ce que coûtent vos actions au palier choisi.
-- **Le versement mensuel**: si vous payez en six versements.
-- **Le prix des mêmes mètres au palier « Livraison »**: 3 850 € le mètre.
-- **Le dividende**: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
-- **Estimation du projet:** une fourchette indicative, distincte du coût des actions choisies.
-- **Deux voies après la livraison**: percevoir le dividende ou échanger les actions contre les mètres de votre résidence.
+Investissement = actions × @entry@ €. Règlement = investissement × (1 + @target@%)³. Gain = règlement − investissement. L'hypothèse de hausse des maisons de @growth@% sert au plan de ventes et ne s'ajoute pas aux @target@% de l'investisseur.
 
-### Les formules
+[КАДР F07]
 
-Tout est calculé ouvertement, sans coefficient caché:
+### Trois exemples du même modèle
 
-- **Montant** = m² × prix du palier.
-- **Versement mensuel** = montant avec 5 % de remise ÷ 6.
-- **Prix à la livraison** = m² × 3 850 €.
-- **Dividende** — 2,5–3,5 % par an en estimation avant impôt sur les sociétés, ce n'est pas une garantie.
-
-[КАДР F07] <!-- служебная пометка, не публикуется -->
-
-### Trois exemples prêts, depuis la liste d'attente
-
-| | 48 m² | 72 m² | 100 m² |
+| | 48 actions | 72 actions | 100 actions |
 |---|---|---|---|
-| Montant à 2 950 € | 141 600 € | 212 400 € | 295 000 € |
-| Versement, six versements avec 5 % de remise | 22 420 € | 33 630 € | 46 708 € |
-| Les mêmes mètres à 3 850 € | 184 800 € | 277 200 € | 385 000 € |
-| Différence | 43 200 € | 64 800 € | 90 000 € |
-| Dividende, en estimation, avant impôt sur les sociétés | 2,5–3,5% par an | 2,5–3,5% par an | 2,5–3,5% par an |
+| Investissement intégral | @entry_48@ € | @entry_72@ € | @entry_100@ € |
+| Règlement visé à @months@ mois | @exit_48@ € | @exit_72@ € | @exit_100@ € |
+| Dont gain | @gain_48@ € | @gain_72@ € | @gain_100@ € |
 
-**48 mètres**: une maison avec une chambre. Entrée depuis la liste d'attente: 141 600 €, soit 22 420 € par mois. Après la livraison: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés, ou votre propre maison.
+### D'où vient l'argent de sortie
 
-**72 mètres**: une maison avec deux chambres. 212 400 €, soit 33 630 € par mois. Dividende: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
+Des acheteurs de vingt résidences. Le scénario de base couvre budget et règlement complet des investisseurs sans apport supplémentaire du promoteur. [Financement](/tenerife/inversores/#funding).
 
-**100 mètres**: une grande maison. 295 000 €, soit environ 46 708 € par mois. Dividende: 2,5–3,5 % par an en estimation, avant impôt sur les sociétés.
+### Ce qui affecte le calcul
 
-[КАДР F11] <!-- служебная пометка, не публикуется -->
+@market@ €/m² est une référence provisoire, @growth@% une hypothèse de hausse annuelle et @target@% un rendement cible. Ventes, coûts et délai réel peuvent modifier le paiement. [Hypothèses et sensibilité](/tenerife/inversores/#assumptions).
 
-### Estimation du dividende
+### Entrer dans le projet
 
-Les 2,5–3,5 % par an avant impôt sur les sociétés sont une estimation du projet, pas un paiement garanti. Elle est présentée séparément du coût des actions et n’est pas recalculée lors d’un changement de palier dans ce calculateur. Sources locatives, charges et hypothèses figurent dans le [modèle locatif](/tenerife/alquiler/).
-
-### Si le palier est déjà plus avancé
-
-Choisissez le palier correspondant dans le calculateur: montant et échéance sont actualisés selon la même formule. L’échelle complète et l’exemple de participation sont sur [Investisseurs](/tenerife/inversores/).
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Ordre d'entrée
-
-L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
+D'abord une demande gratuite, puis terrain et conditions. Les @months@ mois commencent au paiement intégral. [Toutes les étapes](/tenerife/proceso/).
 
 ### Après le calcul
 
-Laissez votre nom et vos coordonnées. Nous enverrons votre calcul et discuterons de la participation. La surface, le palier et le paiement proviennent du calculateur; vous ne saisissez pas de montant manuellement.
+Laissez nom et contact pour un calcul personnel. La quantité choisie et le résultat recalculé accompagnent la demande ; nul besoin de saisir le montant.
 
-[КАДР F22] <!-- служебная пометка, не публикуется -->
-
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Nous n'encaissons rien avant le choix du terrain.
+**Кнопка: «Demander un calcul»**
+Gratuit. Paiement après validation du terrain et des conditions de participation.

@@ -8,7 +8,7 @@ OG title: La Quinta, Santa Úrsula: the north of Tenerife for living
 
 # La Quinta, Santa Úrsula: the north of Tenerife, where people live
 
-La Quinta is a residential district of Santa Úrsula on the green northern slope of Tenerife. Puerto de la Cruz is 8 km away, 10–15 minutes by car; Tenerife Norte airport is 15–20 minutes away; Playa del Ancón is about 3 km away. This is where we are choosing the plot for twenty Artemis residences. Shares in the developer company on the waiting list are 2 950 € per metre.
+La Quinta is a residential neighbourhood in Santa Úrsula on Tenerife’s green northern slope. Puerto de la Cruz is 8 km away and Playa del Ancón around 3 km. Here we are selecting a plot for twenty Artemis residences. [Home purchase](/tenerife/producto/) and [investment participation](/tenerife/inversores/) are described separately.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -40,11 +40,9 @@ Northern Tenerife has longstanding ties with Central Europe. German and Swiss fa
 
 International schools, local communities and services for foreign residents offer ways into a new environment. Children's schools, languages, sport and neighbours provide opportunities to meet people while staying connected to a European social circle.
 
-### Canary Islands taxes: IGIC instead of VAT
+### Everyday life
 
-The Canary Islands are [outside the scope of Spanish VAT, or IVA](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). The local indirect tax, IGIC, applies instead: its [standard rate is 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), compared with a standard IVA rate of 21% in mainland Spain.
-
-Rates vary for particular goods and services. Property purchase taxes and costs are calculated separately for each type of transaction; the standard IGIC rate alone does not determine the full cost of acquiring a home.
+Choose a place to live by its everyday journeys: shops, healthcare, schools and the trip into town. Try those routes and compare several island neighbourhoods before choosing a home.
 
 ### Where it is on the map
 
@@ -88,29 +86,29 @@ If you have already looked at the south, you know what January looks like there:
 
 La Quinta is a residential area, not a holiday zone. People live here all year round; they do not check in for a week.
 
-For a house this means two things. The neighbours are people who live here permanently and do not change every week. And the long-term letting from which an Artemis shareholder's dividend is calculated rests on those who need the town, the capital and the airport close by: residents, not the tourist season.
+Neighbours live here year-round. Future owners should consider an ordinary weekday alongside the view from the terrace.
 
 The twenty Artemis houses form a small, enclosed complex, not a tower block. One architectural language, Canary Stone: warm lime plaster, a plinth of dark volcanic stone, flat roofs with solar panels, tall windows in bronze frames, stone terraces.
 
 ### The market nearby
 
-Existing housing in La Quinta and neighbouring new developments are different segments. Historical prices, periods and comparisons are on the [market and price-per-metre page](/tenerife/mercado/).
+Price references, their limits and sources are on the [market page](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
-### Why prices in the north are rising
+### Growth in the model
 
-Historical indices and price growth, with source names and periods, are on the [market page](/tenerife/mercado/).
+The @growth@% annual increase is a financial-model assumption, not a measured market growth rate. Home prices lock at signing. [Formulas](/tenerife/mercado/).
 
 ### Letting in the north
 
-Long-term letting, costs and calculation assumptions are explained in the [rental model](/tenerife/alquiler/).
+Long-term letting is an option for a homeowner. Investors receive no annual distributions. [Using a residence](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### How entry works
 
-Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
+Requesting a calculation is free. Payment follows plot and participation-term approval. [Process](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 

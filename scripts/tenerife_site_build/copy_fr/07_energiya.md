@@ -72,17 +72,15 @@ Le programme voisin La Quinta 2 est lui aussi annoncé avec des panneaux solaire
 
 ### Pourquoi c'est important pour la location
 
-Le dividende Artemis se calcule sur la location longue durée après charges: la maison est louée longtemps, à un locataire pour un an et plus. Un locataire de longue durée, au nord, regarde la facture d'électricité comme vous. Une maison où il fait chaud en hiver sans radiateur, où la facture d'électricité est plus basse et où la piscine est chauffée se loue plus facilement, et le locataire reste plus volontiers une année de plus. Moins de mois vides entre deux locataires, un loyer plus régulier après charges.
+Le locataire compare confort et factures. Lumière, climat et isolation influencent l’usage et les charges. La location ne fait pas partie du rendement calculé de l’investisseur.
 
 ### Pourquoi c'est important pour le prix du mètre
 
-Les équipements influent sur les charges du logement et font déjà partie de la résidence. Prix des maisons achevées et comparaison avec la participation par actions sur [Investisseurs](/tenerife/inversores/).
+Les équipements font partie des prestations prévues. Achat et investissement sont calculés séparément. [Résidences](/tenerife/producto/) · [Investisseurs](/tenerife/inversores/).
 
 ### Pourquoi c'est important pour l'actionnaire
 
-L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
-
-Le dividende, c'est le loyer moins les charges. Moins les maisons dépensent en électricité, en eau et pour la piscine, plus il reste du loyer. Le dividende estimé: 2,5–3,5 % par an avant impôt sur les sociétés. Le poste le plus lourd, les charges de copropriété, 21,0%: elles couvrent la piscine commune chauffée et l'entretien des extérieurs. Moins les équipements communs consomment sur le réseau, plus ce poste baisse.
+L’investisseur reçoit des fonds à la sortie issus des ventes, pas des loyers. Objectif : @target@% annualisé sur @months@ mois. Qualité et équipements soutiennent la demande sans assurer seuls ce résultat.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -102,7 +100,7 @@ Sur le versant nord, le soleil est plus doux qu'au sud, et c'est pourquoi l'endr
 
 **La piscine en hiver?** Commune, chauffée, utilisable toute l'année.
 
-**Quel lien avec le dividende?** Moins de charges, plus de loyer restant par action.
+**Quel lien avec l’investissement ?** Les équipements influencent la demande ; le gain dépend des ventes, du budget et du délai.
 
 **Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

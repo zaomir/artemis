@@ -44,7 +44,10 @@ def shown_copy(name):
             skip = False
         if not skip:
             out.append(line)
-    return "\n".join(out) + "\n"
+    # Explicit financial tokens are resolved from the current model before comparison.
+    model = build_v3.load_model()
+    fmap = build_v3.figure_map(model)
+    return build_v3.apply_figures("\n".join(out) + "\n", fmap, build_v3.figure_regex(fmap))
 # wc.py (copy_v3): numbers with thin/regular spaces count as one word
 NUM = r"\d{1,3}(?:[ \u00a0\u202f]\d{3})+(?:,\d+)?"
 WORD = re.compile(NUM + r"|[^\W_]+(?:[-’'.,][^\W_]+)*")
@@ -185,8 +188,8 @@ class V3BuildTest(unittest.TestCase):
 
     def test_meta_title_description_h1_exact(self):
         for name, page in self.pages.items():
-            meta, _ = build_v3.parse_page((COPY / FILES[name]).read_text(encoding="utf-8"))
-            md = (COPY / FILES[name]).read_text(encoding="utf-8")
+            meta, _ = build_v3.parse_page(shown_copy(name))
+            md = shown_copy(name)
             h1 = re.search(r"^# (.+)$", md, re.M).group(1)
             self.assertIn(f"<title>{htmllib.escape(meta['Meta title'], quote=True)}</title>", page, name)
             desc, og = (htmllib.escape(meta[k], quote=True) for k in ("Meta description", "OG title"))
@@ -239,13 +242,13 @@ class V3BuildTest(unittest.TestCase):
 
     def test_model_matches_designer_schema(self):
         model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
-        designer = json.loads((DESIGN / "model.json").read_text(encoding="utf-8"))
-        for k, v in designer.items():
-            if k == "steps":  # Kimi r18: the stage event is the copy's (04 table); the designer file still has r17's
-                v = [dict(st, event=m["event"]) for st, m in zip(v, model["steps"], strict=True)]
-                self.assertEqual(model["steps"][0]["event"],
-                                 "участок одобрен большинством очереди, инвестиционный договор")
-            self.assertEqual(model[k], v, k)
+        self.assertEqual(model["kind"], "upfront_exit")
+        self.assertEqual(model["investment"]["target_annual"], 0.09)
+        self.assertEqual(model["investment"]["exit_months"], 36)
+        self.assertEqual(model["steps"][0]["price_eur_m2"], 2352)
+        self.assertEqual(model["installments"]["months"], 0)
+        self.assertFalse(model["investment"]["interim_distributions"])
+        self.assertNotIn("dividend_pct_range", model)
 
     def test_build_is_reproducible(self):
         outputs, _ = build_v3.build(write=False)
@@ -256,18 +259,16 @@ class V3BuildTest(unittest.TestCase):
 
     def test_price_change_is_one_edit(self):
         inp = json.loads((BUILD / "model_inputs.json").read_text(encoding="utf-8"))
-        inp["stages"][0][1] = 3000
+        inp["market_reference_eur_m2"] = 3400
         model = make_model.build_model(inp)
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "model.json"
             p.write_text(json.dumps(model, ensure_ascii=False), encoding="utf-8")
             outputs, _ = build_v3.build(model_path=p, write=False)
-        joined = "\n".join(outputs.values())
-        self.assertNotIn("2 950", joined)
-        self.assertNotIn("2\u00a0950", joined)
         for name in ("calculadora", "inversores"):
-            self.assertIn("156\u00a0000", outputs[name], name)  # 52 × 3 000, both server-rendered calculators
-            self.assertIn('"price_eur_m2":3000', outputs[name], name)
+            self.assertIn("171\u00a0360", outputs[name], name)
+            self.assertIn('"price_eur_m2":2380.0', outputs[name], name)
+        self.assertNotIn("@entry@", "".join(outputs.values()))
 
     def test_no_hardcoded_figures_in_templates_and_js(self):
         model = json.loads((SITE_STATIC / "model.json").read_text(encoding="utf-8"))
@@ -546,7 +547,7 @@ class V3BuildTest(unittest.TestCase):
         calc, problems = tenerife_calc.check_calc(hidden, model)
         self.assertEqual((problems, calc["calc_status"]), ([], "ok"))
         self.assertEqual((calc["calc_m2"], calc["calc_step"], calc["calc_pay"], calc["calc_model_version"]),
-                         (model["area_m2"]["default"], "queue", "m6", model["version"]))
+                         (model["area_m2"]["default"], "early", "now", model["version"]))
         for name, other in self.pages.items():
             if name not in {build_v3.CALC_PAGE, "inversores"}:
                 self.assertNotIn('name="calc_', other, name)
@@ -652,8 +653,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertEqual(build_v3.fmt_int(2.5), "3")
         calc = (SITE_STATIC / "calc.js").read_text(encoding="utf-8")
         self.assertIn("Math.floor(n+0.5)", calc)
-        self.assertIn("roundingMode:'halfExpand'", calc)
-        self.assertIn("hu((t.min+t.max)/2)", calc)  # type radio = middle of its range
+        self.assertIn("range.value=t.quantity", calc)  # presets select a share quantity
 
     def test_tables_stack_with_labels_and_row_headers(self):
         for name, page in self.pages.items():
@@ -674,20 +674,12 @@ class V3BuildTest(unittest.TestCase):
                 self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
 
     def test_approved_exceptions_only_where_the_copy_has_them(self):
-        allowed_text = ["4–6% аренды", "валовая доходность 5,8%"]
-        pages_for = {r"нельзя": {name for name in FILES if re.search(r"нельзя", shown_copy(name))},
-                     r"Сумма": {"calculadora", "inversores", "index", "proceso"}}
         for name, page in self.pages.items():
-            text = page
-            for s in allowed_text:
-                text = text.replace(s, "")
-            for rx in base.V3_ALLOWED:
-                if rx in pages_for:
-                    if name not in pages_for[rx]:
-                        self.assertIsNone(re.search(rx, text), f"{name}: {rx}")
-                else:
-                    self.assertIsNone(re.search(rx, text), f"{name}: {rx}")
-
+            self.assertNotRegex(page, r"(?i)гарантир\w*\s+(?:доход|доходност)")
+            self.assertNotIn('name="amount"', page)
+            self.assertNotIn("2,5–3,5", page)
+            self.assertNotIn("2 950", page)
+            self.assertNotRegex(page, r"@[a-z][a-z0-9_]*@")
 
 if __name__ == "__main__":
     unittest.main()

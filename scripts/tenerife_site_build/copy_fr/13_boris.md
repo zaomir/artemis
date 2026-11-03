@@ -8,7 +8,7 @@ OG title: Boris Ribaut: le plan, le travail, le rapport, et la livraison des mai
 
 # Je suis Boris Ribaut, directeur de chantier d'Artemis de la Cruz
 
-Je dirigerai le chantier d'Artemis de la Cruz dans le secteur de La Quinta, à Santa Úrsula, dès que le terrain sera choisi et approuvé par les inscrits sur la liste d'attente. Vingt résidences, financées par les actions de la société promotrice et par la vente des maisons. Le chantier, la structure, les rapports et la livraison des maisons sont pour moi. Selon le plan, nous entrons sur le chantier au début de 2027; la livraison est prévue fin 2028 – mi-2029. Chaque semaine, vous recevrez un rapport sur ce qui a été fait.
+Je supervise le chantier Artemis : structure, entreprises, rapports et remise des maisons. Nous choisissons un terrain pour vingt résidences à La Quinta. Investisseurs et acheteurs financent. Le calendrier suivra le terrain, avec rapports hebdomadaires prévus.
 
 [КАДР F18] <!-- служебная пометка, не публикуется -->
 
@@ -62,9 +62,9 @@ Les neuf étapes, le calendrier prévu et le format du rapport hebdomadaire figu
 
 ### Ce que contient mon rapport
 
-Chaque semaine, la même chose, dans le même ordre: quelle étape est en cours, ce qui a été fait dans la semaine, ce qui suit, quand vient le prochain palier de prix. L'étape close entre dans le journal de chantier par une fiche « date → étape → ce qui a été fait ». Vous voyez ainsi une succession, et non des promesses.
+Le rapport présente étape, travaux, dépenses, encaissements et suite. Les jalons se confirment sur chantier et au journal.
 
-Les cinq points qui font monter le prix de l'action se présentent ainsi dans le rapport:
+Jalons pour vérifier les travaux :
 
 - **Permis**: le permis de construire en main.
 - **Fondations**: assise et soubassement de pierre achevés.
@@ -98,7 +98,7 @@ Directement. Interrogez-moi sur les fondations, sur la toiture, sur la manière 
 
 **Comment suivre le travail?** Par le rapport chaque semaine: l'étape, ce qui a été fait, ce qui suit.
 
-**Quand la livraison?** Selon le plan: fin 2028 – mi-2029.
+**Quand la livraison ?** Elle sera précisée au programme ; le modèle investisseur prévoit sortie @months@ mois après paiement intégral.
 
 **Кнопка: «Recevoir un calcul»**
 Gratuit. Nous n'encaissons rien avant le choix du terrain.

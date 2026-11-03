@@ -23,12 +23,20 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 - Investor release 2026-11-03: 14 content pages, legal pages, `_notice.html` and `_404.html` per locale.
   `04_akcii.md` is the sole source for `/inversores/`; `19_komanda.md` owns `/equipo/`.
   The same complete C9 calculator serves `/inversores/#calculate` and `/calculadora/`, with identical model/JS,
-  labels from 05, and the existing waitlist endpoint/three calculator fields. Financial parameters and logic are unchanged.
+  labels from i18n_strings.json, and the existing waitlist endpoint/three calculator fields.
+  The 2026-11-03 cash-exit release replaces the rental/stage offer: full upfront payment, 36 months, 9% annualised
+  target and cash exit only. Entry is 70% of a provisional 3,360 €/m² reference; 6% annual growth applies only until
+  each buyer signs. Neither the reference nor the growth is presented as observed current market data.
+  The monthly schedule uses investor funding and buyer payments only, with zero developer top-up or debt.
+  The 564-share pool is a planning input, never a claim of subscriptions already secured.
+  Lead amounts, exit proceeds, income, term and target are recomputed server-side; old stage/installment payloads
+  are marked stale and normalized. Legacy DB field names remain compatible but now hold share quantity and price.
+  Validation and financial references: `docs/qa/ARTEMIS_EXIT_MODEL_2026-11-03.md`.
 - Primary menu: producto / inversores / norte / construccion / equipo, then a request link to `#ochered`.
   The footer owns the auxiliary links in Project / Participation / Team / Documents groups; mobile uses the same
   primary hierarchy and exposes the four non-RU languages. Russian remains a quiet footer link.
-- Full entry procedure belongs to proceso, rental assumptions to alquiler, market comparisons to mercado,
-  price stages and participation to inversores. Other pages link to those owners instead of repeating the full copy.
+- Full entry procedure belongs to proceso, home-use/letting context to alquiler, model-price references to mercado,
+  financing and cash exit to inversores. Other pages link to those owners instead of repeating the full copy.
 - All supported acciones slash/no-slash/HTML and locale/preview variants redirect once to the matching inversores
   URL with query intact. Its semantic section IDs retain s1…s13 aliases. The builder deletes old acciones.html.
 - Profile/spacing release 2026-11-03: `people.json` assigns a portrait and three contextual photos to the
@@ -52,9 +60,11 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   Text, title, description and H1 are transferred without edits.
 - Numbers: one data source. Edit `scripts/tenerife_site_build/model_inputs.json`, then
   `python scripts/tenerife_site_build/make_model.py` → `app/static/tenerife/site/model.json`
-  (every price / dividend / tier figure of the copy as a token, plus the calculator block), then
+  (explicit @name@ financial tokens, calculator inputs and monthly project cash flow), then
   `python scripts/tenerife_site_build/build_v3.py` → these HTML files + `app/static/tenerife/site/site.css`.
-  `make_model.py --check` proves the model reproduces `numbers.md` from `model_inputs.baseline.json`.
+  `make_model.py --check` checks generation and base funding; `copy_v3/make_numbers.py` exports the current
+  token table to `numbers.md`. The old `model_inputs.baseline.json` and designer price curve remain historical
+  references and do not drive the public calculator. Explicit tokens prevent unrelated equal numbers changing together.
   Templates and `calc.js` contain no figures (tested).
 - Photos: `[КАДР Fxx]` → project photos in `app/static/tenerife/site/img/` per `frames.json`
   (preferred photo per frame; T47: each photo in ONE slot on the whole site, heroes first, the build fails on a

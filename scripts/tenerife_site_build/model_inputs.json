@@ -1,42 +1,10 @@
 {
- "_comment": "Единственный источник цифр сайта /tenerife/ (RU v3). Правка цены = правка здесь, затем: python3 scripts/tenerife_site_build/make_model.py && python3 scripts/tenerife_site_build/build_v3.py. Значения ниже = модель copy_v3/numbers.md (PROPOSAL, ждут ОК основателя).",
- "stages": [
-  [
-   "Очередь",
-   2950
-  ],
-  [
-   "Разрешение",
-   3100
-  ],
-  [
-   "Фундамент",
-   3250
-  ],
-  [
-   "Коробка и кровля",
-   3450
-  ],
-  [
-   "Отделка",
-   3650
-  ],
-  [
-   "Ввод",
-   3850
-  ]
- ],
- "installment_months": 6,
- "rent_mid": 13.5,
- "rent_range": [
-  12,
-  15
- ],
- "rent_puerto": 17,
- "living_area_range": [
-  1308,
-  1510
- ],
+ "_comment": "Self-funded exit model approved for site adaptation, 2026-11-03. Market reference provisional.",
+ "market_reference_eur_m2": 3360,
+ "early_discount": 0.3,
+ "growth_annual": 0.06,
+ "target_annual": 0.09,
+ "exit_months": 36,
  "units": [
   [
    "Одна спальня",
@@ -57,93 +25,111 @@
    100
   ]
  ],
- "calc_area_range": [
-  48,
-  100
- ],
- "calc_default_area": 52,
- "house_price_range": [
-  3800,
-  4600
- ],
- "costs": {
-  "ibi_per_year": 300,
-  "ibi_area": 80,
-  "community_per_month": 200,
-  "management_share": 0.1,
-  "igic": 1.07,
-  "vacancy_months": 0.5,
-  "insurance_per_year": 280,
-  "insurance_area": 80,
-  "repair_share": 0.05,
-  "waste_per_year": 120,
-  "waste_area": 80
+ "budget": {
+  "land_eur": 799000,
+  "built_area_factor": 1.1,
+  "construction_eur_m2": 1750,
+  "technical_fraction": 0.1,
+  "infrastructure_eur": 200000,
+  "other_eur": 100000,
+  "contingency_fraction": 0.1
  },
- "scenario_mild": {
-  "rent": 13.5,
-  "area": 75.5,
-  "management_share": 0.08,
-  "vacancy_months": 0.5,
-  "repair_share": 0.04
- },
- "scenario_strict": {
-  "rent": 12,
-  "area": 65.4,
-  "management_share": 0.12,
-  "vacancy_months": 1,
-  "repair_share": 0.06
- },
- "tax_igic": 0.07,
- "tax_ajd": 0.01,
- "topup": [
-  50,
-  72
- ],
- "example_bill_per_month": 120,
- "pvgis_flat": 1490,
- "canary_avg": 1771,
- "pvgis_optimal": 1578,
- "market": {
-  "lq3_prices": [
-   420000,
-   425000
+ "financing": {
+  "early_pool_fraction": 0.4,
+  "buyer_installments": [
+   0.4,
+   0.3,
+   0.1,
+   0.2
   ],
-  "lq3_area": 125,
-  "lq2_prices": [
-   399999,
-   425700
+  "foundation_month": 8,
+  "shell_month": 18,
+  "sales_fee_fraction": 0.03,
+  "sale_months": [
+   3,
+   4,
+   6,
+   7,
+   9,
+   10,
+   12,
+   13,
+   14,
+   16,
+   17,
+   19,
+   20,
+   21,
+   23,
+   24,
+   26,
+   27,
+   29,
+   30
   ],
-  "lq2_area": 110,
-  "kelify_su": "10,00–11,67",
-  "kelify_80": 975,
-  "kelify_60": 900,
-  "kelify_132": 1500
- },
- "stage_ids": [
-  "queue",
-  "permit",
-  "foundation",
-  "shell_roof",
-  "finishing",
-  "handover"
- ],
- "stage_events": [
-  "участок одобрен большинством очереди, инвестиционный договор",
-  "получена лицензия на строительство",
-  "основание и каменный цоколь готовы",
-  "стены, перекрытия, кровля с панелями",
-  "фасад, инженерия, интерьеры, бассейн",
-  "разрешение на ввод в эксплуатацию"
- ],
- "current_stage": 0,
- "unit_ids": [
-  "one_bed",
-  "two_bed",
-  "large"
- ],
- "installment_discount_pct": 5,
- "dividend_pct_range": [
-  2.5,
-  3.5
- ]
+  "sale_unit_types": [
+   3,
+   2,
+   1,
+   2,
+   1,
+   3,
+   2,
+   1,
+   2,
+   1,
+   3,
+   2,
+   2,
+   2,
+   1,
+   3,
+   2,
+   2,
+   2,
+   1
+  ],
+  "cost_phases": [
+   [
+    0,
+    0,
+    0.07
+   ],
+   [
+    1,
+    3,
+    0.03
+   ],
+   [
+    4,
+    6,
+    0.1
+   ],
+   [
+    7,
+    12,
+    0.2
+   ],
+   [
+    13,
+    18,
+    0.25
+   ],
+   [
+    19,
+    24,
+    0.2
+   ],
+   [
+    25,
+    30,
+    0.1
+   ],
+   [
+    31,
+    33,
+    0.05
+   ]
+  ]
+ }
 }

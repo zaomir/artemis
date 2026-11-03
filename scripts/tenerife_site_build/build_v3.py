@@ -46,7 +46,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "fb0ef0adb49e7cfe60670b2a7c919ad26625c1aba2ad3c2623471b99d67e07fc"
+COPY_SHA256_DEFAULT = "c662ed4cf3a8136847cdb2601e75ccc2e4b7d31306aa0c5ac61d15f7ea7ebdb8"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -137,9 +137,11 @@ FOOTER_GROUPS = [("project", ("index", "producto", "norte", "construccion", "ene
 INVESTOR_SECTIONS = {
     "Проект и текущая стадия": ("overview", ("s2", "s10")),
     "Инвестиция или покупка резиденции": ("comparison", ("s1",)),
-    "Шесть ступеней цены": ("price-stages", ("s3", "s4")),
-    "Два результата участия": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
-    "Рассчитайте свою площадь": ("calculate", ()),
+    "Ранняя цена и база сравнения": ("price-stages", ("s3", "s4")),
+    "Денежный выход через 36 месяцев": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
+    "Рассчитайте инвестицию": ("calculate", ()),
+    "Как финансируется стройка": ("funding", ()),
+    "Что влияет на результат": ("assumptions", ()),
     "Контроль и команда": ("control", ()),
     "Документы и вопросы": ("documents", ("s9", "s12", "s13")),
 }
@@ -196,6 +198,9 @@ def figure_map(model):
 def figure_regex(fmap):
     alts = []
     for tok in sorted(fmap, key=len, reverse=True):
+        if tok.startswith("@") and tok.endswith("@"):
+            alts.append(re.escape(tok))
+            continue
         tail = r"(?![\d,]\d)" if tok[-1].isdigit() else ""
         alts.append(r"(?<![\d,–])(?<!\d[ \u00a0])" + re.escape(tok) + tail)
     return re.compile("|".join(alts))
@@ -492,8 +497,8 @@ def body_item(b):
 STEP_P_RX = re.compile(r"^<strong>(\d+)\. ([^<]+)</strong>\s+(.+)$")   # 09 «Шесть шагов»: **1. Запись.** текст
 C7_SENTENCE_TITLES = {"Порядок входа", "Как устроен вход", "Как это работает"}  # one paragraph -> one step per sentence
 SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[А-ЯЁA-Z])")
-MINI_LADDER = {("index", "Как это работает"), ("construccion", "Девять стадий и ступени цены"),
-               ("mercado", "Ступени Artemis рядом с рынком")}          # C8 mini (01, 08, 12)
+MINI_LADDER = set()  # The previous stage-price ladder does not apply to the cash-exit model.
+
 # C10 log: OFF until copy_v3 has confirmed entries «дата → стадия → что сделано» (DESIGN C10: concrete dates).
 # The sections keep their copy (text + planned-dates table). To enable: put
 # {("index", "Стройка"), ("construccion", "Журнал стройки")} back.
@@ -820,12 +825,7 @@ RU_FORM_UI = {
 
 
 def calc_ui():
-    """Подписи калькулятора: у RU — свои (в шаблоне и в модели), у локалей — из i18n_strings.json."""
-    if LOCALE == "ru":
-        return {"aria": "Калькулятор", "area": "Площадь", "area_label": "Площадь, м²", "step": "Ступень входа",
-                "pay": "Способ оплаты", "unit": "м²", "types": {}, "steps": {"queue": locale_cfg.STAGE_NAMES["ru"][0]}}
-    c = i18n_strings()[LOCALE]["calc"]
-    return dict(c["ui"], types=c["types"], steps=c["steps"])
+    return i18n_strings()[LOCALE]["calc"]["ui"]
 
 
 def form_ui():
@@ -875,39 +875,24 @@ def fmt_pct(x):
 
 
 def calc_view(model):
-    """C9 defaults rendered into the HTML (no CLS, correct without JS) + the inline #cs-model island data."""
-    steps = model["steps"]
-    m2 = model["area_m2"]["default"]
-    cur = next(st for st in steps if st.get("current"))
-    hand = next(st for st in steps if not st["entry"])
-    total = m2 * cur["price_eur_m2"]
-    d = model["dividend_eur_per_share_year"]
-    months = model["installments"]["months"]
-    disc = model["installments"].get("discount_pct", 0) / 100.0
-    pct_min, pct_max = model.get("dividend_pct_range", [2.5, 3.5])
-
-    def eur(v):
-        return fmt_int(v) + NBSP + "€"
-    island = {"steps": [{k: st[k] for k in ("id", "price_eur_m2", "entry") if k in st}
-                        | ({"current": True} if st.get("current") else {}) for st in steps],
-              "installments": {"months": months, "discount_pct": model["installments"].get("discount_pct", 0)},
-              "dividend_eur_per_share_year": d, "dividend_pct_range": [pct_min, pct_max],
-              "area_m2": model["area_m2"], "unit": calc_ui()["unit"],
-              "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
+    """A fixed full-payment scenario with one cash exit; defaults work without JS."""
+    quantity = model["area_m2"]["default"]
+    cur = model["steps"][0]
+    investment = model["investment"]
+    total = quantity * cur["price_eur_m2"]
+    result = total * (1 + investment["target_annual"]) ** (investment["exit_months"] / 12)
     cu = calc_ui()
-    def type_name(t):
-        return cu["types"].get(t["id"], t["name"])
-    def step_name(st):
-        return cu["steps"].get(st["id"], st["name"])
-    return {"m2": m2, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"], "months": months,
-            "unit": cu["unit"],
-            "types": [dict(t, name=type_name(t), checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
-            "steps": [dict(st, label=step_name(st) + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
-            "current": cur["id"],
-            "sum": eur(total), "month": eur(total * (1 - disc) / months),
-            "handover": eur(m2 * hand["price_eur_m2"]),
-            "pct": fmt_pct(pct_min).rstrip("%") + "–" + fmt_pct(pct_max),
-            "m2_out": f"{m2} {cu['unit']}",
+    def eur(value):
+        return fmt_int(value) + NBSP + "€"
+    island = {"steps": [{key: value for key, value in st.items() if key != "name"} for st in model["steps"]],
+              "investment": investment, "area_m2": model["area_m2"], "unit": cu["unit"],
+              "types": [{key: value for key, value in t.items() if key != "name"} for t in model["types"]]}
+    return {"m2": quantity, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"],
+            "unit": cu["unit"], "types": [dict(t, checked=t["quantity"] == quantity) for t in model["types"]],
+            "current": cur["id"], "sum": eur(total), "exit": eur(result), "gain": eur(result-total),
+            "pct": fmt_pct(investment["target_annual"] * 100), "term": str(investment["exit_months"]),
+            "gain_pct": fmt_pct((result/total-1) * 100), "entry": eur(cur["price_eur_m2"]),
+            "m2_out": f"{quantity} {cu['unit']}",
             "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
 
@@ -947,32 +932,7 @@ def site_css(model, frames_cfg=None):
 
 
 def calc_labels(page, alias=None):
-    """C9 labels are the copy's own words: «Что вы видите» (result names) and «Способ оплаты.» (options)."""
-    alias = alias or {}
-    seen = next(s for s in page["sections"] if alias.get(s["title"], s["title"]) == "Что вы видите")
-    led = next(i for i in seen["body"] if i["kind"] == "ledger")["items"]
-    leads = [re.sub(r"<[^>]+>", "", x["lead"]) for x in led]
-    rests = [x["rest"] for x in led]
-    if len(leads) != 6:
-        raise BuildError("calculator: «Что вы видите» must list 6 results")
-    if LOCALE == "ru":
-        # RU: строка именно «Способ оплаты.» — раньше брали любой абзац с «или» и подставляли
-        # «От 48 до 100 м² — / Тип резиденции:» (найдено 03.11.2026 на живом калькуляторе)
-        pay = next((re.sub(r"^<strong>.+?</strong> ", "", i["html"]) for s in page["sections"] for i in s["body"]
-                    if i["kind"] == "p" and re.match(r"^<strong>Способ оплаты\.</strong> ", i["html"])), None)
-        if pay is None:
-            raise BuildError("calculator: payment methods line not found")
-        now, parts = re.split(r" (?:или|or|o|oder|ou) ", pay.rstrip("."), maxsplit=1)
-        parts = re.split(r"\.\s+", parts, maxsplit=1)[0].rstrip(".")   # только сама формулировка, без хвоста
-        pay_now, pay_parts = now, parts[:1].upper() + parts[1:]
-    else:
-        # у локалей формулировки способа оплаты берём из словаря: строка копирайта в переводе
-        # может совпасть с другим абзацем (02.11-03.11, DE/ES подставляли «Von 48 bis 100 m² …»)
-        pay_now, pay_parts = i18n_strings()[LOCALE]["calc"]["pay"]["pay_now"], i18n_strings()[LOCALE]["calc"]["pay"]["pay_parts"]
-    return {"sum": leads[0], "month": leads[1], "handover": leads[2],
-            "div": leads[3] + "," + rests[3].rsplit(",", 1)[1].rstrip("."), "pct": leads[4],
-            "paths": leads[5], "paths_dd": re.sub(r"^— ", "", rests[5]).rstrip("."),
-            "pay_now": pay_now, "pay_parts": pay_parts}
+    return i18n_strings()[LOCALE]["calc"]["results"]
 
 
 PEOPLE_LINKS = (("Simon Subic", "/tenerife/simon/"), ("Boris Ribaut", "/tenerife/boris/"))
@@ -1176,6 +1136,8 @@ LD_RX = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 
 
 def check_output(name, out):
+    if re.search(r"@[a-z][a-z0-9_]*@", out):
+        raise BuildError(f"{name}: unresolved financial token")
     errs = []
     for ld in LD_RX.findall(out):           # JSON-LD data block: must parse; then skipped by the text checks
         try:
@@ -1310,6 +1272,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             nav=nav, menu=menu, footer=footer, page=page,
             profile_cases=profile_cases_html(name) if name in ("simon", "boris") else "",
             calc=calc_view(model) if name in CALC_PAGES else None,
+            calc_asset_version=hashlib.sha256((STATIC / "tenerife/site/calc.js").read_bytes()).hexdigest()[:12],
             calc_labels=shared_calc_labels if name in CALC_PAGES else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
                              org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],

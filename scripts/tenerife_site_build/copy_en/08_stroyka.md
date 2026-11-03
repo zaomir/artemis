@@ -1,118 +1,74 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/construccion/
-Meta title: Construction at Artemis de la Cruz: 9 stages and a report every week
-Meta description: As planned, start in early 2027 and handover in late 2028 – mid 2029. Nine stages, a log of “date → stage → what was done”, a report every week to shareholders.
-OG title: Artemis construction: nine stages, a log and a report every week
+Meta title: Nine stages from plot to completed home — Artemis de la Cruz
+Meta description: Construction milestones, weekly reporting and a @months@-month financial horizon. Investors and homebuyers fund the project with no additional developer capital.
+OG title: Nine stages from plot to completed home
 -->
 
-# Construction planned for 2027–2029: nine stages and a report every week
+# Nine stages from ground to keys — with weekly reporting
 
-Artemis de la Cruz will come to site after the plot in the La Quinta area of Santa Úrsula is chosen and the building permit is granted, on plan in early 2027. Nine stages, from ground and foundation to the pool and the plot. Handover is planned for late 2028 – mid 2029. Each stage moves the share price in the developer company up one step, and every week shareholders and house buyers will receive a report.
+We are selecting a plot for twenty residences in La Quinta, Santa Úrsula. The programme will be refined after selection. The financial model allows @months@ months from full investment payment to cash exit.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+[КАДР F15]
 
-### Nine stages and the price steps
+### Nine construction stages
 
-The price steps are named as they are on the shares page. When a construction stage closes, the step changes.
-
-| Construction stage | What closes the stage | Share price step |
-|---|---|---|
-| — | the plot is approved by the majority of the waiting list, investment agreement | Waiting list |
-| — | the building licence is obtained | Permit |
-| 1. Ground | the plot is prepared on the slope | Permit |
-| 2. Foundation | the base and the plinth of volcanic stone | Foundation |
-| 3. Shell | walls, floors, openings for the tall windows | Shell and roof |
-| 4. Roof with panels | flat roof, solar panels flush with the roof plane | Shell and roof |
-| 5. Services | electrics, water, climate, connection of the panels | Finishing |
-| 6. Façade | lime plaster, bronze windows, stone terraces | Finishing |
-| 7. Interior works | floors, kitchens, bathrooms | Finishing |
-| 8. Pool | shared heated pool | Finishing |
-| 9. Plot | entrances, paths, planting | Finishing |
-| — | the completion certificate | Handover |
-
-[КАДР F14] <!-- служебная пометка, не публикуется -->
-
-### The construction log
-
-The log will be kept in one format: **date → stage → what was done**. Entries begin when we come to site. Before the start the log holds only the project's reference dates, in order, as planned:
-
-| Date, as planned | Reference point | What will happen |
-|---|---|---|
-| early 2027 | Construction start | coming to site at La Quinta |
-| late 2028 – mid 2029 | Handover | the completion certificate, and the choice: dividend or metres |
-
-After the start the log will carry only steps actually taken, and every entry will appear in the weekly report. A render will never appear in the log: only what has been done on site.
-
-[КАДР F16] <!-- служебная пометка, не публикуется -->
-
-### What you receive every week
-
-**The construction report.** Which stage is running, what closed during the week, what comes next, when the next price step falls.
-
-**A report for everyone.** Shareholders and house buyers receive it, from the first purchase to the keys.
-
-You do not wait two years for the keys blind. Every week you see your money become concrete, roof and glass.
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Timetable
-
-| What | When |
+| Stage | Result |
 |---|---|
-| Joining the waiting list | now, free of charge |
-| Buying shares | after the plot is approved by the majority of the waiting list: in full, over six months or over a year |
-| Construction start | early 2027, planned |
-| Handover | late 2028 – mid 2029, planned |
-| Exchange of shares for metres | after the completion certificate |
+| 1. Groundworks | Site prepared |
+| 2. Foundations | Base and plinth complete |
+| 3. Shell | Walls and floors |
+| 4. Roof | Roof and panels |
+| 5. Services | Water, electricity, climate |
+| 6. Facade | Plaster, windows and terraces |
+| 7. Interiors | Finishes, kitchens and bathrooms |
+| 8. Pool | Heated shared area |
+| 9. Grounds | Paths, entrances and landscaping |
 
-### Who runs the site
+[КАДР F14]
 
-The site is run by the chief builder **Boris Ribaut**: the site, the structure, the reports, handover of the house. Choosing the plot, the permits, the launch and linking the money to the construction are the work of the developer **Simon Subic**.
+### Financial model milestones
 
-If something in the report is unclear, or it differs from what you saw on site, you know who to write to. And a person answers, not a department.
+| Month from full payment | Base scenario event |
+|---|---|
+| 0 | Early pool funded, plot purchased |
+| 3–30 | Twenty buyer contracts signed |
+| 8 | Foundations: buyer payments reach 70% |
+| 18 | Shell: buyer payments reach 80% |
+| By 33 | Main works and budgeted contingency paid |
+| 36 | Final buyer settlements and investor exit |
 
-**The contractor.** We choose the main contractor after the design and the building permit, through an open tender among proven local companies: the best price, the right quality, the required timetable. We have no favourite contractor. The choice is agreed with the investors who hold voting rights.
+This is the model's planned calendar. Actual dates depend on the plot, project readiness and sales.
 
-**Cameras.** We install video cameras on site, and pass the weekly reports of the designer and the contractors to investors.
+[КАДР F16]
 
-[КАДР F18] <!-- служебная пометка, не публикуется -->
+### What you receive each week
 
-### What we build from
+Work completed, amounts paid, receipts from buyers and the project cash balance. The log follows: date → stage → result → next step.
 
-- **Dark volcanic stone** in the plinth: the island's material, heavy and durable.
-- **Lime plaster:** a light, warm façade that ages calmly in the sun.
-- **A flat roof** with a slim bronze edge and dark solar panels flush with the roof plane.
-- **Tall windows** in slim bronze frames, set deep into the wall.
-- **Stone terraces**, a bronze handrail and glass.
+Watch the money become foundations, roofs and glass. Investor reporting continues through cash settlement; buyer reporting through home handover.
 
-One architectural language for all twenty houses: one technology, one team, one standard from the first house to the twentieth.
+[КАДР F17]
 
-[КАДР F12] <!-- служебная пометка, не публикуется -->
+### Who oversees the site
 
-### The stage and your money
+Boris Ribaut leads the structure, site and reporting. Simon Subic leads plot selection, launch and funding. [Profiles and responsibilities](/tenerife/equipo/).
 
-The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
+[КАДР F18]
 
-### What you receive at handover
+### Paying for the works
 
-A new build, not someone else's renovation. A stone outline, a roof with solar panels, smart climate and lighting, deep windows, a shared heated pool.
+Initial investor capital and buyer milestone payments cover the budget. The base model includes no additional developer capital or bank debt. Each home-sale contract fixes the price at signing; growth is applied only before that date.
 
-### In short
+[КАДР F12]
 
-**When does it start?** As planned, early 2027.
+### If the schedule changes
 
-**When is handover?** As planned, late 2028 – mid 2029.
+Sales delays or higher costs must be reflected in the updated cash schedule. Each next stage needs a funding source. [Funding and sensitivity](/tenerife/inversores/#funding).
 
-**How many stages?** Nine: ground, foundation, shell, roof with panels, services, façade, interior works, pool, plot.
+### Request a calculation
 
-**How do I follow the construction?** A report every week and the log of “date → stage → what was done”.
+Request an investment calculation with a @months@-month horizon or a payment schedule for your chosen residence.
 
-**What is in the log before the start?** Only the reference dates from the plan. Entries on completed steps begin when we come to site.
-
-**When does the share price change?** When the stage is closed on site and visible in the report, not by the calendar.
-
-**Who is responsible for the site?** Boris Ribaut.
-
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.

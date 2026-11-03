@@ -8,7 +8,7 @@ OG title: Boris Ribaut: drawing, work, report, and handover of the house
 
 # I am Boris Ribaut, chief builder of Artemis de la Cruz
 
-I will run the Artemis de la Cruz site in the La Quinta area of Santa Úrsula as soon as the plot is chosen and approved by waiting-list members. Twenty residences, paid for by shares in the developer company and by house sales. The site, the structure, the reports and handover of the house are on me. On plan we come to site in early 2027, with handover planned for late 2028 – mid 2029. Every week you will receive a report on what has been done.
+I oversee the Artemis de la Cruz site: structure, contractors, reporting and handover. We are selecting a plot for twenty residences in La Quinta. Investors and buyers fund construction. The calendar follows the selected plot, with weekly reports planned.
 
 [КАДР F18] <!-- служебная пометка, не публикуется -->
 
@@ -62,9 +62,9 @@ The nine stages, planned dates and weekly report format are in [Project progress
 
 ### What is in my report
 
-Every week, the same things in the same order: which stage is running, what was done during the week, what comes next, when the next price step falls. A closed stage will go into the construction log as an entry of “date → stage → what was done”. That way you see a sequence, not promises.
+Reports show the current stage, completed work, spending, receipts and next step. Milestones are confirmed on site and in the log.
 
-The five points that move the share price look like this in the report:
+Milestones for checking the work:
 
 - **Permit:** the building licence in hand.
 - **Foundation:** the base and the stone plinth complete.
@@ -98,7 +98,7 @@ Directly. Ask about the foundation, the roof, how the services were closed in. I
 
 **How do I follow the work?** Through the weekly report: the stage, what has been done, what comes next.
 
-**When is handover?** As planned, late 2028 – mid 2029.
+**When is completion?** Handover will be set by the project programme; the investor model assumes exit @months@ months after full payment.
 
 **Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

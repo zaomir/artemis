@@ -1,101 +1,79 @@
 <!-- META
 Слаг: /tenerife/inversores/
-Meta title: Investisseurs — actions Artemis de la Cruz à La Quinta
-Meta description: Participer à Artemis de la Cruz: prix par étapes, comparaison avec l’achat d’une résidence, deux résultats et calcul pour votre surface.
-OG title: Investisseurs — actions Artemis de la Cruz à La Quinta
+Meta title: Investir avec sortie à @months@ mois — Artemis de la Cruz
+Meta description: Prix initial de @entry@ € par action, paiement intégral et objectif de @target@% annualisé. Financement par investisseurs et ventes, sans apport du promoteur.
+OG title: Investir avec sortie à @months@ mois
 -->
 
-# Investisseurs: participer à Artemis de la Cruz avant la livraison
+# Financer la construction — recevoir capital et gain à la sortie
 
-Artemis de la Cruz comprend vingt résidences dans le secteur de La Quinta, Santa Úrsula. Nous choisissons actuellement le terrain. La participation passe par des actions de la société de promotion: une action correspond à un mètre carré. L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain.
+Participation à Artemis de la Cruz dès @entry_48@ €. Paiement intégral à l'entrée, objectif de @target@% annualisé et sortie en numéraire à @months@ mois par vente ou rachat de la participation. Aucun versement annuel. [Calculer votre montant](/tenerife/inversores/#calculate).
 
 [КАДР F14]
 
-### Projet et étape actuelle
+### Projet et stade actuel
 
-Nous discutons des terrains possibles avec les inscrits. Calendrier prévu: démarrage début 2027 et livraison fin 2028 – mi-2029. Avant le chantier, le capital finance l’équipe, les études et les autorisations; la construction est financée par les actions de la société et les ventes de logements. [Étape actuelle et rapports](/tenerife/construccion/).
+Vingt résidences à La Quinta, Santa Úrsula. Le terrain est encore en sélection. Vous pouvez demander gratuitement un calcul et discuter des conditions. Paiement après validation du terrain et des conditions de participation. Le délai commence au paiement intégral, pas à la demande.
 
-### Investir ou acheter une résidence
+### Investissement ou achat d'une résidence
 
-L'acquéreur d'une maison achevée paie le mètre qui contient déjà le permis, les fondations, le gros œuvre, la toiture, les finitions et la piscine: 3 800–4 600 €. L'actionnaire entre plus tôt, quand rien de tout cela n'existe encore, et paie le prix du palier auquel se trouve le chantier.
-
-Entrer tôt n'est pas une remise sur une maison achevée. C'est le prix d'entrée dans la société au démarrage. Le mètre achevé coûte plus cher parce que le travail est déjà derrière lui. Vous payez le mètre plus tôt et vous détenez l'action pendant que ce travail se fait.
-
-| | Actions de la société de promotion | Résidence achevée |
+| | Investisseur | Acheteur |
 |---|---|---|
-| Ce que vous acquérez | participation à la société avant livraison | un logement achevé à la livraison |
-| Prix | le palier actuel de construction | 3 800–4 600 € par m², selon le type, l’étage et la vue |
-| Après livraison | conserver les actions ou les échanger contre une surface | posséder le logement et choisir son usage |
+| Objectif | Récupérer capital et gain | Recevoir la résidence choisie |
+| Paiement | Intégral à l'entrée | Étapes : 40/30/10/20% |
+| Résultat | Règlement en numéraire à la sortie | Clés de la maison |
+| Versements périodiques | Non prévus | Hors du parcours d'achat |
 
-[Types de résidences et équipements](/tenerife/producto/). Le déroulement complet et les échéances de paiement figurent dans le [parcours de l’opération](/tenerife/proceso/).
+Une action est une unité de participation. Son prix est comparé à une référence par m², mais le nombre d'actions ne réserve pas une maison précise. Sortie en numéraire et achat sont calculés séparément.
 
-[КАДР F01]
+### Prix initial et référence de comparaison
 
-### Six paliers de prix
+Le prix initial du modèle est de @entry@ € par action : 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins. Aucun tarif actuel comparable de programmes neufs locaux n'a encore été confirmé. @market@ €/m² est une hypothèse, pas un prix actuel vérifié.
 
-| Palier | Ce qui doit arriver | Prix de l'action = prix du mètre | Sous le prix à la livraison |
-|---|---|---|---|
-| Entrée initiale | terrain approuvé par la majorité de la liste, contrat d'investissement | 2 950 € | 23,4% |
-| Permis | permis de construire obtenu | 3 100 € | 19,5% |
-| Fondations | assise et soubassement de pierre achevés | 3 250 € | 15,6% |
-| Gros œuvre et toiture | murs, planchers, toiture avec panneaux | 3 450 € | 10,4% |
-| Finitions | façade, installations techniques, intérieurs, piscine | 3 650 € | 5,2% |
-| Livraison | permis d'habiter | 3 850 € | — |
+Pour les maisons non vendues, le modèle prévoit @growth@% de hausse annuelle. Le prix de chaque acheteur est fixé à la signature et n'augmente plus ensuite. [Référence, formules et sources](/tenerife/mercado/).
 
-La comparaison porte sur le prix de l’action à la livraison : 3 850 €/m². Le pourcentage est calculé sur ce prix.
+### Sortie en numéraire à 36 mois
 
-Les dates de référence du projet sont un plan: démarrage du chantier début 2027, livraison fin 2028 – mi-2029.
+Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
 
-Le palier change lorsqu'un événement se produit sur le chantier, pas lorsqu'une date arrive. Chaque événement figure dans le rapport hebdomadaire.
+Formule : **règlement de sortie = investissement × (1 + @target@%)³**. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.
 
-Le prix du palier est celui que la société fixe pour son action à ce stade. Pour comparaison, les prix de présentation des programmes voisins de La Quinta: 3 360–3 870 € le mètre; les deux projets sont déjà vendus.
+### Calculez votre investissement
 
-Une maison avec deux chambres de 72 mètres, c'est 72 actions.
+Choisissez le nombre d'actions. Le calculateur affiche un paiement intégral et le résultat visé à @months@ mois. Le résultat est accessible sans demande ; [calculateur séparé](/tenerife/calculadora/).
 
+### Comment les travaux sont financés
 
-**Montant de base sur liste d’attente:** 212 400 € avant application des conditions de paiement. En six échéances avec réduction de 5 %: 33 630 € par mois.
+Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.
 
-**Les mêmes 72 actions au prix du palier « Livraison »:** 277 200 €. La différence avec la liste d'attente: 64 800 €.
+| Scénario de base | Montant |
+|---|---|
+| Fonds initial : @pool@ actions | @pool_capital@ € |
+| Contrats acheteurs aux mois 3–30 | @sales@ € |
+| Terrain, travaux, études et réserve | @budget@ € |
+| Frais de vente | @sales_fee@ € |
+| Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
+| Solde du projet après règlement | @surplus@ € |
 
-**Une maison achevée de même surface:** 273 600–331 200 €.
+Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est @minimum_cash@ €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.
 
-[КАДР F15]
+### Ce qui affecte le résultat
 
-### Deux résultats de la participation
+Le budget retient @cost_m2@ €/m² construit et environ un contrat tous les un à deux mois. À 2 100 €/m², il manque @high_shortfall@ € pour le règlement cible complet. Un retard de ventes de deux mois crée un déficit intermédiaire de @delay_gap@ €.
 
-**Conserver les actions.** La société gère la location de longue durée. Le dividende issu des revenus après charges est estimé à 2,5–3,5 % par an avant impôt sur les sociétés, sans garantie. [Modèle locatif et charges](/tenerife/alquiler/).
-
-**Recevoir une résidence.** Après l’autorisation de mise en service, les actions peuvent être échangées contre une surface: 72 actions correspondent à 72 m². Acte, registre, taxes et possibilités de prêt sont expliqués dans le [parcours de l’opération](/tenerife/proceso/).
-
-Vous avez commencé avec 50 actions et vous voulez une maison de 72 mètres? Achetez 22 actions de plus au prix du palier en cours.
-
-Si les acquéreurs sont plus nombreux que les biens, nous pouvons proposer aux investisseurs de céder leur bien à un acquéreur, au prix du mètre carré au moment de la cession. C'est une possibilité, pas une promesse de rendement.
-
-[КАДР F17]
-
-### Calculez votre surface
-
-Choisissez la surface, le palier d’entrée et le paiement dans le calculateur. Il affiche le montant d’achat, le paiement en six échéances et le prix de livraison de la même surface; le dividende estimé reste indicatif. [Explication des résultats et des formules](/tenerife/calculadora/).
-
-
+Avant tout investissement, il faut un terrain choisi, un budget confirmé et un calendrier viable de ventes et de paiements. @growth@% est une hypothèse de hausse, @target@% un objectif de rendement ; ils nécessitent des ventes réelles.
 
 ### Suivi et équipe
 
-Simon Subic répond du terrain, des autorisations, du lancement et du lien entre financement et chantier. Boris Ribaut répond du chantier, de la structure, des rapports et de la livraison. Actionnaires et acheteurs reçoivent un rapport de chantier chaque semaine. [Équipe et responsabilités](/tenerife/equipo/).
+Simon Subic pilote terrain, lancement et financement. Boris Ribaut supervise chantier, structure et rapports. Les rapports hebdomadaires prévus couvrent travaux, dépenses, encaissements, solde, ventes et prochaine étape. [Équipe](/tenerife/equipo/) · [Avancement](/tenerife/construccion/).
 
 ### Documents et questions
 
-**Quand payer?** Après l’approbation du terrain par la majorité des inscrits et la réception du contrat d’investissement. Documents, modes de paiement et formalités figurent dans le [parcours de l’opération](/tenerife/proceso/).
+Avant paiement, vous recevez calcul personnel et conditions : montant, début de période, sortie et traitement des changements de calendrier. [Parcours](/tenerife/proceso/) · [Questions](/tenerife/faq/).
 
-**D’où viennent les repères?** Comparaisons et sources sont regroupées sur la page [marché](/tenerife/mercado/).
+### Demander un calcul
 
-**Que vérifier encore?** Les [réponses courtes](/tenerife/faq/) renvoient aux informations détaillées sur chaque sujet.
+Laissez nom et contact. Nous calculerons votre montant et préciserons les paramètres à confirmer avant paiement.
 
-[КАДР F12]
-
-### Recevoir un calcul
-
-Laissez votre nom et vos coordonnées. Nous enverrons un calcul pour votre surface et discuterons de la participation. L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain.
-
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Aucun paiement avant le choix du terrain.
+**Кнопка: «Demander un calcul»**
+Gratuit. Paiement après validation du terrain et des conditions de participation.

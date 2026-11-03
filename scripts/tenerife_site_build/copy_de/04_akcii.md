@@ -1,101 +1,79 @@
 <!-- META
 Слаг: /tenerife/inversores/
-Meta title: Für Investoren — Artemis-de-la-Cruz-Aktien in La Quinta
-Meta description: Beteiligung an Artemis de la Cruz: Preise nach Bauphase, Vergleich mit dem Kauf einer Residenz, zwei Ergebnisse und Berechnung für Ihre Fläche.
-OG title: Für Investoren — Artemis-de-la-Cruz-Aktien in La Quinta
+Meta title: Beteiligung mit Ausstieg nach @months@ Monaten — Artemis de la Cruz
+Meta description: Früher Modellpreis @entry@ € je Aktie, volle Einmalzahlung und @target@% jährliche Zielrendite. Finanzierung durch Investoren und Verkäufe, ohne Entwicklereinlage.
+OG title: Beteiligung mit Ausstieg nach @months@ Monaten
 -->
 
-# Für Investoren: vor der Fertigstellung an Artemis de la Cruz beteiligen
+# Den Bau finanzieren — Kapital und Ertrag beim Ausstieg erhalten
 
-Artemis de la Cruz umfasst zwanzig Residenzen im Gebiet La Quinta, Santa Úrsula. Wir wählen derzeit das Grundstück aus. Eine Beteiligung ist über Aktien der Bauträgergesellschaft möglich: Eine Aktie entspricht einem Quadratmeter. Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen.
+Beteiligung an Artemis de la Cruz ab @entry_48@ €. Vollständige Zahlung beim Einstieg, @target@% jährliche Zielrendite und Barausstieg nach @months@ Monaten durch Verkauf oder Rückkauf der Beteiligung. Keine jährlichen Ausschüttungen. [Betrag berechnen](/tenerife/inversores/#calculate).
 
 [КАДР F14]
 
 ### Projekt und aktueller Stand
 
-Wir besprechen Grundstücksoptionen mit den Teilnehmern der Warteliste. Geplant sind der Baubeginn Anfang 2027 und die Fertigstellung Ende 2028 – Mitte 2029. Vor dem Bau finanziert das Kapital Team, Planung und Genehmigungen; der Bau wird durch Aktien der Bauträgergesellschaft und Hausverkäufe finanziert. [Aktueller Stand und Berichte](/tenerife/construccion/).
+Zwanzig Residenzen in La Quinta, Santa Úrsula. Das Grundstück wird noch ausgewählt. Sie können kostenlos eine Berechnung anfordern und die Bedingungen besprechen. Zahlung nach Freigabe von Grundstück und Beteiligungsbedingungen. Die Laufzeit beginnt mit vollständiger Zahlung, nicht mit der Anfrage.
 
-### Investition oder Kauf einer Residenz
+### Beteiligung oder Hauskauf
 
-Der Käufer eines fertigen Hauses zahlt für einen Meter, in dem bereits Genehmigung, Fundament, Rohbau, Dach, Ausbau und Pool stecken: 3 800–4 600 €. Der Aktionär steigt früher ein, wenn all das noch nicht existiert, und zahlt den Preis der Stufe, auf der der Bau gerade steht.
-
-Der frühe Einstieg ist kein Rabatt auf ein fertiges Haus. Er ist der Einstiegspreis in das Unternehmen am Start. Ein fertiger Meter ist teurer, weil dahinter bereits geleistete Arbeit steht. Sie zahlen für den Meter früher — und halten die Aktie, während diese Arbeit entsteht.
-
-| | Aktien der Bauträgergesellschaft | Fertige Residenz |
+| | Investor | Hauskäufer |
 |---|---|---|
-| Was Sie erwerben | Beteiligung an der Gesellschaft vor Fertigstellung | ein fertiges Haus bei Fertigstellung |
-| Preis | die aktuelle Baupreisstufe | 3 800–4 600 € je m², nach Typ, Etage und Aussicht |
-| Nach Fertigstellung | Aktien behalten oder gegen Fläche tauschen | das Haus besitzen und über die Nutzung entscheiden |
+| Ziel | Kapital mit Ertrag zurückerhalten | Gewählte Residenz erhalten |
+| Zahlung | Vollständig beim Einstieg | Bauabschnitte: 40/30/10/20% |
+| Ergebnis | Geldzahlung beim Ausstieg | Hausschlüssel |
+| Regelmäßige Ausschüttungen | Nicht vorgesehen | Kein Bestandteil des Kaufs |
 
-[Residenztypen und Ausstattung](/tenerife/producto/). Den vollständigen Ablauf und die Zahlungszeitpunkte finden Sie im [Transaktionsablauf](/tenerife/proceso/).
+Eine Aktie ist eine Beteiligungseinheit. Ihr Preis wird mit einer Basis je m² verglichen; die Aktienzahl reserviert jedoch kein bestimmtes Haus. Barausstieg und Hauskauf werden getrennt berechnet.
 
-[КАДР F01]
+### Früher Preis und Vergleichsbasis
 
-### Sechs Preisstufen
+Der frühe Modellpreis beträgt @entry@ € je Aktie: 70% der vorläufigen Basis von @market@ €/m², also @discount@% weniger. Eine aktuelle vergleichbare Preisliste lokaler Neubauten ist noch nicht bestätigt; @market@ €/m² ist eine Annahme, kein verifizierter heutiger Marktpreis.
 
-| Stufe | Was dafür eintreten muss | Preis der Aktie = Preis des Meters | Unter dem Übergabepreis |
-|---|---|---|---|
-| Früher Einstieg | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | 2 950 € | 23,4% |
-| Baugenehmigung | Baugenehmigung erteilt | 3 100 € | 19,5% |
-| Fundament | Gründung und steinerner Sockel fertig | 3 250 € | 15,6% |
-| Rohbau und Dach | Wände, Decken, Dach mit Modulen | 3 450 € | 10,4% |
-| Ausbau | Fassade, Technik, Innenräume, Pool | 3 650 € | 5,2% |
-| Fertigstellung | Nutzungsgenehmigung | 3 850 € | — |
+Für unverkaufte Häuser rechnet das Modell mit @growth@% jährlichem Wachstum. Jeder Käufer fixiert seinen Preis bei Unterzeichnung; danach steigt er nicht weiter. [Basis, Formeln und Quellen](/tenerife/mercado/).
 
-Verglichen wird mit dem Aktienpreis bei Fertigstellung: 3 850 €/m². Dieser Preis ist die Bezugsgröße für die Prozentsätze.
+### Barausstieg nach 36 Monaten
 
-Die Eckdaten des Projekts — nach Plan: Baubeginn Anfang 2027, Fertigstellung Ende 2028 – Mitte 2029.
+Beispiel mit 72 Aktien: volle Investition @entry_72@ €, Zielauszahlung @exit_72@ €, davon @gain_72@ € Ertrag. Der Gesamtzuwachs beträgt @gain_pct@% in drei Jahren, entsprechend @target@% jährlich mit Zinseszinseffekt.
 
-Die Stufe ändert sich, wenn auf der Baustelle ein Ereignis eintritt, nicht wenn ein Datum kommt. Jedes Ereignis sehen Sie im wöchentlichen Bericht.
+Formel: **Auszahlung = Investition × (1 + @target@%)³**. Dies ist das Ziel des Basisszenarios. Die tatsächliche Zahlung hängt von Verkaufseingängen, Kosten und Ausstiegszeitpunkt ab.
 
-Der Preis der Stufe ist der Preis, den das Unternehmen seiner Aktie in dieser Phase zuweist. Zum Vergleich: Die Angebotspreise der benachbarten Neubauten La Quinta liegen bei 3 360–3 870 € pro Meter; beide Projekte sind bereits verkauft.
+### Berechnen Sie Ihre Beteiligung
 
-Ein Haus mit zwei Schlafzimmern auf 72 Metern — das sind 72 Aktien.
+Wählen Sie die Aktienzahl. Der Rechner zeigt eine vollständige Zahlung und das Zielergebnis nach @months@ Monaten. Das Ergebnis ist ohne Anfrage sichtbar; [separater Rechner](/tenerife/calculadora/).
 
+### Wie der Bau finanziert wird
 
-**Basisbetrag ab Warteliste:** 212 400 € vor Anwendung der Zahlungsbedingungen. In sechs Raten mit 5 % Rabatt: 33 630 € im Monat.
+Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zwanzig Häuser. Zusätzliches Entwicklerkapital und Bankkredite betragen im Modell null. Beteiligungskapital wird nicht als Hausverkaufserlös gezählt.
 
-**Dieselben 72 Aktien zum Preis der Stufe „Fertigstellung“:** 277 200 €. Der Unterschied zur Warteliste — 64 800 €.
+| Basisszenario | Betrag |
+|---|---|
+| Früher Pool: @pool@ Aktien | @pool_capital@ € |
+| Käuferverträge in Monaten 3–30 | @sales@ € |
+| Grundstück, Bau, Planung und Reserve | @budget@ € |
+| Vertriebskosten | @sales_fee@ € |
+| Investorenkapital und Zielertrag beim Ausstieg | @pool_exit@ € |
+| Projektrest nach Abrechnung | @surplus@ € |
 
-**Ein fertiges Haus derselben Fläche:** 273 600–331 200 €.
+Käufer zahlen 40/30/10/20%. Bei später Unterzeichnung sind abgeschlossene Abschnitte sofort fällig. Der monatliche Basisplan hat keine Finanzierungslücke; der niedrigste Kontostand beträgt @minimum_cash@ €. Das sind Berechnungen, kein bereits eingeworbenes Kapital oder abgeschlossene Verträge.
 
-[КАДР F15]
+### Was das Ergebnis beeinflusst
 
-### Zwei Ergebnisse der Beteiligung
+Das Budget setzt @cost_m2@ €/m² errichteter Fläche und etwa einen Käufervertrag alle ein bis zwei Monate voraus. Bei 2 100 €/m² Baukosten fehlen @high_shortfall@ € für die volle Zielabrechnung; zwei Monate Verkaufsverzögerung erzeugen zwischenzeitlich eine Lücke von @delay_gap@ €.
 
-**Aktien behalten.** Die Gesellschaft verwaltet die langfristige Vermietung. Die Dividende aus dem Ertrag nach Kosten beträgt rechnerisch 2,5–3,5 % jährlich vor Körperschaftsteuer, ohne Garantie. [Mietmodell und Kosten](/tenerife/alquiler/).
-
-**Eine Residenz erhalten.** Nach der Nutzungsgenehmigung können Aktien gegen Fläche getauscht werden: 72 Aktien entsprechen 72 m². Urkunde, Register, Steuern und Hypothekenmöglichkeiten erklärt der [Transaktionsablauf](/tenerife/proceso/).
-
-Sie haben mit 50 Aktien begonnen und möchten ein Haus auf 72 Metern? Kaufen Sie 22 Aktien zum Preis der aktuellen Stufe dazu.
-
-Wenn es mehr Käufer als Objekte gibt, können wir Investoren anbieten, ihr Objekt an einen Käufer abzutreten — zum Quadratmeterpreis im Zeitpunkt der Abtretung. Das ist eine Möglichkeit, kein Ertragsversprechen.
-
-[КАДР F17]
-
-### Berechnen Sie Ihre Fläche
-
-Wählen Sie Fläche, Einstiegsstufe und Zahlungsweise im Rechner. Er zeigt Kaufsumme, Zahlung in sechs Raten und den Preis derselben Fläche bei Fertigstellung; die Dividendenschätzung bleibt ein Richtwert. [Ergebnisse und Formeln erklärt](/tenerife/calculadora/).
-
-
+Vor Kapitalannahme braucht das Projekt Grundstück, bestätigtes Budget und einen tragfähigen Verkaufs- und Zahlungsplan. @growth@% Wachstum ist eine Annahme, @target@% eine Zielrendite. Beide brauchen tatsächliche Verkaufseingänge.
 
 ### Kontrolle und Team
 
-Simon Subic verantwortet Grundstück, Genehmigungen, Start und die Verbindung von Finanzierung und Bau. Boris Ribaut verantwortet Baustelle, Tragwerk, Berichte und Übergabe. Aktionäre und Hauskäufer erhalten jede Woche einen Baubericht. [Team und Verantwortlichkeiten](/tenerife/equipo/).
+Simon Subic führt Grundstück, Start und Finanzierung. Boris Ribaut betreut Baustelle, Tragwerk und Berichte. Geplante Wochenberichte zeigen Arbeiten, Ausgaben, Eingänge, Kontostand, Verkäufe und nächste Schritte. [Team](/tenerife/equipo/) · [Fortschritt](/tenerife/construccion/).
 
 ### Unterlagen und Fragen
 
-**Wann wird gezahlt?** Nach Zustimmung der Mehrheit der Warteliste zum Grundstück und Erhalt des Investitionsvertrags. Unterlagen, Zahlungsweisen und Formalitäten erklärt der [Transaktionsablauf](/tenerife/proceso/).
-
-**Woher stammen die Vergleichswerte?** Vergleiche und Quellen stehen auf der [Marktseite](/tenerife/mercado/).
-
-**Was sollte ich noch prüfen?** Die [kurzen Antworten](/tenerife/faq/) verweisen auf die ausführlichen Informationen zum jeweiligen Thema.
-
-[КАДР F12]
+Vor Zahlung erhalten Sie Berechnung und Bedingungen: Betrag, Laufzeitbeginn, Ausstieg und Vorgehen bei Terminänderungen. [Ablauf](/tenerife/proceso/) · [Fragen](/tenerife/faq/).
 
 ### Berechnung anfordern
 
-Hinterlassen Sie Namen und Kontakt. Wir senden eine Berechnung für Ihre Fläche und besprechen die Beteiligung. Die Eintragung ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen.
+Hinterlassen Sie Namen und Kontakt. Wir berechnen Ihren Betrag und besprechen, welche Eingaben vor Zahlung zu bestätigen sind.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld entgegen.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

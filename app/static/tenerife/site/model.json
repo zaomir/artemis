@@ -1,963 +1,931 @@
 {
- "_generated_by": "scripts/tenerife_site_build/make_model.py from copy_v3/numbers.md + model_inputs.json",
- "version": "2026-10-31-v2",
- "status": "PROPOSAL — ступени, рассрочка и дивиденд ждут ОК основателя (numbers.md, sources_v3.md)",
+ "_generated_by": "scripts/tenerife_site_build/make_model.py from model_inputs.json",
+ "version": "2026-11-03-exit-e217663f18e3",
+ "status": "illustrative planning model; market reference unverified",
  "currency": "EUR",
+ "kind": "upfront_exit",
  "share_m2": 1,
+ "quantity_unit": "shares",
+ "quantity_is_property_entitlement": false,
  "steps": [
   {
-   "id": "queue",
-   "name": "Очередь",
-   "event": "участок одобрен большинством очереди, инвестиционный договор",
-   "price_eur_m2": 2950,
+   "id": "early",
+   "name": "Ранний вход",
+   "price_eur_m2": 2352.0,
    "entry": true,
    "current": true
-  },
-  {
-   "id": "permit",
-   "name": "Разрешение",
-   "event": "получена лицензия на строительство",
-   "price_eur_m2": 3100,
-   "entry": true
-  },
-  {
-   "id": "foundation",
-   "name": "Фундамент",
-   "event": "основание и каменный цоколь готовы",
-   "price_eur_m2": 3250,
-   "entry": true
-  },
-  {
-   "id": "shell_roof",
-   "name": "Коробка и кровля",
-   "event": "стены, перекрытия, кровля с панелями",
-   "price_eur_m2": 3450,
-   "entry": true
-  },
-  {
-   "id": "finishing",
-   "name": "Отделка",
-   "event": "фасад, инженерия, интерьеры, бассейн",
-   "price_eur_m2": 3650,
-   "entry": true
-  },
-  {
-   "id": "handover",
-   "name": "Ввод",
-   "event": "разрешение на ввод в эксплуатацию",
-   "price_eur_m2": 3850,
-   "entry": false
   }
  ],
  "installments": {
-  "months": 6,
-  "discount_pct": 5
+  "months": 0
  },
- "dividend_eur_per_share_year": 87,
- "dividend_pct_range": [
-  2.5,
-  3.5
- ],
  "area_m2": {
   "min": 48,
   "max": 100,
-  "default": 52
+  "default": 72
  },
  "types": [
   {
-   "id": "one_bed",
-   "name": "Одна спальня",
+   "id": "q48",
+   "name": "48 акций",
    "min": 48,
-   "max": 55,
-   "count": 6
+   "max": 48,
+   "quantity": 48
   },
   {
-   "id": "two_bed",
-   "name": "Две спальни",
-   "min": 68,
-   "max": 78,
-   "count": 10
+   "id": "q72",
+   "name": "72 акций",
+   "min": 72,
+   "max": 72,
+   "quantity": 72
   },
   {
-   "id": "large",
-   "name": "Большой дом",
-   "min": 85,
+   "id": "q100",
+   "name": "100 акций",
+   "min": 100,
    "max": 100,
-   "count": 4
+   "quantity": 100
   }
  ],
- "house_on_handover_eur_m2": {
-  "min": 3800,
-  "max": 4600
+ "investment": {
+  "market_reference_eur_m2": 3360,
+  "market_reference_status": "assumption",
+  "early_discount": 0.3,
+  "growth_annual": 0.06,
+  "target_annual": 0.09,
+  "exit_months": 36,
+  "interim_distributions": false,
+  "developer_contribution_eur": 0,
+  "payment": "now",
+  "exit": "cash_from_sales_or_buyback",
+  "growth_locked_at_buyer_signing": true,
+  "buyer_installments": [
+   0.4,
+   0.3,
+   0.1,
+   0.2
+  ],
+  "early_pool_shares": 564
  },
- "rounding": {
-  "rule": "ROUND_HALF_UP",
-  "note": "Одно правило везде: x,5 → вверх. Деньги — до целых евро, проценты — до 0,1, площадь середины типа — до целого м². Python: decimal ROUND_HALF_UP (copy_v3/make_numbers.py), JS: Math.floor(x + 0.5) для положительных, Intl roundingMode 'halfExpand'. Пример: 57 м² × 2 950 ÷ 12 = 14 012,5 → 14 013 €.",
-  "money": "integer_eur_half_up",
-  "percent": "1_decimal_half_up",
-  "type_midpoint_m2": "integer_half_up"
- },
- "type_click_sets": "midpoint",
- "type_midpoints_m2": {
-  "one_bed": 52,
-  "two_bed": 73,
-  "large": 93
- },
- "proposal": true,
- "calc": {
-  "stages": [
+ "project": {
+  "area_m2": 1409.0,
+  "early_shares": 564,
+  "capital_eur": 1326528.0,
+  "budget_eur": 4490813.250000001,
+  "sales_eur": 5129876.769094371,
+  "sales_fee_eur": 153896.30307283113,
+  "redemption_eur": 1717892.2293120003,
+  "surplus_eur": 93802.98670953838,
+  "minimum_cash_eur": 53083.410255158014,
+  "minimum_cash_month": 7,
+  "redemption_shortfall_eur": 0.0,
+  "contracts": [
    {
-    "name": "Очередь",
-    "price": 2950
+    "unit": 1,
+    "area_m2": 92.5,
+    "signing_month": 3,
+    "value_eur": 315360.6313892193
    },
    {
-    "name": "Разрешение",
-    "price": 3100
+    "unit": 2,
+    "area_m2": 73.0,
+    "signing_month": 4,
+    "value_eur": 250090.63308372122
    },
    {
-    "name": "Фундамент",
-    "price": 3250
+    "unit": 3,
+    "area_m2": 51.5,
+    "signing_month": 6,
+    "value_eur": 178155.58395963904
    },
    {
-    "name": "Коробка и кровля",
-    "price": 3450
+    "unit": 4,
+    "area_m2": 73.0,
+    "signing_month": 7,
+    "value_eur": 253760.42456181438
    },
    {
-    "name": "Отделка",
-    "price": 3650
+    "unit": 5,
+    "area_m2": 51.5,
+    "signing_month": 9,
+    "value_eur": 180769.81159275048
    },
    {
-    "name": "Ввод",
-    "price": 3850
+    "unit": 6,
+    "area_m2": 92.5,
+    "signing_month": 10,
+    "value_eur": 326264.05622721027
+   },
+   {
+    "unit": 7,
+    "area_m2": 73.0,
+    "signing_month": 12,
+    "value_eur": 259996.80000000002
+   },
+   {
+    "unit": 8,
+    "area_m2": 51.5,
+    "signing_month": 13,
+    "value_eur": 184315.2178068166
+   },
+   {
+    "unit": 9,
+    "area_m2": 73.0,
+    "signing_month": 14,
+    "value_eur": 262534.0552584486
+   },
+   {
+    "unit": 10,
+    "area_m2": 51.5,
+    "signing_month": 16,
+    "value_eur": 187019.83095945674
+   },
+   {
+    "unit": 11,
+    "area_m2": 92.5,
+    "signing_month": 17,
+    "value_eur": 337544.4611361568
+   },
+   {
+    "unit": 12,
+    "area_m2": 73.0,
+    "signing_month": 19,
+    "value_eur": 268986.05003552325
+   },
+   {
+    "unit": 13,
+    "area_m2": 73.0,
+    "signing_month": 20,
+    "value_eur": 270295.353235443
+   },
+   {
+    "unit": 14,
+    "area_m2": 73.0,
+    "signing_month": 21,
+    "value_eur": 271611.0295348938
+   },
+   {
+    "unit": 15,
+    "area_m2": 51.5,
+    "signing_month": 23,
+    "value_eur": 193485.94139656922
+   },
+   {
+    "unit": 16,
+    "area_m2": 92.5,
+    "signing_month": 24,
+    "value_eur": 349214.88000000006
+   },
+   {
+    "unit": 17,
+    "area_m2": 73.0,
+    "signing_month": 26,
+    "value_eur": 278286.09857395553
+   },
+   {
+    "unit": 18,
+    "area_m2": 73.0,
+    "signing_month": 27,
+    "value_eur": 279640.6702303963
+   },
+   {
+    "unit": 19,
+    "area_m2": 73.0,
+    "signing_month": 29,
+    "value_eur": 282369.62597530615
+   },
+   {
+    "unit": 20,
+    "area_m2": 51.5,
+    "signing_month": 30,
+    "value_eur": 200175.6141370505
    }
   ],
-  "dividend": 87,
-  "months": 6,
-  "area": {
-   "min": 48,
-   "max": 100,
-   "default": 52
-  },
-  "units": [
+  "monthly": [
    {
-    "name": "Одна спальня",
-    "count": 6,
-    "min": 48,
-    "max": 55
+    "month": 0,
+    "buyer_eur": 0.0,
+    "cost_eur": 1057426.9275,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 269101.0725
    },
    {
-    "name": "Две спальни",
-    "count": 10,
-    "min": 68,
-    "max": 78
+    "month": 1,
+    "buyer_eur": 0.0,
+    "cost_eur": 36918.13250000001,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 232182.94
    },
    {
-    "name": "Большой дом",
-    "count": 4,
-    "min": 85,
-    "max": 100
+    "month": 2,
+    "buyer_eur": 0.0,
+    "cost_eur": 36918.13250000001,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 195264.8075
+   },
+   {
+    "month": 3,
+    "buyer_eur": 126144.25255568774,
+    "cost_eur": 36918.13250000001,
+    "sales_fee_eur": 3784.327576670632,
+    "investor_paid_eur": 0,
+    "cash_eur": 280706.5999790171
+   },
+   {
+    "month": 4,
+    "buyer_eur": 100036.25323348849,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 3001.0875970046545,
+    "investor_paid_eur": 0,
+    "cash_eur": 254681.3239488342
+   },
+   {
+    "month": 5,
+    "buyer_eur": 0.0,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 131620.8822821675
+   },
+   {
+    "month": 6,
+    "buyer_eur": 71262.23358385562,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 2137.8670075156683,
+    "investor_paid_eur": 0,
+    "cash_eur": 77684.80719184074
+   },
+   {
+    "month": 7,
+    "buyer_eur": 101504.16982472576,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 3045.1250947417725,
+    "investor_paid_eur": 0,
+    "cash_eur": 53083.410255158014
+   },
+   {
+    "month": 8,
+    "buyer_eur": 299210.1818983181,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 8976.305456949543,
+    "investor_paid_eur": 0,
+    "cash_eur": 220256.8450298599
+   },
+   {
+    "month": 9,
+    "buyer_eur": 126538.86811492534,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 3796.16604344776,
+    "investor_paid_eur": 0,
+    "cash_eur": 219939.10543467078
+   },
+   {
+    "month": 10,
+    "buyer_eur": 228384.83935904718,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 6851.545180771415,
+    "investor_paid_eur": 0,
+    "cash_eur": 318411.9579462798
+   },
+   {
+    "month": 11,
+    "buyer_eur": 0.0,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 195351.51627961308
+   },
+   {
+    "month": 12,
+    "buyer_eur": 181997.76,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 5459.9328000000005,
+    "investor_paid_eur": 0,
+    "cash_eur": 248828.90181294637
+   },
+   {
+    "month": 13,
+    "buyer_eur": 129020.65246477161,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 3870.619573943148,
+    "investor_paid_eur": 0,
+    "cash_eur": 220153.38262044144
+   },
+   {
+    "month": 14,
+    "buyer_eur": 183773.83868091402,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 5513.21516042742,
+    "investor_paid_eur": 0,
+    "cash_eur": 244588.45405759467
+   },
+   {
+    "month": 15,
+    "buyer_eur": 0.0,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 90762.9019742613
+   },
+   {
+    "month": 16,
+    "buyer_eur": 130913.88167161972,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 3927.4164501485916,
+    "investor_paid_eur": 0,
+    "cash_eur": 63923.815112399054
+   },
+   {
+    "month": 17,
+    "buyer_eur": 236281.12279530976,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 7088.433683859293,
+    "investor_paid_eur": 0,
+    "cash_eur": 139290.95214051614
+   },
+   {
+    "month": 18,
+    "buyer_eur": 273581.1505975234,
+    "cost_eur": 153825.55208333337,
+    "sales_fee_eur": 8207.434517925702,
+    "investor_paid_eur": 0,
+    "cash_eur": 250839.11613678045
+   },
+   {
+    "month": 19,
+    "buyer_eur": 215188.8400284186,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 6455.665200852558,
+    "investor_paid_eur": 0,
+    "cash_eur": 336511.8492976798
+   },
+   {
+    "month": 20,
+    "buyer_eur": 216236.28258835443,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 6487.088477650633,
+    "investor_paid_eur": 0,
+    "cash_eur": 423200.6017417169
+   },
+   {
+    "month": 21,
+    "buyer_eur": 217288.82362791503,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 6518.66470883745,
+    "investor_paid_eur": 0,
+    "cash_eur": 510910.3189941278
+   },
+   {
+    "month": 22,
+    "buyer_eur": 0.0,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 387849.8773274611
+   },
+   {
+    "month": 23,
+    "buyer_eur": 154788.75311725537,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 4643.662593517661,
+    "investor_paid_eur": 0,
+    "cash_eur": 414934.52618453203
+   },
+   {
+    "month": 24,
+    "buyer_eur": 279371.90400000004,
+    "cost_eur": 123060.44166666671,
+    "sales_fee_eur": 8381.157120000002,
+    "investor_paid_eur": 0,
+    "cash_eur": 562864.8313978653
+   },
+   {
+    "month": 25,
+    "buyer_eur": 0.0,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 501334.610564532
+   },
+   {
+    "month": 26,
+    "buyer_eur": 222628.87885916443,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 6678.866365774932,
+    "investor_paid_eur": 0,
+    "cash_eur": 655754.4022245882
+   },
+   {
+    "month": 27,
+    "buyer_eur": 223712.53618431708,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 6711.376085529512,
+    "investor_paid_eur": 0,
+    "cash_eur": 811225.3414900424
+   },
+   {
+    "month": 28,
+    "buyer_eur": 0.0,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 749695.1206567091
+   },
+   {
+    "month": 29,
+    "buyer_eur": 225895.70078024492,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 6776.871023407348,
+    "investor_paid_eur": 0,
+    "cash_eur": 907283.7295802133
+   },
+   {
+    "month": 30,
+    "buyer_eur": 160140.4913096404,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 4804.214739289212,
+    "investor_paid_eur": 0,
+    "cash_eur": 1001089.7853172312
+   },
+   {
+    "month": 31,
+    "buyer_eur": 0.0,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 939559.5644838979
+   },
+   {
+    "month": 32,
+    "buyer_eur": 0.0,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 878029.3436505646
+   },
+   {
+    "month": 33,
+    "buyer_eur": 0.0,
+    "cost_eur": 61530.220833333355,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 816499.1228172312
+   },
+   {
+    "month": 34,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 816499.1228172312
+   },
+   {
+    "month": 35,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 816499.1228172312
+   },
+   {
+    "month": 36,
+    "buyer_eur": 1025975.3538188745,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 30779.260614566232,
+    "investor_paid_eur": 1717892.2293120003,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 37,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 38,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 39,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 40,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 41,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 42,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 43,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 44,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 45,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 46,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 47,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 48,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 49,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 50,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 51,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 52,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 53,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 54,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 55,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 56,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 57,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 58,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 59,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
+   },
+   {
+    "month": 60,
+    "buyer_eur": 0.0,
+    "cost_eur": 0.0,
+    "sales_fee_eur": 0.0,
+    "investor_paid_eur": 0,
+    "cash_eur": 93802.98670953908
    }
   ]
  },
  "tokens": [
   {
-   "id": "t000",
-   "label": "Ступень «Очередь», €/м² (PROPOSAL)",
-   "copy": "2 950",
-   "value": "2 950",
-   "hits": 10
+   "id": "market",
+   "label": "market",
+   "copy": "@market@",
+   "value": "3 360"
   },
   {
-   "id": "t001",
-   "label": "Ступень «Разрешение», €/м² (PROPOSAL)",
-   "copy": "3 100",
-   "value": "3 100",
-   "hits": 3
+   "id": "entry",
+   "label": "entry",
+   "copy": "@entry@",
+   "value": "2 352"
   },
   {
-   "id": "t002",
-   "label": "Ступень «Фундамент», €/м² (PROPOSAL)",
-   "copy": "3 250",
-   "value": "3 250",
-   "hits": 2
+   "id": "discount",
+   "label": "discount",
+   "copy": "@discount@",
+   "value": "30"
   },
   {
-   "id": "t003",
-   "label": "Ступень «Коробка и кровля», €/м² (PROPOSAL)",
-   "copy": "3 450",
-   "value": "3 450",
-   "hits": 2
+   "id": "growth",
+   "label": "growth",
+   "copy": "@growth@",
+   "value": "6"
   },
   {
-   "id": "t004",
-   "label": "Ступень «Отделка», €/м² (PROPOSAL)",
-   "copy": "3 650",
-   "value": "3 650",
-   "hits": 2
+   "id": "target",
+   "label": "target",
+   "copy": "@target@",
+   "value": "9"
   },
   {
-   "id": "t005",
-   "label": "Ступень «Ввод», €/м² (PROPOSAL)",
-   "copy": "3 850",
-   "value": "3 850",
-   "hits": 9
+   "id": "months",
+   "label": "months",
+   "copy": "@months@",
+   "value": "36"
   },
   {
-   "id": "t006",
-   "label": "Аренда-середина, €/м²/мес",
-   "copy": "13,5",
-   "value": "13,5",
-   "hits": 2
+   "id": "gain_pct",
+   "label": "gain_pct",
+   "copy": "@gain_pct@",
+   "value": "29,5"
   },
   {
-   "id": "t007",
-   "label": "Аренда × 12, € с метра",
-   "copy": "162 €",
-   "value": "162 €",
-   "hits": 2
+   "id": "pool",
+   "label": "pool",
+   "copy": "@pool@",
+   "value": "564"
   },
   {
-   "id": "t008",
-   "label": "Расходы: IBI, € с м²/год",
-   "copy": "3,75",
-   "value": "3,75",
-   "hits": 1
+   "id": "pool_capital",
+   "label": "pool_capital",
+   "copy": "@pool_capital@",
+   "value": "1 326 528"
   },
   {
-   "id": "t009",
-   "label": "Расходы: IBI, % от 162 €",
-   "copy": "2,3%",
-   "value": "2,3%",
-   "hits": 1
+   "id": "pool_exit",
+   "label": "pool_exit",
+   "copy": "@pool_exit@",
+   "value": "1 717 892"
   },
   {
-   "id": "t010",
-   "label": "Расходы: Взносы сообщества, € с м²/год",
-   "copy": "34,1",
-   "value": "34,1",
-   "hits": 1
+   "id": "area",
+   "label": "area",
+   "copy": "@area@",
+   "value": "1 409"
   },
   {
-   "id": "t011",
-   "label": "Расходы: Взносы сообщества, % от 162 €",
-   "copy": "21,0%",
-   "value": "21,0%",
-   "hits": 2
+   "id": "budget",
+   "label": "budget",
+   "copy": "@budget@",
+   "value": "4 490 813"
   },
   {
-   "id": "t012",
-   "label": "Расходы: Управление, € с м²/год",
-   "copy": "17,3",
-   "value": "17,3",
-   "hits": 1
+   "id": "sales",
+   "label": "sales",
+   "copy": "@sales@",
+   "value": "5 129 877"
   },
   {
-   "id": "t013",
-   "label": "Расходы: Управление, % от 162 €",
-   "copy": "10,7%",
-   "value": "10,7%",
-   "hits": 1
+   "id": "sales_fee",
+   "label": "sales_fee",
+   "copy": "@sales_fee@",
+   "value": "153 896"
   },
   {
-   "id": "t014",
-   "label": "Расходы: Простой, € с м²/год",
-   "copy": "6,75",
-   "value": "6,75",
-   "hits": 1
+   "id": "surplus",
+   "label": "surplus",
+   "copy": "@surplus@",
+   "value": "93 803"
   },
   {
-   "id": "t015",
-   "label": "Расходы: Простой, % от 162 €",
-   "copy": "4,2%",
-   "value": "4,2%",
-   "hits": 1
+   "id": "minimum_cash",
+   "label": "minimum_cash",
+   "copy": "@minimum_cash@",
+   "value": "53 083"
   },
   {
-   "id": "t016",
-   "label": "Расходы: Страховка, € с м²/год",
-   "copy": "3,5",
-   "value": "3,5",
-   "hits": 2
+   "id": "high_shortfall",
+   "label": "high_shortfall",
+   "copy": "@high_shortfall@",
+   "value": "562 580"
   },
   {
-   "id": "t017",
-   "label": "Расходы: Страховка, % от 162 €",
-   "copy": "2,2%",
-   "value": "2,2%",
-   "hits": 1
+   "id": "delay_gap",
+   "label": "delay_gap",
+   "copy": "@delay_gap@",
+   "value": "202 236"
   },
   {
-   "id": "t018",
-   "label": "Расходы: Резерв на ремонт, € с м²/год",
-   "copy": "8,1",
-   "value": "8,1",
-   "hits": 1
+   "id": "cost_m2",
+   "label": "cost_m2",
+   "copy": "@cost_m2@",
+   "value": "1 750"
   },
   {
-   "id": "t019",
-   "label": "Расходы: Резерв на ремонт, % от 162 €",
-   "copy": "5,0%",
-   "value": "5,0%",
-   "hits": 1
+   "id": "market_y0",
+   "label": "market_y0",
+   "copy": "@market_y0@",
+   "value": "3 360"
   },
   {
-   "id": "t020",
-   "label": "Расходы: Сбор за мусор, € с м²/год",
-   "copy": "1,5",
-   "value": "1,5",
-   "hits": 1
+   "id": "market_y1",
+   "label": "market_y1",
+   "copy": "@market_y1@",
+   "value": "3 562"
   },
   {
-   "id": "t021",
-   "label": "Расходы: Сбор за мусор, % от 162 €",
-   "copy": "0,9%",
-   "value": "0,9%",
-   "hits": 1
+   "id": "market_y2",
+   "label": "market_y2",
+   "copy": "@market_y2@",
+   "value": "3 775"
   },
   {
-   "id": "t022",
-   "label": "Расходы итого, € с м²/год",
-   "copy": "75,0",
-   "value": "75,0",
-   "hits": 1
+   "id": "market_y3",
+   "label": "market_y3",
+   "copy": "@market_y3@",
+   "value": "4 002"
   },
   {
-   "id": "t023",
-   "label": "Расходы итого, %",
-   "copy": "46,3%",
-   "value": "46,3%",
-   "hits": 2
+   "id": "entry_48",
+   "label": "entry_48",
+   "copy": "@entry_48@",
+   "value": "112 896"
   },
   {
-   "id": "t024",
-   "label": "Дивиденд, € на акцию в год, расчётно, до налога на прибыль компании",
-   "copy": "87 €",
-   "value": "87 €",
-   "hits": 0
+   "id": "exit_48",
+   "label": "exit_48",
+   "copy": "@exit_48@",
+   "value": "146 204"
   },
   {
-   "id": "t025",
-   "label": "Мягкий сценарий, расходы %",
-   "copy": "41,8%",
-   "value": "41,8%",
-   "hits": 1
+   "id": "gain_48",
+   "label": "gain_48",
+   "copy": "@gain_48@",
+   "value": "33 308"
   },
   {
-   "id": "t026",
-   "label": "Мягкий сценарий, дивиденд",
-   "copy": "около 94 €",
-   "value": "около 94 €",
-   "hits": 1
+   "id": "entry_72",
+   "label": "entry_72",
+   "copy": "@entry_72@",
+   "value": "169 344"
   },
   {
-   "id": "t027",
-   "label": "Строгий сценарий, расходы %",
-   "copy": "58,7%",
-   "value": "58,7%",
-   "hits": 1
+   "id": "exit_72",
+   "label": "exit_72",
+   "copy": "@exit_72@",
+   "value": "219 305"
   },
   {
-   "id": "t028",
-   "label": "Строгий сценарий, дивиденд",
-   "copy": "около 59 €",
-   "value": "около 59 €",
-   "hits": 1
+   "id": "gain_72",
+   "label": "gain_72",
+   "copy": "@gain_72@",
+   "value": "49 961"
   },
   {
-   "id": "t029",
-   "label": "Жилая площадь, сумма по типам",
-   "copy": "1 308–1 510",
-   "value": "1 308–1 510",
-   "hits": 1
+   "id": "entry_100",
+   "label": "entry_100",
+   "copy": "@entry_100@",
+   "value": "235 200"
   },
   {
-   "id": "t030",
-   "label": "Минимальная цена юнита, €",
-   "copy": "153 400",
-   "value": "153 400",
-   "hits": 0
+   "id": "exit_100",
+   "label": "exit_100",
+   "copy": "@exit_100@",
+   "value": "304 591"
   },
   {
-   "id": "t031",
-   "label": "48 м² × 2 950",
-   "copy": "141 600",
-   "value": "141 600",
-   "hits": 3
+   "id": "gain_100",
+   "label": "gain_100",
+   "copy": "@gain_100@",
+   "value": "69 391"
   },
   {
-   "id": "t032",
-   "label": "48 м² × 3 850",
-   "copy": "184 800",
-   "value": "184 800",
-   "hits": 1
+   "id": "home_1_low",
+   "label": "home_1_low",
+   "copy": "@home_1_low@",
+   "value": "161 280"
   },
   {
-   "id": "t033",
-   "label": "48 м² × 2 950 ÷ 6",
-   "copy": "22 420",
-   "value": "22 420",
-   "hits": 3
+   "id": "home_1_high",
+   "label": "home_1_high",
+   "copy": "@home_1_high@",
+   "value": "184 800"
   },
   {
-   "id": "t034",
-   "label": "Разница 48 м² ввод−очередь",
-   "copy": "43 200",
-   "value": "43 200",
-   "hits": 1
+   "id": "home_2_low",
+   "label": "home_2_low",
+   "copy": "@home_2_low@",
+   "value": "228 480"
   },
   {
-   "id": "t035",
-   "label": "48 × 87 (дивиденд в год)",
-   "copy": "4 176",
-   "value": "4 176",
-   "hits": 0
+   "id": "home_2_high",
+   "label": "home_2_high",
+   "copy": "@home_2_high@",
+   "value": "262 080"
   },
   {
-   "id": "t036",
-   "label": "48 × 87 ÷ 12",
-   "copy": "348",
-   "value": "348",
-   "hits": 0
+   "id": "home_3_low",
+   "label": "home_3_low",
+   "copy": "@home_3_low@",
+   "value": "285 600"
   },
   {
-   "id": "t037",
-   "label": "72 м² × 2 950",
-   "copy": "212 400",
-   "value": "212 400",
-   "hits": 8
-  },
-  {
-   "id": "t038",
-   "label": "72 м² × 3 100",
-   "copy": "223 200",
-   "value": "223 200",
-   "hits": 1
-  },
-  {
-   "id": "t039",
-   "label": "72 м² × 3 250",
-   "copy": "234 000",
-   "value": "234 000",
-   "hits": 0
-  },
-  {
-   "id": "t040",
-   "label": "72 м² × 3 450",
-   "copy": "248 400",
-   "value": "248 400",
-   "hits": 0
-  },
-  {
-   "id": "t041",
-   "label": "72 м² × 3 650",
-   "copy": "262 800",
-   "value": "262 800",
-   "hits": 0
-  },
-  {
-   "id": "t042",
-   "label": "72 м² × 3 850",
-   "copy": "277 200",
-   "value": "277 200",
-   "hits": 5
-  },
-  {
-   "id": "t043",
-   "label": "72 м² × 2 950 ÷ 6",
-   "copy": "33 630",
-   "value": "33 630",
-   "hits": 4
-  },
-  {
-   "id": "t044",
-   "label": "Разница 72 м² ввод−очередь",
-   "copy": "64 800",
-   "value": "64 800",
-   "hits": 2
-  },
-  {
-   "id": "t045",
-   "label": "72 × 87 (дивиденд в год)",
-   "copy": "6 264",
-   "value": "6 264",
-   "hits": 0
-  },
-  {
-   "id": "t046",
-   "label": "72 × 87 ÷ 12",
-   "copy": "522",
-   "value": "522",
-   "hits": 0
-  },
-  {
-   "id": "t047",
-   "label": "100 м² × 2 950",
-   "copy": "295 000",
-   "value": "295 000",
-   "hits": 3
-  },
-  {
-   "id": "t048",
-   "label": "100 м² × 3 850",
-   "copy": "385 000",
-   "value": "385 000",
-   "hits": 1
-  },
-  {
-   "id": "t049",
-   "label": "100 м² × 2 950 ÷ 6",
-   "copy": "46 708",
-   "value": "46 708",
-   "hits": 3
-  },
-  {
-   "id": "t050",
-   "label": "Разница 100 м² ввод−очередь",
-   "copy": "90 000",
-   "value": "90 000",
-   "hits": 1
-  },
-  {
-   "id": "t051",
-   "label": "100 × 87 (дивиденд в год)",
-   "copy": "8 700",
-   "value": "8 700",
-   "hits": 0
-  },
-  {
-   "id": "t052",
-   "label": "100 × 87 ÷ 12",
-   "copy": "725",
-   "value": "725",
-   "hits": 0
-  },
-  {
-   "id": "t053",
-   "label": "72 м² × 3 450 ÷ 6",
-   "copy": "39 330",
-   "value": "39 330",
-   "hits": 0
-  },
-  {
-   "id": "t054",
-   "label": "72 м²: очередь→разрешение",
-   "copy": "10 800",
-   "value": "10 800",
-   "hits": 1
-  },
-  {
-   "id": "t055",
-   "label": "48–55 м² × 2 950",
-   "copy": "141 600–162 250",
-   "value": "141 600–162 250",
-   "hits": 0
-  },
-  {
-   "id": "t056",
-   "label": "48–55 × 87 (дивиденд)",
-   "copy": "4 176–4 785",
-   "value": "4 176–4 785",
-   "hits": 0
-  },
-  {
-   "id": "t057",
-   "label": "68–78 м² × 2 950",
-   "copy": "200 600–230 100",
-   "value": "200 600–230 100",
-   "hits": 0
-  },
-  {
-   "id": "t058",
-   "label": "68–78 × 87 (дивиденд)",
-   "copy": "5 916–6 786",
-   "value": "5 916–6 786",
-   "hits": 0
-  },
-  {
-   "id": "t059",
-   "label": "85–100 м² × 2 950",
-   "copy": "250 750–295 000",
-   "value": "250 750–295 000",
-   "hits": 0
-  },
-  {
-   "id": "t060",
-   "label": "85–100 × 87 (дивиденд)",
-   "copy": "7 395–8 700",
-   "value": "7 395–8 700",
-   "hits": 0
-  },
-  {
-   "id": "t061",
-   "label": "48–55 м² × 3 850",
-   "copy": "184 800–211 750",
-   "value": "184 800–211 750",
-   "hits": 0
-  },
-  {
-   "id": "t062",
-   "label": "48–55 м² × 12–15 € аренды/мес",
-   "copy": "576–825",
-   "value": "576–825",
-   "hits": 0
-  },
-  {
-   "id": "t063",
-   "label": "85–100 м² × 3 850",
-   "copy": "327 250–385 000",
-   "value": "327 250–385 000",
-   "hits": 0
-  },
-  {
-   "id": "t064",
-   "label": "85–100 м² × 12–15 € аренды/мес",
-   "copy": "1 020–1 500",
-   "value": "1 020–1 500",
-   "hits": 0
-  },
-  {
-   "id": "t065",
-   "label": "72 м² × 12–15 € аренды/мес",
-   "copy": "864–1 080",
-   "value": "864–1 080",
-   "hits": 6
-  },
-  {
-   "id": "t066",
-   "label": "72 м² × 12–15 € × 12",
-   "copy": "10 368–12 960",
-   "value": "10 368–12 960",
-   "hits": 2
-  },
-  {
-   "id": "t067",
-   "label": "IGIC 7% от 277 200",
-   "copy": "19 404",
-   "value": "19 404",
-   "hits": 2
-  },
-  {
-   "id": "t068",
-   "label": "AJD 1% от 277 200",
-   "copy": "2 772",
-   "value": "2 772",
-   "hits": 2
-  },
-  {
-   "id": "t069",
-   "label": "Рост до цены ввода от 2 950",
-   "copy": "30,5%",
-   "value": "30,5%",
-   "hits": 0
-  },
-  {
-   "id": "t070",
-   "label": "87 / 2 950",
-   "copy": "2,9%",
-   "value": "2,9%",
-   "hits": 0
-  },
-  {
-   "id": "t071",
-   "label": "Рост до цены ввода от 3 100",
-   "copy": "24,2%",
-   "value": "24,2%",
-   "hits": 0
-  },
-  {
-   "id": "t072",
-   "label": "87 / 3 100",
-   "copy": "2,8%",
-   "value": "2,8%",
-   "hits": 0
-  },
-  {
-   "id": "t073",
-   "label": "Рост до цены ввода от 3 250",
-   "copy": "18,5%",
-   "value": "18,5%",
-   "hits": 0
-  },
-  {
-   "id": "t074",
-   "label": "87 / 3 250",
-   "copy": "2,7%",
-   "value": "2,7%",
-   "hits": 0
-  },
-  {
-   "id": "t075",
-   "label": "Рост до цены ввода от 3 450",
-   "copy": "11,6%",
-   "value": "11,6%",
-   "hits": 0
-  },
-  {
-   "id": "t076",
-   "label": "87 / 3 450",
-   "copy": "2,5%",
-   "value": "2,5%",
-   "hits": 0
-  },
-  {
-   "id": "t077",
-   "label": "Рост до цены ввода от 3 650",
-   "copy": "5,5%",
-   "value": "5,5%",
-   "hits": 0
-  },
-  {
-   "id": "t078",
-   "label": "87 / 3 650",
-   "copy": "2,4%",
-   "value": "2,4%",
-   "hits": 0
-  },
-  {
-   "id": "t079",
-   "label": "Рост до цены ввода от 3 850",
-   "copy": "0,0%",
-   "value": "0,0%",
-   "hits": 0
-  },
-  {
-   "id": "t080",
-   "label": "87 / 3 850",
-   "copy": "2,3%",
-   "value": "2,3%",
-   "hits": 1
-  },
-  {
-   "id": "t081",
-   "label": "Оплата сразу полностью: бонус (ОСН 31.10)",
-   "copy": "бонус 10%",
-   "value": "бонус 10%",
-   "hits": 3
-  },
-  {
-   "id": "t082",
-   "label": "Оплата за полгода: бонус (ОСН 31.10)",
-   "copy": "бонус 5%",
-   "value": "бонус 5%",
-   "hits": 3
-  },
-  {
-   "id": "t083",
-   "label": "Оплата за год (ОСН 31.10)",
-   "copy": "без бонуса",
-   "value": "без бонуса",
-   "hits": 3
-  },
-  {
-   "id": "t084",
-   "label": "Резиденция 1 спальня = акций",
-   "copy": "48–55 акций",
-   "value": "48–55 акций",
-   "hits": 0
-  },
-  {
-   "id": "t085",
-   "label": "2 спальни = акций",
-   "copy": "68–78 акций",
-   "value": "68–78 акций",
-   "hits": 0
-  },
-  {
-   "id": "t086",
-   "label": "Большой дом = акций",
-   "copy": "85–100 акций",
-   "value": "85–100 акций",
-   "hits": 0
-  },
-  {
-   "id": "t087",
-   "label": "Докупка 50→72",
-   "copy": "22 акци",
-   "value": "22 акци",
-   "hits": 1
-  },
-  {
-   "id": "t088",
-   "label": "PVGIS La Quinta, кВт·ч/кВт в год, панели плоско",
-   "copy": "1 490",
-   "value": "1 490",
-   "hits": 5
-  },
-  {
-   "id": "t089",
-   "label": "Канары среднее, кВт·ч/кВт",
-   "copy": "1 771",
-   "value": "1 771",
-   "hits": 3
-  },
-  {
-   "id": "t090",
-   "label": "PVGIS La Quinta, оптимальный наклон 23°",
-   "copy": "1 578",
-   "value": "1 578",
-   "hits": 3
-  },
-  {
-   "id": "t091",
-   "label": "Дом на вводе 48–55 м² × 3 800–4 600",
-   "copy": "182 400–253 000",
-   "value": "182 400–253 000",
-   "hits": 1
-  },
-  {
-   "id": "t092",
-   "label": "Дом на вводе 68–78 м² × 3 800–4 600",
-   "copy": "258 400–358 800",
-   "value": "258 400–358 800",
-   "hits": 1
-  },
-  {
-   "id": "t093",
-   "label": "Дом на вводе 85–100 м² × 3 800–4 600",
-   "copy": "323 000–460 000",
-   "value": "323 000–460 000",
-   "hits": 1
-  },
-  {
-   "id": "t094",
-   "label": "Дом на вводе 72 м² × 3 800–4 600",
-   "copy": "273 600–331 200",
-   "value": "273 600–331 200",
-   "hits": 2
-  },
-  {
-   "id": "t095",
-   "label": "Дом на вводе 100 м² × 3 800 (от)",
-   "copy": "от 380 000",
-   "value": "от 380 000",
-   "hits": 0
-  },
-  {
-   "id": "t096",
-   "label": "Дом 50 м²",
-   "copy": "50 м²",
-   "value": "50 м²",
-   "hits": 1
-  },
-  {
-   "id": "t097",
-   "label": "Дом 95 м²",
-   "copy": "95 м²",
-   "value": "95 м²",
-   "hits": 1
-  },
-  {
-   "id": "t098",
-   "label": "50 м² × 12–15 €",
-   "copy": "600–750",
-   "value": "600–750",
-   "hits": 1
-  },
-  {
-   "id": "t099",
-   "label": "50 м² × 17 € (Puerto)",
-   "copy": "около 850 €",
-   "value": "около 850 €",
-   "hits": 1
-  },
-  {
-   "id": "t100",
-   "label": "72 м² × 17 € (Puerto)",
-   "copy": "около 1 224 €",
-   "value": "около 1 224 €",
-   "hits": 1
-  },
-  {
-   "id": "t101",
-   "label": "95 м² × 12–15 €",
-   "copy": "1 140–1 425",
-   "value": "1 140–1 425",
-   "hits": 1
-  },
-  {
-   "id": "t102",
-   "label": "95 м² × 17 € (Puerto)",
-   "copy": "около 1 615 €",
-   "value": "около 1 615 €",
-   "hits": 1
-  },
-  {
-   "id": "t103",
-   "label": "Пример счёта 120 €/мес × 12 (grupodlt)",
-   "copy": "1 440",
-   "value": "1 440",
-   "hits": 1
-  },
-  {
-   "id": "t104",
-   "label": "Расходы итого, € с метра (округл.)",
-   "copy": "75 € с метра",
-   "value": "75 € с метра",
-   "hits": 1
-  },
-  {
-   "id": "t105",
-   "label": "Докупка: начали с",
-   "copy": "50 акций",
-   "value": "50 акций",
-   "hits": 1
-  },
-  {
-   "id": "t106",
-   "label": "La Quinta III, цены 4 домов (estatenearme)",
-   "copy": "420 000–425 000",
-   "value": "420 000–425 000",
-   "hits": 1
-  },
-  {
-   "id": "t107",
-   "label": "La Quinta III, € за м² = 420–425 тыс. ÷ 125",
-   "copy": "3 360–3 400",
-   "value": "3 360–3 400",
-   "hits": 1
-  },
-  {
-   "id": "t108",
-   "label": "La Quinta 2, цены (estatenearme)",
-   "copy": "399 999–425 700",
-   "value": "399 999–425 700",
-   "hits": 1
-  },
-  {
-   "id": "t109",
-   "label": "La Quinta 2, € за м² ÷ 110",
-   "copy": "3 636–3 870",
-   "value": "3 636–3 870",
-   "hits": 1
-  },
-  {
-   "id": "t110",
-   "label": "Kelify, районы Santa Úrsula, март 2026, €/м²",
-   "copy": "10,00–11,67",
-   "value": "10,00–11,67",
-   "hits": 2
-  },
-  {
-   "id": "t111",
-   "label": "Kelify, La Quinta 80 м²",
-   "copy": "975 €",
-   "value": "975 €",
-   "hits": 2
-  },
-  {
-   "id": "t112",
-   "label": "Kelify, La Quinta 60 м²",
-   "copy": "900 €",
-   "value": "900 €",
-   "hits": 2
-  },
-  {
-   "id": "t113",
-   "label": "Kelify, La Quinta 132 м² (8 oct 2026)",
-   "copy": "1 500 €",
-   "value": "1 500 €",
-   "hits": 2
+   "id": "home_3_high",
+   "label": "home_3_high",
+   "copy": "@home_3_high@",
+   "value": "336 000"
   }
  ],
- "extra": []
+ "extra": [],
+ "rounding": {
+  "rule": "ROUND_HALF_UP",
+  "money": "integer_eur_half_up"
+ },
+ "type_click_sets": "quantity"
 }

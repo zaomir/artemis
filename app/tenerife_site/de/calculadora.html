@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aktienrechner Artemis de la Cruz: Summe, Rate, Dividende</title>
-<meta name="description" content="Fläche, Stufe und Zahlung wählen: Kaufsumme, sechs Raten mit 5 % Rabatt, Fertigstellungspreis und Dividendenschätzung von Artemis de la Cruz.">
+<title>Investition und Auszahlung berechnen — Artemis de la Cruz</title>
+<meta name="description" content="Eine volle Zahlung, 36 Monate und 9% jährliche Zielrendite. Kapital und Ertrag getrennt. Keine jährlichen Ausschüttungen und kein Tausch in ein Haus.">
 <link rel="canonical" href="https://artemisresort.com/tenerife/de/calculadora/">
 <link rel="alternate" hreflang="en" href="https://artemisresort.com/tenerife/calculadora/">
 <link rel="alternate" hreflang="es" href="https://artemisresort.com/tenerife/es/calculadora/">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Artemis de la Cruz">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="Berechnen Sie Ihre Aktien bei Artemis de la Cruz">
-<meta property="og:description" content="Fläche, Stufe und Zahlung wählen: Kaufsumme, sechs Raten mit 5 % Rabatt, Fertigstellungspreis und Dividendenschätzung von Artemis de la Cruz.">
+<meta property="og:title" content="Investition und Auszahlung berechnen">
+<meta property="og:description" content="Eine volle Zahlung, 36 Monate und 9% jährliche Zielrendite. Kapital und Ertrag getrennt. Keine jährlichen Ausschüttungen und kein Tausch in ein Haus.">
 <meta property="og:url" content="https://artemisresort.com/tenerife/de/calculadora/">
 <meta property="og:image" content="https://artemisresort.com/static/tenerife/site/img/og-tenerife-1200x630.jpg">
 <meta property="og:image:width" content="1200">
@@ -64,66 +64,52 @@
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
     <div class="col-text bar-under">
-      <h1 id="h1">Rechner: Ihre Meter als Aktien der Bauträgergesellschaft</h1>
-      <p class="hero__lead">Wählen Sie Fläche oder Residenztyp, Einstiegsstufe und Zahlungsweise. Der Rechner zeigt Kaufsumme, Zahlung in sechs Raten und den Fertigstellungspreis derselben Fläche. Die Dividendenschätzung beträgt 2,5–3,5 % jährlich vor Körperschaftsteuer. Eine Aktie entspricht einem Quadratmeter.</p>
+      <h1 id="h1">Jetzt investieren und den Zielbetrag beim Ausstieg sehen</h1>
+      <p class="hero__lead">Wählen Sie 48 bis 100 Aktien zu je 2 352 €. Der Rechner zeigt Investition, Zielauszahlung und Ertrag nach 36 Monaten bei 9% jährlich. Die gesamte Investition wird einmalig eingezahlt.</p>
     </div>
   </div>
 </section>
 
 <section class="section calc-sec" id="calc" aria-labelledby="h1">
   <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Rechner">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Beteiligungsrechner">
       <fieldset>
-        <legend>Fläche</legend>
+        <legend>Aktienzahl</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="one_bed" checked><span>Ein Schlafzimmer, 48–55 m²</span></label>
-          <label class="opt"><input type="radio" name="type" value="two_bed"><span>Zwei Schlafzimmer, 68–78 m²</span></label>
-          <label class="opt"><input type="radio" name="type" value="large"><span>Großes Haus, 85–100 m²</span></label>
+          <label class="opt"><input type="radio" name="type" value="q48"><span>48 Aktien</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 Aktien</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>100 Aktien</span></label>
         </div>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Fläche, m²</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="52">
-          <output for="calc-m2" id="calc-m2-out">52 m²</output>
+          <label for="calc-m2" class="visually-hidden">Anzahl der Aktien</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
+          <output for="calc-m2" id="calc-m2-out">72 Aktien</output>
         </div>
       </fieldset>
-      <fieldset>
-        <legend>Einstiegsstufe</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Früher Einstieg — 2 950 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="permit"><span>Baugenehmigung — 3 100 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="foundation"><span>Fundament — 3 250 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Rohbau und Dach — 3 450 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="finishing"><span>Ausbau — 3 650 €</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Zahlungsart</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="pay" value="now"><span>Sofort zahlen</span></label>
-          <label class="opt"><input type="radio" name="pay" value="m6" checked><span>In sechs Raten mit 5 % Rabatt</span></label>
-        </div>
-      </fieldset>
+      <p><strong>Früher Preis je Aktie:</strong> 2 352 €</p>
+      <p><strong>Zahlung:</strong> Gesamter Betrag, einmalig</p>
+      <p><strong>Modelllaufzeit:</strong> 36 Monate</p>
+      <p>Zielszenario: Das Ergebnis hängt von Verkäufen, Kosten und Zeitpunkt ab.</p>
     </div>
-    <div class="calc__out" aria-live="polite">
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
       <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Kaufsumme</dt><dd data-k="sum">153 400 €</dd></div>
-        <div><dt>Monatsrate</dt><dd data-k="month">24 288 €</dd></div>
-        <div><dt>Preis der Stufe „Fertigstellung“ für dieselben Meter</dt><dd data-k="handover">200 200 €</dd></div>
-        <div><dt>Projektschätzung:</dt><dd data-k="pct">2,5–3,5%</dd></div>
-        <div class="res__paths"><dt>Zwei Wege nach der Fertigstellung</dt><dd>die Dividende beziehen oder die Aktien gegen Meter Ihrer Residenz tauschen</dd></div>
+        <div class="res__main"><dt>Investition — eine Zahlung</dt><dd data-k="sum">169 344 €</dd></div>
+        <div><dt>Zielauszahlung beim Ausstieg</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Gesamtertrag</dt><dd data-k="gain">49 961 €</dd></div>
+        <div><dt>Jährliche Zielrendite</dt><dd data-k="pct">9,0%</dd></div>
+        <div><dt>Gesamtzuwachs</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__paths"><dt>Auszahlung</dt><dd>Einmalige Geldzahlung bei Verkauf oder Rückkauf. Keine jährlichen Ausschüttungen.</dd></div>
       </dl>
     </div>
   </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","price_eur_m2":2950,"entry":true,"current":true},{"id":"permit","price_eur_m2":3100,"entry":true},{"id":"foundation","price_eur_m2":3250,"entry":true},{"id":"shell_roof","price_eur_m2":3450,"entry":true},{"id":"finishing","price_eur_m2":3650,"entry":true},{"id":"handover","price_eur_m2":3850,"entry":false}],"installments":{"months":6,"discount_pct":5},"dividend_eur_per_share_year":87,"dividend_pct_range":[2.5,3.5],"area_m2":{"min":48,"max":100,"default":52},"unit":"m²","types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"Aktien","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
 </section>
 <section class="section rule-top s--head" aria-labelledby="s1">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s1">Was Sie eingeben</h2>
+  <div class="wrap grid split-head">
+    <h2 id="s1">Ihre Eingaben</h2>
     <div class="split-head__body">
-<p><strong>Fläche.</strong> Von 48 bis 100 m² — oder den Residenztyp:</p>
-<ul class="list"><li>ein Schlafzimmer, 48–55 m²;</li><li>zwei Schlafzimmer, 68–78 m²;</li><li>großes Haus, 85–100 m².</li></ul>
-<p><strong>Einstiegsstufe.</strong> Warteliste — 2 950 €, Baugenehmigung — 3 100 €, Fundament — 3 250 €, Rohbau und Dach — 3 450 €, Ausbau — 3 650 €.</p>
-<p><strong>Zahlungsweise.</strong> Sofort oder in sechs gleichen Raten. Die sechs Raten berücksichtigen den Rabatt von 5 %. „Sofort“ zeigt die Basiskaufsumme; der Rechner zieht den Rabatt für vollständige Zahlung nicht ab.</p>
+<p><strong>Aktienzahl.</strong> Wählen Sie 48, 72 oder 100 oder bewegen Sie den Regler. Dies bestimmt die Investitionshöhe, keine reservierte Hausfläche.</p>
+<p><strong>Zahlung.</strong> Vollständiger Betrag beim Einstieg. Keine monatlichen Investorenraten und keine Zwischenzahlungen im Modell.</p>
 
     </div>
   </div>
@@ -132,15 +118,15 @@
 </section>
 <section class="section rule-top s--head" aria-labelledby="s2">
   <div class="wrap grid split-head">
-    <h2 id="s2">Was Sie sehen</h2>
+    <h2 id="s2">Ihre Ergebnisse</h2>
     <div class="split-head__body">
 <ul class="ledger">
-  <li><strong>Kaufsumme</strong><span>— wie viel Ihre Aktien auf der gewählten Stufe kosten.</span></li>
-  <li><strong>Monatsrate</strong><span>— wenn Sie in sechs Raten zahlen.</span></li>
-  <li><strong>Preis der Stufe „Fertigstellung“ für dieselben Meter</strong><span>— zu 3 850 € pro Meter.</span></li>
-  <li><strong>Dividende</strong><span>— rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.</span></li>
-  <li><strong>Projektschätzung:</strong><span>ein Richtwertbereich, getrennt von den Kosten der gewählten Aktien.</span></li>
-  <li><strong>Zwei Wege nach der Fertigstellung</strong><span>— die Dividende beziehen oder die Aktien gegen Meter Ihrer Residenz tauschen.</span></li>
+  <li><strong>Investition</strong><span>— eine Zahlung beim Einstieg.</span></li>
+  <li><strong>Auszahlung beim Ausstieg</strong><span>— Kapital und Zielertrag zusammen.</span></li>
+  <li><strong>Gesamtertrag</strong><span>— Auszahlung abzüglich Investition.</span></li>
+  <li><strong>Zielrendite</strong><span>— 9% pro Jahr.</span></li>
+  <li><strong>Gesamtzuwachs</strong><span>— 29,5% in drei Jahren.</span></li>
+  <li><strong>Zahlungsquelle</strong><span>— Verkauf oder Rückkauf aus Hausverkaufseingängen.</span></li>
 </ul>
 
     </div>
@@ -152,13 +138,7 @@
   <div class="wrap grid split-head bar-under">
     <h2 id="s3">Formeln</h2>
     <div class="split-head__body">
-<p>Alles wird offen gerechnet, ohne versteckte Koeffizienten:</p>
-<ul class="ledger">
-  <li><strong>Summe</strong><span>= m² × Preis der Stufe.</span></li>
-  <li><strong>Monatsrate</strong><span>= Summe mit 5 % Rabatt ÷ 6.</span></li>
-  <li><strong>Preis bei Fertigstellung</strong><span>= m² × 3 850 €.</span></li>
-  <li><strong>Dividende</strong><span>— rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft, keine Garantie.</span></li>
-</ul>
+<p>Investition = Aktien × 2 352 €. Auszahlung = Investition × (1 + 9%)³. Ertrag = Auszahlung − Investition. Angenommene 6% Hauspreiswachstum fließen in die Verkaufsplanung und werden nicht zur 9%-Rendite addiert.</p>
 
     </div>
   </div>
@@ -166,24 +146,19 @@
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="s4">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s4">Drei fertige Beispiele aus der Warteliste</h2>
+  <div class="wrap grid split-head">
+    <h2 id="s4">Drei Beispiele desselben Modells</h2>
     <div class="split-head__body">
 <div class="table-wrap" role="region" aria-labelledby="s4" tabindex="0">
   <table class="dt dt--stack">
-    <thead><tr><td></td><th scope="col">48 m²</th><th scope="col">72 m²</th><th scope="col">100 m²</th></tr></thead>
+    <thead><tr><td></td><th scope="col" class="num">48 Aktien</th><th scope="col" class="num">72 Aktien</th><th scope="col" class="num">100 Aktien</th></tr></thead>
     <tbody>
-      <tr><th scope="row">Summe zu 2 950 €</th><td data-label="48 m²">141 600 €</td><td data-label="72 m²">212 400 €</td><td data-label="100 m²">295 000 €</td></tr>
-      <tr><th scope="row">Rate, sechs Raten mit 5 % Rabatt</th><td data-label="48 m²">22 420 €</td><td data-label="72 m²">33 630 €</td><td data-label="100 m²">46 708 €</td></tr>
-      <tr><th scope="row">Dieselben Meter zu 3 850 €</th><td data-label="48 m²">184 800 €</td><td data-label="72 m²">277 200 €</td><td data-label="100 m²">385 000 €</td></tr>
-      <tr><th scope="row">Unterschied</th><td data-label="48 m²">43 200 €</td><td data-label="72 m²">64 800 €</td><td data-label="100 m²">90 000 €</td></tr>
-      <tr><th scope="row">Dividende, rechnerisch, vor Körperschaftsteuer der Gesellschaft</th><td data-label="48 m²">2,5–3,5% im Jahr</td><td data-label="72 m²">2,5–3,5% im Jahr</td><td data-label="100 m²">2,5–3,5% im Jahr</td></tr>
+      <tr><th scope="row">Volle Investition</th><td class="num" data-label="48 Aktien">112 896 €</td><td class="num" data-label="72 Aktien">169 344 €</td><td class="num" data-label="100 Aktien">235 200 €</td></tr>
+      <tr><th scope="row">Zielauszahlung nach 36 Monaten</th><td class="num" data-label="48 Aktien">146 204 €</td><td class="num" data-label="72 Aktien">219 305 €</td><td class="num" data-label="100 Aktien">304 591 €</td></tr>
+      <tr><th scope="row">Davon Ertrag</th><td class="num" data-label="48 Aktien">33 308 €</td><td class="num" data-label="72 Aktien">49 961 €</td><td class="num" data-label="100 Aktien">69 391 €</td></tr>
     </tbody>
   </table>
 </div>
-<p><strong>48 Meter</strong> — ein Haus mit einem Schlafzimmer. Einstieg aus der Warteliste — 141 600 €, oder 22 420 € im Monat. Nach der Fertigstellung — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft oder Ihr eigenes Haus.</p>
-<p><strong>72 Meter</strong> — ein Haus mit zwei Schlafzimmern. 212 400 €, oder 33 630 € im Monat. Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.</p>
-<p><strong>100 Meter</strong> — ein großes Haus. 295 000 €, oder rund 46 708 € im Monat. Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.</p>
 
     </div>
   </div>
@@ -192,9 +167,9 @@
 </section>
 <section class="section rule-top s--head" aria-labelledby="s5">
   <div class="wrap grid split-head">
-    <h2 id="s5">Dividendenschätzung</h2>
+    <h2 id="s5">Woher das Geld kommt</h2>
     <div class="split-head__body">
-<p>Rechnerisch 2,5–3,5 % jährlich vor Körperschaftsteuer sind eine Projektschätzung, keine garantierte Zahlung. Sie wird getrennt von den Aktienkosten gezeigt und bei Wechsel der Einstiegsstufe in diesem Rechner nicht neu berechnet. Mietquellen, Kosten und Annahmen stehen im <a href="/tenerife/de/alquiler/">Mietmodell</a>.</p>
+<p>Aus Zahlungen der Käufer von zwanzig Residenzen. Im Basisszenario decken sie Budget und vollständige Investorenabrechnung, ohne zusätzliches Entwicklerkapital. <a href="/tenerife/de/inversores/#funding">Finanzierung</a>.</p>
 
     </div>
   </div>
@@ -202,10 +177,10 @@
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="s6">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s6">Wenn die Stufe schon später ist</h2>
+  <div class="wrap grid split-head">
+    <h2 id="s6">Was die Berechnung beeinflusst</h2>
     <div class="split-head__body">
-<p>Wählen Sie die passende Stufe im Rechner: Summe und Rate werden nach derselben Formel aktualisiert. Die vollständige Leiter und das Beteiligungsbeispiel finden Sie unter <a href="/tenerife/de/inversores/">Für Investoren</a>.</p>
+<p>3 360 €/m² ist eine vorläufige Vergleichsbasis, 6% eine jährliche Wachstumsannahme und 9% eine Zielrendite. Verkäufe, Kosten und tatsächliche Laufzeit können die Zahlung ändern. <a href="/tenerife/de/inversores/#assumptions">Annahmen und Sensitivität</a>.</p>
 
     </div>
   </div>
@@ -214,28 +189,22 @@
 </section>
 <section class="section rule-top s--head" aria-labelledby="s7">
   <div class="wrap grid split-head">
-    <h2 id="s7">So läuft der Einstieg</h2>
+    <h2 id="s7">Einstieg</h2>
     <div class="split-head__body">
-<p>Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der <a href="/tenerife/de/proceso/">Transaktionsablauf</a>.</p>
+<p>Zuerst eine kostenlose Anfrage, dann Grundstück und Bedingungen besprechen. Die 36 Monate beginnen mit der vollständigen Zahlung. <a href="/tenerife/de/proceso/">Alle Schritte</a>.</p>
 
     </div>
   </div>
 
 
 </section>
-<section class="section rule-top s--head" aria-labelledby="s8">
-  <div class="wrap grid split-head bar-under">
-    <h2 id="s8">Nach der Berechnung</h2>
-    <div class="split-head__body">
-<p>Hinterlassen Sie Namen und Kontakt. Wir senden Ihre Berechnung und besprechen die Beteiligung. Fläche, Stufe und Zahlungsweise werden aus dem Rechner übernommen; einen Betrag müssen Sie nicht selbst eingeben.</p>
+<section class="section section--sand" id="ochered" aria-labelledby="s8">
+  <div class="wrap grid wl" id="waitlist">
+    <div class="wl__text">
+      <h2 id="s8">Nach der Berechnung</h2>
+<p>Hinterlassen Sie Namen und Kontakt für eine persönliche Berechnung. Aktienzahl und nachgerechnetes Ergebnis begleiten die Anfrage; der Betrag muss nicht manuell eingegeben werden.</p>
 
     </div>
-  </div>
-
-
-</section>
-<section class="section section--sand" id="ochered" aria-label="Berechnung anfordern">
-  <div class="wrap grid wl wl--solo" id="waitlist">
     <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Wird gesendet…" data-msg-ok-title="Danke! Sie stehen auf der Liste." data-msg-ok-next="Ihre Anfrage geht per Telegram an das Projektteam und an info&#64;artemisresort.com. Wir melden uns bei Ihnen." data-msg-server="Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info&#64;artemisresort.com." data-msg-network="Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut." data-msg-rate="Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info&#64;artemisresort.com." data-msg-name="Bitte geben Sie Ihren Namen an." data-msg-contact="Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram." data-msg-language="Bitte wählen Sie die Sprache." data-msg-consent="Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.">
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Kontakt — E-Mail, Telefon oder Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
@@ -243,13 +212,13 @@
         <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru">Русский</option><option value="de" selected>Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
       <div class="hp" aria-hidden="true"><label for="wl-website">Website</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="/tenerife/de/calculadora/">
-      <input type="hidden" name="calc_m2" id="wl-calc-m2" value="52">
-      <input type="hidden" name="calc_step" id="wl-calc-step" value="queue">
-      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m6">
+      <input type="hidden" name="calc_m2" id="wl-calc-m2" value="72">
+      <input type="hidden" name="calc_step" id="wl-calc-step" value="early">
+      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit ich in die Warteliste aufgenommen und zu meiner Anfrage kontaktiert werde, gemäß der <a href="/tenerife/de/privacy/">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Berechnung anfordern</button></div>
-      <p class="micro">Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.</p>
+      <p class="micro">Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -260,7 +229,7 @@
     <h2 class="visually-hidden">Fußbereich der Website</h2>
     <div class="grid">
       <div class="f-about">
-        <p><strong>Artemis de la Cruz</strong> — zwanzig Residenzen im Norden Teneriffas, das Grundstück wählen wir im Gebiet La Quinta, Santa Úrsula. Aktien der Bauträgergesellschaft ab 2 900–3 100 € pro Meter. Die Eintragung in die Warteliste ist kostenlos, vor der Grundstückswahl nehmen wir kein Geld.</p>
+        <p><strong>Artemis de la Cruz</strong> — zwanzig Residenzen in La Quinta, Santa Úrsula. Frühes Beteiligungsmodell ab 112 896 € mit Zielausstieg nach 36 Monaten. Kostenlose Anfrage.</p>
       </div>
       <nav class="f-pages" id="footer-pages" aria-label="Seiten.">
         <div class="f-pages__groups">
@@ -313,6 +282,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js" defer></script>
+<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
 </body>
 </html>

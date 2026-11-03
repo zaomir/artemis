@@ -1,101 +1,79 @@
 <!-- META
 Слаг: /tenerife/inversores/
-Meta title: Inversores — acciones de Artemis de la Cruz en La Quinta
-Meta description: Participación en Artemis de la Cruz: precios por fases, comparación con la compra de una residencia, dos resultados y cálculo para su superficie.
-OG title: Inversores — acciones de Artemis de la Cruz en La Quinta
+Meta title: Invertir con salida a @months@ meses — Artemis de la Cruz
+Meta description: Precio inicial de @entry@ € por acción, pago único y objetivo del @target@% anualizado. Financiación de inversores y ventas, sin aportación del promotor.
+OG title: Invertir con salida a @months@ meses
 -->
 
-# Inversores: participar en Artemis de la Cruz antes de la entrega
+# Invertir en la construcción y recibir capital y rentabilidad a la salida
 
-Artemis de la Cruz son veinte residencias en la zona de La Quinta, Santa Úrsula. Estamos eligiendo la parcela. Puede participar mediante acciones de la sociedad promotora: una acción corresponde a un metro cuadrado. Inscribirse en la lista es gratis; no recibimos dinero antes de elegir la parcela.
+Participación en Artemis de la Cruz desde @entry_48@ €. Pago completo al entrar, objetivo del @target@% anualizado y salida en efectivo a @months@ meses mediante venta o recompra de la participación. No se prevén pagos anuales. [Calcular su importe](/tenerife/inversores/#calculate).
 
 [КАДР F14]
 
 ### Proyecto y fase actual
 
-Comentamos las opciones de parcela con los inscritos. Fechas previstas: inicio de obra a principios de 2027 y entrega entre finales de 2028 y mediados de 2029. Antes de la obra, el capital cubre el equipo, el proyecto y las licencias; la obra se financia con acciones de la promotora y ventas de viviendas. [Fase actual e informes](/tenerife/construccion/).
+Veinte residencias en La Quinta, Santa Úrsula. La parcela sigue en selección. Ya puede solicitar un cálculo gratuito y comentar las condiciones; el pago llega tras aprobar la parcela y la participación. El plazo financiero empieza con el pago completo, no con la solicitud.
 
-### Inversión o compra de una residencia
+### Inversión o compra de vivienda
 
-El comprador de una casa terminada paga el metro en el que ya hay licencia, cimentación, estructura, cubierta, acabados y piscina: 3 800–4 600 €. El accionista entra antes, cuando nada de eso existe, y paga el precio del tramo en el que está la obra.
-
-Entrar antes no es un descuento sobre una casa terminada. Es el precio de entrada en la sociedad al principio. El metro terminado cuesta más porque detrás ya hay trabajo hecho. Usted paga por el metro antes y mantiene la acción mientras ese trabajo aparece.
-
-| | Acciones de la sociedad promotora | Residencia terminada |
+| | Inversor | Comprador |
 |---|---|---|
-| Qué adquiere | participación en la sociedad antes de la entrega | una vivienda terminada en la entrega |
-| Precio | el tramo actual de obra | 3 800–4 600 € por m², según tipo, planta y vistas |
-| Tras la entrega | mantener las acciones o canjearlas por superficie | ser propietario y decidir el uso de la vivienda |
+| Objetivo | Recuperar capital con rentabilidad | Recibir la residencia elegida |
+| Pago | Importe completo al entrar | Hitos: 40/30/10/20% |
+| Resultado | Liquidación en efectivo | Llaves de la vivienda |
+| Pagos periódicos | No previstos | No forman parte de la compra |
 
-[Tipos y equipamiento de las residencias](/tenerife/producto/). La secuencia completa y el momento de pago se explican en el [proceso de la operación](/tenerife/proceso/).
+Una acción es una unidad de participación. Su precio se compara con una referencia por m², pero el número de acciones no reserva una casa concreta. La salida en efectivo y la compra se calculan por separado.
 
-[КАДР F01]
+### Precio inicial y referencia de comparación
 
-### Seis tramos de precio
+El precio inicial del modelo es @entry@ € por acción: el 70% de la referencia provisional de @market@ €/m², un @discount@% por debajo. No se ha confirmado una tarifa actual comparable de obra nueva local; @market@ €/m² es una hipótesis, no un precio de mercado actual verificado.
 
-| Tramo | Qué debe ocurrir | Precio de la acción = precio del metro | Menos que en la entrega |
-|---|---|---|---|
-| Entrada inicial | la mayoría de la lista aprueba la parcela, contrato de inversión | 2 950 € | 23,4% |
-| Licencia | licencia de obra concedida | 3 100 € | 19,5% |
-| Cimentación | cimentación y zócalo de piedra volcánica terminados | 3 250 € | 15,6% |
-| Estructura y cubierta | muros, forjados, cubierta con placas | 3 450 € | 10,4% |
-| Acabados | fachada, instalaciones, interiores, piscina | 3 650 € | 5,2% |
-| Entrega | licencia de primera ocupación | 3 850 € | — |
+El modelo supone un crecimiento anual del @growth@% para viviendas aún no vendidas. El precio de cada comprador queda fijado al firmar y no aumenta después. [Referencia, fórmulas y fuentes](/tenerife/mercado/).
 
-La comparación se hace con el precio de la acción en la entrega: 3 850 €/m². El porcentaje se calcula sobre ese precio.
+### Salida en efectivo a 36 meses
 
-Las fechas de referencia del proyecto son un plan: inicio de obra a principios de 2027 y entrega entre finales de 2028 y mediados de 2029.
+Para 72 acciones: inversión completa de @entry_72@ €, cobro objetivo de @exit_72@ €, incluidos @gain_72@ € de rentabilidad. El aumento total es del @gain_pct@% en tres años, equivalente al @target@% anualizado con capitalización.
 
-El tramo cambia cuando ocurre un hecho en la obra, no cuando llega una fecha. Cada hecho se ve en el informe semanal.
+Fórmula: **cobro a la salida = inversión × (1 + @target@%)³**. Es el objetivo del escenario base. El pago real depende de los cobros de ventas, los costes y el plazo de salida.
 
-El precio del tramo es el precio que la sociedad fija para su acción en esa fase. Para comparar: los precios de oferta de las obras nuevas vecinas de La Quinta son de 3 360–3 870 € por metro, y los dos proyectos ya están vendidos.
+### Calcule su inversión
 
-Una casa de dos dormitorios de 72 metros son 72 acciones.
+Elija el número de acciones. La calculadora muestra un pago completo y el resultado objetivo a @months@ meses. Puede verlo sin enviar una solicitud; [calculadora independiente](/tenerife/calculadora/).
 
+### Cómo se financia la obra
 
-**Importe base desde la lista de espera:** 212 400 € antes de aplicar las condiciones de pago. En seis cuotas con un 5 % de descuento: 33 630 € al mes.
+Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las veinte viviendas. El modelo no incluye capital adicional del promotor ni deuda bancaria. La inversión no se contabiliza como ingresos de venta de viviendas.
 
-**Esas mismas 72 acciones al precio del tramo «Entrega»:** 277 200 €. La diferencia con la lista de espera es de 64 800 €.
+| Escenario base | Importe |
+|---|---|
+| Fondo inicial: @pool@ acciones | @pool_capital@ € |
+| Contratos de compradores, meses 3–30 | @sales@ € |
+| Terreno, construcción, proyecto y reserva | @budget@ € |
+| Gastos de venta | @sales_fee@ € |
+| Capital y rentabilidad objetivo al salir | @pool_exit@ € |
+| Saldo del proyecto tras liquidar | @surplus@ € |
 
-**La casa terminada de la misma superficie:** 273 600–331 200 €.
+Los compradores pagan 40/30/10/20%. Quien firme tarde abona los hitos completados inmediatamente. El calendario mensual base no presenta déficit; su saldo mínimo es @minimum_cash@ €. Son cálculos, no dinero ya captado ni contratos ya firmados.
 
-[КАДР F15]
+### Qué afecta al resultado
 
-### Dos resultados de la participación
+Se supone construcción a @cost_m2@ €/m² construido y aproximadamente un contrato cada uno o dos meses. A 2 100 €/m² faltan @high_shortfall@ € para liquidar el objetivo completo; dos meses de retraso en ventas crean un déficit intermedio de @delay_gap@ €.
 
-**Mantener las acciones.** La sociedad gestiona el alquiler de larga duración. El dividendo procedente de los ingresos después de gastos se estima en un 2,5–3,5 % anual antes del impuesto sobre sociedades; no está garantizado. [Modelo de alquiler y gastos](/tenerife/alquiler/).
+Antes de captar inversión hacen falta parcela elegida, presupuesto confirmado y calendario viable de ventas y cobros. El @growth@% es una hipótesis de crecimiento y el @target@% un objetivo de rentabilidad; requieren ventas reales.
 
-**Recibir una residencia.** Tras la autorización de puesta en uso, las acciones pueden canjearse por superficie: 72 acciones corresponden a 72 m². Escritura, registro, impuestos y posibilidades de hipoteca se explican en el [proceso de la operación](/tenerife/proceso/).
+### Control y equipo
 
-¿Empezó con 50 acciones y quiere una casa de 72 metros? Compre 22 acciones más al precio del tramo vigente.
-
-Si hay más compradores que unidades, podemos ofrecer a los inversores la cesión de su unidad a un comprador, al precio del metro cuadrado en el momento de la cesión. Es una posibilidad, no una promesa de rentabilidad.
-
-[КАДР F17]
-
-### Calcule su superficie
-
-Elija superficie, tramo de entrada y forma de pago en la calculadora. Muestra el importe de compra, el pago en seis cuotas y el precio de entrega de la misma superficie; el dividendo estimado sigue siendo orientativo. [Explicación de resultados y fórmulas](/tenerife/calculadora/).
-
-
-
-### Seguimiento y equipo
-
-Simon Subic responde de la parcela, las licencias, la puesta en marcha y la coordinación entre financiación y obra. Boris Ribaut responde de la obra, la estructura, los informes y la entrega. Accionistas y compradores reciben un informe de obra cada semana. [Equipo y responsabilidades](/tenerife/equipo/).
+Simon Subic dirige parcela, lanzamiento y financiación. Boris Ribaut supervisa obra, estructura e informes. Se prevén informes semanales con obras realizadas, gastos, cobros, saldo, ventas y siguiente etapa. [Equipo](/tenerife/equipo/) · [Avance](/tenerife/construccion/).
 
 ### Documentos y preguntas
 
-**¿Cuándo se paga?** Tras la aprobación de la parcela por la mayoría de inscritos y la recepción del contrato de inversión. Documentos, formas de pago y formalización están en el [proceso de la operación](/tenerife/proceso/).
+Antes del pago recibe su cálculo y las condiciones: importe, fecha de inicio, mecanismo de salida y cambios del calendario. [Proceso](/tenerife/proceso/) · [Preguntas](/tenerife/faq/).
 
-**¿De dónde salen las referencias?** Las comparaciones y fuentes figuran en la página de [mercado](/tenerife/mercado/).
+### Solicitar un cálculo
 
-**¿Qué más debo comprobar?** Las [respuestas breves](/tenerife/faq/) enlazan con la información detallada de cada tema.
+Deje nombre y contacto. Calcularemos su importe y comentaremos qué parámetros necesitan confirmación antes de pagar.
 
-[КАДР F12]
-
-### Recibir un cálculo
-
-Deje su nombre y contacto. Le enviaremos un cálculo para su superficie y comentaremos la participación. La inscripción es gratuita; no recibimos dinero antes de elegir la parcela.
-
-**Кнопка: «Recibir un cálculo»**
-Gratis. No recibimos dinero antes de elegir la parcela.
+**Кнопка: «Solicitar un cálculo»**
+Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.

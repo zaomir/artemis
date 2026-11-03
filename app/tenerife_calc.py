@@ -1,27 +1,7 @@
-"""Tenerife waitlist: calculator fields sent with a lead from /tenerife/calculadora/.
-
-The form (DESIGN.md C13, variant «calculadora») sends exactly three hidden fields besides `page`:
-calc_m2, calc_step, calc_pay. No amount is sent and no model version: the server recomputes the
-calculation from calc_m2 with the CURRENT model.json and records that model's version with the lead.
-
-check_calc(data, model) -> (calc | None, log_reasons)
-  * no calc_* field in the request -> (None, [])  a normal lead, no calc block
-  * a field missing / wrong type / out of sane bounds -> calc_status "invalid": only the status, the
-    field names with the problem and the model version are kept (no submitted garbage); logged
-  * fields well-formed, but not what the current model gives (area outside the model range, step no
-    longer an entry step, payment option not offered) -> calc_status "mismatch" («расчёт не совпадает»):
-    the submitted values AND the recomputed ones are stored and shown; logged
-  * otherwise -> calc_status "ok"
-The lead itself is never rejected because of the calculator.
-
-Recomputation (current model.json): area clamped to area_m2 min…max; step = the submitted one if it is
-still an entry step, else the model's current step; payment = the submitted one if offered, else "now";
-type = the type whose range holds the area; shares = area / share_m2; amount = area × price of the step;
-monthly = amount / installments.months — money rounded ROUND_HALF_UP to whole euros (model.json rounding),
-the same rule as calc.js, so the page and the server agree to the euro.
-Rounding tolerance: calc_m2 may arrive as "72", "72.0" or "72,00"; a value within ±0.01 m² of a whole
-number counts as that number (float/locale formatting), anything else is invalid. Money is not sent by
-the form, so there is no money tolerance to apply: it is always recomputed here.
+"""Server recomputation of the upfront cash-exit calculator.
+The legacy request/DB names calc_m2 and calc_price_eur_m2 are retained for
+migration compatibility; in this model they represent a share quantity and a
+share price, never a right to a specific residence. No submitted money is trusted.
 """
 from __future__ import annotations
 
@@ -43,7 +23,9 @@ COLUMNS = (("calc_status", "TEXT"), ("calc_note", "TEXT"),
            ("calc_m2", "INTEGER"), ("calc_step", "TEXT"), ("calc_pay", "TEXT"),
            ("calc_m2_server", "INTEGER"), ("calc_step_server", "TEXT"), ("calc_pay_server", "TEXT"),
            ("calc_type", "TEXT"), ("calc_shares", "INTEGER"), ("calc_price_eur_m2", "INTEGER"),
-           ("calc_amount", "INTEGER"), ("calc_month_eur", "INTEGER"), ("calc_model_version", "TEXT"))
+           ("calc_amount", "INTEGER"), ("calc_month_eur", "INTEGER"), ("calc_model_version", "TEXT"),
+           ("calc_exit_amount", "INTEGER"), ("calc_income", "INTEGER"),
+           ("calc_exit_months", "INTEGER"), ("calc_target_pct", "REAL"))
 
 _cache: dict = {}
 
@@ -95,17 +77,16 @@ def pay_options(model: dict) -> tuple:
 
 
 def compute(m2: int, step: str, pay: str, model: dict) -> dict:
-    """The calculation for valid model inputs (as calc.js does it)."""
-    price = next(s["price_eur_m2"] for s in model["steps"] if s["id"] == step)
+    """Recompute the complete one-payment/one-exit scenario from current inputs."""
+    price = Decimal(str(next(s["price_eur_m2"] for s in model["steps"] if s["id"] == step)))
     ctype = next((t["id"] for t in model["types"] if t["min"] <= m2 <= t["max"]), None)
-    amount = half_up(Decimal(m2) * price)
-    month = None
-    if pay != "now":
-        months = Decimal(model["installments"]["months"])
-        disc = Decimal(str((model.get("installments") or {}).get("discount_pct", 0))) / Decimal(100)
-        month = half_up(Decimal(m2) * price * (1 - disc) / months)
-    return {"calc_type": ctype, "calc_shares": m2 // int(model.get("share_m2", 1)),
-            "calc_price_eur_m2": price, "calc_amount": amount, "calc_month_eur": month}
+    raw_amount = Decimal(m2) * price
+    inv = model["investment"]
+    factor = (Decimal(1) + Decimal(str(inv["target_annual"]))) ** (Decimal(inv["exit_months"]) / 12)
+    return {"calc_type": ctype, "calc_shares": m2, "calc_price_eur_m2": float(price),
+            "calc_amount": half_up(raw_amount), "calc_month_eur": None,
+            "calc_exit_amount": half_up(raw_amount * factor), "calc_income": half_up(raw_amount * (factor - 1)),
+            "calc_exit_months": inv["exit_months"], "calc_target_pct": inv["target_annual"] * 100}
 
 
 def check_calc(data: dict, model: dict) -> tuple[dict | None, list[str]]:

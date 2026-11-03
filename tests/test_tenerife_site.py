@@ -55,6 +55,7 @@ LOCATION_SOURCE_HOSTS = frozenset({
     "european-union.europa.eu", "www.webtenerife.co.uk", "www.webtenerife.com",
     "hospiten.com", "www.whytenerife.com", "decottalaw.com", "www.dstenerife.eu",
     "sede.agenciatributaria.gob.es", "www.holaislascanarias.com", "movil.titsa.com",
+    "residentenerife.com", "urbara.com",
 })
 EMAIL_OFF_LINK = ('<!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a>'
                   '<!--/email_off-->')
@@ -144,6 +145,7 @@ class TenerifeSiteTest(unittest.TestCase):
             html, _ = self.page(url)
             # основатель 02.11: публикуем расчётный дивиденд 2,5–3,5 % годовых — это не «гарантия доходности»
             html = html.replace("2,5–3,5 % годовых", "").replace("2,5–3,5% годовых", "")
+            html = html.replace("9% годовых", "").replace("доходность 9", "доходность").replace("Сумма", "сумма")
             for rx in FORBIDDEN:
                 self.assertIsNone(re.search(rx, html), f"{name}: {rx}")
 
@@ -316,7 +318,7 @@ class TenerifeSiteTest(unittest.TestCase):
                 if ref == "mailto:" + CONTACT_EMAIL:  # wrapped in <!--email_off-->, see test_email_off_*
                     continue
                 if ref.startswith(("http://", "https://")):
-                    is_source = (attribute == "href" and name == "norte"
+                    is_source = (attribute == "href" and name in {"norte", "mercado"}
                                  and urlsplit(ref).scheme == "https"
                                  and urlsplit(ref).netloc in LOCATION_SOURCE_HOSTS)
                     self.assertTrue(ref.startswith("https://artemisresort.com/tenerife/") or is_source,

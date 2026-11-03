@@ -8,7 +8,7 @@ OG title: La Quinta, Santa Úrsula: Nordteneriffa zum Leben
 
 # La Quinta, Santa Úrsula: der Norden, in dem man auf Teneriffa lebt
 
-La Quinta ist ein Wohnviertel von Santa Úrsula am grünen Nordhang Teneriffas. Bis Puerto de la Cruz sind es 8 km, 10–15 Minuten mit dem Auto, bis zum Flughafen Tenerife Norte 15–20 Minuten, bis zum Playa del Ancón rund 3 km. Hier wählen wir das Grundstück für zwanzig Residenzen Artemis. Aktien der Bauträgergesellschaft in der Warteliste — 2 950 € pro Meter.
+La Quinta ist ein Wohnviertel in Santa Úrsula am grünen Nordhang Teneriffas. Puerto de la Cruz liegt 8 km, Playa del Ancón etwa 3 km entfernt. Hier wählen wir ein Grundstück für zwanzig Artemis-Residenzen. [Hauskauf](/tenerife/producto/) und [Beteiligung](/tenerife/inversores/) werden getrennt beschrieben.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -40,11 +40,9 @@ Der Norden Teneriffas ist seit Langem mit Mitteleuropa verbunden. Deutsche und S
 
 Internationale Schulen, lokale Gemeinschaften und Dienstleistungen für ausländische Einwohner bieten Anknüpfungspunkte im neuen Umfeld. Über die Schule der Kinder, Sprachen, Sport und Nachbarn lassen sich Kontakte knüpfen und Verbindungen zu einem europäischen Freundeskreis pflegen.
 
-### Kanarische Steuern: IGIC statt Mehrwertsteuer
+### Der Alltag
 
-Die Kanaren liegen [außerhalb des Geltungsbereichs der spanischen Mehrwertsteuer IVA](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). Stattdessen gilt die lokale indirekte Steuer IGIC: Ihr [allgemeiner Satz beträgt 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), verglichen mit dem allgemeinen IVA-Satz von 21% auf dem spanischen Festland.
-
-Für bestimmte Waren und Dienstleistungen gelten andere Sätze. Steuern und Kosten beim Immobilienkauf werden je nach Art des Geschäfts gesondert berechnet; der allgemeine IGIC-Satz allein bestimmt nicht die gesamten Erwerbskosten eines Hauses.
+Prüfen Sie Wohnorte anhand täglicher Wege: Einkaufen, Arzt, Schule und Stadt. Testen Sie diese Wege und vergleichen Sie mehrere Viertel vor der Hauswahl.
 
 ### Wo das auf der Karte liegt
 
@@ -88,29 +86,29 @@ Wenn Sie den Süden schon gesehen haben, wissen Sie, wie dort der Januar aussieh
 
 La Quinta ist ein Wohngebiet, keine Ferienzone. Hier lebt man das ganze Jahr, statt für eine Woche anzureisen.
 
-Für ein Haus bedeutet das zwei Dinge. Die Nachbarn sind Menschen, die dauerhaft hier leben, und wechseln nicht jede Woche. Und die langfristige Vermietung, aus der die Dividende der Artemis-Aktionäre berechnet wird, stützt sich auf diejenigen, die Stadt, Inselhauptstadt und Flughafen in der Nähe brauchen — auf Bewohner, nicht auf die Tourismussaison.
+Die Nachbarn wohnen dauerhaft hier. Prüfen Sie neben dem Terrassenblick auch einen gewöhnlichen Werktag.
 
 Die zwanzig Häuser von Artemis bilden eine überschaubare Anlage, kein Mehrfamilienhaus. Eine architektonische Sprache: Canary Stone — warmer Kalkputz, Sockel aus dunklem Vulkangestein, Flachdächer mit Solarmodulen, hohe Fenster in Bronzerahmen, Steinterrassen.
 
 ### Der Markt in der Umgebung
 
-Bestandsimmobilien in La Quinta und benachbarte Neubauten sind verschiedene Segmente. Historische Preise, Zeiträume und Vergleiche stehen unter [Markt und Quadratmeterpreis](/tenerife/mercado/).
+Preisgrundlagen, Grenzen und Quellen auf der [Marktseite](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
-### Warum die Preise im Norden steigen
+### Wachstum im Modell
 
-Historische Indizes und Preisentwicklungen mit Quellen und Zeiträumen stehen auf der [Marktseite](/tenerife/mercado/).
+@growth@% jährlich ist eine Modellannahme, keine gemessene Marktrate. Hauspreise werden bei Unterzeichnung fixiert. [Formeln](/tenerife/mercado/).
 
 ### Mieten im Norden
 
-Langfristige Vermietung, Kosten und Rechenannahmen erklärt das [Mietmodell](/tenerife/alquiler/).
+Langfristige Vermietung ist eine Option für Eigentümer. Investoren erhalten keine jährlichen Ausschüttungen. [Nutzung](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Wie der Einstieg aufgebaut ist
 
-Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
+Die Berechnung ist kostenlos. Zahlung nach Freigabe von Grundstück und Bedingungen. [Ablauf](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 

@@ -79,7 +79,7 @@ class ProfileLayoutTest(unittest.TestCase):
             self.assertIsNotNone(owner(calc, "section").by_id("calculate"))
             self.assertEqual(list(owner(calc, "section").nodes("figure")), [])
             self.assertEqual(page(locale, "calculadora").by_id("calc").tag, "section")
-            self.assertEqual({n.attrs.get("name") for n in calc.nodes("input")}, {"type", "m2", "step", "pay"})
+            self.assertEqual({n.attrs.get("name") for n in calc.nodes("input")}, {"type", "m2"})
             self.assertIsNotNone(investor.by_id("wl-form"))
 
 

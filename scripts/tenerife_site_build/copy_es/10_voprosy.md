@@ -1,80 +1,61 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/faq/
-Meta title: Preguntas sobre Artemis de la Cruz: acciones y dividendo
-Meta description: Dónde está La Quinta, por qué el norte, qué son las acciones de la promotora, cómo funcionan el dividendo y el canje por metros y quién ve los informes.
-OG title: Preguntas antes de entrar en Artemis de la Cruz, con respuestas directas
+Meta title: Preguntas sobre inversión y compra — Artemis de la Cruz
+Meta description: Pago completo, objetivo del @target@% anualizado, salida a @months@ meses, ventas, costes y ausencia de pagos anuales.
+OG title: Preguntas sobre inversión y compra
 -->
 
-# Preguntas antes de entrar en Artemis de la Cruz: respuestas directas
+# Qué entender antes de participar
 
-Aquí están las preguntas que se hacen antes de comprar una casa en Tenerife y antes de comprar acciones de la sociedad promotora Artemis. Las respuestas son cortas y con cifras: las mismas que decimos en voz alta en una reunión.
+Preguntas clave sobre dinero, plazos y resultados. La inversión base tiene un pago completo y una salida en efectivo a @months@ meses.
 
-[КАДР F03] <!-- служебная пометка, не публикуется -->
+[КАДР F20]
 
-### El lugar
+### Capital y rentabilidad
 
-**¿Dónde está el proyecto?** En la zona de La Quinta, Santa Úrsula. Elegimos la parcela concreta con los inscritos.
+**¿Hay pagos anuales?** No. Capital y rentabilidad se reciben al vender o recomprar la participación a la salida.
 
-**¿Cómo llegar?** Rutas, acceso peatonal a la playa y entorno en [Ubicación](/tenerife/norte/).
+**¿Qué significa @target@% anualizado?** Objetivo efectivo con capitalización: @gain_pct@% en tres años. Para 72 acciones, @entry_72@ € → @exit_72@ €.
 
-**¿Y el invierno?** Clima, cubierta solar y piscina climatizada en [Energía y equipamiento](/tenerife/energia/).
+**¿Está garantizado?** Es el objetivo del escenario base. El pago depende de cobros reales, presupuesto y plazo de salida.
 
-[КАДР F01] <!-- служебная пометка, не публикуется -->
+**¿Puedo pagar a plazos?** La inversión exige pago íntegro inicial. El 40/30/10/20% corresponde a compradores de casas.
 
-### Qué compro
+### Precio y crecimiento
 
-**¿Qué es una acción?** Participación en la promotora: una acción corresponde a un m² construido sin zonas comunes.
+**¿De dónde sale el precio @entry@ €?** Del 70% de la referencia provisional de @market@ €/m²: un @discount@% menos. Los precios comparables actuales de obra nueva local aún deben confirmarse.
 
-**¿En qué se diferencia de comprar una vivienda?** El objeto de compra y los dos resultados se comparan en [Inversores](/tenerife/inversores/).
+**¿Qué significa el crecimiento del @growth@%?** Hipótesis anual para casas sin vender. El contrato firmado fija el precio; no se aplica retroactivamente ni se suma al rendimiento del inversor.
 
-### El precio y la entrada temprana
+[КАДР F15]
 
-**¿Cómo cambia el precio?** Por hitos de obra, no por fechas. [Tramos y ejemplo](/tenerife/inversores/).
+### Obra y financiación
 
-**¿Cómo calcular las cuotas?** Elija superficie y tramo en la [calculadora](/tenerife/calculadora/).
+**¿Quién financia la obra?** El fondo inicial y los compradores de veinte viviendas. Sin capital adicional del promotor ni deuda bancaria en el modelo.
 
-**¿Cuándo pagar?** Tras la aprobación de la parcela por la mayoría de inscritos y el contrato de inversión. [Documentos y momento de pago](/tenerife/proceso/).
+**¿Está financiado el escenario base?** Su calendario mensual cubre gastos y salida objetivo, con saldo mínimo de @minimum_cash@ €. Supone ventas y pagos en fecha.
 
-[КАДР F11] <!-- служебная пометка, не публикуется -->
+**¿Y si las ventas se retrasan o suben los costes?** Hay que recalcular todo el calendario. Dos meses de retraso generan @delay_gap@ € de déficit; construir a 2 100 €/m² deja la recompra objetivo sin cubrir totalmente. No hay aportación automática del promotor.
 
-### El dividendo
+**¿Y si el proyecto se detiene?** El importe y el plazo dependerán del estado del proyecto, efectivo disponible y venta de activos. El modelo no financia una devolución inmediata de todo el capital y la rentabilidad. El procedimiento se comenta antes de pagar.
 
-**¿Qué dividendo?** Estimado en un 2,5–3,5 % anual antes del impuesto sobre sociedades, sin garantía.
+### Casa e inversión
 
-**¿En qué se basa?** En el alquiler de larga duración después de gastos. [Mercado de alquiler, gastos y supuestos](/tenerife/alquiler/).
+**¿Las acciones reservan una casa?** No. Determinan una inversión con salida en efectivo. La vivienda concreta se compra aparte.
 
-### Los metros
+**¿Puedo recibir casa y recompra por la misma inversión?** El modelo no lo contempla: la misma casa no puede venderse al comprador y entregarse al inversor.
 
-**¿Cómo recibir una residencia?** Tras la autorización de puesta en uso, el canje se formaliza ante notario y en el registro. [Formalización, impuestos e hipoteca](/tenerife/proceso/).
+[КАДР F05]
 
-**¿Puedo comprar más acciones?** Al precio del tramo actual; hay un ejemplo en [Inversores](/tenerife/inversores/).
+### Cómo empezar
 
-**¿Se puede ceder antes de la entrega?** Si los compradores superan las viviendas, la sociedad puede proponer una cesión. Es una posibilidad, no una promesa de rentabilidad; [detalles de la operación](/tenerife/proceso/).
+**¿Cuándo pago?** Tras aprobar parcela y condiciones. Solicitar el cálculo es gratis.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+**¿Quién responde?** [Simon Subic y Boris Ribaut](/tenerife/equipo/). [Proceso](/tenerife/proceso/).
 
-### La obra y los informes
+### Solicitar un cálculo
 
-**¿Cuándo empiezan y entregan?** Según el plan, inicio a principios de 2027 y entrega entre finales de 2028 y mediados de 2029.
+Deje nombre y contacto para comentar importe, plazo e hipótesis de su participación.
 
-**¿Quién recibe informes?** Accionistas y compradores, cada semana. [Fases y formato del informe](/tenerife/construccion/).
-
-[КАДР F05] <!-- служебная пометка, не публикуется -->
-
-### Las personas
-
-**¿Quién responde del proyecto?** Las funciones de Simon Subic y Boris Ribaut están en [Equipo](/tenerife/equipo/).
-
-**¿Qué sociedad?** OXFORD FRAME REAL ASSETS LTD. [Datos sociales](/tenerife/impressum/).
-
-**¿Qué viviendas hay?** [Tipos, superficies y equipamiento](/tenerife/producto/).
-
-[КАДР F22] <!-- служебная пометка, не публикуется -->
-
-### En breve
-
-**¿Qué hago ahora?** Solicitar un cálculo y comentar las parcelas posibles. La inscripción es gratuita; no recibimos dinero antes de elegir la parcela.
-
-**Кнопка: «Recibir un cálculo»**
-Gratis. No cobramos nada hasta elegir la parcela.
+**Кнопка: «Solicitar un cálculo»**
+Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.

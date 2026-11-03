@@ -72,17 +72,15 @@ Das benachbarte Projekt La Quinta 2 wird ebenfalls mit Solarmodulen angekündigt
 
 ### Warum das für die Vermietung wichtig ist
 
-Die Dividende von Artemis wird aus der langfristigen Vermietung nach Kosten berechnet: Das Haus wird lange vermietet, an einen Mieter für ein Jahr und länger. Ein langfristiger Mieter im Norden sieht die Stromrechnung genauso wie Sie. Ein Haus, in dem es im Winter ohne Heizgerät warm ist, in dem die Stromrechnung niedriger ist und der Pool beheizt ist, lässt sich leichter vermieten, und der Mieter bleibt eher ein weiteres Jahr. Weniger leere Monate zwischen Mietern — gleichmäßigere Miete nach Kosten.
+Mieter vergleichen Komfort und Rechnungen. Licht, Klimasteuerung und Dämmung beeinflussen Nutzung und Eigentümerkosten. Vermietung fließt nicht in die Investorenrendite ein.
 
 ### Warum das für den Preis des Meters wichtig ist
 
-Die Ausstattung beeinflusst die Betriebskosten des Hauses und gehört bereits zur Residenz. Preise fertiger Häuser und den Vergleich mit der Aktienbeteiligung finden Sie unter [Für Investoren](/tenerife/inversores/).
+Die Technik gehört zur geplanten Ausstattung. Hauskauf und Beteiligung werden getrennt berechnet. [Residenzen](/tenerife/producto/) · [Investoren](/tenerife/inversores/).
 
 ### Warum das für den Aktionär wichtig ist
 
-Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
-
-Die Dividende ist die Miete minus Kosten. Je weniger die Häuser für Strom, Wasser und Pool ausgeben, desto mehr bleibt von der Miete. Die rechnerische Dividende — 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft. Die größte Position sind die Gemeinschaftsbeiträge mit 21,0%: darin stecken der gemeinschaftliche beheizte Pool und die Pflege der Anlage. Je weniger die gemeinsamen Systeme aus dem Netz nehmen, desto niedriger diese Position.
+Investoren erhalten Geld beim Ausstieg aus Verkäufen, nicht aus Mieten. Ziel sind @target@% jährlich über @months@ Monate. Qualität und Ausstattung unterstützen die Nachfrage, sichern das Ergebnis allein aber nicht.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -102,7 +100,7 @@ Am Nordhang ist die Sonne milder als im Süden — deshalb ist es hier nicht hei
 
 **Der Pool im Winter?** Gemeinschaftlich, beheizt, das ganze Jahr nutzbar.
 
-**Wie hängt das mit der Dividende zusammen?** Weniger Kosten — mehr bleibt von der Miete je Aktie.
+**Was hat das mit der Beteiligung zu tun?** Ausstattung beeinflusst die Nachfrage; Ertrag hängt von Verkäufen, Budget und Laufzeit ab.
 
 **Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

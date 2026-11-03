@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/simon/
 Meta title: Simon Subic, developer of Artemis de la Cruz
-Meta description: Simon Subic leads Artemis de la Cruz: choosing the plot, permits, launch, linking the money and the construction. As planned, start in early 2027 and handover in late 2028 – mid 2029.
+Meta description: Simon Subic leads plot selection, project preparation and funding for twenty residences. Investor capital, buyer payments and weekly reporting.
 OG title: Simon Subic: from plot and permits to handover of the houses
 -->
 
 # I am Simon Subic, developer of Artemis de la Cruz
 
-I am a Development Principal, working between London and Paris. At Artemis de la Cruz, twenty residences at La Quinta, Santa Úrsula, on the northern slope of Tenerife, I lead the choice of plot, the permits, the launch and the link between the money and the construction. The construction is paid for by shares in the developer company and by house sales. Start, as planned, in early 2027. Handover, as planned, in late 2028 – mid 2029.
+I am a Development Principal working between London and Paris. At Artemis de la Cruz I lead plot selection, project preparation and funding for twenty residences. The model funds construction with initial investments and buyer payments, without additional developer capital. The calendar follows plot selection.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -38,28 +38,23 @@ Twenty houses: six one-bedroom of 48–55 m², ten two-bedroom of 68–78 m², f
 
 ### How I handle the permits
 
-Permits separate a project from a picture. No stage begins before the right to it exists. The building licence is the first price step after the waiting list: the metre rises from 2 950 € to 3 100 € because the project has acquired the right to build. On 72 metres that is 10 800 € of difference: 212 400 € on the waiting list and 223 200 € at the permit step.
-
-At the end comes the completion certificate. From that moment the shares can be exchanged for the metres of your own residence.
+Project preparation must align with the work and spending schedule. I coordinate documents and sequencing with designers. Site work confirms construction stages; the new model has no automatic six-stage share revaluation.
 
 ### How I link the money and the construction
 
-The construction is financed by two flows: shares in the developer company and house sales. My job is to make every euro go into the stage that is rising on site. The price step rises when the stage is closed on site and visible in the report, not by the calendar.
-
-Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
-
+Construction has two sources: the initial investment pool and homebuyer payments. I link each stage to available cash and the sales calendar. Full investor payment and buyer milestone payments are separate streams.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
-### The order of stages and the price steps
+### Stages and participation calculation
 
 The nine stages, planned dates and weekly report format are in [Project progress](/tenerife/construccion/).
 
-The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
+Early price @entry@ € per share, full payment and target cash exit after @months@ months. [Investor model](/tenerife/inversores/).
 
 ### What you get from my work
 
-**A timetable.** As planned, start in early 2027 and handover in late 2028 – mid 2029.
+**Schedule.** The financial model allows @months@ months to exit. Construction dates will follow plot selection.
 
 **Order.** Nine stages, one after another, a report every week.
 
@@ -69,13 +64,11 @@ The participation model, prices by stage and two outcomes are on the [investor p
 
 ### How we work
 
-I lead the project: choosing the plot, permits, launch, linking the money and the construction. Boris Ribaut builds: the site, the structure, the reports, handover of the house. We make the calculations for every shareholder on one formula: metres × the step price, the payment = six equal instalments with a 5 % discount on the whole price. Two areas of responsibility, and no question without an owner.
+I lead the plot, preparation and funding. Boris Ribaut oversees the site, structure and reports. Investor calculation: shares × early price; target exit = full investment × (1 + @target@%)³. Homebuyers receive a separate 40/30/10/20% schedule.
 
 ### What I expect from you
 
-Questions. The more you ask before buying shares, the calmer you will be during construction. That is what the time between joining the waiting list and the investment agreement is for: we discuss plot options in the closed group of participants, you receive a calculation for your area, check it against the calculator and put questions to me and to Boris Ribaut. Nothing has to be paid before the plot is chosen.
-
-Ask me about the plot, the permits, the timetable, and what happens if a stage slips. I will answer directly.
+Ask before paying: about the plot, budget, sales and source of exit cash. Compare the personal calculation with the calculator. A free enquiry gives time to understand these inputs.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,9 +78,9 @@ Ask me about the plot, the permits, the timetable, and what happens if a stage s
 
 **Where does he work?** Between London and Paris.
 
-**When does it start?** As planned, early 2027.
+**When does construction start?** The calendar follows plot selection and budget confirmation.
 
-**When is handover?** As planned, late 2028 – mid 2029.
+**When is completion?** Handover will be set by the project programme; the investor model assumes exit @months@ months after full payment.
 
 **Who do I write to if the report differs from what I see on site?** Me.
 

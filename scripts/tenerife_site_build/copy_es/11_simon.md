@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/simon/
 Meta title: Simon Subic, promotor de Artemis de la Cruz
-Meta description: Simon Subic lleva Artemis de la Cruz: parcela, licencias y dinero. Inicio a principios de 2027; entrega entre finales de 2028 y mediados de 2029.
+Meta description: Simon Subic dirige parcela, preparación y financiación de veinte residencias. Capital de inversores, pagos de compradores e informes semanales.
 OG title: Simon Subic: de la parcela y las licencias a la entrega de las viviendas
 -->
 
 # Soy Simon Subic, promotor de Artemis de la Cruz
 
-Soy Development Principal y trabajo entre Londres y París. En Artemis de la Cruz —veinte residencias en La Quinta, Santa Úrsula, en la ladera norte de Tenerife— llevo la elección de la parcela, las licencias, la puesta en marcha y la coordinación entre el dinero y la obra. El dinero de la obra son las acciones de la sociedad promotora y la venta de viviendas. El inicio, según el plan, a principios de 2027. La entrega, según el plan, entre finales de 2028 y mediados de 2029.
+Soy Development Principal y trabajo entre Londres y París. En Artemis de la Cruz dirijo parcela, preparación y financiación de veinte residencias. El modelo financia con inversión inicial y pagos de compradores, sin capital adicional del promotor. El calendario se concreta tras elegir la parcela.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -38,28 +38,23 @@ Veinte casas: seis de un dormitorio de 48–55 m², diez de dos dormitorios de 6
 
 ### Cómo llevo las licencias
 
-Las licencias separan un proyecto de una imagen. Ninguna fase empieza antes de que exista el derecho para ella. La licencia de obra es el primer escalón del precio de la acción después de la lista de espera: el metro sube de 2 950 € a 3 100 € porque el proyecto ya tiene derecho a construir. Para 72 metros son 10 800 € de diferencia: 212 400 € en la lista de espera y 223 200 € en el tramo «Licencia».
-
-Al final llega la licencia de primera ocupación. Desde ese momento las acciones se pueden canjear por metros de su residencia.
+La preparación debe encajar con obras y gastos. Coordino documentos y secuencia con proyectistas. Los hitos se confirman en obra; el modelo nuevo no revaloriza acciones automáticamente en seis escalones.
 
 ### Cómo ligo el dinero y la obra
 
-La obra se financia con dos flujos: las acciones de la sociedad promotora y la venta de viviendas. Mi tarea es que cada euro vaya a la fase que se ejecuta en la obra. El tramo de precio sube cuando la fase está cerrada en la obra y se ve en el informe, no por calendario.
-
-La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
-
+La obra tiene dos fuentes: fondo inicial y compradores. Vinculo cada etapa a fondos disponibles y calendario de ventas. El pago completo del inversor y los hitos del comprador son flujos distintos.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
-### Orden de las fases y tramos de precio
+### Etapas y cálculo de participación
 
 Las nueve fases, las fechas previstas y el formato del informe semanal están en [Avance del proyecto](/tenerife/construccion/).
 
-El modelo de participación, los precios por fases y los dos resultados están en la página de [inversores](/tenerife/inversores/).
+Precio inicial @entry@ € por acción, pago completo y salida objetivo a @months@ meses. [Modelo](/tenerife/inversores/).
 
 ### Qué recibe de mi trabajo
 
-**Plazo.** Según el plan, inicio a principios de 2027 y entrega entre finales de 2028 y mediados de 2029.
+**Calendario.** El modelo prevé @months@ meses hasta la salida. Las fechas de obra se precisarán tras elegir la parcela.
 
 **Orden.** Nueve fases, una detrás de otra, con un informe cada semana.
 
@@ -69,13 +64,11 @@ El modelo de participación, los precios por fases y los dos resultados están e
 
 ### Cómo trabajamos
 
-Yo llevo el proyecto: elección de la parcela, licencias, puesta en marcha y coordinación entre el dinero y la obra. Boris Ribaut construye: ejecución, estructura, informes y entrega de la vivienda. Los cálculos para cada accionista los hacemos con una sola fórmula: metros × precio del tramo, pago = seis plazos iguales con el 5 % de descuento sobre el precio total. Dos áreas de responsabilidad y ninguna pregunta sin dueño.
+Dirijo parcela, preparación y financiación. Boris Ribaut supervisa obra, estructura e informes. Inversión = acciones × precio inicial; salida objetivo = inversión × (1 + @target@%)³. Para compradores, calendario aparte 40/30/10/20%.
 
 ### Qué espero de usted
 
-Preguntas. Cuanto más pregunte antes de comprar acciones, más tranquilo estará durante la obra. Para eso está el tiempo entre la inscripción en la lista de espera y el contrato de inversión: hablamos de las opciones de parcela en el grupo cerrado de participantes, usted recibe el cálculo para su superficie, lo contrasta con la calculadora y nos pregunta a mí y a Boris Ribaut. Antes de elegir la parcela no hay que pagar nada.
-
-Pregúnteme por la parcela, por las licencias, por los plazos y por lo que pasará si una fase se retrasa. Responderé con franqueza.
+Pregunte antes de pagar por parcela, presupuesto, ventas y dinero de salida. Compare su cálculo con la calculadora. La solicitud gratuita permite entender estos datos.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,9 +78,9 @@ Pregúnteme por la parcela, por las licencias, por los plazos y por lo que pasar
 
 **¿Dónde trabaja?** Entre Londres y París.
 
-**¿Cuándo empieza?** Según el plan, a principios de 2027.
+**¿Cuándo empieza la obra?** Tras concretar parcela, presupuesto y calendario.
 
-**¿Cuándo es la entrega?** Según el plan, entre finales de 2028 y mediados de 2029.
+**¿Cuándo termina?** La entrega se concretará en el programa; el inversor supone salida @months@ meses tras pago íntegro.
 
 **¿A quién escribir si el informe no coincide con lo que veo en la obra?** A mí.
 

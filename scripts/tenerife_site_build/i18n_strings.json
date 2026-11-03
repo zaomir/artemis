@@ -1,387 +1,396 @@
 {
- "_comment": "Form UI, form messages, photo alts and team-photo alts per locale (03.11.2026). RU stays the canon in copy_v3/17_forma.md, _components.html and alts.json; these are the translations used when LOCALE != ru. %PRIVACY% is replaced by the locale's privacy page.",
- "en": {
-  "form": {
-   "name": "Name",
-   "contact": "Contact — email, phone or Telegram",
-   "language": "Language",
-   "website": "Website",
-   "consent": "I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href=\"%PRIVACY%\">privacy policy</a>. Consent can be withdrawn at any time."
+  "_comment": "Form UI, form messages, photo alts and team-photo alts per locale (03.11.2026). RU stays the canon in copy_v3/17_forma.md, _components.html and alts.json; these are the translations used when LOCALE != ru. %PRIVACY% is replaced by the locale's privacy page.",
+  "en": {
+    "form": {
+      "name": "Name",
+      "contact": "Contact — email, phone or Telegram",
+      "language": "Language",
+      "website": "Website",
+      "consent": "I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href=\"%PRIVACY%\">privacy policy</a>. Consent can be withdrawn at any time."
+    },
+    "msgs": {
+      "sending": "Sending…",
+      "ok-title": "Thank you! You are on the list.",
+      "ok-next": "Your request goes to the project team on Telegram and to info@artemisresort.com. We will contact you.",
+      "server": "We could not send your request. Please try again or email us at info@artemisresort.com.",
+      "network": "We could not reach the server. Check your internet connection and try again.",
+      "rate": "Too many requests have been sent from this connection. Please try again later or email us at info@artemisresort.com.",
+      "name": "Please enter your name.",
+      "contact": "Please enter your contact: email, phone or Telegram.",
+      "language": "Please choose the language.",
+      "consent": "Please tick the consent to data processing."
+    },
+    "back": {
+      "site": "← Back to the project site",
+      "form": "← Back to the form"
+    },
+    "alts": {
+      "modern-low-6e9d80": "Low houses in terraces on the slope above the ocean",
+      "entrance-o-9abe9d": "Entrance to the complex: stone pylons and wooden gates",
+      "communal-s-af42cd": "Communal pool and Canary Stone houses",
+      "private-te-6016b5": "Terrace with a glass balustrade and a view of the ocean",
+      "interior-o-74f891": "Bedroom with a floor-to-ceiling window onto the inner courtyard",
+      "green-hill-3f3856": "Houses among greenery on the slope above the ocean",
+      "golden-hou-d4cc25": "House terraces on the slope in evening light",
+      "complex-row-9c31a1": "Three Canary Stone houses from the garden side, the ocean behind",
+      "pool-dusk-4d7e12": "Communal pool at dusk, lights in the windows",
+      "hillside-row-71c3ab": "Houses in terraces on the green slope above the ocean",
+      "solar-flat-2b8f04": "Solar panels flush with the flat roof and its bronze edge",
+      "build-frame-5e6d77": "House frames under construction: concrete, scaffolding, stone terraces",
+      "interior-salon-8a2c19": "Living room of the residence: lime walls, basalt floor, ocean view",
+      "build-pit-3ab7c2": "Foundation pit and footings on the slope, stone terraces of the plot",
+      "roof-montazh-6d90ef": "Flat roof with a bronze edge, solar panels ready for installation",
+      "gate-stone-4f1a2b": "Drive entrance to the complex: basalt pylons and bronze gates",
+      "terrace-view-7c2d15": "Terrace of the residence looking over the slope and the ocean",
+      "kitchen-stone-9e3b40": "Kitchen of the residence: oak, basalt worktop, view into the garden",
+      "bedroom-sea-2a7f61": "Bedroom of the residence with a window onto the ocean",
+      "pool-day-6b1c93": "Communal pool by day, stone deck and Canary Stone houses",
+      "aerial-complex-3d9e50": "The whole complex of twenty houses in terraces above the ocean"
+    },
+    "people": {
+      "simon-portrait": "Simon Subic, developer of Artemis de la Cruz",
+      "simon-street": "Simon Subic in the street by a house",
+      "simon-rooftop": "Simon Subic on a rooftop overlooking the town",
+      "simon-site": "Simon Subic on the Canary Stone site with drawings",
+      "boris-portrait": "Boris Ribaut, construction supervisor at Artemis de la Cruz",
+      "boris-formwork": "Boris Ribaut checks formwork dimensions and reinforcement before concrete is poured",
+      "boris-roof": "Boris Ribaut checks solar-panel mounting on a flat roof",
+      "boris-drawings": "Boris Ribaut reviews drawings with a contractor in the site office",
+      "simon-permits": "Simon Subic discusses project documents and drawings with an architect"
+    },
+    "calc": {
+      "ui": {
+        "aria": "Investment calculator",
+        "area": "Share quantity",
+        "area_label": "Number of shares",
+        "step": "Early price per share",
+        "pay": "Payment",
+        "unit": "shares",
+        "pay_now": "Full amount, one payment",
+        "term": "Model term",
+        "months": "months",
+        "basis": "Target scenario: the result depends on sales, costs and exit timing."
+      },
+      "results": {
+        "sum": "Investment — one payment",
+        "exit": "Target exit proceeds",
+        "gain": "Total income",
+        "pct": "Annualised target return",
+        "gain_pct": "Total increase",
+        "paths": "Payment mechanism",
+        "paths_dd": "One cash settlement on sale or buyback. No annual distributions."
+      }
+    },
+    "legal": {
+      "titles": {
+        "impressum": "Legal notice — Artemis de la Cruz",
+        "privacy": "Privacy — Artemis de la Cruz"
+      },
+      "meta": {
+        "impressum": "Legal notice (Impressum, art. 10 LSSI-CE) of the Artemis de la Cruz website: operator OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
+        "privacy": "Privacy policy of the Artemis de la Cruz website and waiting list: what data the form collects, why, who receives it, how long it is kept, your rights and cookies."
+      }
+    }
   },
-  "msgs": {
-   "sending": "Sending…",
-   "ok-title": "Thank you! You are on the list.",
-   "ok-next": "Your request goes to the project team on Telegram and to info@artemisresort.com. We will contact you.",
-   "server": "We could not send your request. Please try again or email us at info@artemisresort.com.",
-   "network": "We could not reach the server. Check your internet connection and try again.",
-   "rate": "Too many requests have been sent from this connection. Please try again later or email us at info@artemisresort.com.",
-   "name": "Please enter your name.",
-   "contact": "Please enter your contact: email, phone or Telegram.",
-   "language": "Please choose the language.",
-   "consent": "Please tick the consent to data processing."
+  "es": {
+    "form": {
+      "name": "Nombre",
+      "contact": "Contacto — email, teléfono o Telegram",
+      "language": "Idioma",
+      "website": "Sitio web",
+      "consent": "Acepto el tratamiento de mis datos (nombre, contacto, idioma, página, fecha y hora y, para una solicitud desde la calculadora, el cálculo) para que me incluyan en la lista de espera y se pongan en contacto conmigo sobre mi solicitud, conforme a la <a href=\"%PRIVACY%\">política de privacidad</a>. El consentimiento puede retirarse en cualquier momento."
+    },
+    "msgs": {
+      "sending": "Enviando…",
+      "ok-title": "¡Gracias! Ya está en la lista.",
+      "ok-next": "Su solicitud se envía al equipo del proyecto por Telegram y a info@artemisresort.com. Nos pondremos en contacto con usted.",
+      "server": "No se pudo enviar la solicitud. Inténtelo de nuevo o escríbanos a info@artemisresort.com.",
+      "network": "No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo.",
+      "rate": "Desde esta conexión se han enviado demasiadas solicitudes. Vuelva a intentarlo más tarde o escríbanos a info@artemisresort.com.",
+      "name": "Indique su nombre.",
+      "contact": "Indique un contacto: email, teléfono o Telegram.",
+      "language": "Elija el idioma de comunicación.",
+      "consent": "Marque el consentimiento para el tratamiento de datos."
+    },
+    "back": {
+      "site": "← Volver al sitio del proyecto",
+      "form": "← Volver al formulario"
+    },
+    "alts": {
+      "modern-low-6e9d80": "Casas bajas en terrazas en la ladera sobre el océano",
+      "entrance-o-9abe9d": "Entrada al complejo: pilones de piedra y puertas de madera",
+      "communal-s-af42cd": "Piscina común y casas Canary Stone",
+      "private-te-6016b5": "Terraza con barandilla de vidrio y vistas al océano",
+      "interior-o-74f891": "Dormitorio con ventana de suelo a techo al patio interior",
+      "green-hill-3f3856": "Casas entre vegetación en la ladera sobre el océano",
+      "golden-hou-d4cc25": "Terrazas de las casas en la ladera con luz de tarde",
+      "complex-row-9c31a1": "Tres casas Canary Stone desde el jardín, el océano al fondo",
+      "pool-dusk-4d7e12": "Piscina común al atardecer, luces en las ventanas",
+      "hillside-row-71c3ab": "Casas en terrazas en la ladera verde sobre el océano",
+      "solar-flat-2b8f04": "Paneles solares a ras de la cubierta plana con borde de bronce",
+      "build-frame-5e6d77": "Estructura de las casas en obra: hormigón, andamios, terrazas de piedra",
+      "interior-salon-8a2c19": "Salón de la residencia: muros de cal, suelo de basalto, vistas al océano",
+      "build-pit-3ab7c2": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela",
+      "roof-montazh-6d90ef": "Cubierta plana con borde de bronce, paneles solares antes del montaje",
+      "gate-stone-4f1a2b": "Acceso al complejo: pilones de basalto y puertas de bronce",
+      "terrace-view-7c2d15": "Terraza de la residencia con vistas a la ladera y al océano",
+      "kitchen-stone-9e3b40": "Cocina de la residencia: roble, encimera de basalto, vistas al jardín",
+      "bedroom-sea-2a7f61": "Dormitorio de la residencia con ventana al océano",
+      "pool-day-6b1c93": "Piscina común de día, solado de piedra y casas Canary Stone",
+      "aerial-complex-3d9e50": "Todo el complejo de veinte casas en terrazas sobre el océano"
+    },
+    "people": {
+      "simon-portrait": "Simon Subic, promotor de Artemis de la Cruz",
+      "simon-street": "Simon Subic en la calle junto a una casa",
+      "simon-rooftop": "Simon Subic en una azotea con vistas a la ciudad",
+      "simon-site": "Simon Subic en la obra de Canary Stone con planos",
+      "boris-portrait": "Boris Ribaut, jefe de obra de Artemis de la Cruz",
+      "boris-formwork": "Boris Ribaut comprueba las dimensiones del encofrado y la armadura antes del hormigonado",
+      "boris-roof": "Boris Ribaut revisa la fijación de los paneles solares en una cubierta plana",
+      "boris-drawings": "Boris Ribaut revisa los planos con un contratista en la oficina de obra",
+      "simon-permits": "Simon Subic revisa documentos y planos del proyecto con un arquitecto"
+    },
+    "calc": {
+      "ui": {
+        "aria": "Calculadora de inversión",
+        "area": "Número de acciones",
+        "area_label": "Número de acciones",
+        "step": "Precio inicial por acción",
+        "pay": "Pago",
+        "unit": "acciones",
+        "pay_now": "Importe íntegro, un pago",
+        "term": "Plazo del modelo",
+        "months": "meses",
+        "basis": "Escenario objetivo: el resultado depende de ventas, costes y plazo de salida."
+      },
+      "results": {
+        "sum": "Inversión — un pago",
+        "exit": "Cobro objetivo a la salida",
+        "gain": "Rentabilidad total",
+        "pct": "Objetivo anualizado",
+        "gain_pct": "Aumento total",
+        "paths": "Forma de cobro",
+        "paths_dd": "Una liquidación en efectivo al vender o recomprar. Sin pagos anuales."
+      }
+    },
+    "legal": {
+      "titles": {
+        "impressum": "Aviso legal — Artemis de la Cruz",
+        "privacy": "Privacidad — Artemis de la Cruz"
+      },
+      "meta": {
+        "impressum": "Aviso legal (Impressum, art. 10 LSSI-CE) del sitio de Artemis de la Cruz: titular OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contacto.",
+        "privacy": "Política de privacidad del sitio de Artemis de la Cruz y de la lista de espera: qué datos recoge el formulario, para qué, quién los recibe, cuánto se conservan, sus derechos y cookies."
+      }
+    }
   },
-  "back": {
-   "site": "← Back to the project site",
-   "form": "← Back to the form"
+  "de": {
+    "form": {
+      "name": "Name",
+      "contact": "Kontakt — E-Mail, Telefon oder Telegram",
+      "language": "Sprache",
+      "website": "Website",
+      "consent": "Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit ich in die Warteliste aufgenommen und zu meiner Anfrage kontaktiert werde, gemäß der <a href=\"%PRIVACY%\">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden."
+    },
+    "msgs": {
+      "sending": "Wird gesendet…",
+      "ok-title": "Danke! Sie stehen auf der Liste.",
+      "ok-next": "Ihre Anfrage geht per Telegram an das Projektteam und an info@artemisresort.com. Wir melden uns bei Ihnen.",
+      "server": "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info@artemisresort.com.",
+      "network": "Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
+      "rate": "Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info@artemisresort.com.",
+      "name": "Bitte geben Sie Ihren Namen an.",
+      "contact": "Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram.",
+      "language": "Bitte wählen Sie die Sprache.",
+      "consent": "Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung."
+    },
+    "back": {
+      "site": "← Zurück zur Projektseite",
+      "form": "← Zurück zum Formular"
+    },
+    "alts": {
+      "modern-low-6e9d80": "Niedrige Häuser in Terrassen am Hang über dem Ozean",
+      "entrance-o-9abe9d": "Eingang der Anlage: steinerne Pfeiler und Holztore",
+      "communal-s-af42cd": "Gemeinschaftspool und Canary-Stone-Häuser",
+      "private-te-6016b5": "Terrasse mit Glasgeländer und Blick auf den Ozean",
+      "interior-o-74f891": "Schlafzimmer mit raumhohem Fenster zum Innenhof",
+      "green-hill-3f3856": "Häuser im Grünen am Hang über dem Ozean",
+      "golden-hou-d4cc25": "Hausterassen am Hang im Abendlicht",
+      "complex-row-9c31a1": "Drei Canary-Stone-Häuser von der Gartenseite, dahinter der Ozean",
+      "pool-dusk-4d7e12": "Gemeinschaftspool in der Dämmerung, Licht in den Fenstern",
+      "hillside-row-71c3ab": "Häuser in Terrassen am grünen Hang über dem Ozean",
+      "solar-flat-2b8f04": "Solarmodule bündig im Flachdach mit Bronzekante",
+      "build-frame-5e6d77": "Rohbau der Häuser: Beton, Gerüst, steinerne Terrassen",
+      "interior-salon-8a2c19": "Wohnzimmer der Residenz: Kalkwände, Basaltboden, Blick auf den Ozean",
+      "build-pit-3ab7c2": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks",
+      "roof-montazh-6d90ef": "Flachdach mit Bronzekante, Solarmodule vor der Montage",
+      "gate-stone-4f1a2b": "Zufahrt zur Anlage: Basaltpfeiler und Bronzetore",
+      "terrace-view-7c2d15": "Terrasse der Residenz mit Blick auf Hang und Ozean",
+      "kitchen-stone-9e3b40": "Küche der Residenz: Eiche, Basaltarbeitsplatte, Blick in den Garten",
+      "bedroom-sea-2a7f61": "Schlafzimmer der Residenz mit Fenster zum Ozean",
+      "pool-day-6b1c93": "Gemeinschaftspool am Tag, Steinplatten und Canary-Stone-Häuser",
+      "aerial-complex-3d9e50": "Die gesamte Anlage aus zwanzig Häusern in Terrassen über dem Ozean"
+    },
+    "people": {
+      "simon-portrait": "Simon Subic, Entwickler von Artemis de la Cruz",
+      "simon-street": "Simon Subic auf der Straße vor einem Haus",
+      "simon-rooftop": "Simon Subic auf einem Dach mit Blick über die Stadt",
+      "simon-site": "Simon Subic auf der Baustelle Canary Stone mit Plänen",
+      "boris-portrait": "Boris Ribaut, Bauleiter von Artemis de la Cruz",
+      "boris-formwork": "Boris Ribaut prüft Schalungsmaße und Bewehrung vor dem Betonieren",
+      "boris-roof": "Boris Ribaut prüft die Befestigung der Solarmodule auf einem Flachdach",
+      "boris-drawings": "Boris Ribaut bespricht Zeichnungen mit einem Bauunternehmer im Baubüro",
+      "simon-permits": "Simon Subic bespricht Projektunterlagen und Pläne mit einem Architekten"
+    },
+    "calc": {
+      "ui": {
+        "aria": "Beteiligungsrechner",
+        "area": "Aktienzahl",
+        "area_label": "Anzahl der Aktien",
+        "step": "Früher Preis je Aktie",
+        "pay": "Zahlung",
+        "unit": "Aktien",
+        "pay_now": "Gesamter Betrag, einmalig",
+        "term": "Modelllaufzeit",
+        "months": "Monate",
+        "basis": "Zielszenario: Das Ergebnis hängt von Verkäufen, Kosten und Zeitpunkt ab."
+      },
+      "results": {
+        "sum": "Investition — eine Zahlung",
+        "exit": "Zielauszahlung beim Ausstieg",
+        "gain": "Gesamtertrag",
+        "pct": "Jährliche Zielrendite",
+        "gain_pct": "Gesamtzuwachs",
+        "paths": "Auszahlung",
+        "paths_dd": "Einmalige Geldzahlung bei Verkauf oder Rückkauf. Keine jährlichen Ausschüttungen."
+      }
+    },
+    "legal": {
+      "titles": {
+        "impressum": "Impressum — Artemis de la Cruz",
+        "privacy": "Datenschutz — Artemis de la Cruz"
+      },
+      "meta": {
+        "impressum": "Impressum (Art. 10 LSSI-CE) der Website von Artemis de la Cruz: Betreiber OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, Kontakt.",
+        "privacy": "Datenschutzerklärung der Website von Artemis de la Cruz und der Warteliste: welche Daten das Formular erhebt, wozu, wer sie erhält, wie lange sie gespeichert werden, Ihre Rechte und Cookies."
+      }
+    }
   },
-  "alts": {
-   "modern-low-6e9d80": "Low houses in terraces on the slope above the ocean",
-   "entrance-o-9abe9d": "Entrance to the complex: stone pylons and wooden gates",
-   "communal-s-af42cd": "Communal pool and Canary Stone houses",
-   "private-te-6016b5": "Terrace with a glass balustrade and a view of the ocean",
-   "interior-o-74f891": "Bedroom with a floor-to-ceiling window onto the inner courtyard",
-   "green-hill-3f3856": "Houses among greenery on the slope above the ocean",
-   "golden-hou-d4cc25": "House terraces on the slope in evening light",
-   "complex-row-9c31a1": "Three Canary Stone houses from the garden side, the ocean behind",
-   "pool-dusk-4d7e12": "Communal pool at dusk, lights in the windows",
-   "hillside-row-71c3ab": "Houses in terraces on the green slope above the ocean",
-   "solar-flat-2b8f04": "Solar panels flush with the flat roof and its bronze edge",
-   "build-frame-5e6d77": "House frames under construction: concrete, scaffolding, stone terraces",
-   "interior-salon-8a2c19": "Living room of the residence: lime walls, basalt floor, ocean view",
-   "build-pit-3ab7c2": "Foundation pit and footings on the slope, stone terraces of the plot",
-   "roof-montazh-6d90ef": "Flat roof with a bronze edge, solar panels ready for installation",
-   "gate-stone-4f1a2b": "Drive entrance to the complex: basalt pylons and bronze gates",
-   "terrace-view-7c2d15": "Terrace of the residence looking over the slope and the ocean",
-   "kitchen-stone-9e3b40": "Kitchen of the residence: oak, basalt worktop, view into the garden",
-   "bedroom-sea-2a7f61": "Bedroom of the residence with a window onto the ocean",
-   "pool-day-6b1c93": "Communal pool by day, stone deck and Canary Stone houses",
-   "aerial-complex-3d9e50": "The whole complex of twenty houses in terraces above the ocean"
+  "fr": {
+    "form": {
+      "name": "Nom",
+      "contact": "Contact — e-mail, téléphone ou Telegram",
+      "language": "Langue",
+      "website": "Site web",
+      "consent": "J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin d'être inscrit sur la liste d'attente et contacté au sujet de ma demande, conformément à la <a href=\"%PRIVACY%\">politique de confidentialité</a>. Le consentement peut être retiré à tout moment."
+    },
+    "msgs": {
+      "sending": "Envoi…",
+      "ok-title": "Merci ! Vous êtes sur la liste.",
+      "ok-next": "Votre demande est transmise à l'équipe du projet via Telegram et à info@artemisresort.com. Nous vous contacterons.",
+      "server": "La demande n'a pas pu être envoyée. Réessayez ou écrivez-nous à info@artemisresort.com.",
+      "network": "Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez.",
+      "rate": "Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info@artemisresort.com.",
+      "name": "Indiquez votre nom.",
+      "contact": "Indiquez un contact : e-mail, téléphone ou Telegram.",
+      "language": "Choisissez la langue.",
+      "consent": "Cochez le consentement au traitement des données."
+    },
+    "back": {
+      "site": "← Retour au site du projet",
+      "form": "← Retour au formulaire"
+    },
+    "alts": {
+      "modern-low-6e9d80": "Maisons basses en terrasses sur la pente au-dessus de l'océan",
+      "entrance-o-9abe9d": "Entrée du complexe : piliers de pierre et portails en bois",
+      "communal-s-af42cd": "Piscine commune et maisons Canary Stone",
+      "private-te-6016b5": "Terrasse avec garde-corps en verre et vue sur l'océan",
+      "interior-o-74f891": "Chambre avec fenêtre toute hauteur sur la cour intérieure",
+      "green-hill-3f3856": "Maisons dans la verdure sur la pente au-dessus de l'océan",
+      "golden-hou-d4cc25": "Terrasses des maisons sur la pente dans la lumière du soir",
+      "complex-row-9c31a1": "Trois maisons Canary Stone côté jardin, l'océan derrière",
+      "pool-dusk-4d7e12": "Piscine commune au crépuscule, lumières aux fenêtres",
+      "hillside-row-71c3ab": "Maisons en terrasses sur la pente verte au-dessus de l'océan",
+      "solar-flat-2b8f04": "Panneaux solaires affleurant la toiture plate et sa bordure en bronze",
+      "build-frame-5e6d77": "Structure des maisons en chantier : béton, échafaudages, terrasses de pierre",
+      "interior-salon-8a2c19": "Salon de la résidence : murs à la chaux, sol de basalte, vue sur l'océan",
+      "build-pit-3ab7c2": "Fouille et fondations sur la pente, terrasses de pierre de la parcelle",
+      "roof-montazh-6d90ef": "Toiture plate à bordure de bronze, panneaux solaires avant pose",
+      "gate-stone-4f1a2b": "Accès au complexe : piliers de basalte et portails en bronze",
+      "terrace-view-7c2d15": "Terrasse de la résidence avec vue sur la pente et l'océan",
+      "kitchen-stone-9e3b40": "Cuisine de la résidence : chêne, plan de travail en basalte, vue sur le jardin",
+      "bedroom-sea-2a7f61": "Chambre de la résidence avec fenêtre sur l'océan",
+      "pool-day-6b1c93": "Piscine commune de jour, dallage de pierre et maisons Canary Stone",
+      "aerial-complex-3d9e50": "Tout le complexe de vingt maisons en terrasses au-dessus de l'océan"
+    },
+    "people": {
+      "simon-portrait": "Simon Subic, promoteur d'Artemis de la Cruz",
+      "simon-street": "Simon Subic dans la rue devant une maison",
+      "simon-rooftop": "Simon Subic sur un toit avec vue sur la ville",
+      "simon-site": "Simon Subic sur le chantier Canary Stone avec des plans",
+      "boris-portrait": "Boris Ribaut, chef de chantier d'Artemis de la Cruz",
+      "boris-formwork": "Boris Ribaut contrôle les dimensions du coffrage et les armatures avant le coulage du béton",
+      "boris-roof": "Boris Ribaut vérifie la fixation des panneaux solaires sur une toiture plate",
+      "boris-drawings": "Boris Ribaut examine les plans avec un entrepreneur dans le bureau de chantier",
+      "simon-permits": "Simon Subic examine les documents et les plans du projet avec un architecte"
+    },
+    "calc": {
+      "ui": {
+        "aria": "Calculateur d’investissement",
+        "area": "Nombre d’actions",
+        "area_label": "Nombre d’actions",
+        "step": "Prix initial par action",
+        "pay": "Paiement",
+        "unit": "actions",
+        "pay_now": "Montant intégral, un paiement",
+        "term": "Durée du modèle",
+        "months": "mois",
+        "basis": "Scénario cible : le résultat dépend des ventes, des coûts et du délai de sortie."
+      },
+      "results": {
+        "sum": "Investissement — un paiement",
+        "exit": "Règlement cible à la sortie",
+        "gain": "Gain total",
+        "pct": "Objectif annualisé",
+        "gain_pct": "Progression totale",
+        "paths": "Versement",
+        "paths_dd": "Un règlement en numéraire lors de la vente ou du rachat. Aucun versement annuel."
+      }
+    },
+    "legal": {
+      "titles": {
+        "impressum": "Mentions légales — Artemis de la Cruz",
+        "privacy": "Confidentialité — Artemis de la Cruz"
+      },
+      "meta": {
+        "impressum": "Mentions légales (Impressum, art. 10 LSSI-CE) du site d'Artemis de la Cruz : éditeur OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
+        "privacy": "Politique de confidentialité du site d'Artemis de la Cruz et de la liste d'attente : quelles données le formulaire collecte, pourquoi, qui les reçoit, combien de temps elles sont conservées, vos droits et les cookies."
+      }
+    }
   },
-  "people": {
-   "simon-portrait": "Simon Subic, developer of Artemis de la Cruz",
-   "simon-street": "Simon Subic in the street by a house",
-   "simon-rooftop": "Simon Subic on a rooftop overlooking the town",
-   "simon-site": "Simon Subic on the Canary Stone site with drawings",
-   "boris-portrait": "Boris Ribaut, construction supervisor at Artemis de la Cruz",
-   "boris-formwork": "Boris Ribaut checks formwork dimensions and reinforcement before concrete is poured",
-   "boris-roof": "Boris Ribaut checks solar-panel mounting on a flat roof",
-   "boris-drawings": "Boris Ribaut reviews drawings with a contractor in the site office",
-   "simon-permits": "Simon Subic discusses project documents and drawings with an architect"
-  },
-  "calc": {
-   "ui": {
-    "aria": "Calculator",
-    "area": "Area",
-    "area_label": "Area, m²",
-    "step": "Entry stage",
-    "pay": "Payment method",
-    "unit": "m²"
-   },
-   "types": {
-    "one_bed": "One bedroom",
-    "two_bed": "Two bedrooms",
-    "large": "Large house"
-   },
-   "steps": {
-    "queue": "Early entry",
-    "permit": "Permit",
-    "foundation": "Foundation",
-    "shell_roof": "Shell and roof",
-    "finishing": "Finishing",
-    "handover": "Handover"
-   },
-   "pay": {
-    "pay_now": "Pay in full",
-    "pay_parts": "In six instalments with a 5 % discount"
-   }
-  },
-  "legal": {
-   "titles": {
-    "impressum": "Legal notice — Artemis de la Cruz",
-    "privacy": "Privacy — Artemis de la Cruz"
-   },
-   "meta": {
-    "impressum": "Legal notice (Impressum, art. 10 LSSI-CE) of the Artemis de la Cruz website: operator OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
-    "privacy": "Privacy policy of the Artemis de la Cruz website and waiting list: what data the form collects, why, who receives it, how long it is kept, your rights and cookies."
-   }
+  "ru": {
+    "calc": {
+      "ui": {
+        "aria": "Калькулятор инвестиции",
+        "area": "Количество акций",
+        "area_label": "Количество акций",
+        "step": "Ранняя цена за акцию",
+        "pay": "Оплата",
+        "unit": "акц.",
+        "pay_now": "Вся сумма один раз",
+        "term": "Срок модели",
+        "months": "месяцев",
+        "basis": "Целевой сценарий: результат зависит от продаж, расходов и срока выхода."
+      },
+      "results": {
+        "sum": "Инвестиция — один платёж",
+        "exit": "Целевая сумма на выходе",
+        "gain": "Доход за весь срок",
+        "pct": "Целевая доходность в год",
+        "gain_pct": "Прирост за весь срок",
+        "paths": "Как выплачивается",
+        "paths_dd": "Один денежный расчёт при продаже или выкупе. Ежегодных выплат нет."
+      }
+    }
   }
- },
- "es": {
-  "form": {
-   "name": "Nombre",
-   "contact": "Contacto — email, teléfono o Telegram",
-   "language": "Idioma",
-   "website": "Sitio web",
-   "consent": "Acepto el tratamiento de mis datos (nombre, contacto, idioma, página, fecha y hora y, para una solicitud desde la calculadora, el cálculo) para que me incluyan en la lista de espera y se pongan en contacto conmigo sobre mi solicitud, conforme a la <a href=\"%PRIVACY%\">política de privacidad</a>. El consentimiento puede retirarse en cualquier momento."
-  },
-  "msgs": {
-   "sending": "Enviando…",
-   "ok-title": "¡Gracias! Ya está en la lista.",
-   "ok-next": "Su solicitud se envía al equipo del proyecto por Telegram y a info@artemisresort.com. Nos pondremos en contacto con usted.",
-   "server": "No se pudo enviar la solicitud. Inténtelo de nuevo o escríbanos a info@artemisresort.com.",
-   "network": "No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo.",
-   "rate": "Desde esta conexión se han enviado demasiadas solicitudes. Vuelva a intentarlo más tarde o escríbanos a info@artemisresort.com.",
-   "name": "Indique su nombre.",
-   "contact": "Indique un contacto: email, teléfono o Telegram.",
-   "language": "Elija el idioma de comunicación.",
-   "consent": "Marque el consentimiento para el tratamiento de datos."
-  },
-  "back": {
-   "site": "← Volver al sitio del proyecto",
-   "form": "← Volver al formulario"
-  },
-  "alts": {
-   "modern-low-6e9d80": "Casas bajas en terrazas en la ladera sobre el océano",
-   "entrance-o-9abe9d": "Entrada al complejo: pilones de piedra y puertas de madera",
-   "communal-s-af42cd": "Piscina común y casas Canary Stone",
-   "private-te-6016b5": "Terraza con barandilla de vidrio y vistas al océano",
-   "interior-o-74f891": "Dormitorio con ventana de suelo a techo al patio interior",
-   "green-hill-3f3856": "Casas entre vegetación en la ladera sobre el océano",
-   "golden-hou-d4cc25": "Terrazas de las casas en la ladera con luz de tarde",
-   "complex-row-9c31a1": "Tres casas Canary Stone desde el jardín, el océano al fondo",
-   "pool-dusk-4d7e12": "Piscina común al atardecer, luces en las ventanas",
-   "hillside-row-71c3ab": "Casas en terrazas en la ladera verde sobre el océano",
-   "solar-flat-2b8f04": "Paneles solares a ras de la cubierta plana con borde de bronce",
-   "build-frame-5e6d77": "Estructura de las casas en obra: hormigón, andamios, terrazas de piedra",
-   "interior-salon-8a2c19": "Salón de la residencia: muros de cal, suelo de basalto, vistas al océano",
-   "build-pit-3ab7c2": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela",
-   "roof-montazh-6d90ef": "Cubierta plana con borde de bronce, paneles solares antes del montaje",
-   "gate-stone-4f1a2b": "Acceso al complejo: pilones de basalto y puertas de bronce",
-   "terrace-view-7c2d15": "Terraza de la residencia con vistas a la ladera y al océano",
-   "kitchen-stone-9e3b40": "Cocina de la residencia: roble, encimera de basalto, vistas al jardín",
-   "bedroom-sea-2a7f61": "Dormitorio de la residencia con ventana al océano",
-   "pool-day-6b1c93": "Piscina común de día, solado de piedra y casas Canary Stone",
-   "aerial-complex-3d9e50": "Todo el complejo de veinte casas en terrazas sobre el océano"
-  },
-  "people": {
-   "simon-portrait": "Simon Subic, promotor de Artemis de la Cruz",
-   "simon-street": "Simon Subic en la calle junto a una casa",
-   "simon-rooftop": "Simon Subic en una azotea con vistas a la ciudad",
-   "simon-site": "Simon Subic en la obra de Canary Stone con planos",
-   "boris-portrait": "Boris Ribaut, jefe de obra de Artemis de la Cruz",
-   "boris-formwork": "Boris Ribaut comprueba las dimensiones del encofrado y la armadura antes del hormigonado",
-   "boris-roof": "Boris Ribaut revisa la fijación de los paneles solares en una cubierta plana",
-   "boris-drawings": "Boris Ribaut revisa los planos con un contratista en la oficina de obra",
-   "simon-permits": "Simon Subic revisa documentos y planos del proyecto con un arquitecto"
-  },
-  "calc": {
-   "ui": {
-    "aria": "Calculadora",
-    "area": "Superficie",
-    "area_label": "Superficie, m²",
-    "step": "Etapa de entrada",
-    "pay": "Forma de pago",
-    "unit": "m²"
-   },
-   "types": {
-    "one_bed": "Un dormitorio",
-    "two_bed": "Dos dormitorios",
-    "large": "Casa grande"
-   },
-   "steps": {
-    "queue": "Entrada inicial",
-    "permit": "Licencia",
-    "foundation": "Cimentación",
-    "shell_roof": "Estructura y cubierta",
-    "finishing": "Acabados",
-    "handover": "Entrega"
-   },
-   "pay": {
-    "pay_now": "Pago único",
-    "pay_parts": "En seis plazos con un 5 % de descuento"
-   }
-  },
-  "legal": {
-   "titles": {
-    "impressum": "Aviso legal — Artemis de la Cruz",
-    "privacy": "Privacidad — Artemis de la Cruz"
-   },
-   "meta": {
-    "impressum": "Aviso legal (Impressum, art. 10 LSSI-CE) del sitio de Artemis de la Cruz: titular OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contacto.",
-    "privacy": "Política de privacidad del sitio de Artemis de la Cruz y de la lista de espera: qué datos recoge el formulario, para qué, quién los recibe, cuánto se conservan, sus derechos y cookies."
-   }
-  }
- },
- "de": {
-  "form": {
-   "name": "Name",
-   "contact": "Kontakt — E-Mail, Telefon oder Telegram",
-   "language": "Sprache",
-   "website": "Website",
-   "consent": "Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit ich in die Warteliste aufgenommen und zu meiner Anfrage kontaktiert werde, gemäß der <a href=\"%PRIVACY%\">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden."
-  },
-  "msgs": {
-   "sending": "Wird gesendet…",
-   "ok-title": "Danke! Sie stehen auf der Liste.",
-   "ok-next": "Ihre Anfrage geht per Telegram an das Projektteam und an info@artemisresort.com. Wir melden uns bei Ihnen.",
-   "server": "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info@artemisresort.com.",
-   "network": "Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
-   "rate": "Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info@artemisresort.com.",
-   "name": "Bitte geben Sie Ihren Namen an.",
-   "contact": "Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram.",
-   "language": "Bitte wählen Sie die Sprache.",
-   "consent": "Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung."
-  },
-  "back": {
-   "site": "← Zurück zur Projektseite",
-   "form": "← Zurück zum Formular"
-  },
-  "alts": {
-   "modern-low-6e9d80": "Niedrige Häuser in Terrassen am Hang über dem Ozean",
-   "entrance-o-9abe9d": "Eingang der Anlage: steinerne Pfeiler und Holztore",
-   "communal-s-af42cd": "Gemeinschaftspool und Canary-Stone-Häuser",
-   "private-te-6016b5": "Terrasse mit Glasgeländer und Blick auf den Ozean",
-   "interior-o-74f891": "Schlafzimmer mit raumhohem Fenster zum Innenhof",
-   "green-hill-3f3856": "Häuser im Grünen am Hang über dem Ozean",
-   "golden-hou-d4cc25": "Hausterassen am Hang im Abendlicht",
-   "complex-row-9c31a1": "Drei Canary-Stone-Häuser von der Gartenseite, dahinter der Ozean",
-   "pool-dusk-4d7e12": "Gemeinschaftspool in der Dämmerung, Licht in den Fenstern",
-   "hillside-row-71c3ab": "Häuser in Terrassen am grünen Hang über dem Ozean",
-   "solar-flat-2b8f04": "Solarmodule bündig im Flachdach mit Bronzekante",
-   "build-frame-5e6d77": "Rohbau der Häuser: Beton, Gerüst, steinerne Terrassen",
-   "interior-salon-8a2c19": "Wohnzimmer der Residenz: Kalkwände, Basaltboden, Blick auf den Ozean",
-   "build-pit-3ab7c2": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks",
-   "roof-montazh-6d90ef": "Flachdach mit Bronzekante, Solarmodule vor der Montage",
-   "gate-stone-4f1a2b": "Zufahrt zur Anlage: Basaltpfeiler und Bronzetore",
-   "terrace-view-7c2d15": "Terrasse der Residenz mit Blick auf Hang und Ozean",
-   "kitchen-stone-9e3b40": "Küche der Residenz: Eiche, Basaltarbeitsplatte, Blick in den Garten",
-   "bedroom-sea-2a7f61": "Schlafzimmer der Residenz mit Fenster zum Ozean",
-   "pool-day-6b1c93": "Gemeinschaftspool am Tag, Steinplatten und Canary-Stone-Häuser",
-   "aerial-complex-3d9e50": "Die gesamte Anlage aus zwanzig Häusern in Terrassen über dem Ozean"
-  },
-  "people": {
-   "simon-portrait": "Simon Subic, Entwickler von Artemis de la Cruz",
-   "simon-street": "Simon Subic auf der Straße vor einem Haus",
-   "simon-rooftop": "Simon Subic auf einem Dach mit Blick über die Stadt",
-   "simon-site": "Simon Subic auf der Baustelle Canary Stone mit Plänen",
-   "boris-portrait": "Boris Ribaut, Bauleiter von Artemis de la Cruz",
-   "boris-formwork": "Boris Ribaut prüft Schalungsmaße und Bewehrung vor dem Betonieren",
-   "boris-roof": "Boris Ribaut prüft die Befestigung der Solarmodule auf einem Flachdach",
-   "boris-drawings": "Boris Ribaut bespricht Zeichnungen mit einem Bauunternehmer im Baubüro",
-   "simon-permits": "Simon Subic bespricht Projektunterlagen und Pläne mit einem Architekten"
-  },
-  "calc": {
-   "ui": {
-    "aria": "Rechner",
-    "area": "Fläche",
-    "area_label": "Fläche, m²",
-    "step": "Einstiegsstufe",
-    "pay": "Zahlungsart",
-    "unit": "m²"
-   },
-   "types": {
-    "one_bed": "Ein Schlafzimmer",
-    "two_bed": "Zwei Schlafzimmer",
-    "large": "Großes Haus"
-   },
-   "steps": {
-    "queue": "Früher Einstieg",
-    "permit": "Baugenehmigung",
-    "foundation": "Fundament",
-    "shell_roof": "Rohbau und Dach",
-    "finishing": "Ausbau",
-    "handover": "Fertigstellung"
-   },
-   "pay": {
-    "pay_now": "Sofort zahlen",
-    "pay_parts": "In sechs Raten mit 5 % Rabatt"
-   }
-  },
-  "legal": {
-   "titles": {
-    "impressum": "Impressum — Artemis de la Cruz",
-    "privacy": "Datenschutz — Artemis de la Cruz"
-   },
-   "meta": {
-    "impressum": "Impressum (Art. 10 LSSI-CE) der Website von Artemis de la Cruz: Betreiber OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, Kontakt.",
-    "privacy": "Datenschutzerklärung der Website von Artemis de la Cruz und der Warteliste: welche Daten das Formular erhebt, wozu, wer sie erhält, wie lange sie gespeichert werden, Ihre Rechte und Cookies."
-   }
-  }
- },
- "fr": {
-  "form": {
-   "name": "Nom",
-   "contact": "Contact — e-mail, téléphone ou Telegram",
-   "language": "Langue",
-   "website": "Site web",
-   "consent": "J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin d'être inscrit sur la liste d'attente et contacté au sujet de ma demande, conformément à la <a href=\"%PRIVACY%\">politique de confidentialité</a>. Le consentement peut être retiré à tout moment."
-  },
-  "msgs": {
-   "sending": "Envoi…",
-   "ok-title": "Merci ! Vous êtes sur la liste.",
-   "ok-next": "Votre demande est transmise à l'équipe du projet via Telegram et à info@artemisresort.com. Nous vous contacterons.",
-   "server": "La demande n'a pas pu être envoyée. Réessayez ou écrivez-nous à info@artemisresort.com.",
-   "network": "Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez.",
-   "rate": "Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info@artemisresort.com.",
-   "name": "Indiquez votre nom.",
-   "contact": "Indiquez un contact : e-mail, téléphone ou Telegram.",
-   "language": "Choisissez la langue.",
-   "consent": "Cochez le consentement au traitement des données."
-  },
-  "back": {
-   "site": "← Retour au site du projet",
-   "form": "← Retour au formulaire"
-  },
-  "alts": {
-   "modern-low-6e9d80": "Maisons basses en terrasses sur la pente au-dessus de l'océan",
-   "entrance-o-9abe9d": "Entrée du complexe : piliers de pierre et portails en bois",
-   "communal-s-af42cd": "Piscine commune et maisons Canary Stone",
-   "private-te-6016b5": "Terrasse avec garde-corps en verre et vue sur l'océan",
-   "interior-o-74f891": "Chambre avec fenêtre toute hauteur sur la cour intérieure",
-   "green-hill-3f3856": "Maisons dans la verdure sur la pente au-dessus de l'océan",
-   "golden-hou-d4cc25": "Terrasses des maisons sur la pente dans la lumière du soir",
-   "complex-row-9c31a1": "Trois maisons Canary Stone côté jardin, l'océan derrière",
-   "pool-dusk-4d7e12": "Piscine commune au crépuscule, lumières aux fenêtres",
-   "hillside-row-71c3ab": "Maisons en terrasses sur la pente verte au-dessus de l'océan",
-   "solar-flat-2b8f04": "Panneaux solaires affleurant la toiture plate et sa bordure en bronze",
-   "build-frame-5e6d77": "Structure des maisons en chantier : béton, échafaudages, terrasses de pierre",
-   "interior-salon-8a2c19": "Salon de la résidence : murs à la chaux, sol de basalte, vue sur l'océan",
-   "build-pit-3ab7c2": "Fouille et fondations sur la pente, terrasses de pierre de la parcelle",
-   "roof-montazh-6d90ef": "Toiture plate à bordure de bronze, panneaux solaires avant pose",
-   "gate-stone-4f1a2b": "Accès au complexe : piliers de basalte et portails en bronze",
-   "terrace-view-7c2d15": "Terrasse de la résidence avec vue sur la pente et l'océan",
-   "kitchen-stone-9e3b40": "Cuisine de la résidence : chêne, plan de travail en basalte, vue sur le jardin",
-   "bedroom-sea-2a7f61": "Chambre de la résidence avec fenêtre sur l'océan",
-   "pool-day-6b1c93": "Piscine commune de jour, dallage de pierre et maisons Canary Stone",
-   "aerial-complex-3d9e50": "Tout le complexe de vingt maisons en terrasses au-dessus de l'océan"
-  },
-  "people": {
-   "simon-portrait": "Simon Subic, promoteur d'Artemis de la Cruz",
-   "simon-street": "Simon Subic dans la rue devant une maison",
-   "simon-rooftop": "Simon Subic sur un toit avec vue sur la ville",
-   "simon-site": "Simon Subic sur le chantier Canary Stone avec des plans",
-   "boris-portrait": "Boris Ribaut, chef de chantier d'Artemis de la Cruz",
-   "boris-formwork": "Boris Ribaut contrôle les dimensions du coffrage et les armatures avant le coulage du béton",
-   "boris-roof": "Boris Ribaut vérifie la fixation des panneaux solaires sur une toiture plate",
-   "boris-drawings": "Boris Ribaut examine les plans avec un entrepreneur dans le bureau de chantier",
-   "simon-permits": "Simon Subic examine les documents et les plans du projet avec un architecte"
-  },
-  "calc": {
-   "ui": {
-    "aria": "Calculateur",
-    "area": "Surface",
-    "area_label": "Surface, m²",
-    "step": "Étape d'entrée",
-    "pay": "Mode de paiement",
-    "unit": "m²"
-   },
-   "types": {
-    "one_bed": "Une chambre",
-    "two_bed": "Deux chambres",
-    "large": "Grande maison"
-   },
-   "steps": {
-    "queue": "Entrée initiale",
-    "permit": "Permis",
-    "foundation": "Fondations",
-    "shell_roof": "Gros œuvre et toiture",
-    "finishing": "Finitions",
-    "handover": "Livraison"
-   },
-   "pay": {
-    "pay_now": "Paiement unique",
-    "pay_parts": "En six versements avec 5 % de remise"
-   }
-  },
-  "legal": {
-   "titles": {
-    "impressum": "Mentions légales — Artemis de la Cruz",
-    "privacy": "Confidentialité — Artemis de la Cruz"
-   },
-   "meta": {
-    "impressum": "Mentions légales (Impressum, art. 10 LSSI-CE) du site d'Artemis de la Cruz : éditeur OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
-    "privacy": "Politique de confidentialité du site d'Artemis de la Cruz et de la liste d'attente : quelles données le formulaire collecte, pourquoi, qui les reçoit, combien de temps elles sont conservées, vos droits et les cookies."
-   }
-  }
- }
 }

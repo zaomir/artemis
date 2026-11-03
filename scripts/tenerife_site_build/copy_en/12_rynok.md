@@ -1,101 +1,56 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/mercado/
-Meta title: La Quinta market: what a metre costs and the Artemis steps
-Meta description: What a metre costs in Santa Úrsula and La Quinta, what the neighbouring new builds asked, what long-term letting costs, and where the Artemis steps come from.
-OG title: The price per metre in the north of Tenerife and the Artemis share steps
+Meta title: Entry price, growth and calculation sources — Artemis de la Cruz
+Meta description: A provisional @market@ €/m² reference, entry @discount@% below it and @growth@% assumed annual growth. Model inputs and available sources.
+OG title: Entry price, growth and calculation sources
 -->
 
-# The market and the price per metre: where the Artemis figures at La Quinta come from
+# Where the entry price and future sales revenue come from
 
-A share in the developer company Artemis costs 2 950 € per metre on the waiting list and 3 850 € at the handover step. This page sets out the market those figures should be compared with: second-hand housing in Santa Úrsula, the new developments next door at La Quinta, long-term letting in the north and German yield benchmarks. Every figure comes from a public source.
+The calculation uses a @market@ €/m² reference, a @entry@ € early price and @growth@% annual growth for unsold homes. These are financial-model inputs; a current comparable local new-build price list has not yet been verified.
 
-[КАДР F24] <!-- служебная пометка, не публикуется -->
+[КАДР F24]
 
-### What a metre costs in the north
+### Early entry 30% below the reference
 
-| What | € per m² | Source |
-|---|---|---|
-| Santa Úrsula, all housing | 2 405 | Fotocasa, October 2026 |
-| Santa Úrsula, La Quinta district | 2 812 | Fotocasa, October 2026 |
-| Santa Úrsula, houses / flats | 2 485 / 3 132 | Engel & Völkers, 2026 |
-| Santa Úrsula, postcode 38390: all / flats / houses | 2 983 / 2 851 / 3 157 | RealAdvisor, 2026 |
-| Puerto de la Cruz | 3 596 | Fotocasa, October 2026 |
-| Santa Cruz de Tenerife province | 3 321 | Fotocasa, October 2026 |
+@market@ × 70% = @entry@ €. The difference is @discount@% of the comparison reference. The share price buys participation; the per-m² reference supports comparison and sales calculations, not a promise of a specific home for shares.
 
-This is mostly second-hand housing: houses and flats of various ages. A new build in the north costs more.
+Before describing entry as @discount@% below today's market, the comparable new-build sample needs updating for area definitions, condition, specification and listing date.
 
-[КАДР F01] <!-- служебная пометка, не публикуется -->
+[КАДР F01]
 
-The original data periods differ: Fotocasa is October 2026; Engel & Völkers and RealAdvisor are 2026. The Kelify rental examples below are a snapshot of 31.10.2026; its district index is March 2026. These are historical snapshots from the project’s source material, not new measurements on the viewing date. Publishers and periods are named in the tables; asking prices are not completed transaction prices.
+### What neighbouring projects show
 
-### How the price is rising
+[Reside Tenerife](https://residentenerife.com/obra-nueva) marks La Quinta I, II, III and Lomo Román as sold. It publishes no current price list there. Older advertised prices are therefore not presented as today's market valuation or a promised resale price.
 
-Santa Úrsula rose by 13,7% over the year on the Fotocasa index. Flats in Santa Úrsula, according to Engel & Völkers, rose by 14,27% in 2024 and by 17,72% in 2025. The north of Tenerife is becoming more expensive faster than those who know only the southern coast are used to thinking.
+### How 6% annual growth is applied
 
-### The neighbouring La Quinta developments: asking prices
-
-| Project | Asking price | € per m² |
-|---|---|---|
-| La Quinta III | 4 houses of 125 m², 420 000–425 000 €, sold | 3 360–3 400 |
-| La Quinta 2 | houses of 110 m², 399 999–425 700 €, sold | 3 636–3 870 |
-
-The neighbouring new developments at La Quinta were offered at 3 360–3 870 € per metre, and both projects are already sold. A finished Artemis house at handover is 3 800–4 600 € per metre. The handover step for shares in the developer company is 3 850 €: at the upper edge of the asking prices of the neighbouring projects, not below the market.
-
-[КАДР F12] <!-- служебная пометка, не публикуется -->
-
-### The Artemis steps next to the market
-
-The tables above compare different segments: existing housing in La Quinta at 2 812 € per m² and neighbouring new-development asking prices of 3 360–3 870 €. These are market benchmarks, not the company’s share price. The detailed ladder and its trigger events are on the [investor page](/tenerife/inversores/).
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Long-term letting
-
-| What | € per m² a month | Source |
-|---|---|---|
-| Santa Úrsula | 12 | Fotocasa |
-| Santa Úrsula, houses / flats | 11,31 / 15,04 | Engel & Völkers |
-| Santa Úrsula | 12,1 | Mesurae, gross yield 5,8% |
-| Santa Úrsula, by district, March 2026 | 10,00–11,67 | Kelify |
-| Puerto de la Cruz | 17 | Fotocasa |
-
-For example, listings in La Quinta itself on Kelify (snapshot 31.10.2026): 80 m² for 975 € a month, 60 m² for 900 €, 132 m² for 1 500 €. For a house of 72 metres that is 864–1 080 € a month at 12–15 € per metre.
-
-### From rent to dividend
-
-Long-term letting, costs and calculation assumptions are explained in the [rental model](/tenerife/alquiler/).
-
-[КАДР F22] <!-- служебная пометка, не публикуется -->
-
-### German benchmarks
-
-| What | Rate |
+| Time until signing | Model reference, €/m² |
 |---|---|
-| 10-year Bund, 30.10.2026 | 3,34% |
-| 1-year Festgeld, top-10 average | 3,52% |
-| Gross rental yield, the 52 largest German cities, H1 2026 | 4,17% |
-| Artemis dividend estimate | 2,5–3,5% a year |
+| Today | @market_y0@ |
+| In one year | @market_y1@ |
+| In two years | @market_y2@ |
+| In three years | @market_y3@ |
 
-The Artemis dividend is a project estimate of 2,5–3,5 % a year before company profit tax, not guaranteed. It is a separate measure: comparison with a deposit rate or gross rental yield requires attention to the basis and costs. [Rental model and assumptions](/tenerife/alquiler/).
+Formula: @market@ × (1 + @growth@%)^(months / 12). Sales occur in months 3–30, each locking its own price. The model does not sell every home at the end-of-year-three price: total contracts are @sales@ €.
 
-### How it works
+[КАДР F12]
 
-The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
+### Budget references
 
-Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
+Local practice [Urbara](https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife) publishes Tenerife building-cost references by specification level. The base scenario uses @cost_m2@ €/m² of built area; land, design, shared areas and contingency are separate. There is no internal project cost plan yet.
 
-[КАДР F04] <!-- служебная пометка, не публикуется -->
+At 2 100 €/m² the target buyback is not fully covered. Architecture and specification therefore need a confirmed cost plan before funding starts. [Budget and sensitivity](/tenerife/inversores/#assumptions).
 
-### In short
+### What this means for you
 
-**What does a metre cost at La Quinta?** Second-hand housing 2 812 €. The neighbouring new developments were offered at 3 360–3 870 €, and both projects are sold.
+Early price, future house-price growth and investor return are three separate inputs. @discount@% sets entry against the reference; @growth@% drives the sales plan; @target@% is the investor's target. They are not added together. [Calculate an investment](/tenerife/calculadora/).
 
-**What does a metre cost in Artemis shares?** 2 950 € on the waiting list, 3 850 € at the handover step.
+[КАДР F22]
 
-**What is letting like in the north?** 12–15 € per metre a month in Santa Úrsula, 17 € in Puerto de la Cruz.
+### Request a calculation
 
-**Where does the percentage come from?** The dividend is calculated from the long-term rent of a metre after costs: IBI, community fees, management, vacancy, insurance, repair reserve, refuse charge. The result: an estimated 2,5–3,5 % a year before company profit tax.
+Request the inputs and receipt calendar with your calculation. Discuss which market observations and costs still need confirmation.
 
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.
