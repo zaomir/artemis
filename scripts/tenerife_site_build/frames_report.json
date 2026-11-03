@@ -19,8 +19,8 @@
    "F02": "Въезд в комплекс: базальтовые пилоны и бронзовые ворота",
    "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
   },
-  "title": "Artemis de la Cruz — 20 резиденций в La Quinta, север Тенерифе",
-  "h1": "20 резиденций в La Quinta, север Тенерифе"
+  "title": "Дом на севере Тенерифе. Участие от 112 896 € — Artemis de la Cruz",
+  "h1": "Дом на зелёном севере Тенерифе — свой или как инвестиция"
  },
  "norte": {
   "url": "/tenerife/ru/norte/",
@@ -60,43 +60,33 @@
    "F07": "Спальня резиденции с окном на океан",
    "F08": "Кухня резиденции: дуб, базальтовая столешница, вид в сад"
   },
-  "title": "Резиденции Artemis: 20 домов от 48 до 100 м² в La Quinta",
-  "h1": "Двадцать резиденций от 48 до 100 метров, один фасад Canary Stone"
+  "title": "Резиденции от 48 до 100 м² — Artemis de la Cruz",
+  "h1": "Дома от 48 до 100 м² — три планировки, один архитектурный язык"
  },
  "inversores": {
   "url": "/tenerife/ru/inversores/",
   "file": "04_akcii.md",
   "frames": {
-   "F14": "build-pit-3ab7c2",
-   "F01": null,
-   "F15": null,
-   "F17": null,
-   "F12": null
+   "F14": "build-pit-3ab7c2"
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F14": "Котлован и фундамент домов на склоне, каменные террасы участка"
   },
-  "title": "Инвесторам — акции Artemis de la Cruz в La Quinta",
-  "h1": "Инвесторам: участвовать в Artemis de la Cruz до ввода домов"
+  "title": "Инвестиция с выходом через 36 месяцев — Artemis de la Cruz",
+  "h1": "Войти в строительство — получить капитал и доход на выходе"
  },
  "calculadora": {
   "url": "/tenerife/ru/calculadora/",
   "file": "05_kalkulyator.md",
   "frames": {
    "F20": null,
-   "F05": null,
-   "F07": null,
-   "F11": null,
-   "F17": null,
-   "F22": null
+   "F07": null
   },
   "hidden": [],
   "alts": {},
-  "title": "Калькулятор акций Artemis de la Cruz: сумма, платёж, дивиденд",
-  "h1": "Калькулятор: ваши метры акциями компании-застройщика"
+  "title": "Рассчитайте инвестицию и сумму на выходе — Artemis de la Cruz",
+  "h1": "Сколько вложить сейчас и получить на выходе"
  },
  "alquiler": {
   "url": "/tenerife/ru/alquiler/",
@@ -105,16 +95,14 @@
    "F10": "terrace-view-7c2d15",
    "F04": null,
    "F05": null,
-   "F03": null,
-   "F22": null,
-   "F21": null
+   "F03": null
   },
   "hidden": [],
   "alts": {
    "F10": "Терраса резиденции с видом на склон и океан"
   },
-  "title": "Аренда на севере Тенерифе: 12–15 € за м² в месяц — Artemis",
-  "h1": "Как дом в La Quinta зарабатывает после ввода"
+  "title": "Дом для жизни и долгой аренды — Artemis de la Cruz",
+  "h1": "Дом, которым вы пользуетесь по-своему"
  },
  "energia": {
   "url": "/tenerife/ru/energia/",
@@ -151,46 +139,35 @@
   "alts": {
    "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
   },
-  "title": "Стройка Artemis de la Cruz: 9 стадий и отчёт каждую неделю",
-  "h1": "Стройка по плану 2027–2029: девять стадий и отчёт каждую неделю"
+  "title": "Девять стадий от участка до готового дома — Artemis de la Cruz",
+  "h1": "Девять стадий от земли до ключей — и отчёт каждую неделю"
  },
  "proceso": {
   "url": "/tenerife/ru/proceso/",
   "file": "09_sdelka.md",
   "frames": {
    "F02": "entrance-o-9abe9d",
-   "F19": null,
-   "F20": null,
-   "F18": null,
-   "F17": null,
-   "F04": null
+   "F15": null
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
   },
-  "title": "Сделка Artemis de la Cruz: от очереди до ключей шаг за шагом",
-  "h1": "От очереди до ключей: шесть шагов сделки Artemis"
+  "title": "Как начать: от заявки до денежного выхода — Artemis de la Cruz",
+  "h1": "Как проходит участие: шесть шагов от заявки до выхода"
  },
  "faq": {
   "url": "/tenerife/ru/faq/",
   "file": "10_voprosy.md",
   "frames": {
-   "F03": "communal-s-af42cd",
-   "F01": null,
-   "F11": null,
+   "F20": null,
    "F15": null,
-   "F05": null,
-   "F22": null
+   "F05": null
   },
   "hidden": [],
-  "alts": {
-   "F03": "Общий бассейн и дома Canary Stone"
-  },
-  "title": "Вопросы об Artemis de la Cruz: акции, цена, дивиденд, стройка",
-  "h1": "Вопросы перед входом в Artemis de la Cruz — и прямые ответы"
+  "alts": {},
+  "title": "Вопросы об инвестиции и покупке дома — Artemis de la Cruz",
+  "h1": "Что нужно знать до участия"
  },
  "simon": {
   "url": "/tenerife/ru/simon/",
@@ -215,18 +192,14 @@
    "F24": "golden-hou-d4cc25",
    "F01": null,
    "F12": null,
-   "F17": null,
-   "F22": null,
-   "F04": null
+   "F22": null
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F24": "Террасы домов на склоне в вечернем свете"
   },
-  "title": "Рынок и цена метра в La Quinta: цифры для Artemis",
-  "h1": "Рынок и цена метра: откуда цифры Artemis в La Quinta"
+  "title": "Цена входа, рост и источники расчёта — Artemis de la Cruz",
+  "h1": "Откуда берутся цена входа и будущая выручка"
  },
  "boris": {
   "url": "/tenerife/ru/boris/",
@@ -250,10 +223,12 @@
   "url": "/tenerife/ru/equipo/",
   "file": "19_komanda.md",
   "frames": {
-   "F22": null
+   "F22": "communal-s-af42cd"
   },
   "hidden": [],
-  "alts": {},
+  "alts": {
+   "F22": "Общий бассейн и дома Canary Stone"
+  },
   "title": "Команда Artemis de la Cruz — роли и ответственность",
   "h1": "Команда Artemis de la Cruz"
  }

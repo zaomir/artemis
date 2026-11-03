@@ -1,80 +1,61 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/faq/
-Meta title: Artemis de la Cruz: shares, price, dividend, construction
-Meta description: Where La Quinta is, why the north, what shares in the developer company are, why early entry is cheaper, how the dividend and the exchange for metres work, and who sees the reports.
-OG title: Questions before entering Artemis de la Cruz, and direct answers
+Meta title: Questions about investing and buying a home — Artemis de la Cruz
+Meta description: Answers on full payment, the @target@% annualised target, a @months@-month exit, sales, costs and the absence of annual distributions.
+OG title: Questions about investing and buying a home
 -->
 
-# Questions before entering Artemis de la Cruz, and direct answers
+# What to understand before participating
 
-These are the questions people ask before buying a house in Tenerife and before buying shares in the developer company Artemis. The answers are short, with the numbers, the same ones we give out loud at a meeting.
+Key questions about money, timing and results. The base investment model has one full upfront payment and one cash exit after @months@ months.
 
-[КАДР F03] <!-- служебная пометка, не публикуется -->
+[КАДР F20]
 
-### Location
+### Capital and return
 
-**Where is the project?** In the La Quinta area of Santa Úrsula. We choose the actual plot with waiting-list members.
+**Are there annual payments?** No. Capital and income are paid on sale or buyback at exit.
 
-**How do I get there?** Routes, walking access to the beach and surroundings are on the [location page](/tenerife/norte/).
+**What does @target@% annualised mean?** A target effective return with compounding. Three years means @gain_pct@% above investment: @entry_72@ € → @exit_72@ € for 72 shares.
 
-**What about winter?** Climate, the solar roof and heated pool are covered under [energy and specifications](/tenerife/energia/).
+**Is that result guaranteed?** It is the base scenario's target. Payment depends on actual sales receipts, the budget and exit timing.
 
-[КАДР F01] <!-- служебная пометка, не публикуется -->
+**Can investors pay in instalments?** The model requires full upfront investment. The 40/30/10/20% milestones apply to homebuyers.
 
-### What I am buying
+### Price and growth
 
-**What is a share?** Participation in the developer company: one share corresponds to one m² construida excluding common areas.
+**Where does the @entry@ € early price come from?** It is 70% of the provisional @market@ €/m² reference, or @discount@% below it. Current comparable local new-build prices still need confirmation.
 
-**How does participation differ from buying a house?** The asset purchased and two participation outcomes are compared on the [investor page](/tenerife/inversores/).
+**What does @growth@% growth mean?** An assumption for annual changes in unsold homes' prices. A signed contract fixes the price; growth is neither added retrospectively nor added to the investor's return.
 
-### Price and early entry
+[КАДР F15]
 
-**How does the price change?** By construction events rather than dates. [Price ladder and example](/tenerife/inversores/).
+### Construction and funding
 
-**How do I calculate payments?** Choose your area and step in the [calculator](/tenerife/calculadora/).
+**Who funds construction?** The early investment pool and payments from buyers of twenty homes. The model includes no additional developer capital or bank debt.
 
-**When do I pay?** After the majority of the waiting list approves the plot and the investment agreement. [Documents and payment timing](/tenerife/proceso/).
+**Is the base scenario fully funded?** Its monthly schedule covers expenses and the target exit, with a minimum cash balance of @minimum_cash@ €. That calculation assumes sales and payments arrive on schedule.
 
-[КАДР F11] <!-- служебная пометка, не публикуется -->
+**What if sales are delayed or costs rise?** The whole cash calendar needs recalculation. A two-month sales delay creates a @delay_gap@ € gap; at 2 100 €/m² construction cost the target buyback is not fully covered. No automatic developer top-up is modeled.
 
-### The dividend
+**What if the project stops?** Return timing and amount will depend on the project's position, available cash and asset sales. The model does not fund an immediate return of all capital and income. Discuss the response before payment.
 
-**What dividend?** An estimated 2,5–3,5 % a year before company profit tax, not guaranteed.
+### Homes and investment
 
-**What is the estimate based on?** Long-term letting after costs. [Rental market, costs and assumptions](/tenerife/alquiler/).
+**Do shares reserve a home?** No. Here share quantity defines an investment with a cash exit. A specific residence is purchased separately.
 
-### Metres
+**Can I receive a home and a buyback for the same investment?** The model does not provide that outcome: a residence cannot be sold to a buyer and transferred to an investor at the same time.
 
-**How do I receive a residence?** After the completion certificate, the exchange is formalised before a notary and in the register. [Formalities, taxes and mortgage](/tenerife/proceso/).
+[КАДР F05]
 
-**Can I buy more shares?** At the current step price; the [investor page](/tenerife/inversores/) contains a top-up example.
+### Getting started
 
-**Is assignment possible before handover?** If buyers outnumber units, the company may offer an assignment. It is an opportunity, not a promise of return; see the [transaction details](/tenerife/proceso/).
+**When do I pay?** After approval of the plot and participation terms. Requesting a calculation is free.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+**Who answers questions?** [Simon Subic and Boris Ribaut](/tenerife/equipo/). [Participation process](/tenerife/proceso/).
 
-### Construction and reports
+### Request a calculation
 
-**When are construction and handover?** The plan is a start in early 2027 and handover in late 2028 – mid 2029.
+Leave your name and contact to discuss the amount, timing and assumptions for your participation.
 
-**Who receives reports?** Shareholders and house buyers, every week. [Stages and report format](/tenerife/construccion/).
-
-[КАДР F05] <!-- служебная пометка, не публикуется -->
-
-### People
-
-**Who is responsible?** Simon Subic’s and Boris Ribaut’s roles are in the [team section](/tenerife/equipo/).
-
-**Which company?** OXFORD FRAME REAL ASSETS LTD. [Company details](/tenerife/impressum/).
-
-**What homes?** [Residence types, areas and specifications](/tenerife/producto/).
-
-[КАДР F22] <!-- служебная пометка, не публикуется -->
-
-### In short
-
-**What should I do now?** Request a calculation and discuss plot options. Joining the waiting list is free; we take no money before the plot is chosen.
-
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.

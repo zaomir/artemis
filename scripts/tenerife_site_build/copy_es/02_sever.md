@@ -8,7 +8,7 @@ OG title: La Quinta, Santa Úrsula: el norte de Tenerife para vivir
 
 # La Quinta, Santa Úrsula: el norte de Tenerife donde se vive
 
-La Quinta es un barrio residencial de Santa Úrsula en la ladera norte verde de Tenerife. Hasta Puerto de la Cruz hay 8 km, 10–15 minutos en coche; hasta el aeropuerto de Tenerife Norte, 15–20 minutos; hasta la Playa del Ancón, unos 3 km. Aquí estamos eligiendo la parcela para veinte residencias Artemis. Las acciones de la sociedad promotora en la lista de espera cuestan 2 950 € por metro.
+La Quinta es un barrio residencial de Santa Úrsula en la verde ladera norte de Tenerife. Puerto de la Cruz está a 8 km y Playa del Ancón a unos 3 km. Aquí seleccionamos una parcela para veinte residencias Artemis. [Compra](/tenerife/producto/) e [inversión](/tenerife/inversores/) se explican por separado.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -40,11 +40,9 @@ El norte de Tenerife mantiene vínculos históricos con Europa Central. Familias
 
 Los colegios internacionales, las comunidades locales y los servicios para residentes extranjeros ofrecen puntos de encuentro en un entorno nuevo. El colegio de los hijos, los idiomas, el deporte y los vecinos permiten conocer gente y mantener el vínculo con un círculo social europeo.
 
-### Fiscalidad canaria: IGIC en lugar de IVA
+### La vida cotidiana
 
-En Canarias [no se aplica el IVA español](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). En su lugar se aplica el impuesto indirecto local IGIC: su [tipo general es del 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), frente al tipo general del IVA del 21% en la España peninsular.
-
-Determinados bienes y servicios tienen tipos diferentes. Los impuestos y gastos de la compra de un inmueble se calculan por separado según la operación; el tipo general del IGIC por sí solo no determina el coste total de adquirir una vivienda.
+Elija dónde vivir según los recorridos diarios: tiendas, atención médica, colegios y acceso a la ciudad. Pruebe esos trayectos y compare varios barrios antes de elegir.
 
 ### Dónde está en el mapa
 
@@ -88,29 +86,29 @@ Si usted ya ha visto el sur, sabe cómo es enero allí: las mismas tumbonas y la
 
 La Quinta es un barrio residencial, no una zona turística. Aquí se vive todo el año; no se llega una semana.
 
-Para una vivienda eso significa dos cosas. Los vecinos son personas que viven aquí de forma permanente y no cambian cada semana. Y el alquiler de larga duración, del que se calcula el dividendo del accionista de Artemis, se apoya en quienes necesitan la ciudad, la capital y el aeropuerto cerca: en residentes, no en la temporada turística.
+Los vecinos viven aquí todo el año. Conviene valorar un día laborable normal además de las vistas desde la terraza.
 
 Las veinte casas de Artemis son un conjunto íntimo, no un bloque de viviendas. Un solo lenguaje arquitectónico, Canary Stone: revoco de cal cálido, zócalo de piedra volcánica oscura, cubiertas planas con placas solares, ventanas altas con carpintería de bronce, terrazas de piedra.
 
 ### El mercado cerca
 
-La vivienda existente de La Quinta y las promociones nuevas vecinas son segmentos distintos. Precios históricos, periodos y comparaciones en [Mercado y precio por metro](/tenerife/mercado/).
+Referencias de precios, límites y fuentes en [mercado](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
-### Por qué suben los precios en el norte
+### Crecimiento en el modelo
 
-Los índices históricos y la evolución de precios, con fuentes y periodos, figuran en [Mercado](/tenerife/mercado/).
+El @growth@% anual es una hipótesis del modelo, no una tasa de mercado medida. El precio se fija al firmar. [Fórmulas](/tenerife/mercado/).
 
 ### El alquiler en el norte
 
-Alquiler de larga duración, gastos y supuestos del cálculo se detallan en el [modelo de alquiler](/tenerife/alquiler/).
+El alquiler a largo plazo es una opción del propietario. No hay pagos anuales al inversor. [Uso de la residencia](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Cómo se entra
 
-La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
+El cálculo es gratuito. Pago tras aprobar parcela y condiciones. [Proceso](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 

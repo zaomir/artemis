@@ -224,7 +224,7 @@ class InvestorArchitectureTest(unittest.TestCase):
                 controls = doc.by_id("calc-form")
                 self.assertIsNotNone(controls)
                 signature = [(n.tag, n.attrs) for n in controls.nodes() if n.tag in {"input", "select", "option"}]
-                self.assertEqual({n.attrs.get("name") for n in controls.nodes("input")}, {"type", "m2", "step", "pay"})
+                self.assertEqual({n.attrs.get("name") for n in controls.nodes("input")}, {"type", "m2"})
                 model = json.loads(doc.by_id("cs-model").text())
                 results = [(n.attrs["data-k"], n.text().strip()) for n in doc.by_id("calc-res").nodes() if "data-k" in n.attrs]
                 form = doc.by_id("wl-form")
@@ -241,7 +241,7 @@ class InvestorArchitectureTest(unittest.TestCase):
             form = doc.by_id("wl-form")
             data = {n.attrs["name"]: n.attrs.get("value", "") for n in form.nodes("input") if n.attrs.get("type") == "hidden"}
             data.update(name="QA Local", contact="qa@example.com", language=locale, consent=True,
-                        calc_m2="72", calc_step="shell_roof", calc_pay="m6", website="")
+                        calc_m2="72", calc_step="early", calc_pay="now", website="")
             self.assertEqual(data["page"], route(locale, "inversores"))
             with mock.patch.object(self.tenerife, "notify_lead") as notify:
                 response = self.client.post(form.attrs["action"], json=data,
@@ -252,10 +252,10 @@ class InvestorArchitectureTest(unittest.TestCase):
                 row = dict(conn.execute("SELECT * FROM tenerife_waitlist ORDER BY id DESC LIMIT 1").fetchone())
             self.assertEqual((row["page"], row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"],
                               row["calc_amount"], row["calc_month_eur"]),
-                             (route(locale, "inversores"), "ok", 72, "shell_roof", "m6", 248400, 39330), locale)
+                             (route(locale, "inversores"), "ok", 72, "early", "now", 169344, None), locale)
             self.assertEqual(row["calc_model_version"], tenerife_calc.load_model()["version"])
             notify.assert_called_once()
-            self.assertEqual(notify.call_args.kwargs["calc"]["calc_amount"], 248400)
+            self.assertEqual(notify.call_args.kwargs["calc"]["calc_amount"], 169344)
 
     def test_contact_validation_rejects_garbage_and_accepts_supported_reply_channels(self):
         base = {"name": "QA Local", "language": "en", "consent": True, "page": route("en", "inversores")}
@@ -295,15 +295,18 @@ class InvestorArchitectureTest(unittest.TestCase):
         self.assertEqual(list((ROOT / "app/tenerife_site").rglob("acciones.html")), [])
 
 
-class UnchangedOfferTest(unittest.TestCase):
-    def test_pre_change_financial_results_stay_identical_for_forty_cases(self):
+class ApprovedExitModelTest(unittest.TestCase):
+    def test_approved_cash_exit_examples_match_financial_model(self):
         import tenerife_calc
-        baseline = json.loads((ROOT / "tests/fixtures/tenerife_financial_baseline.json").read_text(encoding="utf-8"))
         model = tenerife_calc.load_model()
-        self.assertEqual(len(baseline["cases"]), 40)
-        for case in baseline["cases"]:
-            with self.subTest(area=case["m2"], stage=case["step"], pay=case["pay"]):
-                self.assertEqual(tenerife_calc.compute(case["m2"], case["step"], case["pay"], model), case["result"])
+        for shares, capital, proceeds, income in [(48, 112896, 146204, 33308),
+                                                  (72, 169344, 219305, 49961),
+                                                  (100, 235200, 304591, 69391)]:
+            calc = tenerife_calc.compute(shares, "early", "now", model)
+            self.assertEqual((calc["calc_amount"], calc["calc_exit_amount"], calc["calc_income"]),
+                             (capital, proceeds, income))
+            self.assertEqual((calc["calc_exit_months"], calc["calc_target_pct"], calc["calc_month_eur"]),
+                             (36, 9, None))
 
 
 if __name__ == "__main__":

@@ -1,119 +1,49 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/proceso/
-Meta title: Artemis de la Cruz: von der Warteliste bis zum Schlüssel
-Meta description: Eintragung in die Warteliste, Grundstücksfreigabe, Investmentvertrag, Aktien mit Bonus für schnelle Zahlung, Berichte jede Woche, danach Dividende oder Meter.
-OG title: Von der Warteliste bis zum Schlüssel: so läuft das Geschäft bei Artemis
+Meta title: So starten Sie: von der Anfrage zum Barausstieg — Artemis de la Cruz
+Meta description: Kostenlose Berechnung, Grundstück, volle Einzahlung, Berichte und Ausstieg. Hauskäufer folgen einem eigenen Zahlungsplan nach Baufortschritt.
+OG title: So starten Sie: von der Anfrage zum Barausstieg
 -->
 
-# Von der Warteliste zum Schlüssel: sechs Schritte bei Artemis
+# Beteiligung in sechs Schritten: von der Anfrage zum Ausstieg
 
-Das Geschäft mit Artemis de la Cruz beginnt mit der kostenlosen Eintragung in die Warteliste und endet mit der Wahl nach der Fertigstellung des Hauses: eine Dividende auf Ihre Aktien der Bauträgergesellschaft oder Meter Ihrer Residenz in La Quinta. Dazwischen liegen ein Brief mit der Berechnung, die Wahl des Grundstücks gemeinsam mit der Warteliste, der Investmentvertrag, der Kauf der Aktien und ein Bericht über den Bau jede Woche. Alles lässt sich aus Deutschland erledigen, oder auch auf der Insel.
+Zuerst Projekt und Berechnung kennenlernen. Zahlung nach Freigabe von Grundstück und Beteiligungsbedingungen. Investoren zahlen den ganzen Betrag einmalig; der Basisausstieg liegt bei @months@ Monaten.
 
-[КАДР F02] <!-- служебная пометка, не публикуется -->
+[КАДР F02]
 
 ### Sechs Schritte
 
-**1. Eintragung in die Warteliste.** Sie hinterlassen Namen und Kontakt. Das ist kostenlos, jetzt muss nicht gezahlt werden.
+**1. Anfrage.** Name und Kontakt hinterlassen. Kostenlos und unverbindlich.
 
-**2. Brief mit der Berechnung.** Wir senden eine Berechnung für Ihre Fläche: wie viele Aktien, welcher Preis der Stufe, Summe sofort und Rate über 12 Monate, rechnerische Dividende nach der Fertigstellung.
+**2. Persönliche Berechnung.** Einsatz, Zielbetrag, Laufzeit und Annahmen erhalten. Für 72 Aktien: @entry_72@ € → @exit_72@ €.
 
-**3. Grundstück und Vertrag.** Wenn die Mehrheit der Warteliste das Grundstück freigibt, senden wir den Investmentvertrag. Darin kaufen Sie Aktien der Bauträgergesellschaft zum Preis der aktuellen Preisstufe: eine Aktie — ein Meter. Sofort vollständig — 10% Bonus, in Raten über ein halbes Jahr — 5% Bonus, in Raten über ein Jahr — ohne Bonus.
+**3. Grundstück und Bedingungen.** Vor Zahlung prüfen Sie Objekt, Budget, Verkäufe und Barausstieg einschließlich Terminänderungen.
 
-**4. Berichte.** Jede Woche ein Baubericht: Phase, was erledigt ist, was als Nächstes kommt. Den Bericht erhalten Aktionäre und Hauskäufer.
+**4. Vollständige Zahlung.** Der ganze Betrag wird eingezahlt. Ab diesem Tag beginnen @months@ Monate. Keine Investorenraten oder weiteren Boni neben dem frühen Preis.
 
-**5. Fertigstellung.** Die Nutzungsgenehmigung — nach Plan Ende 2028 bis Mitte 2029.
+**5. Bau und Verkauf.** Wochenberichte zu Arbeiten und Geld sind geplant. Investorenkapital und Käuferzahlungen finanzieren die Ausgaben.
 
-**6. Die Wahl.** Eine Dividende in Euro je Aktie aus der langfristigen Vermietung nach Kosten — oder der Tausch der Aktien gegen Meter Ihrer Residenz: notarieller Kaufvertrag und Eintrag im Grundbuch.
+**6. Barausstieg.** Verkauf oder Rückkauf aus Hausverkaufseingängen. Kapital und Ertrag beim Ausstieg, keine jährlichen Ausschüttungen.
 
-[КАДР F19] <!-- служебная пометка, не публикуется -->
+[КАДР F15]
 
-### Beispiel auf 72 Metern
+### Wenn Sie ein Haus kaufen
 
-| Schritt | Was geschieht | Summe |
-|---|---|---|
-| Eintragung | Warteliste | 0 € |
-| Kauf sofort | 72 Aktien × 2 950 € | 212 400 € |
-| Oder in sechs Raten | 212 400 € mit 5 % Rabatt ÷ 6 | 33 630 € im Monat |
-| Stufe „Fertigstellung“ für dieselben 72 Meter | 72 × 3 850 € | 277 200 € |
-| Nach der Fertigstellung: Dividende, rechnerisch, vor Körperschaftsteuer der Gesellschaft | 2,5–3,5% im Jahr | keine Garantie |
-| Oder Tausch | 72 Aktien | 72 m² Ihrer Residenz |
+Sie wählen eine bestimmte Residenz. Vorgeschlagen: 40% bei Unterzeichnung, 30% beim Fundament, 10% beim Rohbau und 20% bei Schlussabrechnung. Späte Käufer zahlen abgeschlossene Abschnitte sofort. Der Preis wird bei Unterzeichnung fixiert.
 
-Dieselben Schritte gelten für jede Fläche. 48 Aktien in der Warteliste — 141 600 €, oder 22 420 € im Monat über 12 Monate. 100 Aktien — 295 000 €, oder rund 46 708 € im Monat.
+Ein Hauskauf umfasst nicht zugleich den Geldrückkauf derselben Investition. [Katalog](/tenerife/producto/).
 
-[КАДР F20] <!-- служебная пометка, не публикуется -->
+### Wo immer Sie sind
 
-### Aus Deutschland oder auf der Insel
+Besprechen Sie das Projekt per Video und erhalten Sie Berechnung und Unterlagen zur Prüfung. Auf der Insel zeigen wir La Quinta und das gewählte Grundstück. Erforderliche Treffen richten sich nach Ihrem Beteiligungsweg.
 
-**Aus der Ferne.** Ein Gespräch per Video, die Berechnung per E-Mail, die Dokumente zur Unterschrift, der Bericht jede Woche. Sie können den ganzen Weg bis zur Fertigstellung gehen, ohne auf die Insel zu fliegen.
+### Vor der Zahlung
 
-**Auf der Insel.** Wir zeigen Ihnen La Quinta, Puerto de la Cruz in 8 km und die Baustelle des Projekts im Lauf des Baus, und die Zahlen — für Ihre Fläche. Termin, Gespräch und Antworten — vor Ort.
+Fragen Sie nach Budget, nötigen monatlichen Verkäufen, Ausstiegsfinanzierung und Folgen von Verzögerungen. [Fragen](/tenerife/faq/) · [Modell](/tenerife/inversores/).
 
-Die Eintragung auf der Website ist der erste Schritt. Danach folgt ein persönliches Gespräch mit dem Menschen, der das Projekt verantwortet.
+### Berechnung anfordern
 
-### Was Sie unterschreiben und wann Sie zahlen
-
-**Bei der Eintragung.** Sie unterschreiben nichts und zahlen nichts.
-
-**Nach der Freigabe des Grundstücks.** Den Investmentvertrag über den Kauf der Aktien zum Preis der aktuellen Stufe — kein Kaufvertrag über die Immobilie: Projektunterlagen gibt es noch nicht, die Meter sind physisch nicht zugeteilt. Die Zahlung — sofort (10% Bonus), über ein halbes Jahr (5% Bonus) oder über ein Jahr ohne Bonus.
-
-**Nach der Fertigstellung.** Wenn Sie die Meter wählen — notarieller Kaufvertrag über Ihre Residenz und Eintrag im Grundbuch. Wenn Sie die Dividende wählen — die Aktien bleiben bei Ihnen, die Dividende kommt in Euro je Aktie.
-
-[КАДР F18] <!-- служебная пометка, не публикуется -->
-
-### Tausch der Aktien gegen Meter: Steuern
-
-Der Tausch der Aktien gegen Meter wird als Kauf einer neuen Residenz vom Bauträger abgewickelt. Auf den Kanaren gilt statt der Mehrwertsteuer die IGIC: Die erste Übertragung einer neuen Wohnung unterliegt ihr zum allgemeinen Satz von 7%. Dazu kommt die AJD, die Stempelsteuer auf den Kaufvertrag bei einem Geschäft mit IGIC, mit 1%. Hinzu kommen Notar und Grundbucheintrag. In der Rechnung nehmen wir die Steuern vom Wert der Meter zum Preis der Stufe „Fertigstellung“, nicht von der Summe, die Sie in der Warteliste für die Aktien gezahlt haben.
-
-| Beispiel | 72 m² zum Preis der Stufe „Fertigstellung“ |
-|---|---|
-| Wert der Meter | 277 200 € |
-| IGIC 7% | 19 404 € |
-| AJD 1% | 2 772 € |
-
-### Hypothek
-
-Eine Hypothek steht dem Käufer eines Hauses zur Verfügung. Ein Investor kann 50% aus eigenen Mitteln einbringen, den Rest kann er mit einer Hypothek abdecken, sobald die Baugenehmigung vorliegt. Unsere Makler helfen, eine Hypothek zu erhalten — bei Banken in Spanien und in anderen Ländern Europas.
-
-| Bank | Kredit in % des Hauspreises | Laufzeit |
-|---|---|---|
-| CaixaBank HolaBank | bis zu 70% | bis zu 20 Jahre |
-| Banca March | bis zu 70% | bis zu 20 Jahre |
-| Bankinter | 60% für eine Zweitwohnung | bis zu 25 Jahre |
-| UCI | 70% | bis zu 30 Jahre |
-| Santander, Sabadell | auf Anfrage | — |
-
-Bei einem Kredit über 70% des Preises braucht ein Nichtresident 40–45% des Preises aus eigenen Mitteln, einschließlich Steuern und Kosten.
-
-**Abtretung an einen Käufer.** Wenn es mehr Käufer als Objekte gibt, können wir Investoren anbieten, ihr Objekt an einen Käufer abzutreten — zum Quadratmeterpreis im Zeitpunkt der Abtretung. Das ist eine Möglichkeit, kein Ertragsversprechen.
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### Das Geld für den Bau
-
-Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
-
-### Wer das Geschäft führt
-
-**Simon Subic**, Entwickler — Wahl des Grundstücks, Genehmigungen, Start, Verbindung von Geld und Bau. **Boris Ribaut**, leitender Bauleiter — Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für Ihre Fläche senden wir — nach einer Formel für alle: Summe = Meter × Preis der Stufe, Rate = Summe mit 5 % Rabatt ÷ 6, Dividende — rechnerisch 2,5–3,5 % im Jahr vor Körperschaftsteuer der Gesellschaft.
-
-[КАДР F04] <!-- служебная пометка, не публикуется -->
-
-### So läuft der Einstieg
-
-Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
-
-### Kurz gefasst
-
-**Was unterschreibe ich bei der Eintragung?** Nichts.
-
-**Wann zahle ich?** Nachdem die Mehrheit der Warteliste das Grundstück freigegeben hat und der Investmentvertrag vorliegt: sofort (10% Bonus), in einem halben Jahr (5% Bonus) oder in einem Jahr ohne Bonus.
-
-**Kann ich alles aus Deutschland erledigen?** Ja: Berechnung, Dokumente und Berichte kommen aus der Ferne.
-
-**Was nach der Fertigstellung?** Dividende auf die Aktien oder Tausch gegen Meter beim Notar.
-
-**Welche Steuern beim Tausch?** IGIC 7% und AJD 1%, dazu Notar und Grundbuch.
+Kontakt hinterlassen, Beteiligung oder Hauskauf besprechen und die passende Berechnung erhalten.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

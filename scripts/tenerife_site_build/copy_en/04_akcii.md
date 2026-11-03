@@ -1,101 +1,79 @@
 <!-- META
 Слаг: /tenerife/inversores/
-Meta title: For investors — Artemis de la Cruz shares in La Quinta
-Meta description: Participation in Artemis de la Cruz: prices by stage, comparison with buying a residence, two outcomes and a calculation for your chosen area.
-OG title: For investors — Artemis de la Cruz shares in La Quinta
+Meta title: Invest for a cash exit after @months@ months — Artemis de la Cruz
+Meta description: Early price @entry@ € per share, full upfront payment and a @target@% annualised target. Funded by investors and sales, with no developer contribution.
+OG title: Invest for a cash exit after @months@ months
 -->
 
-# For investors: participate in Artemis de la Cruz before handover
+# Invest in construction — receive capital and income at exit
 
-Artemis de la Cruz is twenty residences in the La Quinta area of Santa Úrsula. We are currently choosing the plot. You can participate through shares in the developer company: one share corresponds to one square metre. Joining the waiting list is free; we take no money before the plot is chosen.
+Participation in Artemis de la Cruz starts at @entry_48@ €. Pay in full at entry, target @target@% annualised and exit in cash after @months@ months through a sale or buyback of the participation. There are no annual distributions. [Calculate your amount](/tenerife/inversores/#calculate).
 
 [КАДР F14]
 
 ### Project and current stage
 
-We discuss plot options with waiting-list members. Planned dates: construction starts in early 2027, with handover in late 2028 – mid 2029. Before construction, capital pays for the team, design and permits; developer shares and house sales finance the construction. [Current stage and reporting](/tenerife/construccion/).
+Twenty residences in La Quinta, Santa Úrsula. The plot is still being selected. You can request a free calculation and discuss the terms now; payment follows approval of the plot and participation terms. The financial period starts at full payment, not at enquiry.
 
-### Investment or a residence purchase
+### Investment or residence purchase
 
-A buyer of a finished house pays for a metre that already contains the permit, the foundation, the shell, the roof, the finishing and the pool: 3 800–4 600 €. A shareholder comes in earlier, when none of that exists yet, and pays the price of the step the construction has reached.
-
-Early entry is not a discount on a finished house. It is the price of entry into the company at the start. A finished metre costs more because completed work already stands behind it. You pay for the metre earlier, and you hold the share while that work appears.
-
-| | Shares in the developer company | Finished residence |
+| | Investor | Homebuyer |
 |---|---|---|
-| What you acquire | participation in the company before handover | a finished house at handover |
-| Price | the current construction step | 3 800–4 600 € per m², depending on type, floor and view |
-| After handover | retain shares or exchange them for area | own the house and decide how to use it |
+| Aim | Recover capital with income | Receive a chosen residence |
+| Payment | Full amount at entry | Milestones: 40/30/10/20% |
+| Result | Cash settlement at exit | Keys to the home |
+| Periodic distributions | None | Not part of a home purchase |
 
-[Residence types and specifications](/tenerife/producto/). The full sequence and payment timing are in the [transaction process](/tenerife/proceso/).
+A share is a unit of participation. Its price is compared with a reference per m², but a share quantity does not reserve a specific home. Cash exits and residence purchases are calculated separately.
 
-[КАДР F01]
+### Early price and comparison reference
 
-### Six price steps
+The model's early price is @entry@ € per share: 70% of a provisional @market@ €/m² reference, or @discount@% below it. An up-to-date comparable price list for local new-build homes has not yet been confirmed; @market@ €/m² is an assumption, not a verified current market price.
 
-| Step | What has to happen | Share price = price per metre | Below handover price |
-|---|---|---|---|
-| Early entry | the plot is approved by the majority of the waiting list, investment agreement | 2 950 € | 23.4% |
-| Permit | the building licence is obtained | 3 100 € | 19.5% |
-| Foundation | the base and the stone plinth are complete | 3 250 € | 15.6% |
-| Shell and roof | walls, floors, roof with panels | 3 450 € | 10.4% |
-| Finishing | façade, services, interiors, pool | 3 650 € | 5.2% |
-| Handover | the completion certificate | 3 850 € | — |
+For unsold homes, the model assumes @growth@% annual growth. Each buyer's price is fixed at signing and does not rise afterwards. [Reference, formulas and sources](/tenerife/mercado/).
 
-Comparison is with the share price at handover: 3 850 €/m². Percentages use that price as the base.
+### Cash exit after 36 months
 
-The project's reference dates are the plan: construction start in early 2027, handover in late 2028 – mid 2029.
+For 72 shares: full investment @entry_72@ €, target exit proceeds @exit_72@ €, including income of @gain_72@ €. The total increase is @gain_pct@% over three years, equivalent to @target@% annualised with compounding.
 
-The step changes when an event happens on site, not when a date arrives. You see every event in the weekly report.
+Formula: **exit proceeds = investment × (1 + @target@%)³**. This is the base scenario's target result. Actual payment depends on sales receipts, costs and exit timing.
 
-The step price is the price the company sets for its share at that stage. For comparison: the asking prices of the neighbouring new developments at La Quinta are 3 360–3 870 € per metre; both projects are already sold.
+### Calculate your investment
 
-A two-bedroom house of 72 metres is 72 shares.
+Choose a share quantity. The calculator shows one upfront payment and the target cash result after @months@ months. You can see the result without submitting a form; [standalone calculator](/tenerife/calculadora/).
 
+### How construction is funded
 
-**Base amount from the waiting list:** 212 400 € before payment terms. With six instalments and a 5 % discount: 33 630 € a month.
+Two sources: the initial investment pool and payments from buyers of all twenty homes. Additional developer capital and bank debt are zero in the model. Investment capital is not home-sale revenue.
 
-**The same 72 shares at the handover step:** 277 200 €. The difference from the waiting list is 64 800 €.
+| Base scenario | Amount |
+|---|---|
+| Early pool: @pool@ shares | @pool_capital@ € |
+| Buyer contracts signed in months 3–30 | @sales@ € |
+| Land, construction, design and contingency | @budget@ € |
+| Selling costs | @sales_fee@ € |
+| Investor capital and target income at exit | @pool_exit@ € |
+| Project balance after settlement | @surplus@ € |
 
-**A finished house of the same area:** 273 600–331 200 €.
+Buyer payments follow 40/30/10/20%. A late-signing buyer pays completed milestones immediately. The base monthly cash schedule has no funding gap; its lowest balance is @minimum_cash@ €. These are calculations, not capital already raised or contracts already signed.
 
-[КАДР F15]
+### What affects the result
 
-### Two outcomes of participation
+The budget assumes @cost_m2@ €/m² of built area and roughly one buyer contract every one to two months. At 2 100 €/m² construction costs, @high_shortfall@ € is missing from the full target settlement; a two-month sales delay creates an interim funding gap of @delay_gap@ €.
 
-**Retain the shares.** The company manages long-term letting. The dividend from income after costs is estimated at 2,5–3,5 % a year before company profit tax, not guaranteed. [Rental model and costs](/tenerife/alquiler/).
-
-**Receive a residence.** After the completion certificate, shares can be exchanged for area: 72 shares correspond to 72 m². The deed, registration, taxes and mortgage possibilities are explained in the [transaction process](/tenerife/proceso/).
-
-Started with 50 shares and want a house of 72 metres? Buy 22 more shares at the price of the current step.
-
-If there are more buyers than units, we may offer investors the chance to assign their unit to a buyer, at the price per square metre at the time of assignment. It is an opportunity, not a promise of return.
-
-[КАДР F17]
-
-### Calculate your area
-
-Choose the area, entry step and payment method in the calculator. It shows the purchase amount, payment in six instalments and the handover-step price for the same area; the dividend estimate remains an indication. [Results and formula explanations](/tenerife/calculadora/).
-
-
+Before taking investment, the project needs a selected plot, a confirmed cost plan and a workable sales and payment schedule. @growth@% growth is an assumption and @target@% is a return target; both require actual sales receipts.
 
 ### Oversight and team
 
-Simon Subic is responsible for the plot, permits, launch and linking finance to construction. Boris Ribaut is responsible for the site, structure, reports and handover. Shareholders and house buyers receive a construction report every week. [Team and responsibilities](/tenerife/equipo/).
+Simon Subic leads the plot, launch and funding programme. Boris Ribaut oversees the site, structure and reporting. Planned weekly reports cover work completed, spending, receipts, cash balance, sales and the next stage. [Team](/tenerife/equipo/) · [Progress](/tenerife/construccion/).
 
 ### Documents and questions
 
-**When do I pay?** After the majority of the waiting list approves the plot and you receive the investment agreement. Documents, payment options and formalities are in the [transaction process](/tenerife/proceso/).
+Before payment, receive a personal calculation and participation terms covering the amount, start date, exit mechanism and changes to the timetable. [Process](/tenerife/proceso/) · [Questions and answers](/tenerife/faq/).
 
-**Where do the benchmarks come from?** Comparisons and sources are on the [market page](/tenerife/mercado/).
+### Request a calculation
 
-**What else should I check?** The [short answers](/tenerife/faq/) link to the detailed material for each topic.
+Leave your name and contact. We will calculate your amount and discuss which inputs still need confirmation before payment.
 
-[КАДР F12]
-
-### Get a calculation
-
-Leave your name and contact details. We will send a calculation for your chosen area and discuss participation. Joining is free; we take no money before the plot is chosen.
-
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.

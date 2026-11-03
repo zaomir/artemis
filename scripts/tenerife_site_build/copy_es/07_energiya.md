@@ -72,17 +72,15 @@ El proyecto vecino La Quinta 2 también se anuncia con placas solares.
 
 ### Por qué importa para el alquiler
 
-El dividendo de Artemis se calcula a partir del alquiler de larga duración una vez descontados los gastos: la casa se alquila por temporadas largas, a un inquilino de un año o más. Un inquilino de larga duración en el norte ve la factura de la luz como usted. Una casa en la que no hace frío en invierno sin calefactor, en la que la factura de la luz es más baja y en la que la piscina está climatizada se alquila con más facilidad y retiene mejor al inquilino para el año siguiente. Menos meses vacíos entre inquilinos supone un alquiler más estable una vez descontados los gastos.
+El inquilino compara comodidad y facturas. Luz, clima y aislamiento afectan al uso y los gastos del propietario. El alquiler no forma parte del rendimiento calculado del inversor.
 
 ### Por qué importa para el precio del metro
 
-El equipamiento influye en los gastos de mantenimiento y forma parte de la residencia. Precios de viviendas terminadas y comparación con la participación en acciones en [Inversores](/tenerife/inversores/).
+El equipamiento forma parte de la especificación prevista. Compra e inversión se calculan aparte. [Residencias](/tenerife/producto/) · [Inversores](/tenerife/inversores/).
 
 ### Por qué importa para el accionista
 
-La inscripción es gratuita; no recibimos dinero antes de elegir la parcela. Documentos, momento de pago y formalización tras la entrega se explican en el [proceso de la operación](/tenerife/proceso/).
-
-El dividendo es el alquiler menos los gastos. Cuanto menos gastan las casas en electricidad, agua y piscina, más queda del alquiler. El dividendo estimado es de un 2,5–3,5 % anual antes del impuesto sobre sociedades. La partida mayor son las cuotas de comunidad, un 21,0%: incluyen la piscina climatizada y el mantenimiento de la urbanización. Cuanto menos consumen los sistemas comunes de la red, más baja es esa partida.
+El inversor cobra a la salida con ventas, no con alquileres. Objetivo: @target@% anualizado en @months@ meses. Calidad y equipamiento ayudan a la demanda, pero no aseguran por sí solos el resultado.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -102,7 +100,7 @@ En la ladera norte el sol es más suave que en el sur, y por eso aquí no hace c
 
 **¿La piscina en invierno?** Comunitaria, climatizada y en funcionamiento todo el año.
 
-**¿Cómo se relaciona con el dividendo?** Menos gastos significan más alquiler disponible por cada acción.
+**¿Cómo se relaciona con invertir?** El equipamiento influye en la demanda; el ingreso depende de ventas, costes y plazo.
 
 **Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

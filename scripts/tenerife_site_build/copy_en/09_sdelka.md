@@ -1,119 +1,49 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/proceso/
-Meta title: Artemis de la Cruz: from the waiting list to the keys
-Meta description: Joining the waiting list, approval of the plot, the investment agreement, shares with a bonus for early payment, weekly reports, and after handover a dividend or metres.
-OG title: From the waiting list to the keys: how a purchase from Artemis works
+Meta title: Getting started: enquiry to cash exit — Artemis de la Cruz
+Meta description: Free calculation, plot selection, full investment payment, reports and exit settlement. Homebuyers follow a separate milestone-payment route.
+OG title: Getting started: enquiry to cash exit
 -->
 
-# From the waiting list to the keys: the six steps of an Artemis purchase
+# How participation works: six steps from enquiry to exit
 
-A purchase from Artemis de la Cruz begins with free entry to the waiting list and ends with a choice after handover: a dividend on your shares in the developer company, or the metres of your own residence at La Quinta. In between come an email with the calculation, the choice of plot together with the waiting list, the investment agreement, the purchase of shares and a construction report every week. The whole thing can be done from Germany, or on the island.
+Start with the project and a calculation. Payment follows approval of the plot and participation terms. Investors pay the entire amount once; the base model's cash exit is after @months@ months.
 
-[КАДР F02] <!-- служебная пометка, не публикуется -->
+[КАДР F02]
 
-### The six steps
+### Six steps
 
-**1. Joining the waiting list.** You leave your name and a contact. It is free, and there is nothing to pay now.
+**1. Enquiry.** Leave your name and contact. Free, with no commitment.
 
-**2. The email with the calculation.** We send a calculation for your area: how many shares, which step price, the amount in one payment and the payment in six instalments, the estimated dividend after handover.
+**2. Personal calculation.** Receive the entry amount, target result, term and assumptions. For 72 shares the example is @entry_72@ € → @exit_72@ €.
 
-**3. Plot and agreement.** When the majority of the waiting list approves the plot, we send the investment agreement. Under it you buy shares in the developer company at the price of the current step: one share is one metre. In full straight away: a 10% bonus; in instalments over six months: a 5% bonus; in instalments over a year: no bonus.
+**3. Plot and terms.** Before payment, review the selected asset, budget, sales calendar and cash-exit process, including timetable changes.
 
-**4. Reports.** Every week, a construction report: the stage, what has been done, what comes next. Shareholders and house buyers receive it.
+**4. Full payment.** Pay the entire investment. The @months@-month model period starts on this date. There are no investor instalments or extra bonuses beyond the early price.
 
-**5. Handover.** The completion certificate, as planned in late 2028 – mid 2029.
+**5. Construction and sales.** Weekly reports on work and cash are planned. Investment capital and buyer payments fund expenses.
 
-**6. The choice.** A dividend in euros on each share from long-term letting after costs, or an exchange of shares for the metres of your own residence: a deed before a notary and an entry in the property register.
+**6. Cash exit.** Sale or buyback of the participation funded by home-sale receipts. Capital and income are paid at exit; there are no annual distributions.
 
-[КАДР F19] <!-- служебная пометка, не публикуется -->
+[КАДР F15]
 
-### An example at 72 metres
+### If you are buying a home
 
-| Step | What happens | Amount |
-|---|---|---|
-| Joining | waiting list | 0 € |
-| Purchase in one payment | 72 shares × 2 950 € | 212 400 € |
-| Or in six instalments | 212 400 € with the 5 % discount ÷ 6 | 33 630 € a month |
-| The handover step for the same 72 metres | 72 × 3 850 € | 277 200 € |
-| After handover: the dividend, estimated, before company profit tax | 2,5–3,5% a year | not a guarantee |
-| Or the exchange | 72 shares | 72 m² of your own residence |
+Choose a specific residence. Proposed payments: 40% at signing, 30% at foundations, 10% at shell completion and 20% at final settlement. Late buyers catch up completed milestones immediately. The price is locked at signing.
 
-The same steps apply to any area. 48 shares on the waiting list come to 141 600 €, or 22 420 € a month in six instalments. 100 shares come to 295 000 €, or about 46 708 € a month.
+A home purchase does not simultaneously include a cash buyback of the same investment. [Residence catalogue](/tenerife/producto/).
 
-[КАДР F20] <!-- служебная пометка, не публикуется -->
+### Wherever you are
 
-### From Germany or on the island
+Discuss the project by video and receive calculations and documents to review. On the island, visit La Quinta and the selected site. Required meetings will depend on your participation route.
 
-**Remotely.** A video call, the calculation by email, documents to sign, a report every week. You can go the whole way to handover without flying to the island.
+### Before payment
 
-**On the island.** We will show you La Quinta, Puerto de la Cruz 8 km away and the site as construction proceeds, as well as the figures for your area. A meeting, a conversation and answers on the spot.
+Ask which budget supports the project, which sales are needed each month, where exit funds come from and what happens if dates move. [Questions](/tenerife/faq/) · [Detailed model](/tenerife/inversores/).
 
-Joining on the website is the first step. After that comes a real conversation with the person responsible for the project.
+### Request a calculation
 
-### What you sign and when you pay
+Leave a contact to discuss investing or buying a home and receive the relevant calculation.
 
-**When you join.** You sign nothing and pay nothing.
-
-**After the plot is approved.** An investment agreement for the purchase of shares at the price of the current step, not a deed of sale: the design documentation does not exist yet and the metres are not physically allocated. Payment in full (10% bonus), over six months (5% bonus) or over a year with no bonus.
-
-**After handover.** If you choose metres, a deed before a notary for your residence and an entry in the register. If you choose the dividend, the shares stay with you and the dividend arrives in euros on each share.
-
-[КАДР F18] <!-- служебная пометка, не публикуется -->
-
-### Exchanging shares for metres: the taxes
-
-The exchange of shares for metres is formalised as the purchase of a new residence from the developer. In the Canaries IGIC applies instead of VAT: the first transfer of new housing is subject to it at the general rate of 7%. On top comes AJD, the stamp duty on the deed for a transaction subject to IGIC, at 1%. Plus the notary and the registration. In the calculation we take the taxes on the value of the metres at the handover step, not on the amount you paid for the shares on the waiting list.
-
-| Example | 72 m² at the handover step |
-|---|---|
-| Value of the metres | 277 200 € |
-| IGIC 7% | 19 404 € |
-| AJD 1% | 2 772 € |
-
-### Mortgage
-
-A mortgage is available to a house buyer. An investor may put in 50% of their own money, and the rest can be covered by a mortgage once the building permit is in place. Our brokers help with obtaining a mortgage at banks in Spain and in other European countries.
-
-| Bank | Loan against the house price | Term |
-|---|---|---|
-| CaixaBank HolaBank | up to 70% | up to 20 years |
-| Banca March | up to 70% | up to 20 years |
-| Bankinter | 60% for a second home | up to 25 years |
-| UCI | 70% | up to 30 years |
-| Santander, Sabadell | on request | — |
-
-For a loan of 70% of the price, a non-resident needs 40–45% of the price in their own money, including taxes and costs.
-
-**Assignment to a buyer.** If there are more buyers than units, we may offer investors the chance to assign their unit to a buyer, at the price per square metre at the time of assignment. It is an opportunity, not a promise of return.
-
-[КАДР F17] <!-- служебная пометка, не публикуется -->
-
-### The money for construction
-
-The participation model, prices by stage and two outcomes are on the [investor page](/tenerife/inversores/).
-
-### Who handles the purchase
-
-**Simon Subic**, developer: choosing the plot, permits, launch, linking the money and the construction. **Boris Ribaut**, chief builder: the site, the structure, the reports, handover of the house. We send the calculations for your area, on one formula for everyone: amount = metres × the step price, payment = amount with the 5 % discount ÷ 6, dividend — an estimated 2,5–3,5 % a year before company profit tax.
-
-[КАДР F04] <!-- служебная пометка, не публикуется -->
-
-### The order of entry
-
-Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
-
-### In short
-
-**What do I sign when I join?** Nothing.
-
-**When do I pay?** After the majority of the waiting list approves the plot and the investment agreement arrives: in full (10% bonus), over six months (5% bonus) or over a year with no bonus.
-
-**Can I do everything from Germany?** Yes: the calculation, the documents and the reports come remotely.
-
-**What comes after handover?** A dividend on the shares, or an exchange for metres before a notary.
-
-**Which taxes apply to the exchange?** IGIC 7% and AJD 1%, plus the notary and the register.
-
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.

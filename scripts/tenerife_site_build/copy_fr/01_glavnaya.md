@@ -1,61 +1,63 @@
 <!-- META
 Слаг: /tenerife/
-Meta title: Artemis de la Cruz — 20 résidences à La Quinta, nord de Tenerife
-Meta description: 20 résidences à La Quinta, Santa Úrsula. Étape du projet, logement ou participation par actions, équipe et demande gratuite d’un calcul.
-OG title: 20 résidences à La Quinta, au nord de Tenerife
+Meta title: Une maison au nord de Tenerife. Participation dès @entry_48@ € — Artemis de la Cruz
+Meta description: 20 résidences à La Quinta. Achat ou investissement avec sortie en numéraire à @months@ mois et objectif de @target@% annualisé.
+OG title: Une maison au nord de Tenerife. Participation dès @entry_48@ €
 -->
 
-# 20 résidences à La Quinta, au nord de Tenerife
+# Une maison dans le nord verdoyant de Tenerife — pour vivre ou investir
 
-Artemis de la Cruz comprend vingt résidences dans le secteur de La Quinta, Santa Úrsula. Nous choisissons actuellement le terrain. Vous pouvez envisager une résidence pour vous ou participer par des actions de la société de promotion. L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain.
+Vingt résidences à La Quinta, Santa Úrsula : terrasses en pierre, hautes fenêtres et piscine commune chauffée. Choisissez votre maison ou participez à sa construction dès @entry_48@ €, avec un objectif de @target@% annualisé et une sortie en numéraire à @months@ mois.
+
+Le prix initial du modèle est de @entry@ € par action, soit @discount@% sous la référence provisoire de @market@ €/m². Cette référence reste à confirmer. [Calculer un investissement](/tenerife/inversores/#calculate) · [Voir les résidences](/tenerife/producto/).
 
 [КАДР F01]
 
-**20 résidences · 48–100 m² · 1 action = 1 m² · inscription gratuite, paiement après l'accord sur le terrain**
+**20 résidences · 48–100 m² · horizon de @months@ mois · objectif de @target@% annualisé**
 
 ### Le lieu
 
-La Quinta est un quartier résidentiel de Santa Úrsula, sur le versant nord, entre Puerto de la Cruz et la capitale de l’île. [Lieu, transports et accès à la plage](/tenerife/norte/).
+Un quartier résidentiel sur le versant nord : verdure, vie quotidienne de Puerto de la Cruz et Atlantique à proximité. [Situation, transports et accès à la plage](/tenerife/norte/).
 
 [КАДР F04]
 
-### Les logements
+### Les maisons
 
-Vingt résidences dans le langage architectural Canary Stone: enduit à la chaux, pierre volcanique sombre, hautes fenêtres, terrasses et piscine commune chauffée. [Types, surfaces et équipements](/tenerife/producto/).
+Une, deux ou trois chambres. Architecture Canary Stone : enduit à la chaux, pierre volcanique, terrasses, panneaux solaires et gestion intelligente du climat intérieur. [Plans et équipements](/tenerife/producto/).
 
 [КАДР F02]
 
 ### Résidence ou investissement
 
-**Une résidence pour vous.** Comparez les logements d’une ou deux chambres et les grandes maisons dans le [catalogue des résidences](/tenerife/producto/).
+**Pour vivre.** Choisissez une résidence précise et payez par étapes. Échéancier proposé : 40% à la signature, 30% aux fondations, 10% au gros œuvre et 20% au règlement final.
 
-**Participer au projet.** Entrée au prix de l’étape de construction et choix après livraison: conserver les actions ou les échanger contre une surface. [Informations investisseurs](/tenerife/inversores/).
+**Pour investir.** Versez la totalité une seule fois. Capital et gain sont versés lors de la vente ou du rachat de la participation. Exemple du modèle : @entry_72@ € → @exit_72@ € en @months@ mois. Aucun versement annuel. [Fonctionnement](/tenerife/inversores/).
 
 [КАДР F03]
 
-### Étape actuelle
+### Stade actuel
 
-Nous choisissons le terrain avec les inscrits. Le démarrage est prévu début 2027 et la livraison fin 2028 – mi-2029. [Avancement du projet et rapports hebdomadaires](/tenerife/construccion/). Les étapes et échéances de paiement figurent dans le [parcours de l’opération](/tenerife/proceso/).
+Nous sélectionnons un terrain à La Quinta. L'horizon financier est de @months@ mois après paiement intégral ; les dates seront précisées après le choix du terrain et l'accord sur le programme. Le modèle finance les travaux par les investisseurs et les acheteurs, sans apport complémentaire du promoteur.
+
+Suivez l'argent qui devient fondations, toiture et verre : un rapport hebdomadaire est prévu. [Avancement](/tenerife/construccion/).
 
 [КАДР F17]
 
 ### Équipe
 
-Simon Subic — Developer; Boris Ribaut — Supervisor. [Rôles, responsabilités et profils individuels](/tenerife/equipo/).
+Simon Subic pilote le terrain, le lancement et le financement. Boris Ribaut supervise le chantier, la structure et les rapports. [Responsabilités et profils](/tenerife/equipo/).
 
 [КАДР F22]
 
 ### Questions
 
-**Quelle voie choisir?** [Participation et achat comparés](/tenerife/inversores/).
+**D'où vient le gain ?** Des ventes de maisons et du règlement de sortie. [Mécanisme et hypothèses](/tenerife/inversores/).
 
-**Comment commencer?** [Parcours de l’opération](/tenerife/proceso/).
+**Qu'est-ce qui change le résultat ?** Les ventes, les coûts et les encaissements. [Questions et réponses](/tenerife/faq/).
 
-**D’autres questions?** [Réponses courtes par thème](/tenerife/faq/).
+### Demander un calcul
 
-### Recevoir un calcul
+Laissez votre nom et un contact. Nous enverrons le montant, le résultat visé et le calendrier. Demande gratuite et sans engagement.
 
-Laissez votre nom et vos coordonnées. Nous enverrons un calcul pour votre surface et discuterons de la participation. L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain.
-
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Aucun paiement avant le choix du terrain.
+**Кнопка: «Demander un calcul»**
+Gratuit. Paiement après validation du terrain et des conditions de participation.

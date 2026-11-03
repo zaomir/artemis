@@ -19,8 +19,8 @@
    "F02": "Acceso al complejo: pilones de basalto y puertas de bronce",
    "F03": "Piscina común de día, solado de piedra y casas Canary Stone"
   },
-  "title": "Artemis de la Cruz — 20 residencias en La Quinta, Tenerife",
-  "h1": "20 residencias en La Quinta, norte de Tenerife"
+  "title": "Una casa en el norte de Tenerife. Participación desde 112 896 € — Artemis de la Cruz",
+  "h1": "Una casa en el norte verde de Tenerife — para vivir o invertir"
  },
  "norte": {
   "url": "/tenerife/es/norte/",
@@ -60,43 +60,33 @@
    "F07": "Dormitorio de la residencia con ventana al océano",
    "F08": "Cocina de la residencia: roble, encimera de basalto, vistas al jardín"
   },
-  "title": "Residencias Artemis: 20 casas de 48 a 100 m² en La Quinta",
-  "h1": "Veinte residencias de 48 a 100 metros, una sola fachada Canary Stone"
+  "title": "Residencias de 48 a 100 m² — Artemis de la Cruz",
+  "h1": "Casas de 48 a 100 m² — tres distribuciones, una arquitectura"
  },
  "inversores": {
   "url": "/tenerife/es/inversores/",
   "file": "04_akcii.md",
   "frames": {
-   "F14": "build-pit-3ab7c2",
-   "F01": null,
-   "F15": null,
-   "F17": null,
-   "F12": null
+   "F14": "build-pit-3ab7c2"
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F14": "Excavación y cimentación en la ladera, terrazas de piedra de la parcela"
   },
-  "title": "Inversores — acciones de Artemis de la Cruz en La Quinta",
-  "h1": "Inversores: participar en Artemis de la Cruz antes de la entrega"
+  "title": "Invertir con salida a 36 meses — Artemis de la Cruz",
+  "h1": "Invertir en la construcción y recibir capital y rentabilidad a la salida"
  },
  "calculadora": {
   "url": "/tenerife/es/calculadora/",
   "file": "05_kalkulyator.md",
   "frames": {
    "F20": null,
-   "F05": null,
-   "F07": null,
-   "F11": null,
-   "F17": null,
-   "F22": null
+   "F07": null
   },
   "hidden": [],
   "alts": {},
-  "title": "Calculadora de acciones Artemis: importe, pago y dividendo",
-  "h1": "Calculadora: sus metros en acciones de la sociedad promotora"
+  "title": "Calcule su inversión y el cobro a la salida — Artemis de la Cruz",
+  "h1": "Cuánto invertir ahora y recibir a la salida"
  },
  "alquiler": {
   "url": "/tenerife/es/alquiler/",
@@ -105,16 +95,14 @@
    "F10": "terrace-view-7c2d15",
    "F04": null,
    "F05": null,
-   "F03": null,
-   "F22": null,
-   "F21": null
+   "F03": null
   },
   "hidden": [],
   "alts": {
    "F10": "Terraza de la residencia con vistas a la ladera y al océano"
   },
-  "title": "Alquiler en el norte de Tenerife: 12–15 € por m² al mes",
-  "h1": "Cómo gana una casa de La Quinta después de la entrega"
+  "title": "Una casa para vivir o alquilar a largo plazo — Artemis de la Cruz",
+  "h1": "Una casa para usar a su manera"
  },
  "energia": {
   "url": "/tenerife/es/energia/",
@@ -151,46 +139,35 @@
   "alts": {
    "F15": "Estructura de las casas en obra: hormigón, andamios, terrazas de piedra"
   },
-  "title": "Obra de Artemis: 9 fases y un informe cada semana",
-  "h1": "Obra según el plan 2027–2029: nueve fases y un informe cada semana"
+  "title": "Nueve etapas desde el terreno hasta la vivienda — Artemis de la Cruz",
+  "h1": "Nueve etapas desde el terreno hasta las llaves, con informes semanales"
  },
  "proceso": {
   "url": "/tenerife/es/proceso/",
   "file": "09_sdelka.md",
   "frames": {
    "F02": "entrance-o-9abe9d",
-   "F19": null,
-   "F20": null,
-   "F18": null,
-   "F17": null,
-   "F04": null
+   "F15": null
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F02": "Entrada al complejo: pilones de piedra y puertas de madera"
   },
-  "title": "La operación Artemis: de la lista de espera a las llaves",
-  "h1": "De la lista de espera a las llaves: seis pasos de la operación"
+  "title": "Cómo empezar: de la solicitud a la salida — Artemis de la Cruz",
+  "h1": "Cómo participar: seis pasos de la solicitud a la salida"
  },
  "faq": {
   "url": "/tenerife/es/faq/",
   "file": "10_voprosy.md",
   "frames": {
-   "F03": "communal-s-af42cd",
-   "F01": null,
-   "F11": null,
+   "F20": null,
    "F15": null,
-   "F05": null,
-   "F22": null
+   "F05": null
   },
   "hidden": [],
-  "alts": {
-   "F03": "Piscina común y casas Canary Stone"
-  },
-  "title": "Preguntas sobre Artemis de la Cruz: acciones y dividendo",
-  "h1": "Preguntas antes de entrar en Artemis de la Cruz: respuestas directas"
+  "alts": {},
+  "title": "Preguntas sobre inversión y compra — Artemis de la Cruz",
+  "h1": "Qué entender antes de participar"
  },
  "simon": {
   "url": "/tenerife/es/simon/",
@@ -215,18 +192,14 @@
    "F24": "golden-hou-d4cc25",
    "F01": null,
    "F12": null,
-   "F17": null,
-   "F22": null,
-   "F04": null
+   "F22": null
   },
-  "hidden": [
-   "F17"
-  ],
+  "hidden": [],
   "alts": {
    "F24": "Terrazas de las casas en la ladera con luz de tarde"
   },
-  "title": "Mercado y precio del metro en La Quinta: cifras para Artemis",
-  "h1": "Mercado y precio del metro: de dónde salen las cifras de Artemis"
+  "title": "Precio inicial, crecimiento y fuentes — Artemis de la Cruz",
+  "h1": "De dónde salen el precio inicial y los ingresos futuros"
  },
  "boris": {
   "url": "/tenerife/es/boris/",
@@ -250,10 +223,12 @@
   "url": "/tenerife/es/equipo/",
   "file": "19_komanda.md",
   "frames": {
-   "F22": null
+   "F22": "communal-s-af42cd"
   },
   "hidden": [],
-  "alts": {},
+  "alts": {
+   "F22": "Piscina común y casas Canary Stone"
+  },
   "title": "Equipo de Artemis de la Cruz — funciones y responsabilidades",
   "h1": "El equipo de Artemis de la Cruz"
  }

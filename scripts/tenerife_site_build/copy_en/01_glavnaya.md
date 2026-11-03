@@ -1,61 +1,63 @@
 <!-- META
 Слаг: /tenerife/
-Meta title: Artemis de la Cruz – 20 residences at La Quinta, north Tenerife
-Meta description: 20 residences in La Quinta, Santa Úrsula. Explore the project stage, residence or share participation, the team and a free request for a calculation.
-OG title: 20 residences in La Quinta, northern Tenerife
+Meta title: A home in northern Tenerife. Participation from @entry_48@ € — Artemis de la Cruz
+Meta description: 20 residences in La Quinta. Buy a home or invest for a cash exit after @months@ months, targeting @target@% annualised.
+OG title: A home in northern Tenerife. Participation from @entry_48@ €
 -->
 
-# 20 residences in La Quinta, northern Tenerife
+# A home in green northern Tenerife — to own or invest in
 
-Artemis de la Cruz is twenty residences in the La Quinta area of Santa Úrsula. We are currently choosing the plot. You can consider a residence for your own use or participation through shares in the developer company. Joining the waiting list is free; we take no money before the plot is chosen.
+Twenty residences in La Quinta, Santa Úrsula: stone terraces, tall windows and a shared heated pool. Choose a home for yourself or invest in its construction — from @entry_48@ €, targeting @target@% annualised with a cash exit after @months@ months.
+
+The model's early price is @entry@ € per share: @discount@% below an assumed reference of @market@ €/m². That reference is provisional. [Calculate an investment](/tenerife/inversores/#calculate) · [Explore the residences](/tenerife/producto/).
 
 [КАДР F01]
 
-**20 residences · 48–100 m² · 1 share = 1 m² · waiting list free, money only after the plot is approved**
+**20 residences · 48–100 m² · @months@-month model horizon · @target@% annualised target**
 
 ### Location
 
-La Quinta is a residential neighbourhood of Santa Úrsula on the northern slope, between Puerto de la Cruz and the island’s capital. [Location, transport and beach access](/tenerife/norte/).
+A residential neighbourhood on the northern slope, with greenery, everyday life in Puerto de la Cruz and the Atlantic nearby. [Location, transport and beach access](/tenerife/norte/).
 
 [КАДР F04]
 
 ### The homes
 
-Twenty residences share the Canary Stone architectural language: lime render, dark volcanic stone, tall windows, terraces and a shared heated pool. [Types, areas and specifications](/tenerife/producto/).
+One, two or three bedrooms. Canary Stone architecture: lime plaster, volcanic stone, terraces, solar panels and smart climate control. [Layouts and specification](/tenerife/producto/).
 
 [КАДР F02]
 
 ### A residence or an investment
 
-**A residence for yourself.** Compare one-bedroom, two-bedroom and larger homes in the [residence catalogue](/tenerife/producto/).
+**For living.** Choose a specific residence and pay by milestone. Proposed schedule: 40% at signing, 30% at foundations, 10% at shell completion and 20% at final settlement.
 
-**Participation in the project.** Entry at a construction-stage price and a choice after handover: retain the shares or exchange them for area. [Information for investors](/tenerife/inversores/).
+**For investment.** Pay the full amount once. Capital and income are paid on the sale or buyback of the participation. Model example: @entry_72@ € → @exit_72@ € over @months@ months. There are no annual distributions. [How participation works](/tenerife/inversores/).
 
 [КАДР F03]
 
 ### Current stage
 
-We are choosing the plot with waiting-list members. The plan is to start construction in early 2027, with handover in late 2028 – mid 2029. [Project progress and weekly reporting](/tenerife/construccion/). The sequence and payment timing are in the [transaction process](/tenerife/proceso/).
+We are selecting a plot in La Quinta. The financial horizon is @months@ months from full payment to exit; calendar dates follow plot selection and an agreed programme. Investors and homebuyers fund construction, with no additional developer capital in the model.
+
+Follow the money as it becomes foundations, roofs and glass: weekly reporting is planned. [Project progress](/tenerife/construccion/).
 
 [КАДР F17]
 
 ### Team
 
-Simon Subic — Developer; Boris Ribaut — Supervisor. [Roles, responsibilities and individual profiles](/tenerife/equipo/).
+Simon Subic leads plot selection, launch and funding. Boris Ribaut oversees the site, structure and reporting. [Responsibilities and profiles](/tenerife/equipo/).
 
 [КАДР F22]
 
 ### Questions
 
-**Which route?** [Participation and purchase compared](/tenerife/inversores/).
+**Where does the return come from?** Home sales and the exit settlement. [Mechanics and assumptions](/tenerife/inversores/).
 
-**How do I start?** [Transaction process](/tenerife/proceso/).
+**What changes the result?** Sales timing, costs and receipt of buyer payments. [Questions and answers](/tenerife/faq/).
 
-**More questions?** [Short answers by topic](/tenerife/faq/).
+### Request a calculation
 
-### Get a calculation
+Leave your name and contact. We will send the investment amount, target exit result and project schedule. The request is free and carries no commitment.
 
-Leave your name and contact details. We will send a calculation for your chosen area and discuss participation. Joining is free; we take no money before the plot is chosen.
-
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+**Кнопка: «Request a calculation»**
+Free of charge. Payment follows approval of the plot and participation terms.

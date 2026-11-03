@@ -8,7 +8,7 @@ OG title: Boris Ribaut: plano, trabajo, informe y entrega de la vivienda
 
 # Soy Boris Ribaut, jefe de obra de Artemis de la Cruz
 
-Dirigiré la obra de Artemis de la Cruz en el entorno de La Quinta, Santa Úrsula, en cuanto se elija la parcela y la aprueben quienes están en la lista de espera. Son veinte residencias que pagan las acciones de la sociedad promotora y la venta de viviendas. La ejecución, la estructura, los informes y la entrega de la vivienda son cosa mía. Según el plan, entramos en la parcela a principios de 2027 y la entrega llega entre finales de 2028 y mediados de 2029. Cada semana recibirá un informe de lo que se ha hecho.
+Superviso la obra Artemis de la Cruz: estructura, contratistas, informes y entrega. Elegimos parcela para veinte residencias en La Quinta. Inversores y compradores financian la obra. El calendario seguirá a la parcela, con informes semanales previstos.
 
 [КАДР F18] <!-- служебная пометка, не публикуется -->
 
@@ -62,9 +62,9 @@ Las nueve fases, las fechas previstas y el formato del informe semanal están en
 
 ### Qué hay en mi informe
 
-Cada semana, lo mismo y en el mismo orden: qué fase está en curso, qué se ha hecho durante la semana, qué viene después y cuándo llega el siguiente tramo de precio. La fase cerrada entrará en el diario de obra con una entrada «fecha → fase → qué se ha hecho». Así verá una secuencia, no promesas.
+El informe muestra etapa, trabajo realizado, gastos, cobros y siguiente paso. Los hitos se confirman en obra y registro.
 
-Los cinco puntos que mueven el precio de la acción se ven así en el informe:
+Hitos para comprobar los trabajos:
 
 - **Licencia**: licencia de obra en mano.
 - **Cimentación**: cimentación y zócalo de piedra terminados.
@@ -98,7 +98,7 @@ Directamente. Pregúnteme por la cimentación, por la cubierta, por cómo quedan
 
 **¿Cómo veo el trabajo?** En el informe de cada semana: la fase, qué se ha hecho y qué viene después.
 
-**¿Cuándo es la entrega?** Según el plan, entre finales de 2028 y mediados de 2029.
+**¿Cuándo termina?** La entrega se concretará en el programa; el inversor supone salida @months@ meses tras pago íntegro.
 
 **Кнопка: «Recibir un cálculo»**
 Gratis. No cobramos nada hasta elegir la parcela.

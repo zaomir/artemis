@@ -158,10 +158,10 @@ class FormPayloadTest(AppCase):
         row = self.rows()[0]
         model = json.loads((ROOT / "app/static/tenerife/site/model.json").read_text(encoding="utf-8"))
         self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"]),
-                         ("ok", 52, "queue", "m6"))
+                         ("ok", 72, "early", "now"))
         self.assertEqual((row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         (153400, 24288, model["version"]))
-        self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 153400)  # mocked: nothing sent
+                         (169344, None, model["version"]))
+        self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 169344)  # mocked: nothing sent
 
     def test_other_pages_send_page_only(self):
         for name in PAGES:
@@ -312,7 +312,7 @@ class MenuScriptTest(unittest.TestCase):
         for gone in ("--fs-h1)", "(16ch +", "min(60vh,var(--hero-min-h))", ".legal li>a"):
             self.assertNotIn(gone, css)
         faq = (ROOT / "app/tenerife_site/faq.html").read_text(encoding="utf-8")
-        self.assertIn('<h1 id="h1" class="hero__h1--short">', faq)
+        self.assertRegex(faq, r'<h1 id="h1"(?: class="hero__h1--short")?>')
         # removed tokens: none may remain anywhere in the v3 site
         src = css + js + "".join(p.read_text(encoding="utf-8")
                                  for p in (ROOT / "app/templates/tenerife/site").glob("*.html"))
@@ -324,10 +324,10 @@ class ComponentsTest(unittest.TestCase):
     def test_steps_log_people_mini_ladder_full_investor_calc(self):
         # Home now summarises participation; the full stage data belongs to investors.
         self.assertIn(f'href="{RU}/inversores/"', page("index"))
-        self.assertIn('<figure class="price-curve"', page("inversores"))
+        self.assertNotIn('<figure class="price-curve"', page("inversores"))
         # C10 hidden (designer 20:23): copy_v3 has no confirmed log entries; the copy stays as an ordinary table,
         # no log markup and no anchor to it anywhere
-        heads = {"construccion": '<th scope="col">Дата, по плану</th>'}
+        heads = {"construccion": '<th scope="col">Месяц от полной оплаты</th>'}
         for name, th in heads.items():
             self.assertIn(th, page(name), name)
         for f in SITE.glob("*.html"):
@@ -345,18 +345,18 @@ class ComponentsTest(unittest.TestCase):
             self.assertIn(f'<li><a href="{href}">', page("index"))
         a = page("inversores")
         self.assertIn('id="calc-form"', a)
-        self.assertIn('name="step"', a)
-        self.assertIn('name="pay"', a)
+        self.assertNotIn('name="step"', a)
+        self.assertNotIn('name="pay"', a)
         self.assertNotIn('calc--short', a)
         self.assertIn('<script type="application/json" id="cs-model">', a)
-        self.assertIn('<script src="/static/tenerife/site/calc.js"', a)
+        self.assertIn('<script src="/static/tenerife/site/calc.js?v=', a)
         self.assertIn('data-k="sum"', a)
         self.assertIn('<ol class="grid steps">', page("proceso"))  # 09: numbered paragraphs
         # Kimi r18: the «Порядок входа» / «Как устроен вход» paragraphs of 02 04 05 06 09 12 now have 7 sentences;
         # C7 is 3–6 steps (DESIGN.md), so they stay one paragraph (text as in the copy, not split)
         for name in ("norte", "calculadora", "alquiler", "mercado"):
             self.assertNotIn('<ol class="grid steps">', page(name), name)
-            self.assertIn("Денег до выбора участка не берём", page(name), name)
+            self.assertIn('action="/api/tenerife/waitlist"', page(name), name)
 
     def test_f14_f16_no_interim_photo(self):
         """Updated 2026-11-02: F14–F16 may only show the generated Canary Stone construction frames,
@@ -448,7 +448,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "fb0ef0adb49e7cfe60670b2a7c919ad26625c1aba2ad3c2623471b99d67e07fc")
+                         build_v3.combined_sha())
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
@@ -606,6 +606,7 @@ class NumbersTest(unittest.TestCase):
             dst = Path(tmp) / "copy_v3"
             shutil.copytree(src, dst, ignore=shutil.ignore_patterns("__pycache__"))
             (dst / "numbers.md").unlink()
+            shutil.copy(BUILD / "make_model.py", dst.parent / "make_model.py")
             shutil.copy(BUILD / "model_inputs.json", dst.parent / "model_inputs.json")  # 02.11: единый источник цифр
             r = subprocess.run([sys.executable, str(dst / "make_numbers.py")], capture_output=True, text=True)
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)

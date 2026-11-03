@@ -1,80 +1,61 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
 <!-- META
 Слаг: /tenerife/faq/
-Meta title: Fragen zu Artemis de la Cruz: Aktien, Preis, Dividende, Bau
-Meta description: Wo La Quinta liegt, warum der Norden, was Aktien der Bauträgergesellschaft sind, warum der frühe Einstieg günstiger ist, wie Dividende und Tausch laufen.
-OG title: Fragen vor dem Einstieg bei Artemis de la Cruz — und direkte Antworten
+Meta title: Fragen zu Beteiligung und Hauskauf — Artemis de la Cruz
+Meta description: Volle Einzahlung, @target@% jährliche Zielrendite, Ausstieg nach @months@ Monaten, Verkäufe, Kosten und keine jährlichen Ausschüttungen.
+OG title: Fragen zu Beteiligung und Hauskauf
 -->
 
-# Fragen vor dem Einstieg bei Artemis de la Cruz, direkt beantwortet
+# Was Sie vor einer Beteiligung verstehen sollten
 
-Hier sind die Fragen gesammelt, die man vor dem Kauf eines Hauses auf Teneriffa und vor dem Kauf von Aktien der Bauträgergesellschaft Artemis stellt. Die Antworten sind kurz, mit Zahlen — so, wie wir sie bei einem Treffen laut sagen.
+Die wichtigsten Fragen zu Geld, Laufzeit und Ergebnis. Das Basismodell hat eine volle Einzahlung und einen Barausstieg nach @months@ Monaten.
 
-[КАДР F03] <!-- служебная пометка, не публикуется -->
+[КАДР F20]
 
-### Lage
+### Kapital und Ertrag
 
-**Wo liegt das Projekt?** Im Gebiet La Quinta, Santa Úrsula. Das konkrete Grundstück wählen wir mit den Teilnehmern der Warteliste.
+**Gibt es jährliche Zahlungen?** Nein. Kapital und Ertrag werden bei Verkauf oder Rückkauf zum Ausstieg ausgezahlt.
 
-**Wie kommt man hin?** Wege, Fußzugang zum Strand und Umgebung unter [Lage](/tenerife/norte/).
+**Was bedeuten @target@% jährlich?** Eine effektive Zielrendite mit Zinseszinseffekt: @gain_pct@% in drei Jahren. Für 72 Aktien: @entry_72@ € → @exit_72@ €.
 
-**Was ist im Winter?** Klima, Solardach und beheizter Pool unter [Energie und Ausstattung](/tenerife/energia/).
+**Ist das garantiert?** Es ist das Ziel des Basisszenarios. Die Zahlung hängt von tatsächlichen Verkaufseingängen, Budget und Zeitpunkt ab.
 
-[КАДР F01] <!-- служебная пометка, не публикуется -->
+**Kann ich in Raten zahlen?** Die Beteiligung verlangt volle Einmalzahlung. 40/30/10/20% gelten für Hauskäufer.
 
-### Was ich kaufe
+### Preis und Wachstum
 
-**Was ist eine Aktie?** Eine Beteiligung an der Bauträgergesellschaft: eine Aktie entspricht einem m² construida ohne Gemeinschaftsflächen.
+**Woher kommt der Preis @entry@ €?** 70% der vorläufigen Basis @market@ €/m², also @discount@% darunter. Aktuelle vergleichbare lokale Neubaupreise müssen noch bestätigt werden.
 
-**Was unterscheidet sie vom Hauskauf?** Kaufgegenstand und zwei Ergebnisse werden unter [Für Investoren](/tenerife/inversores/) verglichen.
+**Was bedeutet @growth@% Wachstum?** Eine jährliche Annahme für unverkaufte Häuser. Unterzeichnete Verträge fixieren den Preis. Wachstum gilt weder rückwirkend noch zusätzlich zur Investorenrendite.
 
-### Preis und früher Einstieg
+[КАДР F15]
 
-**Wie ändert sich der Preis?** Durch Bauereignisse statt Kalendertage. [Preisstufen und Beispiel](/tenerife/inversores/).
+### Bau und Finanzierung
 
-**Wie berechne ich die Raten?** Wählen Sie Fläche und Stufe im [Rechner](/tenerife/calculadora/).
+**Wer finanziert den Bau?** Früher Investorenpool und Käufer von zwanzig Häusern. Kein zusätzliches Entwicklerkapital oder Bankkredit im Modell.
 
-**Wann zahlen?** Nach Zustimmung der Mehrheit der Warteliste zum Grundstück und dem Investitionsvertrag. [Unterlagen und Zahlungszeitpunkte](/tenerife/proceso/).
+**Ist das Basisszenario finanziert?** Der Monatsplan deckt Ausgaben und Zielausstieg bei mindestens @minimum_cash@ € Liquidität. Dafür müssen Verkäufe und Zahlungen planmäßig erfolgen.
 
-[КАДР F11] <!-- служебная пометка, не публикуется -->
+**Was passiert bei Verzögerungen oder Mehrkosten?** Der gesamte Zahlungsplan muss neu berechnet werden. Zwei Monate Verkaufsverzögerung erzeugen @delay_gap@ € Fehlbetrag. Bei 2 100 €/m² Baukosten ist der Zielrückkauf nicht voll gedeckt. Eine automatische Entwicklereinlage ist nicht vorgesehen.
 
-### Dividende
+**Was passiert bei Projektstopp?** Betrag und Zeitpunkt hängen von Projektstand, Liquidität und Vermögensverkäufen ab. Das Modell finanziert keine sofortige vollständige Rückzahlung mit Ertrag. Das Vorgehen wird vor Zahlung besprochen.
 
-**Welche Dividende?** Rechnerisch 2,5–3,5 % jährlich vor Körperschaftsteuer, ohne Garantie.
+### Haus und Beteiligung
 
-**Worauf beruht die Schätzung?** Auf langfristiger Vermietung nach Kosten. [Mietmarkt, Kosten und Annahmen](/tenerife/alquiler/).
+**Reservieren Aktien ein Haus?** Nein. Die Aktienzahl bestimmt hier die Beteiligung mit Barausstieg. Eine bestimmte Residenz wird separat gekauft.
 
-### Meter
+**Erhalte ich Haus und Rückkauf für denselben Einsatz?** Das Modell sieht das nicht vor: Ein Haus kann nicht zugleich verkauft und dem Investor übertragen werden.
 
-**Wie erhalte ich eine Residenz?** Nach der Nutzungsgenehmigung wird der Tausch notariell und im Register vollzogen. [Formalitäten, Steuern und Hypothek](/tenerife/proceso/).
+[КАДР F05]
 
-**Kann ich Aktien zukaufen?** Zum Preis der aktuellen Stufe; ein Beispiel steht unter [Für Investoren](/tenerife/inversores/).
+### Einstieg
 
-**Ist eine Abtretung vor Übergabe möglich?** Übersteigt die Käuferzahl die Häuserzahl, kann die Gesellschaft eine Abtretung anbieten. Dies ist eine Möglichkeit, kein Renditeversprechen; [Transaktionsdetails](/tenerife/proceso/).
+**Wann zahle ich?** Nach Freigabe von Grundstück und Bedingungen. Die Berechnungsanfrage ist kostenlos.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+**Wer antwortet?** [Simon Subic und Boris Ribaut](/tenerife/equipo/). [Ablauf](/tenerife/proceso/).
 
-### Bau und Berichte
+### Berechnung anfordern
 
-**Wann sind Bau und Fertigstellung?** Geplant: Start Anfang 2027, Fertigstellung Ende 2028 – Mitte 2029.
-
-**Wer erhält Berichte?** Aktionäre und Hauskäufer, jede Woche. [Phasen und Berichtsformat](/tenerife/construccion/).
-
-[КАДР F05] <!-- служебная пометка, не публикуется -->
-
-### Menschen
-
-**Wer ist verantwortlich?** Die Rollen von Simon Subic und Boris Ribaut stehen unter [Team](/tenerife/equipo/).
-
-**Welche Gesellschaft?** OXFORD FRAME REAL ASSETS LTD. [Gesellschaftsangaben](/tenerife/impressum/).
-
-**Welche Häuser?** [Typen, Flächen und Ausstattung](/tenerife/producto/).
-
-[КАДР F22] <!-- служебная пометка, не публикуется -->
-
-### Kurz gefasst
-
-**Was jetzt tun?** Eine Berechnung anfordern und Grundstücksoptionen besprechen. Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen.
+Namen und Kontakt hinterlassen, um Betrag, Laufzeit und Annahmen zu besprechen.
 
 **Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.

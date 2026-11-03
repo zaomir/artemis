@@ -5,7 +5,7 @@
 
 ## Fußbereich der Website
 
-**Artemis de la Cruz** — zwanzig Residenzen im Norden Teneriffas, das Grundstück wählen wir im Gebiet La Quinta, Santa Úrsula. Aktien der Bauträgergesellschaft ab 2 900–3 100 € pro Meter. Die Eintragung in die Warteliste ist kostenlos, vor der Grundstückswahl nehmen wir kein Geld.
+**Artemis de la Cruz** — zwanzig Residenzen in La Quinta, Santa Úrsula. Frühes Beteiligungsmodell ab @entry_48@ € mit Zielausstieg nach @months@ Monaten. Kostenlose Anfrage.
 
 **Seiten.** Startseite · Residenzen · Für Investoren · Lage · Projektverlauf · Team · Rechner · Vermietung · Energie · Ablauf · Fragen · Markt und Quadratmeterpreis · Developer · Supervisor
 

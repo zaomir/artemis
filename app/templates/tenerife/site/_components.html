@@ -329,7 +329,7 @@
         <legend>{{ calc_ui.area }}</legend>
         <div class="opts">
 {% for t in k.types %}
-          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.name }}, {{ t.min }}–{{ t.max }} {{ calc_ui.unit }}</span></label>
+          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.quantity }} {{ calc_ui.unit }}</span></label>
 {% endfor %}
         </div>
         <div class="range">
@@ -338,28 +338,18 @@
           <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
         </div>
       </fieldset>
-      <fieldset>
-        <legend>{{ calc_ui.step }}</legend>
-        <div class="opts">
-{% for st in k.steps %}
-          <label class="opt"><input type="radio" name="step" value="{{ st.id }}"{% if st.id == k.current %} checked{% endif %}><span>{{ st.label }}</span></label>
-{% endfor %}
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>{{ calc_ui.pay }}</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="pay" value="now"><span>{{ res.pay_now }}</span></label>
-          <label class="opt"><input type="radio" name="pay" value="m{{ months }}" checked><span>{{ res.pay_parts }}</span></label>
-        </div>
-      </fieldset>
+      <p><strong>{{ calc_ui.step }}:</strong> {{ k.entry }}</p>
+      <p><strong>{{ calc_ui.pay }}:</strong> {{ calc_ui.pay_now }}</p>
+      <p><strong>{{ calc_ui.term }}:</strong> {{ k.term }} {{ calc_ui.months }}</p>
+      <p>{{ calc_ui.basis }}</p>
     </div>
-    <div class="calc__out" aria-live="polite">
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
       <dl class="res" id="calc-res">
         <div class="res__main"><dt>{{ res.sum }}</dt><dd data-k="sum">{{ k.sum }}</dd></div>
-        <div><dt>{{ res.month }}</dt><dd data-k="month">{{ k.month }}</dd></div>
-        <div><dt>{{ res.handover }}</dt><dd data-k="handover">{{ k.handover }}</dd></div>
+        <div><dt>{{ res.exit }}</dt><dd data-k="exit">{{ k.exit }}</dd></div>
+        <div><dt>{{ res.gain }}</dt><dd data-k="gain">{{ k.gain }}</dd></div>
         <div><dt>{{ res.pct }}</dt><dd data-k="pct">{{ k.pct }}</dd></div>
+        <div><dt>{{ res.gain_pct }}</dt><dd data-k="gain_pct">{{ k.gain_pct }}</dd></div>
         <div class="res__paths"><dt>{{ res.paths }}</dt><dd>{{ res.paths_dd }}</dd></div>
       </dl>
     </div>
@@ -411,7 +401,7 @@
 {% if calc %}
       <input type="hidden" name="calc_m2" id="wl-calc-m2" value="{{ calc.m2 }}">
       <input type="hidden" name="calc_step" id="wl-calc-step" value="{{ calc.current }}">
-      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m{{ months }}">
+      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
 {% endif %}
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>{{ form_ui.consent }}</span></label>
       <p class="field__err" id="wl-consent-err"></p>

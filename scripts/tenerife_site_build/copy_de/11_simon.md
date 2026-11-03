@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/simon/
 Meta title: Simon Subic, Entwickler von Artemis de la Cruz
-Meta description: Simon Subic führt Artemis de la Cruz: Grundstückswahl, Genehmigungen, Start, Verbindung von Geld und Bau. Nach Plan Start Anfang 2027, Fertigstellung 2028–2029.
+Meta description: Simon Subic führt Grundstückswahl, Vorbereitung und Finanzierung von zwanzig Residenzen. Investorenkapital, Käuferzahlungen und Wochenberichte.
 OG title: Simon Subic: vom Grundstück und den Genehmigungen bis zur Übergabe
 -->
 
 # Ich bin Simon Subic, Entwickler von Artemis de la Cruz
 
-Ich bin Development Principal und arbeite zwischen London und Paris. Bei Artemis de la Cruz — zwanzig Residenzen in La Quinta, Santa Úrsula, am Nordhang Teneriffas — verantworte ich die Grundstückswahl, die Genehmigungen, den Start und die Verbindung von Geld und Bau. Das Geld für den Bau sind die Aktien der Bauträgergesellschaft und der Verkauf der Häuser. Der Start — nach Plan Anfang 2027. Die Fertigstellung — nach Plan Ende 2028 bis Mitte 2029.
+Ich bin Development Principal zwischen London und Paris. Bei Artemis de la Cruz führe ich Grundstückswahl, Vorbereitung und Finanzierung von zwanzig Residenzen. Das Modell nutzt Anfangsinvestitionen und Käuferzahlungen ohne zusätzliches Entwicklerkapital. Termine folgen nach Grundstückswahl.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -38,28 +38,23 @@ Zwanzig Häuser: sechs mit einem Schlafzimmer auf 48–55 m², zehn mit zwei auf
 
 ### Wie ich die Genehmigungen führe
 
-Genehmigungen trennen das Projekt vom Bild. Keine Phase beginnt, bevor es für sie ein Recht gibt. Die Baugenehmigung ist die erste Preisstufe der Aktie nach der Warteliste: Der Meter steigt von 2 950 € auf 3 100 €, weil das Projekt das Recht zu bauen erhalten hat. Für 72 Meter sind das 10 800 € Unterschied: 212 400 € in der Warteliste und 223 200 € auf der Stufe „Baugenehmigung“.
-
-Am Ende steht die Nutzungsgenehmigung. Von diesem Moment an können die Aktien gegen Meter Ihrer Residenz getauscht werden.
+Projektvorbereitung muss zu Bau- und Zahlungsplan passen. Ich koordiniere Unterlagen und Reihenfolge mit Planern. Baufortschritt wird vor Ort belegt; das neue Modell kennt keine automatische Aktienaufwertung in sechs Preisstufen.
 
 ### Wie ich Geld und Bau verbinde
 
-Der Bau wird aus zwei Strömen finanziert: den Aktien der Bauträgergesellschaft und dem Verkauf der Häuser. Meine Aufgabe ist, dass jeder Euro in die Phase geht, die auf dem Grundstück entsteht. Die Preisstufe steigt, wenn eine Phase auf der Baustelle abgeschlossen und im Bericht sichtbar ist, nicht nach Kalender.
-
-Die Warteliste ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen. Unterlagen, Zahlungszeitpunkte und Formalitäten nach Fertigstellung erklärt der [Transaktionsablauf](/tenerife/proceso/).
-
+Der Bau hat zwei Quellen: Anfangskapital und Käuferzahlungen. Ich verbinde jede Etappe mit Liquidität und Verkaufsplan. Volle Investorenzahlung und Käuferraten sind getrennte Ströme.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
-### Reihenfolge der Phasen und die Preisstufen
+### Bauabschnitte und Beteiligungsberechnung
 
 Die neun Phasen, geplanten Termine und das Format des Wochenberichts stehen unter [Projektverlauf](/tenerife/construccion/).
 
-Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [Für Investoren](/tenerife/inversores/).
+Früher Preis @entry@ € je Aktie, volle Zahlung und Zielausstieg nach @months@ Monaten. [Modell](/tenerife/inversores/).
 
 ### Was Sie durch meine Arbeit erhalten
 
-**Termin.** Nach Plan Start — Anfang 2027, Fertigstellung — Ende 2028 – Mitte 2029.
+**Ablauf.** Das Finanzmodell umfasst @months@ Monate bis Ausstieg. Bautermine folgen nach Grundstückswahl.
 
 **Ordnung.** Neun Phasen, eine nach der anderen, Bericht jede Woche.
 
@@ -69,13 +64,11 @@ Beteiligungsmodell, Preise nach Bauphase und zwei Ergebnisse finden Sie unter [F
 
 ### Wie wir arbeiten
 
-Ich führe das Projekt: Grundstückswahl, Genehmigungen, Start, Verbindung von Geld und Bau. Boris Ribaut baut: Baustelle, Konstruktion, Berichte, Übergabe des Hauses. Die Berechnungen für jeden Aktionär machen wir nach einer Formel: Meter × Preis der Stufe, Zahlung — sechs gleiche Raten mit 5 % Rabatt auf den Gesamtpreis. Zwei Verantwortungsbereiche, keine Frage ohne Zuständigen.
+Ich führe Grundstück, Vorbereitung und Finanzierung. Boris Ribaut betreut Baustelle, Tragwerk und Berichte. Einsatz = Aktien × früher Preis; Zielauszahlung = volle Investition × (1 + @target@%)³. Käufer erhalten separat 40/30/10/20%.
 
 ### Was ich von Ihnen erwarte
 
-Fragen. Je mehr Sie vor dem Kauf der Aktien fragen, desto ruhiger werden Sie während des Baus sein. Dafür gibt es die Zeit zwischen der Eintragung in die Warteliste und dem Investmentvertrag: Wir besprechen Grundstücksvarianten in der geschlossenen Gruppe der Teilnehmer, Sie erhalten eine Berechnung für Ihre Fläche, gleichen sie mit dem Rechner ab und stellen Fragen an mich und Boris Ribaut. Vor der Grundstückswahl muss nichts gezahlt werden.
-
-Fragen Sie mich nach dem Grundstück, den Genehmigungen, den Terminen und danach, was passiert, wenn eine Phase sich verschiebt. Ich antworte direkt.
+Fragen Sie vor Zahlung nach Grundstück, Budget, Verkäufen und Ausstiegsfinanzierung. Vergleichen Sie die persönliche Berechnung mit dem Rechner. Die kostenlose Anfrage lässt Zeit dafür.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,9 +78,9 @@ Fragen Sie mich nach dem Grundstück, den Genehmigungen, den Terminen und danach
 
 **Wo arbeitet er?** Zwischen London und Paris.
 
-**Wann ist der Start?** Nach Plan — Anfang 2027.
+**Wann beginnt der Bau?** Der Kalender folgt Grundstückswahl und Budgetbestätigung.
 
-**Wann die Fertigstellung?** Nach Plan — Ende 2028 – Mitte 2029.
+**Wann ist die Fertigstellung?** Die Übergabe folgt dem Projektplan; das Investorenmodell sieht Ausstieg @months@ Monate nach voller Zahlung vor.
 
 **Wem schreiben, wenn der Bericht nicht zu dem passt, was Sie auf der Baustelle sehen?** Mir.
 

@@ -8,7 +8,7 @@ OG title: Boris Ribaut: Plan, Arbeit, Bericht — und die Übergabe des Hauses
 
 # Ich bin Boris Ribaut, leitender Bauleiter von Artemis de la Cruz
 
-Ich werde die Baustelle von Artemis de la Cruz im Gebiet La Quinta, Santa Úrsula, führen — sobald das Grundstück gewählt und von den Teilnehmern der Warteliste freigegeben ist. Es sind zwanzig Residenzen, die die Aktien der Bauträgergesellschaft und der Verkauf der Häuser finanzieren. Baustelle, Konstruktion, Berichte, Übergabe des Hauses — das liegt bei mir. Nach Plan gehen wir Anfang 2027 auf die Baustelle, die Fertigstellung — nach Plan Ende 2028 bis Mitte 2029. Jede Woche erhalten Sie einen Bericht darüber, was erledigt wurde.
+Ich betreue die Artemis-Baustelle: Tragwerk, Auftragnehmer, Berichte und Übergabe. Wir wählen ein Grundstück für zwanzig Residenzen in La Quinta. Investoren und Käufer finanzieren den Bau. Der Kalender folgt dem Grundstück, Wochenberichte sind geplant.
 
 [КАДР F18] <!-- служебная пометка, не публикуется -->
 
@@ -62,9 +62,9 @@ Die neun Phasen, geplanten Termine und das Format des Wochenberichts stehen unte
 
 ### Was in meinem Bericht steht
 
-Jede Woche dasselbe, in derselben Reihenfolge: welche Phase läuft, was in der Woche erledigt wurde, was als Nächstes kommt, wann die nächste Preisstufe erreicht ist. Eine abgeschlossene Phase kommt ins Bautagebuch mit dem Eintrag „Datum → Phase → was erledigt wurde“. So sehen Sie keine Versprechen, sondern eine Reihenfolge.
+Der Bericht zeigt Bauabschnitt, erledigte Arbeiten, Ausgaben, Eingänge und nächsten Schritt. Meilensteine werden vor Ort und im Protokoll bestätigt.
 
-Fünf Punkte, die den Aktienpreis bewegen, sehen im Bericht so aus:
+Meilensteine zur Prüfung der Arbeiten:
 
 - **Baugenehmigung** — die Baugenehmigung liegt vor.
 - **Fundament** — Gründung und steinerner Sockel sind fertig.
@@ -98,7 +98,7 @@ Direkt. Fragen Sie nach dem Fundament, nach dem Dach, danach, wie die Technik ab
 
 **Wie sehe ich die Arbeit?** Über den Bericht jede Woche: Phase, was erledigt ist, was als Nächstes kommt.
 
-**Wann die Fertigstellung?** Nach Plan — Ende 2028 – Mitte 2029.
+**Wann ist die Fertigstellung?** Die Übergabe folgt dem Projektplan; das Investorenmodell sieht Ausstieg @months@ Monate nach voller Zahlung vor.
 
 **Кнопка: «Berechnung anfordern»**
 Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.

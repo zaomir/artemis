@@ -2,13 +2,13 @@
 <!-- META
 Слаг: /tenerife/simon/
 Meta title: Simon Subic, promoteur d'Artemis de la Cruz
-Meta description: Simon Subic conduit Artemis de la Cruz: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. Selon le plan, démarrage début 2027 et livraison fin 2028 – mi-2029.
+Meta description: Simon Subic pilote terrain, préparation et financement de vingt résidences. Capital investisseur, paiements acheteurs et rapports hebdomadaires.
 OG title: Simon Subic: du terrain et des autorisations à la livraison des maisons
 -->
 
 # Je suis Simon Subic, promoteur d'Artemis de la Cruz
 
-Je suis Development Principal et je travaille entre Londres et Paris. Sur Artemis de la Cruz, vingt résidences à La Quinta, Santa Úrsula, sur le versant nord de Tenerife, je conduis le choix du terrain, les autorisations, le lancement et l'articulation entre les fonds et le chantier. Les fonds du chantier, ce sont les actions de la société promotrice et la vente des maisons. Démarrage prévu début 2027. Livraison prévue fin 2028 – mi-2029.
+Je suis Development Principal entre Londres et Paris. Pour Artemis de la Cruz, je pilote terrain, préparation et financement de vingt résidences. Le modèle utilise investissement initial et paiements acheteurs sans apport complémentaire du promoteur. Le calendrier suit le choix du terrain.
 
 [КАДР F19] <!-- служебная пометка, не публикуется -->
 
@@ -38,28 +38,23 @@ Vingt maisons: six avec une chambre de 48–55 m², dix avec deux chambres de 68
 
 ### Comment je conduis les autorisations
 
-Les autorisations séparent le projet de l'image. Aucune étape ne commence avant que le droit existe. Le permis de construire est le premier palier du prix de l'action après la liste d'attente: le mètre passe de 2 950 € à 3 100 €, parce que le projet a désormais le droit de construire. Pour 72 mètres, cela fait 10 800 € de différence: 212 400 € sur la liste d'attente et 223 200 € au palier « Permis ».
-
-À la fin vient le permis d'habiter. À partir de ce moment, les actions peuvent être échangées contre les mètres de votre résidence.
+La préparation doit suivre le programme des travaux et dépenses. Je coordonne documents et séquence avec les concepteurs. Les étapes se constatent sur chantier ; le nouveau modèle n’a pas de revalorisation automatique en six paliers.
 
 ### Comment je relie les fonds et le chantier
 
-Le chantier est financé par deux flux: les actions de la société promotrice et la vente des maisons. Mon travail: que chaque euro aille à l'étape qui se construit sur le terrain. Le palier monte quand l'étape est close sur le chantier et visible dans le rapport, non selon le calendrier.
-
-L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
-
+Deux sources financent le chantier : fonds initial et acheteurs. Je relie chaque étape à la trésorerie et aux ventes. Paiement intégral de l’investisseur et échéances acheteurs sont distincts.
 
 [КАДР F20] <!-- служебная пометка, не публикуется -->
 
-### L'ordre des étapes et les paliers de prix
+### Étapes et calcul de participation
 
 Les neuf étapes, le calendrier prévu et le format du rapport hebdomadaire figurent dans [Avancement du projet](/tenerife/construccion/).
 
-Le modèle de participation, les prix par étapes et les deux résultats figurent sur la page [Investisseurs](/tenerife/inversores/).
+Prix initial de @entry@ € par action, paiement intégral et sortie cible à @months@ mois. [Modèle](/tenerife/inversores/).
 
 ### Ce que mon travail vous apporte
 
-**Le calendrier.** Selon le plan, démarrage début 2027, livraison fin 2028 – mi-2029.
+**Calendrier.** Le modèle prévoit @months@ mois avant sortie. Les dates de travaux suivront le choix du terrain.
 
 **L'ordre.** Neuf étapes, l'une après l'autre, un rapport chaque semaine.
 
@@ -69,13 +64,11 @@ Le modèle de participation, les prix par étapes et les deux résultats figuren
 
 ### Comment nous travaillons
 
-Je conduis le projet: choix du terrain, autorisations, lancement, articulation entre les fonds et le chantier. Boris Ribaut construit: chantier, structure, rapports, livraison des maisons. Pour chaque actionnaire, nous calculons selon une seule formule: mètres × prix du palier, versement = six versements égaux avec 5 % de remise sur le prix total. Deux zones de responsabilité, aucune question sans responsable.
+Je pilote terrain, préparation et financement. Boris Ribaut supervise chantier, structure et rapports. Investissement = actions × prix initial ; sortie cible = investissement × (1 + @target@%)³. Les acheteurs ont un échéancier distinct de 40/30/10/20%.
 
 ### Ce que j'attends de vous
 
-Des questions. Plus vous en posez avant d'acheter des actions, plus vous serez tranquille pendant le chantier. C'est à cela que sert le temps entre l'inscription sur la liste d'attente et le contrat d'investissement: nous discutons des terrains dans le groupe fermé des participants, vous recevez un calcul pour votre surface, le comparez à la calculatrice et posez vos questions à Boris Ribaut et à moi. Rien à payer avant le choix du terrain.
-
-Interrogez-moi sur le terrain, les autorisations, les délais et sur ce qui se passera si une étape décale. Je répondrai directement.
+Avant paiement, questionnez terrain, budget, ventes et financement de sortie. Comparez le calcul personnel au calculateur. La demande gratuite laisse le temps de comprendre.
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 
@@ -85,9 +78,9 @@ Interrogez-moi sur le terrain, les autorisations, les délais et sur ce qui se p
 
 **Où travaille-t-il?** Entre Londres et Paris.
 
-**Quand le démarrage?** Selon le plan: début 2027.
+**Quand commencent les travaux ?** Le calendrier suit le terrain et le budget confirmé.
 
-**Quand la livraison?** Selon le plan: fin 2028 – mi-2029.
+**Quand la livraison ?** Elle sera précisée au programme ; le modèle investisseur prévoit sortie @months@ mois après paiement intégral.
 
 **À qui écrire si le rapport contredit ce que vous voyez sur le chantier?** À moi.
 

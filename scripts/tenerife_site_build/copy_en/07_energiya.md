@@ -72,17 +72,15 @@ The neighbouring La Quinta 2 project is also advertised with solar panels.
 
 ### Why this matters for letting
 
-The Artemis dividend is calculated from long-term letting after costs: the house is let for a long time, to a tenant for a year or more. A long-term tenant in the north sees the electricity bill just as you do. A house that is warm in winter without a heater, where the electricity bill is lower and the pool is heated, is easier to let and easier to keep the tenant for another year. Fewer empty months between tenants means steadier rent after costs.
+Future tenants compare comfort and bills. Light, climate control and insulation affect the home and its owner’s costs. Rental use is not included in the investor-return calculation.
 
 ### Why this matters for the price per metre
 
-The specification affects the home’s running costs and is already part of the residence. Finished-house prices and the comparison with share participation are on the [investor page](/tenerife/inversores/).
+The equipment is part of the proposed home specification. Home-purchase budgets and investments are calculated separately. [Residences](/tenerife/producto/) · [Investors](/tenerife/inversores/).
 
 ### Why this matters for a shareholder
 
-Joining the waiting list is free; we take no money before the plot is chosen. Documents, payment timing and formalities after handover are in the [transaction process](/tenerife/proceso/).
-
-The dividend is rent minus costs. The less the houses spend on electricity, water and the pool, the more of the rent remains. The estimated dividend is 2,5–3,5 % a year before company profit tax. The largest line is community fees at 21,0%, which cover the shared heated pool and the upkeep of the grounds. The less the shared systems draw from the grid, the lower that line.
+Investors receive cash at exit from sales, not rents. The model targets @target@% annualised over @months@ months. Quality and equipment support buyer demand but do not by themselves secure that result.
 
 [КАДР F01] <!-- служебная пометка, не публикуется -->
 
@@ -102,7 +100,7 @@ On the northern slope the sun is softer than in the south, which is why it is no
 
 **The pool in winter?** Shared and heated, it will run all year round.
 
-**How does this relate to the dividend?** Lower costs leave more of the rent for every share.
+**How does this relate to investing?** Equipment affects buyer appeal; investor income depends on sales, costs and exit timing.
 
 **Кнопка: «Get a calculation»**
 Free of charge. We take no money before the plot is chosen.

@@ -8,7 +8,7 @@ OG title: La Quinta, Santa Úrsula: le nord de Tenerife où l'on vit
 
 # La Quinta, Santa Úrsula: le nord où l'on vit, à Tenerife
 
-La Quinta est un quartier résidentiel de Santa Úrsula, sur le versant nord verdoyant de Tenerife. Comptez 8 km et 10–15 minutes de route jusqu'à Puerto de la Cruz, 15–20 minutes jusqu'à l'aéroport de Tenerife Norte et environ 3 km jusqu'à Playa del Ancón. C'est ici que nous choisissons le terrain des vingt résidences Artemis. Les actions de la société promotrice, sur la liste d'attente: 2 950 € le mètre.
+La Quinta est un quartier résidentiel de Santa Úrsula sur le versant nord verdoyant de Tenerife. Puerto de la Cruz est à 8 km, Playa del Ancón à environ 3 km. Nous y sélectionnons un terrain pour vingt résidences Artemis. [Achat](/tenerife/producto/) et [investissement](/tenerife/inversores/) sont présentés séparément.
 
 [КАДР F21] <!-- служебная пометка, не публикуется -->
 
@@ -40,11 +40,9 @@ Le nord de Tenerife entretient des liens anciens avec l’Europe centrale. Des f
 
 Les écoles internationales, les communautés locales et les services aux résidents étrangers offrent des points de rencontre dans un nouvel environnement. L’école des enfants, les langues, le sport et les voisins permettent de faire connaissance tout en gardant un lien avec un cercle social européen.
 
-### Fiscalité canarienne : l’IGIC remplace la TVA
+### La vie quotidienne
 
-Les Canaries sont [hors du champ d’application de la TVA espagnole, l’IVA](https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/manual-iva-2026/capitulo-02-introduccion/territorio-que-se-aplica-impuesto.html). L’impôt indirect local IGIC s’y applique : son [taux général est de 7%](https://www.webtenerife.com/tenerifefilm/sobre-tenerife/negocios-impuestos/impuestos/), contre un taux général d’IVA de 21% en Espagne continentale.
-
-Certains biens et services relèvent d’autres taux. Les impôts et frais d’un achat immobilier sont calculés séparément selon la transaction ; le taux général de l’IGIC ne détermine pas, à lui seul, le coût total d’acquisition d’un logement.
+Choisissez un lieu de vie selon les trajets quotidiens : commerces, soins, école et ville. Testez ces parcours et comparez plusieurs quartiers avant de choisir.
 
 ### Où cela se situe sur la carte
 
@@ -88,29 +86,29 @@ Si vous avez déjà regardé le sud, vous savez à quoi ressemble janvier là-ba
 
 La Quinta est un quartier résidentiel, pas une zone touristique. On y vit toute l'année; on n'y passe pas une semaine.
 
-Pour une maison, cela veut dire deux choses. Les voisins sont des gens qui vivent ici à l'année, pas des visages qui changent chaque semaine. Et la location longue durée, sur laquelle se calcule le dividende de l'actionnaire Artemis, repose sur ceux qui ont besoin de la ville, de la capitale et de l'aéroport à proximité: des résidents, pas une saison touristique.
+Les voisins vivent ici toute l’année. Évaluez une journée ordinaire autant que la vue depuis la terrasse.
 
 Les vingt maisons Artemis forment un ensemble à taille humaine, pas une barre d'immeubles. Un seul langage architectural, Canary Stone: enduit à la chaux chaleureux, soubassement en pierre volcanique sombre, toitures plates avec panneaux solaires, hautes fenêtres aux cadres de bronze, terrasses de pierre.
 
 ### Le marché à proximité
 
-Les logements existants de La Quinta et les programmes neufs voisins sont des segments différents. Prix historiques, périodes et comparaisons sur [Marché et prix au mètre](/tenerife/mercado/).
+Références de prix, limites et sources sur la page [marché](/tenerife/mercado/).
 
 [КАДР F04] <!-- служебная пометка, не публикуется -->
 
-### Pourquoi les prix montent au nord
+### La hausse dans le modèle
 
-Les indices historiques et l’évolution des prix, avec sources et périodes, figurent sur la page [marché](/tenerife/mercado/).
+La hausse annuelle de @growth@% est une hypothèse, pas un taux de marché mesuré. Le prix est fixé à la signature. [Formules](/tenerife/mercado/).
 
 ### La location au nord
 
-Location de longue durée, charges et hypothèses de calcul sont détaillées dans le [modèle locatif](/tenerife/alquiler/).
+La location longue durée est un choix du propriétaire. Aucun versement annuel à l’investisseur. [Utilisation](/tenerife/alquiler/).
 
 [КАДР F22] <!-- служебная пометка, не публикуется -->
 
 ### Comment se passe l'entrée
 
-L’inscription est gratuite; aucun paiement n’est demandé avant le choix du terrain. Documents, échéances de paiement et formalités après livraison figurent dans le [parcours de l’opération](/tenerife/proceso/).
+Le calcul est gratuit. Paiement après validation du terrain et des conditions. [Parcours](/tenerife/proceso/).
 
 [КАДР F24] <!-- служебная пометка, не публикуется -->
 

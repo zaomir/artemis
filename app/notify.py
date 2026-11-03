@@ -61,21 +61,24 @@ def format_calc(c: dict, model: dict | None = None) -> list[str]:
     lines = []
     if c["calc_status"] == "mismatch":
         lines += ["Калькулятор: расчёт не совпадает с текущей моделью",
-                  f"Прислано: {int(c['calc_m2'])} м², ступень {_clean(c['calc_step'], 32)}, "
+                  f"Прислано: {int(c['calc_m2'])} акций, вариант {_clean(c['calc_step'], 32)}, "
                   f"оплата {_pay(c['calc_pay'])}",
-                  f"Пересчёт: {int(c['calc_m2_server'])} м², ступень {_clean(c['calc_step_server'], 32)}, "
+                  f"Пересчёт: {int(c['calc_m2_server'])} акций, вариант {_clean(c['calc_step_server'], 32)}, "
                   f"оплата {_pay(c['calc_pay_server'])}"]
-    head = f"Калькулятор: {int(c['calc_m2_server'])} м², акций: {int(c['calc_shares'])}"
+    head = f"Калькулятор: акций: {int(c['calc_shares'])}"
     if c.get("calc_type"):
         head += f", тип: {_clean(types.get(c['calc_type']) or c['calc_type'], 40)}"
     lines.append(head)
     step = _clean(steps.get(c["calc_step_server"]) or c["calc_step_server"], 40)
-    lines.append(f"Ступень: {step} — {_eur(c['calc_price_eur_m2'])}/м²")
+    lines.append(f"Вход: {step} — {_eur(c['calc_price_eur_m2'])}/акция")
     lines.append(f"Сумма: {_eur(c['calc_amount'])}")
     pay = f"Оплата: {_pay(c['calc_pay_server'])}"
     if c.get("calc_month_eur") is not None:
         pay += f" — {_eur(c['calc_month_eur'])}/мес."
     lines.append(pay)
+    if c.get("calc_exit_amount") is not None:
+        lines += [f"Выход через {int(c['calc_exit_months'])} мес.: {_eur(c['calc_exit_amount'])}",
+                  f"Доход по модели: {_eur(c['calc_income'])}; целевая ставка: {c['calc_target_pct']:g}% годовых"]
     lines.append(ver)
     return lines
 
