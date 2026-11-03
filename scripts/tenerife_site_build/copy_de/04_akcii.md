@@ -33,14 +33,16 @@ Der frühe Einstieg ist kein Rabatt auf ein fertiges Haus. Er ist der Einstiegsp
 
 ### Sechs Preisstufen
 
-| Stufe | Was dafür eintreten muss | Preis der Aktie = Preis des Meters | Anstieg bis zum Preis der Fertigstellung |
+| Stufe | Was dafür eintreten muss | Preis der Aktie = Preis des Meters | Unter dem Übergabepreis |
 |---|---|---|---|
-| Warteliste | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | 2 950 € | +30,5% |
-| Baugenehmigung | Baugenehmigung erteilt | 3 100 € | +24,2% |
-| Fundament | Gründung und steinerner Sockel fertig | 3 250 € | +18,5% |
-| Rohbau und Dach | Wände, Decken, Dach mit Modulen | 3 450 € | +11,6% |
-| Ausbau | Fassade, Technik, Innenräume, Pool | 3 650 € | +5,5% |
+| Früher Einstieg | Grundstück von der Mehrheit der Warteliste freigegeben, Investmentvertrag | 2 950 € | 23,4% |
+| Baugenehmigung | Baugenehmigung erteilt | 3 100 € | 19,5% |
+| Fundament | Gründung und steinerner Sockel fertig | 3 250 € | 15,6% |
+| Rohbau und Dach | Wände, Decken, Dach mit Modulen | 3 450 € | 10,4% |
+| Ausbau | Fassade, Technik, Innenräume, Pool | 3 650 € | 5,2% |
 | Fertigstellung | Nutzungsgenehmigung | 3 850 € | — |
+
+Verglichen wird mit dem Aktienpreis bei Fertigstellung: 3 850 €/m². Dieser Preis ist die Bezugsgröße für die Prozentsätze.
 
 Die Eckdaten des Projekts — nach Plan: Baubeginn Anfang 2027, Fertigstellung Ende 2028 – Mitte 2029.
 

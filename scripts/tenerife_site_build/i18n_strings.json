@@ -73,7 +73,7 @@
     "large": "Large house"
    },
    "steps": {
-    "queue": "Waiting list",
+    "queue": "Early entry",
     "permit": "Permit",
     "foundation": "Foundation",
     "shell_roof": "Shell and roof",
@@ -169,7 +169,7 @@
     "large": "Casa grande"
    },
    "steps": {
-    "queue": "Lista de espera",
+    "queue": "Entrada inicial",
     "permit": "Licencia",
     "foundation": "Cimentación",
     "shell_roof": "Estructura y cubierta",
@@ -265,7 +265,7 @@
     "large": "Großes Haus"
    },
    "steps": {
-    "queue": "Warteliste",
+    "queue": "Früher Einstieg",
     "permit": "Baugenehmigung",
     "foundation": "Fundament",
     "shell_roof": "Rohbau und Dach",
@@ -361,7 +361,7 @@
     "large": "Grande maison"
    },
    "steps": {
-    "queue": "Liste d'attente",
+    "queue": "Entrée initiale",
     "permit": "Permis",
     "foundation": "Fondations",
     "shell_roof": "Gros œuvre et toiture",

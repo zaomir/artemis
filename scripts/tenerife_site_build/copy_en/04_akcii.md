@@ -33,14 +33,16 @@ Early entry is not a discount on a finished house. It is the price of entry into
 
 ### Six price steps
 
-| Step | What has to happen | Share price = price per metre | Rise to the handover price |
+| Step | What has to happen | Share price = price per metre | Below handover price |
 |---|---|---|---|
-| Waiting list | the plot is approved by the majority of the waiting list, investment agreement | 2 950 € | +30,5% |
-| Permit | the building licence is obtained | 3 100 € | +24,2% |
-| Foundation | the base and the stone plinth are complete | 3 250 € | +18,5% |
-| Shell and roof | walls, floors, roof with panels | 3 450 € | +11,6% |
-| Finishing | façade, services, interiors, pool | 3 650 € | +5,5% |
+| Early entry | the plot is approved by the majority of the waiting list, investment agreement | 2 950 € | 23.4% |
+| Permit | the building licence is obtained | 3 100 € | 19.5% |
+| Foundation | the base and the stone plinth are complete | 3 250 € | 15.6% |
+| Shell and roof | walls, floors, roof with panels | 3 450 € | 10.4% |
+| Finishing | façade, services, interiors, pool | 3 650 € | 5.2% |
 | Handover | the completion certificate | 3 850 € | — |
+
+Comparison is with the share price at handover: 3 850 €/m². Percentages use that price as the base.
 
 The project's reference dates are the plan: construction start in early 2027, handover in late 2028 – mid 2029.
 

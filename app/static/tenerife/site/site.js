@@ -1,8 +1,7 @@
-/* Artemis Tenerife RU v3: header state, mobile sheet (focus trap), ladder rise (DESIGN.md C1, C8). External file: CSP.
+/* Artemis Tenerife RU v3: header state and mobile sheet (focus trap). External file: CSP.
    C1: the header is solid by default and without JS; .is-over only while the hero picture (.hero__media)
    lies under the header strip (IntersectionObserver with the root narrowed to that strip, no scroll listener). */
 (function(){
-  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var h=document.getElementById('site-header'), media=document.querySelector('#hero .hero__media'),
       s=document.getElementById('sheet'), b=document.getElementById('burger'), io=null;
   function hh(){return h.offsetHeight;}
@@ -58,10 +57,4 @@
     var d=document.querySelector('.nav details[open]'); if(!d) return;
     d.open=false; var sm=d.querySelector('summary'); if(sm) sm.focus();
   });
-  var l=document.getElementById('ladder');
-  if(l&&!rm&&'IntersectionObserver' in window&&l.getBoundingClientRect().top>window.innerHeight){
-    l.classList.add('js-rise');
-    var lio=new IntersectionObserver(function(e){if(e[0].isIntersecting){l.classList.add('is-in');lio.disconnect();}},{threshold:.3});
-    lio.observe(l);
-  }
 })();

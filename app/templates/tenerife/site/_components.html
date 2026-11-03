@@ -122,23 +122,51 @@
 </div>
 {%- endmacro %}
 
-{#- C8 ladder: visual version of the copy's «Шесть ступеней цены» table (the table stays as the text version) -#}
-{% macro ladder(rows) -%}
-<ol class="ladder" id="ladder" aria-hidden="true">
-{% for r in rows %}
-  <li{% if loop.first %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}{% if loop.first %}<span class="ladder__now">{{ ui.now }}</span>{% endif %}</span><span class="ladder__event">{{ r.event }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__grow">{{ r.grow }}</span><span class="ladder__bar"><i></i></span></li>
+{#- C8: one monotone cubic price curve for both full and secondary placements. -#}
+{% macro price_curve(c) -%}
+<figure class="price-curve" id="{{ c.id }}" data-y-min="{{ c.min }}" data-y-max="{{ c.max }}" data-grid-step="{{ c.grid_step }}">
+{% for v in c.variants %}
+  <svg class="price-curve__svg price-curve__svg--{{ 'compact' if v.compact else 'full' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ v.size }} {{ v.size }}" width="{{ v.size }}" height="{{ v.size }}" role="img" aria-labelledby="{{ v.id }}-title {{ v.id }}-desc" focusable="false">
+    <title id="{{ v.id }}-title">{{ c.ui.title|e }}</title>
+    <desc id="{{ v.id }}-desc">{{ c.description|e }}</desc>
+    <defs>
+      <linearGradient id="{{ v.id }}-fill" gradientUnits="userSpaceOnUse" x1="0" y1="{{ v.top }}" x2="0" y2="{{ v.bottom }}"><stop class="price-curve__gradient-top" offset="0"/><stop class="price-curve__gradient-bottom" offset="1"/></linearGradient>
+      <clipPath id="{{ v.id }}-clip"><rect x="{{ v.left }}" y="{{ v.top }}" width="{{ v.right - v.left }}" height="{{ v.bottom - v.top }}"/></clipPath>
+    </defs>
+    <text class="price-curve__axis" x="{{ v.left - 14 }}" y="28" text-anchor="end">{{ c.ui.unit }}</text>
+{% for tick in v.ticks %}
+    <line class="price-curve__grid{% if loop.first %} price-curve__baseline{% endif %}" x1="{{ v.left }}" y1="{{ tick.y }}" x2="{{ v.right }}" y2="{{ tick.y }}" data-price="{{ tick.value }}"/>
+{% if not v.compact or loop.index0 % 2 == 0 %}
+    <text class="price-curve__axis" x="{{ v.left - 14 }}" y="{{ tick.y }}" text-anchor="end" dominant-baseline="middle">{{ tick.label }}</text>
+{% endif %}
 {% endfor %}
-</ol>
+    <g clip-path="url(#{{ v.id }}-clip)">
+      <path class="price-curve__area" d="{{ v.area }}" fill="url(#{{ v.id }}-fill)"/>
+      <path class="price-curve__line" d="{{ v.line }}"/>
+    </g>
+{% for point in v.marks %}
+    <circle class="price-curve__point{% if loop.first %} price-curve__point--min{% elif loop.last %} price-curve__point--max{% endif %}" cx="{{ point.x }}" cy="{{ point.y }}" r="{{ 7 if loop.first or loop.last else 4 }}" data-stage="{{ point.id }}" data-price="{{ point.value }}"/>
+{% if not v.compact and not loop.first and not loop.last %}
+    <text class="price-curve__point-value" x="{{ point.x }}" y="{{ point.value_y }}" text-anchor="middle">{{ point.price }}</text>
+{% endif %}
+    <text class="price-curve__stage" x="{{ point.x }}" y="{{ v.x_label_y }}" text-anchor="{{ 'middle' if v.compact else point.anchor }}">{% if v.compact %}{{ point.number }}{% else %}{% for line in point.lines %}<tspan x="{{ point.x }}" dy="{{ 0 if loop.first else 20 }}">{{ line|e }}</tspan>{% endfor %}{% endif %}</text>
+{% endfor %}
+    <text class="price-curve__value price-curve__value--min" x="{{ v.left }}" y="{{ v.min_value_y }}">{{ c.first.price }}</text>
+    <text class="price-curve__value" x="{{ v.right }}" y="{{ v.max_value_y }}" text-anchor="end">{{ c.last.price }}</text>
+    <text class="price-curve__end-label" x="{{ v.right }}" y="{{ v.max_label_y }}" text-anchor="end">{{ c.ui.end|e }}</text>
+  </svg>
+{% endfor %}
+  <figcaption class="price-curve__caption">{{ c.ui.comparison|e }}: <strong>{{ c.difference }}</strong>.</figcaption>
+  <ol class="price-curve__key" aria-hidden="true">
+{% for point in c.steps %}
+    <li><span class="price-curve__index">{{ loop.index }}</span><span>{{ point.name|e }}{% if not c.with_table %}<b>{{ point.price }}</b>{% endif %}</span></li>
+{% endfor %}
+  </ol>
+</figure>
 {%- endmacro %}
 
-{#- C8 mini (01, 08, 12): names + prices from model.json, bars ∝ price; decorative, the copy's text/table sits next to it -#}
-{% macro ladder_mini(rows) -%}
-<ol class="ladder ladder--mini" aria-hidden="true">
-{% for r in rows %}
-  <li{% if r.current %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__bar"><i></i></span></li>
-{% endfor %}
-</ol>
-{%- endmacro %}
+{% macro ladder(c) -%}{{ price_curve(c) }}{%- endmacro %}
+{% macro ladder_mini(c) -%}{{ price_curve(c) }}{%- endmacro %}
 
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}

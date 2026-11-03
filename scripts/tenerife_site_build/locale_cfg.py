@@ -32,13 +32,13 @@ NOT_FOUND = {
     "fr": ("Page introuvable", "Vérifiez l’adresse ou revenez au projet Artemis de la Cruz.", "Revenir au projet"),
 }
 
-# шапка таблицы ступеней: первая колонка и колонка роста
+# шапка таблицы ступеней: первая колонка и сравнение с ценой ввода
 LADDER_HEAD = {
-    "ru": ("Ступень", "Рост"),
-    "en": ("Step", "Rise"),
-    "es": ("Tramo", "Subida"),
-    "de": ("Stufe", "Anstieg"),
-    "fr": ("Étape", "Hausse"),
+    "ru": ("Ступень", "Ниже"),
+    "en": ("Step", "Below"),
+    "es": ("Tramo", "Menos"),
+    "de": ("Stufe", "Unter"),
+    "fr": ("Palier", "Sous"),
 }
 
 # скрытая на главной секция «Команда и компания» (она же в подвале не нужна)
@@ -71,9 +71,9 @@ UI = {
 
 # Названия ступеней цены для мини-лестницы (C8 mini) — те же слова, что в первой колонке таблицы copy_<loc>/04
 STAGE_NAMES = {
-    "ru": ("Очередь", "Разрешение", "Фундамент", "Коробка и кровля", "Отделка", "Ввод"),
-    "en": ("Waiting list", "Permit", "Foundation", "Shell and roof", "Finishing", "Handover"),
-    "es": ("Lista de espera", "Licencia", "Cimentación", "Estructura y cubierta", "Acabados", "Entrega"),
-    "de": ("Warteliste", "Baugenehmigung", "Fundament", "Rohbau und Dach", "Ausbau", "Fertigstellung"),
-    "fr": ("Liste d'attente", "Permis", "Fondations", "Gros œuvre et toiture", "Finitions", "Livraison"),
+    "ru": ("Ранний вход", "Разрешение", "Фундамент", "Коробка и кровля", "Отделка", "Ввод"),
+    "en": ("Early entry", "Permit", "Foundation", "Shell and roof", "Finishing", "Handover"),
+    "es": ("Entrada inicial", "Licencia", "Cimentación", "Estructura y cubierta", "Acabados", "Entrega"),
+    "de": ("Früher Einstieg", "Baugenehmigung", "Fundament", "Rohbau und Dach", "Ausbau", "Fertigstellung"),
+    "fr": ("Entrée initiale", "Permis", "Fondations", "Gros œuvre et toiture", "Finitions", "Livraison"),
 }

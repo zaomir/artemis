@@ -277,7 +277,8 @@ class MenuScriptTest(unittest.TestCase):
         self.assertIn(".figures li:nth-child(3){grid-column:6/10}.figures li:nth-child(4),.figures li:nth-child(5)"
                       "{grid-column:10/13;", css)
         self.assertIn("--ladder-name-cap: 2.2cqi;", css)
-        self.assertIn(".ladder__name{font-size:min(var(--fs-h3),var(--ladder-name-cap))}", css)
+        self.assertIn("stroke-width:3.5", css)
+        self.assertIn("vector-effect:non-scaling-stroke", css)
         # D14 fonts: 12 @font-face, Canary symbol subsets, no modified files under the original names
         self.assertEqual(css.count("@font-face"), 12)
         fonts = ROOT / "app/static/tenerife/site/fonts"
@@ -323,7 +324,7 @@ class ComponentsTest(unittest.TestCase):
     def test_steps_log_people_mini_ladder_full_investor_calc(self):
         # Home now summarises participation; the full stage data belongs to investors.
         self.assertIn(f'href="{RU}/inversores/"', page("index"))
-        self.assertIn('<ol class="ladder"', page("inversores"))
+        self.assertIn('<figure class="price-curve"', page("inversores"))
         # C10 hidden (designer 20:23): copy_v3 has no confirmed log entries; the copy stays as an ordinary table,
         # no log markup and no anchor to it anywhere
         heads = {"construccion": '<th scope="col">Дата, по плану</th>'}
@@ -447,7 +448,7 @@ class KimiTextsTest(unittest.TestCase):
 
     def test_copy_hash(self):
         self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "3ff173feb07a622f674d67e4da323ca874a643ba7b9760a3d6e67b61202552aa")
+                         "45226f38b912462aefaa3da9a04480e8842983f80fcd1321126e54257ddecd0b")
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
