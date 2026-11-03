@@ -57,7 +57,7 @@ Simon Subic führt Grundstückswahl, Start und Finanzierung. Boris Ribaut betreu
 
 ### Berechnung anfordern
 
-Hinterlassen Sie Namen und Kontakt. Sie erhalten Einsatz, Zielbetrag beim Ausstieg und Projektablauf. Kostenlos und unverbindlich.
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

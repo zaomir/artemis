@@ -57,7 +57,7 @@ Simon Subic dirige la parcela, el lanzamiento y la financiación. Boris Ribaut s
 
 ### Solicitar un cálculo
 
-Deje su nombre y contacto. Le enviaremos la inversión, el resultado objetivo y el calendario del proyecto. La solicitud es gratuita y sin compromiso.
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
 
-**Кнопка: «Solicitar un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

@@ -5,17 +5,15 @@ Meta description: Un pago completo, @months@ meses y objetivo del @target@% anua
 OG title: Calcule su inversión y el cobro a la salida
 -->
 
-# Cuánto invertir ahora y recibir a la salida
+# Su inversión, rentabilidad objetivo y cobro a la salida
 
-Elija entre 48 y 100 acciones a @entry@ € cada una. Verá inversión, cobro objetivo y rentabilidad a @months@ meses al @target@% anualizado. Toda la inversión se paga de una vez.
+Elija un presupuesto para ver un único pago y el resultado objetivo a los @months@ meses. El modelo utiliza un @target@% anualizado con capitalización; capital y rentabilidad se abonan juntos al vender o recomprar la participación. No hay distribuciones anuales.
 
 [КАДР F20]
 
 ### Qué introduce
 
-**Número de acciones.** Elija 48, 72 o 100, o mueva el control. Es el tamaño de su inversión, no la superficie de una vivienda reservada.
-
-**Pago.** Importe completo al entrar. El modelo no incluye cuotas mensuales del inversor ni pagos intermedios.
+El importe varía en incrementos de @entry@ €, el precio de una acción. Rango de la calculadora: 48–100 acciones, desde @entry_48@ € hasta @entry_100@ €. El número de acciones determina su participación; no reserva una vivienda.
 
 ### Qué obtiene
 
@@ -46,7 +44,7 @@ De los pagos de compradores de veinte residencias. El calendario previsto reúne
 
 ### Qué afecta al cálculo
 
-El cálculo usa una referencia provisional de @market@ €/m², una subida anual del @growth@% en el plan de ventas y una rentabilidad objetivo del @target@% anualizado. [Rentabilidad e impuestos](/tenerife/inversores/#assumptions).
+El cálculo usa una referencia provisional de @market@ €/m², una subida anual del @growth@% en el plan de ventas y una rentabilidad objetivo del @target@% anualizado. [Hipótesis y resultado](/tenerife/inversores/#assumptions).
 
 ### Cómo entrar
 
@@ -54,7 +52,7 @@ Primero una solicitud gratuita; después, parcela y condiciones. El plazo de @mo
 
 ### Después del cálculo
 
-Deje nombre y contacto para recibir un cálculo personal. La cantidad seleccionada y el resultado recalculado acompañan la solicitud; no necesita introducir el importe a mano.
+Reciba el cálculo elegido, el calendario del proyecto y el procedimiento de salida. Deje su nombre y contacto; el importe ya está en el formulario.
 
-**Кнопка: «Solicitar un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

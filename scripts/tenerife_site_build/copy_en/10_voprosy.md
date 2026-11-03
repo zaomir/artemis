@@ -17,7 +17,7 @@ Key questions about money, timing and results. The base investment model has one
 
 **What does @target@% annualised mean?** A target effective return with compounding. Three years means @gain_pct@% above investment: @entry_72@ € → @exit_72@ € for 72 shares.
 
-**Where can I read the calculation terms?** Returns, taxes and independent advice are covered in [one section](/tenerife/inversores/#assumptions).
+**Where can I read the calculation terms?** Actual sales, costs and exit timing determine the outcome. [Assumptions and outcome](/tenerife/inversores/#assumptions).
 
 **Can investors pay in instalments?** The model requires full upfront investment. The 40/30/10/20% milestones apply to homebuyers.
 
@@ -52,7 +52,7 @@ Key questions about money, timing and results. The base investment model has one
 
 ### Request a calculation
 
-Leave your name and contact to discuss the amount, timing and assumptions for your participation.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

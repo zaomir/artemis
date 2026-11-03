@@ -84,5 +84,9 @@ Wir besprechen Grundstück, Budget, Kalender und Beteiligungsberechnung. Beginne
 
 **Wem schreiben, wenn der Bericht nicht zu dem passt, was Sie auf der Baustelle sehen?** Mir.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+### Berechnung anfordern
+
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
+
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

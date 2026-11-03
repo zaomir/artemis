@@ -102,5 +102,9 @@ Sur le versant nord, le soleil est plus doux qu'au sud, et c'est pourquoi l'endr
 
 **Quel lien avec l’investissement ?** Les équipements influencent la demande ; le gain dépend des ventes, du budget et du délai.
 
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+### Demander un calcul
+
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
+
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

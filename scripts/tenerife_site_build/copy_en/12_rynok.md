@@ -49,7 +49,7 @@ Early price, future house-price growth and investor return are three separate in
 
 ### Request a calculation
 
-Receive a personal calculation with the entry price, target result and receipts calendar.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

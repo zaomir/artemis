@@ -57,7 +57,7 @@ Simon Subic leads plot selection, launch and funding. Boris Ribaut oversees the 
 
 ### Request a calculation
 
-Leave your name and contact. We will send the investment amount, target exit result and project schedule. The request is free and carries no commitment.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

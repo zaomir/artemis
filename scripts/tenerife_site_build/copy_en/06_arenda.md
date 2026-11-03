@@ -31,7 +31,7 @@ The investor pays for participation once and receives a cash settlement on sale 
 
 ### Request a calculation
 
-Tell the team whether you want a home to live in or let. We will prepare a home-purchase calculation; a cash-exit investment is calculated separately.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

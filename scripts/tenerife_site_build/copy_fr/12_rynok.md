@@ -49,7 +49,7 @@ Prix initial, hausse des maisons et rendement sont trois paramètres distincts. 
 
 ### Demander un calcul
 
-Recevez un calcul personnel avec prix d’entrée, objectif et calendrier d’encaissement.
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

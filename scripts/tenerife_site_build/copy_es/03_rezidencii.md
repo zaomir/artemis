@@ -57,7 +57,7 @@ Compra la residencia elegida y recibe las llaves al finalizar el proyecto. La pa
 
 ### Solicitar un cálculo
 
-Indique al equipo qué tipo de casa le interesa. Prepararemos el presupuesto y el calendario de pagos correspondiente.
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
 
-**Кнопка: «Solicitar un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

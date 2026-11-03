@@ -17,7 +17,7 @@ Les questions essentielles sur l'argent, le délai et le résultat. Le modèle d
 
 **Que signifie @target@% annualisé ?** Un objectif effectif avec capitalisation : @gain_pct@% en trois ans. Pour 72 actions, @entry_72@ € → @exit_72@ €.
 
-**Où lire les conditions du calcul ?** Rendement, fiscalité et conseils indépendants sont présentés dans [une seule rubrique](/tenerife/inversores/#assumptions).
+**Où lire les conditions du calcul ?** Les ventes, les coûts et la date de sortie effectifs déterminent le résultat. [Hypothèses et résultat](/tenerife/inversores/#assumptions).
 
 **Puis-je payer en plusieurs fois ?** L'investissement exige le paiement intégral initial. Le 40/30/10/20% concerne les acheteurs de maisons.
 
@@ -52,7 +52,7 @@ Les questions essentielles sur l'argent, le délai et le résultat. Le modèle d
 
 ### Demander un calcul
 
-Laissez nom et contact pour discuter montant, délai et hypothèses.
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

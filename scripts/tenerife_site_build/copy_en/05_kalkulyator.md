@@ -5,17 +5,15 @@ Meta description: One upfront payment, @months@ months and a @target@% annualise
 OG title: Calculate your investment and exit proceeds
 -->
 
-# How much to invest now and receive at exit
+# Your investment, target income and exit proceeds
 
-Choose 48 to 100 shares at @entry@ € each. The calculator shows the investment, target proceeds and income after @months@ months at @target@% annualised. The entire investment is paid upfront.
+Choose a budget to see one upfront payment and the target result after @months@ months. The model uses @target@% annualised with compounding; capital and income are paid together on sale or buyback. There are no annual distributions.
 
 [КАДР F20]
 
 ### Your inputs
 
-**Share quantity.** Choose 48, 72 or 100 shares, or move the slider. This sets the investment size, not the area of a home reserved for you.
-
-**Payment.** The full amount at entry. There are no monthly investor instalments or interim distributions in the model.
+The amount changes in @entry@ € increments, the price of one share. Calculator range: 48–100 shares, from @entry_48@ € to @entry_100@ €. The share quantity sets your participation size; it does not reserve a home.
 
 ### Your results
 
@@ -46,7 +44,7 @@ From payments by buyers of twenty residences. The planned cash calendar covers c
 
 ### What affects the calculation
 
-The calculation uses a provisional @market@ €/m² reference, @growth@% annual price growth in the sales plan and a @target@% annualised target return. [Returns and taxes](/tenerife/inversores/#assumptions).
+The calculation uses a provisional @market@ €/m² reference, @growth@% annual price growth in the sales plan and a @target@% annualised target return. [Assumptions and outcome](/tenerife/inversores/#assumptions).
 
 ### Entry process
 
@@ -54,7 +52,7 @@ First a free enquiry, then discussion of the plot and terms. The @months@-month 
 
 ### After calculating
 
-Leave your name and contact for a personal calculation. Your selected quantity and recomputed result accompany the enquiry; no need to enter the amount manually.
+Receive your selected calculation, project timetable and exit process. Leave your name and preferred contact; your amount is already in the form.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

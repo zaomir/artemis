@@ -37,7 +37,7 @@
 <a class="skip" href="#main">{{ ui.skip }}</a>
 {{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
-{{ c.hero(page.hero) }}
+{{ c.hero(page.hero, calc) }}
 {% if page.facts %}
 {{ c.facts(page.facts) }}
 {% endif %}

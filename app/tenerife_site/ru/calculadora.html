@@ -64,8 +64,8 @@
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
     <div class="col-text bar-under">
-      <h1 id="h1">Сколько вложить сейчас и получить на выходе</h1>
-      <p class="hero__lead">Выберите от 48 до 100 акций по 2 352 €. Калькулятор покажет инвестицию, целевую сумму возврата и доход через 36 месяцев при 9% годовых. Вся инвестиция оплачивается единовременно.</p>
+      <h1 id="h1">Ваше вложение, целевой доход и сумма на выходе</h1>
+      <p class="hero__lead">Выберите бюджет — увидите один полный платёж и целевой результат через 36 месяцев. В модели 9% годовых со сложным процентом; капитал и доход выплачиваются вместе при продаже или выкупе участия. Ежегодных выплат нет.</p>
     </div>
   </div>
 </section>
@@ -74,32 +74,37 @@
   <div class="wrap grid calc">
     <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор инвестиции">
       <fieldset>
-        <legend>Количество акций</legend>
+        <legend>Сумма вашей инвестиции</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 акц.</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 акц.</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 акц.</span></label>
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
         </div>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Количество акций</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 акц.</output>
+          <label for="calc-m2" class="visually-hidden">Сумма инвестиции — выбор количества акций</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 акц." aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
         </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 акц.</output> · количество акций, без закрепления дома</p>
       </fieldset>
-      <p><strong>Ранняя цена за акцию:</strong> 2 352 €</p>
-      <p><strong>Оплата:</strong> Вся сумма один раз</p>
-      <p><strong>Срок модели:</strong> 36 месяцев</p>
-      <p>Целевой сценарий: результат зависит от продаж, расходов и срока выхода.</p>
+      <p class="micro">Вся сумма один раз · 36 месяцев от полной оплаты</p>
+      <p class="micro">Ранняя цена за акцию: 2 352 €</p>
     </div>
     <div class="calc__out" aria-live="polite" aria-atomic="true">
       <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Инвестиция — один платёж</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Целевая сумма на выходе</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Доход за весь срок</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Целевая доходность в год</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Прирост за весь срок</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__main"><dt>Целевой доход за весь срок</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>На выходе, включая ваш капитал</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Инвестиция — один платёж</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Целевая доходность в год</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Прирост за весь срок</dt><dd data-k="gain_pct">29,5%</dd></div>
         <div class="res__paths"><dt>Как выплачивается</dt><dd>Один денежный расчёт при продаже или выкупе. Ежегодных выплат нет.</dd></div>
       </dl>
+      <p class="micro calc__basis">Базовый сценарий: результат зависит от продаж, расходов и срока выхода.</p>
+      <p class="calc__source"><strong>Источник выплаты — продажи домов.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Получить этот расчёт</a>
+      <p class="micro">Бесплатно и без обязательств. Выбранная сумма уже будет в заявке.</p>
+      <p class="micro calc__source-detail">Платежи покупателей финансируют стройку. После завершения проекта выручка направляется на возврат капитала и целевой доход инвесторам.</p>
+      <p class="micro"><a href="/tenerife/ru/inversores/#funding">Посмотреть бюджет, календарь и допущения</a></p>
     </div>
   </div>
   <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"акц.","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
@@ -108,8 +113,7 @@
   <div class="wrap grid split-head">
     <h2 id="s1">Что вы вводите</h2>
     <div class="split-head__body">
-<p><strong>Количество акций.</strong> Выберите пример на 48, 72 или 100 акций либо передвиньте ползунок. Это размер инвестиции, а не площадь закреплённого за вами дома.</p>
-<p><strong>Способ оплаты.</strong> Вся сумма при входе. Ежемесячных платежей инвестора и промежуточных выплат в модели нет.</p>
+<p>Сумма меняется шагом 2 352 € — это цена одной акции. Диапазон калькулятора: 48–100 акций, от 112 896 € до 235 200 €. Количество акций не закрепляет дом; оно задаёт размер участия.</p>
 
     </div>
   </div>
@@ -180,7 +184,7 @@
   <div class="wrap grid split-head">
     <h2 id="s6">Что влияет на расчёт</h2>
     <div class="split-head__body">
-<p>Расчёт использует предварительную базу 3 360 €/м², рост цен в плане продаж 6% в год и целевую доходность 9% годовых. <a href="/tenerife/ru/inversores/#assumptions">Доходность и налоги</a>.</p>
+<p>Расчёт использует предварительную базу 3 360 €/м², рост цен в плане продаж 6% в год и целевую доходность 9% годовых. <a href="/tenerife/ru/inversores/#assumptions">Допущения и результат</a>.</p>
 
     </div>
   </div>
@@ -202,10 +206,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="s8">После расчёта</h2>
-<p>Оставьте имя и контакт, чтобы получить персональный расчёт. Выбранное количество акций и результат передадутся вместе с заявкой; сумму вручную вводить не нужно.</p>
+<p>Пришлём выбранный расчёт, календарь проекта и порядок выхода. Оставьте имя и удобный контакт — сумма уже указана в форме.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Мы свяжемся с вами, чтобы обсудить проект и подготовить персональный расчёт." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Заявка на расчёт принята." data-msg-ok-next="Команда свяжется с вами по указанному контакту, пришлёт персональный расчёт и объяснит срок и порядок выхода." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Ваш выбранный сценарий</strong></p>
+        <dl><div><dt>Вложение</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>На выходе с капиталом</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Целевой доход</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 месяцев от полной оплаты</p>
+        <a class="micro" href="#calc">Изменить сумму</a>
+      </div>
       <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Язык общения</label>
@@ -217,8 +227,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/ru/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить расчёт</button></div>
-      <p class="micro">Бесплатно. Платёж — после утверждения участка и условий участия.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить персональный расчёт</button></div>
+      <p class="micro">Бесплатно и без обязательств. Оплата участия — после утверждения участка и условий.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -282,6 +292,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

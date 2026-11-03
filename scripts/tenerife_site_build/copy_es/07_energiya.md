@@ -102,5 +102,9 @@ En la ladera norte el sol es más suave que en el sur, y por eso aquí no hace c
 
 **¿Cómo se relaciona con invertir?** El equipamiento influye en la demanda; el ingreso depende de ventas, costes y plazo.
 
-**Кнопка: «Recibir un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+### Solicitar un cálculo
+
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
+
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

@@ -181,7 +181,7 @@ class NoJsAnswerTest(AppCase):
         body = g.get_data(as_text=True)
         self.assertEqual(g.status_code, 200)
         self.assertIn("noindex", g.headers.get("X-Robots-Tag", "") + body)
-        self.assertIn("Спасибо! Вы в очереди.", body)
+        self.assertIn("Спасибо! Заявка на расчёт принята.", body)
         self.assertIn(f'<a href="{RU}/faq/">← К сайту проекта</a>', body)
         self.assertIn('<link rel="stylesheet" href="/static/tenerife/site/site.css">', body)
         self.assertNotIn("{{NOTICE_", body)

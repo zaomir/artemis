@@ -29,7 +29,7 @@ OXFORD FRAME REAL ASSETS LTD, Angleterre et pays de Galles, Companies House n° 
 
 ### Recevoir un calcul
 
-Laissez votre nom et vos coordonnées. Nous enverrons un calcul personnel et discuterons de la participation.
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
 
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

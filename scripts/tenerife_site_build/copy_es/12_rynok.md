@@ -49,7 +49,7 @@ Precio inicial, crecimiento y rentabilidad son tres parámetros distintos. El @d
 
 ### Solicitar un cálculo
 
-Reciba un cálculo personal con precio de entrada, resultado objetivo y calendario de cobros.
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
 
-**Кнопка: «Solicitar un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

@@ -124,5 +124,9 @@ El cálculo es gratuito. Pago tras aprobar parcela y condiciones. [Proceso](/ten
 
 **¿Por qué no el sur?** En el sur se descansa. En el norte se vive.
 
-**Кнопка: «Recibir un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+### Solicitar un cálculo
+
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
+
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

@@ -68,7 +68,7 @@ Wochenberichte zeigen bezahlte Arbeiten, Einnahmen und das Budget der nächsten 
 
 ### Berechnung anfordern
 
-Fordern Sie eine Beteiligungsberechnung über @months@ Monate oder den Zahlungsplan Ihrer gewählten Residenz an.
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

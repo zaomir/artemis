@@ -217,9 +217,14 @@
 
 
 </section>
-<section class="section section--sand" id="ochered" aria-label="Berechnung anfordern">
-  <div class="wrap grid wl wl--solo" id="waitlist">
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Wird gesendet…" data-msg-ok-title="Danke! Sie stehen auf der Liste." data-msg-ok-next="Wir melden uns bei Ihnen, um das Projekt zu besprechen und Ihre persönliche Berechnung vorzubereiten." data-msg-server="Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info&#64;artemisresort.com." data-msg-network="Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut." data-msg-rate="Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info&#64;artemisresort.com." data-msg-name="Bitte geben Sie Ihren Namen an." data-msg-contact="Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram." data-msg-language="Bitte wählen Sie die Sprache." data-msg-consent="Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.">
+<section class="section section--sand" id="ochered" aria-labelledby="s10">
+  <div class="wrap grid wl" id="waitlist">
+    <div class="wl__text">
+      <h2 id="s10">Berechnung anfordern</h2>
+<p>Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.</p>
+
+    </div>
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Wird gesendet…" data-msg-ok-title="Vielen Dank. Ihre Berechnungsanfrage ist eingegangen." data-msg-ok-next="Das Team meldet sich über Ihren angegebenen Kontakt, sendet eine persönliche Berechnung und erläutert Zeitpunkt und Ablauf des Ausstiegs." data-msg-server="Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns an info&#64;artemisresort.com." data-msg-network="Der Server ist nicht erreichbar. Prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut." data-msg-rate="Von dieser Verbindung wurden zu viele Anfragen gesendet. Bitte versuchen Sie es später erneut oder schreiben Sie an info&#64;artemisresort.com." data-msg-name="Bitte geben Sie Ihren Namen an." data-msg-contact="Bitte geben Sie einen Kontakt an: E-Mail, Telefon oder Telegram." data-msg-language="Bitte wählen Sie die Sprache." data-msg-consent="Bitte bestätigen Sie die Einwilligung zur Datenverarbeitung.">
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Kontakt — E-Mail, Telefon oder Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Sprache</label>
@@ -228,8 +233,8 @@
       <input type="hidden" name="page" value="/tenerife/de/energia/">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit ich in die Warteliste aufgenommen und zu meiner Anfrage kontaktiert werde, gemäß der <a href="/tenerife/de/privacy/">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Berechnung anfordern</button></div>
-      <p class="micro">Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Persönliche Berechnung anfordern</button></div>
+      <p class="micro">Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>

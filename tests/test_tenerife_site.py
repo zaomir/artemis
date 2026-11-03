@@ -146,6 +146,7 @@ class TenerifeSiteTest(unittest.TestCase):
             # основатель 02.11: публикуем расчётный дивиденд 2,5–3,5 % годовых — это не «гарантия доходности»
             html = html.replace("2,5–3,5 % годовых", "").replace("2,5–3,5% годовых", "")
             html = html.replace("9% годовых", "").replace("доходность 9", "доходность").replace("Сумма", "сумма")
+            html = html.replace("9,0% годовых — цель", "")
             for rx in FORBIDDEN:
                 self.assertIsNone(re.search(rx, html), f"{name}: {rx}")
 

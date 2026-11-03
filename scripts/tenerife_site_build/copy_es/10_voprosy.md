@@ -17,7 +17,7 @@ Preguntas clave sobre dinero, plazos y resultados. La inversión base tiene un p
 
 **¿Qué significa @target@% anualizado?** Objetivo efectivo con capitalización: @gain_pct@% en tres años. Para 72 acciones, @entry_72@ € → @exit_72@ €.
 
-**¿Dónde consultar las condiciones del cálculo?** Rentabilidad, impuestos y asesoramiento independiente se explican en [un apartado](/tenerife/inversores/#assumptions).
+**¿Dónde consultar las condiciones del cálculo?** Las ventas, los costes y el plazo de salida reales determinan el resultado. [Hipótesis y resultado](/tenerife/inversores/#assumptions).
 
 **¿Puedo pagar a plazos?** La inversión exige pago íntegro inicial. El 40/30/10/20% corresponde a compradores de casas.
 
@@ -52,7 +52,7 @@ Preguntas clave sobre dinero, plazos y resultados. La inversión base tiene un p
 
 ### Solicitar un cálculo
 
-Deje nombre y contacto para comentar importe, plazo e hipótesis de su participación.
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
 
-**Кнопка: «Solicitar un cálculo»**
-Gratis. El pago sigue a la aprobación de la parcela y las condiciones de participación.
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

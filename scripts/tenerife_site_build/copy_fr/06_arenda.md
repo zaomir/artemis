@@ -31,7 +31,7 @@ L’investisseur paie sa participation en une fois et reçoit un règlement en n
 
 ### Demander un calcul
 
-Indiquez si vous cherchez une maison pour vivre ou louer. Nous calculerons l'achat ; l'investissement avec sortie en numéraire est distinct.
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

@@ -102,5 +102,9 @@ On the northern slope the sun is softer than in the south, which is why it is no
 
 **How does this relate to investing?** Equipment affects buyer appeal; investor income depends on sales, costs and exit timing.
 
-**Кнопка: «Get a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+### Request a calculation
+
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
+
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

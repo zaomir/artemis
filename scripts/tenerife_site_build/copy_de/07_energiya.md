@@ -102,5 +102,9 @@ Am Nordhang ist die Sonne milder als im Süden — deshalb ist es hier nicht hei
 
 **Was hat das mit der Beteiligung zu tun?** Ausstattung beeinflusst die Nachfrage; Ertrag hängt von Verkäufen, Budget und Laufzeit ab.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+### Berechnung anfordern
+
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
+
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

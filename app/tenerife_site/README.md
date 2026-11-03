@@ -32,10 +32,11 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   Lead amounts, exit proceeds, income, term and target are recomputed server-side; old stage/installment payloads
   are marked stale and normalized. Legacy DB field names remain compatible but now hold share quantity and price.
   Validation and financial references: `docs/qa/ARTEMIS_EXIT_MODEL_2026-11-03.md`.
-- Public copy is written for visitors: operational instructions and stress-calculation details stay in the
-  project references. `/inversores/#assumptions` owns the single returns/taxes section in all five languages:
-  returns are not guaranteed, website amounts exclude individual investor taxes, and investors are asked
-  to consult an independent lawyer and accountant. The calculator, process and FAQ link to that section.
+- Public copy is written for visitors. The investor hero states the budget, cash-exit period from full
+  payment and home-sale funding source. Both calculators lead with euro budgets and target income,
+  then carry the selected scenario to the single enquiry form. `/inversores/#assumptions` keeps the
+  sales, cost and timing dependencies. The current release follows the founder's instruction to leave
+  individual taxation, regulatory status and legal commentary out of the marketing journey.
 - Primary menu: producto / inversores / norte / construccion / equipo, then a request link to `#ochered`.
   The footer owns the auxiliary links in Project / Participation / Team / Documents groups; mobile uses the same
   primary hierarchy and exposes the four non-RU languages. Russian remains a quiet footer link.

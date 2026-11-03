@@ -25,7 +25,6 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://artemisresort.com/tenerife/"},{"@type":"ListItem","position":2,"name":"For investors","item":"https://artemisresort.com/tenerife/inversores/"}]}</script>
 </head>
@@ -62,62 +61,69 @@
   </div>
 </header>
 <main id="main">
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="hero__media"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Foundation pit and footings on the slope, stone terraces of the plot" width="1600" height="914" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__body">
-    <div class="wrap grid">
-      <h1 id="h1">Invest in construction — receive capital and income at exit</h1>
+<section class="investment-hero" aria-labelledby="h1">
+  <div class="wrap grid investment-hero__grid">
+    <div class="investment-hero__copy">
+      <h1 id="h1">Invest in Tenerife with a cash exit after 36 months</h1>
+<p class="hero__lead">Invest from 112 896 € in one payment to fund the construction of twenty residences. The annualised target is 9%: capital and income are paid together on sale or buyback of your participation.</p><p class="hero__lead">The payment source is revenue from project home sales. The 36-month period starts at full payment. There are no annual distributions.</p>      <div class="investment-hero__links"><a class="btn-primary" href="#calculate">Calculate my exit</a><a href="#funding">Where the exit payment comes from</a></div>
     </div>
-  </div>
-  <div class="hero__after">
-    <div class="wrap grid">
-      <p class="hero__lead">Participation in Artemis de la Cruz starts at 112 896 €. Pay in full at entry, target 9% annualised and exit in cash after 36 months through a sale or buyback of the participation. There are no annual distributions. <a href="/tenerife/inversores/#calculate">Calculate your amount</a>.</p>
+    <div class="investment-example" aria-label="Base-case example">
+      <p class="micro">Base-case example</p>
+      <p class="investment-example__gain"><span>Target income over the full term</span><strong>+49 961 €</strong></p>
+      <dl><div><dt>Investment — one payment</dt><dd>169 344 €</dd></div><div><dt>At exit, including your capital</dt><dd>219 305 €</dd></div></dl>
+      <p>36 months from full payment · 9,0% annualised target</p>
+      <p class="micro">Base case: the result depends on sales, costs and exit timing.</p>
     </div>
   </div>
 </section>
 
-<section class="section rule-top s--head" aria-labelledby="overview">
-<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="overview">Project and current stage</h2>
+<section class="section rule-top s--head" aria-labelledby="calculate">
+  <div class="wrap grid split-head">
+    <h2 id="calculate">Calculate your investment</h2>
     <div class="split-head__body">
-<p>Twenty residences in La Quinta, Santa Úrsula. The plot is still being selected. You can request a free calculation and discuss the terms now; payment follows approval of the plot and participation terms. The financial period starts at full payment, not at enquiry.</p>
+<p>Choose an amount in euros. See your investment, target income and total exit proceeds after 36 months from full payment. No contact details are needed to view the result.</p>
 
     </div>
   </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="comparison">
-<span class="anchor-alias" id="s1" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="comparison">Investment or residence purchase</h2>
-    <div class="split-head__body">
-<div class="table-wrap" role="region" aria-labelledby="comparison" tabindex="0">
-  <table class="dt">
-    <thead><tr><td></td><th scope="col">Investor</th><th scope="col">Homebuyer</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Aim</th><td data-label="Investor">Recover capital with income</td><td data-label="Homebuyer">Receive a chosen residence</td></tr>
-      <tr><th scope="row">Payment</th><td data-label="Investor">Full amount at entry</td><td data-label="Homebuyer">Milestones: 40/30/10/20%</td></tr>
-      <tr><th scope="row">Result</th><td data-label="Investor">Cash settlement at exit</td><td data-label="Homebuyer">Keys to the home</td></tr>
-      <tr><th scope="row">Periodic distributions</th><td data-label="Investor">None</td><td data-label="Homebuyer">Not part of a home purchase</td></tr>
-    </tbody>
-  </table>
+<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Investment calculator">
+      <fieldset>
+        <legend>Your investment amount</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Investment amount — select a share quantity</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 shares" aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
+        </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 shares</output> · share quantity; no home is reserved</p>
+      </fieldset>
+      <p class="micro">Full amount, one payment · 36 months from full payment</p>
+      <p class="micro">Early price per share: 2 352 €</p>
+    </div>
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>Target income over the full term</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>At exit, including your capital</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Investment — one payment</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Annualised target return</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Total increase</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__paths"><dt>Payment mechanism</dt><dd>One cash settlement on sale or buyback. No annual distributions.</dd></div>
+      </dl>
+      <p class="micro calc__basis">Base case: the result depends on sales, costs and exit timing.</p>
+      <p class="calc__source"><strong>Exit payments come from home sales.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Request this calculation</a>
+      <p class="micro">Free, with no commitment. Your selected amount will be included in the enquiry.</p>
+      <p class="micro calc__source-detail">Buyer payments fund construction. After project completion, sales proceeds fund the return of investor capital and target income.</p>
+      <p class="micro"><a href="/tenerife/inversores/#funding">View the budget, timetable and assumptions</a></p>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"shares","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
 </div>
-<p>A share is a unit of participation. Its price is compared with a reference per m², but a share quantity does not reserve a specific home. Cash exits and residence purchases are calculated separately.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="price-stages">
-<span class="anchor-alias" id="s3" aria-hidden="true"></span><span class="anchor-alias" id="s4" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="price-stages">Early price and comparison reference</h2>
-    <div class="split-head__body">
-<p>The model’s early price is 2 352 € per share: 70% of the provisional 3 360 €/m² reference, or 30% below it.</p>
-<p>For unsold homes, the model assumes 6% annual growth. Each buyer's price is fixed at signing and does not rise afterwards. <a href="/tenerife/mercado/">Reference, formulas and sources</a>.</p>
-
-    </div>
-  </div>
 
 
 </section>
@@ -130,51 +136,6 @@
 
     </div>
   </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="calculate">
-  <div class="wrap grid split-head">
-    <h2 id="calculate">Calculate your investment</h2>
-    <div class="split-head__body">
-<p>Choose a share quantity. The calculator shows one upfront payment and the target cash result after 36 months. You can see the result without submitting a form; <a href="/tenerife/calculadora/">standalone calculator</a>.</p>
-
-    </div>
-  </div>
-<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
-  <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Investment calculator">
-      <fieldset>
-        <legend>Share quantity</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 shares</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 shares</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 shares</span></label>
-        </div>
-        <div class="range">
-          <label for="calc-m2" class="visually-hidden">Number of shares</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 shares</output>
-        </div>
-      </fieldset>
-      <p><strong>Early price per share:</strong> 2 352 €</p>
-      <p><strong>Payment:</strong> Full amount, one payment</p>
-      <p><strong>Model term:</strong> 36 months</p>
-      <p>Target scenario: the result depends on sales, costs and exit timing.</p>
-    </div>
-    <div class="calc__out" aria-live="polite" aria-atomic="true">
-      <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Investment — one payment</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Target exit proceeds</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Total income</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Annualised target return</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Total increase</dt><dd data-k="gain_pct">29,5%</dd></div>
-        <div class="res__paths"><dt>Payment mechanism</dt><dd>One cash settlement on sale or buyback. No annual distributions.</dd></div>
-      </dl>
-    </div>
-  </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"shares","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
-</div>
 
 
 </section>
@@ -203,12 +164,57 @@
 
 
 </section>
+<section class="section rule-top s--split" aria-labelledby="overview">
+<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid ti">
+    <div class="ti__text">
+      <h2 id="overview">Project and current stage</h2>
+<p>Twenty residences in La Quinta, Santa Úrsula. The plot is still being selected. You can request a free calculation and discuss the terms now; payment follows approval of the plot and participation terms. The financial period starts at full payment, not at enquiry.</p>
+
+    </div>
+    <figure class="frame"><div class="frame__media r-3x2"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Foundation pit and footings on the slope, stone terraces of the plot" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
+  </div>
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="comparison">
+<span class="anchor-alias" id="s1" aria-hidden="true"></span>  <div class="wrap grid split-head">
+    <h2 id="comparison">Investment or residence purchase</h2>
+    <div class="split-head__body">
+<div class="table-wrap" role="region" aria-labelledby="comparison" tabindex="0">
+  <table class="dt">
+    <thead><tr><td></td><th scope="col">Investor</th><th scope="col">Homebuyer</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Aim</th><td data-label="Investor">Recover capital with income</td><td data-label="Homebuyer">Receive a chosen residence</td></tr>
+      <tr><th scope="row">Payment</th><td data-label="Investor">Full amount at entry</td><td data-label="Homebuyer">Milestones: 40/30/10/20%</td></tr>
+      <tr><th scope="row">Result</th><td data-label="Investor">Cash settlement at exit</td><td data-label="Homebuyer">Keys to the home</td></tr>
+      <tr><th scope="row">Periodic distributions</th><td data-label="Investor">None</td><td data-label="Homebuyer">Not part of a home purchase</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A share is a unit of participation. Its price is compared with a reference per m², but a share quantity does not reserve a specific home. Cash exits and residence purchases are calculated separately.</p>
+
+    </div>
+  </div>
+
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="price-stages">
+<span class="anchor-alias" id="s3" aria-hidden="true"></span><span class="anchor-alias" id="s4" aria-hidden="true"></span>  <div class="wrap grid split-head">
+    <h2 id="price-stages">Early price and comparison reference</h2>
+    <div class="split-head__body">
+<p>The model's early price is 2 352 € per share: 70% of a provisional 3 360 €/m² reference, or 30% below it. An up-to-date comparable price list for local new-build homes has not yet been confirmed; 3 360 €/m² is an assumption, not a verified current market price.</p>
+<p>For unsold homes, the model assumes 6% annual growth. Each buyer's price is fixed at signing and does not rise afterwards. <a href="/tenerife/mercado/">Reference, formulas and sources</a>.</p>
+
+    </div>
+  </div>
+
+
+</section>
 <section class="section rule-top s--head" aria-labelledby="assumptions">
   <div class="wrap grid split-head">
-    <h2 id="assumptions">Returns and taxes</h2>
+    <h2 id="assumptions">What affects the result</h2>
     <div class="split-head__body">
-<p>Returns are not guaranteed. 9% annualised and an exit after 36 months are base-scenario targets. The amount and timing of capital and income payments depend on actual project sales and costs.</p>
-<p>We do not calculate each investor’s individual taxes; website figures are before those taxes. Before participating, obtain independent advice from a lawyer and an accountant.</p>
+<p>The budget assumes 1 750 €/m² of built area and roughly one buyer contract every one to two months. At 2 100 €/m² construction costs, 562 580 € is missing from the full target settlement; a two-month sales delay creates an interim funding gap of 202 236 €.</p>
+<p>Before taking investment, the project needs a selected plot, a confirmed cost plan and a workable sales and payment schedule. 6% growth is an assumption and 9% is a return target; both require actual sales receipts.</p>
 
     </div>
   </div>
@@ -241,10 +247,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="request">Request a calculation</h2>
-<p>Leave your name and contact. Receive a personal calculation with the participation amount, target result and project calendar.</p>
+<p>Receive your selected calculation, project timetable and exit process. Leave your name and preferred contact; your amount is already in the form.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Sending…" data-msg-ok-title="Thank you! You are on the list." data-msg-ok-next="We will contact you to discuss the project and prepare your personal calculation." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Sending…" data-msg-ok-title="Thank you. Your calculation request is received." data-msg-ok-next="The team will contact you using the details provided, send a personal calculation and explain the exit timing and process." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Your selected scenario</strong></p>
+        <dl><div><dt>Investment</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>Exit incl. capital</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Target income</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 months from full payment</p>
+        <a class="micro" href="#calc">Change the amount</a>
+      </div>
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contact — email, phone or Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Language</label>
@@ -256,8 +268,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href="/tenerife/privacy/">privacy policy</a>. Consent can be withdrawn at any time.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Request a calculation</button></div>
-      <p class="micro">Free of charge. Payment follows approval of the plot and participation terms.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Request a personal calculation</button></div>
+      <p class="micro">Free and without commitment. Participation payment follows approval of the plot and terms.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -321,6 +333,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

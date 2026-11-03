@@ -57,7 +57,7 @@ You purchase your chosen residence and receive the keys on completion. A separat
 
 ### Request a calculation
 
-Tell the team which home type interests you. We will prepare a budget and payment schedule for that residence.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

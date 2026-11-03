@@ -5,17 +5,15 @@ Meta description: Eine volle Zahlung, @months@ Monate und @target@% jährliche Z
 OG title: Investition und Auszahlung berechnen
 -->
 
-# Jetzt investieren und den Zielbetrag beim Ausstieg sehen
+# Ihre Investition, Ihr angestrebter Ertrag und Ihre Auszahlung
 
-Wählen Sie 48 bis 100 Aktien zu je @entry@ €. Der Rechner zeigt Investition, Zielauszahlung und Ertrag nach @months@ Monaten bei @target@% jährlich. Die gesamte Investition wird einmalig eingezahlt.
+Wählen Sie Ihr Budget und sehen Sie die Einmalzahlung sowie das angestrebte Ergebnis nach @months@ Monaten. Das Modell rechnet mit @target@% annualisiert und Zinseszinseffekt; Kapital und Ertrag werden beim Verkauf oder Rückkauf gemeinsam ausgezahlt. Keine jährlichen Ausschüttungen.
 
 [КАДР F20]
 
 ### Ihre Eingaben
 
-**Aktienzahl.** Wählen Sie 48, 72 oder 100 oder bewegen Sie den Regler. Dies bestimmt die Investitionshöhe, keine reservierte Hausfläche.
-
-**Zahlung.** Vollständiger Betrag beim Einstieg. Keine monatlichen Investorenraten und keine Zwischenzahlungen im Modell.
+Der Betrag verändert sich in Schritten von @entry@ €, dem Preis eines Anteils. Rechnerbereich: 48–100 Anteile, von @entry_48@ € bis @entry_100@ €. Die Anzahl bestimmt Ihre Beteiligung; sie reserviert kein Haus.
 
 ### Ihre Ergebnisse
 
@@ -46,7 +44,7 @@ Aus den Zahlungen der Käufer von zwanzig Residenzen. Der geplante Zahlungskalen
 
 ### Was die Berechnung beeinflusst
 
-Die Berechnung nutzt eine vorläufige Basis von @market@ €/m², @growth@% jährliches Preiswachstum im Verkaufsplan und @target@% jährliche Zielrendite. [Rendite und Steuern](/tenerife/inversores/#assumptions).
+Die Berechnung nutzt eine vorläufige Basis von @market@ €/m², @growth@% jährliches Preiswachstum im Verkaufsplan und @target@% jährliche Zielrendite. [Annahmen und Ergebnis](/tenerife/inversores/#assumptions).
 
 ### Einstieg
 
@@ -54,7 +52,7 @@ Zuerst eine kostenlose Anfrage, dann Grundstück und Bedingungen besprechen. Die
 
 ### Nach der Berechnung
 
-Hinterlassen Sie Namen und Kontakt für eine persönliche Berechnung. Aktienzahl und nachgerechnetes Ergebnis begleiten die Anfrage; der Betrag muss nicht manuell eingegeben werden.
+Sie erhalten Ihre Berechnung, den Projektzeitplan und den Ausstiegsablauf. Hinterlassen Sie Namen und Kontakt; der Betrag steht bereits im Formular.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

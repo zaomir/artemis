@@ -46,7 +46,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "48d5cb14980ee8b89141621f236e09128db52012105e4e7529787862d260079f"
+COPY_SHA256_DEFAULT = "bdb08a15257309697b329e59a32d72ade0b68ad0a7c993ffecedc75b3eb97896"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -141,7 +141,7 @@ INVESTOR_SECTIONS = {
     "Денежный выход через 36 месяцев": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
     "Рассчитайте инвестицию": ("calculate", ()),
     "Как финансируется стройка": ("funding", ()),
-    "Доходность и налоги": ("assumptions", ()),
+    "Что влияет на результат": ("assumptions", ()),
     "Контроль и команда": ("control", ()),
     "Документы и вопросы": ("documents", ("s9", "s12", "s13")),
 }
@@ -642,6 +642,9 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
     hero = {"h1": inline(h1[0]["text"]), "h1_text": h1[0]["text"],
             "intro": [inline(b["text"]) for b in rest[:j]], "img": hero_img, "bar": hero_img is None,
             "kind": "text" if long_page or hero_img is None else ("short" if name in SHORT_HERO else "full")}
+    if name == "inversores":
+        # Investment terms and a model example take precedence over a construction illustration.
+        hero.update(kind="investment", img=None, bar=False)
     rest = rest[j + 1:]
     facts = None
     if rest and is_facts(rest[0]):
@@ -695,6 +698,8 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
             s["id"] = ("roles", "responsibility", "profiles", "contact")[min(n - 1, 3)]
         s["calc_full"] = name == "inversores" and semantic == "calculate"
         s["rev"], s["qa"] = False, []
+        if name == "inversores" and semantic == "overview":
+            s["frames"].insert(0, "F14")
         s["frames"] = [f for f in s["frames"] if f not in hidden]
         s["bar"] = bool(s["frames"]) and all(frames[f] is None for f in s["frames"])
         s["frames"] = [f for f in s["frames"] if frames[f] is not None]
@@ -888,7 +893,8 @@ def calc_view(model):
               "investment": investment, "area_m2": model["area_m2"], "unit": cu["unit"],
               "types": [{key: value for key, value in t.items() if key != "name"} for t in model["types"]]}
     return {"m2": quantity, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"],
-            "unit": cu["unit"], "types": [dict(t, checked=t["quantity"] == quantity) for t in model["types"]],
+            "unit": cu["unit"], "types": [dict(t, checked=t["quantity"] == quantity,
+                budget=eur(t["quantity"] * cur["price_eur_m2"])) for t in model["types"]],
             "current": cur["id"], "sum": eur(total), "exit": eur(result), "gain": eur(result-total),
             "pct": fmt_pct(investment["target_annual"] * 100), "term": str(investment["exit_months"]),
             "gain_pct": fmt_pct((result/total-1) * 100), "entry": eur(cur["price_eur_m2"]),
@@ -1198,6 +1204,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
     env.globals["form_ui"] = form_ui()
     env.globals["calc_ui"] = calc_ui()
+    env.globals["calc_details_url"] = locale_path("/tenerife/inversores/#funding")
     env.globals["nav_ui"] = locale_cfg.NAV_UI[LOCALE]
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:

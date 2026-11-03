@@ -5,11 +5,38 @@ Meta description: Prix initial de @entry@ € par action, paiement intégral et 
 OG title: Investir avec sortie à @months@ mois
 -->
 
-# Financer la construction — recevoir capital et gain à la sortie
+# Investir à Tenerife avec une sortie en numéraire à @months@ mois
 
-Participation à Artemis de la Cruz dès @entry_48@ €. Paiement intégral à l'entrée, objectif de @target@% annualisé et sortie en numéraire à @months@ mois par vente ou rachat de la participation. Aucun versement annuel. [Calculer votre montant](/tenerife/inversores/#calculate).
+Investissez dès @entry_48@ € en un versement pour financer la construction de vingt résidences. L’objectif est de @target@% annualisés : capital et gain sont versés ensemble lors de la vente ou du rachat de votre participation.
+
+Le paiement provient des ventes des logements du projet. Les @months@ mois commencent au paiement intégral. Aucune distribution annuelle n’est prévue.
 
 [КАДР F14]
+
+### Calculez votre investissement
+
+Choisissez un montant en euros. Vous verrez votre investissement, le gain visé et le montant total à la sortie, @months@ mois après le paiement intégral. Aucune coordonnée n’est nécessaire pour consulter le résultat.
+
+### Sortie en numéraire à 36 mois
+
+Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
+
+Formule du scénario de base : **règlement de sortie = investissement × (1 + @target@%)³**.
+
+### Comment les travaux sont financés
+
+Deux sources : le fonds initial des investisseurs et les paiements des acheteurs de vingt maisons. Le plan de base ne prévoit ni apport complémentaire du promoteur ni crédit bancaire.
+
+| Scénario de base | Montant |
+|---|---|
+| Fonds initial : @pool@ actions | @pool_capital@ € |
+| Contrats acheteurs aux mois 3–30 | @sales@ € |
+| Terrain, travaux, études et réserve | @budget@ € |
+| Frais de vente | @sales_fee@ € |
+| Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
+| Solde du projet après règlement | @surplus@ € |
+
+Les acheteurs paient par étapes : 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel prévisionnel relie ces encaissements aux dépenses de construction et au règlement des investisseurs.
 
 ### Projet et stade actuel
 
@@ -28,40 +55,15 @@ Une action est une unité de participation. Son prix est comparé à une référ
 
 ### Prix initial et référence de comparaison
 
-Le prix initial du modèle est de @entry@ € par action : 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins.
+Le prix initial du modèle est de @entry@ € par action : 70% de la référence provisoire de @market@ €/m², soit @discount@% de moins. Aucun tarif actuel comparable de programmes neufs locaux n'a encore été confirmé. @market@ €/m² est une hypothèse, pas un prix actuel vérifié.
 
 Pour les maisons non vendues, le modèle prévoit @growth@% de hausse annuelle. Le prix de chaque acheteur est fixé à la signature et n'augmente plus ensuite. [Référence, formules et sources](/tenerife/mercado/).
 
-### Sortie en numéraire à 36 mois
+### Ce qui affecte le résultat
 
-Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
+Le budget retient @cost_m2@ €/m² construit et environ un contrat tous les un à deux mois. À 2 100 €/m², il manque @high_shortfall@ € pour le règlement cible complet. Un retard de ventes de deux mois crée un déficit intermédiaire de @delay_gap@ €.
 
-Formule du scénario de base : **règlement de sortie = investissement × (1 + @target@%)³**.
-
-### Calculez votre investissement
-
-Choisissez le nombre d'actions. Le calculateur affiche un paiement intégral et le résultat visé à @months@ mois. Le résultat est accessible sans demande ; [calculateur séparé](/tenerife/calculadora/).
-
-### Comment les travaux sont financés
-
-Deux sources : le fonds initial des investisseurs et les paiements des acheteurs de vingt maisons. Le plan de base ne prévoit ni apport complémentaire du promoteur ni crédit bancaire.
-
-| Scénario de base | Montant |
-|---|---|
-| Fonds initial : @pool@ actions | @pool_capital@ € |
-| Contrats acheteurs aux mois 3–30 | @sales@ € |
-| Terrain, travaux, études et réserve | @budget@ € |
-| Frais de vente | @sales_fee@ € |
-| Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
-| Solde du projet après règlement | @surplus@ € |
-
-Les acheteurs paient par étapes : 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel prévisionnel relie ces encaissements aux dépenses de construction et au règlement des investisseurs.
-
-### Rendement et fiscalité
-
-Le rendement n’est pas garanti. @target@% annualisé et une sortie à @months@ mois sont les objectifs du scénario de base. Le montant et le délai de remboursement du capital et du gain dépendent des ventes et des coûts réels du projet.
-
-Nous ne calculons pas les impôts individuels de l’investisseur ; les montants du site sont présentés avant ces impôts. Avant de participer, consultez un avocat et un expert-comptable indépendants.
+Avant tout investissement, il faut un terrain choisi, un budget confirmé et un calendrier viable de ventes et de paiements. @growth@% est une hypothèse de hausse, @target@% un objectif de rendement ; ils nécessitent des ventes réelles.
 
 ### Suivi et équipe
 
@@ -73,7 +75,7 @@ Avant paiement, vous recevez calcul personnel et conditions : montant, début de
 
 ### Demander un calcul
 
-Laissez votre nom et vos coordonnées. Vous recevrez un calcul personnel avec le montant de participation, l’objectif et le calendrier du projet.
+Recevez le calcul choisi, le calendrier du projet et les modalités de sortie. Laissez votre nom et votre contact ; le montant figure déjà dans le formulaire.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

@@ -124,5 +124,9 @@ Le calcul est gratuit. Paiement après validation du terrain et des conditions. 
 
 **Pourquoi pas le sud?** Au sud, on passe des vacances. Au nord, on vit.
 
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+### Demander un calcul
+
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
+
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.
