@@ -46,7 +46,7 @@ BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "45226f38b912462aefaa3da9a04480e8842983f80fcd1321126e54257ddecd0b"
+COPY_SHA256_DEFAULT = "fb0ef0adb49e7cfe60670b2a7c919ad26625c1aba2ad3c2623471b99d67e07fc"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -213,9 +213,9 @@ EMAIL_RX = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 
 
 def inline(s):
-    """Escape + **bold** + [text](/url) + e-mail -> mailto. Nothing else is interpreted."""
+    """Escape + **bold** + internal/HTTPS links + e-mail -> mailto. Nothing else is interpreted."""
     out, pos = [], 0
-    for m in re.finditer(r"\[([^\]]+)\]\((/[^)\s]*)\)", s):
+    for m in re.finditer(r"\[([^\]]+)\]\(((?:/(?!/)|https://)[^)\s]*)\)", s):
         out.append(_inline_text(s[pos:m.start()]))
         out.append(f'<a href="{html.escape(m.group(2))}">{_inline_text(m.group(1))}</a>')
         pos = m.end()
