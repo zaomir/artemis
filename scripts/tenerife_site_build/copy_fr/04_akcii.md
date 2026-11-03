@@ -5,11 +5,38 @@ Meta description: Prix initial de @entry@ € par action, paiement intégral et 
 OG title: Investir avec sortie à @months@ mois
 -->
 
-# Financer la construction — recevoir capital et gain à la sortie
+# Investir à Tenerife avec une sortie en numéraire à @months@ mois
 
-Participation à Artemis de la Cruz dès @entry_48@ €. Paiement intégral à l'entrée, objectif de @target@% annualisé et sortie en numéraire à @months@ mois par vente ou rachat de la participation. Aucun versement annuel. [Calculer votre montant](/tenerife/inversores/#calculate).
+Investissez dès @entry_48@ € en un versement pour financer la construction de vingt résidences. L’objectif est de @target@% annualisés : capital et gain sont versés ensemble lors de la vente ou du rachat de votre participation.
+
+Le paiement provient des ventes des logements du projet. Les @months@ mois commencent au paiement intégral. Aucune distribution annuelle n’est prévue.
 
 [КАДР F14]
+
+### Calculez votre investissement
+
+Choisissez un montant en euros. Vous verrez votre investissement, le gain visé et le montant total à la sortie, @months@ mois après le paiement intégral. Aucune coordonnée n’est nécessaire pour consulter le résultat.
+
+### Sortie en numéraire à 36 mois
+
+Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
+
+Formule : **règlement de sortie = investissement × (1 + @target@%)³**. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.
+
+### Comment les travaux sont financés
+
+Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.
+
+| Scénario de base | Montant |
+|---|---|
+| Fonds initial : @pool@ actions | @pool_capital@ € |
+| Contrats acheteurs aux mois 3–30 | @sales@ € |
+| Terrain, travaux, études et réserve | @budget@ € |
+| Frais de vente | @sales_fee@ € |
+| Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
+| Solde du projet après règlement | @surplus@ € |
+
+Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est @minimum_cash@ €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.
 
 ### Projet et stade actuel
 
@@ -32,31 +59,6 @@ Le prix initial du modèle est de @entry@ € par action : 70% de la référence
 
 Pour les maisons non vendues, le modèle prévoit @growth@% de hausse annuelle. Le prix de chaque acheteur est fixé à la signature et n'augmente plus ensuite. [Référence, formules et sources](/tenerife/mercado/).
 
-### Sortie en numéraire à 36 mois
-
-Pour 72 actions : investissement intégral de @entry_72@ €, règlement visé de @exit_72@ €, dont @gain_72@ € de gain. La progression totale est de @gain_pct@% en trois ans, soit @target@% annualisé avec capitalisation.
-
-Formule : **règlement de sortie = investissement × (1 + @target@%)³**. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.
-
-### Calculez votre investissement
-
-Choisissez le nombre d'actions. Le calculateur affiche un paiement intégral et le résultat visé à @months@ mois. Le résultat est accessible sans demande ; [calculateur séparé](/tenerife/calculadora/).
-
-### Comment les travaux sont financés
-
-Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.
-
-| Scénario de base | Montant |
-|---|---|
-| Fonds initial : @pool@ actions | @pool_capital@ € |
-| Contrats acheteurs aux mois 3–30 | @sales@ € |
-| Terrain, travaux, études et réserve | @budget@ € |
-| Frais de vente | @sales_fee@ € |
-| Capital et gain visé des investisseurs à la sortie | @pool_exit@ € |
-| Solde du projet après règlement | @surplus@ € |
-
-Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est @minimum_cash@ €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.
-
 ### Ce qui affecte le résultat
 
 Le budget retient @cost_m2@ €/m² construit et environ un contrat tous les un à deux mois. À 2 100 €/m², il manque @high_shortfall@ € pour le règlement cible complet. Un retard de ventes de deux mois crée un déficit intermédiaire de @delay_gap@ €.
@@ -73,7 +75,7 @@ Avant paiement, vous recevez calcul personnel et conditions : montant, début de
 
 ### Demander un calcul
 
-Laissez nom et contact. Nous calculerons votre montant et préciserons les paramètres à confirmer avant paiement.
+Recevez le calcul choisi, le calendrier du projet et les modalités de sortie. Laissez votre nom et votre contact ; le montant figure déjà dans le formulaire.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

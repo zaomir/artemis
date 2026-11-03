@@ -31,7 +31,7 @@ Das neue Modell hält kein Mietportfolio für jährliche Ausschüttungen. Der In
 
 ### Berechnung anfordern
 
-Sagen Sie dem Team, ob Sie wohnen oder vermieten möchten. Sie erhalten eine Hauskaufberechnung; die Beteiligung mit Barausstieg wird getrennt berechnet.
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

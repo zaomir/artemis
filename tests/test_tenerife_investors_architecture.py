@@ -241,7 +241,7 @@ class InvestorArchitectureTest(unittest.TestCase):
             form = doc.by_id("wl-form")
             data = {n.attrs["name"]: n.attrs.get("value", "") for n in form.nodes("input") if n.attrs.get("type") == "hidden"}
             data.update(name="QA Local", contact="qa@example.com", language=locale, consent=True,
-                        calc_m2="72", calc_step="early", calc_pay="now", website="")
+                        calc_m2="49", calc_step="early", calc_pay="now", website="")
             self.assertEqual(data["page"], route(locale, "inversores"))
             with mock.patch.object(self.tenerife, "notify_lead") as notify:
                 response = self.client.post(form.attrs["action"], json=data,
@@ -252,10 +252,27 @@ class InvestorArchitectureTest(unittest.TestCase):
                 row = dict(conn.execute("SELECT * FROM tenerife_waitlist ORDER BY id DESC LIMIT 1").fetchone())
             self.assertEqual((row["page"], row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"],
                               row["calc_amount"], row["calc_month_eur"]),
-                             (route(locale, "inversores"), "ok", 72, "early", "now", 169344, None), locale)
+                             (route(locale, "inversores"), "ok", 49, "early", "now", 115248, None), locale)
+            self.assertEqual((row["calc_exit_amount"], row["calc_income"]), (149250, 34002), locale)
             self.assertEqual(row["calc_model_version"], tenerife_calc.load_model()["version"])
             notify.assert_called_once()
-            self.assertEqual(notify.call_args.kwargs["calc"]["calc_amount"], 169344)
+            self.assertEqual(notify.call_args.kwargs["calc"]["calc_amount"], 115248)
+
+    def test_result_links_directly_to_a_form_with_visible_matching_scenario(self):
+        for locale in LOCALES:
+            for slug in ("inversores", "calculadora"):
+                doc = self.page(locale, slug)
+                self.assertEqual(doc.by_id("calc-request").attrs["href"], "#ochered")
+                self.assertEqual(links(doc.by_id("request-scenario")), ["#calc"])
+                displayed = {n.attrs["data-calc-value"]: n.text().strip()
+                             for n in doc.by_id("wl-form").nodes() if "data-calc-value" in n.attrs}
+                self.assertEqual(displayed, {"sum": "169\u00a0344\u00a0€", "exit": "219\u00a0305\u00a0€",
+                                             "gain": "49\u00a0961\u00a0€"}, (locale, slug))
+                primary = [n for n in doc.nodes("button") if has_class(n, "cta-primary")]
+                self.assertEqual(len(primary), 1, (locale, slug))
+            doc = self.page(locale, "inversores")
+            sections = [n.attrs.get("aria-labelledby") for n in doc.nodes("section")]
+            self.assertLess(sections.index("calculate"), sections.index("comparison"), locale)
 
     def test_contact_validation_rejects_garbage_and_accepts_supported_reply_channels(self):
         base = {"name": "QA Local", "language": "en", "consent": True, "page": route("en", "inversores")}

@@ -25,7 +25,6 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://artemisresort.com/tenerife/es/"},{"@type":"ListItem","position":2,"name":"Inversores","item":"https://artemisresort.com/tenerife/es/inversores/"}]}</script>
 </head>
@@ -62,29 +61,118 @@
   </div>
 </header>
 <main id="main">
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="hero__media"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Excavación y cimentación en la ladera, terrazas de piedra de la parcela" width="1600" height="914" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__body">
-    <div class="wrap grid">
-      <h1 id="h1">Invertir en la construcción y recibir capital y rentabilidad a la salida</h1>
+<section class="investment-hero" aria-labelledby="h1">
+  <div class="wrap grid investment-hero__grid">
+    <div class="investment-hero__copy">
+      <h1 id="h1">Invierta en Tenerife con salida en efectivo a los 36 meses</h1>
+<p class="hero__lead">Invierta desde 112 896 € en un único pago para financiar la construcción de veinte residencias. El objetivo es un 9% anualizado: capital y rentabilidad se abonan juntos al vender o recomprar la participación.</p><p class="hero__lead">El pago procede de los ingresos por la venta de las viviendas del proyecto. Los 36 meses empiezan con el pago íntegro. No hay distribuciones anuales.</p>      <div class="investment-hero__links"><a class="btn-primary" href="#calculate">Calcular mi salida</a><a href="#funding">De dónde procede el pago de salida</a></div>
     </div>
-  </div>
-  <div class="hero__after">
-    <div class="wrap grid">
-      <p class="hero__lead">Participación en Artemis de la Cruz desde 112 896 €. Pago completo al entrar, objetivo del 9% anualizado y salida en efectivo a 36 meses mediante venta o recompra de la participación. No se prevén pagos anuales. <a href="/tenerife/es/inversores/#calculate">Calcular su importe</a>.</p>
+    <div class="investment-example" aria-label="Ejemplo del escenario base">
+      <p class="micro">Ejemplo del escenario base</p>
+      <p class="investment-example__gain"><span>Rentabilidad objetivo de todo el plazo</span><strong>+49 961 €</strong></p>
+      <dl><div><dt>Inversión — un pago</dt><dd>169 344 €</dd></div><div><dt>A la salida, incluido su capital</dt><dd>219 305 €</dd></div></dl>
+      <p>36 meses desde el pago íntegro · 9,0% anualizado como objetivo</p>
+      <p class="micro">Escenario base: el resultado depende de ventas, costes y plazo de salida.</p>
     </div>
   </div>
 </section>
 
-<section class="section rule-top s--head" aria-labelledby="overview">
-<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="overview">Proyecto y fase actual</h2>
+<section class="section rule-top s--head" aria-labelledby="calculate">
+  <div class="wrap grid split-head">
+    <h2 id="calculate">Calcule su inversión</h2>
     <div class="split-head__body">
-<p>Veinte residencias en La Quinta, Santa Úrsula. La parcela sigue en selección. Ya puede solicitar un cálculo gratuito y comentar las condiciones; el pago llega tras aprobar la parcela y la participación. El plazo financiero empieza con el pago completo, no con la solicitud.</p>
+<p>Elija un importe en euros. Verá su inversión, la rentabilidad objetivo y el cobro total a los 36 meses desde el pago íntegro. No necesita dejar datos de contacto para ver el resultado.</p>
+
+    </div>
+  </div>
+<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Calculadora de inversión">
+      <fieldset>
+        <legend>Importe de su inversión</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Importe de inversión — seleccione el número de acciones</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 acciones" aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
+        </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 acciones</output> · acciones; no se reserva una vivienda</p>
+      </fieldset>
+      <p class="micro">Importe íntegro, un pago · 36 meses desde el pago íntegro</p>
+      <p class="micro">Precio inicial por acción: 2 352 €</p>
+    </div>
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>Rentabilidad objetivo de todo el plazo</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>A la salida, incluido su capital</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Inversión — un pago</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Objetivo anualizado</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Aumento total</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__paths"><dt>Forma de cobro</dt><dd>Una liquidación en efectivo al vender o recomprar. Sin pagos anuales.</dd></div>
+      </dl>
+      <p class="micro calc__basis">Escenario base: el resultado depende de ventas, costes y plazo de salida.</p>
+      <p class="calc__source"><strong>El pago de salida procede de la venta de viviendas.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Solicitar este cálculo</a>
+      <p class="micro">Gratis y sin compromiso. El importe elegido se incluirá en la solicitud.</p>
+      <p class="micro calc__source-detail">Los pagos de los compradores financian la obra. Al terminar el proyecto, los ingresos por ventas permiten devolver el capital y abonar la rentabilidad objetivo a los inversores.</p>
+      <p class="micro"><a href="/tenerife/es/inversores/#funding">Ver presupuesto, calendario e hipótesis</a></p>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"acciones","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
+</div>
+
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="outcomes">
+<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
+    <h2 id="outcomes">Salida en efectivo a 36 meses</h2>
+    <div class="split-head__body">
+<p>Para 72 acciones: inversión completa de 169 344 €, cobro objetivo de 219 305 €, incluidos 49 961 € de rentabilidad. El aumento total es del 29,5% en tres años, equivalente al 9% anualizado con capitalización.</p>
+<p>Fórmula: <strong>cobro a la salida = inversión × (1 + 9%)³</strong>. Es el objetivo del escenario base. El pago real depende de los cobros de ventas, los costes y el plazo de salida.</p>
 
     </div>
   </div>
 
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="funding">
+  <div class="wrap grid split-head">
+    <h2 id="funding">Cómo se financia la obra</h2>
+    <div class="split-head__body">
+<p>Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las veinte viviendas. El modelo no incluye capital adicional del promotor ni deuda bancaria. La inversión no se contabiliza como ingresos de venta de viviendas.</p>
+<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
+  <table class="dt">
+    <thead><tr><th scope="col">Escenario base</th><th scope="col" class="num">Importe</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Fondo inicial: 564 acciones</th><td class="num" data-label="Importe">1 326 528 €</td></tr>
+      <tr><th scope="row">Contratos de compradores, meses 3–30</th><td class="num" data-label="Importe">5 129 877 €</td></tr>
+      <tr><th scope="row">Terreno, construcción, proyecto y reserva</th><td class="num" data-label="Importe">4 490 813 €</td></tr>
+      <tr><th scope="row">Gastos de venta</th><td class="num" data-label="Importe">153 896 €</td></tr>
+      <tr><th scope="row">Capital y rentabilidad objetivo al salir</th><td class="num" data-label="Importe">1 717 892 €</td></tr>
+      <tr><th scope="row">Saldo del proyecto tras liquidar</th><td class="num" data-label="Importe">93 803 €</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Los compradores pagan 40/30/10/20%. Quien firme tarde abona los hitos completados inmediatamente. El calendario mensual base no presenta déficit; su saldo mínimo es 53 083 €. Son cálculos, no dinero ya captado ni contratos ya firmados.</p>
+
+    </div>
+  </div>
+
+
+</section>
+<section class="section rule-top s--split" aria-labelledby="overview">
+<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid ti">
+    <div class="ti__text">
+      <h2 id="overview">Proyecto y fase actual</h2>
+<p>Veinte residencias en La Quinta, Santa Úrsula. La parcela sigue en selección. Ya puede solicitar un cálculo gratuito y comentar las condiciones; el pago llega tras aprobar la parcela y la participación. El plazo financiero empieza con el pago completo, no con la solicitud.</p>
+
+    </div>
+    <figure class="frame"><div class="frame__media r-3x2"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Excavación y cimentación en la ladera, terrazas de piedra de la parcela" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
+  </div>
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="comparison">
@@ -115,88 +203,6 @@
     <div class="split-head__body">
 <p>El precio inicial del modelo es 2 352 € por acción: el 70% de la referencia provisional de 3 360 €/m², un 30% por debajo. No se ha confirmado una tarifa actual comparable de obra nueva local; 3 360 €/m² es una hipótesis, no un precio de mercado actual verificado.</p>
 <p>El modelo supone un crecimiento anual del 6% para viviendas aún no vendidas. El precio de cada comprador queda fijado al firmar y no aumenta después. <a href="/tenerife/es/mercado/">Referencia, fórmulas y fuentes</a>.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="outcomes">
-<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="outcomes">Salida en efectivo a 36 meses</h2>
-    <div class="split-head__body">
-<p>Para 72 acciones: inversión completa de 169 344 €, cobro objetivo de 219 305 €, incluidos 49 961 € de rentabilidad. El aumento total es del 29,5% en tres años, equivalente al 9% anualizado con capitalización.</p>
-<p>Fórmula: <strong>cobro a la salida = inversión × (1 + 9%)³</strong>. Es el objetivo del escenario base. El pago real depende de los cobros de ventas, los costes y el plazo de salida.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="calculate">
-  <div class="wrap grid split-head">
-    <h2 id="calculate">Calcule su inversión</h2>
-    <div class="split-head__body">
-<p>Elija el número de acciones. La calculadora muestra un pago completo y el resultado objetivo a 36 meses. Puede verlo sin enviar una solicitud; <a href="/tenerife/es/calculadora/">calculadora independiente</a>.</p>
-
-    </div>
-  </div>
-<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
-  <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Calculadora de inversión">
-      <fieldset>
-        <legend>Número de acciones</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 acciones</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 acciones</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 acciones</span></label>
-        </div>
-        <div class="range">
-          <label for="calc-m2" class="visually-hidden">Número de acciones</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 acciones</output>
-        </div>
-      </fieldset>
-      <p><strong>Precio inicial por acción:</strong> 2 352 €</p>
-      <p><strong>Pago:</strong> Importe íntegro, un pago</p>
-      <p><strong>Plazo del modelo:</strong> 36 meses</p>
-      <p>Escenario objetivo: el resultado depende de ventas, costes y plazo de salida.</p>
-    </div>
-    <div class="calc__out" aria-live="polite" aria-atomic="true">
-      <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Inversión — un pago</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Cobro objetivo a la salida</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Rentabilidad total</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Objetivo anualizado</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Aumento total</dt><dd data-k="gain_pct">29,5%</dd></div>
-        <div class="res__paths"><dt>Forma de cobro</dt><dd>Una liquidación en efectivo al vender o recomprar. Sin pagos anuales.</dd></div>
-      </dl>
-    </div>
-  </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"acciones","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
-</div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="funding">
-  <div class="wrap grid split-head">
-    <h2 id="funding">Cómo se financia la obra</h2>
-    <div class="split-head__body">
-<p>Dos fuentes: el fondo inicial de inversores y los pagos de compradores de las veinte viviendas. El modelo no incluye capital adicional del promotor ni deuda bancaria. La inversión no se contabiliza como ingresos de venta de viviendas.</p>
-<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
-  <table class="dt">
-    <thead><tr><th scope="col">Escenario base</th><th scope="col" class="num">Importe</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Fondo inicial: 564 acciones</th><td class="num" data-label="Importe">1 326 528 €</td></tr>
-      <tr><th scope="row">Contratos de compradores, meses 3–30</th><td class="num" data-label="Importe">5 129 877 €</td></tr>
-      <tr><th scope="row">Terreno, construcción, proyecto y reserva</th><td class="num" data-label="Importe">4 490 813 €</td></tr>
-      <tr><th scope="row">Gastos de venta</th><td class="num" data-label="Importe">153 896 €</td></tr>
-      <tr><th scope="row">Capital y rentabilidad objetivo al salir</th><td class="num" data-label="Importe">1 717 892 €</td></tr>
-      <tr><th scope="row">Saldo del proyecto tras liquidar</th><td class="num" data-label="Importe">93 803 €</td></tr>
-    </tbody>
-  </table>
-</div>
-<p>Los compradores pagan 40/30/10/20%. Quien firme tarde abona los hitos completados inmediatamente. El calendario mensual base no presenta déficit; su saldo mínimo es 53 083 €. Son cálculos, no dinero ya captado ni contratos ya firmados.</p>
 
     </div>
   </div>
@@ -241,10 +247,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="request">Solicitar un cálculo</h2>
-<p>Deje nombre y contacto. Calcularemos su importe y comentaremos qué parámetros necesitan confirmación antes de pagar.</p>
+<p>Reciba el cálculo elegido, el calendario del proyecto y el procedimiento de salida. Deje su nombre y contacto; el importe ya está en el formulario.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Enviando…" data-msg-ok-title="¡Gracias! Ya está en la lista." data-msg-ok-next="Su solicitud se envía al equipo del proyecto por Telegram y a info&#64;artemisresort.com. Nos pondremos en contacto con usted." data-msg-server="No se pudo enviar la solicitud. Inténtelo de nuevo o escríbanos a info&#64;artemisresort.com." data-msg-network="No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo." data-msg-rate="Desde esta conexión se han enviado demasiadas solicitudes. Vuelva a intentarlo más tarde o escríbanos a info&#64;artemisresort.com." data-msg-name="Indique su nombre." data-msg-contact="Indique un contacto: email, teléfono o Telegram." data-msg-language="Elija el idioma de comunicación." data-msg-consent="Marque el consentimiento para el tratamiento de datos.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Enviando…" data-msg-ok-title="Gracias. Hemos recibido su solicitud de cálculo." data-msg-ok-next="El equipo se pondrá en contacto con usted, le enviará un cálculo personalizado y le explicará el plazo y el procedimiento de salida." data-msg-server="No se pudo enviar la solicitud. Inténtelo de nuevo o escríbanos a info&#64;artemisresort.com." data-msg-network="No se pudo conectar con el servidor. Compruebe su conexión a internet e inténtelo de nuevo." data-msg-rate="Desde esta conexión se han enviado demasiadas solicitudes. Vuelva a intentarlo más tarde o escríbanos a info&#64;artemisresort.com." data-msg-name="Indique su nombre." data-msg-contact="Indique un contacto: email, teléfono o Telegram." data-msg-language="Elija el idioma de comunicación." data-msg-consent="Marque el consentimiento para el tratamiento de datos.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Su escenario elegido</strong></p>
+        <dl><div><dt>Inversión</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>Salida con capital</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Rentabilidad objetivo</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 meses desde el pago íntegro</p>
+        <a class="micro" href="#calc">Cambiar el importe</a>
+      </div>
       <div class="field"><label for="wl-name">Nombre</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contacto — email, teléfono o Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Idioma</label>
@@ -256,8 +268,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Acepto el tratamiento de mis datos (nombre, contacto, idioma, página, fecha y hora y, para una solicitud desde la calculadora, el cálculo) para que me incluyan en la lista de espera y se pongan en contacto conmigo sobre mi solicitud, conforme a la <a href="/tenerife/es/privacy/">política de privacidad</a>. El consentimiento puede retirarse en cualquier momento.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Solicitar un cálculo</button></div>
-      <p class="micro">Gratis. El pago se realiza tras aprobar la parcela y las condiciones de participación.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Solicitar un cálculo personalizado</button></div>
+      <p class="micro">Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -321,6 +333,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

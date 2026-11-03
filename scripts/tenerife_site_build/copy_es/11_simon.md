@@ -84,5 +84,9 @@ Pregunte antes de pagar por parcela, presupuesto, ventas y dinero de salida. Com
 
 **¿A quién escribir si el informe no coincide con lo que veo en la obra?** A mí.
 
-**Кнопка: «Recibir un cálculo»**
-Gratis. No cobramos nada hasta elegir la parcela.
+### Solicitar un cálculo
+
+Deje su nombre y el contacto que prefiera. Recibirá un cálculo personalizado con inversión, rentabilidad objetivo, plazo desde el pago íntegro y origen del pago. Comentaremos el calendario de ventas y los parámetros que deben confirmarse antes de pagar.
+
+**Кнопка: «Solicitar un cálculo personalizado»**
+Gratis y sin compromiso. El pago se realiza tras aprobar la parcela y las condiciones.

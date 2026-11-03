@@ -25,7 +25,6 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://artemisresort.com/tenerife/fr/"},{"@type":"ListItem","position":2,"name":"Investisseurs","item":"https://artemisresort.com/tenerife/fr/inversores/"}]}</script>
 </head>
@@ -62,29 +61,118 @@
   </div>
 </header>
 <main id="main">
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="hero__media"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Fouille et fondations sur la pente, terrasses de pierre de la parcelle" width="1600" height="914" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__body">
-    <div class="wrap grid">
-      <h1 id="h1">Financer la construction — recevoir capital et gain à la sortie</h1>
+<section class="investment-hero" aria-labelledby="h1">
+  <div class="wrap grid investment-hero__grid">
+    <div class="investment-hero__copy">
+      <h1 id="h1">Investir à Tenerife avec une sortie en numéraire à 36 mois</h1>
+<p class="hero__lead">Investissez dès 112 896 € en un versement pour financer la construction de vingt résidences. L’objectif est de 9% annualisés : capital et gain sont versés ensemble lors de la vente ou du rachat de votre participation.</p><p class="hero__lead">Le paiement provient des ventes des logements du projet. Les 36 mois commencent au paiement intégral. Aucune distribution annuelle n’est prévue.</p>      <div class="investment-hero__links"><a class="btn-primary" href="#calculate">Calculer ma sortie</a><a href="#funding">D’où vient le paiement à la sortie</a></div>
     </div>
-  </div>
-  <div class="hero__after">
-    <div class="wrap grid">
-      <p class="hero__lead">Participation à Artemis de la Cruz dès 112 896 €. Paiement intégral à l'entrée, objectif de 9% annualisé et sortie en numéraire à 36 mois par vente ou rachat de la participation. Aucun versement annuel. <a href="/tenerife/fr/inversores/#calculate">Calculer votre montant</a>.</p>
+    <div class="investment-example" aria-label="Exemple du scénario de base">
+      <p class="micro">Exemple du scénario de base</p>
+      <p class="investment-example__gain"><span>Gain visé sur toute la durée</span><strong>+49 961 €</strong></p>
+      <dl><div><dt>Investissement — un paiement</dt><dd>169 344 €</dd></div><div><dt>À la sortie, capital compris</dt><dd>219 305 €</dd></div></dl>
+      <p>36 mois à compter du paiement intégral · 9,0% annualisés visés</p>
+      <p class="micro">Scénario de base : le résultat dépend des ventes, des coûts et de la date de sortie.</p>
     </div>
   </div>
 </section>
 
-<section class="section rule-top s--head" aria-labelledby="overview">
-<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="overview">Projet et stade actuel</h2>
+<section class="section rule-top s--head" aria-labelledby="calculate">
+  <div class="wrap grid split-head">
+    <h2 id="calculate">Calculez votre investissement</h2>
     <div class="split-head__body">
-<p>Vingt résidences à La Quinta, Santa Úrsula. Le terrain est encore en sélection. Vous pouvez demander gratuitement un calcul et discuter des conditions. Paiement après validation du terrain et des conditions de participation. Le délai commence au paiement intégral, pas à la demande.</p>
+<p>Choisissez un montant en euros. Vous verrez votre investissement, le gain visé et le montant total à la sortie, 36 mois après le paiement intégral. Aucune coordonnée n’est nécessaire pour consulter le résultat.</p>
+
+    </div>
+  </div>
+<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Calculateur d’investissement">
+      <fieldset>
+        <legend>Le montant de votre investissement</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Montant investi — choisir le nombre de parts</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 actions" aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
+        </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 actions</output> · parts ; aucun logement n’est réservé</p>
+      </fieldset>
+      <p class="micro">Montant intégral, un paiement · 36 mois à compter du paiement intégral</p>
+      <p class="micro">Prix initial par action: 2 352 €</p>
+    </div>
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>Gain visé sur toute la durée</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>À la sortie, capital compris</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Investissement — un paiement</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Objectif annualisé</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Progression totale</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__paths"><dt>Versement</dt><dd>Un règlement en numéraire lors de la vente ou du rachat. Aucun versement annuel.</dd></div>
+      </dl>
+      <p class="micro calc__basis">Scénario de base : le résultat dépend des ventes, des coûts et de la date de sortie.</p>
+      <p class="calc__source"><strong>Le paiement à la sortie provient des ventes de logements.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Recevoir ce calcul</a>
+      <p class="micro">Gratuit et sans engagement. Le montant choisi sera inclus dans la demande.</p>
+      <p class="micro calc__source-detail">Les versements des acquéreurs financent la construction. À l’achèvement du projet, le produit des ventes finance le remboursement du capital et le gain visé des investisseurs.</p>
+      <p class="micro"><a href="/tenerife/fr/inversores/#funding">Voir le budget, le calendrier et les hypothèses</a></p>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"actions","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
+</div>
+
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="outcomes">
+<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
+    <h2 id="outcomes">Sortie en numéraire à 36 mois</h2>
+    <div class="split-head__body">
+<p>Pour 72 actions : investissement intégral de 169 344 €, règlement visé de 219 305 €, dont 49 961 € de gain. La progression totale est de 29,5% en trois ans, soit 9% annualisé avec capitalisation.</p>
+<p>Formule : <strong>règlement de sortie = investissement × (1 + 9%)³</strong>. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.</p>
 
     </div>
   </div>
 
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="funding">
+  <div class="wrap grid split-head">
+    <h2 id="funding">Comment les travaux sont financés</h2>
+    <div class="split-head__body">
+<p>Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.</p>
+<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
+  <table class="dt">
+    <thead><tr><th scope="col">Scénario de base</th><th scope="col" class="num">Montant</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Fonds initial : 564 actions</th><td class="num" data-label="Montant">1 326 528 €</td></tr>
+      <tr><th scope="row">Contrats acheteurs aux mois 3–30</th><td class="num" data-label="Montant">5 129 877 €</td></tr>
+      <tr><th scope="row">Terrain, travaux, études et réserve</th><td class="num" data-label="Montant">4 490 813 €</td></tr>
+      <tr><th scope="row">Frais de vente</th><td class="num" data-label="Montant">153 896 €</td></tr>
+      <tr><th scope="row">Capital et gain visé des investisseurs à la sortie</th><td class="num" data-label="Montant">1 717 892 €</td></tr>
+      <tr><th scope="row">Solde du projet après règlement</th><td class="num" data-label="Montant">93 803 €</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est 53 083 €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.</p>
+
+    </div>
+  </div>
+
+
+</section>
+<section class="section rule-top s--split" aria-labelledby="overview">
+<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid ti">
+    <div class="ti__text">
+      <h2 id="overview">Projet et stade actuel</h2>
+<p>Vingt résidences à La Quinta, Santa Úrsula. Le terrain est encore en sélection. Vous pouvez demander gratuitement un calcul et discuter des conditions. Paiement après validation du terrain et des conditions de participation. Le délai commence au paiement intégral, pas à la demande.</p>
+
+    </div>
+    <figure class="frame"><div class="frame__media r-3x2"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Fouille et fondations sur la pente, terrasses de pierre de la parcelle" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
+  </div>
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="comparison">
@@ -115,88 +203,6 @@
     <div class="split-head__body">
 <p>Le prix initial du modèle est de 2 352 € par action : 70% de la référence provisoire de 3 360 €/m², soit 30% de moins. Aucun tarif actuel comparable de programmes neufs locaux n'a encore été confirmé. 3 360 €/m² est une hypothèse, pas un prix actuel vérifié.</p>
 <p>Pour les maisons non vendues, le modèle prévoit 6% de hausse annuelle. Le prix de chaque acheteur est fixé à la signature et n'augmente plus ensuite. <a href="/tenerife/fr/mercado/">Référence, formules et sources</a>.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="outcomes">
-<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="outcomes">Sortie en numéraire à 36 mois</h2>
-    <div class="split-head__body">
-<p>Pour 72 actions : investissement intégral de 169 344 €, règlement visé de 219 305 €, dont 49 961 € de gain. La progression totale est de 29,5% en trois ans, soit 9% annualisé avec capitalisation.</p>
-<p>Formule : <strong>règlement de sortie = investissement × (1 + 9%)³</strong>. C'est l'objectif du scénario de base. Le paiement réel dépend des encaissements de ventes, des coûts et du délai.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="calculate">
-  <div class="wrap grid split-head">
-    <h2 id="calculate">Calculez votre investissement</h2>
-    <div class="split-head__body">
-<p>Choisissez le nombre d'actions. Le calculateur affiche un paiement intégral et le résultat visé à 36 mois. Le résultat est accessible sans demande ; <a href="/tenerife/fr/calculadora/">calculateur séparé</a>.</p>
-
-    </div>
-  </div>
-<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
-  <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Calculateur d’investissement">
-      <fieldset>
-        <legend>Nombre d’actions</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 actions</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 actions</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 actions</span></label>
-        </div>
-        <div class="range">
-          <label for="calc-m2" class="visually-hidden">Nombre d’actions</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 actions</output>
-        </div>
-      </fieldset>
-      <p><strong>Prix initial par action:</strong> 2 352 €</p>
-      <p><strong>Paiement:</strong> Montant intégral, un paiement</p>
-      <p><strong>Durée du modèle:</strong> 36 mois</p>
-      <p>Scénario cible : le résultat dépend des ventes, des coûts et du délai de sortie.</p>
-    </div>
-    <div class="calc__out" aria-live="polite" aria-atomic="true">
-      <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Investissement — un paiement</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Règlement cible à la sortie</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Gain total</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Objectif annualisé</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Progression totale</dt><dd data-k="gain_pct">29,5%</dd></div>
-        <div class="res__paths"><dt>Versement</dt><dd>Un règlement en numéraire lors de la vente ou du rachat. Aucun versement annuel.</dd></div>
-      </dl>
-    </div>
-  </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"actions","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
-</div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="funding">
-  <div class="wrap grid split-head">
-    <h2 id="funding">Comment les travaux sont financés</h2>
-    <div class="split-head__body">
-<p>Deux sources : le fonds initial des investisseurs et les paiements des acheteurs des vingt maisons. L'apport complémentaire du promoteur et la dette bancaire sont nuls dans le modèle. Le capital investi n'est pas compté comme recette de vente des maisons.</p>
-<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
-  <table class="dt">
-    <thead><tr><th scope="col">Scénario de base</th><th scope="col" class="num">Montant</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Fonds initial : 564 actions</th><td class="num" data-label="Montant">1 326 528 €</td></tr>
-      <tr><th scope="row">Contrats acheteurs aux mois 3–30</th><td class="num" data-label="Montant">5 129 877 €</td></tr>
-      <tr><th scope="row">Terrain, travaux, études et réserve</th><td class="num" data-label="Montant">4 490 813 €</td></tr>
-      <tr><th scope="row">Frais de vente</th><td class="num" data-label="Montant">153 896 €</td></tr>
-      <tr><th scope="row">Capital et gain visé des investisseurs à la sortie</th><td class="num" data-label="Montant">1 717 892 €</td></tr>
-      <tr><th scope="row">Solde du projet après règlement</th><td class="num" data-label="Montant">93 803 €</td></tr>
-    </tbody>
-  </table>
-</div>
-<p>Les acheteurs paient 40/30/10/20%. À signature tardive, les étapes achevées sont réglées immédiatement. Le calendrier mensuel de base ne présente pas de déficit ; son solde minimum est 53 083 €. Il s'agit de calculs, pas de fonds déjà collectés ou de contrats déjà signés.</p>
 
     </div>
   </div>
@@ -241,10 +247,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="request">Demander un calcul</h2>
-<p>Laissez nom et contact. Nous calculerons votre montant et préciserons les paramètres à confirmer avant paiement.</p>
+<p>Recevez le calcul choisi, le calendrier du projet et les modalités de sortie. Laissez votre nom et votre contact ; le montant figure déjà dans le formulaire.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Envoi…" data-msg-ok-title="Merci ! Vous êtes sur la liste." data-msg-ok-next="Votre demande est transmise à l&#x27;équipe du projet via Telegram et à info&#64;artemisresort.com. Nous vous contacterons." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Envoi…" data-msg-ok-title="Merci. Votre demande de calcul a bien été reçue." data-msg-ok-next="L’équipe vous contactera aux coordonnées indiquées, vous adressera un calcul personnalisé et expliquera le délai et les modalités de sortie." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Votre scénario choisi</strong></p>
+        <dl><div><dt>Investissement</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>Sortie, capital compris</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Gain visé</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 mois à compter du paiement intégral</p>
+        <a class="micro" href="#calc">Modifier le montant</a>
+      </div>
       <div class="field"><label for="wl-name">Nom</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contact — e-mail, téléphone ou Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Langue</label>
@@ -256,8 +268,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin d'être inscrit sur la liste d'attente et contacté au sujet de ma demande, conformément à la <a href="/tenerife/fr/privacy/">politique de confidentialité</a>. Le consentement peut être retiré à tout moment.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Demander un calcul</button></div>
-      <p class="micro">Gratuit. Paiement après validation du terrain et des conditions de participation.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Recevoir un calcul personnalisé</button></div>
+      <p class="micro">Gratuit et sans engagement. Paiement après validation du terrain et des conditions.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -321,6 +333,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

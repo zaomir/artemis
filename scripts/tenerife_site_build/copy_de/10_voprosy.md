@@ -55,7 +55,7 @@ Die wichtigsten Fragen zu Geld, Laufzeit und Ergebnis. Das Basismodell hat eine 
 
 ### Berechnung anfordern
 
-Namen und Kontakt hinterlassen, um Betrag, Laufzeit und Annahmen zu besprechen.
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

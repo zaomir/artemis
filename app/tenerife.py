@@ -385,8 +385,8 @@ THANKS_URL = SITE_PREFIX + "/gracias/"
 # Form messages: copy_v3/17_forma.md «Сообщения формы», verbatim (tests/test_tenerife_r4.py checks them against
 # build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
 FORM_MSG = {
-    "ok-title": "Спасибо! Вы в очереди.",
-    "ok-next": "Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.",
+    "ok-title": "Спасибо! Заявка на расчёт принята.",
+    "ok-next": "Команда свяжется с вами по указанному контакту, пришлёт персональный расчёт и объяснит срок и порядок выхода.",
     "server": "Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.",
     "rate": "С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на "
             "info@artemisresort.com.",

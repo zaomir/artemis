@@ -55,7 +55,7 @@ Les questions essentielles sur l'argent, le délai et le résultat. Le modèle d
 
 ### Demander un calcul
 
-Laissez nom et contact pour discuter montant, délai et hypothèses.
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

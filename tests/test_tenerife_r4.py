@@ -217,7 +217,7 @@ class FormMessagesTest(unittest.TestCase):
     def test_all_ten_messages_parsed(self):
         self.assertEqual(sorted(self.msgs), sorted(build_v3.FORM_MESSAGES.values()))
         self.assertEqual(self.msgs["sending"], "Отправляем…")
-        self.assertEqual(self.msgs["ok-title"], "Спасибо! Вы в очереди.")
+        self.assertEqual(self.msgs["ok-title"], "Спасибо! Заявка на расчёт принята.")
 
     def test_server_texts_equal_the_copy(self):
         for k, v in self.tenerife.FORM_MSG.items():
@@ -281,9 +281,9 @@ class FormServerTest(R4Case):
         r = self.post(json_body=False)
         self.assertEqual(r.status_code, 303)
         body = self.get(r.headers["Location"].replace("http://localhost", ""))
-        self.assertIn("Спасибо! Вы в очереди.", body)
-        self.assertIn("Заявка уходит команде проекта в Telegram и на <!--email_off-->info@artemisresort.com"
-                      "<!--/email_off-->. Мы свяжемся с вами.", body)
+        self.assertIn("Спасибо! Заявка на расчёт принята.", body)
+        self.assertIn(self.tenerife.FORM_MSG["ok-next"], body)
+        self.assertIn("<!--email_off-->", body)
         r = self.post(json_body=False, consent=False)
         self.assertIn("Отметьте согласие на обработку данных.", r.get_data(as_text=True))
 
@@ -304,6 +304,12 @@ if (scen === 'empty-name') fields.name.value = '';
 const form = {dataset:data, elements:Object.assign([], fields), reset(){out.reset=true},
   addEventListener(_, fn){ submit = fn; }};
 Object.assign(form.elements, fields);
+if (scen === 'calc-reset') {
+  for (const [name, value] of Object.entries({calc_m2:'49', calc_step:'early', calc_pay:'now'})) {
+    const field = {name, value}; fields[name] = field; form.elements[name] = field; form.elements.push(field);
+  }
+  form.reset = () => {out.reset=true; fields.calc_m2.value='72'};
+}
 global.document = {getElementById: id => id === 'wl-form' ? form : els[id]};
 global.location = {search: scen === 'ok-param' ? '?ok=1' : ''};
 const resp = (status, type, body) => Promise.resolve({status, ok: status < 300,
@@ -326,7 +332,8 @@ submit({preventDefault(){}});
 setTimeout(() => { Object.assign(out, {msg: els['wl-msg'].textContent, cls: els['wl-msg'].className,
   button: els['wl-submit'].textContent, after_disabled: els['wl-submit'].disabled,
   contact_err: els['wl-contact-err'].textContent, name_err: els['wl-name-err'].textContent,
-  contact_invalid: els['wl-contact'].attrs['aria-invalid'] || null});
+  contact_invalid: els['wl-contact'].attrs['aria-invalid'] || null,
+  calc_m2: fields.calc_m2 ? fields.calc_m2.value : null});
   console.log(JSON.stringify(out)); }, 50);
 """
 
@@ -351,6 +358,11 @@ class WaitlistJsTest(unittest.TestCase):
                             json.dumps(self.msgs)], capture_output=True, text=True, timeout=30)
         self.assertEqual(r.returncode, 0, r.stderr)
         return json.loads(r.stdout)
+
+    def test_success_keeps_the_selected_calculation_when_contact_fields_reset(self):
+        result = self.run_js("calc-reset")
+        self.assertTrue(result["reset"])
+        self.assertEqual(result["calc_m2"], "49")
 
     def test_success_and_sending_label(self):
         o = self.run_js("ok")

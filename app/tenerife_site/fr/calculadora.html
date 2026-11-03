@@ -64,8 +64,8 @@
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
     <div class="col-text bar-under">
-      <h1 id="h1">Combien investir maintenant et recevoir à la sortie</h1>
-      <p class="hero__lead">Choisissez de 48 à 100 actions à 2 352 € l'unité. Le calculateur affiche investissement, règlement visé et gain à 36 mois pour 9% annualisé. Le montant entier est payé une seule fois.</p>
+      <h1 id="h1">Votre investissement, le gain visé et le montant à la sortie</h1>
+      <p class="hero__lead">Choisissez un budget pour voir le versement unique et le résultat visé à 36 mois. Le modèle retient 9% annualisés avec capitalisation ; capital et gain sont versés ensemble lors de la vente ou du rachat. Aucune distribution annuelle.</p>
     </div>
   </div>
 </section>
@@ -74,32 +74,37 @@
   <div class="wrap grid calc">
     <div class="calc__in" id="calc-form" role="group" aria-label="Calculateur d’investissement">
       <fieldset>
-        <legend>Nombre d’actions</legend>
+        <legend>Le montant de votre investissement</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 actions</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 actions</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 actions</span></label>
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
         </div>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Nombre d’actions</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 actions</output>
+          <label for="calc-m2" class="visually-hidden">Montant investi — choisir le nombre de parts</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 actions" aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
         </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 actions</output> · parts ; aucun logement n’est réservé</p>
       </fieldset>
-      <p><strong>Prix initial par action:</strong> 2 352 €</p>
-      <p><strong>Paiement:</strong> Montant intégral, un paiement</p>
-      <p><strong>Durée du modèle:</strong> 36 mois</p>
-      <p>Scénario cible : le résultat dépend des ventes, des coûts et du délai de sortie.</p>
+      <p class="micro">Montant intégral, un paiement · 36 mois à compter du paiement intégral</p>
+      <p class="micro">Prix initial par action: 2 352 €</p>
     </div>
     <div class="calc__out" aria-live="polite" aria-atomic="true">
       <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Investissement — un paiement</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Règlement cible à la sortie</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Gain total</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Objectif annualisé</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Progression totale</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__main"><dt>Gain visé sur toute la durée</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>À la sortie, capital compris</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Investissement — un paiement</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Objectif annualisé</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Progression totale</dt><dd data-k="gain_pct">29,5%</dd></div>
         <div class="res__paths"><dt>Versement</dt><dd>Un règlement en numéraire lors de la vente ou du rachat. Aucun versement annuel.</dd></div>
       </dl>
+      <p class="micro calc__basis">Scénario de base : le résultat dépend des ventes, des coûts et de la date de sortie.</p>
+      <p class="calc__source"><strong>Le paiement à la sortie provient des ventes de logements.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Recevoir ce calcul</a>
+      <p class="micro">Gratuit et sans engagement. Le montant choisi sera inclus dans la demande.</p>
+      <p class="micro calc__source-detail">Les versements des acquéreurs financent la construction. À l’achèvement du projet, le produit des ventes finance le remboursement du capital et le gain visé des investisseurs.</p>
+      <p class="micro"><a href="/tenerife/fr/inversores/#funding">Voir le budget, le calendrier et les hypothèses</a></p>
     </div>
   </div>
   <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"actions","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
@@ -108,8 +113,7 @@
   <div class="wrap grid split-head">
     <h2 id="s1">Vos données</h2>
     <div class="split-head__body">
-<p><strong>Nombre d'actions.</strong> Choisissez 48, 72 ou 100, ou déplacez le curseur. Il définit la taille de l'investissement, pas une surface de maison réservée.</p>
-<p><strong>Paiement.</strong> Intégral à l'entrée. Le modèle ne prévoit ni mensualités d'investisseur ni versements intermédiaires.</p>
+<p>Le montant varie par paliers de 2 352 €, le prix d’une part. Plage du calculateur : 48–100 parts, de 112 896 € à 235 200 €. Le nombre de parts détermine votre participation ; il ne réserve pas de logement.</p>
 
     </div>
   </div>
@@ -202,10 +206,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="s8">Après le calcul</h2>
-<p>Laissez nom et contact pour un calcul personnel. La quantité choisie et le résultat recalculé accompagnent la demande ; nul besoin de saisir le montant.</p>
+<p>Recevez le calcul choisi, le calendrier du projet et les modalités de sortie. Laissez votre nom et votre contact ; le montant figure déjà dans le formulaire.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Envoi…" data-msg-ok-title="Merci ! Vous êtes sur la liste." data-msg-ok-next="Votre demande est transmise à l&#x27;équipe du projet via Telegram et à info&#64;artemisresort.com. Nous vous contacterons." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Envoi…" data-msg-ok-title="Merci. Votre demande de calcul a bien été reçue." data-msg-ok-next="L’équipe vous contactera aux coordonnées indiquées, vous adressera un calcul personnalisé et expliquera le délai et les modalités de sortie." data-msg-server="La demande n&#x27;a pas pu être envoyée. Réessayez ou écrivez-nous à info&#64;artemisresort.com." data-msg-network="Impossible de joindre le serveur. Vérifiez votre connexion internet et réessayez." data-msg-rate="Trop de demandes ont été envoyées depuis cette connexion. Réessayez plus tard ou écrivez-nous à info&#64;artemisresort.com." data-msg-name="Indiquez votre nom." data-msg-contact="Indiquez un contact : e-mail, téléphone ou Telegram." data-msg-language="Choisissez la langue." data-msg-consent="Cochez le consentement au traitement des données.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Votre scénario choisi</strong></p>
+        <dl><div><dt>Investissement</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>Sortie, capital compris</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Gain visé</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 mois à compter du paiement intégral</p>
+        <a class="micro" href="#calc">Modifier le montant</a>
+      </div>
       <div class="field"><label for="wl-name">Nom</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contact — e-mail, téléphone ou Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Langue</label>
@@ -217,8 +227,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin d'être inscrit sur la liste d'attente et contacté au sujet de ma demande, conformément à la <a href="/tenerife/fr/privacy/">politique de confidentialité</a>. Le consentement peut être retiré à tout moment.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Demander un calcul</button></div>
-      <p class="micro">Gratuit. Paiement après validation du terrain et des conditions de participation.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Recevoir un calcul personnalisé</button></div>
+      <p class="micro">Gratuit et sans engagement. Paiement après validation du terrain et des conditions.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -282,6 +292,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

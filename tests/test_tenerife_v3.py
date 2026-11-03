@@ -121,7 +121,9 @@ class _Text(HTMLParser):
         a = dict(attrs)
         cls = (a.get("class") or "").split()
         hide = (a.get("aria-hidden") == "true" or a.get("id") == "calc" or tag in ("script", "style")
-                or "visually-hidden" in cls or "price-curve" in cls)
+                or "visually-hidden" in cls or "price-curve" in cls
+                # Model summaries and actions are owned by the localized UI dictionary.
+                or any(c in cls for c in ("investment-example", "investment-hero__links", "request-scenario")))
         keep = "cta-primary" in cls or "micro" in cls
         self.stack.append((tag, hide, keep))
 

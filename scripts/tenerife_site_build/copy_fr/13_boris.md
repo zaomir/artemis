@@ -100,5 +100,9 @@ Directement. Interrogez-moi sur les fondations, sur la toiture, sur la manière 
 
 **Quand la livraison ?** Elle sera précisée au programme ; le modèle investisseur prévoit sortie @months@ mois après paiement intégral.
 
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Nous n'encaissons rien avant le choix du terrain.
+### Demander un calcul
+
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
+
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

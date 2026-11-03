@@ -84,5 +84,9 @@ Avant paiement, questionnez terrain, budget, ventes et financement de sortie. Co
 
 **À qui écrire si le rapport contredit ce que vous voyez sur le chantier?** À moi.
 
-**Кнопка: «Recevoir un calcul»**
-Gratuit. Nous n'encaissons rien avant le choix du terrain.
+### Demander un calcul
+
+Laissez votre nom et le contact de votre choix. Vous recevrez un calcul personnalisé : montant investi, gain visé, délai depuis le paiement intégral et origine du paiement. Nous préciserons le calendrier des ventes et les hypothèses à confirmer avant paiement.
+
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

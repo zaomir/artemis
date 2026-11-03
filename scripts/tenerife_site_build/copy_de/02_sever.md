@@ -124,5 +124,9 @@ Die Berechnung ist kostenlos. Zahlung nach Freigabe von Grundstück und Bedingun
 
 **Warum nicht der Süden?** Im Süden erholt man sich. Im Norden lebt man.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+### Berechnung anfordern
+
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
+
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

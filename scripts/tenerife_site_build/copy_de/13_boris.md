@@ -100,5 +100,9 @@ Direkt. Fragen Sie nach dem Fundament, nach dem Dach, danach, wie die Technik ab
 
 **Wann ist die Fertigstellung?** Die Übergabe folgt dem Projektplan; das Investorenmodell sieht Ausstieg @months@ Monate nach voller Zahlung vor.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld.
+### Berechnung anfordern
+
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
+
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

@@ -5,17 +5,15 @@ Meta description: Un paiement intégral, @months@ mois et un objectif de @target
 OG title: Calculez investissement et règlement de sortie
 -->
 
-# Combien investir maintenant et recevoir à la sortie
+# Votre investissement, le gain visé et le montant à la sortie
 
-Choisissez de 48 à 100 actions à @entry@ € l'unité. Le calculateur affiche investissement, règlement visé et gain à @months@ mois pour @target@% annualisé. Le montant entier est payé une seule fois.
+Choisissez un budget pour voir le versement unique et le résultat visé à @months@ mois. Le modèle retient @target@% annualisés avec capitalisation ; capital et gain sont versés ensemble lors de la vente ou du rachat. Aucune distribution annuelle.
 
 [КАДР F20]
 
 ### Vos données
 
-**Nombre d'actions.** Choisissez 48, 72 ou 100, ou déplacez le curseur. Il définit la taille de l'investissement, pas une surface de maison réservée.
-
-**Paiement.** Intégral à l'entrée. Le modèle ne prévoit ni mensualités d'investisseur ni versements intermédiaires.
+Le montant varie par paliers de @entry@ €, le prix d’une part. Plage du calculateur : 48–100 parts, de @entry_48@ € à @entry_100@ €. Le nombre de parts détermine votre participation ; il ne réserve pas de logement.
 
 ### Vos résultats
 
@@ -54,7 +52,7 @@ D'abord une demande gratuite, puis terrain et conditions. Les @months@ mois comm
 
 ### Après le calcul
 
-Laissez nom et contact pour un calcul personnel. La quantité choisie et le résultat recalculé accompagnent la demande ; nul besoin de saisir le montant.
+Recevez le calcul choisi, le calendrier du projet et les modalités de sortie. Laissez votre nom et votre contact ; le montant figure déjà dans le formulaire.
 
-**Кнопка: «Demander un calcul»**
-Gratuit. Paiement après validation du terrain et des conditions de participation.
+**Кнопка: «Recevoir un calcul personnalisé»**
+Gratuit et sans engagement. Paiement après validation du terrain et des conditions.

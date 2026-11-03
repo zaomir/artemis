@@ -29,7 +29,7 @@ OXFORD FRAME REAL ASSETS LTD, England und Wales, Companies House Nr. 09153936. P
 
 ### Berechnung anfordern
 
-Hinterlassen Sie Namen und Kontakt. Wir senden eine Berechnung für Ihre Fläche und besprechen die Beteiligung. Die Eintragung ist kostenlos; vor der Grundstückswahl nehmen wir kein Geld entgegen.
+Hinterlassen Sie Ihren Namen und den gewünschten Kontaktweg. Sie erhalten eine persönliche Berechnung mit Investition, angestrebtem Ertrag, Laufzeit ab vollständiger Zahlung und Auszahlungsquelle. Wir besprechen den Verkaufsplan und die vor Zahlung zu bestätigenden Annahmen.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Vor der Grundstückswahl nehmen wir kein Geld entgegen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

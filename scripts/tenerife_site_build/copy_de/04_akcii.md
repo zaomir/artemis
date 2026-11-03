@@ -5,11 +5,38 @@ Meta description: Früher Modellpreis @entry@ € je Aktie, volle Einmalzahlung 
 OG title: Beteiligung mit Ausstieg nach @months@ Monaten
 -->
 
-# Den Bau finanzieren — Kapital und Ertrag beim Ausstieg erhalten
+# In Teneriffa investieren, nach @months@ Monaten in Geld aussteigen
 
-Beteiligung an Artemis de la Cruz ab @entry_48@ €. Vollständige Zahlung beim Einstieg, @target@% jährliche Zielrendite und Barausstieg nach @months@ Monaten durch Verkauf oder Rückkauf der Beteiligung. Keine jährlichen Ausschüttungen. [Betrag berechnen](/tenerife/inversores/#calculate).
+Investieren Sie ab @entry_48@ € mit einer Zahlung in den Bau von zwanzig Residenzen. Angestrebt werden @target@% annualisiert: Kapital und Ertrag werden beim Verkauf oder Rückkauf der Beteiligung gemeinsam ausgezahlt.
+
+Die Auszahlung stammt aus den Hausverkäufen des Projekts. Die @months@ Monate beginnen mit der vollständigen Zahlung. Jährliche Ausschüttungen sind nicht vorgesehen.
 
 [КАДР F14]
+
+### Berechnen Sie Ihre Beteiligung
+
+Wählen Sie einen Betrag in Euro. Sie sehen Ihre Investition, den angestrebten Ertrag und den gesamten Auszahlungsbetrag nach @months@ Monaten ab vollständiger Zahlung. Für das Ergebnis sind keine Kontaktdaten nötig.
+
+### Barausstieg nach 36 Monaten
+
+Beispiel mit 72 Aktien: volle Investition @entry_72@ €, Zielauszahlung @exit_72@ €, davon @gain_72@ € Ertrag. Der Gesamtzuwachs beträgt @gain_pct@% in drei Jahren, entsprechend @target@% jährlich mit Zinseszinseffekt.
+
+Formel: **Auszahlung = Investition × (1 + @target@%)³**. Dies ist das Ziel des Basisszenarios. Die tatsächliche Zahlung hängt von Verkaufseingängen, Kosten und Ausstiegszeitpunkt ab.
+
+### Wie der Bau finanziert wird
+
+Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zwanzig Häuser. Zusätzliches Entwicklerkapital und Bankkredite betragen im Modell null. Beteiligungskapital wird nicht als Hausverkaufserlös gezählt.
+
+| Basisszenario | Betrag |
+|---|---|
+| Früher Pool: @pool@ Aktien | @pool_capital@ € |
+| Käuferverträge in Monaten 3–30 | @sales@ € |
+| Grundstück, Bau, Planung und Reserve | @budget@ € |
+| Vertriebskosten | @sales_fee@ € |
+| Investorenkapital und Zielertrag beim Ausstieg | @pool_exit@ € |
+| Projektrest nach Abrechnung | @surplus@ € |
+
+Käufer zahlen 40/30/10/20%. Bei später Unterzeichnung sind abgeschlossene Abschnitte sofort fällig. Der monatliche Basisplan hat keine Finanzierungslücke; der niedrigste Kontostand beträgt @minimum_cash@ €. Das sind Berechnungen, kein bereits eingeworbenes Kapital oder abgeschlossene Verträge.
 
 ### Projekt und aktueller Stand
 
@@ -32,31 +59,6 @@ Der frühe Modellpreis beträgt @entry@ € je Aktie: 70% der vorläufigen Basis
 
 Für unverkaufte Häuser rechnet das Modell mit @growth@% jährlichem Wachstum. Jeder Käufer fixiert seinen Preis bei Unterzeichnung; danach steigt er nicht weiter. [Basis, Formeln und Quellen](/tenerife/mercado/).
 
-### Barausstieg nach 36 Monaten
-
-Beispiel mit 72 Aktien: volle Investition @entry_72@ €, Zielauszahlung @exit_72@ €, davon @gain_72@ € Ertrag. Der Gesamtzuwachs beträgt @gain_pct@% in drei Jahren, entsprechend @target@% jährlich mit Zinseszinseffekt.
-
-Formel: **Auszahlung = Investition × (1 + @target@%)³**. Dies ist das Ziel des Basisszenarios. Die tatsächliche Zahlung hängt von Verkaufseingängen, Kosten und Ausstiegszeitpunkt ab.
-
-### Berechnen Sie Ihre Beteiligung
-
-Wählen Sie die Aktienzahl. Der Rechner zeigt eine vollständige Zahlung und das Zielergebnis nach @months@ Monaten. Das Ergebnis ist ohne Anfrage sichtbar; [separater Rechner](/tenerife/calculadora/).
-
-### Wie der Bau finanziert wird
-
-Zwei Quellen: anfängliches Investorenkapital und Zahlungen der Käufer aller zwanzig Häuser. Zusätzliches Entwicklerkapital und Bankkredite betragen im Modell null. Beteiligungskapital wird nicht als Hausverkaufserlös gezählt.
-
-| Basisszenario | Betrag |
-|---|---|
-| Früher Pool: @pool@ Aktien | @pool_capital@ € |
-| Käuferverträge in Monaten 3–30 | @sales@ € |
-| Grundstück, Bau, Planung und Reserve | @budget@ € |
-| Vertriebskosten | @sales_fee@ € |
-| Investorenkapital und Zielertrag beim Ausstieg | @pool_exit@ € |
-| Projektrest nach Abrechnung | @surplus@ € |
-
-Käufer zahlen 40/30/10/20%. Bei später Unterzeichnung sind abgeschlossene Abschnitte sofort fällig. Der monatliche Basisplan hat keine Finanzierungslücke; der niedrigste Kontostand beträgt @minimum_cash@ €. Das sind Berechnungen, kein bereits eingeworbenes Kapital oder abgeschlossene Verträge.
-
 ### Was das Ergebnis beeinflusst
 
 Das Budget setzt @cost_m2@ €/m² errichteter Fläche und etwa einen Käufervertrag alle ein bis zwei Monate voraus. Bei 2 100 €/m² Baukosten fehlen @high_shortfall@ € für die volle Zielabrechnung; zwei Monate Verkaufsverzögerung erzeugen zwischenzeitlich eine Lücke von @delay_gap@ €.
@@ -73,7 +75,7 @@ Vor Zahlung erhalten Sie Berechnung und Bedingungen: Betrag, Laufzeitbeginn, Aus
 
 ### Berechnung anfordern
 
-Hinterlassen Sie Namen und Kontakt. Wir berechnen Ihren Betrag und besprechen, welche Eingaben vor Zahlung zu bestätigen sind.
+Sie erhalten Ihre Berechnung, den Projektzeitplan und den Ausstiegsablauf. Hinterlassen Sie Namen und Kontakt; der Betrag steht bereits im Formular.
 
-**Кнопка: «Berechnung anfordern»**
-Kostenlos. Zahlung nach Freigabe des Grundstücks und der Beteiligungsbedingungen.
+**Кнопка: «Persönliche Berechnung anfordern»**
+Kostenlos und unverbindlich. Zahlung nach Freigabe von Grundstück und Bedingungen.

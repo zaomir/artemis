@@ -84,5 +84,9 @@ Ask before paying: about the plot, budget, sales and source of exit cash. Compar
 
 **Who do I write to if the report differs from what I see on site?** Me.
 
-**Кнопка: «Get a calculation»**
-Free of charge. We take no money before the plot is chosen.
+### Request a calculation
+
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
+
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

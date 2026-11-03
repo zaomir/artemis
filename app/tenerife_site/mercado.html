@@ -148,10 +148,10 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="s6">Request a calculation</h2>
-<p>Request the inputs and receipt calendar with your calculation. Discuss which market observations and costs still need confirmation.</p>
+<p>Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Sending…" data-msg-ok-title="Thank you! You are on the list." data-msg-ok-next="Your request goes to the project team on Telegram and to info&#64;artemisresort.com. We will contact you." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-msg-sending="Sending…" data-msg-ok-title="Thank you. Your calculation request is received." data-msg-ok-next="The team will contact you using the details provided, send a personal calculation and explain the exit timing and process." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
       <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Contact — email, phone or Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Language</label>
@@ -160,8 +160,8 @@
       <input type="hidden" name="page" value="/tenerife/mercado/">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href="/tenerife/privacy/">privacy policy</a>. Consent can be withdrawn at any time.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Request a calculation</button></div>
-      <p class="micro">Free of charge. Payment follows approval of the plot and participation terms.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Request a personal calculation</button></div>
+      <p class="micro">Free and without commitment. Participation payment follows approval of the plot and terms.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>

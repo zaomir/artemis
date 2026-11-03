@@ -408,6 +408,21 @@ a:hover{color:var(--cs-ink)}
 .note-plan{margin-top:var(--space-6);color:var(--cs-ink-soft)}
 
 /* ===== calculator ===== */
+.investment-hero{padding:calc(var(--header-h) + var(--space-7)) 0 var(--space-7)}
+.investment-hero__grid{row-gap:var(--space-6);align-items:start}
+.investment-hero h1{font-size:clamp(2rem,4vw,3.5rem);line-height:var(--lh-tight)}
+.investment-hero .hero__lead{margin-top:var(--space-4);font-size:var(--fs-body);color:var(--cs-ink-soft)}
+.investment-hero__links{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-5)}
+.investment-example{background:var(--cs-basalt);color:var(--cs-on-dark);padding:var(--space-5)}
+.investment-example .micro{color:var(--cs-on-dark-soft)}
+.investment-example p+p{margin-top:var(--space-4)}
+.investment-example__gain span{display:block;font-size:var(--fs-small)}
+.investment-example__gain strong{font-family:var(--font-display);font-weight:var(--fw-strong);font-size:clamp(2.5rem,5vw,4rem);line-height:var(--lh-display);white-space:nowrap}
+.investment-example dl{margin:var(--space-5) 0}
+.investment-example dl div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);padding-block:var(--space-2);border-bottom:var(--hairline) solid var(--cs-on-dark-soft)}
+.investment-example dt{font-size:var(--fs-small)}
+.investment-example dd{margin:0;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(min-width:1024px){.investment-hero__copy{grid-column:1/span 6}.investment-example{grid-column:8/span 5}}
 .calc{row-gap:var(--space-7);margin-top:var(--space-7)}
 @media (min-width:1024px){.calc__in{grid-column:1/span 5}.calc__out{grid-column:7/span 6}}
 .calc fieldset{border:0;margin:0 0 var(--space-6);padding:0;min-width:0}
@@ -423,14 +438,25 @@ a:hover{color:var(--cs-ink)}
 .range input{width:100%;accent-color:var(--cs-basalt);min-height:var(--touch-min);margin:0}
 .range output{font-family:var(--font-display);font-size:var(--fs-h3);min-width:var(--output-w);text-align:right;font-variant-numeric:tabular-nums}
 .calc__out{border-top:var(--plinth) solid var(--cs-basalt);padding-top:var(--space-5)}
-.res{margin:0;padding:0}
+.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-4);margin:0;padding:0}
+.res>div{grid-column:1/-1}
 .res div{display:grid;grid-template-columns:1fr;gap:var(--space-1);padding:var(--space-4) 0;border-bottom:var(--border-hair)}
 @media (min-width:480px){.res div{grid-template-columns:1fr auto;align-items:baseline;gap:var(--space-4)}}
 .res dt{color:var(--cs-ink-soft);font-size:var(--fs-small)}
 .res dd{margin:0;font-family:var(--font-display);font-size:var(--fs-h2);line-height:var(--lh-display);font-variant-numeric:tabular-nums;white-space:nowrap;transition:opacity var(--dur-micro) var(--ease-std)}
 .res dd.is-updating{opacity:var(--opacity-dim)}
 .res .res__main dd{font-size:var(--fs-figure)}
+.res .res__main{grid-template-columns:1fr}
+.res .res__rate{grid-column:span 1;grid-template-columns:1fr;align-items:start}
+.res .res__rate dd{font-size:var(--fs-h3)}
 .res .res__paths dd{font-family:var(--font-text);font-size:var(--fs-body);white-space:normal}
+.calc__source{margin-top:var(--space-5)}
+.calc__basis{margin-top:var(--space-3)}
+.calc__in>.micro+.micro{margin-top:var(--space-2)}
+.calc__request{margin-block:var(--space-5) var(--space-2)}
+.calc__source-detail{margin-top:var(--space-4)}
+.calc__out>.micro+.micro{margin-top:var(--space-3)}
+@media(max-width:599px){.range{grid-template-columns:1fr}.range output{text-align:left}.res .res__main dd{font-size:clamp(2.5rem,11vw,4rem)}}
 .formula{list-style:none;padding:0;margin:var(--space-5) 0 0;font-size:var(--fs-small);color:var(--cs-ink-soft)}
 .formula li{padding:var(--space-1) 0}
 
@@ -461,6 +487,11 @@ a:hover{color:var(--cs-ink)}
 .wl{row-gap:var(--space-7)}
 @media (min-width:1024px){.wl .wl__text{grid-column:1/span 5}.wl .wl__form{grid-column:7/span 6}}
 .form{display:grid;gap:var(--space-5)}
+.request-scenario{padding:var(--space-4);border:var(--border-ink)}
+.request-scenario dl{margin:var(--space-3) 0}
+.request-scenario dl div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);padding-block:var(--space-1)}
+.request-scenario dt{font-size:var(--fs-small)}
+.request-scenario dd{margin:0;font-variant-numeric:tabular-nums;white-space:nowrap}
 .field{display:grid;gap:var(--space-2)}
 .field label{font-size:var(--fs-small);font-weight:var(--fw-strong)}
 .field input,.field select{font:inherit;font-size:var(--fs-input);min-height:var(--control-h);padding:var(--space-3) var(--space-4);border:var(--border-control);border-radius:var(--radius-1);background:var(--cs-white);color:var(--cs-ink);width:100%}

@@ -55,7 +55,7 @@ Key questions about money, timing and results. The base investment model has one
 
 ### Request a calculation
 
-Leave your name and contact to discuss the amount, timing and assumptions for your participation.
+Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
 
-**Кнопка: «Request a calculation»**
-Free of charge. Payment follows approval of the plot and participation terms.
+**Кнопка: «Request a personal calculation»**
+Free and without commitment. Participation payment follows approval of the plot and terms.

@@ -25,7 +25,6 @@
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" type="image/webp" imagesrcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://artemisresort.com/tenerife/ru/"},{"@type":"ListItem","position":2,"name":"Инвесторам","item":"https://artemisresort.com/tenerife/ru/inversores/"}]}</script>
 </head>
@@ -62,29 +61,118 @@
   </div>
 </header>
 <main id="main">
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="hero__media"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Котлован и фундамент домов на склоне, каменные террасы участка" width="1600" height="914" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__body">
-    <div class="wrap grid">
-      <h1 id="h1">Войти в строительство — получить капитал и доход на выходе</h1>
+<section class="investment-hero" aria-labelledby="h1">
+  <div class="wrap grid investment-hero__grid">
+    <div class="investment-hero__copy">
+      <h1 id="h1">Инвестиция в Тенерифе с выходом через 36 месяцев</h1>
+<p class="hero__lead">Вложите от 112 896 € одним платежом в строительство двадцати резиденций. Целевая доходность — 9% годовых: капитал и доход выплачиваются вместе при продаже или выкупе участия.</p><p class="hero__lead">Источник выплаты — выручка от продажи домов проекта. Срок 36 месяцев отсчитывается от полной оплаты. Ежегодных выплат нет.</p>      <div class="investment-hero__links"><a class="btn-primary" href="#calculate">Рассчитать мой выход</a><a href="#funding">Откуда деньги на выплату</a></div>
     </div>
-  </div>
-  <div class="hero__after">
-    <div class="wrap grid">
-      <p class="hero__lead">Участие в Artemis de la Cruz — от 112 896 €. Полная оплата при входе, целевая доходность 9% годовых, денежный выход через 36 месяцев за счёт продажи или выкупа участия. Ежегодных выплат проект не предусматривает. <a href="/tenerife/ru/inversores/#calculate">Рассчитать свою сумму</a>.</p>
+    <div class="investment-example" aria-label="Пример базового сценария">
+      <p class="micro">Пример базового сценария</p>
+      <p class="investment-example__gain"><span>Целевой доход за весь срок</span><strong>+49 961 €</strong></p>
+      <dl><div><dt>Инвестиция — один платёж</dt><dd>169 344 €</dd></div><div><dt>На выходе, включая ваш капитал</dt><dd>219 305 €</dd></div></dl>
+      <p>36 месяцев от полной оплаты · 9,0% годовых — цель</p>
+      <p class="micro">Базовый сценарий: результат зависит от продаж, расходов и срока выхода.</p>
     </div>
   </div>
 </section>
 
-<section class="section rule-top s--head" aria-labelledby="overview">
-<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="overview">Проект и текущая стадия</h2>
+<section class="section rule-top s--head" aria-labelledby="calculate">
+  <div class="wrap grid split-head">
+    <h2 id="calculate">Рассчитайте инвестицию</h2>
     <div class="split-head__body">
-<p>Двадцать резиденций в La Quinta, Santa Úrsula. Участок ещё выбираем. Сейчас можно бесплатно запросить расчёт и обсудить условия; платёж — после утверждения участка и условий участия. Финансовый горизонт отсчитывается от полной оплаты, а не от заявки.</p>
+<p>Выберите сумму в евро. Сразу увидите вложение, целевой доход и сумму на выходе через 36 месяцев от полной оплаты. Для просмотра результата контакт не нужен.</p>
+
+    </div>
+  </div>
+<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор инвестиции">
+      <fieldset>
+        <legend>Сумма вашей инвестиции</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="type" value="q48"><span>112 896 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q72" checked><span>169 344 €</span></label>
+          <label class="opt"><input type="radio" name="type" value="q100"><span>235 200 €</span></label>
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">Сумма инвестиции — выбор количества акций</label>
+          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72" aria-valuetext="169 344 € · 72 акц." aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">169 344 €</output>
+        </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">72 акц.</output> · количество акций, без закрепления дома</p>
+      </fieldset>
+      <p class="micro">Вся сумма один раз · 36 месяцев от полной оплаты</p>
+      <p class="micro">Ранняя цена за акцию: 2 352 €</p>
+    </div>
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>Целевой доход за весь срок</dt><dd>+<span data-k="gain">49 961 €</span></dd></div>
+        <div><dt>На выходе, включая ваш капитал</dt><dd data-k="exit">219 305 €</dd></div>
+        <div><dt>Инвестиция — один платёж</dt><dd data-k="sum">169 344 €</dd></div>
+        <div class="res__rate"><dt>Целевая доходность в год</dt><dd data-k="pct">9,0%</dd></div>
+        <div class="res__rate"><dt>Прирост за весь срок</dt><dd data-k="gain_pct">29,5%</dd></div>
+        <div class="res__paths"><dt>Как выплачивается</dt><dd>Один денежный расчёт при продаже или выкупе. Ежегодных выплат нет.</dd></div>
+      </dl>
+      <p class="micro calc__basis">Базовый сценарий: результат зависит от продаж, расходов и срока выхода.</p>
+      <p class="calc__source"><strong>Источник выплаты — продажи домов.</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">Получить этот расчёт</a>
+      <p class="micro">Бесплатно и без обязательств. Выбранная сумма уже будет в заявке.</p>
+      <p class="micro calc__source-detail">Платежи покупателей финансируют стройку. После завершения проекта выручка направляется на возврат капитала и целевой доход инвесторам.</p>
+      <p class="micro"><a href="/tenerife/ru/inversores/#funding">Посмотреть бюджет, календарь и допущения</a></p>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"акц.","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
+</div>
+
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="outcomes">
+<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
+    <h2 id="outcomes">Денежный выход через 36 месяцев</h2>
+    <div class="split-head__body">
+<p>Пример для 72 акций: полная инвестиция 169 344 €, целевой расчёт на выходе 219 305 €, в том числе доход 49 961 €. Общий прирост — 29,5% за три года, что соответствует 9% годовых со сложным процентом.</p>
+<p>Формула: <strong>сумма на выходе = инвестиция × (1 + 9%)³</strong>. Это целевой результат базового сценария. Реальная выплата зависит от поступлений от продаж, расходов и срока выхода.</p>
 
     </div>
   </div>
 
+
+</section>
+<section class="section rule-top s--head" aria-labelledby="funding">
+  <div class="wrap grid split-head">
+    <h2 id="funding">Как финансируется стройка</h2>
+    <div class="split-head__body">
+<p>Два источника — первоначальный инвестиционный пул и платежи покупателей всех двадцати домов. Дополнительный взнос девелопера и кредит в модели равны нулю. Инвестиции не считаются выручкой от продажи домов.</p>
+<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
+  <table class="dt">
+    <thead><tr><th scope="col">Показатель базового сценария</th><th scope="col" class="num">Сумма</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Ранний пул: 564 акций</th><td class="num" data-label="Сумма">1 326 528 €</td></tr>
+      <tr><th scope="row">Договоры покупателей, месяцы 3–30</th><td class="num" data-label="Сумма">5 129 877 €</td></tr>
+      <tr><th scope="row">Земля, стройка, проектирование и резерв</th><td class="num" data-label="Сумма">4 490 813 €</td></tr>
+      <tr><th scope="row">Расходы на продажи</th><td class="num" data-label="Сумма">153 896 €</td></tr>
+      <tr><th scope="row">Капитал и целевой доход инвесторам на выходе</th><td class="num" data-label="Сумма">1 717 892 €</td></tr>
+      <tr><th scope="row">Остаток проекта после расчёта</th><td class="num" data-label="Сумма">93 803 €</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Платежи покупателей поступают по схеме 40/30/10/20%. При позднем подписании покупатель сразу оплачивает уже пройденные этапы. В базовом помесячном календаре кассового разрыва нет; минимальный остаток — 53 083 €. Это расчёт, а не уже собранные деньги или заключённые договоры.</p>
+
+    </div>
+  </div>
+
+
+</section>
+<section class="section rule-top s--split" aria-labelledby="overview">
+<span class="anchor-alias" id="s2" aria-hidden="true"></span><span class="anchor-alias" id="s10" aria-hidden="true"></span>  <div class="wrap grid ti">
+    <div class="ti__text">
+      <h2 id="overview">Проект и текущая стадия</h2>
+<p>Двадцать резиденций в La Quinta, Santa Úrsula. Участок ещё выбираем. Сейчас можно бесплатно запросить расчёт и обсудить условия; платёж — после утверждения участка и условий участия. Финансовый горизонт отсчитывается от полной оплаты, а не от заявки.</p>
+
+    </div>
+    <figure class="frame"><div class="frame__media r-3x2"><picture><source type="image/webp" srcset="/static/tenerife/site/img/build-pit-3ab7c2-640.webp 640w, /static/tenerife/site/img/build-pit-3ab7c2-800.webp 800w, /static/tenerife/site/img/build-pit-3ab7c2-1024.webp 1024w, /static/tenerife/site/img/build-pit-3ab7c2-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw"><img class="fp-build-pit-3ab7c2" src="/static/tenerife/site/img/build-pit-3ab7c2.jpg" alt="Котлован и фундамент домов на склоне, каменные террасы участка" width="1600" height="914" loading="lazy" decoding="async"></picture></div></figure>
+  </div>
 
 </section>
 <section class="section rule-top s--head" aria-labelledby="comparison">
@@ -115,88 +203,6 @@
     <div class="split-head__body">
 <p>Ранняя цена по модели — 2 352 € за акцию. Это 70% от предварительной базы 3 360 €/м², то есть на 30% ниже неё. Актуальный сопоставимый прайс местных новостроек пока не подтверждён; 3 360 €/м² используется как допущение, а не как установленная текущая рыночная цена.</p>
 <p>Для будущих непроданных домов модель закладывает рост 6% в год. Цена фиксируется в момент подписания договора покупателем и дальше не повышается. <a href="/tenerife/ru/mercado/">База, формулы и источники</a>.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="outcomes">
-<span class="anchor-alias" id="s5" aria-hidden="true"></span><span class="anchor-alias" id="s6" aria-hidden="true"></span><span class="anchor-alias" id="s7" aria-hidden="true"></span><span class="anchor-alias" id="s8" aria-hidden="true"></span><span class="anchor-alias" id="s11" aria-hidden="true"></span>  <div class="wrap grid split-head">
-    <h2 id="outcomes">Денежный выход через 36 месяцев</h2>
-    <div class="split-head__body">
-<p>Пример для 72 акций: полная инвестиция 169 344 €, целевой расчёт на выходе 219 305 €, в том числе доход 49 961 €. Общий прирост — 29,5% за три года, что соответствует 9% годовых со сложным процентом.</p>
-<p>Формула: <strong>сумма на выходе = инвестиция × (1 + 9%)³</strong>. Это целевой результат базового сценария. Реальная выплата зависит от поступлений от продаж, расходов и срока выхода.</p>
-
-    </div>
-  </div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="calculate">
-  <div class="wrap grid split-head">
-    <h2 id="calculate">Рассчитайте инвестицию</h2>
-    <div class="split-head__body">
-<p>Выберите количество акций. Калькулятор покажет один полный платёж и целевой денежный результат через 36 месяцев. Результат доступен без заявки; <a href="/tenerife/ru/calculadora/">отдельная страница калькулятора</a>.</p>
-
-    </div>
-  </div>
-<div class="calc-sec calc-sec--embedded" id="calc" role="group" aria-labelledby="calculate">
-  <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор инвестиции">
-      <fieldset>
-        <legend>Количество акций</legend>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="q48"><span>48 акц.</span></label>
-          <label class="opt"><input type="radio" name="type" value="q72" checked><span>72 акц.</span></label>
-          <label class="opt"><input type="radio" name="type" value="q100"><span>100 акц.</span></label>
-        </div>
-        <div class="range">
-          <label for="calc-m2" class="visually-hidden">Количество акций</label>
-          <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="72">
-          <output for="calc-m2" id="calc-m2-out">72 акц.</output>
-        </div>
-      </fieldset>
-      <p><strong>Ранняя цена за акцию:</strong> 2 352 €</p>
-      <p><strong>Оплата:</strong> Вся сумма один раз</p>
-      <p><strong>Срок модели:</strong> 36 месяцев</p>
-      <p>Целевой сценарий: результат зависит от продаж, расходов и срока выхода.</p>
-    </div>
-    <div class="calc__out" aria-live="polite" aria-atomic="true">
-      <dl class="res" id="calc-res">
-        <div class="res__main"><dt>Инвестиция — один платёж</dt><dd data-k="sum">169 344 €</dd></div>
-        <div><dt>Целевая сумма на выходе</dt><dd data-k="exit">219 305 €</dd></div>
-        <div><dt>Доход за весь срок</dt><dd data-k="gain">49 961 €</dd></div>
-        <div><dt>Целевая доходность в год</dt><dd data-k="pct">9,0%</dd></div>
-        <div><dt>Прирост за весь срок</dt><dd data-k="gain_pct">29,5%</dd></div>
-        <div class="res__paths"><dt>Как выплачивается</dt><dd>Один денежный расчёт при продаже или выкупе. Ежегодных выплат нет.</dd></div>
-      </dl>
-    </div>
-  </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"early","price_eur_m2":2352.0,"entry":true,"current":true}],"investment":{"market_reference_eur_m2":3360,"market_reference_status":"assumption","early_discount":0.3,"growth_annual":0.06,"target_annual":0.09,"exit_months":36,"interim_distributions":false,"developer_contribution_eur":0,"payment":"now","exit":"cash_from_sales_or_buyback","growth_locked_at_buyer_signing":true,"buyer_installments":[0.4,0.3,0.1,0.2],"early_pool_shares":564},"area_m2":{"min":48,"max":100,"default":72},"unit":"акц.","types":[{"id":"q48","min":48,"max":48,"quantity":48},{"id":"q72","min":72,"max":72,"quantity":72},{"id":"q100","min":100,"max":100,"quantity":100}]}</script>
-</div>
-
-
-</section>
-<section class="section rule-top s--head" aria-labelledby="funding">
-  <div class="wrap grid split-head">
-    <h2 id="funding">Как финансируется стройка</h2>
-    <div class="split-head__body">
-<p>Два источника — первоначальный инвестиционный пул и платежи покупателей всех двадцати домов. Дополнительный взнос девелопера и кредит в модели равны нулю. Инвестиции не считаются выручкой от продажи домов.</p>
-<div class="table-wrap" role="region" aria-labelledby="funding" tabindex="0">
-  <table class="dt">
-    <thead><tr><th scope="col">Показатель базового сценария</th><th scope="col" class="num">Сумма</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">Ранний пул: 564 акций</th><td class="num" data-label="Сумма">1 326 528 €</td></tr>
-      <tr><th scope="row">Договоры покупателей, месяцы 3–30</th><td class="num" data-label="Сумма">5 129 877 €</td></tr>
-      <tr><th scope="row">Земля, стройка, проектирование и резерв</th><td class="num" data-label="Сумма">4 490 813 €</td></tr>
-      <tr><th scope="row">Расходы на продажи</th><td class="num" data-label="Сумма">153 896 €</td></tr>
-      <tr><th scope="row">Капитал и целевой доход инвесторам на выходе</th><td class="num" data-label="Сумма">1 717 892 €</td></tr>
-      <tr><th scope="row">Остаток проекта после расчёта</th><td class="num" data-label="Сумма">93 803 €</td></tr>
-    </tbody>
-  </table>
-</div>
-<p>Платежи покупателей поступают по схеме 40/30/10/20%. При позднем подписании покупатель сразу оплачивает уже пройденные этапы. В базовом помесячном календаре кассового разрыва нет; минимальный остаток — 53 083 €. Это расчёт, а не уже собранные деньги или заключённые договоры.</p>
 
     </div>
   </div>
@@ -241,10 +247,16 @@
   <div class="wrap grid wl" id="waitlist">
     <div class="wl__text">
       <h2 id="request">Получить расчёт</h2>
-<p>Оставьте имя и контакт. Пришлём расчёт для вашей суммы и обсудим, какие параметры ещё нужно подтвердить до оплаты.</p>
+<p>Пришлём выбранный расчёт, календарь проекта и порядок выхода. Оставьте имя и удобный контакт — сумма уже указана в форме.</p>
 
     </div>
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Заявка уходит команде проекта в Telegram и на info&#64;artemisresort.com. Мы свяжемся с вами." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Заявка на расчёт принята." data-msg-ok-next="Команда свяжется с вами по указанному контакту, пришлёт персональный расчёт и объяснит срок и порядок выхода." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>Ваш выбранный сценарий</strong></p>
+        <dl><div><dt>Вложение</dt><dd data-calc-value="sum">169 344 €</dd></div><div><dt>На выходе с капиталом</dt><dd data-calc-value="exit">219 305 €</dd></div><div><dt>Целевой доход</dt><dd data-calc-value="gain">49 961 €</dd></div></dl>
+        <p class="micro">36 месяцев от полной оплаты</p>
+        <a class="micro" href="#calc">Изменить сумму</a>
+      </div>
       <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">Язык общения</label>
@@ -256,8 +268,8 @@
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/ru/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить расчёт</button></div>
-      <p class="micro">Бесплатно. Платёж — после утверждения участка и условий участия.</p>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Получить персональный расчёт</button></div>
+      <p class="micro">Бесплатно и без обязательств. Оплата участия — после утверждения участка и условий.</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
   </div>
@@ -321,6 +333,6 @@
 </footer>
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
-<script src="/static/tenerife/site/calc.js?v=df40d2ecd8d6" defer></script>
+<script src="/static/tenerife/site/calc.js?v=2c7f81b8865f" defer></script>
 </body>
 </html>

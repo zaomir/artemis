@@ -47,7 +47,10 @@
         if(r.status>=500||!json) return {ok:false,error:M.msgServer};
         return r.json().then(null,function(){return {ok:false,error:M.msgServer};});
       },function(){return {ok:false,error:M.msgNetwork};})
-      .then(function(r){ if(r&&r.ok===true){show('ok',okText);f.reset();}
+      .then(function(r){ if(r&&r.ok===true){show('ok',okText);
+          var selected={};for(var j=0;j<el.length;j++){if(/^calc_/.test(el[j].name))selected[el[j].name]=el[j].value;}
+          f.reset();
+          for(var j=0;j<el.length;j++){if(Object.prototype.hasOwnProperty.call(selected,el[j].name))el[j].value=selected[el[j].name];}}
         else if(r&&r.field&&ids[r.field]){fieldErr(r.field,fieldMsg[r.field]||M.msgServer);}
         else {show('err',(r&&r.error)||M.msgServer);} })
       .then(function(){b.disabled=false;b.textContent=label;});
