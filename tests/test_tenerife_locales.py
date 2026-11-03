@@ -101,12 +101,11 @@ class FiveBuildsTest(unittest.TestCase):
 
     def test_no_cyrillic_left_except_the_russian_link(self):
         """Перевод без русских слов — включая форму записи, калькулятор и alt-тексты (03.11.2026).
-        Кириллица остаётся только там, где русский — это название языка: пункт «Русский» в списке языка
-        общения и тихая ссылка «Русский» в подвале."""
+        Ссылка на русскую версию подписана «RU» (решение основателя 03.11.2026), поэтому кириллица
+        в разметке не остаётся вовсе; исключение — название языка в списке языка общения."""
         for locale in ("en", "es", "de", "fr"):
             for _f, name in PAGES:
                 body = self.page(locale, name).split("<body>", 1)[1]
-                body = re.sub(r'<p class="lang-ru">.*?</p>', " ", body, flags=re.S)   # ссылка на русскую версию
                 body = re.sub(r'<option[^>]*>.*?</option>', " ", body, flags=re.S)   # названия языков в списке
                 text = re.sub(r"<[^>]+>", " ", body)   # только текстовые узлы, без alt/title
                 cyr = re.findall(r"[А-Яа-яЁё]{2,}", text)

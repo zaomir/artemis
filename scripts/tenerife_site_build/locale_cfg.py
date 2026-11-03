@@ -33,19 +33,19 @@ HIDDEN_TITLES = {
 UI = {
     "ru": {"skip": "К содержанию", "menu": "Меню", "menu_aria": "Меню", "lang_aria": "Язык",
            "pages": "Страницы.", "contacts": "Контакты.", "company": "Компания.", "docs": "Документы.",
-           "plinth": "Ключевые цифры", "now": "сейчас", "lang_ru": "Русский"},
+           "plinth": "Ключевые цифры", "now": "сейчас", "lang_ru": "RU"},
     "en": {"skip": "Skip to content", "menu": "Menu", "menu_aria": "Menu", "lang_aria": "Language",
            "pages": "Pages.", "contacts": "Contacts.", "company": "Company.", "docs": "Documents.",
-           "plinth": "Key figures", "now": "now", "lang_ru": "Русский"},
+           "plinth": "Key figures", "now": "now", "lang_ru": "RU"},
     "es": {"skip": "Ir al contenido", "menu": "Menú", "menu_aria": "Menú", "lang_aria": "Idioma",
            "pages": "Páginas.", "contacts": "Contacto.", "company": "Empresa.", "docs": "Documentos.",
-           "plinth": "Cifras clave", "now": "ahora", "lang_ru": "Русский"},
+           "plinth": "Cifras clave", "now": "ahora", "lang_ru": "RU"},
     "de": {"skip": "Zum Inhalt", "menu": "Menü", "menu_aria": "Menü", "lang_aria": "Sprache",
            "pages": "Seiten.", "contacts": "Kontakt.", "company": "Unternehmen.", "docs": "Dokumente.",
-           "plinth": "Kennzahlen", "now": "jetzt", "lang_ru": "Русский"},
+           "plinth": "Kennzahlen", "now": "jetzt", "lang_ru": "RU"},
     "fr": {"skip": "Aller au contenu", "menu": "Menu", "menu_aria": "Menu", "lang_aria": "Langue",
            "pages": "Pages.", "contacts": "Contact.", "company": "Société.", "docs": "Documents.",
-           "plinth": "Chiffres clés", "now": "maintenant", "lang_ru": "Русский"},
+           "plinth": "Chiffres clés", "now": "maintenant", "lang_ru": "RU"},
 }
 
 # Названия ступеней цены для мини-лестницы (C8 mini) — те же слова, что в первой колонке таблицы copy_<loc>/04
