@@ -99,18 +99,27 @@ class FiveBuildsTest(unittest.TestCase):
             self.assertIn('class="lang-ru"', page, locale)   # русская версия — тихо в подвале
             self.assertTrue(head)
 
-    def test_no_cyrillic_left_except_the_form(self):
-        """Видимый текст перевода без русских слов. Остаются русскими (известный долг, не этой ветки): форма
-        записи (copy_v3/17_forma.md + FORM_MSG), калькулятор и alt-тексты фото (alts.json) — общие для всех языков."""
+    def test_no_cyrillic_left_except_the_russian_link(self):
+        """Перевод без русских слов — включая форму записи, калькулятор и alt-тексты (03.11.2026).
+        Кириллица остаётся только там, где русский — это название языка: пункт «Русский» в списке языка
+        общения и тихая ссылка «Русский» в подвале."""
         for locale in ("en", "es", "de", "fr"):
             for _f, name in PAGES:
                 body = self.page(locale, name).split("<body>", 1)[1]
-                body = body.split('<section class="section section--sand"', 1)[0]  # без блока формы
-                body = re.sub(r'<section class="section calc-sec" id="calc".*?</section>', " ", body, flags=re.S)
-                body = re.sub(r'<div class="wrap grid calc[^"]*" id="calc">.*?</section>', " ", body, flags=re.S)
+                body = re.sub(r'<p class="lang-ru">.*?</p>', " ", body, flags=re.S)   # ссылка на русскую версию
+                body = re.sub(r'<option[^>]*>.*?</option>', " ", body, flags=re.S)   # названия языков в списке
                 text = re.sub(r"<[^>]+>", " ", body)   # только текстовые узлы, без alt/title
                 cyr = re.findall(r"[А-Яа-яЁё]{2,}", text)
                 self.assertEqual(cyr, [], (locale, name, cyr[:5]))
+
+    def test_alts_and_team_photos_are_translated(self):
+        """alt-тексты кадров и фото команды — на языке страницы, не русские."""
+        for locale in ("en", "es", "de", "fr"):
+            for _f, name in PAGES:
+                page = self.page(locale, name)
+                alts = re.findall(r'aria-label="([^"]*)"', page)
+                cyr = [a for a in alts if re.search(r"[А-Яа-яЁё]{2,}", a)]
+                self.assertEqual(cyr, [], (locale, name, cyr[:3]))
 
     def test_interface_strings_are_localised(self):
         from locale_cfg import UI

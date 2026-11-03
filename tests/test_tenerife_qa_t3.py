@@ -30,8 +30,10 @@ RU = "/tenerife/ru"   # RU сайт живёт под /tenerife/ru/; файлы 
 PAGES = {name: (RU + "/" if name == "index" else f"{RU}/{name}/") for _f, name in build_v3.PAGES}
 
 
-def page(name):
-    return (SITE / f"{name}.html").read_text(encoding="utf-8")
+def page(name, locale=""):
+    """Собранная страница: SITE уже указывает на app/tenerife_site/ru/, у локалей — свой подкаталог (03.11.2026)."""
+    base = SITE if not locale or locale == "ru" else SITE.parent / locale
+    return (base / f"{name}.html").read_text(encoding="utf-8")
 
 
 class AppCase(unittest.TestCase):
@@ -412,8 +414,8 @@ class LegalPagesTest(AppCase):
             n, want = re.search(r"^\*\*Основной \((\d+) симв\.\):\*\*\n(.+)$", sec, re.M).groups()
             self.assertEqual(len(want), int(n), name)
             self.assertTrue(120 <= len(want) <= 155, name)
-            body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
-            for html_ in (body, page(name)):
+            body = self.client.get(f"/tenerife/ru/{name}/").get_data(as_text=True)   # RU — канон
+            for html_ in (body, page(name, locale="ru")):
                 got = re.findall(r'<meta name="description" content="([^"]*)">', html_)
                 self.assertEqual([htmllib.unescape(g) for g in got], [want], name)
             self.assertEqual(build_v3.legal_meta(name), want)

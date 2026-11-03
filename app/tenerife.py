@@ -26,6 +26,7 @@ import hashlib
 import html
 import hmac
 import ipaddress
+import json
 import logging
 import os
 import re
@@ -369,11 +370,55 @@ BACK_SITE = "← К сайту проекта"
 BACK_FORM = "← Назад к форме"
 
 
+def _i18n():
+    """Строки формы и подписей для ES/DE/FR: общий словарь с сайтом (scripts/tenerife_site_build/i18n_strings.json).
+    RU — канон в этом файле; если словаря нет (урезанный деплой), локали получают русские строки."""
+    try:
+        return json.loads((Path(__file__).resolve().parent.parent / "scripts" / "tenerife_site_build"
+                           / "i18n_strings.json").read_text(encoding="utf-8"))
+    except Exception:                                   # noqa: BLE001 — сайт важнее словаря
+        return {}
+
+
+def _page_locale(path: str | None = None) -> str:
+    """Язык страницы по адресу: /tenerife/es/... -> es, всё остальное (EN в корне и RU) -> как есть."""
+    parts = (path or request.path).strip("/").split("/")
+    if len(parts) >= 2 and parts[0] == "tenerife" and parts[1] in LOCALES:
+        return parts[1]
+    return "en"
+
+
+def _payload_locale(d: dict | None = None) -> str:
+    """Язык заявки: страница, с которой пришла форма (скрытое поле page); без неё — русский, как было до локалей."""
+    page = str((d or {}).get("page") or "")
+    parts = page.strip("/").split("/")
+    if len(parts) >= 2 and parts[0] == "tenerife":
+        return parts[1] if parts[1] in LOCALES else "en"
+    return "ru"
+
+
+def _form_msg(key: str, locale: str = "") -> str:
+    loc = locale or _page_locale()
+    if loc == "ru":
+        return FORM_MSG[key]
+    return _i18n().get(loc, {}).get("msgs", {}).get(key, FORM_MSG[key])
+
+
+def _back_label(which: str, locale: str = "") -> str:
+    loc = locale or _page_locale()
+    if loc in ("ru", "en"):
+        if loc == "ru":
+            return BACK_SITE if which == "site" else BACK_FORM
+        return _i18n().get("en", {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
+    return _i18n().get(loc, {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
+
+
 _EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 
 
-def _notice(status: int, title: str, text: str, back: str, back_label: str):
-    notice = SITE_DIR / "ru" / "_notice.html"
+def _notice(status: int, title: str, text: str, back: str, back_label: str, locale: str = ""):
+    loc = locale or _page_locale(back or "")
+    notice = SITE_DIR / loc / "_notice.html"
     shell = _finish((notice if notice.is_file() else SITE_DIR / "_notice.html").read_text(encoding="utf-8"))
     if not text:  # error answers: the message is the heading, no empty lead paragraph
         shell = shell.replace('<p class="hero__lead">{{NOTICE_TEXT}}</p>\n', "")
@@ -388,10 +433,13 @@ def _notice(status: int, title: str, text: str, back: str, back_label: str):
 @bp.route(THANKS_URL)
 def thanks():
     back = _safe_back(request.args.get("back", ""))
-    return _notice(200, THANKS_TITLE, THANKS_TEXT, back, BACK_SITE)
+    loc = _payload_locale({"page": back})   # язык страницы, с которой пришла форма
+    return _notice(200, _form_msg("ok-title", loc), _form_msg("ok-next", loc), back,
+                   _back_label("site", loc), locale=loc)
 
 
-def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: str = "", field: str = ""):
+def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: str = "", field: str = "",
+           locale: str = ""):
     if is_json:
         body = {"ok": ok}
         if error:
@@ -402,12 +450,13 @@ def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: st
     back = back or SITE_PREFIX + "/"
     if ok:
         return redirect(THANKS_URL + "?" + urllib.parse.urlencode({"back": back}), code=303)
-    return _notice(status, error or FORM_MSG["server"], "", back + "#ochered", BACK_FORM)
+    return _notice(status, error or _form_msg("server", locale), "", back + "#ochered", _back_label("form", locale))
 
 
 @bp.route("/api/tenerife/waitlist", methods=["POST"])
 def waitlist():
     d, is_json = _payload()
+    loc = _payload_locale(d)
 
     # Honeypot: bots fill the hidden field. Pretend success, store nothing.
     if str(d.get(HONEYPOT_FIELD) or "").strip():
@@ -423,13 +472,13 @@ def waitlist():
     back = _safe_back(page)
 
     if not name:
-        return _reply(is_json, False, 400, FORM_MSG["name"], back, "name")
+        return _reply(is_json, False, 400, _form_msg("name", loc), back, "name", locale=loc)
     if len(contact) < 5:
-        return _reply(is_json, False, 400, FORM_MSG["contact"], back, "contact")
+        return _reply(is_json, False, 400, _form_msg("contact", loc), back, "contact", locale=loc)
     if language not in WAITLIST_LANGS:
-        return _reply(is_json, False, 400, FORM_MSG["language"], back, "language")
+        return _reply(is_json, False, 400, _form_msg("language", loc), back, "language", locale=loc)
     if not consent:
-        return _reply(is_json, False, 400, FORM_MSG["consent"], back, "consent")
+        return _reply(is_json, False, 400, _form_msg("consent", loc), back, "consent", locale=loc)
 
     # calculator fields (calc_m2, calc_step, calc_pay): recomputed with the current model.json and stored
     # with its version as ok / mismatch / invalid (tenerife_calc.py); never blocks the lead
@@ -456,7 +505,7 @@ def waitlist():
             (client, since),
         ).fetchone()[0]
         if recent >= RATE_LIMIT_MAX:
-            return _reply(is_json, False, 429, FORM_MSG["rate"], back)
+            return _reply(is_json, False, 429, _form_msg("rate", loc), back, locale=loc)
         cols = ("name", "contact", "language", "page", "consent", "client_hash", "created_at")
         vals = (name, contact, language, page, 1, client, now.isoformat())
         if calc:

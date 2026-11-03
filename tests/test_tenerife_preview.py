@@ -123,7 +123,7 @@ class TenerifePreviewTest(unittest.TestCase):
             self.assertNotIn(forbidden, body)
 
     def test_privacy_names_controller_and_hosting_country(self):
-        body = self.client.get("/tenerife/privacy/").get_data(as_text=True)
+        body = self.client.get("/tenerife/ru/privacy/").get_data(as_text=True)   # RU — канон юридического текста
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "Германии"):
             self.assertIn(must, body)
         self.assertNotIn("Oxford Frame Ltd", body)

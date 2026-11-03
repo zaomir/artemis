@@ -88,32 +88,32 @@
 
 <section class="section calc-sec" id="calc" aria-labelledby="h1">
   <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
+    <div class="calc__in" id="calc-form" role="group" aria-label="Calculator">
       <fieldset>
-        <legend>Площадь</legend>
+        <legend>Area</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="type" value="one_bed" checked><span>Одна спальня, 48–55 м²</span></label>
-          <label class="opt"><input type="radio" name="type" value="two_bed"><span>Две спальни, 68–78 м²</span></label>
-          <label class="opt"><input type="radio" name="type" value="large"><span>Большой дом, 85–100 м²</span></label>
+          <label class="opt"><input type="radio" name="type" value="one_bed" checked><span>One bedroom, 48–55 m²</span></label>
+          <label class="opt"><input type="radio" name="type" value="two_bed"><span>Two bedrooms, 68–78 m²</span></label>
+          <label class="opt"><input type="radio" name="type" value="large"><span>Large house, 85–100 m²</span></label>
         </div>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
+          <label for="calc-m2" class="visually-hidden">Area, m²</label>
           <input type="range" id="calc-m2" name="m2" min="48" max="100" step="1" value="52">
-          <output for="calc-m2" id="calc-m2-out">52 м²</output>
+          <output for="calc-m2" id="calc-m2-out">52 m²</output>
         </div>
       </fieldset>
       <fieldset>
-        <legend>Ступень входа</legend>
+        <legend>Entry stage</legend>
         <div class="opts">
-          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Очередь — 2 950 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="permit"><span>Разрешение — 3 100 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="foundation"><span>Фундамент — 3 250 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Коробка и кровля — 3 450 €</span></label>
-          <label class="opt"><input type="radio" name="step" value="finishing"><span>Отделка — 3 650 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="queue" checked><span>Waiting list — 2 950 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="permit"><span>Permit — 3 100 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="foundation"><span>Foundation — 3 250 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="shell_roof"><span>Shell and roof — 3 450 €</span></label>
+          <label class="opt"><input type="radio" name="step" value="finishing"><span>Finishing — 3 650 €</span></label>
         </div>
       </fieldset>
       <fieldset>
-        <legend>Способ оплаты</legend>
+        <legend>Payment method</legend>
         <div class="opts">
           <label class="opt"><input type="radio" name="pay" value="now"><span>From 48 to 100 m²,</span></label>
           <label class="opt"><input type="radio" name="pay" value="m6" checked><span>A residence type:</span></label>
@@ -130,7 +130,7 @@
       </dl>
     </div>
   </div>
-  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","price_eur_m2":2950,"entry":true,"current":true},{"id":"permit","price_eur_m2":3100,"entry":true},{"id":"foundation","price_eur_m2":3250,"entry":true},{"id":"shell_roof","price_eur_m2":3450,"entry":true},{"id":"finishing","price_eur_m2":3650,"entry":true},{"id":"handover","price_eur_m2":3850,"entry":false}],"installments":{"months":6,"discount_pct":5},"dividend_eur_per_share_year":87,"dividend_pct_range":[2.5,3.5],"area_m2":{"min":48,"max":100,"default":52},"types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
+  <script type="application/json" id="cs-model">{"steps":[{"id":"queue","price_eur_m2":2950,"entry":true,"current":true},{"id":"permit","price_eur_m2":3100,"entry":true},{"id":"foundation","price_eur_m2":3250,"entry":true},{"id":"shell_roof","price_eur_m2":3450,"entry":true},{"id":"finishing","price_eur_m2":3650,"entry":true},{"id":"handover","price_eur_m2":3850,"entry":false}],"installments":{"months":6,"discount_pct":5},"dividend_eur_per_share_year":87,"dividend_pct_range":[2.5,3.5],"area_m2":{"min":48,"max":100,"default":52},"unit":"m²","types":[{"id":"one_bed","min":48,"max":55},{"id":"two_bed","min":68,"max":78},{"id":"large","min":85,"max":100}]}</script>
 </section>
 <section class="section rule-top s--head" aria-labelledby="s1">
   <div class="wrap grid split-head bar-under">
@@ -253,17 +253,17 @@
 </section>
 <section class="section section--sand" id="ochered" aria-label="Get my calculation">
   <div class="wrap grid wl wl--solo" id="waitlist">
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Отправляем…" data-msg-ok-title="Спасибо! Вы в очереди." data-msg-ok-next="Заявка уходит команде проекта в Telegram и на info&#64;artemisresort.com. Мы свяжемся с вами." data-msg-server="Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info&#64;artemisresort.com." data-msg-network="Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз." data-msg-rate="С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info&#64;artemisresort.com." data-msg-name="Укажите имя." data-msg-contact="Укажите контакт: email, телефон или Telegram." data-msg-language="Выберите язык общения." data-msg-consent="Отметьте согласие на обработку данных.">
-      <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
-      <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
-      <div class="field"><label for="wl-lang">Язык общения</label>
-        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
-      <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate data-variant="calculadora" data-msg-sending="Sending…" data-msg-ok-title="Thank you! You are on the list." data-msg-ok-next="Your request goes to the project team on Telegram and to info&#64;artemisresort.com. We will contact you." data-msg-server="We could not send your request. Please try again or email us at info&#64;artemisresort.com." data-msg-network="We could not reach the server. Check your internet connection and try again." data-msg-rate="Too many requests have been sent from this connection. Please try again later or email us at info&#64;artemisresort.com." data-msg-name="Please enter your name." data-msg-contact="Please enter your contact: email, phone or Telegram." data-msg-language="Please choose the language." data-msg-consent="Please tick the consent to data processing.">
+      <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
+      <div class="field"><label for="wl-contact">Contact — email, phone or Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
+      <div class="field"><label for="wl-lang">Language</label>
+        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="en" selected>English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
+      <div class="hp" aria-hidden="true"><label for="wl-website">Website</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="/tenerife/calculadora/">
       <input type="hidden" name="calc_m2" id="wl-calc-m2" value="52">
       <input type="hidden" name="calc_step" id="wl-calc-step" value="queue">
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m6">
-      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href="/tenerife/privacy/">privacy policy</a>. Consent can be withdrawn at any time.</span></label>
       <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">Get my calculation</button></div>
       <p class="micro">Free of charge. We take no money before the plot is chosen.</p>

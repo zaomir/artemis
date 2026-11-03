@@ -557,7 +557,7 @@ class LegalPagesV31Test(R4Case):
 
     def test_design_and_meta(self):
         for name in ("impressum", "privacy"):
-            body = self.get(f"/tenerife/{name}/")
+            body = self.get(f"/tenerife/ru/{name}/")   # RU — канон юридического текста (03.11.2026)
             self.assertIn('href="/static/tenerife/site/site.css', body, name)
             self.assertNotIn("/static/tenerife/base.css", body, name)
             self.assertRegex(body, r'<section class="[^"]*\blegal\b', name)
@@ -576,7 +576,7 @@ class LegalPagesV31Test(R4Case):
 
     def test_legal_text_is_the_copy(self):
         for name, md in (("impressum", "15_impressum.md"), ("privacy", "16_privacy.md")):
-            main = re.search(r"<main.*?</main>", self.get(f"/tenerife/{name}/"), re.S).group(0)
+            main = re.search(r"<main.*?</main>", self.get(f"/tenerife/ru/{name}/"), re.S).group(0)
             text = htmllib.unescape(re.sub(r"<[^>]+>", " ", main)).replace("← К сайту проекта", " ")
             src = (BUILD / "copy_v3" / md).read_text(encoding="utf-8")
             src = re.sub(r"<!--.*?-->", " ", src, flags=re.S)

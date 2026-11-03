@@ -266,22 +266,22 @@
 {% macro calculator(k, res) -%}
 <section class="section calc-sec" id="calc" aria-labelledby="h1">
   <div class="wrap grid calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
+    <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
       <fieldset>
-        <legend>Площадь</legend>
+        <legend>{{ calc_ui.area }}</legend>
         <div class="opts">
 {% for t in k.types %}
-          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.name }}, {{ t.min }}–{{ t.max }} м²</span></label>
+          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.name }}, {{ t.min }}–{{ t.max }} {{ calc_ui.unit }}</span></label>
 {% endfor %}
         </div>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
+          <label for="calc-m2" class="visually-hidden">{{ calc_ui.area_label }}</label>
           <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}">
           <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
         </div>
       </fieldset>
       <fieldset>
-        <legend>Ступень входа</legend>
+        <legend>{{ calc_ui.step }}</legend>
         <div class="opts">
 {% for st in k.steps %}
           <label class="opt"><input type="radio" name="step" value="{{ st.id }}"{% if st.id == k.current %} checked{% endif %}><span>{{ st.label }}</span></label>
@@ -289,7 +289,7 @@
         </div>
       </fieldset>
       <fieldset>
-        <legend>Способ оплаты</legend>
+        <legend>{{ calc_ui.pay }}</legend>
         <div class="opts">
           <label class="opt"><input type="radio" name="pay" value="now"><span>{{ res.pay_now }}</span></label>
           <label class="opt"><input type="radio" name="pay" value="m{{ months }}" checked><span>{{ res.pay_parts }}</span></label>
@@ -314,11 +314,11 @@
     Words: the section's own «Покупка из очереди: … сразу или … в месяц двенадцать месяцев» -#}
 {% macro calc_short(k, res) -%}
   <div class="wrap grid calc calc--short" id="calc">
-    <div class="calc__in" id="calc-form" role="group" aria-label="Калькулятор">
+    <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
       <fieldset>
-        <legend>Площадь</legend>
+        <legend>{{ calc_ui.area }}</legend>
         <div class="range">
-          <label for="calc-m2" class="visually-hidden">Площадь, м²</label>
+          <label for="calc-m2" class="visually-hidden">{{ calc_ui.area_label }}</label>
           <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}">
           <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
         </div>
@@ -344,18 +344,18 @@
     </div>
 {% endif %}
     <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate{% if calc %} data-variant="calculadora"{% endif %}{% for k, v in form_msg.items() %} data-msg-{{ k }}="{{ v }}"{% endfor %}>
-      <div class="field"><label for="wl-name">Имя</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
-      <div class="field"><label for="wl-contact">Контакт — email, телефон или Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
-      <div class="field"><label for="wl-lang">Язык общения</label>
-        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru" selected>Русский</option><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
-      <div class="hp" aria-hidden="true"><label for="wl-website">Сайт</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="field"><label for="wl-name">{{ form_ui.name }}</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
+      <div class="field"><label for="wl-contact">{{ form_ui.contact }}</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
+      <div class="field"><label for="wl-lang">{{ form_ui.language }}</label>
+        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru"{% if form_ui.lang_default == "ru" %} selected{% endif %}>Русский</option><option value="de"{% if form_ui.lang_default == "de" %} selected{% endif %}>Deutsch</option><option value="en"{% if form_ui.lang_default == "en" %} selected{% endif %}>English</option><option value="es"{% if form_ui.lang_default == "es" %} selected{% endif %}>Español</option><option value="fr"{% if form_ui.lang_default == "fr" %} selected{% endif %}>Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
+      <div class="hp" aria-hidden="true"><label for="wl-website">{{ form_ui.website }}</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="{{ url }}">
 {% if calc %}
       <input type="hidden" name="calc_m2" id="wl-calc-m2" value="{{ calc.m2 }}">
       <input type="hidden" name="calc_step" id="wl-calc-step" value="{{ calc.current }}">
       <input type="hidden" name="calc_pay" id="wl-calc-pay" value="m{{ months }}">
 {% endif %}
-      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно <a href="/tenerife/privacy/">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.</span></label>
+      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>{{ form_ui.consent }}</span></label>
       <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ button.text }}</button></div>
       <p class="micro">{{ button.micro }}</p>

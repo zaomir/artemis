@@ -14,10 +14,10 @@
    "F17"
   ],
   "alts": {
-   "F01": "Невысокие дома террасами на склоне над океаном",
-   "F04": "Терраса со стеклянным ограждением и видом на океан",
-   "F02": "Въезд в комплекс: базальтовые пилоны и бронзовые ворота",
-   "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
+   "F01": "Niedrige Häuser in Terrassen am Hang über dem Ozean",
+   "F04": "Terrasse mit Glasgeländer und Blick auf den Ozean",
+   "F02": "Zufahrt zur Anlage: Basaltpfeiler und Bronzetore",
+   "F03": "Gemeinschaftspool am Tag, Steinplatten und Canary-Stone-Häuser"
   },
   "title": "Artemis de la Cruz — 20 Residenzen in La Quinta, Teneriffa",
   "h1": "20 Residenzen in La Quinta — ab 153 400 €"
@@ -35,9 +35,9 @@
   },
   "hidden": [],
   "alts": {
-   "F21": "Дома террасами на зелёном склоне над океаном",
-   "F23": "Весь комплекс из двадцати домов террасами над океаном",
-   "F01": "Три дома Canary Stone со стороны сада, за ними океан"
+   "F21": "Häuser in Terrassen am grünen Hang über dem Ozean",
+   "F23": "Die gesamte Anlage aus zwanzig Häusern in Terrassen über dem Ozean",
+   "F01": "Drei Canary-Stone-Häuser von der Gartenseite, dahinter der Ozean"
   },
   "title": "Nordteneriffa: La Quinta, Santa Úrsula — Artemis",
   "h1": "La Quinta, Santa Úrsula: der Norden, in dem man auf Teneriffa lebt"
@@ -55,10 +55,10 @@
   },
   "hidden": [],
   "alts": {
-   "F05": "Спальня с окном в пол и выходом во внутренний дворик",
-   "F06": "Гостиная резиденции: известковые стены, базальтовый пол, вид на океан",
-   "F07": "Спальня резиденции с окном на океан",
-   "F08": "Кухня резиденции: дуб, базальтовая столешница, вид в сад"
+   "F05": "Schlafzimmer mit raumhohem Fenster zum Innenhof",
+   "F06": "Wohnzimmer der Residenz: Kalkwände, Basaltboden, Blick auf den Ozean",
+   "F07": "Schlafzimmer der Residenz mit Fenster zum Ozean",
+   "F08": "Küche der Residenz: Eiche, Basaltarbeitsplatte, Blick in den Garten"
   },
   "title": "Residenzen Artemis: 20 Häuser von 48 bis 100 m²",
   "h1": "Zwanzig Residenzen von 48 bis 100 Metern, eine Fassade: Canary Stone"
@@ -78,8 +78,8 @@
    "F17"
   ],
   "alts": {
-   "F14": "Котлован и фундамент домов на склоне, каменные террасы участка",
-   "F16": "Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом"
+   "F14": "Baugrube und Fundamente am Hang, steinerne Terrassen des Grundstücks",
+   "F16": "Flachdach mit Bronzekante, Solarmodule vor der Montage"
   },
   "title": "Artemis-Aktien der Bauträgergesellschaft: 1 Aktie = 1 m²",
   "h1": "Eine Aktie — ein Meter: die Aktien der Bauträgergesellschaft Artemis"
@@ -113,7 +113,7 @@
   },
   "hidden": [],
   "alts": {
-   "F10": "Терраса резиденции с видом на склон и океан"
+   "F10": "Terrasse der Residenz mit Blick auf Hang und Ozean"
   },
   "title": "Mieten im Norden Teneriffas: 12–15 € pro m² im Monat",
   "h1": "Wie ein Haus in La Quinta nach der Fertigstellung verdient"
@@ -131,8 +131,8 @@
   },
   "hidden": [],
   "alts": {
-   "F11": "Дома среди зелени на склоне над океаном",
-   "F13": "Солнечные панели в плоскости плоской кровли с бронзовой кромкой"
+   "F11": "Häuser im Grünen am Hang über dem Ozean",
+   "F13": "Solarmodule bündig im Flachdach mit Bronzekante"
   },
   "title": "Energie im Haus Artemis: Sonne auf dem Dach und Stein",
   "h1": "Sonnendach, steinerne Kontur: ein Haus, das die Wärme selbst hält"
@@ -150,7 +150,7 @@
   },
   "hidden": [],
   "alts": {
-   "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
+   "F15": "Rohbau der Häuser: Beton, Gerüst, steinerne Terrassen"
   },
   "title": "Bau Artemis de la Cruz: 9 Phasen, Bericht jede Woche",
   "h1": "Bau nach Plan 2027–2029: neun Phasen und ein Bericht jede Woche"
@@ -170,7 +170,7 @@
    "F17"
   ],
   "alts": {
-   "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
+   "F02": "Eingang der Anlage: steinerne Pfeiler und Holztore"
   },
   "title": "Artemis de la Cruz: von der Warteliste bis zum Schlüssel",
   "h1": "Von der Warteliste zum Schlüssel: sechs Schritte bei Artemis"
@@ -188,7 +188,7 @@
   },
   "hidden": [],
   "alts": {
-   "F03": "Общий бассейн и дома Canary Stone"
+   "F03": "Gemeinschaftspool und Canary-Stone-Häuser"
   },
   "title": "Fragen zu Artemis de la Cruz: Aktien, Preis, Dividende, Bau",
   "h1": "Fragen vor dem Einstieg bei Artemis de la Cruz, direkt beantwortet"
@@ -224,7 +224,7 @@
    "F17"
   ],
   "alts": {
-   "F24": "Террасы домов на склоне в вечернем свете"
+   "F24": "Hausterassen am Hang im Abendlicht"
   },
   "title": "Markt und Meterpreis in La Quinta: Zahlen für Artemis",
   "h1": "Markt und Meterpreis: woher die Zahlen von Artemis kommen"
@@ -242,7 +242,7 @@
   },
   "hidden": [],
   "alts": {
-   "F18": "Общий бассейн в сумерках, свет в окнах домов"
+   "F18": "Gemeinschaftspool in der Dämmerung, Licht in den Fenstern"
   },
   "title": "Boris Ribaut, leitender Bauleiter bei Artemis de la Cruz",
   "h1": "Ich bin Boris Ribaut, leitender Bauleiter von Artemis de la Cruz"

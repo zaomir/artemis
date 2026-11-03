@@ -759,6 +759,43 @@ FORM_MESSAGES = {
 }
 
 
+# ---------------------------------------------------------------- локали: строки формы, alt-тексты (03.11.2026)
+def i18n_strings():
+    """Строки, которых нет в копирайте страниц: подписи и согласие формы, сообщения формы, alt-тексты кадров."""
+    return json.loads((HERE / "i18n_strings.json").read_text(encoding="utf-8"))
+
+
+RU_FORM_UI = {
+    "name": "Имя",
+    "contact": "Контакт — email, телефон или Telegram",
+    "language": "Язык общения",
+    "website": "Сайт",
+    "consent": 'Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из '
+               'калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно '
+               '<a href="%PRIVACY%">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.',
+}
+
+
+def calc_ui():
+    """Подписи калькулятора: у RU — свои (в шаблоне и в модели), у локалей — из i18n_strings.json."""
+    if LOCALE == "ru":
+        return {"aria": "Калькулятор", "area": "Площадь", "area_label": "Площадь, м²", "step": "Ступень входа",
+                "pay": "Способ оплаты", "unit": "м²", "types": {}, "steps": {}}
+    c = i18n_strings()[LOCALE]["calc"]
+    return dict(c["ui"], types=c["types"], steps=c["steps"])
+
+
+def form_ui():
+    """{name, contact, language, website, consent, privacy} для текущей локали; RU — канон из шаблона."""
+    if LOCALE == "ru":
+        ui = dict(RU_FORM_UI)
+    else:
+        ui = dict(i18n_strings()[LOCALE]["form"])
+    ui["consent"] = ui["consent"].replace("%PRIVACY%", locale_path("/tenerife/privacy/"))
+    ui["lang_default"] = LOCALE
+    return ui
+
+
 def form_messages(md=None):
     """{key: text} from the «## Сообщения формы» section of 17_forma.md, verbatim; every label required."""
     md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
@@ -770,7 +807,13 @@ def form_messages(md=None):
     if missing or len(found) != len(FORM_MESSAGES):
         unknown = sorted(set(found) - set(FORM_MESSAGES))
         raise BuildError(f"{FORMA}: form messages missing {missing} / unknown {unknown}")
-    return {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
+    ru = {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
+    if LOCALE == "ru":
+        return ru
+    tr = i18n_strings()[LOCALE]["msgs"]
+    if set(tr) != set(ru):
+        raise BuildError(f"i18n_strings.json {LOCALE}: form messages keys differ from RU")
+    return {k: tr[k] for k in ru}
 
 
 # ---------------------------------------------------------------- calculator defaults (server-rendered, no CLS)
@@ -806,15 +849,22 @@ def calc_view(model):
                         | ({"current": True} if st.get("current") else {}) for st in steps],
               "installments": {"months": months, "discount_pct": model["installments"].get("discount_pct", 0)},
               "dividend_eur_per_share_year": d, "dividend_pct_range": [pct_min, pct_max],
-              "area_m2": model["area_m2"], "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
+              "area_m2": model["area_m2"], "unit": calc_ui()["unit"],
+              "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
+    cu = calc_ui()
+    def type_name(t):
+        return cu["types"].get(t["id"], t["name"])
+    def step_name(st):
+        return cu["steps"].get(st["id"], st["name"])
     return {"m2": m2, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"], "months": months,
-            "types": [dict(t, checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
-            "steps": [dict(st, label=st["name"] + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
+            "unit": cu["unit"],
+            "types": [dict(t, name=type_name(t), checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
+            "steps": [dict(st, label=step_name(st) + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
             "current": cur["id"],
             "sum": eur(total), "month": eur(total * (1 - disc) / months),
             "handover": eur(m2 * hand["price_eur_m2"]),
             "pct": fmt_pct(pct_min).rstrip("%") + "–" + fmt_pct(pct_max),
-            "m2_out": f"{m2} м²",
+            "m2_out": f"{m2} {cu['unit']}",
             "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
 
@@ -922,9 +972,15 @@ def team_gallery(page_name):
         return ""
     by_id = {it["img"]: it for it in cases_cfg["items"]}
     blocks = []
+    def alt_of(it):
+        """alt-текст фото человека: перевод из i18n_strings.json, иначе русский из people.json."""
+        if LOCALE == "ru":
+            return it["alt"]
+        return i18n_strings()[LOCALE]["people"].get(it["img"], it["alt"])
+
     if photos:
         cards = "".join(
-            f'<div class="tperson__ph tperson__ph--{it["img"]}" role="img" aria-label="{html.escape(it["alt"], quote=True)}"></div>'
+            f'<div class="tperson__ph tperson__ph--{it["img"]}" role="img" aria-label="{html.escape(alt_of(it), quote=True)}"></div>'
             for it in photos)
         blocks.append('<div class="tperson">' + cards + '</div>')
     if case_ids:
@@ -1097,11 +1153,19 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     rx = figure_regex(fmap)
     frames_cfg = json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     alts = json.loads(Path(alts_path or HERE / "alts.json").read_text(encoding="utf-8"))
+    if LOCALE != "ru" and alts_path is None:   # переводы alt-текстов; слоты остаются русскими только для RU
+        tr = i18n_strings()[LOCALE]["alts"]
+        missing = sorted(set(alts["images"]) - set(tr))
+        if missing:
+            raise BuildError(f"i18n_strings.json {LOCALE}: no alt for {missing}")
+        alts = {"images": tr, "slots": {}}
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=False, undefined=StrictUndefined,
                       trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
     footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"), fmap, rx)
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
+    env.globals["form_ui"] = form_ui()
+    env.globals["calc_ui"] = calc_ui()
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
         md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
@@ -1207,9 +1271,21 @@ NOTICE_SLOTS = ('<h1 id="h1">{{NOTICE_TITLE}}</h1>\n<p class="hero__lead">{{NOTI
                 '<p class="back"><a href="{{NOTICE_BACK}}">{{NOTICE_BACK_LABEL}}</a></p>')
 
 
+LEGAL_DIR = HERE / "legal"   # переводы юридических страниц (03.11.2026): plain HTML, по файлу на язык и страницу
+
+
 def legal_body(name):
     """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html without its old
-    wrapper (<section class="legal"><div class="wrap"> … </div></section>); only the h1 gets id="h1"."""
+    wrapper (<section class="legal"><div class="wrap"> … </div></section>); only the h1 gets id="h1".
+    У локалей — свой файл legal/<locale>/<name>.html с той же разметкой (без jinja)."""
+    if LOCALE != "ru":
+        f = LEGAL_DIR / LOCALE / f"{name}.html"
+        if not f.is_file():
+            raise BuildError(f"{f}: no legal text for locale {LOCALE}")
+        html_loc = f.read_text(encoding="utf-8").strip()
+        if "{%" in html_loc or "{{" in html_loc or html_loc.count("<h1>") != 1:
+            raise BuildError(f"{f}: legal text must be plain HTML with one <h1>")
+        return html_loc.replace("<h1>", '<h1 id="h1">', 1)
     src = (LEGAL_TEMPLATES / f"{name}.html").read_text(encoding="utf-8")
     m = re.search(r"\{% block body %\}\s*<section class=\"legal\"><div class=\"wrap\">\n(.*?)\n</div></section>\s*"
                   r"\{% endblock %\}", src, re.S)
@@ -1225,6 +1301,8 @@ def legal_meta(name, path=LEGAL_META):
     """Meta description of a legal page: the PRIMARY variant («**Основной (N симв.):**», next line, verbatim) under
     «## /tenerife/<name>/»; N must equal the Unicode length. Fallback variants are ignored."""
     md = path.read_text(encoding="utf-8")
+    if LOCALE != "ru":
+        return i18n_strings()[LOCALE]["legal"]["meta"][name]
     m = re.search(rf"^## /tenerife/{name}/[^\n]*\n(.*?)(?=^## |\Z)", md, re.S | re.M)
     if not m:
         raise BuildError(f"meta_legal.md: no section for /tenerife/{name}/")
@@ -1242,7 +1320,8 @@ def simple_pages(env, nav, menu, footer):
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
     tpl = env.get_template("simple.html")
     out = {}
-    for name, title in LEGAL.items():
+    legal_titles = LEGAL if LOCALE == "ru" else i18n_strings()[LOCALE]["legal"]["titles"]
+    for name, title in legal_titles.items():
         url = locale_path(f"/tenerife/{name}/")
         hreflangs, x_default = hreflang_links(f"/tenerife/{name}/")
         out[name] = wrap(prefix_internal_links(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
