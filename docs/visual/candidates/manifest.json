@@ -1,0 +1,45 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "canon": "ARTEMIS — Atlantic Heritage Watercolour v1.0",
+  "status": "REVIEW",
+  "image_id": "ART01-MASTER-20261104-CANDIDATE-01",
+  "category": "ART-01",
+  "truth_level": "C2",
+  "purpose": "homepage concept-vision hero, not approved site design",
+  "slot": {
+    "page": "index",
+    "frame": "F01"
+  },
+  "file": "docs/visual/candidates/ART-01-master-1600.webp",
+  "dimensions": {
+    "width": 1600,
+    "height": 900
+  },
+  "mime_type": "image/webp",
+  "sha256": "0b6304a8ebff7c63ee75140c38cb725fdd309f05f8586d2e925e894f27ed4145",
+  "source": "OpenAI image_gen 2026-11-04 original concept artwork",
+  "generation_id": "ec769ce7-2d31-4d42-92ec-2e43be979ad5",
+  "provenance": "Original synthetic architecture generated for project. No site plan, client photo or existing house was supplied.",
+  "rights_basis": "New project illustration created at owner direction; legal clearance prior to public use to be confirmed by owner.",
+  "review_flags": [
+    "Requires owner image approval for exact scene",
+    "Not a verified site view",
+    "Verify geographic elements and no Teide/ocean false panorama",
+    "No separate mobile 4:5 master yet",
+    "Not assigned to frames.json or published"
+  ],
+  "captions": {
+    "en": "Conceptual architectural vision; design, location and specifications remain under study.",
+    "es": "Visión arquitectónica conceptual; el diseño, la ubicación y las características siguen en estudio.",
+    "de": "Konzeptionelle Architekturvision; Gestaltung, Standort und Eigenschaften werden noch geprüft.",
+    "fr": "Vision architecturale conceptuelle ; conception, emplacement et caractéristiques restent à l'étude.",
+    "ru": "Концептуальное архитектурное видение. Дизайн, местоположение и характеристики ещё уточняются."
+  },
+  "alt": {
+    "en": "Ink and watercolour concept of a stepped Spanish-Canarian residential village among green hills near the Atlantic",
+    "es": "Concepto en tinta y acuarela de viviendas escalonadas de inspiración canaria y jardín en una ladera atlántica",
+    "de": "Tusche- und Aquarellentwurf für eine terrassierte Wohnanlage in kanarischem Stil an der Atlantikküste",
+    "fr": "Étude à l'encre et à l'aquarelle de résidences en terrasses inspirées des Canaries près de l'Atlantique",
+    "ru": "Акварельный эскиз каскадного ансамбля резиденций в испанско-канарском стиле на зелёном склоне"
+  }
+}
