@@ -1,0 +1,32 @@
+{
+  "atoms": [
+    "CAP-02",
+    "CAP-03",
+    "CAP-04",
+    "CAP-05",
+    "MAIL-01",
+    "MAIL-04",
+    "MAIL-05",
+    "MAIL-08"
+  ],
+  "status": "code_prepared_dependency_blocked",
+  "passed_isolated_tests": 26,
+  "cases": [
+    "legacy row+event+outbox in one commit",
+    "duplicate submit sends no second notification",
+    "Facebook contact not Telegram",
+    "newsletter-only no legacy waitlist row",
+    "GET scanner leaves pending",
+    "POST confirmation activates and queues one welcome",
+    "unsubscribe suppresses queue while preserving lead",
+    "source/language/consent snapshots preserved"
+  ],
+  "activation": "ARTEMIS_FUNNEL_ENABLED requires release QA and live inventory; default off",
+  "not_implemented": [
+    "provider send and bounce/complaint integration",
+    "full retention across CRM",
+    "runtime historical backfill",
+    "private FB group redirect until visitor URL verified"
+  ],
+  "production_changed": false
+}

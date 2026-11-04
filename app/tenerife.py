@@ -40,6 +40,8 @@ import ratelimit
 from notify import notify_lead
 from tenerife_calc import COLUMNS as CALC_COLUMNS, check_calc, load_model, migrate as migrate_calc
 from contact_format import valid_contact
+import funnel_http
+import funnel_store
 
 bp = Blueprint("tenerife", __name__)
 
@@ -198,6 +200,12 @@ def _finish(page: str) -> str:
         page = re.sub(r"[ \t]*" + re.escape(WA_SLOT) + r"\n?", "", page)
     if not tenerife_indexing() and _ROBOTS_META not in page:
         page = page.replace('<meta charset="utf-8">\n', '<meta charset="utf-8">\n' + _ROBOTS_META + "\n", 1)
+    if funnel_http.enabled() and 'id="wl-form"' in page:
+        locale_match=re.search(r'<html lang="([a-z]+)"',page)
+        loc=locale_match.group(1) if locale_match else 'en'
+        page=re.sub(r'<form\b(?=[^>]*\bid="wl-form")[\s\S]*?</form>',
+                    lambda _:funnel_http.form(loc,request.path),page,count=1)
+        page=page.replace('</body>','<script src="/static/tenerife/site/funnel.js" defer></script>\n</body>')
     return page
 
 
@@ -524,10 +532,18 @@ def waitlist():
     page = str(d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path
     page = page or SITE_PREFIX + "/"
     back = _safe_back(page)
+    typed=funnel_http.enabled() and bool(d.get('contact_type'))
+    newsletter_only=typed and d.get('intent')=='newsletter_only'
+    if typed:
+        try:
+            normalized=funnel_store.normalize(d)
+        except ValueError as exc:
+            field=str(exc)
+            return _reply(is_json,False,400,_form_msg('contact' if field in ('contact','newsletter_email') else 'server',loc),back,field,locale=loc)
 
-    if not name:
+    if not name and not newsletter_only:
         return _reply(is_json, False, 400, _form_msg("name", loc), back, "name", locale=loc)
-    if not valid_contact(contact):
+    if not typed and not valid_contact(contact):
         return _reply(is_json, False, 400, _form_msg("contact", loc), back, "contact", locale=loc)
     if language not in WAITLIST_LANGS:
         return _reply(is_json, False, 400, _form_msg("language", loc), back, "language", locale=loc)
@@ -554,10 +570,23 @@ def waitlist():
     conn = sqlite3.connect(_db_path(), timeout=5)
     try:
         init_waitlist_db(conn)
+        if typed:
+            funnel_store.migrate(conn)
+        conn.commit()
+        conn.execute('BEGIN IMMEDIATE')
+        if typed and conn.execute('SELECT 1 FROM artemis_events WHERE submission_id=?',(d['submission_id'],)).fetchone():
+            try:
+                funnel_store.capture(conn,d,funnel_http.secret(),now=now,client_hash=client)
+            except ValueError:
+                return _reply(is_json,False,409,_form_msg('server',loc),back,locale=loc)
+            conn.commit()
+            return _typed_capture_reply(is_json,loc)
         recent = conn.execute(
             "SELECT COUNT(*) FROM tenerife_waitlist WHERE client_hash=? AND created_at>=?",
             (client, since),
         ).fetchone()[0]
+        if typed:
+            recent=conn.execute('SELECT COUNT(*) FROM artemis_events WHERE client_hash=? AND created_at>=?',(client,since)).fetchone()[0]
         if recent >= RATE_LIMIT_MAX:
             return _reply(is_json, False, 429, _form_msg("rate", loc), back, locale=loc)
         cols = ("name", "contact", "language", "page", "consent", "client_hash", "created_at")
@@ -565,18 +594,35 @@ def waitlist():
         if calc:
             cols += tuple(c for c, _ in CALC_COLUMNS)
             vals += tuple(calc.get(c) for c, _ in CALC_COLUMNS)
-        conn.execute(
-            f"INSERT INTO tenerife_waitlist({','.join(cols)}) VALUES({','.join('?' * len(cols))})", vals
-        )
+        legacy=None
+        if not newsletter_only:
+            cursor=conn.execute(
+                f"INSERT INTO tenerife_waitlist({','.join(cols)}) VALUES({','.join('?' * len(cols))})", vals)
+            legacy=('tenerife_waitlist',cursor.lastrowid,now.isoformat())
+        if typed:
+            funnel_store.capture(conn,d,funnel_http.secret(),now=now,legacy=legacy,client_hash=client)
         conn.commit()
     finally:
         conn.close()
 
+    if newsletter_only:
+        return _typed_capture_reply(is_json,loc)
     if calc:
         notify_lead("Tenerife waitlist", name, contact, language, page, calc=calc, model=model)
     else:
         notify_lead("Tenerife waitlist", name, contact, language, page)
-    return _reply(is_json, True, back=back)
+    return _typed_capture_reply(is_json,loc) if typed else _reply(is_json, True, back=back)
+
+
+def _typed_capture_reply(is_json,locale):
+    prefix='/tenerife/'+('' if locale=='en' else locale+'/')
+    if is_json:
+        return jsonify(ok=True,next_url=prefix+'actualizaciones/',message=funnel_http.LABELS[locale]['success'],next_label=funnel_http.LABELS[locale]['diary'])
+    return _notice(200,funnel_http.LABELS[locale]['done'],funnel_http.LABELS[locale]['success'],
+                   prefix+'actualizaciones/',funnel_http.LABELS[locale]['diary'],locale=locale)
+
+
+funnel_http.register(bp,_db_path)
 
 
 def waitlist_rows(conn: sqlite3.Connection):

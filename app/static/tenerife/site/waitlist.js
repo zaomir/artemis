@@ -6,6 +6,7 @@
    5xx or not JSON (proxy / HTML error page) -> server text; JSON with a field -> that field's own text. */
 (function(){
   var f=document.getElementById('wl-form'); if(!f) return;
+  if(f.dataset.funnelVersion) return;
   var m=document.getElementById('wl-msg'), b=document.getElementById('wl-submit'), M=f.dataset;
   var ids={name:'wl-name',contact:'wl-contact',language:'wl-lang',consent:'wl-consent'};
   var fieldMsg={name:M.msgName,contact:M.msgContact,language:M.msgLanguage,consent:M.msgConsent};

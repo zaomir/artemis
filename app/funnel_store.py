@@ -34,7 +34,7 @@ def migrate(conn):
         '''CREATE TABLE IF NOT EXISTS artemis_events (
             source_event_id TEXT PRIMARY KEY, submission_id TEXT NOT NULL UNIQUE,
             payload_hash TEXT NOT NULL, payload TEXT NOT NULL, created_at TEXT NOT NULL,
-            legacy_table TEXT, legacy_id INTEGER, legacy_created_at TEXT,
+            legacy_table TEXT, legacy_id INTEGER, legacy_created_at TEXT, client_hash TEXT,
             UNIQUE(legacy_table,legacy_id,legacy_created_at))''',
         '''CREATE TABLE IF NOT EXISTS artemis_crm_outbox (
             source_event_id TEXT PRIMARY KEY REFERENCES artemis_events(source_event_id),
@@ -57,6 +57,8 @@ def migrate(conn):
     ]
     for sql in statements:
         conn.execute(sql)
+    if 'client_hash' not in {r[1] for r in conn.execute('PRAGMA table_info(artemis_events)')}:
+        conn.execute('ALTER TABLE artemis_events ADD COLUMN client_hash TEXT')
 
 
 def rollback_empty_migration(conn):
@@ -165,7 +167,7 @@ def queue_mail(conn, sid, generation, kind, issue, now):
         (str(uuid.uuid4()), sid, generation, kind, issue, now.isoformat()))
 
 
-def capture(conn, data, secret=None, now=None, legacy=None):
+def capture(conn, data, secret=None, now=None, legacy=None, client_hash=None):
     """Caller MUST hold BEGIN IMMEDIATE; no network, no commit, rollback on any failure.
 
     A reused id with different input is a conflict, never success for another enquiry.
@@ -181,14 +183,36 @@ def capture(conn, data, secret=None, now=None, legacy=None):
         if row[0] != digest:
             raise ValueError('submission_id_conflict')
         return event['source_event_id'], False
-    conn.execute('''INSERT INTO artemis_events
-        (source_event_id,submission_id,payload_hash,payload,created_at,legacy_table,legacy_id,legacy_created_at)
-        VALUES(?,?,?,?,?,?,?,?)''', (event['source_event_id'], event['submission_id'], digest,
-        json.dumps(event, sort_keys=True), now.isoformat(), *(legacy or (None, None, None))))
-    conn.execute('INSERT INTO artemis_crm_outbox(source_event_id) VALUES(?)', (event['source_event_id'],))
     if event['newsletter_opt_in']:
         request_subscription(conn, event, secret, now)
+        sub=conn.execute('SELECT id,state,generation,requested_at,confirmed_at,unsubscribed_at,deliverability FROM artemis_subscriptions WHERE email=?',(event['newsletter_email'],)).fetchone()
+        if sub:
+            event['subscription']=subscription_snapshot(sub)
+    conn.execute('''INSERT INTO artemis_events
+        (source_event_id,submission_id,payload_hash,payload,created_at,legacy_table,legacy_id,legacy_created_at,client_hash)
+        VALUES(?,?,?,?,?,?,?,?,?)''', (event['source_event_id'], event['submission_id'], digest,
+        json.dumps(event, sort_keys=True), now.isoformat(), *(legacy or (None, None, None)),client_hash))
+    conn.execute('INSERT INTO artemis_crm_outbox(source_event_id) VALUES(?)', (event['source_event_id'],))
     return event['source_event_id'], True
+
+
+def subscription_snapshot(row):
+    return dict(version=row[2]*10+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]]),state=row[1],
+                requested_at=row[3],confirmed_at=row[4],unsubscribed_at=row[5],deliverability=row[6],consent_version=VERSION)
+
+
+def queue_subscription_projection(conn,sid,kind,now):
+    row=conn.execute('SELECT id,state,generation,requested_at,confirmed_at,unsubscribed_at,deliverability,source_event_id FROM artemis_subscriptions WHERE id=?',(sid,)).fetchone()
+    source=conn.execute('SELECT payload FROM artemis_events WHERE source_event_id=?',(row[7],)).fetchone() if row else None
+    if not source:return
+    event=json.loads(source[0]);event['event_kind']='subscription'
+    event['source_event_id']=f'artemis:subscription:{sid}:{row[2]}:{kind}'
+    event['subscription']=subscription_snapshot(row);event['created_at']=now.isoformat()
+    event['submission_id']=event['source_event_id']
+    payload=json.dumps(event,sort_keys=True)
+    conn.execute('INSERT OR IGNORE INTO artemis_events(source_event_id,submission_id,payload_hash,payload,created_at) VALUES(?,?,?,?,?)',
+        (event['source_event_id'],event['submission_id'],hashlib.sha256(payload.encode()).hexdigest(),payload,now.isoformat()))
+    conn.execute('INSERT OR IGNORE INTO artemis_crm_outbox(source_event_id) VALUES(?)',(event['source_event_id'],))
 
 
 def confirm(conn, token, now=None):
@@ -205,6 +229,7 @@ def confirm(conn, token, now=None):
         return False
     conn.execute("UPDATE artemis_subscriptions SET state='active',confirmed_at=? WHERE id=?", (now.isoformat(),row[0]))
     queue_mail(conn, row[0], row[2], 'welcome', 'welcome', now)
+    queue_subscription_projection(conn,row[0],'confirmed',now)
     return True
 
 
@@ -221,6 +246,7 @@ def unsubscribe(conn, sid, generation, token, secret, now=None):
         return False
     conn.execute("UPDATE artemis_subscriptions SET state='unsubscribed',generation=generation+1,token_hash=NULL,unsubscribed_at=? WHERE id=?",(now.isoformat(),sid))
     conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')",(sid,))
+    queue_subscription_projection(conn,sid,'unsubscribed',now)
     return True
 
 

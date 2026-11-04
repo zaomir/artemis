@@ -58,7 +58,7 @@ class StoreTest(unittest.TestCase):
     def test_duplicate_and_conflict(self):
         self.assertTrue(self.capture()[1]);self.assertFalse(self.capture()[1])
         with self.assertRaisesRegex(ValueError,'conflict'):self.capture(intent='buyer')
-        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM artemis_events').fetchone()[0],1)
+        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM artemis_events WHERE source_event_id LIKE "artemis:submission:%"').fetchone()[0],1)
 
     def test_outbox_failure_rolls_back_event(self):
         self.db.execute("CREATE TRIGGER no_outbox BEFORE INSERT ON artemis_crm_outbox BEGIN SELECT RAISE(ABORT,'isolated failure'); END")
@@ -103,7 +103,7 @@ class StoreTest(unittest.TestCase):
         self.assertTrue(f.unsubscribe(self.db,sid,gen,f.token_for(self.secret,sid,gen,'unsubscribe'),self.secret,self.now))
         self.assertFalse(f.eligible_mail(self.db,m,self.now))
         self.assertFalse(f.confirm(self.db,token,self.now))
-        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM artemis_events').fetchone()[0],1)
+        self.assertEqual(self.db.execute('SELECT COUNT(*) FROM artemis_events WHERE source_event_id LIKE "artemis:submission:%"').fetchone()[0],1)
 
     def test_old_generation_cannot_confirm_new_request(self):
         self.capture(newsletter_opt_in=True);sid,gen,_=self.subscription()
