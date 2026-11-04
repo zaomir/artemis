@@ -255,7 +255,8 @@ class FormMessagesTest(unittest.TestCase):
 
 class FormServerTest(R4Case):
     def post(self, json_body=True, **kw):
-        d = {"name": "QA", "contact": "qa@example.com", "language": "ru", "consent": True, "page": "/tenerife/"}
+        # RU-страница: с P1-03 ответ идёт по полю language, а для невалидного языка — по page (EN у корня)
+        d = {"name": "QA", "contact": "qa@example.com", "language": "ru", "consent": True, "page": "/tenerife/ru/"}
         d.update(kw)
         if json_body:
             return self.client.post("/api/tenerife/waitlist", json=d)
@@ -560,9 +561,9 @@ class NoWaitingWordTest(R4Case):
 
 class LegalPagesV31Test(R4Case):
     """QA PS-05: impressum / privacy in the v3.1 site design (site.css, not the old base.css), text = copy_v3
-    15_impressum.md / 16_privacy.md word for word, meta description = meta_legal.md (sha 7bed1578…), and no
-    two /tenerife/ pages share a description."""
-    META_LEGAL_SHA = "f1d16ad147d3cab95ab79cefe7935b739854afa43fb7b1de7e810de1e19bf838"
+    15_impressum.md / 16_privacy.md word for word, meta description = meta_legal.md (sha c0502a46…, 04.11.2026),
+    and no two /tenerife/ pages share a description."""
+    META_LEGAL_SHA = "c0502a46742fe128c379b01463df0a770acea587186d495d19bd2ef17de9d0c3"
 
     def test_meta_legal_pinned(self):
         import hashlib

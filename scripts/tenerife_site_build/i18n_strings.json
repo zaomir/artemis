@@ -1,12 +1,14 @@
 {
-  "_comment": "Form UI, form messages, photo alts and team-photo alts per locale (03.11.2026). RU stays the canon in copy_v3/17_forma.md, _components.html and alts.json; these are the translations used when LOCALE != ru. %PRIVACY% is replaced by the locale's privacy page.",
+  "_comment": "Form UI, form messages, photo alts and team-photo alts per locale (03.11.2026; form UI + langs + button P1-03 06.11.2026). RU stays the canon in copy_v3/17_forma.md, _components.html and alts.json; these are the translations used when LOCALE != ru. DRAFT: en/es/de/fr form, consent and langs need a native-speaker review and a legal check of the consent wording before launch (TODO copywriter/lawyer). %PRIVACY% is replaced by the locale's privacy page.",
   "en": {
     "form": {
       "name": "Name",
       "contact": "Contact — email, phone or Telegram",
       "language": "Language",
       "website": "Website",
-      "consent": "I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that I can be added to the waiting list and contacted about my request, in accordance with the <a href=\"%PRIVACY%\">privacy policy</a>. Consent can be withdrawn at any time."
+      "button": "Request a personal calculation",
+      "langs": {"ru": "Russian", "de": "German", "en": "English", "es": "Spanish", "fr": "French"},
+      "consent": "I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that my request for a personal calculation can be processed and I can be contacted about it, in accordance with the <a href=\"%PRIVACY%\">privacy policy</a>. Consent can be withdrawn at any time."
     },
     "msgs": {
       "sending": "Sending…",
@@ -104,7 +106,7 @@
       },
       "meta": {
         "impressum": "Legal notice (Impressum, art. 10 LSSI-CE) of the Artemis de la Cruz website: operator OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
-        "privacy": "Privacy policy of the Artemis de la Cruz website and waiting list: what data the form collects, why, who receives it, how long it is kept, your rights and cookies."
+        "privacy": "Privacy policy of the Artemis de la Cruz website and requests for a personal calculation: what data the form collects, why, who receives it, how long it is kept, your rights and cookies."
       }
     }
   },
@@ -114,7 +116,9 @@
       "contact": "Contacto — email, teléfono o Telegram",
       "language": "Idioma",
       "website": "Sitio web",
-      "consent": "Acepto el tratamiento de mis datos (nombre, contacto, idioma, página, fecha y hora y, para una solicitud desde la calculadora, el cálculo) para que me incluyan en la lista de espera y se pongan en contacto conmigo sobre mi solicitud, conforme a la <a href=\"%PRIVACY%\">política de privacidad</a>. El consentimiento puede retirarse en cualquier momento."
+      "button": "Solicitar un cálculo personalizado",
+      "langs": {"ru": "Ruso", "de": "Alemán", "en": "Inglés", "es": "Español", "fr": "Francés"},
+      "consent": "Acepto el tratamiento de mis datos (nombre, contacto, idioma, página, fecha y hora y, para una solicitud desde la calculadora, el cálculo) para que mi solicitud de cálculo personalizado pueda tramitarse y se pongan en contacto conmigo al respecto, conforme a la <a href=\"%PRIVACY%\">política de privacidad</a>. El consentimiento puede retirarse en cualquier momento."
     },
     "msgs": {
       "sending": "Enviando…",
@@ -212,7 +216,7 @@
       },
       "meta": {
         "impressum": "Aviso legal (Impressum, art. 10 LSSI-CE) del sitio de Artemis de la Cruz: titular OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contacto.",
-        "privacy": "Política de privacidad del sitio de Artemis de la Cruz y de la lista de espera: qué datos recoge el formulario, para qué, quién los recibe, cuánto se conservan, sus derechos y cookies."
+        "privacy": "Política de privacidad del sitio de Artemis de la Cruz y de las solicitudes de cálculo personalizado: qué datos recoge el formulario, para qué, quién los recibe, cuánto se conservan, sus derechos y cookies."
       }
     }
   },
@@ -222,7 +226,9 @@
       "contact": "Kontakt — E-Mail, Telefon oder Telegram",
       "language": "Sprache",
       "website": "Website",
-      "consent": "Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit ich in die Warteliste aufgenommen und zu meiner Anfrage kontaktiert werde, gemäß der <a href=\"%PRIVACY%\">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden."
+      "button": "Persönliche Berechnung anfordern",
+      "langs": {"ru": "Russisch", "de": "Deutsch", "en": "Englisch", "es": "Spanisch", "fr": "Französisch"},
+      "consent": "Ich stimme der Verarbeitung meiner Daten (Name, Kontakt, Sprache, Seite, Datum und Uhrzeit sowie bei einer Anfrage über den Rechner der Berechnung) zu, damit meine Anfrage auf eine persönliche Berechnung bearbeitet und ich dazu kontaktiert werden kann, gemäß der <a href=\"%PRIVACY%\">Datenschutzerklärung</a>. Die Einwilligung kann jederzeit widerrufen werden."
     },
     "msgs": {
       "sending": "Wird gesendet…",
@@ -320,7 +326,7 @@
       },
       "meta": {
         "impressum": "Impressum (Art. 10 LSSI-CE) der Website von Artemis de la Cruz: Betreiber OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, Kontakt.",
-        "privacy": "Datenschutzerklärung der Website von Artemis de la Cruz und der Warteliste: welche Daten das Formular erhebt, wozu, wer sie erhält, wie lange sie gespeichert werden, Ihre Rechte und Cookies."
+        "privacy": "Datenschutzerklärung der Website von Artemis de la Cruz und der Anfragen auf eine persönliche Berechnung: welche Daten das Formular erhebt, wozu, wer sie erhält, wie lange sie gespeichert werden, Ihre Rechte und Cookies."
       }
     }
   },
@@ -330,7 +336,9 @@
       "contact": "Contact — e-mail, téléphone ou Telegram",
       "language": "Langue",
       "website": "Site web",
-      "consent": "J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin d'être inscrit sur la liste d'attente et contacté au sujet de ma demande, conformément à la <a href=\"%PRIVACY%\">politique de confidentialité</a>. Le consentement peut être retiré à tout moment."
+      "button": "Recevoir un calcul personnalisé",
+      "langs": {"ru": "Russe", "de": "Allemand", "en": "Anglais", "es": "Espagnol", "fr": "Français"},
+      "consent": "J'accepte le traitement de mes données (nom, contact, langue, page, date et heure et, pour une demande depuis le calculateur, le calcul) afin que ma demande de calcul personnalisé puisse être traitée et que je sois contacté à ce sujet, conformément à la <a href=\"%PRIVACY%\">politique de confidentialité</a>. Le consentement peut être retiré à tout moment."
     },
     "msgs": {
       "sending": "Envoi…",
@@ -428,7 +436,7 @@
       },
       "meta": {
         "impressum": "Mentions légales (Impressum, art. 10 LSSI-CE) du site d'Artemis de la Cruz : éditeur OXFORD FRAME REAL ASSETS LTD, Companies House 09153936, contact.",
-        "privacy": "Politique de confidentialité du site d'Artemis de la Cruz et de la liste d'attente : quelles données le formulaire collecte, pourquoi, qui les reçoit, combien de temps elles sont conservées, vos droits et les cookies."
+        "privacy": "Politique de confidentialité du site d'Artemis de la Cruz et des demandes de calcul personnalisé : quelles données le formulaire collecte, pourquoi, qui les reçoit, combien de temps elles sont conservées, vos droits et les cookies."
       }
     }
   },

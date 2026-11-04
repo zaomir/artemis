@@ -1,29 +1,29 @@
 <!-- META
-Блок: форма записи в очередь, общая для всех 14 страниц (на калькуляторе — с расчётом). Без кнопки: кнопка формы стоит в теле страницы. Строка согласия стоит у чекбокса. Сообщения формы — тексты для waitlist.js и app/tenerife.py.
+Блок: форма записи в очередь, общая для всех 14 страниц (на калькуляторе — с расчётом). Без кнопки: кнопка формы стоит в теле страницы. Строка согласия стоит у чекбокса. Сообщения формы — тексты для waitlist.js и app/tenerife.py. ПЕРЕВОД ЧЕРНОВОЙ: нужна вычитка носителем и юристом (согласие). ПЕРЕВОД ЧЕРНОВОЙ: нужна вычитка носителем и юристом (согласие).
 -->
 
 ## Форма записи в очередь
 
-**Согласие.** Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно [политике конфиденциальности](/tenerife/privacy/). Согласие можно отозвать в любой момент.
+**Согласие.** I agree to the processing of my data (name, contact, language, page, date and time, and for a calculator request the calculation) so that my request for a personal calculation can be processed and I can be contacted about it, in accordance with the [privacy policy](/tenerife/privacy/). Consent can be withdrawn at any time.
 
 ## Сообщения формы
 
-**Кнопка во время отправки.** Отправляем…
+**Кнопка во время отправки.** Sending…
 
-**Успех, заголовок.** Спасибо! Вы в очереди.
+**Успех, заголовок.** Thank you. Your calculation request is received.
 
-**Успех, что дальше.** Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.
+**Успех, что дальше.** The team will contact you using the details provided, send a personal calculation and explain the exit timing and process.
 
-**Ошибка сервера.** Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.
+**Ошибка сервера.** We could not send your request. Please try again or email us at info@artemisresort.com.
 
-**Нет связи с сервером.** Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз.
+**Нет связи с сервером.** We could not reach the server. Check your internet connection and try again.
 
-**Слишком много заявок.** С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info@artemisresort.com.
+**Слишком много заявок.** Too many requests have been sent from this connection. Please try again later or email us at info@artemisresort.com.
 
-**Поле «Имя» пустое.** Укажите имя.
+**Поле «Имя» пустое.** Please enter your name.
 
-**Поле «Контакт» пустое или короче 5 символов.** Укажите контакт: email, телефон или Telegram.
+**Поле «Контакт» пустое или короче 5 символов.** Please enter your contact: email, phone or Telegram.
 
-**Язык не выбран.** Выберите язык общения.
+**Язык не выбран.** Please choose the language.
 
-**Нет согласия.** Отметьте согласие на обработку данных.
+**Нет согласия.** Please tick the consent to data processing.

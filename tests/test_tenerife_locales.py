@@ -6,6 +6,7 @@
 canonical и hreflang en/x-default указывают на 200 EN-URL (не на редирект в DE), неизвестная локаль → 404.
 """
 import importlib
+import html as htmllib
 import os
 import re
 import subprocess
@@ -24,6 +25,7 @@ BASE = "https://artemisresort.com"
 sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(BUILD))
 
+import build_v3  # noqa: E402
 from build_v3 import PAGES  # noqa: E402
 
 
@@ -104,13 +106,11 @@ class FiveBuildsTest(unittest.TestCase):
             self.assertTrue(head)
 
     def test_no_cyrillic_left_except_the_russian_link(self):
-        """Перевод без русских слов — включая форму записи, калькулятор и alt-тексты (03.11.2026).
-        Ссылка на русскую версию подписана «RU» (решение основателя 03.11.2026), поэтому кириллица
-        в разметке не остаётся вовсе; исключение — название языка в списке языка общения."""
+        """Перевод без русских слов — включая форму записи (подписи, согласие, кнопка, список языков),
+        калькулятор и alt-тексты. Ссылка на русскую версию подписана «RU» (решение основателя 03.11.2026)."""
         for locale in ("en", "es", "de", "fr"):
             for _f, name in PAGES:
                 body = self.page(locale, name).split("<body>", 1)[1]
-                body = re.sub(r'<option[^>]*>.*?</option>', " ", body, flags=re.S)   # названия языков в списке
                 text = re.sub(r"<[^>]+>", " ", body)   # только текстовые узлы, без alt/title
                 cyr = re.findall(r"[А-Яа-яЁё]{2,}", text)
                 self.assertEqual(cyr, [], (locale, name, cyr[:5]))
@@ -123,6 +123,73 @@ class FiveBuildsTest(unittest.TestCase):
                 alts = re.findall(r'aria-label="([^"]*)"', page)
                 cyr = [a for a in alts if re.search(r"[А-Яа-яЁё]{2,}", a)]
                 self.assertEqual(cyr, [], (locale, name, cyr[:3]))
+
+    def form(self, locale, name="index"):
+        page = self.page(locale, name)
+        m = re.search(r'<form class="wl__form.*?</form>', page, re.S)
+        self.assertIsNotNone(m, (locale, name))
+        return m.group(0)
+
+    def test_form_ui_and_language_options_per_locale(self):
+        """P1-03: подписи, кнопка, согласие и названия языков — из form_ui локали, выбран язык страницы."""
+        for locale in LOCALES:
+            ui = build_v3.form_ui(locale)
+            form = self.form(locale)
+            for fid, key in (("wl-name", "name"), ("wl-contact", "contact"),
+                             ("wl-lang", "language"), ("wl-website", "website")):
+                self.assertIn(f'<label for="{fid}">{ui[key]}</label>', form, (locale, key))
+            self.assertIn(f'id="wl-submit">{ui["button"]}<', form, locale)
+            self.assertIn(ui["consent"], form, locale)
+            opts = re.findall(r'<option value="(\w+)"([^>]*)>([^<]+)</option>', form)
+            self.assertEqual([o[0] for o in opts], list(build_v3.FORM_LANG_ORDER), locale)
+            self.assertEqual({o[0]: o[2] for o in opts}, ui["langs"], locale)
+            self.assertEqual([o[0] for o in opts if "selected" in o[1]], [locale], locale)
+            privacy = "/tenerife/privacy/" if locale == "en" else f"/tenerife/{locale}/privacy/"
+            self.assertIn(f'href="{privacy}"', form, locale)
+            if locale != "ru":   # ни одной русской буквы в форме не-RU локали (включая названия языков)
+                text = re.sub(r"<[^>]+>", " ", form)
+                self.assertIsNone(re.search(r"[А-Яа-яЁё]", text), (locale, re.findall(r"[А-Яа-яЁё]+", text)[:5]))
+
+    def test_form_messages_come_from_locale_copy_and_reach_every_page(self):
+        """P1-03: data-msg-* = copy_<loc>/17_forma.md; каждое сообщение есть на каждой странице локали."""
+        for locale in LOCALES:
+            msgs = build_v3.form_messages(locale=locale)
+            self.assertEqual(set(msgs), set(build_v3.FORM_MESSAGES.values()), locale)
+            for _f, name in PAGES:
+                form = self.form(locale, name)
+                for key, want in msgs.items():
+                    m = re.search(r'data-msg-%s="([^"]*)"' % re.escape(key), form)
+                    self.assertIsNotNone(m, (locale, name, key))
+                    self.assertEqual(htmllib.unescape(m.group(1)), want, (locale, name, key))
+                    self.assertNotIn("@", m.group(1), (locale, name, key))
+
+    def test_empty_form_key_fails_the_build(self):
+        for locale in ("en", "es", "de", "fr"):
+            md = (BUILD / f"copy_{locale}" / "17_forma.md").read_text(encoding="utf-8")
+            broken = re.sub(r"(\*\*Успех, заголовок\.\*\*) .*", r"\1    ", md, count=1)
+            with self.assertRaises(build_v3.BuildError) as caught:
+                build_v3.form_messages(broken, locale=locale)
+            self.assertIn("empty", str(caught.exception), locale)
+
+    def test_copy_and_runtime_messages_stay_in_sync(self):
+        """copy_<loc>/17_forma.md — источник для сборки; i18n_strings.json и app/tenerife.py обязаны совпадать."""
+        import tenerife
+        for locale in LOCALES:
+            msgs = build_v3.form_messages(locale=locale)
+            for key in ("ok-title", "ok-next", "server", "rate", "name", "contact", "language", "consent"):
+                self.assertEqual(tenerife.FORM_MSG_BY_LANG[locale][key], msgs[key], (locale, key))
+            ui = tenerife.FORM_UI[locale]
+            for key in ("name", "contact", "language", "website", "button", "langs", "consent"):
+                self.assertTrue(ui.get(key), (locale, key))
+            if locale != "ru":
+                self.assertIsNone(re.search(r"[А-Яа-яЁё]", str(ui)), locale)
+
+    def test_divergent_copy_and_json_fail_the_build(self):
+        md = (BUILD / "copy_de" / "17_forma.md").read_text(encoding="utf-8")
+        broken = md.replace(build_v3.form_messages(locale="de")["ok-title"], "Anderer Text", 1)
+        with self.assertRaises(build_v3.BuildError) as caught:
+            build_v3.form_messages(broken, locale="de")
+        self.assertIn("differ", str(caught.exception))
 
     def test_interface_strings_are_localised(self):
         from locale_cfg import UI, NAV_UI

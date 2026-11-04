@@ -384,6 +384,9 @@ def _payload() -> tuple[dict, bool]:
 THANKS_URL = SITE_PREFIX + "/gracias/"
 # Form messages: copy_v3/17_forma.md «Сообщения формы», verbatim (tests/test_tenerife_r4.py checks them against
 # build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
+# P1-03 (06.11.2026): RU canon stays here; en/es/de/fr drafts live in scripts/tenerife_site_build/i18n_strings.json
+# and are mirrored into copy_<loc>/17_forma.md (build_v3 fails if the two diverge). The API answers in the language
+# of the request (`language` field, else the page, else EN — then RU); see _form_msg().
 FORM_MSG = {
     "ok-title": "Спасибо! Заявка на расчёт принята.",
     "ok-next": "Команда свяжется с вами по указанному контакту, пришлёт персональный расчёт и объяснит срок и порядок выхода.",
@@ -400,6 +403,20 @@ THANKS_TEXT = FORM_MSG["ok-next"]
 BACK_SITE = "← К сайту проекта"
 BACK_FORM = "← Назад к форме"
 
+# Форма на пяти языках (P1-03): те же ключи, что form_ui() в build_v3.py. en/es/de/fr — ЧЕРНОВОЙ перевод,
+# нужна вычитка носителем, а формулировку согласия — проверка юристом (TODO до запуска, не выдумываем новую).
+RU_FORM_UI = {
+    "name": "Имя",
+    "contact": "Контакт — email, телефон или Telegram",
+    "language": "Язык общения",
+    "website": "Сайт",
+    "button": "Получить персональный расчёт",
+    "langs": {"ru": "Русский", "de": "Deutsch", "en": "English", "es": "Español", "fr": "Français"},
+    "consent": 'Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из '
+               'калькулятора — расчёт), чтобы мою заявку на персональный расчёт обработали и связались со мной по ней, '
+               'согласно <a href="%PRIVACY%">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.',
+}
+
 
 def _i18n():
     """Строки формы и подписей для ES/DE/FR: общий словарь с сайтом (scripts/tenerife_site_build/i18n_strings.json).
@@ -411,6 +428,23 @@ def _i18n():
         return {}
 
 
+def _form_maps():
+    """FORM_UI/FORM_MSG_BY_LANG по локалям: RU — канон из этого файла, остальные — i18n_strings.json."""
+    data = _i18n()
+    ui = {"ru": dict(RU_FORM_UI)}
+    msgs = {"ru": dict(FORM_MSG)}
+    for loc in ("en", "es", "de", "fr"):
+        tr = data.get(loc) if isinstance(data.get(loc), dict) else {}
+        if isinstance(tr.get("form"), dict) and tr["form"]:
+            ui[loc] = dict(tr["form"])
+        if isinstance(tr.get("msgs"), dict) and tr["msgs"]:
+            msgs[loc] = dict(tr["msgs"])
+    return ui, msgs
+
+
+FORM_UI, FORM_MSG_BY_LANG = _form_maps()
+
+
 def _page_locale(path: str | None = None) -> str:
     """Язык страницы по адресу: /tenerife/es/... -> es, всё остальное (EN в корне и RU) -> как есть."""
     parts = (path or request.path).strip("/").split("/")
@@ -420,28 +454,37 @@ def _page_locale(path: str | None = None) -> str:
 
 
 def _payload_locale(d: dict | None = None) -> str:
-    """Язык заявки: страница, с которой пришла форма (скрытое поле page); без неё — русский, как было до локалей."""
-    page = str((d or {}).get("page") or "")
+    """Язык ответа API (P1-03): поле `language` сильнее страницы; неизвестный/пустой код — страница, затем EN.
+    Fallback EN, затем RU делает _form_msg()."""
+    data = d or {}
+    lang = str(data.get("language") or "").strip().lower()
+    if lang in WAITLIST_LANGS:
+        return lang
+    page = str(data.get("page") or "")
     parts = page.strip("/").split("/")
-    if len(parts) >= 2 and parts[0] == "tenerife":
-        return parts[1] if parts[1] in LOCALES else "en"
-    return "ru"
+    if len(parts) >= 2 and parts[0] == "tenerife" and parts[1] in ALL_LANGS:
+        return parts[1]
+    return "en"
 
 
 def _form_msg(key: str, locale: str = "") -> str:
-    loc = locale or _page_locale()
-    if loc == "ru":
-        return FORM_MSG[key]
-    return _i18n().get(loc, {}).get("msgs", {}).get(key, FORM_MSG[key])
+    loc = (locale or "en").strip().lower()
+    for candidate in (loc, "en", "ru"):
+        msg = FORM_MSG_BY_LANG.get(candidate, {}).get(key)
+        if msg:
+            return msg
+    return FORM_MSG[key]
 
 
 def _back_label(which: str, locale: str = "") -> str:
-    loc = locale or _page_locale()
-    if loc in ("ru", "en"):
-        if loc == "ru":
-            return BACK_SITE if which == "site" else BACK_FORM
-        return _i18n().get("en", {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
-    return _i18n().get(loc, {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
+    loc = (locale or "en").strip().lower()
+    if loc == "ru":
+        return BACK_SITE if which == "site" else BACK_FORM
+    for candidate in (loc, "en"):
+        val = _i18n().get(candidate, {}).get("back", {}).get(which)
+        if val:
+            return val
+    return BACK_SITE if which == "site" else BACK_FORM
 
 
 _EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
@@ -463,8 +506,15 @@ def _notice(status: int, title: str, text: str, back: str, back_label: str, loca
 
 @bp.route(THANKS_URL)
 def thanks():
-    back = _safe_back(request.args.get("back", ""))
-    loc = _payload_locale({"page": back})   # язык страницы, с которой пришла форма
+    raw_back = request.args.get("back", "")
+    lang = (request.args.get("lang") or "").strip().lower()
+    back = _safe_back(raw_back)
+    if lang in WAITLIST_LANGS:                 # язык заявки, если ссылка его несёт
+        loc = lang
+    elif raw_back:                             # иначе язык страницы, с которой пришла форма
+        loc = _payload_locale({"page": back})
+    else:                                      # старый /tenerife/gracias/ без контекста — RU, как было
+        loc = "ru"
     return _notice(200, _form_msg("ok-title", loc), _form_msg("ok-next", loc), back,
                    _back_label("site", loc), locale=loc)
 

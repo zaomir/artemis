@@ -44,9 +44,11 @@ TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
 MODEL = STATIC / "tenerife" / "site" / "model.json"
 BASE_URL = "https://artemisresort.com"
 # Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
+# P1-03/P1 legal 04.11.2026: 16_privacy.md (new model + version) and 17_forma.md (consent without the waiting list)
+# changed -> the pin was re-approved to f88b115b…; update it only together with a copy review.
 # Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
 # Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "bdb08a15257309697b329e59a32d72ade0b68ad0a7c993ffecedc75b3eb97896"
+COPY_SHA256_DEFAULT = "f88b115be1b6b575f3f40370cf5d6456a44cf349d4cd270d9d6c620ab06b1bfd"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
@@ -818,14 +820,19 @@ def i18n_strings():
     return json.loads((HERE / "i18n_strings.json").read_text(encoding="utf-8"))
 
 
+# Порядок <option> в форме записи; значения — коды языков (WAITLIST_LANGS в app/tenerife.py).
+FORM_LANG_ORDER = ("ru", "de", "en", "es", "fr")
+
 RU_FORM_UI = {
     "name": "Имя",
     "contact": "Контакт — email, телефон или Telegram",
     "language": "Язык общения",
     "website": "Сайт",
+    "button": "Получить персональный расчёт",
+    "langs": {"ru": "Русский", "de": "Deutsch", "en": "English", "es": "Español", "fr": "Français"},
     "consent": 'Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из '
-               'калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно '
-               '<a href="%PRIVACY%">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.',
+               'калькулятора — расчёт), чтобы мою заявку на персональный расчёт обработали и связались со мной по ней, '
+               'согласно <a href="%PRIVACY%">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.',
 }
 
 
@@ -833,20 +840,60 @@ def calc_ui():
     return i18n_strings()[LOCALE]["calc"]["ui"]
 
 
-def form_ui():
-    """{name, contact, language, website, consent, privacy} для текущей локали; RU — канон из шаблона."""
-    if LOCALE == "ru":
+def _copy_dir(locale):
+    return HERE / ("copy_v3" if locale == "ru" else f"copy_{locale}")
+
+
+def _locale_path_for(url, locale):
+    """locale_path(), но для явной локали (тесты/сборка другой локали в том же процессе)."""
+    if locale == "en" or not url.startswith("/tenerife/"):
+        return url
+    return f"/tenerife/{locale}/{url[len('/tenerife/'):]}"
+
+
+def form_consent(md=None, locale=None):
+    """Строка «**Согласие.**» из 17_forma.md: markdown-ссылка на политику -> <a href="%PRIVACY%">.
+    Для не-RU должна совпадать с i18n_strings.json form.consent (JSON кормит app/tenerife.py)."""
+    loc = locale or LOCALE
+    md = md if md is not None else ((COPY if loc == LOCALE else _copy_dir(loc)) / FORMA).read_text(encoding="utf-8")
+    m = re.search(r"^\*\*Согласие\.\*\* (.+)$", md, re.M)
+    if not m:
+        raise BuildError(f"{FORMA}: no «**Согласие.**» line")
+    text = m.group(1).strip()
+    links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", text)
+    if len(links) != 1 or links[0][1] != "/tenerife/privacy/":
+        raise BuildError(f"{FORMA}: consent must link exactly once to /tenerife/privacy/ (got {links})")
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="%PRIVACY%">\1</a>', text)
+    want = RU_FORM_UI["consent"] if loc == "ru" else i18n_strings()[loc]["form"].get("consent")
+    if text != want:
+        raise BuildError(f"{FORMA}: consent differs from "
+                         f"{'RU_FORM_UI' if loc == 'ru' else 'i18n_strings.json ' + loc} — sync both")
+    return text
+
+
+def form_ui(locale=None):
+    """{name, contact, language, website, button, langs, consent} для локали; RU — канон в шаблоне."""
+    loc = locale or LOCALE
+    if loc == "ru":
         ui = dict(RU_FORM_UI)
     else:
-        ui = dict(i18n_strings()[LOCALE]["form"])
-    ui["consent"] = ui["consent"].replace("%PRIVACY%", locale_path("/tenerife/privacy/"))
-    ui["lang_default"] = LOCALE
+        ui = dict(i18n_strings()[loc]["form"])
+    empty = [k for k in ("name", "contact", "language", "website", "button", "consent", "langs")
+             if not str(ui.get(k) or "").strip()]
+    if empty:
+        raise BuildError(f"form UI {loc}: empty {empty}")
+    if set(ui["langs"]) != set(ALL_LANGS):
+        raise BuildError(f"form UI {loc}: langs {sorted(ui['langs'])} != {sorted(ALL_LANGS)}")
+    md = None if loc == LOCALE else (_copy_dir(loc) / FORMA).read_text(encoding="utf-8")
+    ui["consent"] = form_consent(md, locale=loc).replace("%PRIVACY%", _locale_path_for("/tenerife/privacy/", loc))
+    ui["button"] = html.escape(ui["button"])
+    ui["lang_default"] = loc
+    ui["lang_order"] = FORM_LANG_ORDER
     return ui
 
 
-def form_messages(md=None):
-    """{key: text} from the «## Сообщения формы» section of 17_forma.md, verbatim; every label required."""
-    md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
+def _parse_form_messages(md):
+    """{key: text} из «## Сообщения формы»; пустое или неполное сообщение — ошибка сборки."""
     sec = re.search(r"^## Сообщения формы\n(.*?)(?=^## |\Z)", md, re.S | re.M)
     if not sec:
         raise BuildError(f"{FORMA}: no «Сообщения формы» section")
@@ -855,13 +902,33 @@ def form_messages(md=None):
     if missing or len(found) != len(FORM_MESSAGES):
         unknown = sorted(set(found) - set(FORM_MESSAGES))
         raise BuildError(f"{FORMA}: form messages missing {missing} / unknown {unknown}")
-    ru = {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
-    if LOCALE == "ru":
-        return ru
-    tr = i18n_strings()[LOCALE]["msgs"]
-    if set(tr) != set(ru):
-        raise BuildError(f"i18n_strings.json {LOCALE}: form messages keys differ from RU")
-    return {k: tr[k] for k in ru}
+    out = {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
+    empty = [k for k, v in out.items() if not v]
+    if empty:
+        raise BuildError(f"{FORMA}: empty form messages {empty} (translator TODO?)")
+    return out
+
+
+def form_messages(md=None, locale=None):
+    """{key: text} из 17_forma.md своей локали, verbatim (Kimi r4 / P1-03 06.11.2026).
+    Для не-RU переводы лежат в copy_<loc>/17_forma.md и обязаны совпадать с i18n_strings.json
+    (JSON читает app/tenerife.py, поэтому расхождение — ошибка сборки, а не тихая подмена)."""
+    loc = locale or LOCALE
+    if md is None:
+        md = ((COPY if loc == LOCALE else _copy_dir(loc)) / FORMA).read_text(encoding="utf-8")
+    out = _parse_form_messages(md)
+    if loc == "ru":
+        return out
+    tr = i18n_strings()[loc]["msgs"]
+    if set(tr) != set(out):
+        raise BuildError(f"i18n_strings.json {loc}: form messages keys differ from {FORMA}")
+    empty = [k for k, v in tr.items() if not str(v).strip()]
+    if empty:
+        raise BuildError(f"i18n_strings.json {loc}: empty form messages {empty} (translator TODO?)")
+    diff = sorted(k for k in out if tr[k] != out[k])
+    if diff:
+        raise BuildError(f"{loc}: {FORMA} and i18n_strings.json differ for {diff} — sync both")
+    return out
 
 
 # ---------------------------------------------------------------- calculator defaults (server-rendered, no CLS)
@@ -1202,7 +1269,8 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"), fmap, rx)
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
-    env.globals["form_ui"] = form_ui()
+    form_ui_ = form_ui()
+    env.globals["form_ui"] = form_ui_
     env.globals["calc_ui"] = calc_ui()
     env.globals["calc_details_url"] = locale_path("/tenerife/inversores/#funding")
     env.globals["nav_ui"] = locale_cfg.NAV_UI[LOCALE]
@@ -1259,6 +1327,10 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         frames = site_frames[name]
         alias = heading_alias(name)
         page = structure(blocks, frames, alts, name, model, alias=alias)
+        if page["button"]["text"] != form_ui_["button"]:
+            # кнопка формы — одна на все страницы локали; текст в copy_<loc> и form_ui обязан совпадать
+            raise BuildError(f"{LOCALE}/{name}: **Кнопка** «{page['button']['text']}» != form button "
+                             f"«{form_ui_['button']}» (sync 17_forma.md / i18n_strings.json)")
         if name in ("simon", "boris"):
             apply_profile_photos(page, name, alias)
         url = locale_path(slugs[name])

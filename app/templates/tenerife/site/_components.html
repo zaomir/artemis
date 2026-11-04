@@ -405,7 +405,7 @@
 
 {#- C13 waitlist: the page's single .cta-primary. Fields as in prod. id="waitlist" stays for the no-JS redirect -#}
 {% macro cta(s, button, url, calc) -%}
-<section class="section section--sand" id="ochered"{% if s %} aria-labelledby="{{ s.id }}"{% else %} aria-label="{{ button.text }}"{% endif %}>
+<section class="section section--sand" id="ochered"{% if s %} aria-labelledby="{{ s.id }}"{% else %} aria-label="{{ form_ui.button }}"{% endif %}>
   <div class="wrap grid wl{% if not s %} wl--solo{% endif %}" id="waitlist">
 {% if s %}
     <div class="wl__text">
@@ -425,7 +425,7 @@
       <div class="field"><label for="wl-name">{{ form_ui.name }}</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
       <div class="field"><label for="wl-contact">{{ form_ui.contact }}</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
       <div class="field"><label for="wl-lang">{{ form_ui.language }}</label>
-        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru"{% if form_ui.lang_default == "ru" %} selected{% endif %}>Русский</option><option value="de"{% if form_ui.lang_default == "de" %} selected{% endif %}>Deutsch</option><option value="en"{% if form_ui.lang_default == "en" %} selected{% endif %}>English</option><option value="es"{% if form_ui.lang_default == "es" %} selected{% endif %}>Español</option><option value="fr"{% if form_ui.lang_default == "fr" %} selected{% endif %}>Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
+        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err">{% for code in form_ui.lang_order %}<option value="{{ code }}"{% if form_ui.lang_default == code %} selected{% endif %}>{{ form_ui.langs[code] }}</option>{% endfor %}</select><p class="field__err" id="wl-lang-err"></p></div>
       <div class="hp" aria-hidden="true"><label for="wl-website">{{ form_ui.website }}</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="{{ url }}">
 {% if calc %}
@@ -435,7 +435,7 @@
 {% endif %}
       <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>{{ form_ui.consent }}</span></label>
       <p class="field__err" id="wl-consent-err"></p>
-      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ button.text }}</button></div>
+      <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ form_ui.button }}</button></div>
       <p class="micro">{{ button.micro }}</p>
       <div class="msg" id="wl-msg" role="status"></div>
     </form>
