@@ -1299,13 +1299,34 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
                         "title": meta["Meta title"],
                         "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
+    from news import build_pages, UI as NEWS_UI
+
+    def render_news(title, description, body, news_url, available):
+        # News has a contextual CTA, never an incidental investment calculation.
+        labels = dict(locale_cfg.NAV_UI[LOCALE], calculation=NEWS_UI[LOCALE][7])
+        env.globals['header_cta_url'] = news_url
+        prefix_free = re.sub(r'^/tenerife/(?:ru|es|de|fr)/', '/tenerife/', news_url)
+        alternates = [{'code':loc, 'url':BASE_URL+lang_url(loc,prefix_free)} for loc in available]
+        links = [{'code':x['code'].upper(),'url':x['url'],'current':x['code']==LOCALE}
+                 for x in alternates if x['code']!='ru']
+        return wrap(prefix_internal_links(env.get_template('simple.html').render(
+            title=title+' — Artemis de la Cruz', description=description, body=body,
+            canonical=BASE_URL+news_url, url=news_url, kind='news', nav=nav, menu=menu,
+            footer=footer, home_url=locale_path('/tenerife/'), langs=links,
+            menu_more_label=MORE_LABEL.get(LOCALE,'Information'), ui=locale_cfg.UI[LOCALE],
+            nav_ui=labels, html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+            hreflangs=alternates, x_default=BASE_URL+lang_url('en',prefix_free))))
+
+    outputs.update(build_pages(render_news, LOCALE))
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)
     if write:
         Path(out_dir).mkdir(parents=True, exist_ok=True)   # app/tenerife_site/<locale>/ создаётся при первой сборке
         (STATIC / "tenerife" / "site" / "site.css").write_text(css, encoding="utf-8")
         for name, out in outputs.items():
-            (Path(out_dir) / f"{name}.html").write_text(out, encoding="utf-8")
+            target = Path(out_dir) / f"{name}.html"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(out, encoding="utf-8")
         # The old slug is a redirect, never a second generated copy that can go stale.
         (Path(out_dir) / "acciones.html").unlink(missing_ok=True)
     return outputs, report

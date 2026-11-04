@@ -1,0 +1,21 @@
+{
+  "atoms": [
+    "NEWS-02",
+    "NEWS-03"
+  ],
+  "status": "code_verified_not_deployed",
+  "build_locales": [
+    "en",
+    "ru",
+    "es",
+    "de",
+    "fr"
+  ],
+  "checks": {
+    "command": "PYTHONPATH=../deps python3 -m unittest discover -s tests -p test_funnel_news.py -v",
+    "passed": 3
+  },
+  "evidence": "10 explicit Flask routes return 200 without login or JS; canonical and language match; unknown slug 404; legacy en route single redirect; drafts excluded",
+  "browser_visual_QA": "pending_NEWS-05",
+  "production": "blocked_VPS_channel"
+}

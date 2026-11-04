@@ -275,6 +275,29 @@ def site_index():
     return _site_page("index")
 
 
+@bp.route('/tenerife/actualizaciones/')
+@bp.route('/tenerife/<locale>/actualizaciones/')
+@bp.route('/tenerife/actualizaciones/<slug>/')
+@bp.route('/tenerife/<locale>/actualizaciones/<slug>/')
+def project_news(locale='en', slug=None):
+    """Explicit nested article route, never an arbitrary filesystem path."""
+    if locale not in ALL_LANGS:
+        return _not_found()
+    if '/tenerife/en/' in request.path:
+        return redirect(_with_query('/tenerife/actualizaciones/' + (slug+'/' if slug else '')),code=301)
+    if slug and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',slug):
+        return _not_found(locale)
+    base = SITE_DIR if locale=='en' else SITE_DIR/locale
+    target = base / ('actualizaciones/'+slug+'.html' if slug else 'actualizaciones.html')
+    if not target.is_file():
+        return _not_found(locale)
+    response=make_response(_finish(target.read_text(encoding='utf-8')))
+    response.headers['Content-Type']='text/html; charset=utf-8'
+    # Per-route policy: adding news must not globally enable investor indexing.
+    response.headers['X-Robots-Tag']='noindex, nofollow'
+    return response
+
+
 # P1-02: английская локаль живёт в корне (/tenerife/<page>/), а не под /en/. Старые /tenerife/en/* (их в отчёте 14:
 # 12 страниц + impressum + privacy) отвечают одним 301 на рабочий unprefixed URL, а не 404. EN-главная
 # /tenerife/en/ -> /tenerife/ обрабатывается в site_page()/site_legacy().
