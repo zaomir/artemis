@@ -1,0 +1,27 @@
+{
+  "schema": "artemis-news/1",
+  "release_status": "prepared_not_deployed",
+  "articles": [
+    {
+      "news_id": "concept-search-20261104",
+      "revision": 1,
+      "slug": "concept-search",
+      "editorial_status": "ready",
+      "event_date": "2026-11-04",
+      "publication_date": "2026-11-04",
+      "stage": "concept_search",
+      "author": "Artemis de la Cruz",
+      "sources": [{"label": "Project brief, 4 November 2026", "url": "https://github.com/zaomir/grainee-v2/blob/main/docs/projects/artemis/tenerife/ARTEMIS_FUNNEL_ATOMIC_PLAN_2026-11-04.md"}],
+      "assets": [],
+      "claim_references": [],
+      "history": [{"revision": 1, "date": "2026-11-04", "change": "Initial factual stage update; no financial claims"}],
+      "translations": {
+        "en": {"title": "Artemis: the concept is taking shape", "summary": "We are exploring the project's architectural direction on the north of Tenerife.", "changed": "Artemis de la Cruz is currently searching for its architectural concept. This diary will record decisions and the evidence behind them.", "open": "The architecture and its details are still being developed. Concept sketches express an atmosphere; they are not an approved design or evidence of an existing building.", "next": "The next step is to compare conceptual directions. Confirmed decisions and remaining questions will be recorded here."},
+        "es": {"title": "Artemis: el concepto está tomando forma", "summary": "Exploramos la dirección arquitectónica del proyecto en el norte de Tenerife.", "changed": "Artemis de la Cruz se encuentra en la fase de búsqueda de su concepto arquitectónico. Este diario recogerá las decisiones y la información que las sustenta.", "open": "La arquitectura y sus detalles siguen en desarrollo. Los bocetos conceptuales expresan una atmósfera; no son un diseño aprobado ni prueban la existencia de un edificio.", "next": "El siguiente paso es comparar distintas direcciones conceptuales. Aquí recogeremos las decisiones confirmadas y las preguntas pendientes."},
+        "de": {"title": "Artemis: das Konzept nimmt Gestalt an", "summary": "Wir erkunden die architektonische Ausrichtung des Projekts im Norden Teneriffas.", "changed": "Artemis de la Cruz befindet sich derzeit auf der Suche nach seinem architektonischen Konzept. Dieses Tagebuch dokumentiert Entscheidungen und ihre Grundlagen.", "open": "Die Architektur und ihre Details werden noch entwickelt. Konzeptskizzen vermitteln eine Atmosphäre; sie sind weder ein genehmigter Entwurf noch ein Nachweis eines bestehenden Gebäudes.", "next": "Als Nächstes vergleichen wir konzeptionelle Richtungen. Bestätigte Entscheidungen und offene Fragen werden hier festgehalten."},
+        "fr": {"title": "Artemis : le concept prend forme", "summary": "Nous explorons l'orientation architecturale du projet au nord de Tenerife.", "changed": "Artemis de la Cruz recherche actuellement son concept architectural. Ce journal présentera les décisions et les éléments qui les étayent.", "open": "L'architecture et ses détails sont encore en cours de développement. Les esquisses conceptuelles expriment une atmosphère ; elles ne constituent ni un projet approuvé ni la preuve d'un bâtiment existant.", "next": "La prochaine étape consiste à comparer les orientations conceptuelles. Les décisions confirmées et les questions ouvertes seront consignées ici."},
+        "ru": {"title": "Artemis: концепция в поиске", "summary": "Мы ищем архитектурное направление проекта на севере Тенерифе.", "changed": "Artemis de la Cruz находится на стадии поиска архитектурной концепции. В этом дневнике будем фиксировать решения и основания для них.", "open": "Архитектура и её детали ещё разрабатываются. Концептуальные эскизы передают атмосферу; они не являются утверждённым проектом или подтверждением существующего здания.", "next": "Следующий шаг — сравнить концептуальные направления. Здесь появятся подтверждённые решения и открытые вопросы."}
+      }
+    }
+  ]
+}

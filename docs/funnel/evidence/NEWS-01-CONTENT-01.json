@@ -1,0 +1,14 @@
+{
+  "atoms": [
+    "NEWS-01",
+    "CONTENT-01"
+  ],
+  "status": "verified_source_contract",
+  "checks": [
+    "unique news_id and revision history",
+    "real factual stage source",
+    "five complete translations",
+    "no invented project events or financial figures"
+  ],
+  "article_release_state": "prepared_not_deployed"
+}
