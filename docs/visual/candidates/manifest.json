@@ -26,7 +26,7 @@
     "Not a verified site view",
     "Verify geographic elements and no Teide/ocean false panorama",
     "No separate mobile 4:5 master yet",
-    "Not assigned to frames.json or published"
+    "Assigned only through ARTEMIS_VISUAL_PREVIEW=1; production uses original image"
   ],
   "captions": {
     "en": "Conceptual architectural vision; design, location and specifications remain under study.",
@@ -41,5 +41,83 @@
     "de": "Tusche- und Aquarellentwurf für eine terrassierte Wohnanlage in kanarischem Stil an der Atlantikküste",
     "fr": "Étude à l'encre et à l'aquarelle de résidences en terrasses inspirées des Canaries près de l'Atlantique",
     "ru": "Акварельный эскиз каскадного ансамбля резиденций в испанско-канарском стиле на зелёном склоне"
-  }
+  },
+  "preview_assignment": {
+    "env": "ARTEMIS_VISUAL_PREVIEW=1",
+    "slot": "index/F01",
+    "production_enabled": false,
+    "source": "scripts/tenerife_site_build/frames.json:preview_overrides"
+  },
+  "variants": [
+    {
+      "name": "artemis-watercolour-art01-20261104.jpg",
+      "size_bytes": 579447,
+      "sha256": "c79f02620a2d8da0e6d4a44410b67ff54cdefc7713b97bffc95444d2d0980bcf",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "role": "desktop jpeg fallback"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-640.webp",
+      "size_bytes": 62382,
+      "sha256": "05b76d7da2739ac96ae192474e76919f1d6a4933bd5037d22053ad3b2a6c2ac4",
+      "dimensions": [
+        640,
+        360
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-800.webp",
+      "size_bytes": 94254,
+      "sha256": "33ad75640eea357c5d7fd893d8f6629608bbe5a67149f8579120c3139965e004",
+      "dimensions": [
+        800,
+        450
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-1024.webp",
+      "size_bytes": 149640,
+      "sha256": "c7c80a9e6b43cd36180b761e7bdc2add9b256fab0a130169268cac0802a8a46f",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-1600.webp",
+      "size_bytes": 305008,
+      "sha256": "0b6304a8ebff7c63ee75140c38cb725fdd309f05f8586d2e925e894f27ed4145",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-mobile-640.webp",
+      "size_bytes": 144648,
+      "sha256": "e2fd1e9130c2650f5cf6a6910668a017673848144aec6025265f42869b09cb59",
+      "dimensions": [
+        640,
+        800
+      ],
+      "role": "mobile 4:5 crop draft"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-mobile-800.webp",
+      "size_bytes": 194870,
+      "sha256": "ceec677f85f87666ad518f7b6b8e84dc951ac7e80cd2851a7376fcd5089cc472",
+      "dimensions": [
+        800,
+        1000
+      ],
+      "role": "mobile 4:5 crop draft"
+    }
+  ]
 }
