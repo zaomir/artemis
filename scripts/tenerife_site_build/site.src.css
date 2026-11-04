@@ -485,3 +485,6 @@ a:hover{color:var(--cs-ink)}
 .s--cases .cases__viewport{overflow-x:auto;scroll-snap-type:x proximity}
 .cases__track{animation:none}
 .case{scroll-snap-align:start}
+
+/* Approved conceptual art disclosures: readable beside (not baked into) the image. */
+.hero__after .concept-note{grid-column:1/-1;font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft);margin:0 0 var(--space-3);max-width:var(--measure-lead)}
