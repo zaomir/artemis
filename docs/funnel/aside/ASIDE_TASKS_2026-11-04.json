@@ -1,0 +1,342 @@
+{
+  "schema": "artemis-aside-package/1",
+  "revision": 1,
+  "status": "prepared_not_executed",
+  "expected_account": {
+    "public_identity": "Valerie Petra",
+    "legal_profile_name_hint": "Valeriia Petrova",
+    "verification": "AS-01 must return observed profile URL/ID and Page/group permissions; do not assume based on name"
+  },
+  "account_window": {
+    "timezone": "Europe/Paris",
+    "weekdays": "Mon-Fri",
+    "start": "09:00",
+    "end_exclusive": "18:00",
+    "source": "existing project account window; do not increase limits"
+  },
+  "destinations": {
+    "page": null,
+    "public_group": null,
+    "private_visible_group": null
+  },
+  "asset": {
+    "asset_id": "diary-atlantic-20261104",
+    "version": 1,
+    "path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+    "sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "provenance": "OpenAI built-in image generation, 2026-11-04, this authorized implementation session",
+    "source_png_sha256": "010fd0d00bf6be0bd419e7acace44f19dd1c38a0fd6bece00e1e6e5208ffa167",
+    "rights_basis": "new project illustration generated for user; no third-party reference or person supplied",
+    "review": "accepted as atmospheric watercolour; no building or confirmed plot depicted; not a geographic survey",
+    "caption": {
+      "en": "Conceptual atmosphere study, not a view of a confirmed project site.",
+      "es": "Estudio conceptual de ambiente; no representa un terreno confirmado del proyecto.",
+      "de": "Konzeptionelle Atmosphärenstudie, keine Ansicht eines bestätigten Projektgrundstücks.",
+      "fr": "Étude d’ambiance conceptuelle, sans représentation d’un terrain confirmé du projet.",
+      "ru": "Концептуальное исследование атмосферы, не изображение подтверждённого участка проекта."
+    },
+    "not_claimed": [
+      "specific site ownership",
+      "approved architecture",
+      "construction progress",
+      "survey-level geographic accuracy"
+    ],
+    "encoding": "PNG exported to WebP for delivery; no crop or geometry change"
+  },
+  "tasks": [
+    {
+      "task_id": "AS-01",
+      "instance_key": "AS-01:inventory:r1",
+      "action": "Read managed Pages/groups and current permissions; return URLs/IDs; search for existing objects before create.",
+      "depends_on": [
+        "BASE-01"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-01:inventory:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-02",
+      "instance_key": "AS-02:missing-page:r1",
+      "action": "Create only a confirmed missing Artemis Page.",
+      "depends_on": [
+        "AS-01"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-02:missing-page:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-02",
+      "instance_key": "AS-02:missing-public-group:r1",
+      "action": "Create only a confirmed missing public community.",
+      "depends_on": [
+        "AS-01"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-02:missing-public-group:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-02",
+      "instance_key": "AS-02:missing-private-group:r1",
+      "action": "Create only a confirmed missing private VISIBLE waitlist group.",
+      "depends_on": [
+        "AS-01"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-02:missing-private-group:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-03",
+      "instance_key": "AS-03:public-settings:r1",
+      "action": "Read back public privacy, truthful description and rules.",
+      "depends_on": [
+        "AS-02:missing-public-group"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-03:public-settings:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-03",
+      "instance_key": "AS-03:private-settings:r1",
+      "action": "Read back PRIVATE + VISIBLE, no forced marketing consent and no public email collection.",
+      "depends_on": [
+        "AS-02:missing-private-group"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-03:private-settings:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-04",
+      "instance_key": "AS-04:cover:r1",
+      "action": "Use accepted atmospheric asset only; inspect mobile crop; no building promises.",
+      "depends_on": [
+        "AS-03",
+        "CONTENT-07"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-04:cover:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-05",
+      "instance_key": "AS-05:welcome:r1",
+      "action": "Publish one reviewed seed post only at verified destination; new website link waits QA-03.",
+      "depends_on": [
+        "AS-03",
+        "CONTENT-05",
+        "QA-03"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-05:welcome:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-06",
+      "instance_key": "AS-06:pin:r1",
+      "action": "Feature the actual observed welcome permalink; verify pinned state.",
+      "depends_on": [
+        "AS-05:welcome"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-06:pin:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-09",
+      "instance_key": "AS-09:private-entry:r1",
+      "action": "Open as ordinary prospective member; verify join page rather than a closed post.",
+      "depends_on": [
+        "AS-03:private-settings"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-09:private-entry:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-07",
+      "instance_key": "AS-07:native-draft:r1",
+      "action": "Draft only if actual Page supports native organic form; separate optional newsletter opt-in, no phone.",
+      "depends_on": [
+        "AS-01",
+        "MAIL-02"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-07:native-draft:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-08",
+      "instance_key": "AS-08:native-activate:r1",
+      "action": "Activation requires working source-to-Twenty verification, live privacy and visitor test for THIS form. Otherwise use site fallback.",
+      "depends_on": [
+        "AS-07:native-draft",
+        "CRM-06",
+        "QA-03"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-08:native-activate:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry",
+      "traffic_gate": [
+        "AS-09:native-visitor",
+        "CRM-07"
+      ]
+    },
+    {
+      "task_id": "AS-10",
+      "instance_key": "AS-10:external-rules:r1",
+      "action": "One suitable external group at a time: language, advertisement permission, link rules and moderation windows from current visible rules.",
+      "depends_on": [
+        "AS-01"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-10:external-rules:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-11",
+      "instance_key": "AS-11:external-post:r1",
+      "action": "One reviewed post in one permitted destination in the existing account window.",
+      "depends_on": [
+        "AS-10",
+        "CONTENT-05",
+        "QA-03"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_inventory_or_dependencies",
+      "idempotency_key": "artemis:AS-11:external-post:20261104:r1",
+      "verification": "read back exact object/content and observed state; after timeout reconcile original operation before retry"
+    },
+    {
+      "task_id": "AS-09",
+      "instance_key": "AS-09:native-visitor:r1",
+      "action": "Test the active form as an ordinary visitor using an explicitly marked service test; obtain source ID and request independent Twenty readback. No public traffic before this and CRM-07 pass.",
+      "depends_on": [
+        "AS-08:native-activate"
+      ],
+      "destination_url": null,
+      "status": "prepared_waiting_dependencies",
+      "idempotency_key": "artemis:AS-09:native-visitor:20261104:r1"
+    }
+  ],
+  "content": [
+    {
+      "content_id": "concept-search-20261104-fb-en",
+      "news_id": "concept-search-20261104",
+      "news_revision": 1,
+      "revision": 1,
+      "locale": "en",
+      "channel": "facebook",
+      "text": "Artemis de la Cruz is currently searching for its architectural concept. This diary will record decisions and the evidence behind them.\n\nThe architecture and its details are still being developed. Concept sketches express an atmosphere; they are not an approved design or evidence of an existing building.\n\nConceptual atmosphere study, not a view of a confirmed project site.\n\nWhich aspect of the concept would you like us to explain next?\nhttps://artemisresort.com/tenerife/actualizaciones/concept-search/?source_id=fb-artemis-diary-en",
+      "asset_path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "asset_sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "target_url": "https://artemisresort.com/tenerife/actualizaciones/concept-search/?source_id=fb-artemis-diary-en",
+      "target_url_state": "planned_until_QA-03; must verify exact live article before external publication",
+      "source_id": "fb-artemis-diary-en",
+      "publication_key": "artemis:fb:concept-search-20261104:en:r1",
+      "claim_references": [],
+      "status": "draft_dependency_blocked"
+    },
+    {
+      "content_id": "concept-search-20261104-fb-es",
+      "news_id": "concept-search-20261104",
+      "news_revision": 1,
+      "revision": 1,
+      "locale": "es",
+      "channel": "facebook",
+      "text": "Artemis de la Cruz se encuentra en la fase de búsqueda de su concepto arquitectónico. Este diario recogerá las decisiones y la información que las sustenta.\n\nLa arquitectura y sus detalles siguen en desarrollo. Los bocetos conceptuales expresan una atmósfera; no son un diseño aprobado ni prueban la existencia de un edificio.\n\nEstudio conceptual de ambiente; no representa un terreno confirmado del proyecto.\n\n¿Qué aspecto del concepto le gustaría que explicáramos a continuación?\nhttps://artemisresort.com/tenerife/es/actualizaciones/concept-search/?source_id=fb-artemis-diary-es",
+      "asset_path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "asset_sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "target_url": "https://artemisresort.com/tenerife/es/actualizaciones/concept-search/?source_id=fb-artemis-diary-es",
+      "target_url_state": "planned_until_QA-03; must verify exact live article before external publication",
+      "source_id": "fb-artemis-diary-es",
+      "publication_key": "artemis:fb:concept-search-20261104:es:r1",
+      "claim_references": [],
+      "status": "draft_dependency_blocked"
+    },
+    {
+      "content_id": "concept-search-20261104-fb-de",
+      "news_id": "concept-search-20261104",
+      "news_revision": 1,
+      "revision": 1,
+      "locale": "de",
+      "channel": "facebook",
+      "text": "Artemis de la Cruz befindet sich derzeit auf der Suche nach seinem architektonischen Konzept. Dieses Tagebuch dokumentiert Entscheidungen und ihre Grundlagen.\n\nDie Architektur und ihre Details werden noch entwickelt. Konzeptskizzen vermitteln eine Atmosphäre; sie sind weder ein genehmigter Entwurf noch ein Nachweis eines bestehenden Gebäudes.\n\nKonzeptionelle Atmosphärenstudie, keine Ansicht eines bestätigten Projektgrundstücks.\n\nWelchen Aspekt des Konzepts sollen wir als Nächstes erläutern?\nhttps://artemisresort.com/tenerife/de/actualizaciones/concept-search/?source_id=fb-artemis-diary-de",
+      "asset_path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "asset_sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "target_url": "https://artemisresort.com/tenerife/de/actualizaciones/concept-search/?source_id=fb-artemis-diary-de",
+      "target_url_state": "planned_until_QA-03; must verify exact live article before external publication",
+      "source_id": "fb-artemis-diary-de",
+      "publication_key": "artemis:fb:concept-search-20261104:de:r1",
+      "claim_references": [],
+      "status": "draft_dependency_blocked"
+    },
+    {
+      "content_id": "concept-search-20261104-fb-fr",
+      "news_id": "concept-search-20261104",
+      "news_revision": 1,
+      "revision": 1,
+      "locale": "fr",
+      "channel": "facebook",
+      "text": "Artemis de la Cruz recherche actuellement son concept architectural. Ce journal présentera les décisions et les éléments qui les étayent.\n\nL'architecture et ses détails sont encore en cours de développement. Les esquisses conceptuelles expriment une atmosphère ; elles ne constituent ni un projet approuvé ni la preuve d'un bâtiment existant.\n\nÉtude d’ambiance conceptuelle, sans représentation d’un terrain confirmé du projet.\n\nQuel aspect du concept souhaitez-vous voir expliqué ensuite ?\nhttps://artemisresort.com/tenerife/fr/actualizaciones/concept-search/?source_id=fb-artemis-diary-fr",
+      "asset_path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "asset_sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "target_url": "https://artemisresort.com/tenerife/fr/actualizaciones/concept-search/?source_id=fb-artemis-diary-fr",
+      "target_url_state": "planned_until_QA-03; must verify exact live article before external publication",
+      "source_id": "fb-artemis-diary-fr",
+      "publication_key": "artemis:fb:concept-search-20261104:fr:r1",
+      "claim_references": [],
+      "status": "draft_dependency_blocked"
+    },
+    {
+      "content_id": "concept-search-20261104-fb-ru",
+      "news_id": "concept-search-20261104",
+      "news_revision": 1,
+      "revision": 1,
+      "locale": "ru",
+      "channel": "facebook",
+      "text": "Artemis de la Cruz находится на стадии поиска архитектурной концепции. В этом дневнике будем фиксировать решения и основания для них.\n\nАрхитектура и её детали ещё разрабатываются. Концептуальные эскизы передают атмосферу; они не являются утверждённым проектом или подтверждением существующего здания.\n\nКонцептуальное исследование атмосферы, не изображение подтверждённого участка проекта.\n\nКакой аспект концепции вам хотелось бы разобрать следующим?\nhttps://artemisresort.com/tenerife/ru/actualizaciones/concept-search/?source_id=fb-artemis-diary-ru",
+      "asset_path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "asset_sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "target_url": "https://artemisresort.com/tenerife/ru/actualizaciones/concept-search/?source_id=fb-artemis-diary-ru",
+      "target_url_state": "planned_until_QA-03; must verify exact live article before external publication",
+      "source_id": "fb-artemis-diary-ru",
+      "publication_key": "artemis:fb:concept-search-20261104:ru:r1",
+      "claim_references": [],
+      "status": "draft_dependency_blocked"
+    }
+  ],
+  "receipt_schema": {
+    "task_id": "string",
+    "instance_key": "stable id",
+    "account_id": "observed id",
+    "destination_id": "observed id",
+    "state": "draft|scheduled|awaiting_admin|published|failed|uncertain",
+    "url_or_object_id": "real observed value",
+    "content_hash": "sha256 final text+asset hash",
+    "observed_at": "timestamp with zone",
+    "readback": "visible text/settings/status, not just click",
+    "error": "sanitized code or null"
+  }
+}

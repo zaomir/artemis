@@ -1,0 +1,18 @@
+{
+  "atoms": [
+    "CONTENT-02",
+    "CONTENT-07"
+  ],
+  "asset_manifest": "docs/funnel/asset_manifest.json",
+  "actual_file_verified": true,
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "visual_review": "warm paper/watercolour/green/basalt/Atlantic palette; no fixed architecture or project-plot promise",
+  "aside_package": "docs/funnel/aside/ASIDE_TASKS_2026-11-04.json",
+  "aside_task_instances": 15,
+  "localized_drafts": 5,
+  "publication_state": "blocked_until_live_URLs_and_destination_inventory",
+  "facebook_mutations": 0
+}

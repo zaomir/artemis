@@ -26,11 +26,20 @@ def secret():
     return os.environ.get('ARTEMIS_NEWSLETTER_SECRET','')
 
 
-def form(locale,page):
+def form(locale,page,intent_override=None):
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
-    intent='investor' if '/inversores/' in page or '/calculadora/' in page else 'buyer' if '/producto/' in page else 'other'
+    intent=intent_override or ('investor' if '/inversores/' in page or '/calculadora/' in page else 'buyer' if '/producto/' in page else 'other')
     return render_template('tenerife/funnel_form.html',locale=locale,page=page,
         intent=intent,submission_id=str(uuid.uuid4()),labels=LABELS[locale],privacy_url=prefix+'privacy/')
+
+
+for _loc,_pending in {
+ 'en':'Your subscription request has been saved. Check your inbox to confirm. The project diary is available now.',
+ 'es':'Su solicitud de suscripción se ha guardado. Revise su correo para confirmar. El diario del proyecto ya está disponible.',
+ 'de':'Ihre Abonnementanfrage wurde gespeichert. Prüfen Sie Ihr Postfach zur Bestätigung. Das Projekttagebuch ist bereits zugänglich.',
+ 'fr':'Votre demande d’abonnement a été enregistrée. Consultez votre boîte pour confirmer. Le journal du projet est déjà accessible.',
+ 'ru':'Запрос подписки сохранён. Проверьте почту для подтверждения. Дневник проекта уже доступен.'}.items():
+    LABELS[_loc]['newsletter_pending']=_pending
 
 
 def token_response(title,body,locale='en'):

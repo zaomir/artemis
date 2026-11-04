@@ -3,13 +3,19 @@
   <input type="hidden" name="intent" value="{{ intent }}">
   <input type="hidden" name="page" value="{{ page }}">
   <input type="hidden" name="language" value="{{ locale }}">
+{% if intent != 'newsletter_only' %}
   <div class="field"><label for="af-name">{{ labels.name }}</label><input id="af-name" name="name" autocomplete="name" required maxlength="120"></div>
   <div class="field"><label for="af-kind">{{ labels.channel }}</label><select id="af-kind" name="contact_type"><option value="email">Email</option><option value="facebook">Facebook</option></select></div>
+{% else %}
+  <input type="hidden" name="contact_type" value="email">
+{% endif %}
   <div class="field"><label for="af-contact">{{ labels.contact }}</label><input id="af-contact" name="contact" required maxlength="254"></div>
+{% if intent != 'newsletter_only' %}
   <div class="field"><label for="af-newsletter">{{ labels.optional_email }}</label><input id="af-newsletter" name="newsletter_email" type="email" autocomplete="email" maxlength="254"></div>
-  <label class="check"><input type="checkbox" name="newsletter_opt_in"> {{ labels.opt_in }}</label>
+{% endif %}
+  <label class="check"><input type="checkbox" name="newsletter_opt_in"{% if intent == 'newsletter_only' %} required{% endif %}> {{ labels.opt_in }}</label>
   <label class="check"><input type="checkbox" name="consent" required> {{ labels.consent }} <a href="{{ privacy_url }}">{{ labels.privacy }}</a></label>
   <div class="hp" aria-hidden="true" hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-  <button class="cta-primary" type="submit">{{ labels.submit }}</button>
+  <button class="cta-primary" type="submit">{{ labels.confirm if intent == 'newsletter_only' else labels.submit }}</button>
   <p role="status" id="af-status"></p>
 </form>

@@ -302,7 +302,11 @@ def project_news(locale='en', slug=None):
     target = base / ('actualizaciones/'+slug+'.html' if slug else 'actualizaciones.html')
     if not target.is_file():
         return _not_found(locale)
-    response=make_response(_finish(target.read_text(encoding='utf-8')))
+    content=_finish(target.read_text(encoding='utf-8'))
+    if funnel_http.enabled():
+        content=content.replace('</main>','<section class="section"><div class="wrap">'+funnel_http.form(locale,request.path,'newsletter_only')+'</div></section></main>')
+        content=content.replace('</body>','<script src="/static/tenerife/site/funnel.js" defer></script></body>')
+    response=make_response(content)
     response.headers['Content-Type']='text/html; charset=utf-8'
     # Per-route policy: adding news must not globally enable investor indexing.
     response.headers['X-Robots-Tag']='noindex, nofollow'
@@ -583,7 +587,7 @@ def waitlist():
             except ValueError:
                 return _reply(is_json,False,409,_form_msg('server',loc),back,locale=loc)
             conn.commit()
-            return _typed_capture_reply(is_json,loc)
+            return _typed_capture_reply(is_json,loc,newsletter_only)
         recent = conn.execute(
             "SELECT COUNT(*) FROM tenerife_waitlist WHERE client_hash=? AND created_at>=?",
             (client, since),
@@ -609,7 +613,7 @@ def waitlist():
         conn.close()
 
     if newsletter_only:
-        return _typed_capture_reply(is_json,loc)
+        return _typed_capture_reply(is_json,loc,True)
     if calc:
         notify_lead("Tenerife waitlist", name, contact, language, page, calc=calc, model=model)
     else:
@@ -617,11 +621,12 @@ def waitlist():
     return _typed_capture_reply(is_json,loc) if typed else _reply(is_json, True, back=back)
 
 
-def _typed_capture_reply(is_json,locale):
+def _typed_capture_reply(is_json,locale,newsletter_only=False):
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
+    message=funnel_http.LABELS[locale]['newsletter_pending' if newsletter_only else 'success']
     if is_json:
-        return jsonify(ok=True,next_url=prefix+'actualizaciones/',message=funnel_http.LABELS[locale]['success'],next_label=funnel_http.LABELS[locale]['diary'])
-    return _notice(200,funnel_http.LABELS[locale]['done'],funnel_http.LABELS[locale]['success'],
+        return jsonify(ok=True,next_url=prefix+'actualizaciones/',message=message,next_label=funnel_http.LABELS[locale]['diary'])
+    return _notice(200,funnel_http.LABELS[locale]['done'],message,
                    prefix+'actualizaciones/',funnel_http.LABELS[locale]['diary'],locale=locale)
 
 

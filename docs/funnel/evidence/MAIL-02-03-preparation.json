@@ -1,0 +1,25 @@
+{
+  "atoms": [
+    "MAIL-02",
+    "MAIL-03"
+  ],
+  "status": "code_prepared_dependency_blocked",
+  "provider": "existing relay Gmail service factory; no new provider",
+  "test_cases_passed": 6,
+  "checks": [
+    "five neutral confirmation templates",
+    "no FB promotion before confirmation",
+    "stable opaque Message-ID",
+    "timeout resolved by positive Sent-folder header readback",
+    "negative search never resends",
+    "suppression rechecked immediately before transport",
+    "accepted is distinct from delivered"
+  ],
+  "blocked_by": [
+    "BASE-03",
+    "MAIL-09",
+    "QA-02"
+  ],
+  "runtime_changed": false,
+  "real_mail_sent": 0
+}

@@ -1,0 +1,28 @@
+{
+  "asset_id": "diary-atlantic-20261104",
+  "version": 1,
+  "path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+  "sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "provenance": "OpenAI built-in image generation, 2026-11-04, this authorized implementation session",
+  "source_png_sha256": "010fd0d00bf6be0bd419e7acace44f19dd1c38a0fd6bece00e1e6e5208ffa167",
+  "rights_basis": "new project illustration generated for user; no third-party reference or person supplied",
+  "review": "accepted as atmospheric watercolour; no building or confirmed plot depicted; not a geographic survey",
+  "caption": {
+    "en": "Conceptual atmosphere study, not a view of a confirmed project site.",
+    "es": "Estudio conceptual de ambiente; no representa un terreno confirmado del proyecto.",
+    "de": "Konzeptionelle Atmosphärenstudie, keine Ansicht eines bestätigten Projektgrundstücks.",
+    "fr": "Étude d’ambiance conceptuelle, sans représentation d’un terrain confirmé du projet.",
+    "ru": "Концептуальное исследование атмосферы, не изображение подтверждённого участка проекта."
+  },
+  "not_claimed": [
+    "specific site ownership",
+    "approved architecture",
+    "construction progress",
+    "survey-level geographic accuracy"
+  ],
+  "encoding": "PNG exported to WebP for delivery; no crop or geometry change"
+}

@@ -50,6 +50,9 @@ def build_pages(render, locale):
         url=locale_url(locale,a['slug'])
         body=f'<h1 id="h1">{esc(t["title"])}</h1><p class="hero__lead">{esc(t["summary"])}</p>'
         body+=f'<p><time datetime="{a["publication_date"]}">{a["publication_date"]}</time> · {esc(a["author"])}</p>'
+        for asset in a['assets']:
+            caption=asset['captions'][locale]
+            body+=f'<figure><picture class="frame"><img src="{esc(asset["path"],quote=True)}" alt="{esc(caption,quote=True)}" width="{asset["width"]}" height="{asset["height"]}" loading="lazy"></picture><figcaption class="micro">{esc(caption)}</figcaption></figure>'
         for idx,key in [(2,'changed'),(3,'open'),(4,'next')]:
             body+=f'<h2>{u[idx]}</h2><p>{esc(t[key])}</p>'
         body+=f'<h2>{u[5]}</h2><ul>'+''.join(f'<li><a href="{esc(s["url"],quote=True)}">{esc(s["label"])}</a></li>' for s in a['sources'])+'</ul>'

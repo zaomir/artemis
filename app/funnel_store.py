@@ -51,7 +51,7 @@ def migrate(conn):
             id TEXT PRIMARY KEY, subscription_id TEXT NOT NULL,
             generation INTEGER NOT NULL, message_type TEXT NOT NULL, issue_id TEXT NOT NULL,
             state TEXT NOT NULL DEFAULT 'queued', provider_id TEXT, last_error TEXT,
-            attempts INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL,
+            attempts INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL, next_attempt_at TEXT,
             UNIQUE(subscription_id,generation,message_type,issue_id))''',
         'CREATE INDEX IF NOT EXISTS artemis_crm_due ON artemis_crm_outbox(state,next_attempt_at)',
     ]
@@ -59,6 +59,8 @@ def migrate(conn):
         conn.execute(sql)
     if 'client_hash' not in {r[1] for r in conn.execute('PRAGMA table_info(artemis_events)')}:
         conn.execute('ALTER TABLE artemis_events ADD COLUMN client_hash TEXT')
+    if 'next_attempt_at' not in {r[1] for r in conn.execute('PRAGMA table_info(artemis_mail_outbox)')}:
+        conn.execute('ALTER TABLE artemis_mail_outbox ADD COLUMN next_attempt_at TEXT')
 
 
 def rollback_empty_migration(conn):
@@ -197,7 +199,7 @@ def capture(conn, data, secret=None, now=None, legacy=None, client_hash=None):
 
 
 def subscription_snapshot(row):
-    return dict(version=row[2]*10+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]]),state=row[1],
+    return dict(version=row[2]*100+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]])+({'unknown':0,'ok':0,'hard_bounce':10,'complaint':20}[row[6]]),state=row[1],
                 requested_at=row[3],confirmed_at=row[4],unsubscribed_at=row[5],deliverability=row[6],consent_version=VERSION)
 
 
@@ -253,8 +255,9 @@ def unsubscribe(conn, sid, generation, token, secret, now=None):
 def suppress(conn, sid, reason):
     if reason not in ('hard_bounce','complaint'):
         raise ValueError('deliverability')
-    conn.execute('UPDATE artemis_subscriptions SET deliverability=? WHERE id=?',(reason,sid))
+    conn.execute("UPDATE artemis_subscriptions SET deliverability=CASE WHEN deliverability='complaint' THEN deliverability ELSE ? END WHERE id=?",(reason,sid))
     conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')",(sid,))
+    queue_subscription_projection(conn,sid,reason,utcnow())
 
 
 def eligible_mail(conn, mail_id, now=None):
