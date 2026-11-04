@@ -24,7 +24,11 @@
       "site": "← Back to the project site",
       "form": "← Back to the form"
     },
+    "visual": {
+      "concept_caption": "Conceptual illustration. Architecture, location and project characteristics are under study."
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Ink-and-watercolour concept of a stepped Spanish-Canarian residential village on a green Atlantic hillside",
       "modern-low-6e9d80": "Low houses in terraces on the slope above the ocean",
       "entrance-o-9abe9d": "Entrance to the complex: stone pylons and wooden gates",
       "communal-s-af42cd": "Communal pool and Canary Stone houses",
@@ -132,7 +136,11 @@
       "site": "← Volver al sitio del proyecto",
       "form": "← Volver al formulario"
     },
+    "visual": {
+      "concept_caption": "Ilustración conceptual. Arquitectura, ubicación y características del proyecto en estudio."
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Boceto en tinta y acuarela de residencias canarias escalonadas sobre una ladera verde del Atlántico",
       "modern-low-6e9d80": "Casas bajas en terrazas en la ladera sobre el océano",
       "entrance-o-9abe9d": "Entrada al complejo: pilones de piedra y puertas de madera",
       "communal-s-af42cd": "Piscina común y casas Canary Stone",
@@ -240,7 +248,11 @@
       "site": "← Zurück zur Projektseite",
       "form": "← Zurück zum Formular"
     },
+    "visual": {
+      "concept_caption": "Konzeptillustration. Architektur, Standort und Projekteigenschaften werden noch geprüft."
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Tusche- und Aquarellentwurf für gestaffelte kanarische Residenzen an einem grünen Atlantikhang",
       "modern-low-6e9d80": "Niedrige Häuser in Terrassen am Hang über dem Ozean",
       "entrance-o-9abe9d": "Eingang der Anlage: steinerne Pfeiler und Holztore",
       "communal-s-af42cd": "Gemeinschaftspool und Canary-Stone-Häuser",
@@ -348,7 +360,11 @@
       "site": "← Retour au site du projet",
       "form": "← Retour au formulaire"
     },
+    "visual": {
+      "concept_caption": "Illustration conceptuelle. Architecture, emplacement et caractéristiques du projet sont à l’étude."
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Esquisse à l’encre et à l’aquarelle de résidences canariennes en terrasses sur une colline atlantique verdoyante",
       "modern-low-6e9d80": "Maisons basses en terrasses sur la pente au-dessus de l'océan",
       "entrance-o-9abe9d": "Entrée du complexe : piliers de pierre et portails en bois",
       "communal-s-af42cd": "Piscine commune et maisons Canary Stone",
@@ -433,6 +449,9 @@
     }
   },
   "ru": {
+    "visual": {
+      "concept_caption": "Концептуальная иллюстрация. Архитектура, участок и характеристики проекта ещё не утверждены."
+    },
     "calc": {
       "ui": {
         "aria": "Калькулятор инвестиции",
