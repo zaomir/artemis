@@ -1,0 +1,70 @@
+"""Review-gated ARTEMIS watercolour rollout tests; no production deployment."""
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+import sys
+import unittest
+from unittest.mock import patch
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts" / "tenerife_site_build"
+sys.path.insert(0, str(SCRIPTS))
+import build_v3 as site_builder  # noqa: E402
+
+FRAMES = json.loads((SCRIPTS / "frames.json").read_text(encoding="utf-8"))
+ALTS = json.loads((SCRIPTS / "alts.json").read_text(encoding="utf-8"))
+I18N = json.loads((SCRIPTS / "i18n_strings.json").read_text(encoding="utf-8"))
+MANIFEST = json.loads((ROOT / "docs" / "visual" / "candidates" / "manifest.json").read_text(encoding="utf-8"))
+
+STEM = "artemis-watercolour-art01-20261104"
+
+
+class WatercolourPreviewTests(unittest.TestCase):
+    def setUp(self):
+        self.pages = {"index": ["F01", "F04"], "norte": ["F21"]}
+
+    def test_production_build_retains_existing_photo(self):
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "0"}):
+            mapping = site_builder.assign_site_frames(self.pages, FRAMES)
+        self.assertEqual(mapping["index"]["F01"], "modern-low-6e9d80")
+        self.assertNotEqual(mapping["index"]["F01"], STEM)
+
+    def test_explicit_review_build_uses_new_visual(self):
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "1"}):
+            mapping = site_builder.assign_site_frames(self.pages, FRAMES)
+        self.assertEqual(mapping["index"]["F01"], STEM)
+        self.assertEqual(mapping["norte"]["F21"], "hillside-row-71c3ab")
+        assigned = [v for p in mapping.values() for v in p.values() if v]
+        self.assertEqual(len(assigned), len(set(assigned)))
+
+    def test_draft_cannot_be_production_override(self):
+        self.assertEqual(MANIFEST["status"], "REVIEW")
+        self.assertEqual(FRAMES.get("page_overrides"), {})
+        self.assertEqual(FRAMES["preview_overrides"]["index/F01"], [STEM])
+
+    def test_all_five_languages_have_alts_and_disclosure(self):
+        self.assertIn(STEM, ALTS["images"])
+        for lang in ("ru", "en", "es", "de", "fr"):
+            self.assertTrue(I18N[lang]["visual"]["concept_caption"])
+            if lang != "ru":
+                self.assertIn(STEM, I18N[lang]["alts"])
+
+    def test_source_master_and_responsive_variants_exist(self):
+        img_dir = ROOT / "app" / "static" / "tenerife" / "site" / "img"
+        for suffix in (".jpg", "-640.webp", "-800.webp", "-1024.webp",
+                       "-1600.webp", "-mobile-640.webp", "-mobile-800.webp"):
+            self.assertTrue((img_dir / (STEM + suffix)).is_file(), suffix)
+
+    def test_mobile_picture_contract(self):
+        variant = site_builder.image_variant(STEM)
+        self.assertEqual(variant["width"], 1600)
+        self.assertEqual(variant["height"], 900)
+        self.assertIn("mobile-640.webp", variant["mobile_srcset"])
+        self.assertIn("mobile-800.webp", variant["mobile_srcset"])
+        self.assertTrue(variant["caption"])
+
+
+if __name__ == "__main__":
+    unittest.main()
