@@ -564,4 +564,12 @@ if __name__ == "__main__":
         sys.exit(0)
     if sys.argv[1:2] == ["--requeue"]:
         sys.exit(requeue(sys.argv[2:]))
-    sys.exit(run())
+    rc=run()
+    # Optional extension of this SAME timer, activated only after BASE-02/CRM-01.
+    # Does not install another source reader or change legacy notification rules.
+    if os.environ.get('ARTEMIS_CRM_DELIVERY_ENABLED')=='1':
+        sys.path.insert(0, os.path.join(os.environ.get('ARTEMIS_DIR','/var/www/artemis'),'app'))
+        from funnel_delivery import relay_once
+        result=relay_once(DB)
+        if result and result.get('state')!='verified':rc=1
+    sys.exit(rc)

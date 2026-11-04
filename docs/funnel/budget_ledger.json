@@ -1,0 +1,144 @@
+{
+  "schema": "artemis-budget/1",
+  "status": "incomplete",
+  "reserve": {
+    "allocated_eur": "408255.75",
+    "committed_eur": null,
+    "spent_eur": null,
+    "scope": "historical allocation already included in budget; not extra financing"
+  },
+  "items": [
+    {
+      "id": "land",
+      "amount_eur": "799000",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model_inputs.json",
+      "included_in": null,
+      "inclusion_mapping_verified": true
+    },
+    {
+      "id": "construction",
+      "amount_eur": "2712325.0",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model_inputs.json",
+      "included_in": null,
+      "inclusion_mapping_verified": true
+    },
+    {
+      "id": "technical_bundle",
+      "amount_eur": "271232.5",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model_inputs.json",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "infrastructure",
+      "amount_eur": "200000",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model_inputs.json",
+      "included_in": null,
+      "inclusion_mapping_verified": true
+    },
+    {
+      "id": "other_unallocated_bundle",
+      "amount_eur": "100000",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model_inputs.json",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "land_acquisition_tax",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "deed_notary_registry",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "ICIO_municipal_fees",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "project_issuer_tax",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "structural_insurance",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "buyer_advance_guarantees",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "legal_costs",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "financing_fees",
+      "amount_eur": null,
+      "status": "pending_legal",
+      "mandatory": true,
+      "source": "PR38 A03 completeness requirement; applicability and inclusion unresolved",
+      "included_in": null,
+      "inclusion_mapping_verified": false
+    },
+    {
+      "id": "sales_cost",
+      "amount_eur": null,
+      "rate_fraction": "0.03",
+      "status": "assumed",
+      "mandatory": true,
+      "source": "historical model; percentage applies once to actual sales",
+      "included_in": null,
+      "inclusion_mapping_verified": true
+    }
+  ],
+  "missing_inclusion_mappings": [
+    "technical_bundle",
+    "other_unallocated_bundle"
+  ],
+  "public_achievable_return_claim_allowed": false
+}

@@ -110,6 +110,9 @@ def _noindex(resp):
 def _noindex_preview(resp):
     if request.path.startswith(NOINDEX_PREFIXES):
         _noindex(resp)
+    if funnel_http.enabled() and request.path.startswith('/tenerife/'):
+        # Dynamic form IDs are per response; never share them through a cache.
+        resp.headers['Cache-Control']='no-store'
     return resp
 
 

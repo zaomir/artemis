@@ -1,0 +1,15 @@
+{
+  "atom": "CRM-03",
+  "status": "code_prepared_dependency_blocked",
+  "tests_passed": 5,
+  "delivery_owner": "existing artemis-lead-relay timer -> existing twenty-sync /sync-artemis",
+  "receipt_required": [
+    "source_event_id",
+    "person_id",
+    "opportunity_id when enquiry",
+    "independent_readback",
+    "matching payload_sha256"
+  ],
+  "verified_live_records": null,
+  "production_changed": false
+}
