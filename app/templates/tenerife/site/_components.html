@@ -2,7 +2,7 @@
     style/script: CSP). No texts or figures here except DESIGN.md §5 interface strings (Меню, Ещё, сейчас,
     Площадь, м², Сайт); every number comes from the copy via model.json. -#}
 {% macro picture(img, hero=false) -%}
-<picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
+<picture>{% if hero and img.mobile_srcset|default(false) %}<source media="(max-width:767px)" type="image/webp" srcset="{{ img.mobile_srcset }}" sizes="100vw">{% endif %}<source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
 {%- endmacro %}
 
 {% macro navlink(n, url) -%}
@@ -82,7 +82,7 @@
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
 {% if h.img %}
-      <figure class="frame hero-text__frame"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div></figure>
+      <figure class="frame hero-text__frame"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div>{% if h.img.caption|default(false) %}<figcaption>{{ h.img.caption }}</figcaption>{% endif %}</figure>
 {% endif %}
     </div>
   </div>
@@ -98,6 +98,7 @@
 {% if h.intro %}
   <div class="hero__after">
     <div class="wrap grid">
+{% if h.img.caption|default(false) %}<p class="concept-note">{{ h.img.caption }}</p>{% endif %}
 {% for p in h.intro %}
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
@@ -187,7 +188,7 @@
 
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}
-<figure class="frame{{ extra }}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div></figure>
+<figure class="frame{{ extra }}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div>{% if img.caption|default(false) %}<figcaption>{{ img.caption }}</figcaption>{% endif %}</figure>
 {%- endmacro %}
 
 {% macro frames(s) -%}
