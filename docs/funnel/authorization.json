@@ -1,0 +1,9 @@
+{
+  "task": "artemis-funnel-20261104",
+  "authorized_on": "2026-11-04",
+  "timezone": "Atlantic/Canary",
+  "instruction": "Execute canonical atomic plan; BASE-01/02/03 then CAP and CRM/D04a; continue independent tasks when access is missing.",
+  "canonical_plan": "https://github.com/zaomir/grainee-v2/blob/main/docs/projects/artemis/tenerife/ARTEMIS_FUNNEL_ATOMIC_PLAN_2026-11-04.md",
+  "canonical_registry": "https://github.com/zaomir/grainee-v2/blob/main/docs/projects/artemis/tenerife/ARTEMIS_FUNNEL_ATOMIC_PLAN_2026-11-04.tasks.json",
+  "constraints": ["One existing twenty-sync service", "Independent GET record verification", "No investor personal-tax calculation", "No invented project or commercial facts", "Facebook operations are packaged for Aside", "Do not mark runtime prerequisites passed from source-only evidence"]
+}

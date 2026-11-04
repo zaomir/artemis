@@ -1,0 +1,14 @@
+{
+  "atom": "BASE-01",
+  "status": "verified",
+  "contract_version": "2026-11-04.1",
+  "checks": [
+    "five intents independent from four orthogonal states",
+    "explicit opt-in only",
+    "GET never activates",
+    "no invented Company/email",
+    "single existing twenty-sync owner",
+    "no investor personal-tax calculation"
+  ],
+  "runtime_changed": false
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "artemis-funnel/1",
+  "version": "2026-11-04.1",
+  "canonical_registry": "zaomir/grainee-v2:docs/projects/artemis/tenerife/ARTEMIS_FUNNEL_ATOMIC_PLAN_2026-11-04.tasks.json",
+  "project": "artemis_tenerife",
+  "locales": ["en", "es", "de", "fr", "ru"],
+  "intent": ["investor", "buyer", "partner", "other", "newsletter_only"],
+  "contact_type": ["email", "facebook"],
+  "legacy_contact_type": ["phone", "telegram", "unknown"],
+  "waitlist_state": ["registered", "withdrawn"],
+  "subscription_state": ["not_requested", "pending_confirmation", "active", "unsubscribed"],
+  "deliverability_state": ["unknown", "ok", "hard_bounce", "complaint"],
+  "crm_delivery_state": ["queued", "retrying", "uncertain", "verified"],
+  "membership_state": ["unknown", "requested", "member", "left"],
+  "required_event_fields": ["submission_id", "source_event_id", "project", "intent", "contact_type", "contact", "language", "created_at", "capture_origin", "source_id", "landing", "consent_version"],
+  "optional_event_fields": ["utm_source", "utm_medium", "utm_campaign", "form_id", "newsletter_requested_at", "newsletter_email", "newsletter_consent_version", "model_version", "scenario_id"],
+  "newsletter": {"explicit_opt_in": true, "get_activates": false, "confirmation_ttl_hours": 48, "pending_retention_days": 7, "automatic_reminders": false, "token_storage": "sha256", "suppression_checked_at_send": true, "defaults_status": "proposed_until_runtime_sender_check"},
+  "crm": {"service": "grainee-v2/scripts/outreach/twenty_sync.py", "route": "/sync-artemis", "route_status": "to_implement", "records": {"waitlist": ["person", "opportunity"], "newsletter_only": ["person"]}, "success_requires": "independent GET readback of every owned field and relation", "lookup_error_is_not_absence": true, "company_required": false, "manager_fields_owned_by_sync": false},
+  "public_facts": {"as_of": "2026-11-04", "stage": "concept_search", "audience": "investors; buyer enquiries remain separate", "site_acquired": "unverified", "architecture_approved": false, "imagery": "watercolour conceptual studies; no approved architecture implied", "source": "canonical plan sections 2 and 7"},
+  "financial_claims": {"source": "PR38 versioned financial contract after verification", "target_is_guarantee": false, "proposed_terms_are_contract": false, "investor_personal_tax": "excluded"},
+  "attribution": {"unknown_source": "unknown", "personal_data_in_urls_or_analytics": false},
+  "release": {"capture_requires": ["BASE-02", "CRM-01", "QA-01", "QA-02"], "mail_requires": ["BASE-03", "MAIL-09", "QA-02"], "facebook_urls_require": ["AS-03", "AS-09"], "unconfigured_links": "hidden"}
+}
