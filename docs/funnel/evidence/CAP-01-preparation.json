@@ -1,0 +1,11 @@
+{
+  "atom": "CAP-01",
+  "status": "code_prepared_dependency_blocked",
+  "prerequisite_blocked": "BASE-02",
+  "checks": {
+    "command": "python3 -m unittest discover -s tests -p test_funnel_store.py -v",
+    "passed": 15
+  },
+  "evidence": "isolated SQLite transactions: legacy preservation, rollback refusal when populated, outbox failure rollback, duplicate/conflicting submissions, consent generations and suppression",
+  "activation": "not wired to public endpoints; no live migration"
+}

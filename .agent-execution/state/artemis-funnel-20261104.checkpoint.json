@@ -2,9 +2,9 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 3,
-  "updated_at": "2026-11-04T20:12:12.523830+00:00",
-  "next_action": "BASE-02",
+  "revision": 5,
+  "updated_at": "2026-11-04T20:17:13.664966+00:00",
+  "next_action": "NEWS-01",
   "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
@@ -17,6 +17,19 @@
         {
           "path": "docs/funnel/evidence/BASE-01.json",
           "sha256": "9f145e1212988091022d64d1cbb80311f43870d8e674dc9bd18b67dd3a3b6fd2"
+        }
+      ]
+    },
+    "CAP-01-isolated-preparation-v1": {
+      "key": "CAP-01-isolated-preparation-v1",
+      "action": "prepare migration only; blocked BASE-02 prevents runtime activation",
+      "input_sha256": "481bf051b0510d1b63d35f6c642b8218df1f866d024bf646ab5ed65130fcf441",
+      "started_at": "2026-11-04T20:16:01.909080+00:00",
+      "verified_at": "2026-11-04T20:17:13.664947+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-01-preparation.json",
+          "sha256": "39f8a6fa903299554fce2220fca83bfc42495fa08b4cfb590d533c9ff8692895"
         }
       ]
     }
@@ -39,6 +52,18 @@
       "at": "2026-11-04T20:12:12.523830+00:00",
       "event": "verified:BASE-01-contract-v1",
       "next_action": "BASE-02"
+    },
+    {
+      "revision": 4,
+      "at": "2026-11-04T20:16:01.909096+00:00",
+      "event": "began:CAP-01-isolated-preparation-v1",
+      "next_action": "reconcile:CAP-01-isolated-preparation-v1"
+    },
+    {
+      "revision": 5,
+      "at": "2026-11-04T20:17:13.664966+00:00",
+      "event": "verified:CAP-01-isolated-preparation-v1",
+      "next_action": "NEWS-01"
     }
   ],
   "policy": {
