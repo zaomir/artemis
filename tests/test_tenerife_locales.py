@@ -63,12 +63,13 @@ class FiveBuildsTest(unittest.TestCase):
         return (self.out[locale] / f"{name}.html").read_text(encoding="utf-8")
 
     def test_all_content_pages_and_legal(self):
-        want = {f"{name}.html" for _f, name in PAGES} | {f"{n}.html" for n in LEGAL} | {"_notice.html", "_404.html"}
+        want = {f"{name}.html" for _f, name in PAGES} | {f"{n}.html" for n in LEGAL} | {"_notice.html", "_404.html", "actualizaciones.html"}
         for locale in LOCALES:
             got = {p.name for p in self.out[locale].glob("*.html")}
             self.assertEqual(got, want, locale)
             self.assertEqual(len([n for n in got if not n.startswith("_") and n not in {f"{x}.html" for x in LEGAL}]),
-                             len(PAGES), locale)
+                             len(PAGES)+1, locale)
+            self.assertTrue((self.out[locale]/'actualizaciones'/'concept-search.html').is_file(), locale)
 
     def test_lang_oglocale_canonical_hreflang(self):
         for locale in LOCALES:

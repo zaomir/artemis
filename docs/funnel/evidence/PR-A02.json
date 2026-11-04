@@ -1,0 +1,13 @@
+{
+  "atom": "PR-A02",
+  "status": "internal_source_prepared",
+  "records": 102,
+  "tests": [
+    "all numeric source inputs traversed",
+    "units explicit",
+    "assumptions and proposed terms distinguished",
+    "issuer/day-count/fund-release questions pending_legal"
+  ],
+  "public_model_changed": false,
+  "hash_integration": "requires_C01_snapshot; not claimed complete"
+}
