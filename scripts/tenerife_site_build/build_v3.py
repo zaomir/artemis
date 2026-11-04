@@ -323,8 +323,15 @@ def image_variant(stem):
     from responsive import jpeg_size
     width, height = jpeg_size(jpg)
     srcset = ", ".join(f"/static/tenerife/site/img/{stem}-{w}.webp {w}w" for w in WIDTHS)
-    return {"stem": stem, "src": f"/static/tenerife/site/img/{stem}.jpg", "srcset": srcset,
-            "width": width, "height": height}
+    out = {"stem": stem, "src": f"/static/tenerife/site/img/{stem}.jpg", "srcset": srcset,
+           "width": width, "height": height}
+    mobile_widths = (640, 800)
+    if all((IMG / f"{stem}-mobile-{w}.webp").is_file() for w in mobile_widths):
+        out["mobile_srcset"] = ", ".join(
+            f"/static/tenerife/site/img/{stem}-mobile-{w}.webp {w}w" for w in mobile_widths)
+    if stem.startswith("artemis-watercolour-"):
+        out["caption"] = i18n_strings()[LOCALE]["visual"]["concept_caption"]
+    return out
 
 
 def assign_frames(frame_ids, frames_cfg):
@@ -346,14 +353,29 @@ def assign_site_frames(page_frames, frames_cfg):
     slot (the hero, or the first frame of a text hero) its first preferred photo still free, pages in PAGES order;
     pass 2 fills the remaining slots the same way. No free photo -> None (text block + basalt bar, DESIGN.md)."""
     used, out = set(), {}
+    overrides = dict(frames_cfg.get("page_overrides", {}))
+    # REVIEW imagery is deliberately invisible to a normal production build.
+    if os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1":
+        overrides.update(frames_cfg.get("preview_overrides", {}))
     for name, fids in page_frames.items():
         if len(set(fids)) != len(fids):
             raise BuildError(f"{name}: a frame id twice on one page")
         out[name] = dict.fromkeys(fids)
+    for key, candidates in overrides.items():
+        name, separator, frame_id = key.partition("/")
+        if not separator or name not in page_frames or frame_id not in page_frames[name]:
+            raise BuildError(f"frames.json: override for unknown page/frame: {key}")
+        if not isinstance(candidates, list) or not candidates or any(
+                not isinstance(st, str) or not st for st in candidates):
+            raise BuildError(f"frames.json: invalid candidates for {key}")
     for rest in (False, True):
         for name, fids in page_frames.items():
             for fid in (fids[1:] if rest else fids[:1]):
-                pick = next((st for st in frames_cfg["prefer"].get(fid, []) if st not in used), None)
+                key = f"{name}/{fid}"
+                candidates = overrides.get(key, frames_cfg["prefer"].get(fid, []))
+                pick = next((st for st in candidates if st not in used), None)
+                if key in overrides and pick is None:
+                    raise BuildError(f"frames.json: no unique image available for {key}")
                 if pick is not None:
                     used.add(pick)
                 out[name][fid] = pick
