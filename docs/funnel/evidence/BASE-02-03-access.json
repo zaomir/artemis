@@ -1,0 +1,19 @@
+{
+  "atoms": ["BASE-02", "BASE-03"],
+  "status": "blocked_access",
+  "checked_on": "2026-11-04",
+  "source_artemis_main": "664ecd600a03790738ae06e520c0ff62f61a20d7",
+  "source_grainee_main": "cf13d89d1ebaa213a87b22e87ae7c38ec986d2dd",
+  "observations": [
+    "ssh BatchMode vps2402: hostname cannot resolve in current environment",
+    "canonical key-route.mjs --check: found=false, key not found",
+    "agent-deploy.sh --target artemis: exit 2, no VDS-local or deploy-hook channel",
+    "connected tool inventory has no authorized VPS execution bridge",
+    "direct grainee-v2 git clone requires credentials; connected GitHub API reads and writes work",
+    "source lead relay uses existing Gmail DWD; source settings are not runtime sender verification"
+  ],
+  "not_established": ["live Twenty metadata", "existing external CRM source reader", "accepted source count", "Twenty per-record readback", "SPF/DKIM/DMARC/TLS", "responsible Reply-To operator"],
+  "consequence": "CAP and CRM integration may be prepared and tested in isolation, but dependent atoms and production release remain blocked; do not activate a second live sink",
+  "runtime_changed": false,
+  "mail_sent": 0
+}

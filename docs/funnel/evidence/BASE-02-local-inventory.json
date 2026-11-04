@@ -1,0 +1,26 @@
+{
+  "schema": "artemis-runtime-inventory/1",
+  "mode": "read_only",
+  "crm_delivery": "UNVERIFIED",
+  "runtime_checkout": false,
+  "key_available": false,
+  "sender": {
+    "provider_source": "existing lead relay uses Gmail domain-wide delegation",
+    "runtime_verified": false,
+    "dns_verified": false,
+    "reply_owner_verified": false
+  },
+  "files_present": {
+    "/etc/artemis/artemis.env": false,
+    "/etc/artemis/lead-relay.env": false,
+    "/usr/local/sbin/artemis-lead-relay.py": false,
+    "/var/lib/artemis-lead-relay/state.db": false
+  },
+  "source_db_present": false,
+  "blockers": [
+    "not_on_authorized_VPS_checkout",
+    "source_SQLite_not_mounted",
+    "Twenty_key_unavailable_in_canonical_host_sources"
+  ],
+  "status": "blocked"
+}

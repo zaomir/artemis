@@ -1,0 +1,50 @@
+{
+  "schema": "atomic-iteration/1",
+  "task_id": "artemis-funnel-20261104",
+  "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
+  "revision": 3,
+  "updated_at": "2026-11-04T20:12:12.523830+00:00",
+  "next_action": "BASE-02",
+  "pending": null,
+  "verified": {
+    "BASE-01-contract-v1": {
+      "key": "BASE-01-contract-v1",
+      "action": "freeze funnel field and public fact contract",
+      "input_sha256": "ed7d041ef7ad25d915580e387b8d6bfa21881301aadf6acdf6ed31bdcaebf88e",
+      "started_at": "2026-11-04T20:11:43.667111+00:00",
+      "verified_at": "2026-11-04T20:12:12.523811+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-01.json",
+          "sha256": "9f145e1212988091022d64d1cbb80311f43870d8e674dc9bd18b67dd3a3b6fd2"
+        }
+      ]
+    }
+  },
+  "history": [
+    {
+      "revision": 1,
+      "at": "2026-11-04T20:11:43.485952+00:00",
+      "event": "initialized",
+      "next_action": "BASE-01"
+    },
+    {
+      "revision": 2,
+      "at": "2026-11-04T20:11:43.667126+00:00",
+      "event": "began:BASE-01-contract-v1",
+      "next_action": "reconcile:BASE-01-contract-v1"
+    },
+    {
+      "revision": 3,
+      "at": "2026-11-04T20:12:12.523830+00:00",
+      "event": "verified:BASE-01-contract-v1",
+      "next_action": "BASE-02"
+    }
+  ],
+  "policy": {
+    "max_iteration_seconds": 300,
+    "max_work_units": 1,
+    "max_poll_seconds": 60,
+    "progress_interval_seconds": 60
+  }
+}
