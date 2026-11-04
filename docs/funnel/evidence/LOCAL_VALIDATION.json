@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-04",
+  "artemis_supported_suite": {
+    "run": 525,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8,
+    "excluded_unchanged_PID_sandbox_tests": 9
+  },
+  "full_initial_suite": {
+    "run": 504,
+    "failures": 9,
+    "errors": 0,
+    "skipped": 8,
+    "new_news_page_inventory_failure": "fixed and verified in supported suite",
+    "remaining_failures": "eight unchanged deploy sandbox scenarios; environment PID namespace mismatch"
+  },
+  "PID_evidence": {
+    "python_getpid": 5,
+    "proc_self_Pid": 45125,
+    "proc_self_NSpid": [
+      45125,
+      5
+    ],
+    "reason": "sandbox fake service publishes inner PID; pgrep uses mounted outer /proc, so initial fake service fails health before any deploy change"
+  },
+  "builds": [
+    "en",
+    "es",
+    "de",
+    "fr",
+    "ru"
+  ],
+  "production_smoke": "not_run_no_authorized_VPS_channel",
+  "not_all_checks_green": true,
+  "grainee_adapter_tests": {
+    "run": 13,
+    "failures": 0,
+    "errors": 0
+  },
+  "focused_funnel_tests": 37,
+  "internal_finance_tests": 11,
+  "durable_recovery_tests": 6
+}

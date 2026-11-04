@@ -1,0 +1,17 @@
+{
+  "atom": "NEWS-05",
+  "status": "visual_observed_exported_screenshots_pending",
+  "surface": "representative EN diary and article",
+  "desktop": "observed at browser viewport 1348px",
+  "mobile": "actual browser iframe width 320px, inner viewport305px after scrollbar; scrollWidth305=clientWidth305, no horizontal overflow",
+  "observed_urls": [
+    "http://terminal.local:4173/",
+    "http://terminal.local:4173/qa-mobile.html"
+  ],
+  "fixes": [
+    "news footer no longer repeats unreviewed investment figures",
+    "contextual diary CTA in header"
+  ],
+  "screenshots": "captured in execution-session browser output; durable export still required",
+  "production_changed": false
+}

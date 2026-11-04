@@ -9,13 +9,17 @@
 {% else %}
   <input type="hidden" name="contact_type" value="email">
 {% endif %}
-  <div class="field"><label for="af-contact">{{ labels.contact }}</label><input id="af-contact" name="contact" required maxlength="254"></div>
+  <div class="field"><label for="af-contact">{{ 'Email' if intent == 'newsletter_only' else labels.contact }}</label><input id="af-contact" name="contact" required maxlength="254"></div>
 {% if intent != 'newsletter_only' %}
   <div class="field"><label for="af-newsletter">{{ labels.optional_email }}</label><input id="af-newsletter" name="newsletter_email" type="email" autocomplete="email" maxlength="254"></div>
 {% endif %}
   <label class="check"><input type="checkbox" name="newsletter_opt_in"{% if intent == 'newsletter_only' %} required{% endif %}> {{ labels.opt_in }}</label>
+{% if intent != 'newsletter_only' %}
   <label class="check"><input type="checkbox" name="consent" required> {{ labels.consent }} <a href="{{ privacy_url }}">{{ labels.privacy }}</a></label>
+{% else %}
+  <p><a href="{{ privacy_url }}">{{ labels.privacy }}</a></p>
+{% endif %}
   <div class="hp" aria-hidden="true" hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
-  <button class="cta-primary" type="submit">{{ labels.confirm if intent == 'newsletter_only' else labels.submit }}</button>
+  <button class="cta-primary" type="submit">{{ labels.subscribe if intent == 'newsletter_only' else labels.submit }}</button>
   <p role="status" id="af-status"></p>
 </form>

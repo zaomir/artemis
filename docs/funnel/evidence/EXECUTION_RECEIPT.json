@@ -1,0 +1,36 @@
+{
+  "status": "implementation_prepared_runtime_blocked",
+  "date": "2026-11-04",
+  "production_changed": false,
+  "known_remote_receipts": {
+    "BASE-01": "b238711e2311e6fcca26bb989562558ba656b35f",
+    "BASE-02-03": "88f0b7a058e134ec718aad5aeeb91d144734cf5e",
+    "CAP-01": "f9a2f038da4fbac32edb0d1249fe6b74d5719aa2",
+    "NEWS-01-CONTENT-01": "02b7bcbef9f855a2725b67083485015928b074a5",
+    "NEWS-02-03": "f21618a6fa73a25c8951c52e01c9e43a673ee2e5",
+    "PR-A01": "b2edee5ddf2bf2852168d2cc16421d04ae75ae35",
+    "PR-A02": "a78677645a92b48200bbe12f230ed3dca50da357",
+    "CAP-MAIL-HTTP": "84ff0935751f39ab86d79920f84fb5fea79d5146",
+    "CRM-03-and-internal-finance-preparation": "6702ac38b0ccbb6448c49a2a093ef316d68bf157",
+    "MAIL-and-Aside-assets": "4c625047eab048d316e0d63d39c272d7c92c9a91",
+    "grainee-existing-service-adapter": "9cb35719552be5868a61faa7a71e9a5f0239d32b"
+  },
+  "tests": {
+    "supported_artemis": 525,
+    "supported_failures": 0,
+    "unsupported_PID_sandbox": 9,
+    "funnel": 37,
+    "crm_adapter": 13,
+    "internal_finance": 11
+  },
+  "next_action": "BASE-02 on authorized VPS: inspect actual existing source reader and Twenty schema before activation",
+  "remaining_release_blockers": [
+    "VPS IP network unreachable; no connected execution bridge",
+    "Twenty and sender live schema/config unavailable",
+    "CAP-06 real controller/privacy and coordinated retention unresolved",
+    "actual mail wiring/provider feedback not activated",
+    "historical Tenerife+Crete and Meta reconciliation absent",
+    "financial model not released; business/legal facts incomplete"
+  ],
+  "scope_note": "code preparation and isolated tests do not close runtime-dependent atoms; no claim that all accepted real enquiries reached Twenty"
+}

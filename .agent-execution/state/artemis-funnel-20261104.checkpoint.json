@@ -2,9 +2,9 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 5,
-  "updated_at": "2026-11-04T20:17:13.664966+00:00",
-  "next_action": "NEWS-01",
+  "revision": 7,
+  "updated_at": "2026-11-04T20:52:21.914555+00:00",
+  "next_action": "BASE-02: resume on authorized VPS; read-only live inventory before activation",
   "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
@@ -30,6 +30,19 @@
         {
           "path": "docs/funnel/evidence/CAP-01-preparation.json",
           "sha256": "39f8a6fa903299554fce2220fca83bfc42495fa08b4cfb590d533c9ff8692895"
+        }
+      ]
+    },
+    "final-local-validation-v1": {
+      "key": "final-local-validation-v1",
+      "action": "persist prepared implementation, validation and exact runtime blockers; no activation",
+      "input_sha256": "ed7d041ef7ad25d915580e387b8d6bfa21881301aadf6acdf6ed31bdcaebf88e",
+      "started_at": "2026-11-04T20:52:21.793299+00:00",
+      "verified_at": "2026-11-04T20:52:21.914534+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/EXECUTION_RECEIPT.json",
+          "sha256": "cb5cc8f6dff1142e34080df3365d18d524812a08c755ed0a78e038f1c98ab554"
         }
       ]
     }
@@ -64,6 +77,18 @@
       "at": "2026-11-04T20:17:13.664966+00:00",
       "event": "verified:CAP-01-isolated-preparation-v1",
       "next_action": "NEWS-01"
+    },
+    {
+      "revision": 6,
+      "at": "2026-11-04T20:52:21.793315+00:00",
+      "event": "began:final-local-validation-v1",
+      "next_action": "reconcile:final-local-validation-v1"
+    },
+    {
+      "revision": 7,
+      "at": "2026-11-04T20:52:21.914555+00:00",
+      "event": "verified:final-local-validation-v1",
+      "next_action": "BASE-02: resume on authorized VPS; read-only live inventory before activation"
     }
   ],
   "policy": {

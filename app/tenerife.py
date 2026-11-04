@@ -526,6 +526,10 @@ def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: st
 def waitlist():
     d, is_json = _payload()
     loc = _payload_locale(d)
+    if d.get('contact_type') and not funnel_http.enabled():
+        # A cached/new typed form must never silently downgrade into legacy
+        # capture and lose its explicit subscription request during rollback.
+        return _reply(is_json,False,503,_form_msg('server',loc),locale=loc)
 
     # Honeypot: bots fill the hidden field. Pretend success, store nothing.
     if str(d.get(HONEYPOT_FIELD) or "").strip():
@@ -544,6 +548,9 @@ def waitlist():
     if typed:
         try:
             normalized=funnel_store.normalize(d)
+            contact=normalized['contact']
+            if newsletter_only:
+                consent=normalized['newsletter_opt_in']
         except ValueError as exc:
             field=str(exc)
             return _reply(is_json,False,400,_form_msg('contact' if field in ('contact','newsletter_email') else 'server',loc),back,field,locale=loc)

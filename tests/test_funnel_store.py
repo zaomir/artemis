@@ -76,6 +76,8 @@ class StoreTest(unittest.TestCase):
         e=json.loads(self.db.execute('SELECT payload FROM artemis_events').fetchone()[0])
         self.assertEqual(e['contact_type'],'facebook')
         self.assertEqual(e['contact'],'https://www.facebook.com/test.person')
+        self.assertEqual(f.contact_value('facebook','https://m.facebook.com/profile.php?id=123456789'),
+                         'https://www.facebook.com/profile.php?id=123456789')
         for bad in ['https://facebook.com.evil.invalid/person','https://user:pass@facebook.com/person','https://facebook.com/person?email=secret']:
             with self.assertRaises(ValueError): f.contact_value('facebook',bad)
 

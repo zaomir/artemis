@@ -42,9 +42,10 @@ class HTTPTest(unittest.TestCase):
         self.assertEqual(event['contact_type'],'facebook')
         self.assertIsNone(event['newsletter_email'])
     def test_newsletter_only_no_legacy_lead(self):
-        self.assertEqual(self.submit(intent='newsletter_only',name='',newsletter_opt_in=True).status_code,200)
+        self.assertEqual(self.submit(intent='newsletter_only',name='',newsletter_opt_in=True,consent=False).status_code,200)
         self.assertFalse(self.rows('SELECT * FROM tenerife_waitlist'))
         self.mock.assert_not_called()
+        self.assertIn(b'value="newsletter_only"',self.client.get('/tenerife/actualizaciones/').data)
     def test_get_scanner_does_not_confirm_then_post_confirms(self):
         self.submit(newsletter_opt_in=True)
         sid,gen=self.rows('SELECT id,generation FROM artemis_subscriptions')[0]

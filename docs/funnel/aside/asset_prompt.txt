@@ -1,0 +1,6 @@
+Asset diary-atlantic-20261104, revision 1.
+Generated with the built-in image generation tool, no reference image, no supplied seed.
+
+Use case: stylized-concept. Finished editorial illustration for the Artemis project diary and Facebook, wide landscape. Quiet northern Tenerife atmosphere: terraced green hillside meeting the Atlantic, simple dark basalt boundary in foreground, subtle ochre earth and Spanish landscape feeling. Restrained watercolour study on textured warm cream paper, transparent washes and sepia pencil traces. Palette: warm cream, ochre, sepia, basalt, muted bronze, natural green, calm Atlantic blue-grey. Early concept-stage lifestyle atmosphere for investors, without depicting an approved design. No buildings, finished resort, construction, floorplan, people, amphorae, columns, text, numbers, logos or watermark. Soft unfinished edges, luminous paper and an uncluttered composition.
+
+Exact output reviewed: asset_manifest.json. WebP is an encoding export of the original PNG, with no crop, resize or semantic edit. Visible caption explicitly states that this is a conceptual atmospheric study, not a confirmed project plot.

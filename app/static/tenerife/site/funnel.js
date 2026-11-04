@@ -25,7 +25,7 @@
     e.preventDefault();if(!f.reportValidity())return;
     var data={};new FormData(f).forEach(function(v,k){data[k]=v;});
     data.newsletter_opt_in=f.elements.newsletter_opt_in.checked;
-    data.consent=f.elements.consent.checked;
+    data.consent=f.elements.consent?f.elements.consent.checked:false;
     var button=f.querySelector('button[type=submit]');button.disabled=true;
     fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error('Request failed ('+r.status+')');return r.json();})

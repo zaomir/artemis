@@ -83,8 +83,13 @@ def contact_value(kind, raw):
         if re.fullmatch(r'@?[A-Za-z0-9.]{5,80}', value):
             return 'https://www.facebook.com/' + value.lstrip('@')
         u = urlsplit(value)
+        if (u.scheme=='https' and u.netloc.lower() in {'facebook.com','www.facebook.com','m.facebook.com'}
+                and u.path=='/profile.php' and re.fullmatch(r'id=[0-9]{5,30}',u.query) and not u.fragment):
+            return 'https://www.facebook.com/profile.php?'+u.query
         if (u.scheme == 'https' and u.netloc.lower() in {'facebook.com', 'www.facebook.com', 'm.facebook.com'}
                 and re.fullmatch(r'/[A-Za-z0-9.]{5,80}/?', u.path) and not u.query and not u.fragment):
+            if u.path.strip('/').lower() in {'groups','pages','marketplace','watch','login','help','settings','share'}:
+                raise ValueError('contact')
             return 'https://www.facebook.com/' + u.path.strip('/')
     raise ValueError('contact')
 
@@ -110,7 +115,7 @@ def normalize(data, now=None):
     opted = data.get('newsletter_opt_in') in (True, 'on', 'true', '1')
     if intent == 'newsletter_only' and not opted:
         raise ValueError('newsletter_opt_in')
-    if data.get('consent') not in (True, 'on', 'true', '1'):
+    if intent!='newsletter_only' and data.get('consent') not in (True, 'on', 'true', '1'):
         raise ValueError('consent')
     name = ' '.join(str(data.get('name') or '').split())[:120]
     if intent != 'newsletter_only' and not name:

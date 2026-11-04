@@ -41,6 +41,9 @@ for _loc,_pending in {
  'ru':'Запрос подписки сохранён. Проверьте почту для подтверждения. Дневник проекта уже доступен.'}.items():
     LABELS[_loc]['newsletter_pending']=_pending
 
+for _loc,_subscribe in {'en':'Subscribe to updates','es':'Suscribirse a las novedades','de':'Neuigkeiten abonnieren','fr':'S’abonner aux nouvelles','ru':'Подписаться на новости'}.items():
+    LABELS[_loc]['subscribe']=_subscribe
+
 
 def token_response(title,body,locale='en'):
     import html

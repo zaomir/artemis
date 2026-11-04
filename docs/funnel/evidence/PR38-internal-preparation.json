@@ -1,0 +1,26 @@
+{
+  "atoms": [
+    "PR-A02",
+    "PR-A03",
+    "PR-A04",
+    "PR-A05",
+    "PR-A06",
+    "PR-B01",
+    "PR-B03",
+    "PR-B04",
+    "PR-B06"
+  ],
+  "status": "internal_primitives_prepared_not_public_release",
+  "tests_passed": 11,
+  "known_gaps": [
+    "full per-project event wiring and all risk scenarios",
+    "complete verified budget/inclusion mapping",
+    "issuer/instrument and legal ranking",
+    "contractual day-count",
+    "buyer-fund use rules",
+    "live model/browser/API parity",
+    "threshold grid and final copy audit"
+  ],
+  "public_model_changed": false,
+  "no_investor_personal_tax_fields": true
+}
