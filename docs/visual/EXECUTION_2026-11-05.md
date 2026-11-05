@@ -1,43 +1,38 @@
 # Artemis Atlantic Heritage Watercolour — execution checkpoint
 
-Date: 2026-11-05 (Atlantic/Canary). Scope: `zaomir/artemis`, branch `feat/atlantic-watercolour-site-20261104`, draft [PR #39](https://github.com/zaomir/artemis/pull/39). **No merge, no deployment.**
+Date: 2026-11-05 (Atlantic/Canary). Scope: zaomir/artemis, branch feat/atlantic-watercolour-site-20261104, draft PR #39. No merge to main or production deployment.
 
-## Authority
-- Owner approved artistic direction and execution of the page image refresh; owner did **not** approve a specific final architectural design or production release.
-- [Canon](../funnel/CONTENT_CANON.md) and [source Google Doc](https://docs.google.com/document/d/1BeIhmR5gb6uvX4HAUl8eyRBYHfAiNlxCmTGtWLFkQ6A/edit).
-- [Site-wide detailed audit](ARTEMIS_SITE_VISUAL_AUDIT_2026-11-04.md), [atomic registry](ARTEMIS_SITE_VISUAL_PLAN_2026-11-04.tasks.json).
-- Financial figures, investor return claims and personal tax exclusions are governed by separate PR #38 / funnel contract. Do not change them here.
+## Authority and canonical registry
+Owner authorized the visual direction and its implementation. Specific images, final architecture and production release have not been approved. Canon: docs/funnel/CONTENT_CANON.md. Single task registry: docs/visual/ARTEMIS_SITE_VISUAL_PLAN_2026-11-04.tasks.json. Financial model and CRM remain owned by the funnel work; no investor personal-tax calculation.
 
-## Verified in connected GitHub repository
-- Main branch at start of original visual branch `6f1dccaf6906ee7213fc9e39f25970387addd4b5`. On 2026-11-05, main advanced by seven unrelated funnel operations/evidence commits; check it afresh before merge.
-- `ART01` original + desktop/mobile candidate variants committed under `app/static/tenerife/site/img/`, with `docs/visual/candidates/manifest.json` recording dimensions, SHA256, generation and rights basis. **Status REVIEW**.
-- `frames.json:preview_overrides` selects `index/F01` only with `ARTEMIS_VISUAL_PREVIEW=1`. `page_overrides={}`: no production substitution.
-- `frames.json:preview_hidden` suppresses `norte/F21`, `producto/F05`, `inversores/F14`, `construccion/F15`, `equipo/F22` **only in review builds** while image bytes are pending. Default builds still use old published assets.
-- `norte/F23` false-complex image is replaced in preview with the source-linked, coordinate-based original SVG `app/static/tenerife/site/img/la-quinta-context-locator-20261105.svg`. Coordinates checked against OSM/municipality/AEMET/TITSA; see `evidence/F23_LA_QUINTA_LOCATION_SOURCES_2026-11-05.md`. No made-up parcel boundary, road, route or ocean view.
-- Review-only four-step project development diagram, five-language concept notice, five-language map explanation, accessibility and responsive styles in canonical builder/templates; no changes to financial math.
-- Project diary list uses the existing provenanced watercolour `diary-atlantic-20261104.webp` as a thumbnail with a localized concept caption; article remains unrestricted.
-- `scripts/tenerife_site_build/intake_watercolour.py` stages *actual local downloaded image bytes* into JPG/WebP and a SHA256/rights REVIEW manifest, without enabling a page slot or publishing. Test coverage added: `test_tenerife_art_intake.py`, `test_tenerife_visual_rollout.py`, `test_tenerife_news_visual.py`.
+## Completed in this continuation
+- Reconciled main twice, most recently 6ecefa4f0156edcdd4209aff35dd8f58490d11d3, preserving its CRM, legacy-ingress and privacy changes. No merge conflicts. No visual-branch diff to financial model/calculator, CRM logic or Crete sources.
+- Recovered all four existing P0 generations through the connected ElevenLabs completed-session result. Original PNGs are stored under candidates/sources; 20 JPG/WebP derivatives and four per-image manifests are committed. Full prompts and node settings are stored in candidates/p0-generation-settings.json. No short-lived download URLs or login credentials are committed.
+- Independently verified original SHA-256, all 20 derivative hashes/dimensions and five-candidate dHash uniqueness (minimum distance 20; duplicate threshold 10). All assets remain REVIEW with owner rights clearance and image approval pending.
+- Prepared image-specific alt text and captions in EN/ES/DE/FR/RU and focal positions. The four new candidates have no page assignment. Existing ART01 remains preview-only and its mobile crop remains a draft.
+- Fixed a real preview defect: removing a legacy image slot freed that render for a different page. Rejected candidates are now reserved site-wide; synthetic excavation, frame and roof-work images are excluded from preview. F23's raster slot is hidden rather than silently consumed behind the vector locator. Fixed invalid override-list validation as well.
+- Added a reproducible mobile coordinate locator with larger labels, preserving the same source coordinates and attribution. Source generator: scripts/tenerife_site_build/location_locator.py. Desktop locator unchanged. See evidence/F23_LA_QUINTA_LOCATION_SOURCES_2026-11-05.md.
+- Regenerated the standard five-language diary listing and compiled CSS from canonical sources. No hand edits to generated HTML.
 
-## Completed generations, not yet imported
-Four more P0 watercolours generated in [ElevenLabs flow](https://elevenlabs.io/app/flows/lMim2AHTS796dcvWxR3o), IDs `wBYf7vERpRPDQRSzObyC` (norte/F21), `MRSkYIdJ4VasJW40dcsx` (producto/F05), `e23JTMG8M8JQCErDMrFw` (inversores/F14), `7ogqYT3DK47f4vw3nQwc` (construccion/F15). Each 1280×720. Their real bytes and verified hashes are **not** in GitHub; no slot mapped. Source-of-truth `docs/visual/candidates/p0-generation-inventory.json`. Do not substitute a generation URL for a durable file receipt, and do not claim they were imported.
+## Verified execution
+- Five preview builds and five default builds passed with Python 3.12.13. Rebuilt after latest main integration: all 70 primary-page preview HTML files are byte-identical to the responsive-tested version.
+- Responsive browser checks: 14 primary page types × 5 locales × 4 widths (320/768/1024/1440), 280 checks. No horizontal page overflow, broken images after decode, missing concept notice or H1/primary-CTA count failures. This is the current preview with temporary hidden slots, not QA of unassigned artwork.
+- Mobile menu: opens, makes background inert, closes on Escape, returns focus. Public diary listing: 320 px, no overflow and visible localized caption.
+- Screenshots visually inspected for homepage desktop/mobile and mobile map. Evidence and scope: evidence/RESPONSIVE_2026-11-05.json and evidence/screenshots/.
+- Full-suite output: evidence/TESTS_PY312_2026-11-05.txt. Some environment-dependent tests are skipped; do not call this live CRM or production-form validation.
+- Durable execution integrity/recovery checks passed (six tests). Git diff whitespace checks passed.
+- Read-only production GETs returned HTTP 200 at /tenerife/, /tenerife/norte/ and /tenerife/ru/. Deployed Git SHA was not exposed or verified. No production changes were made by this continuation.
+- Previous Actions attempts failed before job steps; no fresh Actions success is claimed. Local execution closes the earlier build/test evidence gap. Manual-only CI workflow remains in place.
 
-## QA state
-- Source readbacks completed for canonical edited code, assets and locale dictionaries.
-- **Build/test execution NOT VERIFIED**. Actions run `41999416519` (and subsequent runs) failed before any job step (`steps=[]` or null; logs endpoint returned 404 BlobNotFound). Root cause unknown; do not describe as test failures, CI passes or billing evidence without check-run annotations/runner evidence. Visual workflow is now manual-only; there is no production deployment workflow.
-- Public website inaccessible to available web browser; earlier external request returned an error, and separate Artemis funnel runtime reported a possible origin/Cloudflare 521. Exact current production state is **not verified**.
-- Do not use screenshot claims or site-wide responsive QA without actual rendered evidence.
+## Concrete review package
+[P0 illustrations and mobile map](P0_REVIEW_2026-11-05.md) shows ART01 plus the four imported originals, exact intended slots and outstanding approval/composition work. Manifests and source bytes are durable in the same branch.
 
-## Next atomic actions
-1. Reconcile current main/ref and any unrelated concurrent changes, preserve no financial/CRM diffs in PR #39.
-2. Fetch P0 source images from the exact ElevenLabs flow using a connected authenticated worker that can transfer full bytes. **Do not paste signed short-lived CDN URLs into the repository.** Import with `intake_watercolour.py`, inspect images visually, obtain owner art approval, verify rights/provenance/sha. For hero images require an original 4:5 composition (do not treat a crop as art-directed).
-3. Assign approved assets to distinct page/Fxx slots via `preview_overrides`, remove corresponding `preview_hidden`, fill exact EN/ES/DE/FR/RU alts/captions and verify no repeated image (including dHash). Do not touch Simon/Boris portraits or real case photographs.
-4. Run isolated five-language review build and tests (from repository root):
-   `python3 -m pip install Pillow Jinja2`
-   `python3 -m unittest discover -s tests -p 'test_tenerife_visual_rollout.py' -v`
-   `python3 -m unittest discover -s tests -p 'test_tenerife_art_intake.py' -v`
-   `python3 -m unittest discover -s tests -p 'test_tenerife_news_visual.py' -v`
-   For each `lang` EN/ES/DE/FR/RU: `ARTEMIS_VISUAL_PREVIEW=1 TENERIFE_LOCALE=$lang TENERIFE_WHATSAPP=+440000000000 TENERIFE_OUT_DIR=/tmp/artemis-preview/$lang python3 scripts/tenerife_site_build/build_v3.py` (dummy test phone, not for production).
-5. Perform 320/768/1024/1440 px screenshot QA with visual proof, fix failed cases, review documentary cases, then P1/P2. Full test suite and release gating remain mandatory.
-6. Obtain explicit approval for specific images and separately for production release. Do not merge/deploy review-only PR by inference.
+## Remaining / next action
+1. Owner reviews the named five images for their intended purposes and confirms rights before public use. REVIEW must not be silently promoted to APPROVED.
+2. Produce independent 4:5 mobile compositions where needed; the current ART01 crop is not an original mobile master. Do not simply crop the construction-stage sequence.
+3. Assign specifically approved assets in preview only, apply image-specific captions, and repeat screenshot/dHash QA for actual placements. Keep documentary portraits and seven case photographs intact; their provenance review is still open.
+4. Finish concept/specification copy coordination with the funnel/numeric authority. Existing legacy copy still mentions twenty homes, sizes and infrastructure; a concept notice alone does not approve those facts.
+5. After P0 approval/placement QA, proceed through the registry's P1/P2 artwork, diagrams and OG work. No financial chart before model verification.
+6. Separate owner instruction is required for merge to main and production release.
 
-**Executor status:** implementation prepared and source-verified, not shipped or declared QA PASS. No automation/background task was set.
+Canonical execution journal is this file; local durable adapter state points here. No background automation, social posting, messaging or deployment was activated.

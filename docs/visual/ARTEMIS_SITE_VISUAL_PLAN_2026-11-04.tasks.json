@@ -670,7 +670,12 @@
       "acceptance": [
         "Фиксированы SHA main и URL всех канонических путей; список из 14 основных маршрутов и 5 локалей сверён с Flask",
         "Production сравнен с snapshot через браузер/сеть; если недоступен, явно записать «не проверено», не приписывать production состояние main"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "MAIN_RECONCILED_HTTP_AVAILABLE_DEPLOY_SHA_UNVERIFIED",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-BASE-02",
@@ -683,7 +688,12 @@
       "acceptance": [
         "В repo локальный манифест указывает на утверждённый Google Doc и docs/funnel/CONTENT_CANON.md",
         "Разделены fiction concept / verified photography / numeric vector diagrams; никакого архитектурного утверждения от картинки"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "IMPLEMENTED",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-BASE-03",
@@ -696,7 +706,12 @@
       "acceptance": [
         "Все 21 активные frame картинки, 8 профилей, 7 кейсов и news asset имеют ID, источник, права, статус",
         "Сцены с людьми не выдаются за реальные фотографии объекта без подтверждения"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "DOCUMENTARY_PROVENANCE_REVIEW_PENDING",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-ASSET-01",
@@ -710,7 +725,12 @@
         "Шесть кандидатов ElevenLabs проверены глазами",
         "Каждая категория имеет либо утверждённый референс APPROVED, либо статус REVIEW; нельзя публиковать REVIEW без согласования",
         "Отдельно подготовлены портретные мастера, поскольку шесть исходных кандидатов 1280×720"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "REVIEW_PENDING_OWNER_APPROVAL_AND_MOBILE_COMPOSITIONS",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-SCHEMA-01",
@@ -733,7 +753,12 @@
         "scripts/tenerife_site_build/build_v3.py",
         "app/templates/tenerife/site/_components.html",
         "scripts/tenerife_site_build/site.src.css"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "IMPLEMENTED_LOCAL_VALIDATION_PASSED_FINAL_ASSIGNMENT_PENDING",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-COPY-01",
@@ -754,7 +779,12 @@
         "scripts/tenerife_site_build/copy_es",
         "scripts/tenerife_site_build/copy_de",
         "scripts/tenerife_site_build/copy_fr"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "CONCEPT_NOTICE_IMPLEMENTED_FACT_SPEC_REVIEW_PENDING",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-P0-IMAGES",
@@ -774,7 +804,12 @@
       "paths": [
         "scripts/tenerife_site_build/frames.json",
         "scripts/tenerife_site_build/alts.json"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "SOURCES_IMPORTED_HASHED_REVIEW_ONLY_FOUR_NOT_ASSIGNED",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-QA-01",
@@ -789,7 +824,12 @@
         "Главные mobile/desktop illustrations проверены на 320, 768, 1024 и 1440",
         "Forms, Twenty CRM, calc.js/model.json and investor calculation not modified inadvertently",
         "No unintended change to old Crete pages"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "CURRENT_PREVIEW_280_CHECKS_PASSED_POST_ASSIGNMENT_QA_PENDING",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-P1-ART",
@@ -833,7 +873,12 @@
         "На concept-search нет повторной работы: готовый diary-atlantic asset сохранён",
         "Миниатюра на листинге добавлена только если отсутствует, с корректным alt/caption/rights",
         "Release status и реальный деплой проверены"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "IMPLEMENTED_REGENERATED_NOT_RELEASED",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-P2-SECONDARY",

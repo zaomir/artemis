@@ -9,3 +9,7 @@ This folder is a **REVIEW-only repository staging area** for source artworks; fi
 - Other ART-01…ART-06 calibration outputs are saved in ElevenLabs flow `KlLCmfPxmdfrPsZMWJpT` and are not repo-backed until downloaded, hashed and reviewed.
 - Store generated imagery separately from authentic portraits and case-study evidence.
 - This file and its manifest do not authorize merging or production deployment.
+
+## P0 import receipt — 2026-11-05
+
+Four original PNGs are now stored in sources/, with per-image artemis-watercolour-*-20261105.json manifests, 20 derivatives, generation settings, five-language alt/caption text and verified hashes. Status remains REVIEW; no page assignments were made. See ../P0_REVIEW_2026-11-05.md. Independent 4:5 mobile compositions and owner approval remain pending.

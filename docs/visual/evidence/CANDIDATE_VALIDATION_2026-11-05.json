@@ -1,0 +1,109 @@
+{
+  "source_hash_checks": 4,
+  "variant_hash_dimension_checks": 20,
+  "checks": [
+    {
+      "manifest": "docs/visual/candidates/artemis-watercolour-norte-20261105.json",
+      "source": true,
+      "variants": 5,
+      "localized": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "ru"
+      ]
+    },
+    {
+      "manifest": "docs/visual/candidates/artemis-watercolour-inversores-20261105.json",
+      "source": true,
+      "variants": 5,
+      "localized": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "ru"
+      ]
+    },
+    {
+      "manifest": "docs/visual/candidates/artemis-watercolour-producto-20261105.json",
+      "source": true,
+      "variants": 5,
+      "localized": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "ru"
+      ]
+    },
+    {
+      "manifest": "docs/visual/candidates/artemis-watercolour-construccion-20261105.json",
+      "source": true,
+      "variants": 5,
+      "localized": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "ru"
+      ]
+    }
+  ],
+  "dhash_distances": [
+    {
+      "a": "wBYf7vERpRPDQRSzObyC",
+      "b": "e23JTMG8M8JQCErDMrFw",
+      "distance": 33
+    },
+    {
+      "a": "wBYf7vERpRPDQRSzObyC",
+      "b": "MRSkYIdJ4VasJW40dcsx",
+      "distance": 20
+    },
+    {
+      "a": "wBYf7vERpRPDQRSzObyC",
+      "b": "7ogqYT3DK47f4vw3nQwc",
+      "distance": 38
+    },
+    {
+      "a": "wBYf7vERpRPDQRSzObyC",
+      "b": "ART-01-master-1600",
+      "distance": 29
+    },
+    {
+      "a": "e23JTMG8M8JQCErDMrFw",
+      "b": "MRSkYIdJ4VasJW40dcsx",
+      "distance": 29
+    },
+    {
+      "a": "e23JTMG8M8JQCErDMrFw",
+      "b": "7ogqYT3DK47f4vw3nQwc",
+      "distance": 29
+    },
+    {
+      "a": "e23JTMG8M8JQCErDMrFw",
+      "b": "ART-01-master-1600",
+      "distance": 30
+    },
+    {
+      "a": "MRSkYIdJ4VasJW40dcsx",
+      "b": "7ogqYT3DK47f4vw3nQwc",
+      "distance": 34
+    },
+    {
+      "a": "MRSkYIdJ4VasJW40dcsx",
+      "b": "ART-01-master-1600",
+      "distance": 25
+    },
+    {
+      "a": "7ogqYT3DK47f4vw3nQwc",
+      "b": "ART-01-master-1600",
+      "distance": 31
+    }
+  ],
+  "threshold": 10,
+  "all_unique": true,
+  "approval": "pending"
+}

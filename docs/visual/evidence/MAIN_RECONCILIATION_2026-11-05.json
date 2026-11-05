@@ -1,0 +1,68 @@
+{
+  "main": "6ecefa4f0156edcdd4209aff35dd8f58490d11d3",
+  "merge_conflicts": false,
+  "rebuilds": [
+    {
+      "mode": "preview",
+      "lang": "en",
+      "exit": 0
+    },
+    {
+      "mode": "preview",
+      "lang": "es",
+      "exit": 0
+    },
+    {
+      "mode": "preview",
+      "lang": "de",
+      "exit": 0
+    },
+    {
+      "mode": "preview",
+      "lang": "fr",
+      "exit": 0
+    },
+    {
+      "mode": "preview",
+      "lang": "ru",
+      "exit": 0
+    },
+    {
+      "mode": "default",
+      "lang": "en",
+      "exit": 0
+    },
+    {
+      "mode": "default",
+      "lang": "es",
+      "exit": 0
+    },
+    {
+      "mode": "default",
+      "lang": "de",
+      "exit": 0
+    },
+    {
+      "mode": "default",
+      "lang": "fr",
+      "exit": 0
+    },
+    {
+      "mode": "default",
+      "lang": "ru",
+      "exit": 0
+    }
+  ],
+  "primary_preview_html_compared": 70,
+  "changed_primary_pages": [],
+  "responsive_evidence_still_applies": true,
+  "default_financial_changes": false,
+  "full_suite": {
+    "tests": 558,
+    "passed": 540,
+    "skipped": 18,
+    "failures": 0,
+    "errors": 0,
+    "python": "3.12.13"
+  }
+}
