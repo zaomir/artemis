@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 85,
-  "updated_at": "2026-11-05T13:45:18.129577+00:00",
-  "next_action": "Core release existing relay priority and inactive service-message wiring, full suite and fresh source GETs; no newsletter activation",
-  "pending": null,
+  "revision": 86,
+  "updated_at": "2026-11-05T13:45:30.339323+00:00",
+  "next_action": "reconcile:CRM-MAIL-relay-runtime-20261105-v1",
+  "pending": {
+    "key": "CRM-MAIL-relay-runtime-20261105-v1",
+    "action": "existing crm_core release request artemis-relay-priority-release-20261105-01 for CRM-first relay and disabled confirmation/welcome transport; no schema/migration/backfill replay; full suite plus current independent source GETs",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:45:30.339312+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -1064,6 +1069,12 @@
       "at": "2026-11-05T13:45:18.129577+00:00",
       "event": "verified:MAIL-03-existing-relay-wiring-20261105-v1",
       "next_action": "Core release existing relay priority and inactive service-message wiring, full suite and fresh source GETs; no newsletter activation"
+    },
+    {
+      "revision": 86,
+      "at": "2026-11-05T13:45:30.339323+00:00",
+      "event": "began:CRM-MAIL-relay-runtime-20261105-v1",
+      "next_action": "reconcile:CRM-MAIL-relay-runtime-20261105-v1"
     }
   ],
   "policy": {
