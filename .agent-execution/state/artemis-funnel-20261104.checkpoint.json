@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 13,
-  "updated_at": "2026-11-05T09:06:39.367613+00:00",
-  "next_action": "BASE-02: fixed Python reader discovery and ingress diagnostics; repair public 521 before CRM mutation",
-  "pending": null,
+  "revision": 14,
+  "updated_at": "2026-11-05T09:07:34.630089+00:00",
+  "next_action": "reconcile:BASE-02-ingress-discovery-20261105-v1",
+  "pending": {
+    "key": "BASE-02-ingress-discovery-20261105-v1",
+    "action": "fixed Python fallback reader scan and local nginx/ports/Cloudflare credential presence diagnostics; request artemis-ingress-inventory-20261105-01",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T09:07:34.630070+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -164,6 +169,12 @@
       "at": "2026-11-05T09:06:39.367613+00:00",
       "event": "verified:BASE-02-03-diagnostics-20261105-v1",
       "next_action": "BASE-02: fixed Python reader discovery and ingress diagnostics; repair public 521 before CRM mutation"
+    },
+    {
+      "revision": 14,
+      "at": "2026-11-05T09:07:34.630089+00:00",
+      "event": "began:BASE-02-ingress-discovery-20261105-v1",
+      "next_action": "reconcile:BASE-02-ingress-discovery-20261105-v1"
     }
   ],
   "policy": {
