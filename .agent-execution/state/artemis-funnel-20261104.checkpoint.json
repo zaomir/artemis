@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 59,
-  "updated_at": "2026-11-05T12:07:23.060977+00:00",
-  "next_action": "Wait for full nginx worker replacement before fresh privacy probe; baseline hash restored",
-  "pending": null,
+  "revision": 60,
+  "updated_at": "2026-11-05T12:07:33.194860+00:00",
+  "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v2",
+  "pending": {
+    "key": "MAIL-09-token-log-protection-20261105-v2",
+    "action": "require old nginx workers to exit after reload before a fresh nonsecret probe; request artemis-token-log-protection-20261105-02; prior version rollback verified",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T12:07:33.194848+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -739,6 +744,12 @@
       "at": "2026-11-05T12:07:23.060977+00:00",
       "event": "verified:MAIL-09-nginx-reload-diagnosis-20261105-v1",
       "next_action": "Wait for full nginx worker replacement before fresh privacy probe; baseline hash restored"
+    },
+    {
+      "revision": 60,
+      "at": "2026-11-05T12:07:33.194860+00:00",
+      "event": "began:MAIL-09-token-log-protection-20261105-v2",
+      "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v2"
     }
   ],
   "policy": {
