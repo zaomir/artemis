@@ -19,7 +19,8 @@ os.environ.setdefault("TENERIFE_WHATSAPP", "+440000000000")
 import build_v3  # noqa: E402
 
 SITE = ROOT / "app" / "tenerife_site"
-URLS = ([("/tenerife/" if n == "index" else f"/tenerife/{n}/") for _f, n in build_v3.PAGES]
+URLS = ([("/tenerife/" if n == "index" else f"/tenerife/{n}/") for _f, n in build_v3.PAGES
+         if n not in build_v3.FIGURE_ONLY_PAGES]   # r4.1 c2: calculadora -> 302, see test_tenerife_r4_1_c2.py
         + ["/tenerife/impressum/", "/tenerife/privacy/", "/tenerife/gracias/"])
 SP = "[ \u00a0\u202f]?"
 FORBIDDEN = [rf"87{SP}€", "€/м²", "€/m²", r"%\s*годовых", rf"2{SP}950", rf"3{SP}850",
@@ -57,7 +58,7 @@ class Case(unittest.TestCase):
 
 class NoFiguresServedTest(Case):
     def test_sixteen_pages_have_no_figures(self):
-        self.assertEqual(len(URLS), 16)
+        self.assertEqual(len(URLS), 15)   # r4.1 c2: calculadora -> 302 (not served)
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)

@@ -26,7 +26,8 @@ ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "TENERIFE_WHATSAPP", "
 import build_v3  # noqa: E402
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
-PAGES = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
+PAGES = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES
+         if name not in build_v3.FIGURE_ONLY_PAGES}   # r4.1 c2: calculadora is not served (302)
 
 
 def page(name):
@@ -399,7 +400,7 @@ class LegalPagesTest(AppCase):
     def test_v2_layout_and_text_verbatim(self):
         for name in ("impressum", "privacy"):
             body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
-            self.assertIn(build_v3.legal_body(name), body, name)
+            self.assertIn(build_v3.wording_off(build_v3.legal_body(name)), body, name)   # r4.1 c2 wording
             self.assertIn('class="header', body)
             self.assertIn('<footer', body)
             self.assertNotIn("cloudflareinsights", body)
@@ -464,7 +465,7 @@ class KimiTextsTest(unittest.TestCase):
             tpl = (ROOT / "app/templates/tenerife" / f"{name}.html").read_text(encoding="utf-8")
             self.assertEqual(tpl, legal_from_copy.template(name), name)
             src = re.sub(r"<!--.*?-->", "", (BUILD / "copy_v3" / md).read_text(encoding="utf-8"), flags=re.S)
-            self.assertIn(self.words(src), self.words(page(name)), name)
+            self.assertIn(self.words(build_v3.wording_off(src)), self.words(page(name)), name)   # r4.1 c2
 
     def test_no_waiting_list_wording(self):
         files = [*SITE.glob("*.html"), *(ROOT / "app/templates/tenerife").rglob("*.html"),
@@ -483,12 +484,14 @@ class KimiTextsTest(unittest.TestCase):
         links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", md)
         self.assertEqual(links, [("политике конфиденциальности", "/tenerife/privacy/")])
         want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', md) + "</span>"
-        self.assertEqual(len(PAGES), 13)
+        self.assertEqual(len(PAGES), 12)   # r4.1 c2: calculadora is not served
+        shown = build_v3.wording_off(want)   # r4.1 c2: «расчёт по вашему запросу» (Lead 01.11)
+        self.assertNotEqual(shown, want)
         for name in PAGES:
             html = page(name)
             self.assertEqual(html.count('id="wl-consent"'), 1, name)
-            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [want], name)
-        for f in ("app/templates/tenerife/preview.html", "scripts/tenerife_site_build/_waitlist.html"):
+            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [shown], name)
+        for f in ("scripts/tenerife_site_build/_waitlist.html",):   # r4.1 c2: unused preview.html deleted
             self.assertIn(want, (ROOT / f).read_text(encoding="utf-8"), f)
 
     def test_no_web_analytics_wording(self):

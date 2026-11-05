@@ -14,6 +14,7 @@ Routes (Blueprint, registered in app.py):
                                      grainee-v2 docs/projects/artemis/tenerife/site-ru,
                                      see app/tenerife_site/README.md); indexable.
                                      /tenerife/<page>.html -> 301 clean URL.
+  GET  /tenerife/calculadora[/|.html] 302 -> /tenerife/ while TENERIFE_SHOW_FIGURES is off (r4.1 c2, temporary)
 
 Preview + API paths are noindex (meta + X-Robots-Tag) and is not
 linked from the Crete site. No payments; the only amounts are the server's recomputation of
@@ -124,6 +125,8 @@ LEGAL_PAGES = ("impressum", "privacy")
 @bp.route(PREVIEW_PREFIX + "/<path:sub>")
 def preview_moved(sub: str = ""):
     first = sub.strip("/").split("/", 1)[0]
+    if figure_page_hidden(first):   # r4.1 c2: straight to /tenerife/ (temporary), not via the 302 page
+        return _figure_page_moved()
     target = f"/tenerife/{first}/" if first in LEGAL_PAGES + SITE_PAGES else "/tenerife/"
     return redirect(_with_query(target), code=301)
 
@@ -146,6 +149,13 @@ UNPUBLISHED_PAGES = ("inversores", "investors", "inversiones", "invest")
 # lives in app/tenerife_site/data/ (nginx serves /static/ straight from disk); this guard answers 404 in Flask before
 # static serving, for any JSON under /static/tenerife/, in case one is ever put back there.
 FIGURE_STATIC_RX = re.compile(r"^/static/tenerife/(?:.*/)?[^/]*\.json(?:\.gz|\.br)?$", re.I)
+# r4.1 c2 (Lead 01.11): the calculator page has nothing to show without the figures. While TENERIFE_SHOW_FIGURES is off
+# every URL of it (/tenerife/calculadora[/][.html], any query, /tenerife-preview/calculadora/) answers a TEMPORARY 302
+# to /tenerife/ (it comes back with the figures, so no 301 that browsers/CDN would cache); no page links it.
+# app/tenerife_site/calculadora.html stays in the repo and is served again only with TENERIFE_SHOW_FIGURES=1.
+# calc.js is not in app/static any more (app/tenerife_site/data/calc.js, not served); the guard also answers 404.
+FIGURE_ONLY_PAGES = ("calculadora",)
+CALC_JS_RX = re.compile(r"^/static/tenerife/(?:.*/)?calc\.js(?:\.gz|\.br|\.map)?$", re.I)
 
 
 def show_figures() -> bool:
@@ -153,7 +163,15 @@ def show_figures() -> bool:
 
 
 def figures_blocked(path: str) -> bool:
-    return not show_figures() and bool(FIGURE_STATIC_RX.match(path or ""))
+    return not show_figures() and bool(FIGURE_STATIC_RX.match(path or "") or CALC_JS_RX.match(path or ""))
+
+
+def figure_page_hidden(page: str) -> bool:
+    return page in FIGURE_ONLY_PAGES and not show_figures()
+
+
+def _figure_page_moved():
+    return redirect(SITE_PREFIX + "/", code=302)
 
 
 log = logging.getLogger("artemis.tenerife")
@@ -246,6 +264,8 @@ def legal_page():
 def site_page(page: str):
     if page not in SITE_PAGES or page in UNPUBLISHED_PAGES:
         return make_response("Not found", 404)
+    if figure_page_hidden(page):
+        return _figure_page_moved()
     return _site_page(page)
 
 
@@ -255,6 +275,8 @@ def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
+    if figure_page_hidden(page):
+        return _figure_page_moved()
     if (page in SITE_PAGES or page in LEGAL_PAGES) and page not in UNPUBLISHED_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     return make_response("Not found", 404)

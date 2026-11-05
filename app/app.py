@@ -236,7 +236,7 @@ def sitemap_paths() -> list[str]:
     if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
         return paths
     for name in ("index",) + tenerife.SITE_PAGES:
-        if name not in tenerife.UNPUBLISHED_PAGES and (tenerife.SITE_DIR / f"{name}.html").is_file():
+        if name not in tenerife.UNPUBLISHED_PAGES and not tenerife.figure_page_hidden(name) and (tenerife.SITE_DIR / f"{name}.html").is_file():
             paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
     paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES]
     return paths

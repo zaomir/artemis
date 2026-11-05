@@ -28,7 +28,8 @@ os.environ.setdefault("TENERIFE_WHATSAPP", "+440000000000")
 import build_v3  # noqa: E402
 import make_model  # noqa: E402
 
-V3 = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
+V3 = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES
+      if name not in build_v3.FIGURE_ONLY_PAGES}   # r4.1 c2: calculadora is not served (302)
 FILES = {name: f for f, name in build_v3.PAGES}
 
 
@@ -198,6 +199,9 @@ class V3BuildTest(unittest.TestCase):
         md = build_v3.hide_figures_md((COPY / build_v3.FOOTER).read_text(encoding="utf-8"))   # r4.1: figures off
         self.assertEqual(md.count(" · " + build_v3.WA_TOKEN), 1)
         md = md.replace(" · " + build_v3.WA_TOKEN, "")
+        for item, n in build_v3.NAV.items():   # r4.1 c2: the calculator is not linked while figures are off
+            if n in build_v3.FIGURE_ONLY_PAGES:
+                md = md.replace(" · " + item, "")
         for item in build_v3.NAV_FUTURE:  # Kimi r18 «Инвесторам»: hidden until page 18 is built (no broken link)
             md = md.replace(" · " + item, "")
         want = copy_words(md)
@@ -255,7 +259,7 @@ class V3BuildTest(unittest.TestCase):
     def test_no_hardcoded_figures_in_templates_and_js(self):
         model = json.loads((build_v3.MODEL).read_text(encoding="utf-8"))
         figs = {t["value"] for t in model["tokens"] + model["extra"] if len(re.sub(r"\D", "", t["value"])) >= 3}
-        for f in list(TEMPLATES.glob("*.html")) + [SITE_STATIC / "calc.js", SITE_STATIC / "site.js"]:
+        for f in list(TEMPLATES.glob("*.html")) + [build_v3.CALC_JS, SITE_STATIC / "site.js"]:
             src = re.sub(r"\{#.*?#\}|\{%.*?%\}|\{\{.*?\}\}", " ", f.read_text(encoding="utf-8"), flags=re.S)
             self.assertIsNone(re.search(r"(?<![\w\\])\d\s*(?:€|м²|%)", src), f.name)
             for v in figs:
@@ -520,7 +524,7 @@ class V3BuildTest(unittest.TestCase):
         for name, other in self.pages.items():
             if name != build_v3.CALC_PAGE:
                 self.assertNotIn('name="calc_', other, name)
-        js = (SITE_STATIC / "calc.js").read_text(encoding="utf-8")
+        js = build_v3.CALC_JS.read_text(encoding="utf-8")
         self.assertIn("['m2','step','pay']", js)
         for gone in ("'type','shares'", "'amount'", "'version'", "hid.version", "hid.amount"):
             self.assertNotIn(gone, js)
@@ -545,7 +549,7 @@ class V3BuildTest(unittest.TestCase):
 
     def test_routes_sitemap_deploy(self):
         import tenerife
-        self.assertEqual(set(tenerife.SITE_PAGES) | {"index"}, set(V3))
+        self.assertEqual(set(tenerife.SITE_PAGES) - set(tenerife.FIGURE_ONLY_PAGES) | {"index"}, set(V3))
         deploy = (ROOT / "deploy" / "artemis-deploy.sh").read_text(encoding="utf-8")
         for url in V3.values():
             self.assertIn(f" {url} ", deploy.replace("(", " ").replace("\n", " "), url)
@@ -564,9 +568,10 @@ class V3BuildTest(unittest.TestCase):
             self.assertEqual(len(re.findall(r'aria-current="page"', head)), 2, name)
 
     def test_js_budget(self):
-        total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js", "calc.js"))
+        total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js")) + build_v3.CALC_JS.stat().st_size
         self.assertLessEqual(total, 170 * 1024)
-        self.assertLessEqual((SITE_STATIC / "calc.js").stat().st_size, 15 * 1024)
+        self.assertLessEqual(build_v3.CALC_JS.stat().st_size, 15 * 1024)
+        self.assertFalse((SITE_STATIC / "calc.js").exists())   # r4.1 c2: not served
 
     # ---- design system
     def test_tokens_and_fonts_included_as_is(self):
@@ -607,7 +612,7 @@ class V3BuildTest(unittest.TestCase):
         # one rounding rule: half-up (model.json rounding), the same in build and calc.js
         self.assertEqual(build_v3.fmt_pct(2.25), "2,3%")
         self.assertEqual(build_v3.fmt_int(2.5), "3")
-        calc = (SITE_STATIC / "calc.js").read_text(encoding="utf-8")
+        calc = build_v3.CALC_JS.read_text(encoding="utf-8")
         self.assertIn("Math.floor(n+0.5)", calc)
         self.assertIn("roundingMode:'halfExpand'", calc)
         self.assertIn("hu((t.min+t.max)/2)", calc)  # type radio = middle of its range

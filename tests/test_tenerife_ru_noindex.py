@@ -11,7 +11,7 @@ CRETE = [f"/{l}/{p}" for l in ("en", "ru", "es", "fr") for p in ("", "privacy/",
 
 class RuNoindexTest(Case):
     def test_every_tenerife_page_noindex(self):
-        self.assertEqual(len(URLS), 16)
+        self.assertEqual(len(URLS), 15)   # r4.1 c2: calculadora not served
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)

@@ -35,7 +35,7 @@ Generated files. Do not edit by hand: edit the source and rebuild.
   Section layout is chosen by `build_v3.structure()` from the copy itself (faq / long text / stack / split / head).
 - JS (all external, CSP `script-src 'self'`): `site.js` (C1: header solid by default and without JS, `.is-over`
   only while the hero picture is under it; mobile sheet, no-JS = anchor to `#footer-pages`; ladder rise only
-  without reduced motion), `waitlist.js` (prod, unchanged), `calc.js` (05 only).
+  without reduced motion), `waitlist.js` (prod, unchanged), `calc.js` (05 only; r4.1 c2: moved to `data/calc.js`, not served).
 - Served by `app/tenerife.py` (`SITE_PAGES`; sitemap in `app/app.py`): `/tenerife/`, `/tenerife/<page>/`
   (clean URLs, canonical, no hreflang: RU is review-only, noindex unless TENERIFE_INDEXING=1); `/tenerife/<page>.html` and `/tenerife/<page>` → 301.
 - Waitlist form on every page (`#ochered`, form `#waitlist` kept for the no-JS redirect) → `POST /api/tenerife/waitlist` (unchanged endpoint).
@@ -58,14 +58,27 @@ Generated files. Do not edit by hand: edit the source and rebuild.
 
 ## Runtime configuration (sysadmin, r4) — `/etc/artemis/artemis.env`, read by `app/tenerife.py` on every request
 
-### Figures switch (r4.1, build time)
+### Figures switch (r4.1; build time and runtime)
 
-`TENERIFE_SHOW_FIGURES` is read by `build_v3.py` only, never by the app. Unset (default, the committed pages) → the
+`TENERIFE_SHOW_FIGURES` is read at build time by `build_v3.py` AND at runtime by `app/tenerife.py`
+(`show_figures()`, on every request). **Runtime**, unset (default) → `figures_blocked()` answers 404 in Flask, before
+static serving, for any JSON (model.json & co.) and for `calc.js` under `/static/tenerife/`, and every URL of the
+calculator page (`/tenerife/calculadora`, `/tenerife/calculadora/`, `.html`, any query, `/tenerife-preview/calculadora/`)
+answers a **temporary 302** to `/tenerife/` (`FIGURE_ONLY_PAGES`; it is also left out of `sitemap.xml`); `1` → the
+guard is off and `calculadora.html` is served again. Do not set it on prod until the founder approves the figures.
+`calc.js` itself lives in `app/tenerife_site/data/calc.js` (not under `/static/`, so nginx never serves it); to bring
+the calculator back: move it and `data/model.json` back under `app/static/tenerife/site/` and rebuild with the flag.
+
+**Build time**, unset (default, the committed pages) → the
 build leaves out every sentence, list item, table row, table, section and meta text of the copy that shows a figure:
 any euro amount (price per m² / per share, the price ladder, payments, rents, costs), a dividend or yield %, the
 mini ladder and the calculator (C9 and C9 short, so no `calc_*` form fields). Intro lines that announced a removed
 table/list, headings left without content and the payment-example sections (`FIGURE_SECTIONS`) go with them; the
 build fails (`check_no_figures`) if a figure or a link to an unpublished investor page is left in any page.
+r4.1 c2 (Lead 01.11): the calculator is not linked from any page (header menu, footer «Страницы.»), and the consent
+line of the form and four privacy sentences about «the calculation from the calculator» read «расчёт по вашему
+запросу» (`CONSENT_OLD/NEW`, `PRIVACY_WORDING`; each must be found, else the build fails). `calculadora.html` is
+still built (not served, see above).
 `TENERIFE_SHOW_FIGURES=1` → the pages are rebuilt exactly as before r4.1. The copy (`copy_v3/*.md`) and
 `model.json` are not changed. The investor page (`/tenerife/inversores/`, draft `18_investoram.md`) is not built
 and `app/tenerife.py` answers 404 for `UNPUBLISHED_PAGES` even if it were added to `SITE_PAGES`.

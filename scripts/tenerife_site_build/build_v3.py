@@ -131,6 +131,50 @@ FIGURE_SECTIONS = {("norte", "Рынок рядом"), ("acciones", "Приме�
                    ("mercado", "Немецкие ориентиры")}
 
 
+# r4.1 c2 (Lead 01.11 00:58 UTC): the calculator page is not served while the figures are hidden (app/tenerife.py:
+# FIGURE_ONLY_PAGES -> 302 to /tenerife/), so no page links it: it leaves the header menu and the footer «Страницы.»,
+# and the consent / privacy wording about «the calculation from the calculator» becomes the Lead's «расчёт по вашему
+# запросу» (exact strings below, each must be found: a copy change fails the build instead of silently passing).
+# calculadora.html is still built (kept in the repo, served only with TENERIFE_SHOW_FIGURES=1 at runtime).
+FIGURE_ONLY_PAGES = ("calculadora",)
+CONSENT_OLD = "(имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт)"
+CONSENT_NEW = "(имя, контакт, язык, страница, дата и время, расчёт по вашему запросу)"
+PRIVACY_WORDING = [   # (before, after), verbatim; app/templates/tenerife/privacy.html (= copy_v3/16_privacy.md)
+    ("Из калькулятора, если заявка отправлена со страницы калькулятора: площадь в метрах, ступень цены и способ "
+     "оплаты — сразу или за 12 месяцев. По этим трём значениям сервер сам пересчитывает число акций, цену метра, сумму "
+     "и платёж в месяц и сохраняет расчёт вместе с заявкой.",
+     "Расчёт по вашему запросу."),
+    ("Сумму в форму вы не вводите: её считает калькулятор.", "Сумму в форму вы не вводите."),
+    ("в том числе прислать расчёт из калькулятора,", "в том числе прислать расчёт по вашему запросу,"),
+    ("имя, контакт, язык, страница, а для заявки из калькулятора — расчёт.",
+     "имя, контакт, язык, страница, расчёт по вашему запросу."),
+]
+
+
+CALC_JS = ROOT / "app" / "tenerife_site" / "data" / "calc.js"   # r4.1 c2: out of app/static (not served)
+
+
+def wording_off(text):
+    """The Lead's wording applied to any text (copy markdown or HTML): what the committed pages show (tests)."""
+    for old, new in [(CONSENT_OLD, CONSENT_NEW)] + PRIVACY_WORDING:
+        text = text.replace(old, new)
+    return text
+
+
+def hide_calculator_wording(name, out):
+    """Flag off: consent line on every form page and the privacy sentences -> the Lead's wording (see above)."""
+    if 'id="wl-consent"' in out:
+        if out.count(CONSENT_OLD) != 1:
+            raise BuildError(f"{name}: consent wording not found (copy_v3/17_forma.md changed?)")
+        out = out.replace(CONSENT_OLD, CONSENT_NEW)
+    if name == "privacy":
+        for old, new in PRIVACY_WORDING:
+            if out.count(old) != 1:
+                raise BuildError(f"privacy: wording not found: {old[:50]}")
+            out = out.replace(old, new)
+    return out
+
+
 def has_figure(text):
     """True when the text shows a figure that stays hidden until approved (see above)."""
     return bool(EUR_FIG_RX.search(text) or (PCT_FIG_RX.search(text) and PCT_CTX_RX.search(text)))
@@ -1081,6 +1125,12 @@ def check_no_figures(name, out):
     for u in UNPUBLISHED_URLS:
         if u in out:
             raise BuildError(f"{name}: links unpublished {u}")
+    if name not in FIGURE_ONLY_PAGES:   # r4.1 c2: nothing served links the 302 calculator page
+        for p in FIGURE_ONLY_PAGES:
+            if f"/tenerife/{p}" in out:
+                raise BuildError(f"{name}: links /tenerife/{p}/ (not served while figures are hidden)")
+    if name not in FIGURE_ONLY_PAGES and ("calc.js" in out or "из калькулятора" in out):
+        raise BuildError(f"{name}: calculator script or wording left with TENERIFE_SHOW_FIGURES off")
 
 
 def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figures=None):
@@ -1100,6 +1150,9 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
     if not show:
         footer_md = hide_figures_md(footer_md, hidden_log.setdefault("footer", []))
     footer = parse_footer(footer_md, fmap, rx)
+    nav_primary = NAV_PRIMARY if show else [n for n in NAV_PRIMARY if n not in FIGURE_ONLY_PAGES]
+    if not show:   # r4.1 c2: the calculator is not linked (footer «Страницы.» and header menu)
+        footer["pages"] = [x for x in footer["pages"] if NAV[x] not in FIGURE_ONLY_PAGES]
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
     slugs, metas, parsed, full_blocks = {}, {}, {}, {}
@@ -1117,10 +1170,11 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
             raise BuildError(f"{fname}: Слаг {slug} != {expected}")
         slugs[name], metas[name], parsed[name] = slug, meta, blocks
     nav = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in footer["pages"]]
+    nav_all = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in NAV]   # breadcrumbs
     by_name = {x["name"]: x for x in nav}
-    if set(NAV_PRIMARY) | set(NAV_MORE) | {"index"} != set(by_name):
+    if set(nav_primary) | set(NAV_MORE) | {"index"} != set(by_name):
         raise BuildError("header nav (NAV_PRIMARY + NAV_MORE) must cover the footer pages")
-    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE]}
+    menu = {"primary": [by_name[n] for n in nav_primary], "more": [by_name[n] for n in NAV_MORE]}
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
@@ -1145,11 +1199,13 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
             calc=calc_view(model) if show and name == CALC_PAGE else None,
             calc_labels=calc_labels(page) if show and name == CALC_PAGE else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
-                             org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
+                             org_ld(footer) if name == "index" else breadcrumb_ld(nav_all, name)) if x],
             calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
             calc_short_labels=short_labels(page),
         )
         out = wrap(out)
+        if not show:
+            out = hide_calculator_wording(name, out)
         check_output(name, out)
         if not show:
             check_no_figures(name, out)
@@ -1163,6 +1219,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
     outputs.update(simple_pages(env, nav, menu, footer))
     if not show:
         for name in ("impressum", "privacy", "_notice"):
+            outputs[name] = hide_calculator_wording(name, outputs[name])
             check_no_figures(name, outputs[name])
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)

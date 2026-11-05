@@ -31,7 +31,8 @@ BUILD = ROOT / "scripts" / "tenerife_site_build"
 FAKE = "+440000000000"
 SLOT = '<li data-tenerife-whatsapp hidden></li>'
 ROBOTS = '<meta name="robots" content="noindex, nofollow">'
-URLS = ([("/tenerife/" if n == "index" else f"/tenerife/{n}/") for _f, n in build_v3.PAGES]
+URLS = ([("/tenerife/" if n == "index" else f"/tenerife/{n}/") for _f, n in build_v3.PAGES
+         if n not in build_v3.FIGURE_ONLY_PAGES]   # r4.1 c2: calculadora -> 302, see test_tenerife_r4_1_c2.py
         + ["/tenerife/impressum/", "/tenerife/privacy/", "/tenerife/gracias/"])
 KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "TENERIFE_WHATSAPP", "TENERIFE_INDEXING")
 
@@ -137,7 +138,7 @@ class IndexingDefaultTest(R4Case):
         """QA PS-03: unset TENERIFE_INDEXING -> header too, on all 13 pages + impressum/privacy (+ gracias)."""
         self.assertIn("/tenerife/impressum/", URLS)
         self.assertIn("/tenerife/privacy/", URLS)
-        self.assertEqual(len(URLS), 16)
+        self.assertEqual(len(URLS), 15)   # r4.1 c2: calculadora not served
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)
@@ -188,6 +189,7 @@ class FormTextsTest(unittest.TestCase):
         md = (BUILD / "copy_v3" / "17_forma.md").read_text(encoding="utf-8")
         want = re.search(r"^\*\*Согласие\.\*\* (.+)$", md, re.M).group(1)
         want = re.sub(r"\[([^\]]+)\]\((/[^)]+)\)", r'<a href="\2">\1</a>', want)
+        want = build_v3.wording_off(want)   # r4.1 c2: «расчёт по вашему запросу» (Lead 01.11)
         forms = 0
         for f in SITE.glob("*.html"):
             t = f.read_text(encoding="utf-8")
@@ -570,14 +572,14 @@ class LegalPagesV31Test(R4Case):
             for d in got:
                 self.assertNotIn(d, seen, (url, seen.get(d)))
                 seen[d] = url
-        self.assertGreaterEqual(len(seen), 15)
+        self.assertGreaterEqual(len(seen), 14)   # r4.1 c2: calculadora not served
 
     def test_legal_text_is_the_copy(self):
         for name, md in (("impressum", "15_impressum.md"), ("privacy", "16_privacy.md")):
             main = re.search(r"<main.*?</main>", self.get(f"/tenerife/{name}/"), re.S).group(0)
             text = htmllib.unescape(re.sub(r"<[^>]+>", " ", main)).replace("← К сайту проекта", " ")
             src = (BUILD / "copy_v3" / md).read_text(encoding="utf-8")
-            src = re.sub(r"<!--.*?-->", " ", src, flags=re.S)
+            src = re.sub(r"<!--.*?-->", " ", build_v3.wording_off(src), flags=re.S)   # r4.1 c2 wording
             src = re.sub(r"\]\([^)]*\)", " ", src)
             words = lambda t: re.findall(r"[\w@.+-]+", t.replace("\\_", "_").replace("**", " "))  # noqa: E731
             self.assertEqual([w.strip(".") for w in words(src) if w.strip(".-+")],
