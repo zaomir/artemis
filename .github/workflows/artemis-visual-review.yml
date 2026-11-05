@@ -1,0 +1,61 @@
+name: Artemis visual review (no deploy)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/artemis-visual-review.yml'
+      - 'app/templates/tenerife/site/**'
+      - 'app/static/tenerife/site/img/artemis-watercolour-*'
+      - 'app/static/tenerife/site/img/la-quinta-context-locator-*.svg'
+      - 'scripts/tenerife_site_build/**'
+      - 'docs/visual/**'
+      - 'docs/funnel/CONTENT_CANON.md'
+      - 'tests/test_tenerife_visual_rollout.py'
+      - 'tests/test_tenerife_art_intake.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image and template QA dependencies
+        run: python -m pip install --disable-pip-version-check Pillow Jinja2
+      - name: Check visual source and asset contracts
+        run: |
+          python -m unittest discover -s tests -p 'test_tenerife_visual_rollout.py' -v
+          python -m unittest discover -s tests -p 'test_tenerife_art_intake.py' -v
+      - name: Build review version in five languages
+        env:
+          ARTEMIS_VISUAL_PREVIEW: "1"
+          TENERIFE_WHATSAPP: "+440000000000"
+        run: |
+          set -euo pipefail
+          for lang in en es de fr ru; do
+            mkdir -p "$RUNNER_TEMP/artemis-preview/$lang"
+            TENERIFE_LOCALE="$lang" TENERIFE_OUT_DIR="$RUNNER_TEMP/artemis-preview/$lang" python3 scripts/tenerife_site_build/build_v3.py
+            test -s "$RUNNER_TEMP/artemis-preview/$lang/index.html"
+            test -s "$RUNNER_TEMP/artemis-preview/$lang/norte.html"
+            grep -q 'concept-notice' "$RUNNER_TEMP/artemis-preview/$lang/index.html"
+            grep -q 'geo-locator' "$RUNNER_TEMP/artemis-preview/$lang/norte.html"
+            grep -q 'artemis-watercolour-art01-20261104' "$RUNNER_TEMP/artemis-preview/$lang/index.html"
+          done
+      - name: Verify default build does not publish review assets
+        env:
+          ARTEMIS_VISUAL_PREVIEW: "0"
+          TENERIFE_WHATSAPP: "+440000000000"
+          TENERIFE_LOCALE: "en"
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/artemis-production-default"
+          TENERIFE_OUT_DIR="$RUNNER_TEMP/artemis-production-default" python3 scripts/tenerife_site_build/build_v3.py
+          ! grep -q 'artemis-watercolour-art01-20261104' "$RUNNER_TEMP/artemis-production-default/index.html"
+          ! grep -q 'geo-locator' "$RUNNER_TEMP/artemis-production-default/norte.html"
+          ! grep -q 'concept-notice' "$RUNNER_TEMP/artemis-production-default/index.html"
