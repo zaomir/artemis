@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 26,
-  "updated_at": "2026-11-05T10:06:35.381757+00:00",
-  "next_action": "reconcile:NEWS-public-verification-20261105-v1",
-  "pending": {
-    "key": "NEWS-public-verification-20261105-v1",
-    "action": "public read-only verification using canonical deployer HTTP client and ordinary browser; request artemis-public-diary-verification-20261105-01; no migration replay",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:06:35.381743+00:00"
-  },
+  "revision": 27,
+  "updated_at": "2026-11-05T10:09:27.035661+00:00",
+  "next_action": "NEWS-04 navigation/public source attribution fix; BASE-03 verified sender but reply alias and DKIM remain explicit gaps; CRM-05 typed FB intake next",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -165,6 +160,19 @@
         {
           "path": "docs/funnel/evidence/CRM-core-runtime-20261105.json",
           "sha256": "15e08e4e931a0bc9abf16b4ad1e1c0fc795de3e59e028d677a490253062cd135"
+        }
+      ]
+    },
+    "NEWS-public-verification-20261105-v1": {
+      "key": "NEWS-public-verification-20261105-v1",
+      "action": "public read-only verification using canonical deployer HTTP client and ordinary browser; request artemis-public-diary-verification-20261105-01; no migration replay",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:06:35.381743+00:00",
+      "verified_at": "2026-11-05T10:09:27.035646+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-public-runtime-20261105.json",
+          "sha256": "564bc0c84c859fc3d9d30f0b847430235c8141e35caa9d0bb703825b9df1f5e1"
         }
       ]
     }
@@ -325,6 +333,12 @@
       "at": "2026-11-05T10:06:35.381757+00:00",
       "event": "began:NEWS-public-verification-20261105-v1",
       "next_action": "reconcile:NEWS-public-verification-20261105-v1"
+    },
+    {
+      "revision": 27,
+      "at": "2026-11-05T10:09:27.035661+00:00",
+      "event": "verified:NEWS-public-verification-20261105-v1",
+      "next_action": "NEWS-04 navigation/public source attribution fix; BASE-03 verified sender but reply alias and DKIM remain explicit gaps; CRM-05 typed FB intake next"
     }
   ],
   "policy": {

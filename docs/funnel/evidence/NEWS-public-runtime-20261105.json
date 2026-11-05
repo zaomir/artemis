@@ -1,0 +1,155 @@
+{
+  "atoms": [
+    "NEWS-02",
+    "NEWS-03",
+    "NEWS-08"
+  ],
+  "status": "published_public_access_verified",
+  "deployed_sha": "15a18487023912cf48b83cead24d3f36028dea69",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-public-diary-verification-20261105-01.json",
+  "result": {
+    "request_id": "artemis-public-diary-verification-20261105-01",
+    "type": "artemis_release",
+    "status": "success",
+    "generated_at": "2026-11-05T10:08:15.048Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "artemis_release": {
+        "ok": true,
+        "public_pages": [
+          {
+            "path": "/tenerife/actualizaciones/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/privacy/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/actualizaciones/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/privacy/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/actualizaciones/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/privacy/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/actualizaciones/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/privacy/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/actualizaciones/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/privacy/",
+            "local_status": 200,
+            "public_status": 200,
+            "public_probe": "canonical_deployer_curl",
+            "authentication_supplied": false
+          }
+        ],
+        "production_changed": false,
+        "real_messages_sent": 0,
+        "migration_replayed": false
+      }
+    },
+    "error": null
+  },
+  "browser_observation": {
+    "date": "2026-11-05",
+    "authentication_required": false,
+    "index_url": "https://artemisresort.com/tenerife/actualizaciones/",
+    "article_url": "https://artemisresort.com/tenerife/actualizaciones/concept-search/",
+    "index_heading": "Project diary",
+    "article_heading": "Artemis: the concept is taking shape",
+    "visible_stage": "concept search",
+    "visible_asset_caption": "Conceptual atmosphere study, not a view of a confirmed project site.",
+    "screenshots_exported": false
+  },
+  "remaining": [
+    "NEWS-04: article menu CTA currently links to itself; fix to diary index.",
+    "Public sources must not send a visitor to the private task document.",
+    "Update prepared registry publication status/date to actual first publication on 2026-11-05.",
+    "NEWS-05 durable visual evidence remains separate."
+  ]
+}
