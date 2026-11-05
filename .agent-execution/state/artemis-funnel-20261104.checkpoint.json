@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 27,
-  "updated_at": "2026-11-05T10:09:27.035661+00:00",
-  "next_action": "NEWS-04 navigation/public source attribution fix; BASE-03 verified sender but reply alias and DKIM remain explicit gaps; CRM-05 typed FB intake next",
-  "pending": null,
+  "revision": 28,
+  "updated_at": "2026-11-05T10:10:27.361746+00:00",
+  "next_action": "reconcile:AS-01-access-inventory-20261105-v1",
+  "pending": {
+    "key": "AS-01-access-inventory-20261105-v1",
+    "action": "read existing authorized social operator binding for Valerie Petra profile833304152; no publication or profile lifecycle",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T10:10:27.361694+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -339,6 +344,12 @@
       "at": "2026-11-05T10:09:27.035661+00:00",
       "event": "verified:NEWS-public-verification-20261105-v1",
       "next_action": "NEWS-04 navigation/public source attribution fix; BASE-03 verified sender but reply alias and DKIM remain explicit gaps; CRM-05 typed FB intake next"
+    },
+    {
+      "revision": 28,
+      "at": "2026-11-05T10:10:27.361746+00:00",
+      "event": "began:AS-01-access-inventory-20261105-v1",
+      "next_action": "reconcile:AS-01-access-inventory-20261105-v1"
     }
   ],
   "policy": {
