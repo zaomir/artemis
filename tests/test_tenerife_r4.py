@@ -1,4 +1,4 @@
-"""r4: WhatsApp contact from TENERIFE_WHATSAPP, noindex switch TENERIFE_INDEXING, form texts from copy_v3/17_forma.md.
+"""r4: WhatsApp contact from TENERIFE_WHATSAPP, noindex switch TENERIFE_INDEXING, form texts from copy_en/17_forma.md.
 No real number here: the fake +440000000000 only. Telegram is mocked, the DB is a temp file."""
 import html as htmllib
 import importlib
@@ -26,7 +26,7 @@ os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app 
 
 import build_v3  # noqa: E402
 
-SITE = ROOT / "app" / "tenerife_site" / "ru"
+SITE = ROOT / "app" / "tenerife_site"
 BUILD = ROOT / "scripts" / "tenerife_site_build"
 FAKE = "+440000000000"
 SLOT = '<li data-tenerife-whatsapp hidden></li>'
@@ -134,10 +134,10 @@ class IndexingDefaultTest(R4Case):
             self.assertLess(body.index(ROBOTS), body.index("</head>"), url)
 
     def test_every_tenerife_page_x_robots_tag(self):
-        """QA PS-03: unset TENERIFE_INDEXING -> header too, on all content pages + impressum/privacy (+ gracias)."""
+        """QA PS-03: unset TENERIFE_INDEXING -> header too, on all 14 pages + impressum/privacy (+ gracias)."""
         self.assertIn("/tenerife/impressum/", URLS)
         self.assertIn("/tenerife/privacy/", URLS)
-        self.assertEqual(len(URLS), len(build_v3.PAGES) + 3)
+        self.assertEqual(len(URLS), 17)   # EN r1: 14 pages (condiciones, inversores) + 2 legal + gracias
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)
@@ -182,14 +182,12 @@ class CreteUnaffectedTest(R4Case):
 
 
 class FormTextsTest(unittest.TestCase):
-    """Form strings only from copy_v3/17_forma.md (not from design/components.html, «лист ожидания»)."""
+    """Form strings only from copy_en/17_forma.md (not from design/components.html, «лист ожидания»)."""
 
     def test_consent_is_the_copy_on_every_form(self):
-        md = (BUILD / "copy_v3" / "17_forma.md").read_text(encoding="utf-8")
-        want = re.search(r"^\*\*Согласие\.\*\* (.+)$", md, re.M).group(1)
+        md = (BUILD / "copy_en" / "17_forma.md").read_text(encoding="utf-8")
+        want = re.search(r"^\*\*Consent\.\*\* (.+)$", md, re.M).group(1)
         want = re.sub(r"\[([^\]]+)\]\((/[^)]+)\)", r'<a href="\2">\1</a>', want)
-        # ссылка на политику внутри строки согласия ведёт в RU-версию той же страницы
-        want = want.replace('href="/tenerife/privacy/"', 'href="/tenerife/ru/privacy/"')
         forms = 0
         for f in SITE.glob("*.html"):
             t = f.read_text(encoding="utf-8")
@@ -216,8 +214,8 @@ class FormMessagesTest(unittest.TestCase):
 
     def test_all_ten_messages_parsed(self):
         self.assertEqual(sorted(self.msgs), sorted(build_v3.FORM_MESSAGES.values()))
-        self.assertEqual(self.msgs["sending"], "Отправляем…")
-        self.assertEqual(self.msgs["ok-title"], "Спасибо! Заявка на расчёт принята.")
+        self.assertEqual(self.msgs["sending"], "Sending…")
+        self.assertEqual(self.msgs["ok-title"], "Thank you! You're in the queue.")
 
     def test_server_texts_equal_the_copy(self):
         for k, v in self.tenerife.FORM_MSG.items():
@@ -228,7 +226,7 @@ class FormMessagesTest(unittest.TestCase):
     def test_every_form_carries_the_messages(self):
         for f in SITE.glob("*.html"):
             t = f.read_text(encoding="utf-8")
-            form = re.search(r'<form id="wl-form"[^>]*>', t)
+            form = re.search(r'<form [^>]*id="wl-form"[^>]*>', t)
             if not form:
                 continue
             for k, v in self.msgs.items():
@@ -238,9 +236,10 @@ class FormMessagesTest(unittest.TestCase):
                 self.assertNotIn("@", m.group(1))  # &#64;: out of Cloudflare's e-mail obfuscation
 
     def test_missing_label_fails_the_build(self):
-        md = (BUILD / "copy_v3" / "17_forma.md").read_text(encoding="utf-8")
+        md = (BUILD / "copy_en" / "17_forma.md").read_text(encoding="utf-8")
+        self.assertEqual(len(build_v3.form_messages(md)), 10)
         with self.assertRaises(build_v3.BuildError):
-            build_v3.form_messages(md.replace("**Нет согласия.**", "**Согласие нет.**"))
+            build_v3.form_messages(md.replace("**No consent.**", "**Consent missing.**"))
 
     def test_old_texts_gone(self):
         for f in (ROOT / "app/static/tenerife/site/waitlist.js", ROOT / "app/tenerife.py"):
@@ -281,12 +280,11 @@ class FormServerTest(R4Case):
         r = self.post(json_body=False)
         self.assertEqual(r.status_code, 303)
         body = self.get(r.headers["Location"].replace("http://localhost", ""))
-        self.assertIn("Спасибо! Заявка на расчёт принята.", body)
-        self.assertIn(self.tenerife.FORM_MSG["ok-next"], body)
-        self.assertIn('<!--email_off--><a href="mailto:info@artemisresort.com">'
-                      'info@artemisresort.com</a><!--/email_off-->', body)
+        self.assertIn("Thank you! You&#x27;re in the queue.", body)
+        self.assertIn("Your request goes to the project team on Telegram and to <!--email_off-->info@artemisresort.com"
+                      "<!--/email_off-->. We will be in touch.", body)
         r = self.post(json_body=False, consent=False)
-        self.assertIn("Отметьте согласие на обработку данных.", r.get_data(as_text=True))
+        self.assertIn("Please tick the box to consent to data processing.", r.get_data(as_text=True))
 
 
 NODE = shutil.which("node")
@@ -305,12 +303,6 @@ if (scen === 'empty-name') fields.name.value = '';
 const form = {dataset:data, elements:Object.assign([], fields), reset(){out.reset=true},
   addEventListener(_, fn){ submit = fn; }};
 Object.assign(form.elements, fields);
-if (scen === 'calc-reset') {
-  for (const [name, value] of Object.entries({calc_m2:'49', calc_step:'early', calc_pay:'now'})) {
-    const field = {name, value}; fields[name] = field; form.elements[name] = field; form.elements.push(field);
-  }
-  form.reset = () => {out.reset=true; fields.calc_m2.value='72'};
-}
 global.document = {getElementById: id => id === 'wl-form' ? form : els[id]};
 global.location = {search: scen === 'ok-param' ? '?ok=1' : ''};
 const resp = (status, type, body) => Promise.resolve({status, ok: status < 300,
@@ -333,8 +325,7 @@ submit({preventDefault(){}});
 setTimeout(() => { Object.assign(out, {msg: els['wl-msg'].textContent, cls: els['wl-msg'].className,
   button: els['wl-submit'].textContent, after_disabled: els['wl-submit'].disabled,
   contact_err: els['wl-contact-err'].textContent, name_err: els['wl-name-err'].textContent,
-  contact_invalid: els['wl-contact'].attrs['aria-invalid'] || null,
-  calc_m2: fields.calc_m2 ? fields.calc_m2.value : null});
+  contact_invalid: els['wl-contact'].attrs['aria-invalid'] || null});
   console.log(JSON.stringify(out)); }, 50);
 """
 
@@ -360,14 +351,9 @@ class WaitlistJsTest(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
         return json.loads(r.stdout)
 
-    def test_success_keeps_the_selected_calculation_when_contact_fields_reset(self):
-        result = self.run_js("calc-reset")
-        self.assertTrue(result["reset"])
-        self.assertEqual(result["calc_m2"], "49")
-
     def test_success_and_sending_label(self):
         o = self.run_js("ok")
-        self.assertEqual(o["sending"], "Отправляем…")
+        self.assertEqual(o["sending"], self.msgs["sending"])
         self.assertTrue(o["disabled"])
         self.assertEqual(o["msg"], self.msgs["ok-title"] + " " + self.msgs["ok-next"])
         self.assertEqual(o["cls"], "msg ok")
@@ -406,17 +392,17 @@ class WaitlistJsTest(unittest.TestCase):
 
 
 class BuildWhatsAppTokenTest(unittest.TestCase):
-    """Kimi r16: 14_podval «WhatsApp: {номер из TENERIFE_WHATSAPP}» -> runtime slot; the build needs a valid env."""
+    """Kimi r16 / EN r1: the WhatsApp contact is a runtime slot after the footer's e-mail; the build needs a valid
+    env; a number written into the copy fails the build."""
 
     def test_footer_token_becomes_the_slot(self):
-        md = (BUILD / "copy_v3" / "14_podval.md").read_text(encoding="utf-8")
-        self.assertIn(build_v3.WA_TOKEN, md)
-        fmap = build_v3.figure_map(build_v3.load_model(build_v3.MODEL))
-        foot = build_v3.parse_footer(md, fmap, build_v3.figure_regex(fmap))
-        self.assertIn("whatsapp", foot["contacts"])
-        for bad in ("WhatsApp: +440000000000", "WhatsApp: {номер}", "+44 0000 000000", "WhatsApp: 0044 0000 000000"):
+        md = (BUILD / "copy_en" / "14_podval.md").read_text(encoding="utf-8")
+        foot = build_v3.parse_footer(md)
+        self.assertEqual(foot["contacts"], ["info@artemisresort.com", "whatsapp"])
+        for bad in ("WhatsApp: +440000000000", "WhatsApp: {number}", "+44 0000 000000", "WhatsApp: 0044 0000 000000"):
             with self.assertRaises(build_v3.BuildError, msg=bad):
-                build_v3.parse_footer(md.replace(build_v3.WA_TOKEN, bad), fmap, build_v3.figure_regex(fmap))
+                build_v3.parse_footer(md.replace("**Contact.** info@artemisresort.com",
+                                                 "**Contact.** info@artemisresort.com · " + bad))
 
     def test_build_fails_without_or_with_invalid_env_and_never_shows_the_value(self):
         for v in ("", "  ", "+44 0000", "440000000000", "+0123456789", "+4400000000000000"):
@@ -438,13 +424,13 @@ class BuildWhatsAppTokenTest(unittest.TestCase):
                 build_v3.check_output("faq", page.replace("</footer>", bad + "</footer>", 1))
         build_v3.check_output("faq", page)
 
-    def test_draft_18_is_not_built_or_hashed(self):
+    def test_page_18_is_built_and_hashed(self):
+        # EN r1: «For investors» (18_investoram.md) is published at /tenerife/inversores/
         names = [f.name for f in build_v3.copy_files()]
-        self.assertEqual(set(names), {f for f, _ in build_v3.PAGES} |
-                         {build_v3.FOOTER, "15_impressum.md", "16_privacy.md", build_v3.FORMA})
-        self.assertFalse(any(n.startswith("18_") for n in names))
-        self.assertNotIn("investoram", " ".join(n for _f, n in build_v3.PAGES))
-        self.assertFalse((SITE / "investoram.html").exists())
+        self.assertEqual(len(names), 18)
+        self.assertIn("18_investoram.md", names)
+        self.assertIn(("18_investoram.md", "inversores"), build_v3.PAGES)
+        self.assertTrue((SITE / "inversores.html").exists())
 
 
 # QA r16: only fake numbers (all zeros after the country code, or …01) may appear anywhere in r4's sources
@@ -487,7 +473,7 @@ class PhoneLiteralTest(R4Case):
                  *BUILD.glob("design/*"), *ROOT.glob("tests/test_tenerife*.py"), ROOT / "tests/test_lead_relay.py",
                  ROOT / "README.md"]
         for f in files:
-            if f.is_file() and f.name != "SHA256SUMS":
+            if f.is_file():
                 for m in build_v3.PHONE_RX.finditer(f.read_text(encoding="utf-8", errors="ignore")):
                     self.assertIn(re.sub(r"\D", "", m.group(0)), FAKE_DIGITS, f.name)
 
@@ -507,7 +493,7 @@ class ThanksPageTest(R4Case):
                 self.assertEqual(r.status_code, 200)
                 self.assertEqual(r.headers["X-Robots-Tag"], "noindex, nofollow")
                 self.assertEqual(body.count('<meta name="robots" content="noindex'), 1)
-                self.assertIn(msgs["ok-title"], body)
+                self.assertIn(htmllib.escape(msgs["ok-title"], quote=True), body)
                 self.assertIn(msgs["ok-next"].replace("info@artemisresort.com",
                                                       "<!--email_off-->info@artemisresort.com<!--/email_off-->"), body)
                 self.assertNotIn("gracias", self.client.get("/sitemap.xml").get_data(as_text=True))
@@ -554,12 +540,12 @@ class NoWaitingWordTest(R4Case):
         for k, body in bodies.items():
             self.assertEqual(body.lower().count("ожидан"), 0, k)
         thanks = self.get("/tenerife/gracias/")
-        self.assertIn(htmllib.escape(self.tenerife.FORM_MSG["ok-title"], quote=False), thanks)
+        self.assertIn(htmllib.escape(self.tenerife.FORM_MSG["ok-title"], quote=True), thanks)
         self.assertIn(self.tenerife.FORM_MSG["ok-title"], build_v3.form_messages()["ok-title"])
 
 
 class LegalPagesV31Test(R4Case):
-    """QA PS-05: impressum / privacy in the v3.1 site design (site.css, not the old base.css), text = copy_v3
+    """QA PS-05: impressum / privacy in the v3.1 site design (site.css, not the old base.css), text = copy_en
     15_impressum.md / 16_privacy.md word for word, meta description = meta_legal.md (sha 7bed1578…), and no
     two /tenerife/ pages share a description."""
     META_LEGAL_SHA = "f1d16ad147d3cab95ab79cefe7935b739854afa43fb7b1de7e810de1e19bf838"
@@ -571,7 +557,7 @@ class LegalPagesV31Test(R4Case):
 
     def test_design_and_meta(self):
         for name in ("impressum", "privacy"):
-            body = self.get(f"/tenerife/ru/{name}/")   # RU — канон юридического текста (03.11.2026)
+            body = self.get(f"/tenerife/{name}/")
             self.assertIn('href="/static/tenerife/site/site.css', body, name)
             self.assertNotIn("/static/tenerife/base.css", body, name)
             self.assertRegex(body, r'<section class="[^"]*\blegal\b', name)
@@ -586,13 +572,13 @@ class LegalPagesV31Test(R4Case):
             for d in got:
                 self.assertNotIn(d, seen, (url, seen.get(d)))
                 seen[d] = url
-        self.assertGreaterEqual(len(seen), 15)
+        self.assertGreaterEqual(len(seen), 14)   # r4.1 c2: calculadora not served
 
     def test_legal_text_is_the_copy(self):
         for name, md in (("impressum", "15_impressum.md"), ("privacy", "16_privacy.md")):
-            main = re.search(r"<main.*?</main>", self.get(f"/tenerife/ru/{name}/"), re.S).group(0)
-            text = htmllib.unescape(re.sub(r"<[^>]+>", " ", main)).replace("← К сайту проекта", " ")
-            src = (BUILD / "copy_v3" / md).read_text(encoding="utf-8")
+            main = re.search(r"<main.*?</main>", self.get(f"/tenerife/{name}/"), re.S).group(0)
+            text = htmllib.unescape(re.sub(r"<[^>]+>", " ", main)).replace("← Back to the project site", " ")
+            src = (BUILD / "copy_en" / md).read_text(encoding="utf-8")
             src = re.sub(r"<!--.*?-->", " ", src, flags=re.S)
             src = re.sub(r"\]\([^)]*\)", " ", src)
             words = lambda t: re.findall(r"[\w@.+-]+", t.replace("\\_", "_").replace("**", " "))  # noqa: E731
@@ -664,7 +650,7 @@ class SiteWideImageUniquenessTest(unittest.TestCase):
 
     def test_built_pages_use_each_photo_once(self):
         stems = []
-        for f in sorted((ROOT / "app" / "tenerife_site" / "ru").glob("*.html")):
+        for f in sorted((ROOT / "app" / "tenerife_site").glob("*.html")):
             stems += build_v3.IMG_SRC_RX.findall(f.read_text(encoding="utf-8"))
         self.assertTrue(stems)
         self.assertEqual(len(stems), len(set(stems)), stems)
