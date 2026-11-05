@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 16,
-  "updated_at": "2026-11-05T09:12:33.316698+00:00",
-  "next_action": "reconcile:CAP-01-runtime-migration-20261105-v1",
-  "pending": {
-    "key": "CAP-01-runtime-migration-20261105-v1",
-    "action": "ship fixed typed Artemis release/migration operation; request artemis-capture-migration-20261105-01 after existing deployed source checks and backup",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T09:12:33.316684+00:00"
-  },
+  "revision": 17,
+  "updated_at": "2026-11-05T09:24:21.965308+00:00",
+  "next_action": "CRM-01: guarded schema-as-code apply of seven Artemis fields; then historical/legacy outbox integration",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -100,6 +95,19 @@
         {
           "path": "docs/funnel/evidence/BASE-02-complete-20261105.json",
           "sha256": "fa68b08387834cc4bb0c0e2164e06309900ac0e4b763d2ad8f56e853e09c670f"
+        }
+      ]
+    },
+    "CAP-01-runtime-migration-20261105-v1": {
+      "key": "CAP-01-runtime-migration-20261105-v1",
+      "action": "ship fixed typed Artemis release/migration operation; request artemis-capture-migration-20261105-01 after existing deployed source checks and backup",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T09:12:33.316684+00:00",
+      "verified_at": "2026-11-05T09:24:21.965288+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-01-runtime-20261105.json",
+          "sha256": "9fcaeceae905035e046925f9afddad6329b7aaf0a02b09cb5bf128571d9e3d33"
         }
       ]
     }
@@ -200,6 +208,12 @@
       "at": "2026-11-05T09:12:33.316698+00:00",
       "event": "began:CAP-01-runtime-migration-20261105-v1",
       "next_action": "reconcile:CAP-01-runtime-migration-20261105-v1"
+    },
+    {
+      "revision": 17,
+      "at": "2026-11-05T09:24:21.965308+00:00",
+      "event": "verified:CAP-01-runtime-migration-20261105-v1",
+      "next_action": "CRM-01: guarded schema-as-code apply of seven Artemis fields; then historical/legacy outbox integration"
     }
   ],
   "policy": {
