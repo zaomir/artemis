@@ -1,0 +1,87 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+  "approved": false,
+  "created_utc": "2026-11-05T10:00:21.173383+00:00",
+  "stem": "artemis-watercolour-inversores-20261105",
+  "category": "ART-05",
+  "truth_level": "C2",
+  "target": {
+    "page": "inversores",
+    "frame": "F14"
+  },
+  "source": {
+    "name": "e23JTMG8M8JQCErDMrFw.png",
+    "sha256": "9c10df9f1f37f6b4a86373573626fc203079f2af58c5e3694a3771895553d4c3",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "provider": "ElevenLabs",
+    "generation_id": "e23JTMG8M8JQCErDMrFw",
+    "repository_path": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png"
+  },
+  "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
+  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "mobile_composition_verified": false,
+  "architectural_status": "concept only, not a verified property",
+  "no_auto_page_assignment": true,
+  "variants": [
+    {
+      "name": "artemis-watercolour-inversores-20261105.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "935cc2ca604cfc020475ef73103cd2872e97b47a881f70894d01b81e9ba3da25",
+      "bytes": 472989
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-640.webp",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sha256": "69265e08e0c695b844b01854e1f8dc81c7cd446b92d0fe6d6ab3bdd8305bbd9f",
+      "bytes": 58302
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-800.webp",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "d3648317018133bf8d116305bc67d876dfada9be88ba383c6997d5093092d56f",
+      "bytes": 89796
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-1024.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "sha256": "0c973fe5a0ab2f535292d29500806f7b90eb8033c4bf0e311706ffff2a3a6756",
+      "bytes": 141184
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-1600.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "d79d4338ad410ddefd8dc63d36a0c7426758d729ed692efc25b51a215ed40c3c",
+      "bytes": 266140
+    }
+  ],
+  "generation_settings": "docs/visual/candidates/p0-generation-settings.json",
+  "visual_review": {
+    "reviewer": "Codex",
+    "date": "2026-11-05",
+    "result": "Suitable concept candidate; owner approval pending",
+    "notes": [
+      "Ink and watercolour on cream paper; no text or people",
+      "Illustration does not establish location, design approval or actual construction progress",
+      "Landscape 1280x720; original portrait composition still required for a mobile hero"
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+  "approved": false,
+  "created_utc": "2026-11-05T10:00:22.058406+00:00",
+  "stem": "artemis-watercolour-construccion-20261105",
+  "category": "ART-05",
+  "truth_level": "C2",
+  "target": {
+    "page": "construccion",
+    "frame": "F15"
+  },
+  "source": {
+    "name": "7ogqYT3DK47f4vw3nQwc.png",
+    "sha256": "3c36a7ccfa426bcce8f7f4a9558c4010bc7643a2151d1c85cb5148af8062d89c",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "provider": "ElevenLabs",
+    "generation_id": "7ogqYT3DK47f4vw3nQwc",
+    "repository_path": "docs/visual/candidates/sources/7ogqYT3DK47f4vw3nQwc.png"
+  },
+  "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
+  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "mobile_composition_verified": false,
+  "architectural_status": "concept only, not a verified property",
+  "no_auto_page_assignment": true,
+  "variants": [
+    {
+      "name": "artemis-watercolour-construccion-20261105.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "3c6763ffdf795c61203339baee6ea86553c2384d80235d377be3e6936e9ba44f",
+      "bytes": 341414
+    },
+    {
+      "name": "artemis-watercolour-construccion-20261105-640.webp",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sha256": "54b843b3ffb1c45105140bfc571cab4a26d8bec6133615ae3acb7c3269e6dbe3",
+      "bytes": 30458
+    },
+    {
+      "name": "artemis-watercolour-construccion-20261105-800.webp",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "9f1e89bb1ddf0c1ffb6c5e1d665017c7b3149900561ce95a178d77d290b7f24c",
+      "bytes": 47996
+    },
+    {
+      "name": "artemis-watercolour-construccion-20261105-1024.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "sha256": "7ef5b7699ea4e69ac82482fb0f7970ef30595b77bbe3059d3e2e331289e7bfec",
+      "bytes": 75802
+    },
+    {
+      "name": "artemis-watercolour-construccion-20261105-1600.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "9503fadf89690b5fc0962ea6285ba949cac5ebe89e0c65555bdb4d1020ed89fd",
+      "bytes": 149986
+    }
+  ],
+  "generation_settings": "docs/visual/candidates/p0-generation-settings.json",
+  "visual_review": {
+    "reviewer": "Codex",
+    "date": "2026-11-05",
+    "result": "Suitable concept candidate; owner approval pending",
+    "notes": [
+      "Ink and watercolour on cream paper; no text or people",
+      "Illustration does not establish location, design approval or actual construction progress",
+      "Landscape 1280x720; original portrait composition still required for a mobile hero"
+    ]
+  }
+}

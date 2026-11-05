@@ -5,7 +5,7 @@
   "url": "https://elevenlabs.io/app/flows/lMim2AHTS796dcvWxR3o",
   "model": "gpt-image-2.5-sunburst",
   "all_generations_completed": true,
-  "policy": "Generation is not publication: no file hash, rights check, source inspection, localized alt/caption or import yet; do not create frame overrides on current manifest.",
+  "policy": "Actual original bytes, hashes, derivative files and generation settings recorded. REVIEW only; no page assignment or publication until owner approval.",
   "items": [
     {
       "task": "P0-NORTE-F21",
@@ -21,10 +21,11 @@
         1280,
         720
       ],
-      "asset_status": "REVIEW_NEEDS_IMPORT",
-      "asset_path": null,
-      "sha256": null,
-      "approved": false
+      "asset_status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+      "asset_path": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png",
+      "sha256": "308c246312beee2353aafd2d0cacef1f637405fe18c0df70612e3a7b3f28c2f2",
+      "approved": false,
+      "manifest": "docs/visual/candidates/artemis-watercolour-norte-20261105.json"
     },
     {
       "task": "P0-PRODUCTO-F05",
@@ -40,10 +41,11 @@
         1280,
         720
       ],
-      "asset_status": "REVIEW_NEEDS_IMPORT",
-      "asset_path": null,
-      "sha256": null,
-      "approved": false
+      "asset_status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+      "asset_path": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+      "sha256": "08377d661cc194433c3c198dae35a9251eeac31bc354bb417487b28fca6f2bce",
+      "approved": false,
+      "manifest": "docs/visual/candidates/artemis-watercolour-producto-20261105.json"
     },
     {
       "task": "P0-INVERSORES-F14",
@@ -59,10 +61,11 @@
         1280,
         720
       ],
-      "asset_status": "REVIEW_NEEDS_IMPORT",
-      "asset_path": null,
-      "sha256": null,
-      "approved": false
+      "asset_status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+      "asset_path": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png",
+      "sha256": "9c10df9f1f37f6b4a86373573626fc203079f2af58c5e3694a3771895553d4c3",
+      "approved": false,
+      "manifest": "docs/visual/candidates/artemis-watercolour-inversores-20261105.json"
     },
     {
       "task": "P0-CONSTRUCCION-F15",
@@ -78,15 +81,16 @@
         1280,
         720
       ],
-      "asset_status": "REVIEW_NEEDS_IMPORT",
-      "asset_path": null,
-      "sha256": null,
-      "approved": false
+      "asset_status": "REVIEW_NEEDS_VISUAL_APPROVAL",
+      "asset_path": "docs/visual/candidates/sources/7ogqYT3DK47f4vw3nQwc.png",
+      "sha256": "3c36a7ccfa426bcce8f7f4a9558c4010bc7643a2151d1c85cb5148af8062d89c",
+      "approved": false,
+      "manifest": "docs/visual/candidates/artemis-watercolour-construccion-20261105.json"
     }
   ],
   "missing_P0": {
     "task": "P0-NORTE-F23",
-    "reason": "Real map requires independently verified geo source and labels; must not be AI-drawn.",
-    "status": "BLOCKED_ON_MAP_EVIDENCE"
+    "reason": "Source-based locator implemented; see docs/visual/evidence/F23_LA_QUINTA_LOCATION_SOURCES_2026-11-05.md.",
+    "status": "IMPLEMENTED_PREVIEW_QA_PENDING"
   }
 }

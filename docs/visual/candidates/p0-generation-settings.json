@@ -1,0 +1,142 @@
+[
+  {
+    "node_id": "sEPyLuYAjqVhrP2gxNkg",
+    "prompt": "Wide 16:9 landscape travel sketch, genuinely lush NORTH TENERIFE volcanic coastal landscape without showing a particular building or planned estate: softly sloping banana plantation terraces, Canary date palm trees, mature green shrubs, volcanic basalt rocks, terraced natural vegetation, ocean on the distant right with misty blue-grey sky and shallow clouds. NO Mount Teide if ocean dominates; no imaginary site boundary, no plotted development. Compositional focus is the authentic feeling of verdant northern Tenerife, not an idyllic tropical island cliché.\nARTEMIS — Atlantic Heritage Watercolour v1.0. Professional hand-drawn architectural travel-sketch in dark sepia fine nib ink and precise cross-hatching over translucent layered watercolour washes. Warm light cream fine-art paper #F5EFE0, warm limestone #E8D8B9, ochre #C89B64, dark volcanic basalt #444743, subtle muted bronze #967B5A, living green #506D55 and #7E8C6C, calm Atlantic blue-grey #819DA8, airy light with unfinished paper vignette edges. Restrained high-end heritage aesthetic, true hand-crafted ink-and-watercolour look, never photorealistic or computer 3D. NO neon, NO fluorescent green, NO saturated tropical sea, NO giant palace, NO Greek temples, NO ornate amphoras, NO property deeds, NO investment props, NO labels, NO text, NO watermarks, NO claims of a real surveyed project site. Artistic concept only.",
+    "model_id": "gpt-image-2.5-sunburst",
+    "model_parameters": {
+      "quality": "high",
+      "aspect_ratio": "16:9",
+      "resolution": "1K"
+    },
+    "input_ports": [
+      {
+        "key": "prompt",
+        "modality": "text",
+        "required": false,
+        "connected_to": []
+      },
+      {
+        "key": "images",
+        "modality": "image",
+        "required": false,
+        "connected_to": []
+      }
+    ],
+    "generations": [
+      {
+        "generation_id": "wBYf7vERpRPDQRSzObyC",
+        "session_id": "VQv7P5iV5wPSRaDdqeRT",
+        "status": "completed",
+        "created_at": "2026-11-04T21:55:10.764000+00:00",
+        "model_id": "gpt-image-2.5-sunburst",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  {
+    "node_id": "afuZL2YpLtCaittCudnp",
+    "prompt": "Wide 16:9 architectural concept study of ONE compact elegant Spanish-Canarian Mediterranean residence at 3/4 eye level: muted limestone/lime plaster, restrained historic Spanish arcaded shaded entrance with two slim simple columns, dark basalt plinth and steps, modest terracotta roof edge and timber pergola, small naturally planted terrace and garden with Atlantic cool daylight. Architectural hypothesis for a modular townhouse, human scale not luxurious huge villa, no exact approved plan, no floor plan or size labels, no people. Clear pen-hatching and airy transparent watercolor.\nARTEMIS — Atlantic Heritage Watercolour v1.0. Professional hand-drawn architectural travel-sketch in dark sepia fine nib ink and precise cross-hatching over translucent layered watercolour washes. Warm light cream fine-art paper #F5EFE0, warm limestone #E8D8B9, ochre #C89B64, dark volcanic basalt #444743, subtle muted bronze #967B5A, living green #506D55 and #7E8C6C, calm Atlantic blue-grey #819DA8, airy light with unfinished paper vignette edges. Restrained high-end heritage aesthetic, true hand-crafted ink-and-watercolour look, never photorealistic or computer 3D. NO neon, NO fluorescent green, NO saturated tropical sea, NO giant palace, NO Greek temples, NO ornate amphoras, NO property deeds, NO investment props, NO labels, NO text, NO watermarks, NO claims of a real surveyed project site. Artistic concept only.",
+    "model_id": "gpt-image-2.5-sunburst",
+    "model_parameters": {
+      "quality": "high",
+      "aspect_ratio": "16:9",
+      "resolution": "1K"
+    },
+    "input_ports": [
+      {
+        "key": "prompt",
+        "modality": "text",
+        "required": false,
+        "connected_to": []
+      },
+      {
+        "key": "images",
+        "modality": "image",
+        "required": false,
+        "connected_to": []
+      }
+    ],
+    "generations": [
+      {
+        "generation_id": "MRSkYIdJ4VasJW40dcsx",
+        "session_id": "m3JC3I7IGEMDDYthKsGp",
+        "status": "completed",
+        "created_at": "2026-11-05T08:32:28.873000+00:00",
+        "model_id": "gpt-image-2.5-sunburst",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  {
+    "node_id": "YeLyW6D4UnqRlNMAISgZ",
+    "prompt": "Wide 16:9 conceptual development vision as a loose architectural sketchbook scene: a green hillside landscape with a sequence of understated, translucent conceptual architectural massing volumes, a small few courtyard houses integrated into basalt terraces, a lightly indicated pedestrian path, pale sepia ink exploratory contour lines and soft watercolor. Deliberately incomplete pencil-and-ink concept, not a photograph of excavation or construction; no excavators, no visible work in progress, no money, no coins, no ownership deeds, no investment symbols, no numbers and no text. Visual is a design exploration, not a claim of any completed stage.\nARTEMIS — Atlantic Heritage Watercolour v1.0. Professional hand-drawn architectural travel-sketch in dark sepia fine nib ink and precise cross-hatching over translucent layered watercolour washes. Warm light cream fine-art paper #F5EFE0, warm limestone #E8D8B9, ochre #C89B64, dark volcanic basalt #444743, subtle muted bronze #967B5A, living green #506D55 and #7E8C6C, calm Atlantic blue-grey #819DA8, airy light with unfinished paper vignette edges. Restrained high-end heritage aesthetic, true hand-crafted ink-and-watercolour look, never photorealistic or computer 3D. NO neon, NO fluorescent green, NO saturated tropical sea, NO giant palace, NO Greek temples, NO ornate amphoras, NO property deeds, NO investment props, NO labels, NO text, NO watermarks, NO claims of a real surveyed project site. Artistic concept only.",
+    "model_id": "gpt-image-2.5-sunburst",
+    "model_parameters": {
+      "quality": "high",
+      "aspect_ratio": "16:9",
+      "resolution": "1K"
+    },
+    "input_ports": [
+      {
+        "key": "prompt",
+        "modality": "text",
+        "required": false,
+        "connected_to": []
+      },
+      {
+        "key": "images",
+        "modality": "image",
+        "required": false,
+        "connected_to": []
+      }
+    ],
+    "generations": [
+      {
+        "generation_id": "e23JTMG8M8JQCErDMrFw",
+        "session_id": "7R3oqEhWjqAmeJVExbwc",
+        "status": "completed",
+        "created_at": "2026-11-05T08:32:30.358000+00:00",
+        "model_id": "gpt-image-2.5-sunburst",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  {
+    "node_id": "EDfnUCwryoTtXwlpwMgs",
+    "prompt": "Wide 16:9 fine ink-and-watercolor conceptual construction-phasing illustration on cream paper: five small separate miniature architectural sketches placed left-to-right as a visual sequence from an untouched terraced green basalt slope, an abstract foundation section, a simple future building shell, a possible roof and facade, finally a shaded finished Spanish-Canarian townhouse concept. Delicate dotted connections, no text or stage numbers, no workers or active construction, not a site progress record. The visual language indicates a not-yet-started feasibility study of future stages, truthful conceptual architectural diagram.\nARTEMIS — Atlantic Heritage Watercolour v1.0. Professional hand-drawn architectural travel-sketch in dark sepia fine nib ink and precise cross-hatching over translucent layered watercolour washes. Warm light cream fine-art paper #F5EFE0, warm limestone #E8D8B9, ochre #C89B64, dark volcanic basalt #444743, subtle muted bronze #967B5A, living green #506D55 and #7E8C6C, calm Atlantic blue-grey #819DA8, airy light with unfinished paper vignette edges. Restrained high-end heritage aesthetic, true hand-crafted ink-and-watercolour look, never photorealistic or computer 3D. NO neon, NO fluorescent green, NO saturated tropical sea, NO giant palace, NO Greek temples, NO ornate amphoras, NO property deeds, NO investment props, NO labels, NO text, NO watermarks, NO claims of a real surveyed project site. Artistic concept only.",
+    "model_id": "gpt-image-2.5-sunburst",
+    "model_parameters": {
+      "quality": "high",
+      "aspect_ratio": "16:9",
+      "resolution": "1K"
+    },
+    "input_ports": [
+      {
+        "key": "prompt",
+        "modality": "text",
+        "required": false,
+        "connected_to": []
+      },
+      {
+        "key": "images",
+        "modality": "image",
+        "required": false,
+        "connected_to": []
+      }
+    ],
+    "generations": [
+      {
+        "generation_id": "7ogqYT3DK47f4vw3nQwc",
+        "session_id": "pZMQFOu83VaNvcYeOiSN",
+        "status": "completed",
+        "created_at": "2026-11-05T08:32:32.079000+00:00",
+        "model_id": "gpt-image-2.5-sunburst",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  }
+]
