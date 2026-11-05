@@ -2,9 +2,9 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 7,
-  "updated_at": "2026-11-04T20:52:21.914555+00:00",
-  "next_action": "BASE-02: resume on authorized VPS; read-only live inventory before activation",
+  "revision": 9,
+  "updated_at": "2026-11-05T08:54:01.423812+00:00",
+  "next_action": "BASE-02: read-only Artemis SQLite/service/Twenty/sender inventory through verified VPS bridge",
   "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
@@ -43,6 +43,19 @@
         {
           "path": "docs/funnel/evidence/EXECUTION_RECEIPT.json",
           "sha256": "cb5cc8f6dff1142e34080df3365d18d524812a08c755ed0a78e038f1c98ab554"
+        }
+      ]
+    },
+    "BASE-02-bridge-discovery-20261105-v1": {
+      "key": "BASE-02-bridge-discovery-20261105-v1",
+      "action": "submit existing typed VPS read-only status request artemis-vps-discovery-20261105-01; reconcile its result before retry",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T08:50:52.281726+00:00",
+      "verified_at": "2026-11-05T08:54:01.423774+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-02-bridge-discovery-20261105.json",
+          "sha256": "458dcdb3c1beb714a54eb00ba1a3d324138069ff5e0e6bcf39b2f2d5da178fe6"
         }
       ]
     }
@@ -89,6 +102,18 @@
       "at": "2026-11-04T20:52:21.914555+00:00",
       "event": "verified:final-local-validation-v1",
       "next_action": "BASE-02: resume on authorized VPS; read-only live inventory before activation"
+    },
+    {
+      "revision": 8,
+      "at": "2026-11-05T08:50:52.281740+00:00",
+      "event": "began:BASE-02-bridge-discovery-20261105-v1",
+      "next_action": "reconcile:BASE-02-bridge-discovery-20261105-v1"
+    },
+    {
+      "revision": 9,
+      "at": "2026-11-05T08:54:01.423812+00:00",
+      "event": "verified:BASE-02-bridge-discovery-20261105-v1",
+      "next_action": "BASE-02: read-only Artemis SQLite/service/Twenty/sender inventory through verified VPS bridge"
     }
   ],
   "policy": {

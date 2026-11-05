@@ -1,0 +1,132 @@
+{
+  "atom": "BASE-02",
+  "status": "server_channel_verified_inventory_pending",
+  "request_id": "artemis-vps-discovery-20261105-01",
+  "request_commit": "59930469025d2dca264bc939fc37082aba41f42f",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-vps-discovery-20261105-01.json",
+  "result": {
+    "request_id": "artemis-vps-discovery-20261105-01",
+    "type": "simon_agent_access",
+    "status": "success",
+    "generated_at": "2026-11-05T08:51:32.230Z",
+    "providers_used": [
+      "simon_agent_access"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "simon_agent_access": {
+        "ok": true,
+        "agent_id": "chatgpt",
+        "measured_at": "2026-11-05T08:51:32.228Z",
+        "execution_origin": {
+          "origin": "vps2402_local",
+          "hostname": "vps2402",
+          "verified_server_origin": true,
+          "description": "Direct local execution on VPS2402 host"
+        },
+        "runtime_sha": "6673ae985e7084ce14086017b49956c83309103e",
+        "systemd_summary": {
+          "simon-autopilot.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-autopilot.timer": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-official-source-refresh.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 1
+          },
+          "simon-official-source-refresh.timer": {
+            "active_state": "active",
+            "sub_state": "waiting",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-official-source-probe.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 1
+          },
+          "simon-official-source-probe.timer": {
+            "active_state": "active",
+            "sub_state": "waiting",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-brief-intake.service": {
+            "active_state": "active",
+            "sub_state": "running",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-first-comment.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-first-comment.timer": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-telegram.service": {
+            "active_state": "active",
+            "sub_state": "running",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-telegram.timer": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-inbound-sweep.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 1
+          },
+          "simon-inbound-sweep.timer": {
+            "active_state": "active",
+            "sub_state": "waiting",
+            "main_status": 0,
+            "main_code": 0
+          },
+          "simon-healthcheck.service": {
+            "active_state": "inactive",
+            "sub_state": "dead",
+            "main_status": 0,
+            "main_code": 1
+          },
+          "simon-healthcheck.timer": {
+            "active_state": "active",
+            "sub_state": "waiting",
+            "main_status": 0,
+            "main_code": 0
+          }
+        },
+        "aggregates": {
+          "total_allowlisted_units": 15,
+          "reported_units": 15,
+          "active_units": 6
+        }
+      }
+    },
+    "error": null
+  },
+  "scope": "Existing typed VPS status proved server execution; does not yet establish Artemis/Twenty delivery."
+}
