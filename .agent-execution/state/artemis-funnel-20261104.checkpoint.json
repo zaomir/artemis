@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 11,
-  "updated_at": "2026-11-05T09:02:19.586311+00:00",
-  "next_action": "BASE-02/03: diagnose watchdog code 2, sender alias and existing source readers before any schema or delivery activation",
-  "pending": null,
+  "revision": 12,
+  "updated_at": "2026-11-05T09:03:40.244221+00:00",
+  "next_action": "reconcile:BASE-02-03-diagnostics-20261105-v1",
+  "pending": {
+    "key": "BASE-02-03-diagnostics-20261105-v1",
+    "action": "read-only detailed watchdog, sender primary alias and existing reader discovery; request artemis-live-diagnostics-20261105-01",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T09:03:40.244206+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -139,6 +144,12 @@
       "at": "2026-11-05T09:02:19.586311+00:00",
       "event": "verified:BASE-02-live-inventory-20261105-v1",
       "next_action": "BASE-02/03: diagnose watchdog code 2, sender alias and existing source readers before any schema or delivery activation"
+    },
+    {
+      "revision": 12,
+      "at": "2026-11-05T09:03:40.244221+00:00",
+      "event": "began:BASE-02-03-diagnostics-20261105-v1",
+      "next_action": "reconcile:BASE-02-03-diagnostics-20261105-v1"
     }
   ],
   "policy": {
