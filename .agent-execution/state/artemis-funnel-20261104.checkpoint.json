@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 65,
-  "updated_at": "2026-11-05T12:23:56.481945+00:00",
-  "next_action": "CAP-03 legacy calculator hidden-field compatibility and localized form errors; then guarded site-only release",
-  "pending": null,
+  "revision": 66,
+  "updated_at": "2026-11-05T12:24:20.872549+00:00",
+  "next_action": "reconcile:CAP-03-calculator-compatibility-20261105-v1",
+  "pending": {
+    "key": "CAP-03-calculator-compatibility-20261105-v1",
+    "action": "preserve existing server-built calc hidden fields in typed replacement; localize error messaging; no model math change or activation",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T12:24:20.872537+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -814,6 +819,12 @@
       "at": "2026-11-05T12:23:56.481945+00:00",
       "event": "verified:CAP-04-native-attribution-20261105-v1",
       "next_action": "CAP-03 legacy calculator hidden-field compatibility and localized form errors; then guarded site-only release"
+    },
+    {
+      "revision": 66,
+      "at": "2026-11-05T12:24:20.872549+00:00",
+      "event": "began:CAP-03-calculator-compatibility-20261105-v1",
+      "next_action": "reconcile:CAP-03-calculator-compatibility-20261105-v1"
     }
   ],
   "policy": {
