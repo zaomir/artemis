@@ -7,6 +7,8 @@ import sys
 import tempfile
 import threading
 import unittest
+import os
+from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 import funnel_store as f
@@ -75,6 +77,34 @@ class MailTest(unittest.TestCase):
         msg=m.message(('test-id','test@example.invalid','en',1,'welcome','opaque-id'),'sender@example.invalid','reply@example.invalid',self.secret)
         self.assertEqual(msg['List-Unsubscribe-Post'],'List-Unsubscribe=One-Click')
         self.assertNotIn('facebook',msg.as_string().casefold())
+
+    def test_disabled_timer_worker_does_not_construct_provider_or_create_database(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'0'}):
+            db=Path(tmp)/'missing.db'
+            self.assertIsNone(m.relay_once(db,lambda:self.fail('no provider while disabled'),'sender@example.invalid','reply@example.invalid',self.secret))
+            self.assertFalse(db.exists())
+
+    def test_existing_timer_worker_uses_same_queue_without_duplicate_send(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'1'}):
+            db=Path(tmp)/'leads.db'
+            with sqlite3.connect(db) as disk:self.conn.backup(disk)
+            factory=lambda:self.gmail
+            result=m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now)
+            self.assertEqual(result['state'],'accepted')
+            self.assertIsNone(m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now))
+            self.assertEqual(self.gmail.calls,1)
+            with sqlite3.connect(db) as disk:
+                self.assertEqual(disk.execute('SELECT state,provider_id FROM artemis_mail_outbox').fetchone(),('accepted','google-test-id'))
+
+    def test_empty_or_unmigrated_queue_never_constructs_provider(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'1'}):
+            db=Path(tmp)/'leads.db'
+            with sqlite3.connect(db) as disk:disk.execute('CREATE TABLE leads(id INTEGER)')
+            factory=lambda:self.fail('no provider without due mail')
+            result=m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now)
+            self.assertEqual(result['state'],'blocked_missing_migration')
+            with sqlite3.connect(db) as disk:f.migrate(disk)
+            self.assertIsNone(m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now))
 
 
 class ConcurrentMailTest(unittest.TestCase):

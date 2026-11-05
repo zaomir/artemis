@@ -100,6 +100,7 @@ class LeadRelayTest(unittest.TestCase):
 
     def test_status_and_requeue_never_drain_crm(self):
         with patch.object(self.m,'crm_step',side_effect=AssertionError('must not drain')), \
+             patch.object(self.m,'newsletter_step',side_effect=AssertionError('must not dispatch')), \
              patch.object(self.m,'status',return_value={'queued':0}), \
              patch.object(self.m,'requeue',return_value=0) as requeue:
             with contextlib.redirect_stdout(io.StringIO()):self.assertEqual(self.m.main(['--status']),0)
@@ -111,6 +112,12 @@ class LeadRelayTest(unittest.TestCase):
         with patch.dict(os.environ,{'ARTEMIS_CRM_DELIVERY_ENABLED':'1'}),patch.object(self.m,'DB',missing):
             with contextlib.redirect_stdout(io.StringIO()):self.assertEqual(self.m.crm_step(),1)
         self.assertFalse(Path(missing).exists())
+
+    def test_enabled_newsletter_without_assigned_replies_does_not_construct_provider(self):
+        with patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'1','ARTEMIS_REPLY_OWNER_ROLE':'',
+                'ARTEMIS_NEWSLETTER_REPLY_TO':'replies@example.invalid','ARTEMIS_NEWSLETTER_SECRET':'s'*40}), \
+             patch.object(self.m,'gmail',side_effect=AssertionError('no provider without assignment')):
+            with contextlib.redirect_stdout(io.StringIO()):self.assertEqual(self.m.newsletter_step(),1)
 
     def test_tg_backlog_once_only_for_old_leads(self):
         self.m.run()
