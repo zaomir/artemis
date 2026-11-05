@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 50,
-  "updated_at": "2026-11-05T11:37:10.927074+00:00",
-  "next_action": "reconcile:NEWS-05-desktop-browser-proof-20261105-v1",
-  "pending": {
-    "key": "NEWS-05-desktop-browser-proof-20261105-v1",
-    "action": "persist original five locale desktop browser screenshots and observed routes; mobile/no-JS/FB-browser not claimed",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:37:10.927060+00:00"
-  },
+  "revision": 51,
+  "updated_at": "2026-11-05T11:37:45.724187+00:00",
+  "next_action": "Privacy token logging and mail gates; metrics real/test separation; canonical registry refresh",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -323,6 +318,19 @@
           "sha256": "c5e9f351f56a947110659c8cc9b3ed12c1aef732abcbf35d4a3356aaefc8735a"
         }
       ]
+    },
+    "NEWS-05-desktop-browser-proof-20261105-v1": {
+      "key": "NEWS-05-desktop-browser-proof-20261105-v1",
+      "action": "persist original five locale desktop browser screenshots and observed routes; mobile/no-JS/FB-browser not claimed",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:37:10.927060+00:00",
+      "verified_at": "2026-11-05T11:37:45.724173+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-05-desktop-20261105.json",
+          "sha256": "2148a84782d38b6cacd4d603c9f25a1f8e858ce85dc2687152bc783b23cff6ff"
+        }
+      ]
     }
   },
   "history": [
@@ -625,6 +633,12 @@
       "at": "2026-11-05T11:37:10.927074+00:00",
       "event": "began:NEWS-05-desktop-browser-proof-20261105-v1",
       "next_action": "reconcile:NEWS-05-desktop-browser-proof-20261105-v1"
+    },
+    {
+      "revision": 51,
+      "at": "2026-11-05T11:37:45.724187+00:00",
+      "event": "verified:NEWS-05-desktop-browser-proof-20261105-v1",
+      "next_action": "Privacy token logging and mail gates; metrics real/test separation; canonical registry refresh"
     }
   ],
   "policy": {
