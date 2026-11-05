@@ -33,3 +33,12 @@ New requests, independent enquiries and complaints arriving during the roundtrip
 are protected. A minimal private pseudonymous identity/expiry record prevents
 stale replays; it is not described as anonymous or as a new sales lead.
 Rotated backups are not claimed erased. Newsletter activation is still gated.
+
+The implemented cleanup scope is site SQLite and the Artemis-owned Twenty
+fields. It does not delete confirmation-message copies in Gmail Sent/Inbox.
+Existing mail permissions and the handling of those copies must be established
+before activation; moving mail to Trash must not be reported as permanent
+erasure. The observed backup configuration keeps 7 daily, 4 weekly and 14
+offhost copies; the restore scripts currently have no Artemis expiry replay
+hook. Neither the backup copies nor restored data are covered by an erasure
+claim. These are remaining MAIL-06/CAP-06 requirements, not completed cleanup.
