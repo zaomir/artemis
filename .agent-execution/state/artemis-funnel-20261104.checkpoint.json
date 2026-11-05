@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 51,
-  "updated_at": "2026-11-05T11:37:45.724187+00:00",
-  "next_action": "Privacy token logging and mail gates; metrics real/test separation; canonical registry refresh",
-  "pending": null,
+  "revision": 52,
+  "updated_at": "2026-11-05T11:39:33.384695+00:00",
+  "next_action": "reconcile:MAIL-09-token-log-inventory-20261105-v1",
+  "pending": {
+    "key": "MAIL-09-token-log-inventory-20261105-v1",
+    "action": "read actual Artemis nginx/gunicorn token logging and backup rotation configuration; request artemis-mail-privacy-inventory-20261105-01; no settings or recipients changed",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T11:39:33.384681+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -639,6 +644,12 @@
       "at": "2026-11-05T11:37:45.724187+00:00",
       "event": "verified:NEWS-05-desktop-browser-proof-20261105-v1",
       "next_action": "Privacy token logging and mail gates; metrics real/test separation; canonical registry refresh"
+    },
+    {
+      "revision": 52,
+      "at": "2026-11-05T11:39:33.384695+00:00",
+      "event": "began:MAIL-09-token-log-inventory-20261105-v1",
+      "next_action": "reconcile:MAIL-09-token-log-inventory-20261105-v1"
     }
   ],
   "policy": {
