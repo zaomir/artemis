@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 24,
-  "updated_at": "2026-11-05T09:38:16.989805+00:00",
-  "next_action": "reconcile:CRM-02-04-core-release-20261105-v1",
-  "pending": {
-    "key": "CRM-02-04-core-release-20261105-v1",
-    "action": "ship atomic legacy capture/privacy and fixed existing-service CRM release; artemis-crm-core-20261105-01; independent source-record reconciliation before claim",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T09:38:16.989795+00:00"
-  },
+  "revision": 25,
+  "updated_at": "2026-11-05T10:03:31.829627+00:00",
+  "next_action": "Verify ordinary public diary access; BASE-03 sender/reply/DKIM gaps; add remaining explicit FB intake and mail feedback/retention without replaying backfill",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -152,6 +147,19 @@
         {
           "path": "docs/funnel/evidence/CRM-01-runtime-20261105.json",
           "sha256": "e5ad1ff88b174dac964073a2172f2e78b991a99aba5cc09ce605663ea2b5de40"
+        }
+      ]
+    },
+    "CRM-02-04-core-release-20261105-v1": {
+      "key": "CRM-02-04-core-release-20261105-v1",
+      "action": "ship atomic legacy capture/privacy and fixed existing-service CRM release; artemis-crm-core-20261105-01; independent source-record reconciliation before claim",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T09:38:16.989795+00:00",
+      "verified_at": "2026-11-05T10:03:31.829612+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CRM-core-runtime-20261105.json",
+          "sha256": "15e08e4e931a0bc9abf16b4ad1e1c0fc795de3e59e028d677a490253062cd135"
         }
       ]
     }
@@ -300,6 +308,12 @@
       "at": "2026-11-05T09:38:16.989805+00:00",
       "event": "began:CRM-02-04-core-release-20261105-v1",
       "next_action": "reconcile:CRM-02-04-core-release-20261105-v1"
+    },
+    {
+      "revision": 25,
+      "at": "2026-11-05T10:03:31.829627+00:00",
+      "event": "verified:CRM-02-04-core-release-20261105-v1",
+      "next_action": "Verify ordinary public diary access; BASE-03 sender/reply/DKIM gaps; add remaining explicit FB intake and mail feedback/retention without replaying backfill"
     }
   ],
   "policy": {
