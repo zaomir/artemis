@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 83,
-  "updated_at": "2026-11-05T13:40:34.921709+00:00",
-  "next_action": "MAIL-03 connect inactive confirmation/welcome dispatch through SAME timer and existing Gmail factory; no activation",
-  "pending": null,
+  "revision": 84,
+  "updated_at": "2026-11-05T13:40:45.458980+00:00",
+  "next_action": "reconcile:MAIL-03-existing-relay-wiring-20261105-v1",
+  "pending": {
+    "key": "MAIL-03-existing-relay-wiring-20261105-v1",
+    "action": "wire disabled confirmation/welcome worker into SAME timer and existing Gmail factory with sender/reply/role/secret gates; shared pure copy no Flask dependency in mail venv; no real sends",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:40:45.458966+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -1039,6 +1044,12 @@
       "at": "2026-11-05T13:40:34.921709+00:00",
       "event": "verified:CRM-03-relay-priority-20261105-v1",
       "next_action": "MAIL-03 connect inactive confirmation/welcome dispatch through SAME timer and existing Gmail factory; no activation"
+    },
+    {
+      "revision": 84,
+      "at": "2026-11-05T13:40:45.458980+00:00",
+      "event": "began:MAIL-03-existing-relay-wiring-20261105-v1",
+      "next_action": "reconcile:MAIL-03-existing-relay-wiring-20261105-v1"
     }
   ],
   "policy": {
