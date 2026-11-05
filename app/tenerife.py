@@ -209,6 +209,7 @@ def _finish(page: str) -> str:
         page=re.sub(r'<form\b(?=[^>]*\bid="wl-form")[\s\S]*?</form>',
                     lambda _:funnel_http.form(loc,request.path),page,count=1)
         page=page.replace('</body>','<script src="/static/tenerife/site/funnel.js" defer></script>\n</body>')
+    if funnel_http.enabled():page=funnel_http.carry_attribution(page)
     return page
 
 
