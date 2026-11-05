@@ -1231,6 +1231,10 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE],
             "groups": [{"id": key, "label": locale_cfg.NAV_UI[LOCALE][key],
                         "links": [by_name[n] for n in names]} for key, names in FOOTER_GROUPS]}
+    from news import locale_url as news_locale_url, UI as NEWS_UI
+    diary = {"name": "actualizaciones", "label": html.escape(NEWS_UI[LOCALE][0]), "url": news_locale_url(LOCALE)}
+    menu["primary"].append(diary)
+    menu["groups"][0]["links"].append(diary)
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
@@ -1299,7 +1303,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
                         "title": meta["Meta title"],
                         "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
-    from news import build_pages, locale_url as news_locale_url, UI as NEWS_UI
+    from news import build_pages
 
     def render_news(title, description, body, news_url, available):
         # News has a contextual CTA, never an incidental investment calculation.

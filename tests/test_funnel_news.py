@@ -38,6 +38,19 @@ class NewsTest(unittest.TestCase):
             self.assertIn('class="header__cta" href="'+news.locale_url(loc)+'"',body)
             if loc!='ru':self.assertIn('href="'+news.locale_url('ru','concept-search')+'" lang="ru"',body)
 
+    def test_diary_is_discoverable_without_js_from_main_pages_and_footer(self):
+        for loc in news.LANGS:
+            root=ROOT/'app/tenerife_site'
+            root=root if loc=='en' else root/loc
+            for name in ('index','producto','inversores','privacy','actualizaciones','actualizaciones/concept-search'):
+                body=(root/(name+'.html')).read_text()
+                header=body[body.index('<header'):body.index('</header>')]
+                footer=body[body.index('<footer'):body.index('</footer>')]
+                target='href="'+news.locale_url(loc)+'"'
+                self.assertGreaterEqual(header.count(target),2,(loc,name,'desktop and mobile menu'))
+                self.assertIn(target,footer,(loc,name,'no-JS footer'))
+                self.assertIn(news.UI[loc][0],header)
+
     def test_live_flask_routes_isolated_no_auth_no_js(self):
         import app
         c=app.app.test_client()
