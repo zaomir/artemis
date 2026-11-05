@@ -73,6 +73,35 @@ class WatercolourPreviewTests(unittest.TestCase):
                        "-1600.webp", "-mobile-640.webp", "-mobile-800.webp"):
             self.assertTrue((img_dir / (STEM + suffix)).is_file(), suffix)
 
+    def test_location_locator_uses_verified_points_and_no_parcel_claim(self):
+        svg_path = ROOT / "app" / "static" / "tenerife" / "site" / "img" / "la-quinta-context-locator-20261105.svg"
+        svg = svg_path.read_text(encoding="utf-8")
+        self.assertIn("La Quinta", svg)
+        self.assertIn("Puerto de la Cruz", svg)
+        self.assertIn("TITSA 4004", svg)
+        self.assertIn("no selected parcel", svg)
+        self.assertIn("OpenStreetMap contributors", svg)
+        # Check that the landmark IDs are not silently repurposed as a development plot.
+        self.assertNotIn("artemis-plot", svg)
+        self.assertNotIn("construction-site-boundary", svg)
+
+    def test_location_map_replaces_false_render_only_in_preview(self):
+        builder_src = (SCRIPTS / "build_v3.py").read_text(encoding="utf-8")
+        self.assertIn('name == "norte" and "F23" in s["frames"]', builder_src)
+        self.assertIn('s["location_context"] = i18n_strings()[LOCALE]["visual"]["location_context"]', builder_src)
+        self.assertIn('s["frames"] = [fid for fid in s["frames"] if fid != "F23"]', builder_src)
+        templates = (ROOT / "app" / "templates" / "tenerife" / "site" / "_components.html").read_text(encoding="utf-8")
+        self.assertIn('s.location_context|default(false)', templates)
+        self.assertIn('la-quinta-context-locator-20261105.svg', templates)
+        self.assertIn('www.openstreetmap.org/?mlat=28.43187', templates)
+
+    def test_location_locator_warning_localized(self):
+        for lang in ("ru", "en", "es", "de", "fr"):
+            v = I18N[lang]["visual"]["location_context"]
+            for key in ("alt", "caption", "open_map"):
+                self.assertTrue(v[key].strip(), (lang, key))
+            self.assertGreater(len(v["caption"]), 75, lang)
+
     def test_mobile_picture_contract(self):
         variant = site_builder.image_variant(STEM)
         self.assertEqual(variant["width"], 1600)
