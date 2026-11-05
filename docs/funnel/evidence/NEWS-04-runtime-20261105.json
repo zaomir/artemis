@@ -1,0 +1,57 @@
+{
+  "atom": "NEWS-04",
+  "status": "public_navigation_subunit_completed_capture_form_activation_still_pending",
+  "source_commit": "41dc7b4f62d17afbed6d2348fba9b123f86cfdc9",
+  "request_commit": "903d62cd63b5fd10c58764c8987f981dfe47deb3",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-news-navigation-release-20261105-01.json",
+  "result": {
+    "request_id": "artemis-news-navigation-release-20261105-01",
+    "type": "artemis_release",
+    "status": "success",
+    "generated_at": "2026-11-05T10:25:55.777Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-site-release/1",
+        "requested_sha": "41dc7b4f62d17afbed6d2348fba9b123f86cfdc9",
+        "production_changed": true,
+        "flags_changed": false,
+        "real_messages_sent": 0,
+        "crm_metadata_changed": false,
+        "previous_sha": "15a18487023912cf48b83cead24d3f36028dea69",
+        "deployed_sha": "f295fb76de39c9a03c11d66727998ca748307fab",
+        "deploy": {
+          "exit_code": 0,
+          "stdout_sha256": "21659ca0410cbbe5f149e89f1ce84dec946a909f0869d8a9b63d3cba42d83ee8",
+          "test_summaries": [
+            "tests: Ran 542 tests in 315.323s OK (skipped=9) (rc=0)"
+          ]
+        },
+        "ok": true,
+        "mode": "applied",
+        "migration_replayed": false,
+        "capture_schema_applied": false
+      }
+    },
+    "error": null
+  },
+  "browser_readback": {
+    "date": "2026-11-05",
+    "article_url": "https://artemisresort.com/tenerife/actualizaciones/concept-search/",
+    "header_diary_cta": "https://artemisresort.com/tenerife/actualizaciones/",
+    "publication_date": "2026-11-05",
+    "source_attribution": "Project brief, 4 November 2026; plain text, private hyperlink removed",
+    "russian_article_link": "https://artemisresort.com/tenerife/ru/actualizaciones/concept-search/",
+    "image_loaded": true,
+    "image_dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "remaining": "NEWS-04 complete atom still depends on activated CAP-03 forms; do not claim opt-in launch."
+}

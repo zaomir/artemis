@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 30,
-  "updated_at": "2026-11-05T10:12:15.641726+00:00",
-  "next_action": "reconcile:NEWS-04-public-navigation-20261105-v1",
-  "pending": {
-    "key": "NEWS-04-public-navigation-20261105-v1",
-    "action": "fix observed article menu self-link, private evidence hyperlink and actual publication metadata; rebuild locales; no CRM replay",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:12:15.641712+00:00"
-  },
+  "revision": 31,
+  "updated_at": "2026-11-05T10:29:04.315404+00:00",
+  "next_action": "CRM-05 typed internal Facebook enquiry queue; BASE-03 reply-alias and DKIM gaps; NEWS-04 form-dependent remainder pending",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -191,6 +186,19 @@
         {
           "path": "docs/funnel/evidence/AS-01-access-20261105.json",
           "sha256": "2fb9ff6892cd053f5a8caef726d1fd850a08d60fb5dd094970e315d8f0b89ab6"
+        }
+      ]
+    },
+    "NEWS-04-public-navigation-20261105-v1": {
+      "key": "NEWS-04-public-navigation-20261105-v1",
+      "action": "fix observed article menu self-link, private evidence hyperlink and actual publication metadata; rebuild locales; no CRM replay",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:12:15.641712+00:00",
+      "verified_at": "2026-11-05T10:29:04.315390+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-runtime-20261105.json",
+          "sha256": "9065eee12def6db199f77931d2e4244b9649b27e85ecadf54a6d7526586acb38"
         }
       ]
     }
@@ -375,6 +383,12 @@
       "at": "2026-11-05T10:12:15.641726+00:00",
       "event": "began:NEWS-04-public-navigation-20261105-v1",
       "next_action": "reconcile:NEWS-04-public-navigation-20261105-v1"
+    },
+    {
+      "revision": 31,
+      "at": "2026-11-05T10:29:04.315404+00:00",
+      "event": "verified:NEWS-04-public-navigation-20261105-v1",
+      "next_action": "CRM-05 typed internal Facebook enquiry queue; BASE-03 reply-alias and DKIM gaps; NEWS-04 form-dependent remainder pending"
     }
   ],
   "policy": {
