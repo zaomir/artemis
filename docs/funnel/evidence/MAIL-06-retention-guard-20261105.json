@@ -1,0 +1,155 @@
+{
+  "schema": "artemis-atom-evidence/1",
+  "atom": "MAIL-06",
+  "unit": "retention_guard_and_deployed_API_contract",
+  "production_changed": false,
+  "source_data_deleted": 0,
+  "request_id": "artemis-privacy-capabilities-20261105-01",
+  "observed_at": "2026-11-05T11:06:28.507Z",
+  "provider_source_sha": "d0478284016dda71c93df9a2d563ae378a8bc64d",
+  "provider_pr": 2383,
+  "privacy_api": {
+    "found": true,
+    "probes": [
+      {
+        "path": "/rest/open-api/core",
+        "status": 200
+      }
+    ],
+    "source_path": "/rest/open-api/core",
+    "api_version": "v0.1",
+    "operations": [
+      {
+        "path": "/people",
+        "method": "get",
+        "description": "**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **people**",
+        "parameters": [
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Format: **field_name_1,field_name_2[DIRECTION_2]\n    Refer to the filter section at the top of the page for more details."
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Format: field[COMPARATOR]:value,field2[COMPARATOR]:value2.\n    For like/ilike, use % as a wildcard (e.g. %value% for substring match).\n    Refer to the filter section at the top of the page for more details."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 60,
+            "description": "Limits the number of objects returned."
+          },
+          {
+            "name": "depth",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "enum": [
+              0,
+              1
+            ],
+            "description": "Determines the level of nested related objects to include in the response.\n    - 0: Primary object only\n    - 1: Primary object + direct relations"
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data"
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data"
+          }
+        ]
+      },
+      {
+        "path": "/people",
+        "method": "delete",
+        "description": "",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Format: field[COMPARATOR]:value,field2[COMPARATOR]:value2.\n    For like/ilike, use % as a wildcard (e.g. %value% for substring match).\n    Refer to the filter section at the top of the page for more details."
+          },
+          {
+            "name": "soft_delete",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "default": false,
+            "description": "If true, soft deletes the objects. If false, objects are permanently deleted."
+          }
+        ]
+      },
+      {
+        "path": "/people/{id}",
+        "method": "get",
+        "description": "**depth** can be provided to request your **person**",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Object id."
+          },
+          {
+            "name": "depth",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "enum": [
+              0,
+              1
+            ],
+            "description": "Determines the level of nested related objects to include in the response.\n    - 0: Primary object only\n    - 1: Primary object + direct relations"
+          }
+        ]
+      },
+      {
+        "path": "/people/{id}",
+        "method": "delete",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Object id."
+          },
+          {
+            "name": "soft_delete",
+            "in": "query",
+            "required": false,
+            "type": "boolean",
+            "default": false,
+            "description": "If true, soft deletes the objects. If false, objects are permanently deleted."
+          }
+        ]
+      }
+    ]
+  },
+  "tests": {
+    "retention_guard": 3,
+    "failures": 0
+  },
+  "finding": "Former cleanup replaced a subscription email while preserving PII in source events and Twenty. It now refuses misleading partial erasure.",
+  "next": "Coordinated online PII anonymization with minimal private expiry receipt and independent Person readback; preserve independently acquired contact/Opportunity data. No active recipients exist yet."
+}

@@ -279,18 +279,21 @@ def eligible_mail(conn, mail_id, now=None):
 
 
 def cleanup_pending(conn, now=None):
-    """Newsletter-only retention; never deletes an independent waitlist/event."""
+    """Fail closed until the privacy coordinator verifies all owned stores.
+
+    Replacing just this table's address leaves plaintext in capture/projection
+    events and Twenty. It is not erasure and must never be reported as such.
+    The deployed API's permanent-delete semantics and independent-contact guards
+    are verified separately before that coordinator is activated.
+    """
     before = ((now or utcnow())-timedelta(days=7)).isoformat()
     candidates = conn.execute("SELECT id,email FROM artemis_subscriptions WHERE state='pending_confirmation' AND requested_at<? AND deliverability NOT IN ('hard_bounce','complaint')", (before,)).fetchall()
-    removed = 0
+    due = 0
     for sid,email in candidates:
         events = [json.loads(r[0]) for r in conn.execute('SELECT payload FROM artemis_events')]
         related = [e for e in events if e.get('newsletter_email') == email]
         if any(e.get('intent') != 'newsletter_only' for e in related):
             continue
-        # CRM deletion requires a separate verified privacy process. Never claim
-        # global erasure while CRM still holds data; keep event and suppression audit.
-        conn.execute("UPDATE artemis_subscriptions SET email=?,token_hash=NULL,state='unsubscribed',generation=generation+1 WHERE id=?",('expired:'+sid,sid))
-        conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')", (sid,))
-        removed += 1
-    return removed
+        due += 1
+    if due:raise RuntimeError('coordinated_pending_erasure_required')
+    return 0
