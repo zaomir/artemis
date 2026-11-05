@@ -1,0 +1,92 @@
+{
+  "schema": "artemis-watercolour-generation-intake/1",
+  "date": "2026-11-05",
+  "flow_id": "lMim2AHTS796dcvWxR3o",
+  "url": "https://elevenlabs.io/app/flows/lMim2AHTS796dcvWxR3o",
+  "model": "gpt-image-2.5-sunburst",
+  "all_generations_completed": true,
+  "policy": "Generation is not publication: no file hash, rights check, source inspection, localized alt/caption or import yet; do not create frame overrides on current manifest.",
+  "items": [
+    {
+      "task": "P0-NORTE-F21",
+      "page": "norte",
+      "slot": "F21",
+      "art": "ART-04",
+      "truth_level": "C1",
+      "generation": "wBYf7vERpRPDQRSzObyC",
+      "session": "VQv7P5iV5wPSRaDdqeRT",
+      "subject": "Green northern Tenerife hillside, Atlantic atmosphere, no claimed plot",
+      "generation_url": "https://elevenlabs.io/app/image-video/history?modality=image&generationId=wBYf7vERpRPDQRSzObyC",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "asset_status": "REVIEW_NEEDS_IMPORT",
+      "asset_path": null,
+      "sha256": null,
+      "approved": false
+    },
+    {
+      "task": "P0-PRODUCTO-F05",
+      "page": "producto",
+      "slot": "F05",
+      "art": "ART-02",
+      "truth_level": "C2",
+      "generation": "MRSkYIdJ4VasJW40dcsx",
+      "session": "m3JC3I7IGEMDDYthKsGp",
+      "subject": "Exploratory human-scale Spanish-Canarian residence, columns, arches, basalt",
+      "generation_url": "https://elevenlabs.io/app/image-video/history?modality=image&generationId=MRSkYIdJ4VasJW40dcsx",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "asset_status": "REVIEW_NEEDS_IMPORT",
+      "asset_path": null,
+      "sha256": null,
+      "approved": false
+    },
+    {
+      "task": "P0-INVERSORES-F14",
+      "page": "inversores",
+      "slot": "F14",
+      "art": "ART-05",
+      "truth_level": "C2",
+      "generation": "e23JTMG8M8JQCErDMrFw",
+      "session": "7R3oqEhWjqAmeJVExbwc",
+      "subject": "Concept development process instead of fabricated excavation photo",
+      "generation_url": "https://elevenlabs.io/app/image-video/history?modality=image&generationId=e23JTMG8M8JQCErDMrFw",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "asset_status": "REVIEW_NEEDS_IMPORT",
+      "asset_path": null,
+      "sha256": null,
+      "approved": false
+    },
+    {
+      "task": "P0-CONSTRUCCION-F15",
+      "page": "construccion",
+      "slot": "F15",
+      "art": "ART-05",
+      "truth_level": "C2",
+      "generation": "7ogqYT3DK47f4vw3nQwc",
+      "session": "pZMQFOu83VaNvcYeOiSN",
+      "subject": "Illustrative prospective building stages, not actual construction progress",
+      "generation_url": "https://elevenlabs.io/app/image-video/history?modality=image&generationId=7ogqYT3DK47f4vw3nQwc",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "asset_status": "REVIEW_NEEDS_IMPORT",
+      "asset_path": null,
+      "sha256": null,
+      "approved": false
+    }
+  ],
+  "missing_P0": {
+    "task": "P0-NORTE-F23",
+    "reason": "Real map requires independently verified geo source and labels; must not be AI-drawn.",
+    "status": "BLOCKED_ON_MAP_EVIDENCE"
+  }
+}
