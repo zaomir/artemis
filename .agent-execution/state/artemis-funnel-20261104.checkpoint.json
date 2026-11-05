@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 80,
-  "updated_at": "2026-11-05T13:23:31.545966+00:00",
-  "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v2",
-  "pending": {
-    "key": "NEWS-04-discovery-runtime-20261105-v2",
-    "action": "repeat full canonical site release after exact three test contract corrections; request artemis-diary-discovery-release-20261105-02; no migration or flag changes",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T13:23:31.545952+00:00"
-  },
+  "revision": 81,
+  "updated_at": "2026-11-05T13:36:54.908971+00:00",
+  "next_action": "CRM-03 relay reliability: execute durable CRM step before legacy notification transport in the SAME timer; then inactive newsletter wiring",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -518,6 +513,19 @@
           "sha256": "22befad6d32874b970bf43cfb8cf9f1fd227a07f6147745c61ae17fb1a78091a"
         }
       ]
+    },
+    "NEWS-04-discovery-runtime-20261105-v2": {
+      "key": "NEWS-04-discovery-runtime-20261105-v2",
+      "action": "repeat full canonical site release after exact three test contract corrections; request artemis-diary-discovery-release-20261105-02; no migration or flag changes",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:23:31.545952+00:00",
+      "verified_at": "2026-11-05T13:36:54.908955+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-discovery-runtime-20261105.json",
+          "sha256": "fb9f266ed86759d15bf756fb1b8dc2b8bb0c072774d27fbc40e5874290e51991"
+        }
+      ]
     }
   },
   "history": [
@@ -1000,6 +1008,12 @@
       "at": "2026-11-05T13:23:31.545966+00:00",
       "event": "began:NEWS-04-discovery-runtime-20261105-v2",
       "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v2"
+    },
+    {
+      "revision": 81,
+      "at": "2026-11-05T13:36:54.908971+00:00",
+      "event": "verified:NEWS-04-discovery-runtime-20261105-v2",
+      "next_action": "CRM-03 relay reliability: execute durable CRM step before legacy notification transport in the SAME timer; then inactive newsletter wiring"
     }
   ],
   "policy": {

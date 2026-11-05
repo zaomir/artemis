@@ -1,0 +1,63 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "NEWS-04",
+  "subunit": "menu_footer_runtime_release",
+  "status": "runtime_release_verified_visual_QA_partial",
+  "request_id": "artemis-diary-discovery-release-20261105-02",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-diary-discovery-release-20261105-02.json",
+  "generated_at": "2026-11-05T13:32:41.849Z",
+  "runtime": {
+    "schema": "artemis-site-release/1",
+    "requested_sha": "e47cd4cd2e8ac86ecbab77538ff441cb80d19fc6",
+    "production_changed": true,
+    "flags_changed": false,
+    "real_messages_sent": 0,
+    "crm_metadata_changed": false,
+    "previous_sha": "fe000ec896c9e7ba3cc157d71a6d4d108775ffbf",
+    "deployed_sha": "a0ea4eacc97d815fc78955f9ff2227af868f3521",
+    "deploy": {
+      "exit_code": 0,
+      "stdout_sha256": "775e3e46066668820be8919c9778d3deef41a34f2e91d2ba4c067c9b311689ba",
+      "test_summaries": [
+        "tests: Ran 577 tests in 405.595s OK (skipped=9) (rc=0)"
+      ]
+    },
+    "ok": true,
+    "mode": "applied",
+    "migration_replayed": false,
+    "capture_schema_applied": false
+  },
+  "browser": {
+    "verified_urls": [
+      "https://artemisresort.com/tenerife/fr/actualizaciones/concept-search/",
+      "https://artemisresort.com/tenerife/fr/"
+    ],
+    "observations": [
+      "French live article and ordinary home header expose Journal du projet",
+      "same localized diary link in live footer",
+      "ordinary home keeps existing calculation CTA"
+    ],
+    "diary_href": "/tenerife/fr/actualizaciones/",
+    "viewport_width": 1363,
+    "document_scroll_width": 1348,
+    "horizontal_overflow": false,
+    "limitation": "Subsequent click, AX and screenshot calls timed out at browser protocol level; same-browser fresh-tab navigation also timed out. No new screenshot or successful browser click-through claimed.",
+    "prior_five_locale_article_screenshots": "docs/funnel/evidence/NEWS-05-desktop-20261105.json"
+  },
+  "tests": {
+    "total": 577,
+    "failures": 0,
+    "skipped": 9,
+    "additional_test_exclusions": 0,
+    "server_suite_seconds": 405.595
+  },
+  "scope": [
+    "100 generated page links and five locale builds covered in source tests",
+    "newsletter and typed form flags unchanged",
+    "no migration or CRM schema/backfill replay"
+  ],
+  "remaining": [
+    "new mobile and multi-locale visual proof",
+    "form/subscription CTA after mail/privacy/controlled QA"
+  ]
+}
