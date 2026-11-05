@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 79,
-  "updated_at": "2026-11-05T13:23:20.398890+00:00",
-  "next_action": "NEWS-04 repeat full guarded release with corrected strict tests; actual browser discovery proof",
-  "pending": null,
+  "revision": 80,
+  "updated_at": "2026-11-05T13:23:31.545966+00:00",
+  "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v2",
+  "pending": {
+    "key": "NEWS-04-discovery-runtime-20261105-v2",
+    "action": "repeat full canonical site release after exact three test contract corrections; request artemis-diary-discovery-release-20261105-02; no migration or flag changes",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:23:31.545952+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -989,6 +994,12 @@
       "at": "2026-11-05T13:23:20.398890+00:00",
       "event": "verified:NEWS-04-navigation-test-contract-20261105-v1",
       "next_action": "NEWS-04 repeat full guarded release with corrected strict tests; actual browser discovery proof"
+    },
+    {
+      "revision": 80,
+      "at": "2026-11-05T13:23:31.545966+00:00",
+      "event": "began:NEWS-04-discovery-runtime-20261105-v2",
+      "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v2"
     }
   ],
   "policy": {
