@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 75,
-  "updated_at": "2026-11-05T13:14:25.080851+00:00",
-  "next_action": "NEWS-04 read only canonical failure case names and test frame lines; diagnose 3 failures, previous version retained",
-  "pending": null,
+  "revision": 76,
+  "updated_at": "2026-11-05T13:14:34.952480+00:00",
+  "next_action": "reconcile:NEWS-04-failure-diagnosis-20261105-v1",
+  "pending": {
+    "key": "NEWS-04-failure-diagnosis-20261105-v1",
+    "action": "read-only fixed canonical deploy test failure signatures and source frame lines; request artemis-diary-release-diagnostics-20261105-01; no raw logs or credentials",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:14:34.952466+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -939,6 +944,12 @@
       "at": "2026-11-05T13:14:25.080851+00:00",
       "event": "verified:NEWS-04-discovery-runtime-20261105-v1",
       "next_action": "NEWS-04 read only canonical failure case names and test frame lines; diagnose 3 failures, previous version retained"
+    },
+    {
+      "revision": 76,
+      "at": "2026-11-05T13:14:34.952480+00:00",
+      "event": "began:NEWS-04-failure-diagnosis-20261105-v1",
+      "next_action": "reconcile:NEWS-04-failure-diagnosis-20261105-v1"
     }
   ],
   "policy": {
