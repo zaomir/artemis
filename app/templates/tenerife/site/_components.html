@@ -481,7 +481,7 @@
     </div>
     <div class="f-legal">
       <p><strong>{{ ui.company }}</strong> {{ f.company }}</p>
-      <p class="lang-ru"><a href="/tenerife/ru/" lang="ru" hreflang="ru">{{ ui.lang_ru }}</a></p>
+      <p class="lang-ru"><a href="{{ footer_ru_url|default('/tenerife/ru/') }}" lang="ru" hreflang="ru">{{ ui.lang_ru }}</a></p>
     </div>
   </div>
 </footer>

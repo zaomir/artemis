@@ -25,6 +25,18 @@ class NewsTest(unittest.TestCase):
             out=news.build_pages(lambda *args:args[2],'en')
         self.assertEqual(list(out),['actualizaciones'])
         self.assertNotIn('<article>',out['actualizaciones'])
+    def test_internal_brief_is_attributed_without_a_private_hyperlink(self):
+        out=news.build_pages(lambda *args:args[2],'en')['actualizaciones/concept-search']
+        self.assertIn('Project brief',out)
+        self.assertNotIn('github.com/zaomir/grainee-v2',out)
+        self.assertNotIn('ARTEMIS_FUNNEL_ATOMIC_PLAN',out)
+    def test_article_menu_and_ru_switch_keep_meaningful_destinations(self):
+        for loc in news.LANGS:
+            root=ROOT/'app/tenerife_site'
+            article=(root if loc=='en' else root/loc)/'actualizaciones/concept-search.html'
+            body=article.read_text()
+            self.assertIn('class="header__cta" href="'+news.locale_url(loc)+'"',body)
+            if loc!='ru':self.assertIn('href="'+news.locale_url('ru','concept-search')+'" lang="ru"',body)
 
     def test_live_flask_routes_isolated_no_auth_no_js(self):
         import app
