@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 41,
-  "updated_at": "2026-11-05T11:11:47.906715+00:00",
-  "next_action": "MAIL-06 coordinated expiry: durable queue and final local PII scrub only after CRM readback; newsletter stays off",
-  "pending": null,
+  "revision": 42,
+  "updated_at": "2026-11-05T11:12:05.252158+00:00",
+  "next_action": "reconcile:MAIL-06-expiry-source-20261105-v1",
+  "pending": {
+    "key": "MAIL-06-expiry-source-20261105-v1",
+    "action": "durable pending expiry command in same CRM outbox; final local PII scrub requires matching independent CRM receipt; preserve new requests and unrelated enquiries",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T11:12:05.252143+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -514,6 +519,12 @@
       "at": "2026-11-05T11:11:47.906715+00:00",
       "event": "verified:MAIL-06-retention-guard-20261105-v1",
       "next_action": "MAIL-06 coordinated expiry: durable queue and final local PII scrub only after CRM readback; newsletter stays off"
+    },
+    {
+      "revision": 42,
+      "at": "2026-11-05T11:12:05.252158+00:00",
+      "event": "began:MAIL-06-expiry-source-20261105-v1",
+      "next_action": "reconcile:MAIL-06-expiry-source-20261105-v1"
     }
   ],
   "policy": {
