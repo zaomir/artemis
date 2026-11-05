@@ -1299,14 +1299,15 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
                         "title": meta["Meta title"],
                         "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
-    from news import build_pages, UI as NEWS_UI
+    from news import build_pages, locale_url as news_locale_url, UI as NEWS_UI
 
     def render_news(title, description, body, news_url, available):
         # News has a contextual CTA, never an incidental investment calculation.
         labels = dict(locale_cfg.NAV_UI[LOCALE], calculation=NEWS_UI[LOCALE][7])
         news_footer = dict(footer, about=['Artemis de la Cruz.', NEWS_UI[LOCALE][1]+'. '+NEWS_UI[LOCALE][8]])
-        env.globals['header_cta_url'] = news_url
+        env.globals['header_cta_url'] = news_locale_url(LOCALE)
         prefix_free = re.sub(r'^/tenerife/(?:ru|es|de|fr)/', '/tenerife/', news_url)
+        env.globals['footer_ru_url'] = lang_url('ru',prefix_free)
         alternates = [{'code':loc, 'url':BASE_URL+lang_url(loc,prefix_free)} for loc in available]
         links = [{'code':x['code'].upper(),'url':x['url'],'current':x['code']==LOCALE}
                  for x in alternates if x['code']!='ru']

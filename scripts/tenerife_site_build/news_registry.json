@@ -1,20 +1,29 @@
 {
   "schema": "artemis-news/1",
-  "release_status": "prepared_not_deployed",
+  "release_status": "published",
   "articles": [
     {
       "news_id": "concept-search-20261104",
-      "revision": 1,
+      "revision": 2,
       "slug": "concept-search",
-      "editorial_status": "ready",
+      "editorial_status": "published",
       "event_date": "2026-11-04",
-      "publication_date": "2026-11-04",
+      "publication_date": "2026-11-05",
       "stage": "concept_search",
       "author": "Artemis de la Cruz",
       "sources": [
         {
           "label": "Project brief, 4 November 2026",
-          "url": "https://github.com/zaomir/grainee-v2/blob/main/docs/projects/artemis/tenerife/ARTEMIS_FUNNEL_ATOMIC_PLAN_2026-11-04.md"
+          "visibility": "internal",
+          "url": null,
+          "evidence_ref": "artemis-funnel-contract-2026-11-04",
+          "labels": {
+            "en": "Project brief, 4 November 2026",
+            "ru": "Редакционный бриф проекта, 4 ноября 2026",
+            "es": "Documento editorial del proyecto, 4 de noviembre de 2026",
+            "de": "Redaktioneller Projektauftrag, 4. November 2026",
+            "fr": "Brief éditorial du projet, 4 novembre 2026"
+          }
         }
       ],
       "assets": [
@@ -39,6 +48,11 @@
           "revision": 1,
           "date": "2026-11-04",
           "change": "Initial factual stage update; no financial claims"
+        },
+        {
+          "revision": 2,
+          "date": "2026-11-05",
+          "change": "Actual first publication date and published status; localised attribution of the editorial brief without exposing a private repository link."
         }
       ],
       "translations": {
@@ -77,7 +91,8 @@
           "open": "Архитектура и её детали ещё разрабатываются. Концептуальные эскизы передают атмосферу; они не являются утверждённым проектом или подтверждением существующего здания.",
           "next": "Следующий шаг — сравнить концептуальные направления. Здесь появятся подтверждённые решения и открытые вопросы."
         }
-      }
+      },
+      "first_published_deployment_sha": "003980c2fcb4203301ff2d3b75e60a70f94315a6"
     }
   ]
 }

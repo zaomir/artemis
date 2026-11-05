@@ -26,7 +26,13 @@ def load_registry(path=None):
         assert type(a['revision']) is int and a['revision']>=1
         assert a['editorial_status'] in ('draft','ready','published','withdrawn')
         assert date.fromisoformat(a['event_date']) <= date.fromisoformat(a['publication_date'])
-        assert a['sources'] and all(s['url'].startswith('https://') for s in a['sources'])
+        assert a['sources']
+        for source in a['sources']:
+            assert source['label'].strip()
+            if source.get('visibility')=='internal':
+                assert source.get('url') is None and source.get('evidence_ref')
+            else:
+                assert source['url'].startswith('https://')
         assert a['history'][-1]['revision']==a['revision']
         for loc,t in a['translations'].items():
             assert loc in LANGS
@@ -55,7 +61,12 @@ def build_pages(render, locale):
             body+=f'<figure><picture class="frame"><img src="{esc(asset["path"],quote=True)}" alt="{esc(caption,quote=True)}" width="{asset["width"]}" height="{asset["height"]}" loading="lazy"></picture><figcaption class="micro">{esc(caption)}</figcaption></figure>'
         for idx,key in [(2,'changed'),(3,'open'),(4,'next')]:
             body+=f'<h2>{u[idx]}</h2><p>{esc(t[key])}</p>'
-        body+=f'<h2>{u[5]}</h2><ul>'+''.join(f'<li><a href="{esc(s["url"],quote=True)}">{esc(s["label"])}</a></li>' for s in a['sources'])+'</ul>'
+        citations=[]
+        for source in a['sources']:
+            label=esc(source.get('labels',{}).get(locale,source['label']))
+            citations.append('<li>'+label+'</li>' if source.get('visibility')=='internal' else
+                f'<li><a href="{esc(source["url"],quote=True)}">{label}</a></li>')
+        body+=f'<h2>{u[5]}</h2><ul>'+''.join(citations)+'</ul>'
         body+=f'<p><a href="{locale_url(locale)}">{u[0]}</a></p>'
         output['actualizaciones/'+a['slug']]=render(t['title'],t['summary'],body,url,list(a['translations']))
         cards.append(f'<article><h2><a href="{url}">{esc(t["title"])}</a></h2><p>{esc(t["summary"])}</p><time datetime="{a["publication_date"]}">{a["publication_date"]}</time></article>')
