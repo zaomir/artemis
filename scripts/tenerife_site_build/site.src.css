@@ -530,3 +530,11 @@ a:hover{color:var(--cs-ink)}
 .hero--concept .hero__media img,.frame--concept .frame__media img{object-fit:contain;background:#F5EFE0}
 .frame--concept .frame__media{aspect-ratio:16/9}
 @media(max-width:767px){.frame--concept .frame__media{aspect-ratio:4/5}}
+/* Keep fixed navigation and title plates clear of the concept drawing. */
+.hero--concept{padding-top:var(--header-h)}
+@media(min-width:768px){
+  .hero--concept .hero__media{aspect-ratio:16/9;min-height:0}
+  .hero--concept .hero__body{grid-area:2/1;padding-top:var(--space-6)}
+  .hero--concept .hero__body h1{margin-inline:0;padding:0;background:none;color:var(--cs-ink)}
+  .hero--concept .hero__after{grid-row:3}
+}

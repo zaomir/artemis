@@ -46,12 +46,10 @@ class WatercolourPreviewTests(unittest.TestCase):
             mapping = site_builder.assign_site_frames(self.pages, FRAMES)
         self.assertEqual(mapping["index"]["F01"], STEM)
         for page, frame in (("norte", "F21"), ("producto", "F05"),
-                            ("inversores", "F14"), ("construccion", "F15"),
-                            ("equipo", "F22")):
-            self.assertIsNone(mapping[page][frame], (page, frame))
-        self.assertEqual(set(FRAMES["preview_hidden"]),
-                         {"norte/F21", "norte/F23", "producto/F05", "inversores/F14",
-                          "construccion/F15", "equipo/F22"})
+                            ("inversores", "F14"), ("construccion", "F15")):
+            self.assertEqual(mapping[page][frame], f"artemis-watercolour-{page}-20261105")
+        self.assertIsNone(mapping["equipo"]["F22"])
+        self.assertEqual(set(FRAMES["preview_hidden"]), {"norte/F23", "equipo/F22"})
         assigned = [v for p in mapping.values() for v in p.values() if v]
         self.assertEqual(len(assigned), len(set(assigned)))
 
@@ -75,9 +73,36 @@ class WatercolourPreviewTests(unittest.TestCase):
                 site_builder.assign_site_frames(self.pages, cfg)
 
     def test_draft_cannot_be_production_override(self):
-        self.assertEqual(MANIFEST["status"], "REVIEW")
+        self.assertEqual(MANIFEST["status"], "APPROVED_FOR_PREVIEW")
+        self.assertTrue(MANIFEST["approved"])
+        self.assertFalse(MANIFEST["approval"]["production_release"])
         self.assertEqual(FRAMES.get("page_overrides"), {})
         self.assertEqual(FRAMES["preview_overrides"]["index/F01"], [STEM])
+
+    def test_preview_approval_does_not_authorize_production_assignment(self):
+        cfg = dict(FRAMES, page_overrides={"index/F01": [STEM]})
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "0"}):
+            with self.assertRaisesRegex(site_builder.BuildError, "release not authorized"):
+                site_builder.assign_site_frames(self.pages, cfg)
+
+    def test_each_approved_image_has_its_own_caption_and_original_mobile_source(self):
+        from PIL import Image
+        registry = json.loads((SCRIPTS / "visual_assets.json").read_text(encoding="utf-8"))
+        sources = set()
+        for stem, entry in registry["assets"].items():
+            manifest = site_builder.visual_manifest(stem)
+            mobile = manifest["mobile"]
+            self.assertEqual(mobile["composition"], "independent_portrait_recomposition")
+            self.assertNotIn(mobile["sha256"], sources)
+            sources.add(mobile["sha256"])
+            with Image.open(ROOT / mobile["source"]) as im:
+                self.assertAlmostEqual(im.width / im.height, .8, delta=.001)
+            for lang in ("en", "es", "de", "fr", "ru"):
+                with patch.object(site_builder, "LOCALE", lang):
+                    variant = site_builder.image_variant(stem)
+                self.assertEqual(variant["caption"], manifest["captions"][lang])
+                self.assertIn("mobile-20261105", variant["mobile_srcset"])
+        self.assertEqual(len(sources), 5)
 
     def test_all_five_languages_have_alts_and_disclosure(self):
         self.assertIn(STEM, ALTS["images"])
@@ -154,8 +179,8 @@ class WatercolourPreviewTests(unittest.TestCase):
         variant = site_builder.image_variant(STEM)
         self.assertEqual(variant["width"], 1600)
         self.assertEqual(variant["height"], 900)
-        self.assertIn("mobile-640.webp", variant["mobile_srcset"])
-        self.assertIn("mobile-800.webp", variant["mobile_srcset"])
+        self.assertIn("mobile-20261105-640.webp", variant["mobile_srcset"])
+        self.assertIn("mobile-20261105-800.webp", variant["mobile_srcset"])
         self.assertTrue(variant["caption"])
 
 

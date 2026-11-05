@@ -321,6 +321,13 @@ def visual_manifest(stem):
     manifest = json.loads((ROOT / entry["manifest"]).read_text(encoding="utf-8"))
     if not manifest.get("approved") or manifest.get("status") != "APPROVED_FOR_PREVIEW":
         raise BuildError(f"concept artwork lacks named owner approval: {stem}")
+    source = manifest["source"]
+    path, expected = ((manifest["file"], manifest["sha256"]) if isinstance(source, str)
+                      else (source["repository_path"], source["sha256"]))
+    receipt = json.loads((ROOT / manifest["approval"]["receipt"]).read_text(encoding="utf-8"))
+    approved = next((it for it in receipt["items"] if it["stem"] == stem), None)
+    if not approved or approved["sha256"] != expected or hashlib.sha256((ROOT / path).read_bytes()).hexdigest() != expected:
+        raise BuildError(f"concept artwork differs from the owner-approved source: {stem}")
     return manifest
 
 
@@ -344,6 +351,16 @@ def image_variant(stem):
         manifest = visual_manifest(stem)
         out["is_concept"] = True
         out["caption"] = manifest["captions"][LOCALE]
+        mobile = manifest.get("mobile")
+        if not mobile or mobile.get("composition") != "independent_portrait_recomposition":
+            raise BuildError(f"concept artwork requires an independent mobile composition: {stem}")
+        if hashlib.sha256((ROOT / mobile["source"]).read_bytes()).hexdigest() != mobile["sha256"]:
+            raise BuildError(f"mobile artwork source hash mismatch: {stem}")
+        for variant in mobile["variants"]:
+            if hashlib.sha256((IMG / variant["name"]).read_bytes()).hexdigest() != variant["sha256"]:
+                raise BuildError(f"mobile artwork variant hash mismatch: {stem}")
+        out["mobile_srcset"] = ", ".join(
+            f'/static/tenerife/site/img/{v["name"]} {v["dimensions"][0]}w' for v in mobile["variants"])
     return out
 
 

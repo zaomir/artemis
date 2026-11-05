@@ -1,0 +1,160 @@
+{
+  "purpose": "Remaining registry P1 concepts; prepare named review candidates after P0 QA",
+  "publication": false,
+  "items": [
+    {
+      "id": "index-f04",
+      "page": "index",
+      "frame": "F04",
+      "category": "ART-04",
+      "truth_level": "C1",
+      "brief": "Зелёный северный ландшафт и атлантическая дымка без гарантированного вида",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "index-f02",
+      "page": "index",
+      "frame": "F02",
+      "category": "ART-02",
+      "truth_level": "C2",
+      "brief": "Компактный испанско-канарский дом с арочной галереей, базальтом, бронзой, аккуратными колоннами",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "index-f03",
+      "page": "index",
+      "frame": "F03",
+      "category": "ART-03",
+      "truth_level": "C2",
+      "brief": "Образ приватного сада и общих пространств без обещания утверждённого бассейна",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "norte-f01",
+      "page": "norte",
+      "frame": "F01",
+      "category": "ART-04",
+      "truth_level": "C1",
+      "brief": "Характерная зелёная прибрежная среда, путь и склоны; архитектура только как ненавязчивый концепт",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "producto-f06",
+      "page": "producto",
+      "frame": "F06",
+      "category": "ART-03",
+      "truth_level": "C2",
+      "brief": "Эскиз жилой комнаты как исследование приватного масштаба",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "producto-f07",
+      "page": "producto",
+      "frame": "F07",
+      "category": "ART-03",
+      "truth_level": "C2",
+      "brief": "Спальня / лоджия в акварели без гарантированного вида на океан",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "producto-f08",
+      "page": "producto",
+      "frame": "F08",
+      "category": "ART-06",
+      "truth_level": "C2",
+      "brief": "Камерный интерьер с канарским базальтом, кремовой штукатуркой, бронзой",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "alquiler-f10",
+      "page": "alquiler",
+      "frame": "F10",
+      "category": "ART-03",
+      "truth_level": "C2",
+      "brief": "Камерная терраса, испанская колонна, зелёный сад, приглушённая Атлантика",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "energia-f11",
+      "page": "energia",
+      "frame": "F11",
+      "category": "ART-04",
+      "truth_level": "C2",
+      "brief": "Зелёный северный склон и архитектура как возможный экологичный ансамбль",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "energia-f13",
+      "page": "energia",
+      "frame": "F13",
+      "category": "ART-06",
+      "truth_level": "C2",
+      "brief": "Варианты незаметной интеграции солнечных панелей в концептуальную кровлю",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "energia-f16",
+      "page": "energia",
+      "frame": "F16",
+      "category": "ART-06",
+      "truth_level": "C2",
+      "brief": "Концептуальный узел панели, стропильной/кровельной системы и инженерии, не фото монтажа",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "proceso-f02",
+      "page": "proceso",
+      "frame": "F02",
+      "category": "ART-06",
+      "truth_level": "C2",
+      "brief": "Сдержанная архитектурная арка-переход как символ начала проекта, без обещания готовых ворот",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "mercado-f24",
+      "page": "mercado",
+      "frame": "F24",
+      "category": "ART-04",
+      "truth_level": "C1",
+      "brief": "Атлантический ландшафт с очень условным силуэтом поселения, без рекламного заката",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    },
+    {
+      "id": "boris-f18",
+      "page": "boris",
+      "frame": "F18",
+      "category": "ART-06",
+      "truth_level": "C2",
+      "brief": "Небольшой архитектурный этюд материалов / общего сада, без демонстрации готового бассейна",
+      "status": "PLANNED_REVIEW_CANDIDATE",
+      "approved": false,
+      "assignment": null
+    }
+  ]
+}
