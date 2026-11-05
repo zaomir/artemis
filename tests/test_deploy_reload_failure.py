@@ -67,7 +67,13 @@ CURL = r'''#!/bin/bash
 S="$SANDBOX"; url="${@: -1}"
 p=$(cat "$S/master.pid" 2>/dev/null)
 if [ -n "$p" ] && kill -0 "$p" 2>/dev/null && [ -n "$(pgrep -P "$p")" ]; then
-  case $url in */admin/leads) printf 403;; *) printf 200;; esac
+  # EN-aware statuses so dual-path smoke() picks EN mode and its 404/301 checks pass.
+  case $url in
+    */admin/leads) printf 403;;
+    */static/tenerife/site/model.json|*/static/tenerife/site/calc.js) printf 404;;
+    */tenerife/calculadora|*/tenerife/calculadora/|*/tenerife/calculadora/*) printf 301;;
+    *) printf 200;;
+  esac
 else printf 502; fi
 '''
 

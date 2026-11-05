@@ -51,14 +51,22 @@ log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
 # /health: app liveness JSON {"ok":true} (PR #23), must be 200 locally and via Cloudflare.
 PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/privacy/
        /en/terms/ /ru/terms/ /es/terms/ /fr/terms/)
-# Tenerife EN prod (/tenerife/, EN r1): must be 200 locally and via Cloudflare.
-# /tenerife/calculadora/ answers 301 -> /tenerife/condiciones/; model.json and calc.js answer 404 (checked below).
-TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/condiciones/
+# Tenerife dual-path smoke (EN r1+ vs legacy pre-EN).
+# Mode is chosen in smoke() by probing /tenerife/condiciones/ once:
+#   200 -> EN r1+ (condiciones + inversores; model.json/calc.js must 404; calculadora must 301)
+#   else -> legacy (calculadora + calc.js + model.json must 200; no strict 404/301 EN checks)
+# So the SAME installed script still passes smoke after ROLLBACK to a pre-EN tree.
+TENERIFE_PATHS_EN=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/condiciones/
   /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
   /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/inversores/ /tenerife/impressum/ /tenerife/privacy/
   /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
   /static/tenerife/site/site.js /sitemap.xml /robots.txt)
-TENERIFE_404=(/static/tenerife/site/model.json /static/tenerife/site/calc.js)
+TENERIFE_404_EN=(/static/tenerife/site/model.json /static/tenerife/site/calc.js)
+TENERIFE_PATHS_LEGACY=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/calculadora/
+  /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
+  /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/impressum/ /tenerife/privacy/
+  /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
+  /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
 
 # MainPID of the unit, "0" if none / not a number
@@ -105,13 +113,25 @@ reload_app() {
 }
 
 smoke() {
-  local fail=0 code p
+  local fail=0 code p en_mode=0
+  local -a tenerife_paths=() tenerife_404=()
   sleep 2
   for i in 1 2 3 4 5; do
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 "${LOCAL}/en/" || true)
     [[ "$code" == 200 ]] && break; sleep 2
   done
-  for p in "${PATHS[@]}" "${TENERIFE_PATHS[@]}"; do
+  # Version probe: EN r1+ serves /tenerife/condiciones/ as 200; pre-EN trees do not.
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/condiciones/" || true)
+  if [[ "$code" == 200 ]]; then
+    en_mode=1
+    tenerife_paths=("${TENERIFE_PATHS_EN[@]}")
+    tenerife_404=("${TENERIFE_404_EN[@]}")
+    log "smoke: Tenerife EN mode (condiciones=${code})"
+  else
+    tenerife_paths=("${TENERIFE_PATHS_LEGACY[@]}")
+    log "smoke: Tenerife legacy mode (condiciones=${code})"
+  fi
+  for p in "${PATHS[@]}" "${tenerife_paths[@]}"; do
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
     [[ "$code" == 200 ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "${PUBLIC}${p}" || true)
@@ -123,12 +143,14 @@ smoke() {
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
     [[ "$code" =~ ^(200|301|404)$ ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
   done
-  for p in "${TENERIFE_404[@]}"; do
-    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
-    [[ "$code" == 404 ]] || { log "SMOKE FAIL local ${p} -> ${code} (want 404)"; fail=1; }
-  done
-  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/calculadora/" || true)
-  [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/calculadora/ -> ${code} (want 301 to /tenerife/condiciones/)"; fail=1; }
+  if (( en_mode )); then
+    for p in "${tenerife_404[@]}"; do
+      code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
+      [[ "$code" == 404 ]] || { log "SMOKE FAIL local ${p} -> ${code} (want 404)"; fail=1; }
+    done
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/calculadora/" || true)
+    [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/calculadora/ -> ${code} (want 301 to /tenerife/condiciones/)"; fail=1; }
+  fi
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/admin/leads" || true)
   [[ "$code" == 403 ]] || { log "SMOKE FAIL /admin/leads without token -> ${code} (want 403)"; fail=1; }
   return $fail
