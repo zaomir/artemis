@@ -501,3 +501,11 @@ a:hover{color:var(--cs-ink)}
 .concept-stages__text small{display:block;margin-top:var(--space-2);color:var(--cs-ink-soft)}
 @media(max-width:767px){.concept-stages ol{grid-template-columns:1fr 1fr}}
 @media(max-width:420px){.concept-stages ol{grid-template-columns:1fr}}
+
+
+/* F23 coordinate-based area locator (not a street or cadastral map). */
+.geo-locator{margin:var(--space-6) 0 0;max-width:100%;padding:0}
+.geo-locator img{display:block;width:100%;height:auto;max-height:590px;object-fit:contain;background:#F5EFE0;border:1px solid var(--cs-basalt)}
+.geo-locator figcaption{margin-top:var(--space-3);font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft)}
+.geo-locator a{color:var(--cs-ink);text-decoration:underline;text-underline-offset:3px}
+.geo-locator a:focus-visible{outline:2px solid var(--cs-basalt);outline-offset:2px}
