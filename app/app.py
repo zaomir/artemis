@@ -510,7 +510,7 @@ def enquiry():
 
     init_db()
     conn = sqlite3.connect(DB)
-    conn.execute(
+    cursor=conn.execute(
         """INSERT INTO leads(name,email,organisation,role,enquiry_type,amount,message,consent,created_at)
            VALUES(?,?,?,?,?,?,?,?,?)""",
         (
@@ -525,8 +525,13 @@ def enquiry():
             datetime.datetime.now().isoformat(),
         ),
     )
-    conn.commit()
-    conn.close()
+    try:
+        if os.environ.get('ARTEMIS_CRM_CAPTURE_ENABLED')=='1':
+            from funnel_legacy import enqueue_row
+            enqueue_row(conn,'leads',cursor.lastrowid)
+        conn.commit()
+    finally:
+        conn.close()
 
     lang = (d.get("lang") or "").strip()[:5]
     if lang not in SUPPORTED:

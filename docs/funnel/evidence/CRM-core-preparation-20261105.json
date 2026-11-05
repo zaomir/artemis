@@ -1,0 +1,13 @@
+{
+  "atoms": ["CAP-02", "CRM-02", "CRM-03", "CRM-04", "CAP-06"],
+  "status": "prepared_activation_and_independent_runtime_reconciliation_required",
+  "request_id": "artemis-crm-core-20261105-01",
+  "implementation": "Both existing form paths enqueue in the source transaction; existing relay recovers historical rows into the same outbox. Existing Twenty service remains the only CRM writer.",
+  "legacy": "Keep every original enquiry/calc field, project, ID and timestamp. No inferred historical intent, language, newsletter consent or fake contact/company. Test markers are separate.",
+  "privacy": "Existing real controller confirmed using Companies House 09153936 on 2026-11-05. Describe self-hosted Twenty for enquiry follow-up in all active languages. Newsletter privacy/retention remains incomplete pending BASE-03/MAIL-06.",
+  "controller_source": "https://find-and-update.company-information.service.gov.uk/company/09153936",
+  "copy_hash": "f4f801021075d8ce332d775c516fde10baf305b212bc66e93236c4c58dd84110",
+  "copy_authorization": "Owner explicitly requested unified-plan implementation including CAP-06; digest rebaseline covers this processor disclosure and corrected calculator data description only.",
+  "tests": {"legacy_migration_source_cases": 5, "capture_http_cases": 9, "tenerife_regression_cases": 272, "tenerife_existing_skips": 6, "crete_privacy_cases": 3, "adapter_cases": 17, "independent_reconciliation_cases": 4},
+  "production_claim": "No delivery claimed by this preparation receipt. Runtime request must return independent GET results for every source row."
+}

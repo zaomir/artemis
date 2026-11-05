@@ -79,4 +79,8 @@ def relay_once(db):
         # Never create schema as a side effect of source discovery.
         if not conn.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='artemis_crm_outbox'").fetchone():
             return {'state':'blocked_missing_migration'}
+        import funnel_legacy
+        conn.execute('BEGIN IMMEDIATE')
+        funnel_legacy.enqueue_missing(conn)
+        conn.commit()
         return deliver_one(conn)
