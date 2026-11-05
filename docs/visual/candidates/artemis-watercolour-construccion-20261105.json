@@ -1,7 +1,7 @@
 {
   "schema": "artemis-watercolour-asset/1",
-  "status": "REVIEW_NEEDS_VISUAL_APPROVAL",
-  "approved": false,
+  "status": "APPROVED_FOR_PREVIEW",
+  "approved": true,
   "created_utc": "2026-11-05T10:00:22.058406+00:00",
   "stem": "artemis-watercolour-construccion-20261105",
   "category": "ART-05",
@@ -22,8 +22,8 @@
     "repository_path": "docs/visual/candidates/sources/7ogqYT3DK47f4vw3nQwc.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
-  "mobile_composition_verified": false,
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only",
+  "mobile_composition_verified": true,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
   "variants": [
@@ -97,5 +97,48 @@
     "de": "Konzeptionelle Darstellung möglicher künftiger Phasen; keine Abbildung dokumentiert einen tatsächlichen Projektfortschritt.",
     "fr": "Phases futures possibles représentées de façon conceptuelle ; aucune image ne documente un avancement réel du projet.",
     "ru": "Концептуальная иллюстрация возможных будущих этапов. Изображения не являются отчётом о ходе работ."
+  },
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/construccion-mobile-original-20261105.png",
+    "sha256": "ad1e9e2dc04644cf0c2f96220e18d34d5ca0e127bd4a305e311f42f9d984cf02",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-95de278e-2dab-459a-8868-fe5c905e66fb",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-construccion-20261105-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "cf3c727115b7c23af6458fe00c7a90d3e358681ab600cdefcdc0b9bc735ef0ab",
+        "bytes": 55966
+      },
+      {
+        "name": "artemis-watercolour-construccion-20261105-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "82bd548f0de89ff88b7efb79de2d67d672a256c27c67f489faddb7c3b19e5bde",
+        "bytes": 86452
+      }
+    ]
   }
 }

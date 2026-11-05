@@ -1,7 +1,7 @@
 {
   "schema": "artemis-watercolour-asset/1",
-  "status": "REVIEW_NEEDS_VISUAL_APPROVAL",
-  "approved": false,
+  "status": "APPROVED_FOR_PREVIEW",
+  "approved": true,
   "created_utc": "2026-11-05T10:00:21.173383+00:00",
   "stem": "artemis-watercolour-inversores-20261105",
   "category": "ART-05",
@@ -22,8 +22,8 @@
     "repository_path": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
-  "mobile_composition_verified": false,
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only",
+  "mobile_composition_verified": true,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
   "variants": [
@@ -97,5 +97,48 @@
     "de": "Explorative Entwurfsstudie; kein Nachweis eines ausgewählten Grundstücks, von Bauarbeiten oder abgeschlossenen Leistungen.",
     "fr": "Étude de conception exploratoire ; elle ne documente ni terrain choisi ni chantier ni travaux achevés.",
     "ru": "Поисковый эскиз. Он не подтверждает выбор участка, начало строительства или выполненные работы."
+  },
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/inversores-mobile-original-20261105.png",
+    "sha256": "33cb93c1e6f1b79e2e7b78a36bc03d2965ed139552c1214290764824825b03d1",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-42e41a0c-edd2-4bc5-a59a-da36ea9b75ff",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-inversores-20261105-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "e0c5f8ffe9088d851f9beb39bde979bfc2e9d49c1cab270c6851983f52854774",
+        "bytes": 146854
+      },
+      {
+        "name": "artemis-watercolour-inversores-20261105-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "414861b4d5b4c4716f5c4892d66fd2776b19b7dda068d73ebd104c63defb6557",
+        "bytes": 224350
+      }
+    ]
   }
 }

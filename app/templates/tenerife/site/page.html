@@ -26,7 +26,12 @@
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
 {% if page.hero.img %}
+{% if page.hero.img.mobile_srcset|default(false) %}
+<link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.mobile_srcset }}" imagesizes="100vw" media="(max-width:767px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.srcset }}" imagesizes="{{ page.hero.img.sizes }}" media="(min-width:768px)" fetchpriority="high">
+{% else %}
 <link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.srcset }}" imagesizes="{{ page.hero.img.sizes }}" fetchpriority="high">
+{% endif %}
 {% endif %}
 <link rel="stylesheet" href="/static/tenerife/site/site.css">
 {% for ld in lds %}
@@ -38,6 +43,9 @@
 {{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
 {{ c.hero(page.hero, calc) }}
+{% if page.concept_notice|default(false) %}
+<aside class="concept-notice" role="note"><div class="wrap"><p>{{ page.concept_notice }}</p></div></aside>
+{% endif %}
 {% if page.facts %}
 {{ c.facts(page.facts) }}
 {% endif %}

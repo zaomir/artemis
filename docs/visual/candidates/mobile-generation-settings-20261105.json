@@ -1,0 +1,42 @@
+{
+  "provider": "OpenAI image_gen",
+  "purpose": "Independent portrait adaptations authorized by owner for named pages",
+  "production_release": false,
+  "items": [
+    {
+      "page": "index",
+      "prompt": "Standalone 4:5 recomposition of approved ART01: complete stepped Spanish-Canarian houses, arches, basalt stairs, greenery, Atlantic glimpse; no crop, photorealism, text or site claims.",
+      "source": "docs/visual/candidates/sources/index-mobile-original-20261105.png",
+      "tool_output_file_id": "exec-674fff47-b56d-4d5e-8e8a-a80e60db32bc",
+      "prompt_record": "summary"
+    },
+    {
+      "page": "norte",
+      "prompt": "Create ONE standalone portrait 4:5 image, around 1024x1280, as an art-directed mobile adaptation of the attached approved watercolour. Recompose the scene for the vertical canvas; do not simply crop or stretch it. Maintain the same fine sepia ink, precise cross-hatching, layered transparent watercolour, warm cream paper vignette, limestone ochre, dark basalt, muted bronze, natural greens and calm Atlantic blue-grey. Same visual family as the reference. No photorealism, no 3D, no people, no text, labels, logos, watermark, amphorae, money or deeds. Artistic concept only, no surveyed site claim. One portrait composition only. Lush northern Tenerife coastal terraces: keep banana plants, date palms and basalt terraces in the foreground and a receding Atlantic coastline on the right. Recompose vertically to show an entire palm rising into the sky, layered green terraces below, a quiet grey-blue ocean. No buildings, parcel boundaries or specific surveyed viewpoint. Do not add Mount Teide or a tropical turquoise sea.",
+      "source": "docs/visual/candidates/sources/norte-mobile-original-20261105.png",
+      "tool_output_file_id": "exec-b58d2ffe-fc26-41f4-9a16-98ff6fd7ddaf",
+      "prompt_record": "full"
+    },
+    {
+      "page": "producto",
+      "prompt": "Create ONE standalone portrait 4:5 image, around 1024x1280, as an art-directed mobile adaptation of the attached approved watercolour. Recompose the scene for the vertical canvas; do not simply crop or stretch it. Maintain the same fine sepia ink, precise cross-hatching, layered transparent watercolour, warm cream paper vignette, limestone ochre, dark basalt, muted bronze, natural greens and calm Atlantic blue-grey. Same visual family as the reference. No photorealism, no 3D, no people, no text, labels, logos, watermark, amphorae, money or deeds. Artistic concept only, no surveyed site claim. One portrait composition only. Keep the SAME small Spanish-Canarian residence as the approved reference: matching two shaded entry arches with slim columns, lime plaster, basalt plinth and front steps, timber pergola on the right, modest terracotta roof edges. Recompose as a full vertical architectural study, entire house and roof visible with foreground stone approach and partial palm above left. A small Atlantic glimpse is subordinate. Do not enlarge the house or invent a different architectural family.",
+      "source": "docs/visual/candidates/sources/producto-mobile-original-20261105.png",
+      "tool_output_file_id": "exec-1804dfe0-a050-450c-96ad-c2b807c28989",
+      "prompt_record": "full"
+    },
+    {
+      "page": "inversores",
+      "prompt": "Create ONE standalone portrait 4:5 image, around 1024x1280, as an art-directed mobile adaptation of the attached approved watercolour. Recompose the scene for the vertical canvas; do not simply crop or stretch it. Maintain the same fine sepia ink, precise cross-hatching, layered transparent watercolour, warm cream paper vignette, limestone ochre, dark basalt, muted bronze, natural greens and calm Atlantic blue-grey. Same visual family as the reference. No photorealism, no 3D, no people, no text, labels, logos, watermark, amphorae, money or deeds. Artistic concept only, no surveyed site claim. One portrait composition only. Exploratory design study on a green coastal hillside. Retain the reference's modest incomplete masses integrated into basalt terraces, faint fine exploratory wireframe lines and sparse sketch contours. Recompose vertically with terraces stepping diagonally up the portrait and Atlantic water on the left. The volumes remain a deliberately incomplete architectural hypothesis, not a finished estate or construction site. No workers, machinery, investment icons, money or progress badges.",
+      "source": "docs/visual/candidates/sources/inversores-mobile-original-20261105.png",
+      "tool_output_file_id": "exec-42e41a0c-edd2-4bc5-a59a-da36ea9b75ff",
+      "prompt_record": "full"
+    },
+    {
+      "page": "construccion",
+      "prompt": "Create ONE standalone portrait 4:5 image, around 1024x1280, as an art-directed mobile adaptation of the attached approved watercolour. Recompose the scene for the vertical canvas; do not simply crop or stretch it. Maintain the same fine sepia ink, precise cross-hatching, layered transparent watercolour, warm cream paper vignette, limestone ochre, dark basalt, muted bronze, natural greens and calm Atlantic blue-grey. Same visual family as the reference. No photorealism, no 3D, no people, no text, labels, logos, watermark, amphorae, money or deeds. Artistic concept only, no surveyed site claim. One portrait composition only. Recompose the reference's five possible future stages as FIVE small separated miniatures arranged TOP TO BOTTOM on a portrait sheet: untouched planted basalt slope; a simple abstract foundation outline; a small future building shell; a potential roof and facade; finally the SAME small shaded Spanish-Canarian residence concept. Each complete miniature must be comfortably readable on a phone, with generous cream space between them, subtle dotted visual connections, and no text or numbers. This is a prospective concept sequence and NOT a record of completed or active works. No workers, construction machinery or exact schedule. Preserve five separate miniatures; do not crop a horizontal strip.",
+      "source": "docs/visual/candidates/sources/construccion-mobile-original-20261105.png",
+      "tool_output_file_id": "exec-95de278e-2dab-459a-8868-fe5c905e66fb",
+      "prompt_record": "full"
+    }
+  ]
+}

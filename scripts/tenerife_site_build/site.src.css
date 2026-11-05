@@ -525,3 +525,8 @@ a:hover{color:var(--cs-ink)}
 .news-teaser__media img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .news-teaser__media figcaption{font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft);margin-top:var(--space-2)}
 @media(max-width:600px){.news-teaser{grid-template-columns:1fr}.news-teaser__media{max-width:100%}}
+
+/* Preserve the whole concept drawing in both standalone compositions. */
+.hero--concept .hero__media img,.frame--concept .frame__media img{object-fit:contain;background:#F5EFE0}
+.frame--concept .frame__media{aspect-ratio:16/9}
+@media(max-width:767px){.frame--concept .frame__media{aspect-ratio:4/5}}

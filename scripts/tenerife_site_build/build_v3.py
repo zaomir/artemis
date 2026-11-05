@@ -313,6 +313,17 @@ def parse_page(md):
 
 
 # ---------------------------------------------------------------- images
+def visual_manifest(stem):
+    registry = json.loads((HERE / "visual_assets.json").read_text(encoding="utf-8"))
+    entry = registry["assets"].get(stem)
+    if not entry:
+        raise BuildError(f"unregistered concept artwork: {stem}")
+    manifest = json.loads((ROOT / entry["manifest"]).read_text(encoding="utf-8"))
+    if not manifest.get("approved") or manifest.get("status") != "APPROVED_FOR_PREVIEW":
+        raise BuildError(f"concept artwork lacks named owner approval: {stem}")
+    return manifest
+
+
 def image_variant(stem):
     jpg = IMG / f"{stem}.jpg"
     if not jpg.is_file():
@@ -323,8 +334,17 @@ def image_variant(stem):
     from responsive import jpeg_size
     width, height = jpeg_size(jpg)
     srcset = ", ".join(f"/static/tenerife/site/img/{stem}-{w}.webp {w}w" for w in WIDTHS)
-    return {"stem": stem, "src": f"/static/tenerife/site/img/{stem}.jpg", "srcset": srcset,
-            "width": width, "height": height}
+    out = {"stem": stem, "src": f"/static/tenerife/site/img/{stem}.jpg", "srcset": srcset,
+           "width": width, "height": height}
+    mobile_widths = (640, 800)
+    if all((IMG / f"{stem}-mobile-{w}.webp").is_file() for w in mobile_widths):
+        out["mobile_srcset"] = ", ".join(
+            f"/static/tenerife/site/img/{stem}-mobile-{w}.webp {w}w" for w in mobile_widths)
+    if stem.startswith("artemis-watercolour-"):
+        manifest = visual_manifest(stem)
+        out["is_concept"] = True
+        out["caption"] = manifest["captions"][LOCALE]
+    return out
 
 
 def assign_frames(frame_ids, frames_cfg):
@@ -346,15 +366,53 @@ def assign_site_frames(page_frames, frames_cfg):
     slot (the hero, or the first frame of a text hero) its first preferred photo still free, pages in PAGES order;
     pass 2 fills the remaining slots the same way. No free photo -> None (text block + basalt bar, DESIGN.md)."""
     used, out = set(), {}
+    overrides = dict(frames_cfg.get("page_overrides", {}))
+    # REVIEW imagery/hidden placeholders do not affect a normal production build.
+    is_preview = os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1"
+    hidden = set(frames_cfg.get("preview_hidden", ())) if is_preview else set()
+    if is_preview:
+        overrides.update(frames_cfg.get("preview_overrides", {}))
+    if hidden.intersection(overrides):
+        raise BuildError("frames.json: preview_hidden conflicts with image overrides")
     for name, fids in page_frames.items():
         if len(set(fids)) != len(fids):
             raise BuildError(f"{name}: a frame id twice on one page")
         out[name] = dict.fromkeys(fids)
+    for key, candidates in overrides.items():
+        name, separator, frame_id = key.partition("/")
+        if not separator or name not in page_frames or frame_id not in page_frames[name]:
+            raise BuildError(f"frames.json: override for unknown page/frame: {key}")
+        if not isinstance(candidates, list) or not candidates or any(
+                not isinstance(st, str) or not st for st in candidates):
+            raise BuildError(f"frames.json: invalid candidates for {key}")
+    for key in hidden:
+        name, separator, frame_id = key.partition("/")
+        if not separator or name not in page_frames or frame_id not in page_frames[name]:
+            raise BuildError(f"frames.json: preview_hidden has unknown page/frame: {key}")
+    excluded = set()
+    if is_preview:
+        excluded.update(frames_cfg.get("preview_excluded_stems", ()))
+        # Removing or replacing a slot must not free its rejected render for
+        # another page. Reserve the original candidates before either pass.
+        for key in hidden | set(frames_cfg.get("preview_overrides", {})):
+            fid = key.partition("/")[2]
+            excluded.update(frames_cfg["prefer"].get(fid, ()))
     for rest in (False, True):
         for name, fids in page_frames.items():
             for fid in (fids[1:] if rest else fids[:1]):
-                pick = next((st for st in frames_cfg["prefer"].get(fid, []) if st not in used), None)
+                key = f"{name}/{fid}"
+                if key in hidden:
+                    out[name][fid] = None
+                    continue
+                candidates = overrides.get(key, frames_cfg["prefer"].get(fid, []))
+                pick = next((st for st in candidates if st not in used and st not in excluded), None)
+                if key in overrides and pick is None:
+                    raise BuildError(f"frames.json: no unique image available for {key}")
                 if pick is not None:
+                    if pick.startswith("artemis-watercolour-"):
+                        if not is_preview:
+                            raise BuildError("concept artwork is approved for preview only; release not authorized")
+                        visual_manifest(pick)
                     used.add(pick)
                 out[name][fid] = pick
     return out
@@ -697,6 +755,15 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
         elif name == "equipo":
             s["id"] = ("roles", "responsibility", "profiles", "contact")[min(n - 1, 3)]
         s["calc_full"] = name == "inversores" and semantic == "calculate"
+        # Preview-only educational diagram: stage names, never a fabricated progress indicator.
+        if name == "index" and "F17" in s["frames"] and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
+            s["concept_progress"] = i18n_strings()[LOCALE]["visual"]["concept_stages"]
+
+        # Locator is coordinate-based, not a conceptual building render.
+        # Replace F23 only in review builds until page-by-page QA is approved.
+        if name == "norte" and "F23" in s["frames"] and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
+            s["location_context"] = i18n_strings()[LOCALE]["visual"]["location_context"]
+            s["frames"] = [fid for fid in s["frames"] if fid != "F23"]
         s["rev"], s["qa"] = False, []
         if name == "inversores" and semantic == "overview":
             s["frames"].insert(0, "F14")
@@ -1263,6 +1330,10 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         frames = site_frames[name]
         alias = heading_alias(name)
         page = structure(blocks, frames, alts, name, model, alias=alias)
+        # Explicit concept-stage notice across all content pages in REVIEW only.
+        # No change to calculator/finance inputs or production HTML by default.
+        if os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1":
+            page["concept_notice"] = html.escape(i18n_strings()[LOCALE]["visual"]["project_concept_notice"])
         if name in ("simon", "boris"):
             apply_profile_photos(page, name, alias)
         url = locale_path(slugs[name])

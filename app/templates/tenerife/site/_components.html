@@ -2,7 +2,7 @@
     style/script: CSP). No texts or figures here except DESIGN.md §5 interface strings (Меню, Ещё, сейчас,
     Площадь, м², Сайт); every number comes from the copy via model.json. -#}
 {% macro picture(img, hero=false) -%}
-<picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
+<picture>{% if img.mobile_srcset|default(false) %}<source media="(max-width:767px)" type="image/webp" srcset="{{ img.mobile_srcset }}" sizes="100vw" width="640" height="800">{% endif %}<source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
 {%- endmacro %}
 
 {% macro navlink(n, url) -%}
@@ -82,13 +82,13 @@
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
 {% if h.img %}
-      <figure class="frame hero-text__frame"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div></figure>
+      <figure class="frame hero-text__frame{% if h.img.is_concept|default(false) %} frame--concept{% endif %}"><div class="frame__media r-3x2">{{ picture(h.img, true) }}</div>{% if h.img.caption|default(false) %}<figcaption>{{ h.img.caption }}</figcaption>{% endif %}</figure>
 {% endif %}
     </div>
   </div>
 </section>
 {% else %}
-<section class="hero{% if h.kind == "short" %} hero--short{% endif %}" id="hero" aria-labelledby="h1">
+<section class="hero{% if h.img.is_concept|default(false) %} hero--concept{% endif %}{% if h.kind == "short" %} hero--short{% endif %}" id="hero" aria-labelledby="h1">
   <div class="hero__media">{{ picture(h.img, true) }}</div>
   <div class="hero__body">
     <div class="wrap grid">
@@ -98,6 +98,7 @@
 {% if h.intro %}
   <div class="hero__after">
     <div class="wrap grid">
+{% if h.img.caption|default(false) %}<p class="concept-note">{{ h.img.caption }}</p>{% endif %}
 {% for p in h.intro %}
       <p class="hero__lead">{{ p }}</p>
 {% endfor %}
@@ -187,7 +188,7 @@
 
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}
-<figure class="frame{{ extra }}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div></figure>
+<figure class="frame{{ extra }}{% if img.is_concept|default(false) %} frame--concept{% endif %}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div>{% if img.caption|default(false) %}<figcaption>{{ img.caption }}</figcaption>{% endif %}</figure>
 {%- endmacro %}
 
 {% macro frames(s) -%}
@@ -332,6 +333,29 @@
   </div>
 {{ extras(s, k, res) }}
 {{ frames(s) }}
+{% endif %}
+{% if s.concept_progress|default(false) %}
+  <div class="wrap">
+    <figure class="concept-stages" aria-label="{{ s.concept_progress.label }}">
+      <figcaption>{{ s.concept_progress.label }}</figcaption>
+      <ol>
+{% for label in s.concept_progress.steps %}
+        <li{% if loop.first %} class="is-current"{% endif %}>
+          <span class="concept-stages__number" aria-hidden="true">{{ loop.index }}</span>
+          <span class="concept-stages__text">{{ label }}<small>{{ s.concept_progress.current if loop.first else s.concept_progress.next }}</small></span>
+        </li>
+{% endfor %}
+      </ol>
+    </figure>
+  </div>
+{% endif %}
+{% if s.location_context|default(false) %}
+  <div class="wrap">
+    <figure class="geo-locator">
+      <picture><source media="(max-width:600px)" srcset="/static/tenerife/site/img/la-quinta-context-locator-mobile-20261105.svg" width="640" height="660"><img src="/static/tenerife/site/img/la-quinta-context-locator-20261105.svg" alt="{{ s.location_context.alt }}" width="1200" height="620" loading="lazy" decoding="async"></picture>
+      <figcaption>{{ s.location_context.caption }} <a href="https://www.openstreetmap.org/?mlat=28.43187&amp;mlon=-16.49517#map=14/28.43187/-16.49517" target="_blank" rel="noopener noreferrer">{{ s.location_context.open_map }}</a>.</figcaption>
+    </figure>
+  </div>
 {% endif %}
 </section>
 {%- endmacro %}
