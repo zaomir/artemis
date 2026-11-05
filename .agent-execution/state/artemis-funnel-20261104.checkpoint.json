@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 78,
-  "updated_at": "2026-11-05T13:22:35.994195+00:00",
-  "next_action": "reconcile:NEWS-04-navigation-test-contract-20261105-v1",
-  "pending": {
-    "key": "NEWS-04-navigation-test-contract-20261105-v1",
-    "action": "retain strict desktop/mobile/footer destination assertions with the required localized diary addition; no test removal or exclusion",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T13:22:35.994179+00:00"
-  },
+  "revision": 79,
+  "updated_at": "2026-11-05T13:23:20.398890+00:00",
+  "next_action": "NEWS-04 repeat full guarded release with corrected strict tests; actual browser discovery proof",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -505,6 +500,19 @@
           "sha256": "f2a76942713fa14d52c62acadcc0ed3ba99d8d8235ff06afedbd17b5c87eec7f"
         }
       ]
+    },
+    "NEWS-04-navigation-test-contract-20261105-v1": {
+      "key": "NEWS-04-navigation-test-contract-20261105-v1",
+      "action": "retain strict desktop/mobile/footer destination assertions with the required localized diary addition; no test removal or exclusion",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:22:35.994179+00:00",
+      "verified_at": "2026-11-05T13:23:20.398875+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-navigation-contract-20261105.json",
+          "sha256": "22befad6d32874b970bf43cfb8cf9f1fd227a07f6147745c61ae17fb1a78091a"
+        }
+      ]
     }
   },
   "history": [
@@ -975,6 +983,12 @@
       "at": "2026-11-05T13:22:35.994195+00:00",
       "event": "began:NEWS-04-navigation-test-contract-20261105-v1",
       "next_action": "reconcile:NEWS-04-navigation-test-contract-20261105-v1"
+    },
+    {
+      "revision": 79,
+      "at": "2026-11-05T13:23:20.398890+00:00",
+      "event": "verified:NEWS-04-navigation-test-contract-20261105-v1",
+      "next_action": "NEWS-04 repeat full guarded release with corrected strict tests; actual browser discovery proof"
     }
   ],
   "policy": {
