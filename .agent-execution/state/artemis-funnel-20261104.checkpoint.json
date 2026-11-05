@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 22,
-  "updated_at": "2026-11-05T09:33:57.733719+00:00",
-  "next_action": "reconcile:CRM-01-runtime-schema-20261105-v2",
-  "pending": {
-    "key": "CRM-01-runtime-schema-20261105-v2",
-    "action": "guarded seven-field schema apply using actual active sync interpreter; request artemis-crm-schema-20261105-02; prior request proven no effect",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T09:33:57.733704+00:00"
-  },
+  "revision": 23,
+  "updated_at": "2026-11-05T09:37:48.988447+00:00",
+  "next_action": "CAP-02 + CRM-02/03/04: ship legacy atomic capture/privacy, install existing adapter/relay and independently reconcile every source record",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -139,6 +134,19 @@
         {
           "path": "docs/funnel/evidence/CRM-01-interpreter-diagnosis-20261105.json",
           "sha256": "e729582bffd9a2791ceb354019c24ed93894e937472daca0bc61b3425d1197b1"
+        }
+      ]
+    },
+    "CRM-01-runtime-schema-20261105-v2": {
+      "key": "CRM-01-runtime-schema-20261105-v2",
+      "action": "guarded seven-field schema apply using actual active sync interpreter; request artemis-crm-schema-20261105-02; prior request proven no effect",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T09:33:57.733704+00:00",
+      "verified_at": "2026-11-05T09:37:48.988432+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CRM-01-runtime-20261105.json",
+          "sha256": "e5ad1ff88b174dac964073a2172f2e78b991a99aba5cc09ce605663ea2b5de40"
         }
       ]
     }
@@ -275,6 +283,12 @@
       "at": "2026-11-05T09:33:57.733719+00:00",
       "event": "began:CRM-01-runtime-schema-20261105-v2",
       "next_action": "reconcile:CRM-01-runtime-schema-20261105-v2"
+    },
+    {
+      "revision": 23,
+      "at": "2026-11-05T09:37:48.988447+00:00",
+      "event": "verified:CRM-01-runtime-schema-20261105-v2",
+      "next_action": "CAP-02 + CRM-02/03/04: ship legacy atomic capture/privacy, install existing adapter/relay and independently reconcile every source record"
     }
   ],
   "policy": {
