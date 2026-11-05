@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 37,
-  "updated_at": "2026-11-05T10:57:57.410639+00:00",
-  "next_action": "MAIL-06: authenticated feedback and coordinated pending-data expiry; newsletter inactive",
-  "pending": null,
+  "revision": 38,
+  "updated_at": "2026-11-05T10:58:28.838740+00:00",
+  "next_action": "reconcile:MAIL-06-feedback-preparation-20261105-v1",
+  "pending": {
+    "key": "MAIL-06-feedback-preparation-20261105-v1",
+    "action": "authenticated operator deliverability feedback into existing subscription and CRM outbox; source receipt idempotency; no real recipient mutation or send",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T10:58:28.838725+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -464,6 +469,12 @@
       "at": "2026-11-05T10:57:57.410639+00:00",
       "event": "verified:MAIL-03-dispatch-safety-20261105-v1",
       "next_action": "MAIL-06: authenticated feedback and coordinated pending-data expiry; newsletter inactive"
+    },
+    {
+      "revision": 38,
+      "at": "2026-11-05T10:58:28.838740+00:00",
+      "event": "began:MAIL-06-feedback-preparation-20261105-v1",
+      "next_action": "reconcile:MAIL-06-feedback-preparation-20261105-v1"
     }
   ],
   "policy": {
