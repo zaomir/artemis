@@ -1,0 +1,16 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "CRM-03",
+  "subunit": "same_timer_CRM_before_notifications",
+  "source_commit_sha": "b59fbf1d1cc794e7071b3e3f63a4f92d22e71f74",
+  "merge_commit_sha": "93ab1b49ecf790099d2e7b0e165f744b431ad977",
+  "pr_url": "https://github.com/zaomir/artemis/pull/54",
+  "tests": {
+    "relay_tests": 26,
+    "failures": 0,
+    "new_failure_cases": 4
+  },
+  "observed_isolated_behavior": "actual SQLite CRM receipt committed before simulated notification exception; source row retained; CLI controls do not drain",
+  "status": "source_merged_pending_existing_core_release",
+  "production_changed": false
+}

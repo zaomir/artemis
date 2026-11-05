@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 82,
-  "updated_at": "2026-11-05T13:37:07.126510+00:00",
-  "next_action": "reconcile:CRM-03-relay-priority-20261105-v1",
-  "pending": {
-    "key": "CRM-03-relay-priority-20261105-v1",
-    "action": "prioritize existing durable CRM delivery before potentially blocking legacy email/TG notifications; preserve status/requeue behavior and one existing timer",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T13:37:07.126491+00:00"
-  },
+  "revision": 83,
+  "updated_at": "2026-11-05T13:40:34.921709+00:00",
+  "next_action": "MAIL-03 connect inactive confirmation/welcome dispatch through SAME timer and existing Gmail factory; no activation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -531,6 +526,19 @@
           "sha256": "fb9f266ed86759d15bf756fb1b8dc2b8bb0c072774d27fbc40e5874290e51991"
         }
       ]
+    },
+    "CRM-03-relay-priority-20261105-v1": {
+      "key": "CRM-03-relay-priority-20261105-v1",
+      "action": "prioritize existing durable CRM delivery before potentially blocking legacy email/TG notifications; preserve status/requeue behavior and one existing timer",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:37:07.126491+00:00",
+      "verified_at": "2026-11-05T13:40:34.921695+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CRM-03-relay-priority-20261105.json",
+          "sha256": "333e0c82ad282ba2131c0e1240ba10601a3a268245b11273ff2bcce93100c881"
+        }
+      ]
     }
   },
   "history": [
@@ -1025,6 +1033,12 @@
       "at": "2026-11-05T13:37:07.126510+00:00",
       "event": "began:CRM-03-relay-priority-20261105-v1",
       "next_action": "reconcile:CRM-03-relay-priority-20261105-v1"
+    },
+    {
+      "revision": 83,
+      "at": "2026-11-05T13:40:34.921709+00:00",
+      "event": "verified:CRM-03-relay-priority-20261105-v1",
+      "next_action": "MAIL-03 connect inactive confirmation/welcome dispatch through SAME timer and existing Gmail factory; no activation"
     }
   ],
   "policy": {
