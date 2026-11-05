@@ -2,6 +2,7 @@
 import contextlib
 import importlib.util
 import io
+import json
 import os
 import sqlite3
 import sys
@@ -9,6 +10,7 @@ import tempfile
 import time
 import types
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +61,56 @@ class LeadRelayTest(unittest.TestCase):
         self.m.run()
         self.assertEqual(self.mails, [("tenerife_waitlist", 1)])
         self.assertEqual(self.tgs, [])     # no chat id → nothing to Telegram
+
+    def test_crm_receipt_is_committed_before_broken_legacy_notification(self):
+        sys.path.insert(0,str(ROOT/'app'))
+        import funnel_store
+        import funnel_delivery
+        import hashlib
+        with sqlite3.connect(self.db) as conn:funnel_store.migrate(conn)
+        original=funnel_delivery.deliver_one
+        def transport(event):
+            return {'ok':True,'result':dict(state='verified',source_event_id=event['source_event_id'],
+                person_id='person-test',opportunity_id='opportunity-test',independent_readback=True,
+                payload_sha256=hashlib.sha256(json.dumps(event,sort_keys=True).encode()).hexdigest())}
+        def broken_notification():
+            with sqlite3.connect(self.db) as conn:
+                self.assertEqual(conn.execute('SELECT state FROM artemis_crm_outbox').fetchone()[0],'verified')
+            raise RuntimeError('PRIVATE_NOTIFICATION_PAYLOAD')
+        with patch.dict(os.environ,{'ARTEMIS_CRM_DELIVERY_ENABLED':'1','ARTEMIS_DIR':str(ROOT)}), \
+             patch.object(funnel_delivery,'deliver_one',side_effect=lambda conn:original(conn,send=transport)), \
+             patch.object(self.m,'run',side_effect=broken_notification):
+            output=io.StringIO()
+            with contextlib.redirect_stdout(output):self.assertEqual(self.m.main([]),1)
+        self.assertNotIn('PRIVATE_NOTIFICATION_PAYLOAD',output.getvalue())
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM leads').fetchone()[0],1)
+            self.assertEqual(conn.execute("SELECT COUNT(*) FROM artemis_crm_outbox WHERE state='verified'").fetchone()[0],1)
+
+    def test_crm_failure_does_not_prevent_legacy_notification_or_hide_error_status(self):
+        sys.path.insert(0,str(ROOT/'app'))
+        import funnel_delivery
+        called=[]
+        with patch.dict(os.environ,{'ARTEMIS_CRM_DELIVERY_ENABLED':'1','ARTEMIS_DIR':str(ROOT)}), \
+             patch.object(funnel_delivery,'relay_once',side_effect=RuntimeError('PRIVATE_CRM_PAYLOAD')), \
+             patch.object(self.m,'run',side_effect=lambda:called.append('legacy') or 0):
+            output=io.StringIO()
+            with contextlib.redirect_stdout(output):self.assertEqual(self.m.main([]),1)
+        self.assertEqual(called,['legacy']);self.assertNotIn('PRIVATE_CRM_PAYLOAD',output.getvalue())
+
+    def test_status_and_requeue_never_drain_crm(self):
+        with patch.object(self.m,'crm_step',side_effect=AssertionError('must not drain')), \
+             patch.object(self.m,'status',return_value={'queued':0}), \
+             patch.object(self.m,'requeue',return_value=0) as requeue:
+            with contextlib.redirect_stdout(io.StringIO()):self.assertEqual(self.m.main(['--status']),0)
+            self.assertEqual(self.m.main(['--requeue','--channel','email']),0)
+            requeue.assert_called_once_with(['--channel','email'])
+
+    def test_missing_source_does_not_create_an_empty_database(self):
+        missing=os.path.join(self.d,'MISSING.db')
+        with patch.dict(os.environ,{'ARTEMIS_CRM_DELIVERY_ENABLED':'1'}),patch.object(self.m,'DB',missing):
+            with contextlib.redirect_stdout(io.StringIO()):self.assertEqual(self.m.crm_step(),1)
+        self.assertFalse(Path(missing).exists())
 
     def test_tg_backlog_once_only_for_old_leads(self):
         self.m.run()
