@@ -43,6 +43,9 @@
 {{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
 {{ c.hero(page.hero, calc) }}
+{% if page.concept_notice|default(false) %}
+<aside class="concept-notice" role="note"><div class="wrap"><p>{{ page.concept_notice }}</p></div></aside>
+{% endif %}
 {% if page.facts %}
 {{ c.facts(page.facts) }}
 {% endif %}
