@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 29,
-  "updated_at": "2026-11-05T10:12:03.197853+00:00",
-  "next_action": "NEWS-04 navigation and public source fix; CRM-05 internal explicit FB intake; AS-01 needs connected authorized session",
-  "pending": null,
+  "revision": 30,
+  "updated_at": "2026-11-05T10:12:15.641726+00:00",
+  "next_action": "reconcile:NEWS-04-public-navigation-20261105-v1",
+  "pending": {
+    "key": "NEWS-04-public-navigation-20261105-v1",
+    "action": "fix observed article menu self-link, private evidence hyperlink and actual publication metadata; rebuild locales; no CRM replay",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T10:12:15.641712+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -364,6 +369,12 @@
       "at": "2026-11-05T10:12:03.197853+00:00",
       "event": "verified:AS-01-access-inventory-20261105-v1",
       "next_action": "NEWS-04 navigation and public source fix; CRM-05 internal explicit FB intake; AS-01 needs connected authorized session"
+    },
+    {
+      "revision": 30,
+      "at": "2026-11-05T10:12:15.641726+00:00",
+      "event": "began:NEWS-04-public-navigation-20261105-v1",
+      "next_action": "reconcile:NEWS-04-public-navigation-20261105-v1"
     }
   ],
   "policy": {
