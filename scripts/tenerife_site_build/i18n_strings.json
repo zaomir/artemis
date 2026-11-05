@@ -25,7 +25,18 @@
       "form": "← Back to the form"
     },
     "visual": {
-      "concept_caption": "Conceptual illustration. Architecture, location and project characteristics are under study."
+      "concept_caption": "Conceptual illustration. Architecture, location and project characteristics are under study.",
+      "concept_stages": {
+        "label": "Project development stages (concept only)",
+        "steps": [
+          "Architectural concept search",
+          "Site selection",
+          "Feasibility review",
+          "Detailed design"
+        ],
+        "current": "Current stage",
+        "next": "Planned — not started"
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Ink-and-watercolour concept of a stepped Spanish-Canarian residential village on a green Atlantic hillside",
@@ -137,7 +148,18 @@
       "form": "← Volver al formulario"
     },
     "visual": {
-      "concept_caption": "Ilustración conceptual. Arquitectura, ubicación y características del proyecto en estudio."
+      "concept_caption": "Ilustración conceptual. Arquitectura, ubicación y características del proyecto en estudio.",
+      "concept_stages": {
+        "label": "Etapas de desarrollo del proyecto (conceptuales)",
+        "steps": [
+          "Búsqueda del concepto arquitectónico",
+          "Selección del terreno",
+          "Estudio de viabilidad",
+          "Proyecto arquitectónico"
+        ],
+        "current": "Etapa actual",
+        "next": "Previsto — no iniciado"
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Boceto en tinta y acuarela de residencias canarias escalonadas sobre una ladera verde del Atlántico",
@@ -249,7 +271,18 @@
       "form": "← Zurück zum Formular"
     },
     "visual": {
-      "concept_caption": "Konzeptillustration. Architektur, Standort und Projekteigenschaften werden noch geprüft."
+      "concept_caption": "Konzeptillustration. Architektur, Standort und Projekteigenschaften werden noch geprüft.",
+      "concept_stages": {
+        "label": "Projektphasen (konzeptionell)",
+        "steps": [
+          "Architekturkonzept suchen",
+          "Grundstück auswählen",
+          "Machbarkeit prüfen",
+          "Detailplanung"
+        ],
+        "current": "Aktuelle Phase",
+        "next": "Geplant — noch nicht begonnen"
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Tusche- und Aquarellentwurf für gestaffelte kanarische Residenzen an einem grünen Atlantikhang",
@@ -361,7 +394,18 @@
       "form": "← Retour au formulaire"
     },
     "visual": {
-      "concept_caption": "Illustration conceptuelle. Architecture, emplacement et caractéristiques du projet sont à l’étude."
+      "concept_caption": "Illustration conceptuelle. Architecture, emplacement et caractéristiques du projet sont à l’étude.",
+      "concept_stages": {
+        "label": "Étapes du projet (conceptuelles)",
+        "steps": [
+          "Recherche du concept architectural",
+          "Sélection du terrain",
+          "Étude de faisabilité",
+          "Conception détaillée"
+        ],
+        "current": "Étape actuelle",
+        "next": "Prévu — non commencé"
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Esquisse à l’encre et à l’aquarelle de résidences canariennes en terrasses sur une colline atlantique verdoyante",
@@ -450,7 +494,18 @@
   },
   "ru": {
     "visual": {
-      "concept_caption": "Концептуальная иллюстрация. Архитектура, участок и характеристики проекта ещё не утверждены."
+      "concept_caption": "Концептуальная иллюстрация. Архитектура, участок и характеристики проекта ещё не утверждены.",
+      "concept_stages": {
+        "label": "Стадии развития проекта (концептуально)",
+        "steps": [
+          "Поиск архитектурной концепции",
+          "Выбор участка",
+          "Проверка реализуемости",
+          "Разработка проекта"
+        ],
+        "current": "Текущая стадия",
+        "next": "Планируется — ещё не начато"
+      }
     },
     "calc": {
       "ui": {
