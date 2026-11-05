@@ -558,18 +558,33 @@ def requeue(args):
     return 0
 
 
-if __name__ == "__main__":
-    if sys.argv[1:] == ["--status"]:
-        print(json.dumps(status()))
-        sys.exit(0)
-    if sys.argv[1:2] == ["--requeue"]:
-        sys.exit(requeue(sys.argv[2:]))
-    rc=run()
-    # Optional extension of this SAME timer, activated only after BASE-02/CRM-01.
-    # Does not install another source reader or change legacy notification rules.
-    if os.environ.get('ARTEMIS_CRM_DELIVERY_ENABLED')=='1':
+def crm_step():
+    """Run before optional notifications: their network can consume the timeout."""
+    if os.environ.get('ARTEMIS_CRM_DELIVERY_ENABLED')!='1':return 0
+    if not os.path.isfile(DB):
+        log('CRM relay blocked','source_database_missing');return 1
+    try:
         sys.path.insert(0, os.path.join(os.environ.get('ARTEMIS_DIR','/var/www/artemis'),'app'))
         from funnel_delivery import relay_once
         result=relay_once(DB)
-        if result and result.get('state')!='verified':rc=1
-    sys.exit(rc)
+        return int(bool(result and result.get('state')!='verified'))
+    except Exception as exc:
+        log('CRM relay failed',type(exc).__name__);return 1
+
+
+def main(args=None):
+    args=sys.argv[1:] if args is None else args
+    if args == ["--status"]:
+        print(json.dumps(status()))
+        return 0
+    if args[:1] == ["--requeue"]:return requeue(args[1:])
+    # The SAME timer and durable outbox. A hung notification cannot prevent the
+    # current CRM attempt; a failed CRM attempt does not discard notifications.
+    rc=crm_step()
+    try:return max(rc,run())
+    except Exception as exc:
+        log('legacy notification relay failed',type(exc).__name__);return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
