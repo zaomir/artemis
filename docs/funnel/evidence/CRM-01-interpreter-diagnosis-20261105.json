@@ -1,0 +1,1004 @@
+{
+  "atom": "CRM-01",
+  "status": "diagnosed_no_production_mutation",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-schema-preflight-diagnostics-20261105-01.json",
+  "request_id": "artemis-schema-preflight-diagnostics-20261105-01",
+  "result": {
+    "request_id": "artemis-schema-preflight-diagnostics-20261105-01",
+    "type": "simon_agent_access",
+    "status": "success",
+    "generated_at": "2026-11-05T09:31:54.010Z",
+    "providers_used": [
+      "simon_agent_access"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "simon_agent_access": {
+        "ok": true,
+        "execution_origin": {
+          "hostname": "vps2402",
+          "verified_server_origin": true
+        },
+        "inventory": {
+          "schema": "artemis-live-inventory/1",
+          "read_only": true,
+          "production_changed": false,
+          "checkout_present": true,
+          "deployed_sha": "003980c2fcb4203301ff2d3b75e60a70f94315a6",
+          "database": {
+            "present": true,
+            "tables": {
+              "leads": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "name",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "email",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "phone",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "amount",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "organisation",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "role",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "enquiry_type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "message",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "consent",
+                    "type": "INTEGER"
+                  }
+                ],
+                "count": 3,
+                "date_range": [
+                  "2026-05-23T21:26:57.477818",
+                  "2026-07-20T16:40:21.185043"
+                ]
+              },
+              "tenerife_waitlist": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "name",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "contact",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "language",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "page",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "consent",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "client_hash",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_status",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_note",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_m2",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_step",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_pay",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_m2_server",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_step_server",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_pay_server",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_shares",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_price_eur_m2",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_amount",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_month_eur",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_model_version",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 2,
+                "date_range": [
+                  "2026-10-31T23:46:43.171729+00:00",
+                  "2026-10-31T23:49:49.592583+00:00"
+                ]
+              },
+              "artemis_events": {
+                "columns": [
+                  {
+                    "name": "source_event_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "submission_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "payload_hash",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "payload",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "legacy_table",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "legacy_id",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "legacy_created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "client_hash",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 0,
+                "date_range": [
+                  null,
+                  null
+                ]
+              },
+              "artemis_crm_outbox": {
+                "columns": [
+                  {
+                    "name": "source_event_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "state",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "attempts",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "next_attempt_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "last_error",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "person_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "opportunity_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "receipt",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "verified_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "lease_until",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 0,
+                "state_counts": {},
+                "receipt_count": 0
+              },
+              "artemis_subscriptions": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "email",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "language",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "state",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "generation",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "token_hash",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "expires_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "requested_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "confirmed_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "unsubscribed_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "deliverability",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "consent_version",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "source_event_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 0,
+                "date_range": [
+                  null,
+                  null
+                ],
+                "state_counts": {}
+              },
+              "artemis_mail_outbox": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "subscription_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "generation",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "message_type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "issue_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "state",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "provider_id",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "last_error",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "attempts",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "next_attempt_at",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 0,
+                "date_range": [
+                  null,
+                  null
+                ],
+                "state_counts": {}
+              }
+            },
+            "delivery_state": "UNVERIFIED"
+          },
+          "units": {
+            "artemis.service": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/var/www/artemis/app",
+              "FragmentPath": "/etc/systemd/system/artemis.service",
+              "probe_exit_code": 0
+            },
+            "artemis-lead-relay.service": {
+              "LoadState": "loaded",
+              "ActiveState": "inactive",
+              "SubState": "dead",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/opt/email-engine",
+              "FragmentPath": "/etc/systemd/system/artemis-lead-relay.service",
+              "probe_exit_code": 0
+            },
+            "artemis-lead-relay.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "waiting",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/artemis-lead-relay.timer",
+              "probe_exit_code": 0
+            },
+            "twenty-sync.service": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/var/www/grainee-v2/scripts/outreach",
+              "FragmentPath": "/etc/systemd/system/twenty-sync.service",
+              "probe_exit_code": 0
+            },
+            "twenty-watchdog.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "waiting",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/twenty-watchdog.timer",
+              "probe_exit_code": 0
+            },
+            "agent-api-bridge.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/agent-api-bridge.timer",
+              "probe_exit_code": 0
+            }
+          },
+          "matching_units": [
+            "artemis-hook.service",
+            "artemis-lead-relay.service",
+            "artemis-preview-ru-v3.service",
+            "artemis.service",
+            "twenty-backup.service",
+            "twenty-sync.service",
+            "twenty-watchdog.service",
+            "artemis-lead-relay.timer",
+            "twenty-backup.timer",
+            "twenty-watchdog.timer"
+          ],
+          "installed_relay_sha256": "6c8153ffc4932d594a22b947176da9dfbb924984f05118eee439e2768ad0040b",
+          "checkout_relay_sha256": "13b741c96585c437ff093b4864af373c6bee414bcdd40e92ec57ae1564a6fb4e",
+          "relay_mentions_twenty": false,
+          "runtime_flags": {
+            "ARTEMIS_FUNNEL_ENABLED": false,
+            "ARTEMIS_CRM_DELIVERY_ENABLED": false,
+            "ARTEMIS_NEWSLETTER_ENABLED": false
+          },
+          "newsletter_secret_present": false,
+          "mail": {
+            "transport_source": "existing lead relay Gmail DWD",
+            "runtime_sender_configured": true,
+            "from_domain": "oxfordframe.com",
+            "from_fingerprint": "436b8d2a8a2471497a3151ce3926bd99a0be3fe1bd835e422d3f91e9c5298634",
+            "newsletter_reply_to_configured": false,
+            "newsletter_sender_enabled": false,
+            "provider_send_as_verified": true,
+            "responsible_reply_owner_verified": false,
+            "real_messages_sent": 0,
+            "dns": {
+              "spf_record_present": true,
+              "dmarc_record_present": true,
+              "dkim": "selector_not_yet_observed",
+              "tls": "not_checked_by_this_inventory"
+            },
+            "provider_identity_is_primary": true,
+            "provider_identity_found": true,
+            "provider_identity_verification_status": "not_returned",
+            "provider_reply_to_present": false
+          },
+          "existing_reader_discovery": {
+            "probe_exit_code": 0,
+            "files": [
+              {
+                "path": "/etc/systemd/system/artemis-preview-ru-v3.service",
+                "sha256": "6370d49141577dc556dacb1c3481f6fa50e6e6b9e4df96f0b569d16b664cef41",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/artemis-lead-relay.service",
+                "sha256": "e9b7ddfc14ed23347e90719554ccf2e3adbbc8fe014dad9583e02820d3487992",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/artemis-lead-relay.timer",
+                "sha256": "5a848646d4f6ae12b1aa12dcb6e984a3bdb085e332201c53b93def720a504a41",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/artemis.service",
+                "sha256": "66bff988421a62f189a87650f5c0b34d3df2786e5115dd090ba0a3cb7d418813",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/artemis-hook.service",
+                "sha256": "05d3437db49cb268c383d0b85f08f2e2e90bbf71ba69db11b3adbd12fabcbb52",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/multi-user.target.wants/artemis-preview-ru-v3.service",
+                "sha256": "6370d49141577dc556dacb1c3481f6fa50e6e6b9e4df96f0b569d16b664cef41",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/multi-user.target.wants/artemis.service",
+                "sha256": "66bff988421a62f189a87650f5c0b34d3df2786e5115dd090ba0a3cb7d418813",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/etc/systemd/system/timers.target.wants/artemis-lead-relay.timer",
+                "sha256": "5a848646d4f6ae12b1aa12dcb6e984a3bdb085e332201c53b93def720a504a41",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/usr/local/sbin/artemis-deploy.sh",
+                "sha256": "e7388c692f7b45e20b588e7c4bca38cfbd7429099eb60f683ff5d9231b825502",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/usr/local/sbin/artemis-lead-relay.py",
+                "sha256": "6c8153ffc4932d594a22b947176da9dfbb924984f05118eee439e2768ad0040b",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/build-vola-legal-pack-manifest.py",
+                "sha256": "c6143e87b1489ad490e94fd5a5cea81d17af40b3798c6b788b50cd10bb3bab78",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/build-vola-legal-pack.py",
+                "sha256": "2626f2eeb03586aacc4c9eab9a098683444dbe7dfb98609e6d10aa085ee04920",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/capture-vola-rc0-visuals.mjs",
+                "sha256": "79471f08a188ddcc172ef152b814f61faa37e69fd17f7535cd2e443ef46dd9f5",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/agent-api-runner.mjs",
+                "sha256": "7651d4a77687ae256ff4c286ab8e202aba06e070395bd505bf88e27d3de9bd8c",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/providers/artemis_release.mjs",
+                "sha256": "18b44c5835b256d92b9a8ed51b778e37a804f60174f7dbc6188355025357e1d8",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/providers/artemis_release.py",
+                "sha256": "d1d5d536caab6e6475d6ea89ffd1e1b35cbb2d8f5f5f49d6078b3272d4ea7d00",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/providers/artemis_inventory.py",
+                "sha256": "23b3abcc09e5dba3993c486962191af7020e9aa663cfb7c65dc80b6927bc41f1",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/providers/artemis_schema.py",
+                "sha256": "713dbb8dce76d1199a07003b848d5f0c198ec11b63f69d1aa2011e57b04d9dac",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/providers/artemis_inventory.mjs",
+                "sha256": "fc4df7ed7678e7dc84770477af5b5224c2b310ee1a2612b3ca41252d3ed24d50",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/agent-api/lib/bridge-result.mjs",
+                "sha256": "5b8f8bcffe857061907718b073da97a3f8600cf6f3d0ba9ddb490f4a7e705377",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/vps2402/github-check.sh",
+                "sha256": "b827c3b9b253026b1f17c9c2c3f00b179bc1985d02a4de3f561a10eddadcf21e",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/twenty/sync-metadata.mjs",
+                "sha256": "f13e4d297e8a9a96ed8dd95584c3686543c947736e1dbc20a5a280dba2befeee",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/twenty/metadata-scope.mjs",
+                "sha256": "ac9e0018385249480f239cbe79a48d18362eef02579607033224e80185a5d012",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/opt/grainee-main/scripts/outreach/artemis_sync.py",
+                "sha256": "23d6b47fc97136b21c72fdad2a27839b899ae010db96e9345d2f2e2c55cace37",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/opt/grainee-main/scripts/outreach/twenty_sync.py",
+                "sha256": "4ccc6cb97de00ac6d30202a83c66f9c0be1bf8103498f7be6bbd9ffe9268483b",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/build-vola-legal-pack-manifest.py",
+                "sha256": "c6143e87b1489ad490e94fd5a5cea81d17af40b3798c6b788b50cd10bb3bab78",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/build-vola-legal-pack.py",
+                "sha256": "2626f2eeb03586aacc4c9eab9a098683444dbe7dfb98609e6d10aa085ee04920",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/capture-vola-rc0-visuals.mjs",
+                "sha256": "79471f08a188ddcc172ef152b814f61faa37e69fd17f7535cd2e443ef46dd9f5",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/agent-api-runner.mjs",
+                "sha256": "7651d4a77687ae256ff4c286ab8e202aba06e070395bd505bf88e27d3de9bd8c",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/providers/artemis_release.mjs",
+                "sha256": "18b44c5835b256d92b9a8ed51b778e37a804f60174f7dbc6188355025357e1d8",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/providers/artemis_release.py",
+                "sha256": "d1d5d536caab6e6475d6ea89ffd1e1b35cbb2d8f5f5f49d6078b3272d4ea7d00",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/providers/artemis_inventory.py",
+                "sha256": "23b3abcc09e5dba3993c486962191af7020e9aa663cfb7c65dc80b6927bc41f1",
+                "mentions_source_sqlite": true,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/providers/artemis_schema.py",
+                "sha256": "713dbb8dce76d1199a07003b848d5f0c198ec11b63f69d1aa2011e57b04d9dac",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/providers/artemis_inventory.mjs",
+                "sha256": "fc4df7ed7678e7dc84770477af5b5224c2b310ee1a2612b3ca41252d3ed24d50",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/agent-api/lib/bridge-result.mjs",
+                "sha256": "5b8f8bcffe857061907718b073da97a3f8600cf6f3d0ba9ddb490f4a7e705377",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/vps2402/github-check.sh",
+                "sha256": "b827c3b9b253026b1f17c9c2c3f00b179bc1985d02a4de3f561a10eddadcf21e",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/twenty/sync-metadata.mjs",
+                "sha256": "f13e4d297e8a9a96ed8dd95584c3686543c947736e1dbc20a5a280dba2befeee",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/twenty/metadata-scope.mjs",
+                "sha256": "ac9e0018385249480f239cbe79a48d18362eef02579607033224e80185a5d012",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": false
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/outreach/artemis_sync.py",
+                "sha256": "23d6b47fc97136b21c72fdad2a27839b899ae010db96e9345d2f2e2c55cace37",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              },
+              {
+                "path": "/var/www/grainee-v2/scripts/outreach/twenty_sync.py",
+                "sha256": "4ccc6cb97de00ac6d30202a83c66f9c0be1bf8103498f7be6bbd9ffe9268483b",
+                "mentions_source_sqlite": false,
+                "mentions_twenty": true
+              }
+            ],
+            "truncated": false,
+            "cron": []
+          },
+          "notification_relay_state": {
+            "present": true,
+            "tables": {
+              "sent": {
+                "columns": [
+                  "tbl",
+                  "lead_id",
+                  "channel",
+                  "ref",
+                  "at"
+                ],
+                "count": 9
+              },
+              "kv": {
+                "columns": [
+                  "k",
+                  "v"
+                ],
+                "count": 5
+              },
+              "attempts": {
+                "columns": [
+                  "tbl",
+                  "lead_id",
+                  "channel",
+                  "n",
+                  "next_at",
+                  "last_error"
+                ],
+                "count": 0
+              },
+              "sending": {
+                "columns": [
+                  "tbl",
+                  "lead_id",
+                  "channel",
+                  "lead_key",
+                  "started_at"
+                ],
+                "count": 0
+              },
+              "sent_key": {
+                "columns": [
+                  "tbl",
+                  "lead_id",
+                  "channel",
+                  "lead_key"
+                ],
+                "count": 3
+              },
+              "attempt_key": {
+                "columns": [
+                  "tbl",
+                  "lead_id",
+                  "channel",
+                  "lead_key"
+                ],
+                "count": 0
+              }
+            }
+          },
+          "ingress": {
+            "services": {
+              "nginx.service": {
+                "LoadState": "loaded",
+                "ActiveState": "active",
+                "SubState": "running"
+              },
+              "openresty.service": {
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead"
+              },
+              "apache2.service": {
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead"
+              }
+            },
+            "listeners": [
+              "127.0.0.1:3030",
+              "127.0.0.1:8082",
+              "0.0.0.0:443",
+              "0.0.0.0:80",
+              "127.0.0.1:8889",
+              "[::]:443",
+              "[::]:80"
+            ],
+            "configurations": [
+              {
+                "path": "/etc/nginx/sites-enabled/controlcenter.me.origin.conf",
+                "routing": [
+                  "listen 185.216.214.28:80",
+                  "listen 80",
+                  "listen [::]:80",
+                  "server_name www.controlcenter.me",
+                  "listen 185.216.214.28:80",
+                  "listen 80",
+                  "listen [::]:80",
+                  "server_name controlcenter.me",
+                  "proxy_pass http://twenty_controlcenter",
+                  "listen 185.216.214.28:443 ssl http2",
+                  "listen 443 ssl http2",
+                  "listen [::]:443 ssl http2",
+                  "server_name www.controlcenter.me",
+                  "listen 185.216.214.28:443 ssl http2",
+                  "listen 443 ssl http2",
+                  "listen [::]:443 ssl http2",
+                  "server_name controlcenter.me",
+                  "proxy_pass http://twenty_controlcenter"
+                ]
+              }
+            ],
+            "probes": {
+              "nginx_http": {
+                "status": 200
+              },
+              "nginx_https": {
+                "probe_exit_code": 60,
+                "status": "000"
+              }
+            },
+            "nginx_test_exit_code": 0,
+            "cloudflare_env_presence": {
+              "CF_API_TOKEN": true,
+              "CLOUDFLARE_API_TOKEN": true,
+              "CF_API_KEY": false,
+              "CF_ZONE_ID": true,
+              "CLOUDFLARE_ZONE_ID": false
+            }
+          },
+          "existing_schema_preflight": {
+            "interpreter": "/opt/email-engine/.venv/bin/python",
+            "exit_code": 0,
+            "result": {
+              "ok": false,
+              "error_class": "ModuleNotFoundError",
+              "missing": [],
+              "http_status": null,
+              "missing_module": "fastapi"
+            }
+          }
+        },
+        "error_class": null,
+        "twenty": {
+          "health_check_exit_code": 0,
+          "credential_present": true,
+          "credential_source": "env:TWENTY_API_KEY",
+          "metadata_status": 200,
+          "delivery_state": "UNVERIFIED",
+          "watchdog": {
+            "checked_at": "2026-11-05T09:31:52Z",
+            "mode": "check",
+            "internal": "ok",
+            "rest": "ok",
+            "rest_code": "200",
+            "public_code": "200",
+            "sync": "ok",
+            "worker": "ok",
+            "backup_age_h": "6",
+            "offhost_age_h": "6",
+            "exit": 0
+          },
+          "schema": {
+            "person": {
+              "id": "c6311988-d5ea-4513-8305-f268a92f1caa",
+              "fields": [
+                {
+                  "name": "name",
+                  "type": "FULL_NAME",
+                  "isUnique": false
+                },
+                {
+                  "name": "emails",
+                  "type": "EMAILS",
+                  "isUnique": false
+                },
+                {
+                  "name": "phones",
+                  "type": "PHONES",
+                  "isUnique": false
+                },
+                {
+                  "name": "language",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "RU",
+                    "EN",
+                    "UK",
+                    "ES",
+                    "FR"
+                  ]
+                },
+                {
+                  "name": "channel",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "WHATSAPP",
+                    "TELEGRAM",
+                    "EMAIL"
+                  ]
+                },
+                {
+                  "name": "id",
+                  "type": "UUID",
+                  "isUnique": false
+                }
+              ]
+            },
+            "opportunity": {
+              "id": "43295d5a-4a19-4c75-bada-e1b118ed8937",
+              "fields": [
+                {
+                  "name": "name",
+                  "type": "TEXT",
+                  "isUnique": false
+                },
+                {
+                  "name": "id",
+                  "type": "UUID",
+                  "isUnique": false
+                },
+                {
+                  "name": "pointOfContact",
+                  "type": "RELATION",
+                  "isUnique": false
+                },
+                {
+                  "name": "token",
+                  "type": "TEXT",
+                  "isUnique": false
+                },
+                {
+                  "name": "status",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "NEW",
+                    "IN_FUNNEL",
+                    "INTERESTED",
+                    "CHECKING",
+                    "PAYMENT_READY",
+                    "PAID",
+                    "IN_PROGRESS",
+                    "COMPLETED",
+                    "UNSUBSCRIBED",
+                    "ATTEMPTED_PAYMENT"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "production_changed": false
+      }
+    },
+    "error": null
+  },
+  "diagnosis": "New guard incorrectly preferred mail engine venv, which lacks fastapi. Resolve interpreter from active twenty-sync process; retain full existing schema preflight. No package install or skipped validation."
+}
