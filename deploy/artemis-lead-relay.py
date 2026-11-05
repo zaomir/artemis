@@ -580,10 +580,27 @@ def main(args=None):
     if args[:1] == ["--requeue"]:return requeue(args[1:])
     # The SAME timer and durable outbox. A hung notification cannot prevent the
     # current CRM attempt; a failed CRM attempt does not discard notifications.
-    rc=crm_step()
+    rc=max(crm_step(),newsletter_step())
     try:return max(rc,run())
     except Exception as exc:
         log('legacy notification relay failed',type(exc).__name__);return 1
+
+
+def newsletter_step():
+    """Inactive until actual sender/reply assignment and controlled release QA."""
+    if os.environ.get('ARTEMIS_NEWSLETTER_ENABLED')!='1':return 0
+    reply=os.environ.get('ARTEMIS_NEWSLETTER_REPLY_TO','')
+    secret=os.environ.get('ARTEMIS_NEWSLETTER_SECRET','')
+    owner=os.environ.get('ARTEMIS_REPLY_OWNER_ROLE','').strip()
+    if not EMAIL_RE.fullmatch(MAIL_FROM) or not EMAIL_RE.fullmatch(reply) or len(secret)<32 or not owner:
+        log('newsletter relay blocked','sender_reply_owner_secret_configuration_required');return 1
+    try:
+        sys.path.insert(0, os.path.join(os.environ.get('ARTEMIS_DIR','/var/www/artemis'),'app'))
+        from funnel_mail import relay_once
+        result=relay_once(DB,gmail,MAIL_FROM,reply,secret)
+        return int(bool(result and result.get('state') not in {'accepted','suppressed'}))
+    except Exception as exc:
+        log('newsletter relay failed',type(exc).__name__);return 1
 
 
 if __name__ == "__main__":
