@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 52,
-  "updated_at": "2026-11-05T11:39:33.384695+00:00",
-  "next_action": "reconcile:MAIL-09-token-log-inventory-20261105-v1",
-  "pending": {
-    "key": "MAIL-09-token-log-inventory-20261105-v1",
-    "action": "read actual Artemis nginx/gunicorn token logging and backup rotation configuration; request artemis-mail-privacy-inventory-20261105-01; no settings or recipients changed",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:39:33.384681+00:00"
-  },
+  "revision": 53,
+  "updated_at": "2026-11-05T11:44:59.808108+00:00",
+  "next_action": "Read safe nginx drift and actual backup paths before exact token-log exclusion",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -336,6 +331,19 @@
           "sha256": "2148a84782d38b6cacd4d603c9f25a1f8e858ce85dc2687152bc783b23cff6ff"
         }
       ]
+    },
+    "MAIL-09-token-log-inventory-20261105-v1": {
+      "key": "MAIL-09-token-log-inventory-20261105-v1",
+      "action": "read actual Artemis nginx/gunicorn token logging and backup rotation configuration; request artemis-mail-privacy-inventory-20261105-01; no settings or recipients changed",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:39:33.384681+00:00",
+      "verified_at": "2026-11-05T11:44:59.808091+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-privacy-inventory-20261105.json",
+          "sha256": "a9628c6f0585c18f7f7cb9374319d8a7cbaeec7ab3fd6453e88a614ae5293fb8"
+        }
+      ]
     }
   },
   "history": [
@@ -650,6 +658,12 @@
       "at": "2026-11-05T11:39:33.384695+00:00",
       "event": "began:MAIL-09-token-log-inventory-20261105-v1",
       "next_action": "reconcile:MAIL-09-token-log-inventory-20261105-v1"
+    },
+    {
+      "revision": 53,
+      "at": "2026-11-05T11:44:59.808108+00:00",
+      "event": "verified:MAIL-09-token-log-inventory-20261105-v1",
+      "next_action": "Read safe nginx drift and actual backup paths before exact token-log exclusion"
     }
   ],
   "policy": {
