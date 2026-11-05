@@ -49,3 +49,7 @@ Meta title: Конфиденциальность — Artemis de la Cruz
 ## 7. Cookies
 
 Сайт не использует аналитику, инструменты отслеживания и рекламные cookies, а страницы Artemis de la Cruz сами не записывают в браузер ни cookies, ни localStorage. Страницы Artemis Crete на том же домене ставят функциональную cookie lang: она хранит только выбранный язык, действует 1 год и относится ко всему сайту artemisresort.com, поэтому браузер присылает её и на страницах Artemis de la Cruz. Cloudflare, который обеспечивает CDN и защиту сайта, может устанавливать технические cookies, необходимые для защиты, например __cf_bm и cf_clearance ([описание cookies Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)).
+
+## 8. CRM and separate choices
+
+We store enquiries, their source and any submitted calculation in our self-hosted Twenty CRM to manage replies and verify processing. The controller, retention period and data rights stated above also apply to these CRM records. An enquiry does not subscribe you to email news and does not add you to a Facebook group. The project diary is open without registration.

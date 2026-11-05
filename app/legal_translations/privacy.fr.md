@@ -18,3 +18,5 @@ Nous traitons les coordonnées communiquées dans le cadre des demandes (nom, ad
 
 <!-- @recipients -->
 Destinataire et sous-traitant des copies des demandes : Google (Gmail, Google Workspace). Une copie de la notification de nouvelle demande (nom, coordonnées, montant prévu s’il est indiqué, heure) est envoyée à l’adresse de service info@artemisresort.com. Google est susceptible de traiter les données en dehors de l’Espace économique européen (EEE) sur la base du cadre de protection des données UE-États-Unis ou de clauses contractuelles types.
+
+Les demandes, leur origine et les calculs transmis sont aussi conservés dans notre CRM Twenty hébergé sur notre serveur pour gérer les réponses et vérifier leur traitement. Le responsable est OXFORD FRAME REAL ASSETS LTD, Companies House n° 09153936 ; contact : info@artemisresort.com. Les demandes sont conservées jusqu’au retrait du consentement ou à la fin du projet. Une demande ne vous abonne pas aux nouvelles par email ni à un groupe Facebook.

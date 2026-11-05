@@ -615,6 +615,9 @@ def waitlist():
             legacy=('tenerife_waitlist',cursor.lastrowid,now.isoformat())
         if typed:
             funnel_store.capture(conn,d,funnel_http.secret(),now=now,legacy=legacy,client_hash=client)
+        elif os.environ.get('ARTEMIS_CRM_CAPTURE_ENABLED')=='1':
+            from funnel_legacy import enqueue_row
+            enqueue_row(conn,'tenerife_waitlist',cursor.lastrowid)
         conn.commit()
     finally:
         conn.close()
