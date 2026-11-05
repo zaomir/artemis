@@ -1,0 +1,11 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "MAIL-06",
+  "unit": "receipt_gated_coordinator_wiring",
+  "production_changed": false,
+  "retention_enabled": false,
+  "tests": {"Artemis_funnel": 69, "cross_repository_pipeline": 7, "failures": 0},
+  "integration": "Actual store, retention, delivery and common writer modules from both checkouts; isolated SQLite and recording CRM; no live provider or recipient.",
+  "verified": ["original Person receipt required before expiry is queued", "same expiry job reconciles after failed independent readback", "fresh generation during CRM roundtrip survives", "new subscription row after expiry outranks old Person version", "independent lead retains contact and Opportunity", "late old receipt cannot resurrect an erasing source", "new complaint blocks false local retention success"],
+  "remaining": ["deploy and guarded runtime probe", "privacy and backup-rotation/restore policy verification", "sender/reply assignment and controlled mail QA", "automatic authenticated DSN ingestion"]
+}

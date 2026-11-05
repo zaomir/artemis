@@ -37,7 +37,15 @@ class RetentionGuardTest(unittest.TestCase):
 class CoordinatedRetentionTest(unittest.TestCase):
     setUp=RetentionGuardTest.setUp
     tearDown=RetentionGuardTest.tearDown
-    capture=RetentionGuardTest.capture
+    def capture(self,**kw):
+        RetentionGuardTest.capture(self,**kw)
+        import json
+        with self.conn:
+            for source,payload in self.conn.execute('SELECT source_event_id,payload FROM artemis_events'):
+                event=json.loads(payload);identity=retention.hashlib.sha256(('email:'+event['contact']).encode()).hexdigest()
+                receipt=dict(source_event_id=source,person_id=str(retention.uuid.uuid5(retention.uuid.NAMESPACE_URL,'artemis-person:'+identity)),
+                    opportunity_id=None,independent_readback=True,payload_sha256=retention.digest(event))
+                self.conn.execute("UPDATE artemis_crm_outbox SET state='verified',receipt=? WHERE source_event_id=?",(json.dumps(receipt),source))
     def enqueue(self):
         with self.conn:
             self.conn.execute('BEGIN IMMEDIATE')
@@ -63,6 +71,11 @@ class CoordinatedRetentionTest(unittest.TestCase):
         self.assertEqual(self.conn.execute("SELECT COUNT(*) FROM artemis_crm_outbox WHERE state='erased'").fetchone()[0],1)
     def test_command_is_not_queued_twice(self):
         self.capture();self.enqueue();self.assertEqual(self.enqueue(),[])
+    def test_unverified_original_delivery_must_reconcile_first(self):
+        self.capture()
+        with self.conn:self.conn.execute("UPDATE artemis_crm_outbox SET state='uncertain',receipt=NULL")
+        self.assertEqual(self.enqueue(),[])
+        self.assertEqual(self.conn.execute('SELECT email,state FROM artemis_subscriptions').fetchone(),('test@example.invalid','pending_confirmation'))
     def test_queue_failure_rolls_back_expiry_generation_and_mail_suppression(self):
         self.capture();before='\n'.join(self.conn.iterdump())
         with self.conn:self.conn.execute("CREATE TRIGGER fail_expiry BEFORE INSERT ON artemis_crm_outbox BEGIN SELECT RAISE(ABORT,'isolated'); END")

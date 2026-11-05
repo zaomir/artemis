@@ -23,5 +23,13 @@ bounce; imports cannot clear deliverability. An independent enquiry is retained.
 does not create a test complaint or change any real subscriber.
 
 This is operator-attested feedback, not an automated Gmail delivery receipt.
-Automatic authenticated DSN collection and coordinated pending-data expiry remain
-separate incomplete MAIL-06 subunits. Newsletter activation is still gated.
+Automatic authenticated DSN collection remains an incomplete MAIL-06 subunit.
+Coordinated expiry is implemented in `funnel_retention.py` and the existing
+writer, behind `ARTEMIS_RETENTION_ENABLED=1` (off until release/privacy QA).
+It requires the original independently verified Person receipt, expires the
+pending generation, pauses its old source jobs, and requests contact anonymization.
+Only a matching CRM readback receipt permits final local payload/address cleanup.
+New requests, independent enquiries and complaints arriving during the roundtrip
+are protected. A minimal private pseudonymous identity/expiry record prevents
+stale replays; it is not described as anonymous or as a new sales lead.
+Rotated backups are not claimed erased. Newsletter activation is still gated.
