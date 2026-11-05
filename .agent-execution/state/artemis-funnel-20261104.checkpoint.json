@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 73,
-  "updated_at": "2026-11-05T13:03:50.314778+00:00",
-  "next_action": "NEWS-04 site-only release and live diary discovery browser proof; no flag changes",
-  "pending": null,
+  "revision": 74,
+  "updated_at": "2026-11-05T13:04:01.859994+00:00",
+  "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v1",
+  "pending": {
+    "key": "NEWS-04-discovery-runtime-20261105-v1",
+    "action": "site-only release request artemis-diary-discovery-release-20261105-01 for a15a2eb77147eb66c3646e32c53769bbfd5eee99 then live ordinary-browser menu/footer proof; flags unchanged",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:04:01.859981+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -914,6 +919,12 @@
       "at": "2026-11-05T13:03:50.314778+00:00",
       "event": "verified:NEWS-04-menu-footer-discovery-20261105-v1",
       "next_action": "NEWS-04 site-only release and live diary discovery browser proof; no flag changes"
+    },
+    {
+      "revision": 74,
+      "at": "2026-11-05T13:04:01.859994+00:00",
+      "event": "began:NEWS-04-discovery-runtime-20261105-v1",
+      "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v1"
     }
   ],
   "policy": {
