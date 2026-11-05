@@ -1,0 +1,27 @@
+{
+  "head_after_main_sync": "2252b2083856ed1404fbf365c4bbf082789a5277",
+  "main": "04ae88ac6db52c9a3cd6e39fe2ceb43e018b62a4",
+  "merge_conflicts": false,
+  "visual_tests": {
+    "passed": 15
+  },
+  "preview_builds": {
+    "en": "PASS",
+    "es": "PASS",
+    "de": "PASS",
+    "fr": "PASS",
+    "ru": "PASS"
+  },
+  "full_suite_initial": {
+    "tests": 549,
+    "failures": 3,
+    "errors": 7,
+    "skipped": 18,
+    "limits": [
+      "Python 3.9 lacks zip(strict=True), project requires Python >=3.10",
+      "Committed diary list is stale relative to builder"
+    ]
+  },
+  "p0_originals_downloaded": 4,
+  "production_changed": false
+}
