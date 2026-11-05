@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 70,
-  "updated_at": "2026-11-05T12:43:32.675151+00:00",
-  "next_action": "reconcile:METRICS-01-source-summary-20261105-v1",
-  "pending": {
-    "key": "METRICS-01-source-summary-20261105-v1",
-    "action": "read-only private metrics with source primary events separated from subscription/expiry projections, tests excluded, costs unknown not zero; request artemis-funnel-metrics-20261105-01",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:43:32.675136+00:00"
-  },
+  "revision": 71,
+  "updated_at": "2026-11-05T12:56:31.787135+00:00",
+  "next_action": "NEWS-04 existing menu/footer project diary discovery on five locales; newsletter and retention remain off",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -453,6 +448,19 @@
           "sha256": "a109f8d5d30a4d1978be9e5286cc5f4f80d0cb2c814607b9f4e9c05770f33abf"
         }
       ]
+    },
+    "METRICS-01-source-summary-20261105-v1": {
+      "key": "METRICS-01-source-summary-20261105-v1",
+      "action": "read-only private metrics with source primary events separated from subscription/expiry projections, tests excluded, costs unknown not zero; request artemis-funnel-metrics-20261105-01",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:43:32.675136+00:00",
+      "verified_at": "2026-11-05T12:56:31.787120+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/METRICS-01-runtime-20261105.json",
+          "sha256": "6afce1dfff138e85e5a7ee912b2f9cfc6ce51496faff028d10c4da427c70e504"
+        }
+      ]
     }
   },
   "history": [
@@ -875,6 +883,12 @@
       "at": "2026-11-05T12:43:32.675151+00:00",
       "event": "began:METRICS-01-source-summary-20261105-v1",
       "next_action": "reconcile:METRICS-01-source-summary-20261105-v1"
+    },
+    {
+      "revision": 71,
+      "at": "2026-11-05T12:56:31.787135+00:00",
+      "event": "verified:METRICS-01-source-summary-20261105-v1",
+      "next_action": "NEWS-04 existing menu/footer project diary discovery on five locales; newsletter and retention remain off"
     }
   ],
   "policy": {
