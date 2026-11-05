@@ -12,6 +12,7 @@ on:
       - 'docs/funnel/CONTENT_CANON.md'
       - 'tests/test_tenerife_visual_rollout.py'
       - 'tests/test_tenerife_art_intake.py'
+      - 'tests/test_tenerife_news_visual.py'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +33,7 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_tenerife_visual_rollout.py' -v
           python -m unittest discover -s tests -p 'test_tenerife_art_intake.py' -v
+          python -m unittest discover -s tests -p 'test_tenerife_news_visual.py' -v
       - name: Build review version in five languages
         env:
           ARTEMIS_VISUAL_PREVIEW: "1"
