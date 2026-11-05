@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 58,
-  "updated_at": "2026-11-05T12:02:51.125031+00:00",
-  "next_action": "reconcile:MAIL-09-nginx-reload-diagnosis-20261105-v1",
-  "pending": {
-    "key": "MAIL-09-nginx-reload-diagnosis-20261105-v1",
-    "action": "read effective Artemis vhost files, conflict count and controlled nonsecret marker log shape; request artemis-nginx-reload-diagnostics-20261105-01; no config mutation",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:02:51.125019+00:00"
-  },
+  "revision": 59,
+  "updated_at": "2026-11-05T12:07:23.060977+00:00",
+  "next_action": "Wait for full nginx worker replacement before fresh privacy probe; baseline hash restored",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -375,6 +370,19 @@
           "sha256": "add6ef7fc48344558bd2d4d9d02549093887ea8bca45b77feaecd0a70f7fb4b0"
         }
       ]
+    },
+    "MAIL-09-nginx-reload-diagnosis-20261105-v1": {
+      "key": "MAIL-09-nginx-reload-diagnosis-20261105-v1",
+      "action": "read effective Artemis vhost files, conflict count and controlled nonsecret marker log shape; request artemis-nginx-reload-diagnostics-20261105-01; no config mutation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:02:51.125019+00:00",
+      "verified_at": "2026-11-05T12:07:23.060963+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-reload-diagnosis-20261105.json",
+          "sha256": "3e5f089bf18471269efddd79b1bb7afa8436335dd375c26a908256de641961ac"
+        }
+      ]
     }
   },
   "history": [
@@ -725,6 +733,12 @@
       "at": "2026-11-05T12:02:51.125031+00:00",
       "event": "began:MAIL-09-nginx-reload-diagnosis-20261105-v1",
       "next_action": "reconcile:MAIL-09-nginx-reload-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 59,
+      "at": "2026-11-05T12:07:23.060977+00:00",
+      "event": "verified:MAIL-09-nginx-reload-diagnosis-20261105-v1",
+      "next_action": "Wait for full nginx worker replacement before fresh privacy probe; baseline hash restored"
     }
   ],
   "policy": {

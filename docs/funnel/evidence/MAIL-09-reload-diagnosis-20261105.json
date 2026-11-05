@@ -1,0 +1,37 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atom": "MAIL-09",
+  "unit": "reload_readiness_diagnosis",
+  "request_id": "artemis-nginx-reload-diagnostics-20261105-01",
+  "observed_at": "2026-11-05T12:05:05.702Z",
+  "production_changed": false,
+  "nginx": {
+    "present": true,
+    "path": "/etc/nginx/sites-enabled/artemisresort.com.origin.conf",
+    "sha256": "ce95511488dc0e5595a08c01b4f9c6e38d89f2ef9073881cbc2b0c2fae716bd0",
+    "source_sha256": "76e862d02a93a3c462c47535aa941173a65b3554f79347c003893f068ad0cc34",
+    "matches_deployed_source": false,
+    "dedicated_token_location_count": 0,
+    "token_access_log_off": false,
+    "token_error_log_discarded": false,
+    "safe_public_directive_diff": [
+      "+    location = / { return 302 /tenerife/; }",
+      "-    include /etc/nginx/snippets/cloudflare-realip.conf;",
+      "-    include /etc/nginx/snippets/cloudflare-realip.conf;"
+    ],
+    "unreported_noncomment_changes": 0,
+    "effective_dump_exit_code": 0,
+    "effective_Artemis_config_files": [
+      "/etc/nginx/sites-enabled/artemisresort.com.origin.conf"
+    ],
+    "controlled_nonsecret_probe_log_shapes": [
+      {
+        "query_present": true,
+        "old_combined_prefix": true,
+        "new_private_prefix": false
+      }
+    ]
+  },
+  "finding": "One effective Artemis config; the controlled marker was logged using the old combined prefix. Reload return alone did not prove worker adoption. Verify replacement of the pre-reload worker PID set before testing a fresh marker.",
+  "next": "versioned worker-readiness guard, safe retry after independently proven rollback; no forced worker termination"
+}
