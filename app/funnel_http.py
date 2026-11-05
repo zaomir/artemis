@@ -9,6 +9,7 @@ import sqlite3
 import uuid
 import html
 from urllib.parse import parse_qsl,urlsplit,urlunsplit,urlencode
+from html.parser import HTMLParser
 from flask import current_app, make_response, render_template, request
 import funnel_store as store
 
@@ -58,6 +59,17 @@ def carry_attribution(page,values=None):
     return re.sub(r'(<a\b[^>]*\bhref=)([\"\x27])(.*?)\2',link,page,flags=re.I)
 
 
+def compatibility_fields(markup):
+    """Preserve only the existing server-built calculator inputs, not client math."""
+    class Inputs(HTMLParser):
+        def __init__(self):super().__init__();self.values={}
+        def handle_starttag(self,tag,attrs):
+            attrs=dict(attrs);name=attrs.get('name')
+            if tag=='input' and attrs.get('type')=='hidden' and name in {'calc_m2','calc_step','calc_pay'}:
+                self.values[name]=attrs.get('value','')
+    parser=Inputs();parser.feed(markup);return parser.values
+
+
 def form(locale,page,intent_override=None,values=None):
     values=dict(values or {})
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
@@ -94,6 +106,14 @@ for _loc,_pending in {
 
 for _loc,_subscribe in {'en':'Subscribe to updates','es':'Suscribirse a las novedades','de':'Neuigkeiten abonnieren','fr':'S’abonner aux nouvelles','ru':'Подписаться на новости'}.items():
     LABELS[_loc]['subscribe']=_subscribe
+
+for _loc,_problem in {
+ 'en':'The submission could not be confirmed. Your entries are retained; retry this same form.',
+ 'es':'No se ha podido confirmar el envío. Sus datos siguen en el formulario; inténtelo de nuevo aquí.',
+ 'de':'Die Übermittlung konnte nicht bestätigt werden. Ihre Eingaben bleiben erhalten; versuchen Sie es mit diesem Formular erneut.',
+ 'fr':'L’envoi n’a pas pu être confirmé. Vos données restent dans le formulaire ; réessayez ici.',
+ 'ru':'Не удалось подтвердить отправку. Введённые данные сохранены в форме; повторите отправку здесь.'}.items():
+    LABELS[_loc]['problem']=_problem
 
 
 def token_response(title,body,locale='en'):

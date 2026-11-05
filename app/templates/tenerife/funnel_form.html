@@ -1,9 +1,9 @@
-<form id="wl-form" data-funnel-version="1" method="post" action="/api/tenerife/waitlist">
+<form id="wl-form" data-funnel-version="1" data-msg-problem="{{ labels.problem }}" method="post" action="/api/tenerife/waitlist">
   <input type="hidden" name="submission_id" value="{{ submission_id }}">
   <input type="hidden" name="intent" value="{{ intent }}">
   <input type="hidden" name="page" value="{{ page }}">
   <input type="hidden" name="language" value="{{ locale }}">
-{% for key,value in extras.items() %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+{% for key,value in extras.items() %}<input type="hidden" name="{{ key }}"{% if key.startswith('calc_') %} id="wl-{{ key.replace('_','-') }}"{% endif %} value="{{ value }}">{% endfor %}
 {% if intent != 'newsletter_only' %}
   <div class="field"><label for="af-name">{{ labels.name }}</label><input id="af-name" name="name" autocomplete="name" required maxlength="120" value="{{ values.get('name','') }}"></div>
   <div class="field"><label for="af-kind">{{ labels.channel }}</label><select id="af-kind" name="contact_type"><option value="email"{% if kind == 'email' %} selected{% endif %}>Email</option><option value="facebook"{% if kind == 'facebook' %} selected{% endif %}>Facebook</option></select></div>

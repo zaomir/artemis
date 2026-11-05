@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 66,
-  "updated_at": "2026-11-05T12:24:20.872549+00:00",
-  "next_action": "reconcile:CAP-03-calculator-compatibility-20261105-v1",
-  "pending": {
-    "key": "CAP-03-calculator-compatibility-20261105-v1",
-    "action": "preserve existing server-built calc hidden fields in typed replacement; localize error messaging; no model math change or activation",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:24:20.872537+00:00"
-  },
+  "revision": 67,
+  "updated_at": "2026-11-05T12:28:29.256325+00:00",
+  "next_action": "Guarded site-only release and full required server suite; no migration/CRM replay or feature activation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -427,6 +422,19 @@
           "sha256": "eb4b07a915e4fccdbc6d1d8fab7787cdd19b5320e52a76f39775c73752093182"
         }
       ]
+    },
+    "CAP-03-calculator-compatibility-20261105-v1": {
+      "key": "CAP-03-calculator-compatibility-20261105-v1",
+      "action": "preserve existing server-built calc hidden fields in typed replacement; localize error messaging; no model math change or activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:24:20.872537+00:00",
+      "verified_at": "2026-11-05T12:28:29.256306+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-03-compatibility-20261105.json",
+          "sha256": "501935b3232ebf8dc7e3894e923aa1feb6af25626eb04c82d8ad140f4fc4d151"
+        }
+      ]
     }
   },
   "history": [
@@ -825,6 +833,12 @@
       "at": "2026-11-05T12:24:20.872549+00:00",
       "event": "began:CAP-03-calculator-compatibility-20261105-v1",
       "next_action": "reconcile:CAP-03-calculator-compatibility-20261105-v1"
+    },
+    {
+      "revision": 67,
+      "at": "2026-11-05T12:28:29.256325+00:00",
+      "event": "verified:CAP-03-calculator-compatibility-20261105-v1",
+      "next_action": "Guarded site-only release and full required server suite; no migration/CRM replay or feature activation"
     }
   ],
   "policy": {

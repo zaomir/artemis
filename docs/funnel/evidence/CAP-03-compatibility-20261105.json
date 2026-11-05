@@ -1,0 +1,11 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "CAP-03",
+  "unit": "legacy_calculator_fields_and_localized_errors",
+  "production_changed": false,
+  "feature_activated": false,
+  "tests": {"all_funnel": 79, "HTTP": 19, "failures": 0, "JS_syntax": "passed"},
+  "checks": ["typed replacement retains the three existing server-built calculator field values and DOM IDs", "native submission still passes existing server recomputation with calc_status=ok", "five localized uncertain-send messages and initially empty opt-in", "client never exposes raw network/HTTP implementation errors; same form ID retained"],
+  "financial_scope": "legacy field compatibility only; no public arithmetic/model/terms or personal-tax change; PR-C03/D04b remain separate",
+  "remaining": ["full server release", "controlled runtime form/mail QA and activation", "mail/privacy factual gates"]
+}
