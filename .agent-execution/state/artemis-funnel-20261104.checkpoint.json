@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 17,
-  "updated_at": "2026-11-05T09:24:21.965308+00:00",
-  "next_action": "CRM-01: guarded schema-as-code apply of seven Artemis fields; then historical/legacy outbox integration",
-  "pending": null,
+  "revision": 18,
+  "updated_at": "2026-11-05T09:24:31.686513+00:00",
+  "next_action": "reconcile:CRM-01-runtime-schema-20261105-v1",
+  "pending": {
+    "key": "CRM-01-runtime-schema-20261105-v1",
+    "action": "guarded existing schema-as-code Artemis scope, healthy baseline, verified backup/restore drill and offhost copy; request artemis-crm-schema-20261105-01",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T09:24:31.686498+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -214,6 +219,12 @@
       "at": "2026-11-05T09:24:21.965308+00:00",
       "event": "verified:CAP-01-runtime-migration-20261105-v1",
       "next_action": "CRM-01: guarded schema-as-code apply of seven Artemis fields; then historical/legacy outbox integration"
+    },
+    {
+      "revision": 18,
+      "at": "2026-11-05T09:24:31.686513+00:00",
+      "event": "began:CRM-01-runtime-schema-20261105-v1",
+      "next_action": "reconcile:CRM-01-runtime-schema-20261105-v1"
     }
   ],
   "policy": {
