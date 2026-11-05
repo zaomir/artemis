@@ -11,7 +11,7 @@ import re
 from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
-MODEL_PATH = Path(__file__).resolve().parent / "static" / "tenerife" / "site" / "model.json"
+MODEL_PATH = Path(__file__).resolve().parent / "tenerife_site" / "data" / "model.json"   # EN r2: not public
 FIELDS = ("calc_m2", "calc_step", "calc_pay")
 M2_TOLERANCE = Decimal("0.01")
 M2_SANE = (1, 10000)            # beyond this the value is garbage, not a stale page
