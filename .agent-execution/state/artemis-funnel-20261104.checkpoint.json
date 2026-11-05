@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 42,
-  "updated_at": "2026-11-05T11:12:05.252158+00:00",
-  "next_action": "reconcile:MAIL-06-expiry-source-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-expiry-source-20261105-v1",
-    "action": "durable pending expiry command in same CRM outbox; final local PII scrub requires matching independent CRM receipt; preserve new requests and unrelated enquiries",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:12:05.252143+00:00"
-  },
+  "revision": 43,
+  "updated_at": "2026-11-05T11:14:01.225541+00:00",
+  "next_action": "MAIL-06 common writer expiry readback and stale-event protection; then source finalization wiring",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -271,6 +266,19 @@
           "sha256": "14dc5cc24ea6aed73b64dc77859f05cc9682659be9e7d260b8acff4b8b6396fa"
         }
       ]
+    },
+    "MAIL-06-expiry-source-20261105-v1": {
+      "key": "MAIL-06-expiry-source-20261105-v1",
+      "action": "durable pending expiry command in same CRM outbox; final local PII scrub requires matching independent CRM receipt; preserve new requests and unrelated enquiries",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:12:05.252143+00:00",
+      "verified_at": "2026-11-05T11:14:01.225525+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-source-20261105.json",
+          "sha256": "e18be0c350983ad1677aee347f47be34eea9bbc6ac4908fb9d4d78638f5c8582"
+        }
+      ]
     }
   },
   "history": [
@@ -525,6 +533,12 @@
       "at": "2026-11-05T11:12:05.252158+00:00",
       "event": "began:MAIL-06-expiry-source-20261105-v1",
       "next_action": "reconcile:MAIL-06-expiry-source-20261105-v1"
+    },
+    {
+      "revision": 43,
+      "at": "2026-11-05T11:14:01.225541+00:00",
+      "event": "verified:MAIL-06-expiry-source-20261105-v1",
+      "next_action": "MAIL-06 common writer expiry readback and stale-event protection; then source finalization wiring"
     }
   ],
   "policy": {
