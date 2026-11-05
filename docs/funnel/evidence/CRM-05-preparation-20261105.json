@@ -1,0 +1,12 @@
+{
+  "atom": "CRM-05",
+  "status": "implemented_tests_passed_runtime_release_pending",
+  "request_id": "artemis-facebook-intake-release-20261105-01",
+  "interface": "POST /api/artemis/internal/facebook-enquiry and scripts/capture_fb_enquiry.py",
+  "authentication": "Host-only purpose-derived key; forwarded/non-loopback requests rejected. No key in Aside packet, URLs, logs or reports.",
+  "capture": "Operator-attested explicit request, immutable source ID, canonical permalink, original minimum quote and task ID; atomic existing event/outbox transaction.",
+  "exclusions": "No reaction capture, inferred newsletter consent, membership state or manual CRM card. No Meta API verification claimed.",
+  "handoff": "Browser-only Aside returns a private observation to the code executor; trusted host interface performs capture. Actual live source handoff awaits AS-01 connected session.",
+  "validation": {"capture_cases":8,"adapter_cases":19,"independent_reconciliation_cases":5,"real_Facebook_source_submitted":false,"real_messages_sent":0},
+  "runtime_acceptance": "Anonymous rejection, scoped invalid-payload 400 and trusted CLI probe; no fabricated real source; existing five source records still independently verified."
+}

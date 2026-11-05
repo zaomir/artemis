@@ -668,6 +668,10 @@ def tg_webhook():
     return jsonify({"ok": True})
 
 
+import funnel_fb
+funnel_fb.register(app,lambda:DB)
+
+
 if __name__ == "__main__":
     init_db()
     app.run(host="127.0.0.1", port=8082, debug=False)
