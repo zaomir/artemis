@@ -207,7 +207,7 @@ def _finish(page: str) -> str:
         locale_match=re.search(r'<html lang="([a-z]+)"',page)
         loc=locale_match.group(1) if locale_match else 'en'
         page=re.sub(r'<form\b(?=[^>]*\bid="wl-form")[\s\S]*?</form>',
-                    lambda _:funnel_http.form(loc,request.path),page,count=1)
+                    lambda match:funnel_http.form(loc,request.path,values=funnel_http.compatibility_fields(match[0])),page,count=1)
         page=page.replace('</body>','<script src="/static/tenerife/site/funnel.js" defer></script>\n</body>')
     if funnel_http.enabled():page=funnel_http.carry_attribution(page)
     return page

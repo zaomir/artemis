@@ -175,6 +175,27 @@ class HTTPTest(unittest.TestCase):
         with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):
             response=self.client.get('/tenerife/inversores/?source_id=fb-slug')
         self.assertNotIn(b'name="source_id"',response.data);self.assertNotIn(b'data-funnel-version',response.data)
+    def test_typed_calculator_form_retains_original_server_built_fields_and_recomputation(self):
+        with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):
+            legacy=Fields(self.client.get('/tenerife/calculadora/').data)
+        original={x['name']:x for x in legacy.inputs if x.get('name') in {'calc_m2','calc_step','calc_pay'}}
+        self.assertEqual(set(original),{'calc_m2','calc_step','calc_pay'})
+        typed=Fields(self.client.get('/tenerife/calculadora/').data)
+        fields={x['name']:x for x in typed.inputs if x.get('name') in original}
+        for key in original:
+            self.assertEqual(fields[key]['value'],original[key]['value']);self.assertEqual(fields[key]['id'],original[key]['id'])
+        data={x['name']:x.get('value','') for x in typed.inputs if x.get('type')=='hidden'}
+        data.update(name='TEST Calculator',contact_type='email',contact='test@example.invalid',consent='on')
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=data).status_code,200)
+        row=self.rows('SELECT calc_status,calc_m2,calc_step,calc_pay FROM tenerife_waitlist')[0]
+        self.assertEqual(row[0],'ok');self.assertEqual(str(row[1]),data['calc_m2']);self.assertEqual(row[2:],(data['calc_step'],data['calc_pay']))
+    def test_all_five_forms_have_localized_uncertain_send_message_and_empty_optin(self):
+        for locale in ['en','es','de','fr','ru']:
+            url='/tenerife/'+('' if locale=='en' else locale+'/')+'inversores/'
+            response=self.client.get(url)
+            self.assertIn(b'data-msg-problem=',response.data)
+            self.assertNotRegex(response.data,rb'name="newsletter_opt_in"[^>]*checked')
+            self.assertNotIn(b'Request failed',response.data)
 
 
 if __name__=='__main__':unittest.main()
