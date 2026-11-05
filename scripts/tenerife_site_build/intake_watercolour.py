@@ -42,12 +42,12 @@ def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def load_rgb(path: Path) -> Image.Image:
+def load_rgb(path: Path, *, min_width: int = 1024, min_height: int = 512) -> Image.Image:
     if not path.is_file():
         raise ValueError(f"source image missing: {path}")
     with Image.open(path) as inp:
         inp.load()
-        if inp.width < 1024 or inp.height < 512:
+        if inp.width < min_width or inp.height < min_height:
             raise ValueError(f"source image too small: {inp.width}x{inp.height}")
         return inp.convert("RGB")
 
@@ -104,7 +104,7 @@ def main(argv: list[str] | None = None) -> int:
     if not re.fullmatch(r"[a-z0-9-]+", args.page):
         ap.error("page must be a canonical slug")
     master = load_rgb(args.source)
-    mobile = load_rgb(args.mobile_source) if args.mobile_source else None
+    mobile = load_rgb(args.mobile_source, min_width=640, min_height=800) if args.mobile_source else None
     raw_sha = digest(args.source.read_bytes())
     files = build_assets(master, args.stem, mobile)
     manifest_path = MANIFESTS / f"{args.stem}.json"
