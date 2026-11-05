@@ -204,7 +204,10 @@ def capture(conn, data, secret=None, now=None, legacy=None, client_hash=None):
 
 
 def subscription_snapshot(row):
-    return dict(version=row[2]*100+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]])+({'unknown':0,'ok':0,'hard_bounce':10,'complaint':20}[row[6]]),state=row[1],
+    # A new subscription row after expiry must still outrank the old Person
+    # projection. Milliseconds + state rank remain exact within JSON safe ints.
+    base=int(datetime.fromisoformat(row[3]).timestamp()*1000)*100 if row[3] else row[2]*100
+    return dict(version=base+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]])+({'unknown':0,'ok':0,'hard_bounce':10,'complaint':20}[row[6]]),state=row[1],
                 requested_at=row[3],confirmed_at=row[4],unsubscribed_at=row[5],deliverability=row[6],consent_version=VERSION)
 
 

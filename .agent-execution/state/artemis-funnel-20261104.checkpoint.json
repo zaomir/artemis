@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 46,
-  "updated_at": "2026-11-05T11:21:34.920700+00:00",
-  "next_action": "reconcile:MAIL-06-expiry-wiring-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-expiry-wiring-20261105-v1",
-    "action": "wire expiry into existing delivery with source receipt prerequisite and exact finalization; monotonic subscription versions; retention flag remains off",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:21:34.920686+00:00"
-  },
+  "revision": 47,
+  "updated_at": "2026-11-05T11:25:28.093426+00:00",
+  "next_action": "Deploy protected feedback and inactive retention code through existing core release; full tests; no real recipient changes",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -297,6 +292,19 @@
           "sha256": "79f7a0d700a186e6580f3c5dd43841d7fd2ef56c45952cf085e3141aec2a9bca"
         }
       ]
+    },
+    "MAIL-06-expiry-wiring-20261105-v1": {
+      "key": "MAIL-06-expiry-wiring-20261105-v1",
+      "action": "wire expiry into existing delivery with source receipt prerequisite and exact finalization; monotonic subscription versions; retention flag remains off",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:21:34.920686+00:00",
+      "verified_at": "2026-11-05T11:25:28.093405+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-wiring-20261105.json",
+          "sha256": "582549e6f72faa0cf2090fdf76c6fd974c712022f945cf3dd6b8c834eaaf4eea"
+        }
+      ]
     }
   },
   "history": [
@@ -575,6 +583,12 @@
       "at": "2026-11-05T11:21:34.920700+00:00",
       "event": "began:MAIL-06-expiry-wiring-20261105-v1",
       "next_action": "reconcile:MAIL-06-expiry-wiring-20261105-v1"
+    },
+    {
+      "revision": 47,
+      "at": "2026-11-05T11:25:28.093426+00:00",
+      "event": "verified:MAIL-06-expiry-wiring-20261105-v1",
+      "next_action": "Deploy protected feedback and inactive retention code through existing core release; full tests; no real recipient changes"
     }
   ],
   "policy": {

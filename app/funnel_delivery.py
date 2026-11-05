@@ -49,17 +49,31 @@ def deliver_one(conn,send=transport,now=None):
             and (r.get('opportunity_id') if needs_deal else not r.get('opportunity_id'))
             and r.get('payload_sha256')==digest):
             raise ValueError('incomplete_readback_receipt')
+        if event.get('event_kind')=='pending_expiry':
+            import funnel_retention
+            conn.execute('BEGIN IMMEDIATE')
+            funnel_retention.finalize(conn,event,r,now)
+        elif r.get('retention_expired') is True:
+            if event['intent']!='newsletter_only':raise ValueError('invalid_expired_source_receipt')
+            conn.execute("UPDATE artemis_crm_outbox SET state='erasing',lease_until=NULL,next_attempt_at=NULL WHERE source_event_id=? AND state='uncertain'",(key,))
+            conn.commit();return {'source_event_id':key,'state':'erasing'}
     except Exception as exc:
+        conn.rollback()
         # Error class only: urllib errors can contain secrets, URLs or PII.
         conn.execute('''UPDATE artemis_crm_outbox SET state='uncertain',last_error=?,lease_until=NULL,
-            next_attempt_at=? WHERE source_event_id=?''',(type(exc).__name__,
+            next_attempt_at=? WHERE source_event_id=? AND state='uncertain' ''',(type(exc).__name__,
             (now+timedelta(seconds=min(60*2**min(attempts,8),21600))).isoformat(),key))
-        conn.commit();return {'source_event_id':key,'state':'uncertain'}
+        conn.commit()
+        current=conn.execute('SELECT state FROM artemis_crm_outbox WHERE source_event_id=?',(key,)).fetchone()
+        return {'source_event_id':key,'state':current[0] if current else 'uncertain'}
     receipt={k:r[k] for k in ('source_event_id','person_id','opportunity_id','independent_readback','payload_sha256')}
+    if r.get('retention_outcome'):receipt['retention_outcome']=r['retention_outcome']
     conn.execute('''UPDATE artemis_crm_outbox SET state='verified',receipt=?,person_id=?,opportunity_id=?,
-        verified_at=?,last_error=NULL,lease_until=NULL,next_attempt_at=NULL WHERE source_event_id=?''',
+        verified_at=?,last_error=NULL,lease_until=NULL,next_attempt_at=NULL WHERE source_event_id=? AND state='uncertain' ''',
         (json.dumps(receipt),r['person_id'],r['opportunity_id'],now.isoformat(),key))
-    conn.commit();return {'source_event_id':key,'state':'verified'}
+    conn.commit()
+    state=conn.execute('SELECT state FROM artemis_crm_outbox WHERE source_event_id=?',(key,)).fetchone()[0]
+    return {'source_event_id':key,'state':state}
 
 
 def summary(conn):
@@ -82,5 +96,8 @@ def relay_once(db):
         import funnel_legacy
         conn.execute('BEGIN IMMEDIATE')
         funnel_legacy.enqueue_missing(conn)
+        if os.environ.get('ARTEMIS_RETENTION_ENABLED')=='1':
+            import funnel_retention
+            funnel_retention.enqueue(conn)
         conn.commit()
         return deliver_one(conn)

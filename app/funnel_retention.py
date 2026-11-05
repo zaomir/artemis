@@ -24,11 +24,21 @@ def independent(event,email):
 def enqueue(conn,now=None,limit=50):
     if not conn.in_transaction:raise RuntimeError('retention_transaction_required')
     now=now or store.utcnow();before=(now-timedelta(days=7)).isoformat();queued=[]
-    candidates=conn.execute('''SELECT id,email,generation,requested_at,language FROM artemis_subscriptions
+    candidates=conn.execute('''SELECT id,email,generation,requested_at,language,source_event_id FROM artemis_subscriptions
         WHERE state='pending_confirmation' AND requested_at<? AND deliverability NOT IN ('hard_bounce','complaint')
         ORDER BY requested_at LIMIT ?''',(before,min(int(limit),50))).fetchall()
     events=[json.loads(r[0]) for r in conn.execute('SELECT payload FROM artemis_events')]
-    for sid,email,generation,requested,language in candidates:
+    for sid,email,generation,requested,language,original in candidates:
+        # Do not invent ownership when the original Person write is uncertain.
+        # The normal source delivery must reconcile first; the overdue count
+        # remains visible instead of a false privacy success.
+        proof=conn.execute('''SELECT o.state,o.receipt,e.payload FROM artemis_crm_outbox o
+            JOIN artemis_events e USING(source_event_id) WHERE source_event_id=?''',(original,)).fetchone()
+        if not proof or proof[0]!='verified':continue
+        receipt=json.loads(proof[1] or '{}')
+        if not (receipt.get('independent_readback') is True and receipt.get('person_id')
+                and receipt.get('source_event_id')==original and receipt.get('payload_sha256')==digest(json.loads(proof[2]))):
+            raise RuntimeError('expiry_source_receipt_invalid')
         if any(independent(e,email) for e in events):continue
         related=[e for e in events if e.get('intent')=='newsletter_only' and e.get('newsletter_email')==email
             and e.get('newsletter_requested_at','')<=requested and e.get('created_at','')<=now.isoformat()]
@@ -62,6 +72,8 @@ def finalize(conn,command,receipt,now=None):
                 {'anonymized','already_anonymized','retained_independent_context','retained_new_subscription'}):
         raise ValueError('coordinated_expiry_readback_required')
     now=now or store.utcnow();changed=0
+    current=conn.execute('SELECT deliverability FROM artemis_subscriptions WHERE id=?',(command['subscription_id'],)).fetchone()
+    if not current or current[0] in {'hard_bounce','complaint'}:raise ValueError('suppression_changed_requires_retention_review')
     for source in command['source_event_ids']:
         row=conn.execute('SELECT payload,payload_hash FROM artemis_events WHERE source_event_id=?',(source,)).fetchone()
         if not row:raise ValueError('expiry_source_missing')
