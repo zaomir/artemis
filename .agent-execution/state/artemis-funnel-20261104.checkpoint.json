@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 53,
-  "updated_at": "2026-11-05T11:44:59.808108+00:00",
-  "next_action": "Read safe nginx drift and actual backup paths before exact token-log exclusion",
-  "pending": null,
+  "revision": 54,
+  "updated_at": "2026-11-05T11:45:10.031024+00:00",
+  "next_action": "reconcile:MAIL-09-privacy-diagnosis-20261105-v1",
+  "pending": {
+    "key": "MAIL-09-privacy-diagnosis-20261105-v1",
+    "action": "safe nginx public-directive diff and actual installed backup path resolution; request artemis-mail-privacy-diagnostics-20261105-01; read only",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T11:45:10.031010+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -664,6 +669,12 @@
       "at": "2026-11-05T11:44:59.808108+00:00",
       "event": "verified:MAIL-09-token-log-inventory-20261105-v1",
       "next_action": "Read safe nginx drift and actual backup paths before exact token-log exclusion"
+    },
+    {
+      "revision": 54,
+      "at": "2026-11-05T11:45:10.031024+00:00",
+      "event": "began:MAIL-09-privacy-diagnosis-20261105-v1",
+      "next_action": "reconcile:MAIL-09-privacy-diagnosis-20261105-v1"
     }
   ],
   "policy": {
