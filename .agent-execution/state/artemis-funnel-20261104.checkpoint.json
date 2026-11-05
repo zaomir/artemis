@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 14,
-  "updated_at": "2026-11-05T09:07:34.630089+00:00",
-  "next_action": "reconcile:BASE-02-ingress-discovery-20261105-v1",
-  "pending": {
-    "key": "BASE-02-ingress-discovery-20261105-v1",
-    "action": "fixed Python fallback reader scan and local nginx/ports/Cloudflare credential presence diagnostics; request artemis-ingress-inventory-20261105-01",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T09:07:34.630070+00:00"
-  },
+  "revision": 15,
+  "updated_at": "2026-11-05T09:11:20.741040+00:00",
+  "next_action": "BASE-03 partial DNS/provider matrix; CAP-01 additive migration; CRM-01 after verified backup using existing metadata deploy script",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -87,6 +82,19 @@
         {
           "path": "docs/funnel/evidence/BASE-02-03-diagnostics-20261105.json",
           "sha256": "928a977826332d352c0d46bdca5a99ddc2fe0409e30d55c838bbaa8d3f486287"
+        }
+      ]
+    },
+    "BASE-02-ingress-discovery-20261105-v1": {
+      "key": "BASE-02-ingress-discovery-20261105-v1",
+      "action": "fixed Python fallback reader scan and local nginx/ports/Cloudflare credential presence diagnostics; request artemis-ingress-inventory-20261105-01",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T09:07:34.630070+00:00",
+      "verified_at": "2026-11-05T09:11:20.741026+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-02-complete-20261105.json",
+          "sha256": "fa68b08387834cc4bb0c0e2164e06309900ac0e4b763d2ad8f56e853e09c670f"
         }
       ]
     }
@@ -175,6 +183,12 @@
       "at": "2026-11-05T09:07:34.630089+00:00",
       "event": "began:BASE-02-ingress-discovery-20261105-v1",
       "next_action": "reconcile:BASE-02-ingress-discovery-20261105-v1"
+    },
+    {
+      "revision": 15,
+      "at": "2026-11-05T09:11:20.741040+00:00",
+      "event": "verified:BASE-02-ingress-discovery-20261105-v1",
+      "next_action": "BASE-03 partial DNS/provider matrix; CAP-01 additive migration; CRM-01 after verified backup using existing metadata deploy script"
     }
   ],
   "policy": {
