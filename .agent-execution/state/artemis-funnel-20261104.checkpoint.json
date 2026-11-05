@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 36,
-  "updated_at": "2026-11-05T10:55:36.901813+00:00",
-  "next_action": "reconcile:MAIL-03-dispatch-safety-20261105-v1",
-  "pending": {
-    "key": "MAIL-03-dispatch-safety-20261105-v1",
-    "action": "fix prepared mail worker atomic claim, no SQLite write lock during provider network, unsubscribe race and no blind retry; remain inactive",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:55:36.901798+00:00"
-  },
+  "revision": 37,
+  "updated_at": "2026-11-05T10:57:57.410639+00:00",
+  "next_action": "MAIL-06: authenticated feedback and coordinated pending-data expiry; newsletter inactive",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -232,6 +227,19 @@
           "sha256": "311ad831435e6c3f8187cf50c524016626cecc9690314c4889fad5ee8ed8408a"
         }
       ]
+    },
+    "MAIL-03-dispatch-safety-20261105-v1": {
+      "key": "MAIL-03-dispatch-safety-20261105-v1",
+      "action": "fix prepared mail worker atomic claim, no SQLite write lock during provider network, unsubscribe race and no blind retry; remain inactive",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:55:36.901798+00:00",
+      "verified_at": "2026-11-05T10:57:57.410623+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-03-safety-20261105.json",
+          "sha256": "b39e2defebeb23b969ed9c8411eeaa2632990804b65f040d54a42c834bbb83d5"
+        }
+      ]
     }
   },
   "history": [
@@ -450,6 +458,12 @@
       "at": "2026-11-05T10:55:36.901813+00:00",
       "event": "began:MAIL-03-dispatch-safety-20261105-v1",
       "next_action": "reconcile:MAIL-03-dispatch-safety-20261105-v1"
+    },
+    {
+      "revision": 37,
+      "at": "2026-11-05T10:57:57.410639+00:00",
+      "event": "verified:MAIL-03-dispatch-safety-20261105-v1",
+      "next_action": "MAIL-06: authenticated feedback and coordinated pending-data expiry; newsletter inactive"
     }
   ],
   "policy": {
