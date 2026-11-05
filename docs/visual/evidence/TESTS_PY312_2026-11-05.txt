@@ -106,7 +106,7 @@ ResourceWarning: Enable tracemalloc to get the object allocation traceback
 2026-11-05T10:12:01Z email route ok
 2026-11-05T10:12:01Z email sent tenerife_waitlist 1 <m1@x>
 2026-11-05T10:12:01Z tg backlog forwarded leads 1 tg:1
-2026-11-05T10:12:01Z tg backlog done: 1 forwarded 
+2026-11-05T10:12:01Z tg backlog done: 1 forwarded
 ......................WARNING:artemis.notify:artemis lead (Crete enquiry) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
 ................<repo>/tests/test_prod_smoke_fixes.py:188: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/img/og-crete-1200x630.jpg'>
   self.assertEqual(self.client.get(f"/static/img/{og['file']}").status_code, 200)
