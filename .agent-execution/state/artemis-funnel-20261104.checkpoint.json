@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 77,
-  "updated_at": "2026-11-05T13:22:26.120059+00:00",
-  "next_action": "NEWS-04 update strict navigation test contract for required diary destination; all other destinations and CTA retained",
-  "pending": null,
+  "revision": 78,
+  "updated_at": "2026-11-05T13:22:35.994195+00:00",
+  "next_action": "reconcile:NEWS-04-navigation-test-contract-20261105-v1",
+  "pending": {
+    "key": "NEWS-04-navigation-test-contract-20261105-v1",
+    "action": "retain strict desktop/mobile/footer destination assertions with the required localized diary addition; no test removal or exclusion",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T13:22:35.994179+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -964,6 +969,12 @@
       "at": "2026-11-05T13:22:26.120059+00:00",
       "event": "verified:NEWS-04-failure-diagnosis-20261105-v1",
       "next_action": "NEWS-04 update strict navigation test contract for required diary destination; all other destinations and CTA retained"
+    },
+    {
+      "revision": 78,
+      "at": "2026-11-05T13:22:35.994195+00:00",
+      "event": "began:NEWS-04-navigation-test-contract-20261105-v1",
+      "next_action": "reconcile:NEWS-04-navigation-test-contract-20261105-v1"
     }
   ],
   "policy": {
