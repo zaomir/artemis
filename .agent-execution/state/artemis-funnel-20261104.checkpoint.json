@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 38,
-  "updated_at": "2026-11-05T10:58:28.838740+00:00",
-  "next_action": "reconcile:MAIL-06-feedback-preparation-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-feedback-preparation-20261105-v1",
-    "action": "authenticated operator deliverability feedback into existing subscription and CRM outbox; source receipt idempotency; no real recipient mutation or send",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:58:28.838725+00:00"
-  },
+  "revision": 39,
+  "updated_at": "2026-11-05T11:01:46.072730+00:00",
+  "next_action": "MAIL-06 deploy protected feedback with existing CRM service; then coordinated pending expiry; no newsletter activation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -245,6 +240,19 @@
           "sha256": "b39e2defebeb23b969ed9c8411eeaa2632990804b65f040d54a42c834bbb83d5"
         }
       ]
+    },
+    "MAIL-06-feedback-preparation-20261105-v1": {
+      "key": "MAIL-06-feedback-preparation-20261105-v1",
+      "action": "authenticated operator deliverability feedback into existing subscription and CRM outbox; source receipt idempotency; no real recipient mutation or send",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:58:28.838725+00:00",
+      "verified_at": "2026-11-05T11:01:46.072716+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-feedback-preparation-20261105.json",
+          "sha256": "e53f0799061ddc1d078614f26351ea691eb8f336da9a69849745063a6439c88e"
+        }
+      ]
     }
   },
   "history": [
@@ -475,6 +483,12 @@
       "at": "2026-11-05T10:58:28.838740+00:00",
       "event": "began:MAIL-06-feedback-preparation-20261105-v1",
       "next_action": "reconcile:MAIL-06-feedback-preparation-20261105-v1"
+    },
+    {
+      "revision": 39,
+      "at": "2026-11-05T11:01:46.072730+00:00",
+      "event": "verified:MAIL-06-feedback-preparation-20261105-v1",
+      "next_action": "MAIL-06 deploy protected feedback with existing CRM service; then coordinated pending expiry; no newsletter activation"
     }
   ],
   "policy": {

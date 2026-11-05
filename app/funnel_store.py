@@ -208,12 +208,13 @@ def subscription_snapshot(row):
                 requested_at=row[3],confirmed_at=row[4],unsubscribed_at=row[5],deliverability=row[6],consent_version=VERSION)
 
 
-def queue_subscription_projection(conn,sid,kind,now):
+def queue_subscription_projection(conn,sid,kind,now,source_event_id=None,feedback=None):
     row=conn.execute('SELECT id,state,generation,requested_at,confirmed_at,unsubscribed_at,deliverability,source_event_id FROM artemis_subscriptions WHERE id=?',(sid,)).fetchone()
     source=conn.execute('SELECT payload FROM artemis_events WHERE source_event_id=?',(row[7],)).fetchone() if row else None
     if not source:return
     event=json.loads(source[0]);event['event_kind']='subscription'
-    event['source_event_id']=f'artemis:subscription:{sid}:{row[2]}:{kind}'
+    event['source_event_id']=source_event_id or f'artemis:subscription:{sid}:{row[2]}:{kind}'
+    if feedback is not None:event['mail_feedback']=feedback
     event['subscription']=subscription_snapshot(row);event['created_at']=now.isoformat()
     event['submission_id']=event['source_event_id']
     payload=json.dumps(event,sort_keys=True)
@@ -257,12 +258,12 @@ def unsubscribe(conn, sid, generation, token, secret, now=None):
     return True
 
 
-def suppress(conn, sid, reason):
+def suppress(conn, sid, reason,project=True):
     if reason not in ('hard_bounce','complaint'):
         raise ValueError('deliverability')
     conn.execute("UPDATE artemis_subscriptions SET deliverability=CASE WHEN deliverability='complaint' THEN deliverability ELSE ? END WHERE id=?",(reason,sid))
     conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')",(sid,))
-    queue_subscription_projection(conn,sid,reason,utcnow())
+    if project:queue_subscription_projection(conn,sid,reason,utcnow())
 
 
 def eligible_mail(conn, mail_id, now=None):
