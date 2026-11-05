@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 63,
-  "updated_at": "2026-11-05T12:19:25.969733+00:00",
-  "next_action": "CAP-04 server-rendered safe attribution across locale links without cookies/storage; preserve existing JS behavior",
-  "pending": null,
+  "revision": 64,
+  "updated_at": "2026-11-05T12:19:51.869953+00:00",
+  "next_action": "reconcile:CAP-04-native-attribution-20261105-v1",
+  "pending": {
+    "key": "CAP-04-native-attribution-20261105-v1",
+    "action": "render allowlisted attribution into typed forms and locale navigation without cookies/browser storage; avoid duplicate client fields; no activation",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T12:19:51.869939+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -789,6 +794,12 @@
       "at": "2026-11-05T12:19:25.969733+00:00",
       "event": "verified:CAP-05-native-error-preservation-20261105-v1",
       "next_action": "CAP-04 server-rendered safe attribution across locale links without cookies/storage; preserve existing JS behavior"
+    },
+    {
+      "revision": 64,
+      "at": "2026-11-05T12:19:51.869953+00:00",
+      "event": "began:CAP-04-native-attribution-20261105-v1",
+      "next_action": "reconcile:CAP-04-native-attribution-20261105-v1"
     }
   ],
   "policy": {
