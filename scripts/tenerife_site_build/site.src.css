@@ -515,3 +515,12 @@ a:hover{color:var(--cs-ink)}
 .concept-notice{background:var(--cs-lime);color:var(--cs-ink-soft);border-top:1px solid var(--cs-basalt);border-bottom:1px solid var(--cs-basalt)}
 .concept-notice .wrap{padding-block:var(--space-3)}
 .concept-notice p{font-size:var(--fs-small);line-height:var(--lh-body);max-width:var(--measure-lead);margin:0}
+
+
+/* Project diary thumbnails: actual article assets, never invented progress photos. */
+.news-teaser{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,220px);gap:var(--space-5);padding-block:var(--space-6);border-top:1px solid var(--cs-basalt);align-items:start}
+.news-teaser__text{min-width:0}
+.news-teaser__media{margin:0;min-width:0}
+.news-teaser__media img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.news-teaser__media figcaption{font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft);margin-top:var(--space-2)}
+@media(max-width:600px){.news-teaser{grid-template-columns:1fr}.news-teaser__media{max-width:100%}}
