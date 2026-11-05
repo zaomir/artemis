@@ -509,3 +509,9 @@ a:hover{color:var(--cs-ink)}
 .geo-locator figcaption{margin-top:var(--space-3);font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft)}
 .geo-locator a{color:var(--cs-ink);text-decoration:underline;text-underline-offset:3px}
 .geo-locator a:focus-visible{outline:2px solid var(--cs-basalt);outline-offset:2px}
+
+
+/* Artemis review-only concept notice: explicit stage, not an approval badge. */
+.concept-notice{background:var(--cs-lime);color:var(--cs-ink-soft);border-top:1px solid var(--cs-basalt);border-bottom:1px solid var(--cs-basalt)}
+.concept-notice .wrap{padding-block:var(--space-3)}
+.concept-notice p{font-size:var(--fs-small);line-height:var(--lh-body);max-width:var(--measure-lead);margin:0}
