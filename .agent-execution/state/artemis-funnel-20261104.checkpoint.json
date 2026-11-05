@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 9,
-  "updated_at": "2026-11-05T08:54:01.423812+00:00",
-  "next_action": "BASE-02: read-only Artemis SQLite/service/Twenty/sender inventory through verified VPS bridge",
-  "pending": null,
+  "revision": 10,
+  "updated_at": "2026-11-05T08:59:55.979192+00:00",
+  "next_action": "reconcile:BASE-02-live-inventory-20261105-v1",
+  "pending": {
+    "key": "BASE-02-live-inventory-20261105-v1",
+    "action": "ship fixed read-only Artemis inventory; submit artemis-live-inventory-20261105-01 through existing bridge; reconcile same result",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T08:59:55.979180+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -114,6 +119,12 @@
       "at": "2026-11-05T08:54:01.423812+00:00",
       "event": "verified:BASE-02-bridge-discovery-20261105-v1",
       "next_action": "BASE-02: read-only Artemis SQLite/service/Twenty/sender inventory through verified VPS bridge"
+    },
+    {
+      "revision": 10,
+      "at": "2026-11-05T08:59:55.979192+00:00",
+      "event": "began:BASE-02-live-inventory-20261105-v1",
+      "next_action": "reconcile:BASE-02-live-inventory-20261105-v1"
     }
   ],
   "policy": {
