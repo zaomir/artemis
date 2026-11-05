@@ -1,0 +1,77 @@
+{
+  "atom": "CAP-01",
+  "status": "completed",
+  "provider_commit": "2efb6756492450736b071a032c868b0946fb0809",
+  "merge_commit": "291b1a2eb8c9c9f5dc77bd164d65c14df6812f5a",
+  "request_commit": "6e89b6f4f7c8517a4976e73a5c7253320ecad9be",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-capture-migration-20261105-01.json",
+  "result": {
+    "request_id": "artemis-capture-migration-20261105-01",
+    "type": "artemis_release",
+    "status": "success",
+    "generated_at": "2026-11-05T09:23:31.824Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-capture-migration/1",
+        "requested_sha": "003980c2fcb4203301ff2d3b75e60a70f94315a6",
+        "production_changed": true,
+        "flags_changed": false,
+        "real_messages_sent": 0,
+        "crm_metadata_changed": false,
+        "previous_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
+        "deployed_sha": "003980c2fcb4203301ff2d3b75e60a70f94315a6",
+        "deploy": {
+          "exit_code": 0,
+          "stdout_sha256": "d06df621e4f356b0167f4a4f41aad258ec42e185ee019686e712b7eb9842811f",
+          "test_summaries": [
+            "tests: Ran 534 tests in 328.685s OK (skipped=9) (rc=0)"
+          ]
+        },
+        "migration": {
+          "before": {
+            "leads": {
+              "count": 3,
+              "schema_sha256": "23d425464de60bf6f3c10ccca4015765f89e263fae366cd4828c24a0cfd9af81",
+              "all_fields_sha256": "afec8b21c21c5da1d9bd20e31eca01f610729c0e3c7f6bce86c6d58211cb8bdf"
+            },
+            "tenerife_waitlist": {
+              "count": 2,
+              "schema_sha256": "53f83431c07b429c0eede6edefdda35ced71aa6ef197a9e581a3eceefe22504b",
+              "all_fields_sha256": "697387efc2cfa774c7bdd1e59c1b786b71a6e654025b0821fdf6d0757d5de5af"
+            }
+          },
+          "after": {
+            "leads": {
+              "count": 3,
+              "schema_sha256": "23d425464de60bf6f3c10ccca4015765f89e263fae366cd4828c24a0cfd9af81",
+              "all_fields_sha256": "afec8b21c21c5da1d9bd20e31eca01f610729c0e3c7f6bce86c6d58211cb8bdf"
+            },
+            "tenerife_waitlist": {
+              "count": 2,
+              "schema_sha256": "53f83431c07b429c0eede6edefdda35ced71aa6ef197a9e581a3eceefe22504b",
+              "all_fields_sha256": "697387efc2cfa774c7bdd1e59c1b786b71a6e654025b0821fdf6d0757d5de5af"
+            }
+          },
+          "tables": {
+            "artemis_events": 0,
+            "artemis_crm_outbox": 0,
+            "artemis_subscriptions": 0,
+            "artemis_mail_outbox": 0
+          },
+          "independent_readback": true,
+          "backup_path": "/var/backups/artemis/capture-003980c2fcb4-before.sqlite",
+          "backup_sha256": "bbd46463f0ff09e41239052d1a312e25283103043714cb75b97eb36f468631b4"
+        },
+        "ok": true,
+        "mode": "applied"
+      }
+    },
+    "error": null
+  }
+}

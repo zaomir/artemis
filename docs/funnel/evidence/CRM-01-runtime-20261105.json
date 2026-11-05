@@ -1,0 +1,116 @@
+{
+  "atom": "CRM-01",
+  "status": "completed",
+  "provider_commit": "99e0d9c2fb9933957e607e792dc58f5e8a9c8634",
+  "request_commit": "48e7e8e8840b73af672c643681689ac402026e3f",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-crm-schema-20261105-02.json",
+  "result": {
+    "request_id": "artemis-crm-schema-20261105-02",
+    "type": "artemis_release",
+    "status": "success",
+    "generated_at": "2026-11-05T09:37:25.937Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-schema-release/1",
+        "requested_sha": "99e0d9c2fb9933957e607e792dc58f5e8a9c8634",
+        "production_changed": true,
+        "real_messages_sent": 0,
+        "scope": "artemis",
+        "health_before_exit_code": 0,
+        "before": {
+          "ok": false,
+          "mode": "check",
+          "scope": "artemis",
+          "checked": [
+            {
+              "object": "opportunity",
+              "fields": 101
+            },
+            {
+              "object": "person",
+              "fields": 41
+            }
+          ],
+          "missingObjects": [],
+          "missingFields": [
+            "opportunity.artemisSourceEvent",
+            "opportunity.artemisCapture",
+            "person.artemisIdentity",
+            "person.artemisContactType",
+            "person.artemisContactValue",
+            "person.artemisLanguage",
+            "person.artemisSubscription"
+          ],
+          "createdObjects": [],
+          "createdFields": []
+        },
+        "preflight_interpreter": "/usr/bin/python3",
+        "preflight_before_exit_code": 0,
+        "backup": {
+          "exit_code": 0,
+          "restore_drill_verified": true
+        },
+        "offhost_exit_code": 0,
+        "apply": {
+          "ok": true,
+          "mode": "apply",
+          "scope": "artemis",
+          "checked": [
+            {
+              "object": "opportunity",
+              "fields": 103
+            },
+            {
+              "object": "person",
+              "fields": 46
+            }
+          ],
+          "missingObjects": [],
+          "missingFields": [],
+          "createdObjects": [],
+          "createdFields": [
+            "opportunity.artemisSourceEvent",
+            "opportunity.artemisCapture",
+            "person.artemisIdentity",
+            "person.artemisContactType",
+            "person.artemisContactValue",
+            "person.artemisLanguage",
+            "person.artemisSubscription"
+          ]
+        },
+        "after": {
+          "ok": true,
+          "mode": "check",
+          "scope": "artemis",
+          "checked": [
+            {
+              "object": "opportunity",
+              "fields": 103
+            },
+            {
+              "object": "person",
+              "fields": 46
+            }
+          ],
+          "missingObjects": [],
+          "missingFields": [],
+          "createdObjects": [],
+          "createdFields": []
+        },
+        "preflight_after_exit_code": 0,
+        "health_after_exit_code": 0,
+        "ok": true,
+        "independent_schema_readback": true,
+        "mode": "applied",
+        "error_class": null
+      }
+    },
+    "error": null
+  }
+}

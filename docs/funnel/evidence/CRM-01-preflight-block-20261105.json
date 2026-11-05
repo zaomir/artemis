@@ -1,0 +1,69 @@
+{
+  "atom": "CRM-01",
+  "status": "guard_stopped_before_mutation",
+  "provider_commit": "6fe294d6cdaba0d81290ca8a28a2a40432e366cc",
+  "request_commit": "9f2b1629f8d5aa91ca50d505ddb67823fe78c12b",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-crm-schema-20261105-01.json",
+  "result": {
+    "request_id": "artemis-crm-schema-20261105-01",
+    "type": "artemis_release",
+    "status": "error",
+    "generated_at": "2026-11-05T09:27:41.433Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [
+      {
+        "code": "internal_error",
+        "message": "existing_schema_preflight_failed"
+      }
+    ],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-schema-release/1",
+        "requested_sha": "6fe294d6cdaba0d81290ca8a28a2a40432e366cc",
+        "production_changed": false,
+        "real_messages_sent": 0,
+        "scope": "artemis",
+        "health_before_exit_code": 0,
+        "before": {
+          "ok": false,
+          "mode": "check",
+          "scope": "artemis",
+          "checked": [
+            {
+              "object": "opportunity",
+              "fields": 101
+            },
+            {
+              "object": "person",
+              "fields": 41
+            }
+          ],
+          "missingObjects": [],
+          "missingFields": [
+            "opportunity.artemisSourceEvent",
+            "opportunity.artemisCapture",
+            "person.artemisIdentity",
+            "person.artemisContactType",
+            "person.artemisContactValue",
+            "person.artemisLanguage",
+            "person.artemisSubscription"
+          ],
+          "createdObjects": [],
+          "createdFields": []
+        },
+        "preflight_before_exit_code": 1,
+        "ok": false,
+        "error_class": "existing_schema_preflight_failed"
+      }
+    },
+    "error": {
+      "code": "internal_error",
+      "message": "existing_schema_preflight_failed"
+    }
+  },
+  "next": "Diagnose actual existing Python/client schema preflight; do not bypass it or replay completed request."
+}
