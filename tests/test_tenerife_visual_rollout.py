@@ -183,6 +183,22 @@ class WatercolourPreviewTests(unittest.TestCase):
         self.assertIn("mobile-20261105-800.webp", variant["mobile_srcset"])
         self.assertTrue(variant["caption"])
 
+    def test_future_stages_use_the_nine_source_rows_in_every_language(self):
+        for lang in ("en", "es", "de", "fr", "ru"):
+            copy_dir = SCRIPTS / ("copy_v3" if lang == "ru" else "copy_" + lang)
+            _, blocks = site_builder.parse_page((copy_dir / "08_stroyka.md").read_text(encoding="utf-8"))
+            table = site_builder.table_item(next(b for b in blocks if b["kind"] == "table"))
+            stages = site_builder.prospective_stages(table)
+            self.assertEqual(len(stages), 9, lang)
+            self.assertEqual([s["result"] for s in stages], [r[1] for r in table["rows"]])
+            self.assertTrue(I18N[lang]["visual"]["future_stages"]["disclosure"])
+
+    def test_future_stages_reject_missing_or_reordered_source_numbers(self):
+        table = {"kind": "table", "head": ["Stage", "Result"],
+                 "rows": [[f"{n}. Phase", "Future result"] for n in range(1, 10)]}
+        table["rows"][3][0] = "6. Skipped stage"
+        self.assertIsNone(site_builder.prospective_stages(table))
+
 
 if __name__ == "__main__":
     unittest.main()

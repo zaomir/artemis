@@ -1,0 +1,15 @@
+{
+  "id": "index-f03",
+  "page": "index",
+  "frame": "F03",
+  "category": "ART-03",
+  "truth_level": "C2",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/index-f03-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-e762ddc3-1e61-4e36-b758-771be7af8e90.png",
+  "reference": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. A private common garden concept: low basalt terrace walls, a narrow stone path, an olive tree and a simple stone bench under the shadow of one restrained Spanish arch. A hint of cream lime-rendered residence at one edge. Focus on calm planted space and human scale. No swimming pool, no water feature, no promise of completed infrastructure.",
+  "production_assignment": false
+}

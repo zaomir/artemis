@@ -1,0 +1,39 @@
+{
+  "worker": "functions cell 37 in active conversation",
+  "requested": 14,
+  "saved": 6,
+  "items": [
+    {
+      "id": "alquiler-f10",
+      "source": "docs/visual/candidates/p1-sources/alquiler-f10-20261105.png",
+      "sha256": "84ce1a05874d843a0b20d5ab7395fc1b91174523474573ce7a9bd9614c41faca"
+    },
+    {
+      "id": "energia-f11",
+      "source": "docs/visual/candidates/p1-sources/energia-f11-20261105.png",
+      "sha256": "8fbbc54e8c1f048549f82239f51e1afff06715e4dabf4b16edf10dcd085556bd"
+    },
+    {
+      "id": "index-f02",
+      "source": "docs/visual/candidates/p1-sources/index-f02-20261105.png",
+      "sha256": "3866189e6c6924bb0d0d387e426de6391a5c9d243588ef226b438a53a21f61d4"
+    },
+    {
+      "id": "index-f03",
+      "source": "docs/visual/candidates/p1-sources/index-f03-20261105.png",
+      "sha256": "7e77d56994a4cf08479b66c9b3d735e4489ced5af7d835c8c9a57406d91744ef"
+    },
+    {
+      "id": "producto-f06",
+      "source": "docs/visual/candidates/p1-sources/producto-f06-20261105.png",
+      "sha256": "863e286717aad12bf9c788748b25c1bf42eca01605edb37df0c99a07cd59da0f"
+    },
+    {
+      "id": "producto-f07",
+      "source": "docs/visual/candidates/p1-sources/producto-f07-20261105.png",
+      "sha256": "d87cbf5a2922372ce974a07d41e89cd6e927fa5d106ef1cd8e47c163ee3dfb21"
+    }
+  ],
+  "reconcile_before_retry": true,
+  "publication": false
+}

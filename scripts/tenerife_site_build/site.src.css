@@ -532,6 +532,14 @@ a:hover{color:var(--cs-ink)}
 @media(max-width:767px){.frame--concept .frame__media{aspect-ratio:4/5}}
 /* Keep fixed navigation and title plates clear of the concept drawing. */
 .hero--concept{padding-top:var(--header-h)}
+.future-stages{margin-top:var(--space-5)}
+.future-stages ol{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+.future-stages li{display:flex;gap:var(--space-3);padding:var(--space-4);border:var(--border-hair);background:var(--cs-sand)}
+.future-stages__number{font-family:var(--font-display);font-size:var(--fs-h3);color:var(--cs-ink-soft);flex:none}
+.future-stages h3{font-size:var(--fs-body);line-height:var(--lh-body)}
+.future-stages p{font-size:var(--fs-small);color:var(--cs-ink-soft);margin-top:var(--space-2)}
+@media(max-width:1023px){.future-stages ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.future-stages ol{grid-template-columns:1fr}}
 @media(min-width:768px){
   .hero--concept .hero__media{aspect-ratio:16/9;min-height:0}
   .hero--concept .hero__body{grid-area:2/1;padding-top:var(--space-6)}

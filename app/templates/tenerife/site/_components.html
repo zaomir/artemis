@@ -334,6 +334,16 @@
 {{ extras(s, k, res) }}
 {{ frames(s) }}
 {% endif %}
+{% if s.future_stages|default(false) %}
+  <div class="wrap future-stages">
+    <p class="micro">{{ s.future_stages.disclosure }}</p>
+    <ol aria-label="{{ s.future_stages.label }}">
+{% for stage in s.future_stages['items'] %}
+      <li><span class="future-stages__number" aria-hidden="true">{{ loop.index }}</span><div><h3>{{ stage.label }}</h3><p>{{ stage.result }}</p></div></li>
+{% endfor %}
+    </ol>
+  </div>
+{% endif %}
 {% if s.concept_progress|default(false) %}
   <div class="wrap">
     <figure class="concept-stages" aria-label="{{ s.concept_progress.label }}">

@@ -42,7 +42,11 @@
         "caption": "Indicative district locator from verified coordinates; no Artemis site has been selected. Not a cadastral map or travel route.",
         "open_map": "Open the actual area map"
       },
-      "project_concept_notice": "Architectural concept search. The plot, building design, dwelling mix and specifications have not been approved; illustrations are exploratory ideas."
+      "project_concept_notice": "Architectural concept search. The plot, building design, dwelling mix and specifications have not been approved; illustrations are exploratory ideas.",
+      "future_stages": {
+        "label": "Possible future construction stages",
+        "disclosure": "Prospective stages only. The programme will be refined after plot selection; this is not a progress report."
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Ink-and-watercolour concept of a stepped Spanish-Canarian residential village on a green Atlantic hillside",
@@ -175,7 +179,11 @@
         "caption": "Localización orientativa basada en coordenadas verificadas; aún no se ha elegido la parcela de Artemis. No es un plano catastral ni una ruta.",
         "open_map": "Abrir el mapa real de la zona"
       },
-      "project_concept_notice": "Búsqueda del concepto arquitectónico. No se han aprobado la parcela, la arquitectura, la distribución de viviendas ni las especificaciones; las imágenes son ideas exploratorias."
+      "project_concept_notice": "Búsqueda del concepto arquitectónico. No se han aprobado la parcela, la arquitectura, la distribución de viviendas ni las especificaciones; las imágenes son ideas exploratorias.",
+      "future_stages": {
+        "label": "Posibles fases futuras de construcción",
+        "disclosure": "Fases previstas únicamente. El programa se precisará tras elegir el terreno; no es un informe de avance."
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Boceto en tinta y acuarela de residencias canarias escalonadas sobre una ladera verde del Atlántico",
@@ -308,7 +316,11 @@
         "caption": "Unverbindliche Lageübersicht anhand geprüfter Koordinaten; ein Grundstück für Artemis wurde noch nicht gewählt. Kein Katasterplan und keine Route.",
         "open_map": "Tatsächliche Gebietskarte öffnen"
       },
-      "project_concept_notice": "Suche nach dem Architekturkonzept. Grundstück, Entwurf, Wohnungsmix und Ausführung sind noch nicht genehmigt; die Illustrationen zeigen mögliche Ideen."
+      "project_concept_notice": "Suche nach dem Architekturkonzept. Grundstück, Entwurf, Wohnungsmix und Ausführung sind noch nicht genehmigt; die Illustrationen zeigen mögliche Ideen.",
+      "future_stages": {
+        "label": "Mögliche künftige Bauphasen",
+        "disclosure": "Nur mögliche künftige Phasen. Das Programm wird nach der Grundstückswahl präzisiert; dies ist kein Fortschrittsbericht."
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Tusche- und Aquarellentwurf für gestaffelte kanarische Residenzen an einem grünen Atlantikhang",
@@ -441,7 +453,11 @@
         "caption": "Repérage indicatif fondé sur des coordonnées vérifiées ; aucune parcelle Artemis n'est choisie. Ni plan cadastral ni itinéraire.",
         "open_map": "Ouvrir la carte réelle du secteur"
       },
-      "project_concept_notice": "Recherche du concept architectural. La parcelle, l’architecture, la répartition des logements et les caractéristiques ne sont pas arrêtées ; les illustrations explorent des possibilités."
+      "project_concept_notice": "Recherche du concept architectural. La parcelle, l’architecture, la répartition des logements et les caractéristiques ne sont pas arrêtées ; les illustrations explorent des possibilités.",
+      "future_stages": {
+        "label": "Phases futures possibles de construction",
+        "disclosure": "Étapes prévisionnelles uniquement. Le programme sera précisé après le choix du terrain ; ce n’est pas un rapport d’avancement."
+      }
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Esquisse à l’encre et à l’aquarelle de résidences canariennes en terrasses sur une colline atlantique verdoyante",
@@ -551,7 +567,11 @@
         "caption": "Схема расположения района по проверенным координатам; участок Artemis не выбран. Это не кадастровая карта и не маршрут.",
         "open_map": "Открыть реальную карту района"
       },
-      "project_concept_notice": "Сейчас идёт поиск архитектурной концепции. Участок, проект домов, состав резиденций и характеристики ещё не утверждены; иллюстрации показывают возможные решения."
+      "project_concept_notice": "Сейчас идёт поиск архитектурной концепции. Участок, проект домов, состав резиденций и характеристики ещё не утверждены; иллюстрации показывают возможные решения.",
+      "future_stages": {
+        "label": "Возможные будущие этапы строительства",
+        "disclosure": "Только предполагаемые этапы. Программа уточняется после выбора участка; это не отчёт о выполненных работах."
+      }
     },
     "calc": {
       "ui": {

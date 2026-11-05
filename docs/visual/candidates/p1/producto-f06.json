@@ -1,0 +1,15 @@
+{
+  "id": "producto-f06",
+  "page": "producto",
+  "frame": "F06",
+  "category": "ART-03",
+  "truth_level": "C2",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/producto-f06-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-509cdd67-6bea-4638-b837-9284e925e784.png",
+  "reference": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. An intimate interior living-room concept inside the same small Spanish-Canarian house family. Cream lime walls, one shallow arched opening to a leafy private courtyard, quiet linen sofa and small dark timber table, subtle volcanic stone floor, soft cool daylight. Modest room with believable domestic proportions, no double-height luxury hall, no people, no ocean window or architectural plan.",
+  "production_assignment": false
+}

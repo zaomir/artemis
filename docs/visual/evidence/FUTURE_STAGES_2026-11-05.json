@@ -1,0 +1,449 @@
+{
+  "status": "VERIFIED_PREVIEW_ONLY",
+  "source": "Nine construction rows in copy_v3/copy_en/copy_es/copy_de/copy_fr; no new schedule or status",
+  "render_checks": [
+    {
+      "locale": "en",
+      "width": 320,
+      "scroll": 320,
+      "cards": 9,
+      "labels": [
+        "Groundworks",
+        "Foundations",
+        "Shell",
+        "Roof",
+        "Services",
+        "Facade",
+        "Interiors",
+        "Pool",
+        "Grounds"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "scroll": 768,
+      "cards": 9,
+      "labels": [
+        "Groundworks",
+        "Foundations",
+        "Shell",
+        "Roof",
+        "Services",
+        "Facade",
+        "Interiors",
+        "Pool",
+        "Grounds"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "en",
+      "width": 1024,
+      "scroll": 1024,
+      "cards": 9,
+      "labels": [
+        "Groundworks",
+        "Foundations",
+        "Shell",
+        "Roof",
+        "Services",
+        "Facade",
+        "Interiors",
+        "Pool",
+        "Grounds"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "scroll": 1440,
+      "cards": 9,
+      "labels": [
+        "Groundworks",
+        "Foundations",
+        "Shell",
+        "Roof",
+        "Services",
+        "Facade",
+        "Interiors",
+        "Pool",
+        "Grounds"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "es",
+      "width": 320,
+      "scroll": 320,
+      "cards": 9,
+      "labels": [
+        "Terreno",
+        "Cimentaci\u00f3n",
+        "Estructura",
+        "Cubierta",
+        "Instalaciones",
+        "Fachada",
+        "Interiores",
+        "Piscina",
+        "Exterior"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "es",
+      "width": 768,
+      "scroll": 768,
+      "cards": 9,
+      "labels": [
+        "Terreno",
+        "Cimentaci\u00f3n",
+        "Estructura",
+        "Cubierta",
+        "Instalaciones",
+        "Fachada",
+        "Interiores",
+        "Piscina",
+        "Exterior"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "es",
+      "width": 1024,
+      "scroll": 1024,
+      "cards": 9,
+      "labels": [
+        "Terreno",
+        "Cimentaci\u00f3n",
+        "Estructura",
+        "Cubierta",
+        "Instalaciones",
+        "Fachada",
+        "Interiores",
+        "Piscina",
+        "Exterior"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "scroll": 1440,
+      "cards": 9,
+      "labels": [
+        "Terreno",
+        "Cimentaci\u00f3n",
+        "Estructura",
+        "Cubierta",
+        "Instalaciones",
+        "Fachada",
+        "Interiores",
+        "Piscina",
+        "Exterior"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "de",
+      "width": 320,
+      "scroll": 320,
+      "cards": 9,
+      "labels": [
+        "Erdarbeiten",
+        "Fundament",
+        "Rohbau",
+        "Dach",
+        "Technik",
+        "Fassade",
+        "Innenausbau",
+        "Pool",
+        "Au\u00dfenanlage"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "de",
+      "width": 768,
+      "scroll": 768,
+      "cards": 9,
+      "labels": [
+        "Erdarbeiten",
+        "Fundament",
+        "Rohbau",
+        "Dach",
+        "Technik",
+        "Fassade",
+        "Innenausbau",
+        "Pool",
+        "Au\u00dfenanlage"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "de",
+      "width": 1024,
+      "scroll": 1024,
+      "cards": 9,
+      "labels": [
+        "Erdarbeiten",
+        "Fundament",
+        "Rohbau",
+        "Dach",
+        "Technik",
+        "Fassade",
+        "Innenausbau",
+        "Pool",
+        "Au\u00dfenanlage"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "de",
+      "width": 1440,
+      "scroll": 1440,
+      "cards": 9,
+      "labels": [
+        "Erdarbeiten",
+        "Fundament",
+        "Rohbau",
+        "Dach",
+        "Technik",
+        "Fassade",
+        "Innenausbau",
+        "Pool",
+        "Au\u00dfenanlage"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "fr",
+      "width": 320,
+      "scroll": 320,
+      "cards": 9,
+      "labels": [
+        "Terrassement",
+        "Fondations",
+        "Gros \u0153uvre",
+        "Toiture",
+        "R\u00e9seaux",
+        "Fa\u00e7ade",
+        "Int\u00e9rieurs",
+        "Piscine",
+        "Abords"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "fr",
+      "width": 768,
+      "scroll": 768,
+      "cards": 9,
+      "labels": [
+        "Terrassement",
+        "Fondations",
+        "Gros \u0153uvre",
+        "Toiture",
+        "R\u00e9seaux",
+        "Fa\u00e7ade",
+        "Int\u00e9rieurs",
+        "Piscine",
+        "Abords"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "fr",
+      "width": 1024,
+      "scroll": 1024,
+      "cards": 9,
+      "labels": [
+        "Terrassement",
+        "Fondations",
+        "Gros \u0153uvre",
+        "Toiture",
+        "R\u00e9seaux",
+        "Fa\u00e7ade",
+        "Int\u00e9rieurs",
+        "Piscine",
+        "Abords"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "fr",
+      "width": 1440,
+      "scroll": 1440,
+      "cards": 9,
+      "labels": [
+        "Terrassement",
+        "Fondations",
+        "Gros \u0153uvre",
+        "Toiture",
+        "R\u00e9seaux",
+        "Fa\u00e7ade",
+        "Int\u00e9rieurs",
+        "Piscine",
+        "Abords"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "ru",
+      "width": 320,
+      "scroll": 320,
+      "cards": 9,
+      "labels": [
+        "\u0417\u0435\u043c\u043b\u044f",
+        "\u0424\u0443\u043d\u0434\u0430\u043c\u0435\u043d\u0442",
+        "\u041a\u043e\u0440\u043e\u0431\u043a\u0430",
+        "\u041a\u0440\u043e\u0432\u043b\u044f",
+        "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f",
+        "\u0424\u0430\u0441\u0430\u0434",
+        "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440\u044b",
+        "\u0411\u0430\u0441\u0441\u0435\u0439\u043d",
+        "\u0423\u0447\u0430\u0441\u0442\u043e\u043a"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "ru",
+      "width": 768,
+      "scroll": 768,
+      "cards": 9,
+      "labels": [
+        "\u0417\u0435\u043c\u043b\u044f",
+        "\u0424\u0443\u043d\u0434\u0430\u043c\u0435\u043d\u0442",
+        "\u041a\u043e\u0440\u043e\u0431\u043a\u0430",
+        "\u041a\u0440\u043e\u0432\u043b\u044f",
+        "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f",
+        "\u0424\u0430\u0441\u0430\u0434",
+        "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440\u044b",
+        "\u0411\u0430\u0441\u0441\u0435\u0439\u043d",
+        "\u0423\u0447\u0430\u0441\u0442\u043e\u043a"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "ru",
+      "width": 1024,
+      "scroll": 1024,
+      "cards": 9,
+      "labels": [
+        "\u0417\u0435\u043c\u043b\u044f",
+        "\u0424\u0443\u043d\u0434\u0430\u043c\u0435\u043d\u0442",
+        "\u041a\u043e\u0440\u043e\u0431\u043a\u0430",
+        "\u041a\u0440\u043e\u0432\u043b\u044f",
+        "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f",
+        "\u0424\u0430\u0441\u0430\u0434",
+        "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440\u044b",
+        "\u0411\u0430\u0441\u0441\u0435\u0439\u043d",
+        "\u0423\u0447\u0430\u0441\u0442\u043e\u043a"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "scroll": 1440,
+      "cards": 9,
+      "labels": [
+        "\u0417\u0435\u043c\u043b\u044f",
+        "\u0424\u0443\u043d\u0434\u0430\u043c\u0435\u043d\u0442",
+        "\u041a\u043e\u0440\u043e\u0431\u043a\u0430",
+        "\u041a\u0440\u043e\u0432\u043b\u044f",
+        "\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f",
+        "\u0424\u0430\u0441\u0430\u0434",
+        "\u0418\u043d\u0442\u0435\u0440\u044c\u0435\u0440\u044b",
+        "\u0411\u0430\u0441\u0441\u0435\u0439\u043d",
+        "\u0423\u0447\u0430\u0441\u0442\u043e\u043a"
+      ],
+      "progressClaims": 0,
+      "broken": []
+    }
+  ],
+  "rebuilds": {
+    "builds": [
+      {
+        "mode": "preview",
+        "locale": "en",
+        "exit": 0
+      },
+      {
+        "mode": "preview",
+        "locale": "es",
+        "exit": 0
+      },
+      {
+        "mode": "preview",
+        "locale": "de",
+        "exit": 0
+      },
+      {
+        "mode": "preview",
+        "locale": "fr",
+        "exit": 0
+      },
+      {
+        "mode": "preview",
+        "locale": "ru",
+        "exit": 0
+      },
+      {
+        "mode": "default",
+        "locale": "en",
+        "exit": 0
+      },
+      {
+        "mode": "default",
+        "locale": "es",
+        "exit": 0
+      },
+      {
+        "mode": "default",
+        "locale": "de",
+        "exit": 0
+      },
+      {
+        "mode": "default",
+        "locale": "fr",
+        "exit": 0
+      },
+      {
+        "mode": "default",
+        "locale": "ru",
+        "exit": 0
+      }
+    ],
+    "changed_primary_pages": [
+      "en/construccion",
+      "es/construccion",
+      "de/construccion",
+      "fr/construccion",
+      "ru/construccion"
+    ]
+  },
+  "numbers_changed": false,
+  "production_changed": false
+}

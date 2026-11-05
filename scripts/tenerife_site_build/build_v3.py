@@ -686,6 +686,19 @@ def drop_hidden_sections(blocks, name):
     return out
 
 
+def prospective_stages(table):
+    """Use the copy's nine ordered rows, without inventing status or dates."""
+    if table["kind"] != "table" or len(table["head"]) != 2 or len(table["rows"]) != 9:
+        return None
+    items = []
+    for n, row in enumerate(table["rows"], 1):
+        match = re.fullmatch(rf"{n}[.)]\s+(.+)", plain(row[0]))
+        if not match:
+            return None
+        items.append({"label": html.escape(match.group(1)), "result": row[1]})
+    return items
+
+
 def structure(blocks, frames, alts, name, model=None, alias=None):
     """Group blocks into hero / sections / cta and choose the DESIGN.md component per section.
     Text order inside a section never changes; pictures ([КАДР]) of a section are placed after its text.
@@ -755,6 +768,13 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
         title = plain(s["title"])
         key = (name, (alias or {}).get(title, title))
         s["body"] = c7_steps(s["body"], key[1])
+        if name == "construccion" and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
+            for item in s["body"]:
+                stages = prospective_stages(item)
+                if stages:
+                    s["future_stages"] = dict(i18n_strings()[LOCALE]["visual"]["future_stages"], items=stages)
+                    s["body"] = [b for b in s["body"] if b is not item]
+                    break
         if key in LOG_SECTIONS:
             s["body"] = c10_log(s["body"])
         if key in TEAM_SECTIONS:
