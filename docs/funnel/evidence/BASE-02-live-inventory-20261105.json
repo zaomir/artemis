@@ -1,0 +1,388 @@
+{
+  "atom": "BASE-02",
+  "status": "live_inventory_captured_further_reader_and_health_diagnostics_required",
+  "provider_commit": "692827ee00ba262a0618689d839eabb9ee212a1e",
+  "merge_commit": "444281765a727fb32a4bf2c1fbf28ffd82d3b748",
+  "request_commit": "a1fa9a939398f1896aa5f29145575575912319d9",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-live-inventory-20261105-01.json",
+  "result": {
+    "request_id": "artemis-live-inventory-20261105-01",
+    "type": "simon_agent_access",
+    "status": "success",
+    "generated_at": "2026-11-05T09:01:38.127Z",
+    "providers_used": [
+      "simon_agent_access"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [],
+    "meta": {
+      "simon_agent_access": {
+        "ok": true,
+        "execution_origin": {
+          "hostname": "vps2402",
+          "verified_server_origin": true
+        },
+        "inventory": {
+          "schema": "artemis-live-inventory/1",
+          "read_only": true,
+          "production_changed": false,
+          "checkout_present": true,
+          "deployed_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
+          "database": {
+            "present": true,
+            "tables": {
+              "leads": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "name",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "email",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "phone",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "amount",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "organisation",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "role",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "enquiry_type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "message",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "consent",
+                    "type": "INTEGER"
+                  }
+                ],
+                "count": 3,
+                "date_range": [
+                  "2026-05-23T21:26:57.477818",
+                  "2026-07-20T16:40:21.185043"
+                ]
+              },
+              "tenerife_waitlist": {
+                "columns": [
+                  {
+                    "name": "id",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "name",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "contact",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "language",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "page",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "consent",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "client_hash",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "created_at",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_status",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_note",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_m2",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_step",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_pay",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_m2_server",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_step_server",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_pay_server",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_type",
+                    "type": "TEXT"
+                  },
+                  {
+                    "name": "calc_shares",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_price_eur_m2",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_amount",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_month_eur",
+                    "type": "INTEGER"
+                  },
+                  {
+                    "name": "calc_model_version",
+                    "type": "TEXT"
+                  }
+                ],
+                "count": 2,
+                "date_range": [
+                  "2026-10-31T23:46:43.171729+00:00",
+                  "2026-10-31T23:49:49.592583+00:00"
+                ]
+              }
+            },
+            "delivery_state": "UNVERIFIED"
+          },
+          "units": {
+            "artemis.service": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/var/www/artemis/app",
+              "FragmentPath": "/etc/systemd/system/artemis.service",
+              "probe_exit_code": 0
+            },
+            "artemis-lead-relay.service": {
+              "LoadState": "loaded",
+              "ActiveState": "inactive",
+              "SubState": "dead",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/opt/email-engine",
+              "FragmentPath": "/etc/systemd/system/artemis-lead-relay.service",
+              "probe_exit_code": 0
+            },
+            "artemis-lead-relay.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "waiting",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/artemis-lead-relay.timer",
+              "probe_exit_code": 0
+            },
+            "twenty-sync.service": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": "0",
+              "WorkingDirectory": "/var/www/grainee-v2/scripts/outreach",
+              "FragmentPath": "/etc/systemd/system/twenty-sync.service",
+              "probe_exit_code": 0
+            },
+            "twenty-watchdog.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "waiting",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/twenty-watchdog.timer",
+              "probe_exit_code": 0
+            },
+            "agent-api-bridge.timer": {
+              "LoadState": "loaded",
+              "ActiveState": "active",
+              "SubState": "running",
+              "ExecMainStatus": null,
+              "WorkingDirectory": null,
+              "FragmentPath": "/etc/systemd/system/agent-api-bridge.timer",
+              "probe_exit_code": 0
+            }
+          },
+          "matching_units": [
+            "artemis-hook.service",
+            "artemis-lead-relay.service",
+            "artemis-preview-ru-v3.service",
+            "artemis.service",
+            "twenty-backup.service",
+            "twenty-sync.service",
+            "twenty-watchdog.service",
+            "artemis-lead-relay.timer",
+            "twenty-backup.timer",
+            "twenty-watchdog.timer"
+          ],
+          "installed_relay_sha256": "6c8153ffc4932d594a22b947176da9dfbb924984f05118eee439e2768ad0040b",
+          "checkout_relay_sha256": "6c8153ffc4932d594a22b947176da9dfbb924984f05118eee439e2768ad0040b",
+          "relay_mentions_twenty": false,
+          "runtime_flags": {
+            "ARTEMIS_FUNNEL_ENABLED": false,
+            "ARTEMIS_CRM_DELIVERY_ENABLED": false,
+            "ARTEMIS_NEWSLETTER_ENABLED": false
+          },
+          "newsletter_secret_present": false,
+          "mail": {
+            "transport_source": "existing lead relay Gmail DWD",
+            "runtime_sender_configured": true,
+            "from_domain": "oxfordframe.com",
+            "from_fingerprint": "436b8d2a8a2471497a3151ce3926bd99a0be3fe1bd835e422d3f91e9c5298634",
+            "newsletter_reply_to_configured": false,
+            "newsletter_sender_enabled": false,
+            "provider_send_as_verified": false,
+            "responsible_reply_owner_verified": false,
+            "real_messages_sent": 0,
+            "dns": {
+              "spf_record_present": true,
+              "dmarc_record_present": true,
+              "dkim": "selector_not_yet_observed",
+              "tls": "not_checked_by_this_inventory"
+            },
+            "provider_reply_to_present": false
+          }
+        },
+        "error_class": null,
+        "twenty": {
+          "health_check_exit_code": 2,
+          "credential_present": true,
+          "credential_source": "env:TWENTY_API_KEY",
+          "metadata_status": 200,
+          "delivery_state": "UNVERIFIED",
+          "schema": {
+            "person": {
+              "id": "c6311988-d5ea-4513-8305-f268a92f1caa",
+              "fields": [
+                {
+                  "name": "name",
+                  "type": "FULL_NAME",
+                  "isUnique": false
+                },
+                {
+                  "name": "emails",
+                  "type": "EMAILS",
+                  "isUnique": false
+                },
+                {
+                  "name": "phones",
+                  "type": "PHONES",
+                  "isUnique": false
+                },
+                {
+                  "name": "language",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "RU",
+                    "EN",
+                    "UK",
+                    "ES",
+                    "FR"
+                  ]
+                },
+                {
+                  "name": "channel",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "WHATSAPP",
+                    "TELEGRAM",
+                    "EMAIL"
+                  ]
+                },
+                {
+                  "name": "id",
+                  "type": "UUID",
+                  "isUnique": false
+                }
+              ]
+            },
+            "opportunity": {
+              "id": "43295d5a-4a19-4c75-bada-e1b118ed8937",
+              "fields": [
+                {
+                  "name": "name",
+                  "type": "TEXT",
+                  "isUnique": false
+                },
+                {
+                  "name": "id",
+                  "type": "UUID",
+                  "isUnique": false
+                },
+                {
+                  "name": "pointOfContact",
+                  "type": "RELATION",
+                  "isUnique": false
+                },
+                {
+                  "name": "token",
+                  "type": "TEXT",
+                  "isUnique": false
+                },
+                {
+                  "name": "status",
+                  "type": "SELECT",
+                  "isUnique": false,
+                  "options": [
+                    "NEW",
+                    "IN_FUNNEL",
+                    "INTERESTED",
+                    "CHECKING",
+                    "PAYMENT_READY",
+                    "PAID",
+                    "IN_PROGRESS",
+                    "COMPLETED",
+                    "UNSUBSCRIBED",
+                    "ATTEMPTED_PAYMENT"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "production_changed": false
+      }
+    },
+    "error": null
+  }
+}

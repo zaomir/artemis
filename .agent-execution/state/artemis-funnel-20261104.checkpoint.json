@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 10,
-  "updated_at": "2026-11-05T08:59:55.979192+00:00",
-  "next_action": "reconcile:BASE-02-live-inventory-20261105-v1",
-  "pending": {
-    "key": "BASE-02-live-inventory-20261105-v1",
-    "action": "ship fixed read-only Artemis inventory; submit artemis-live-inventory-20261105-01 through existing bridge; reconcile same result",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T08:59:55.979180+00:00"
-  },
+  "revision": 11,
+  "updated_at": "2026-11-05T09:02:19.586311+00:00",
+  "next_action": "BASE-02/03: diagnose watchdog code 2, sender alias and existing source readers before any schema or delivery activation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -61,6 +56,19 @@
         {
           "path": "docs/funnel/evidence/BASE-02-bridge-discovery-20261105.json",
           "sha256": "458dcdb3c1beb714a54eb00ba1a3d324138069ff5e0e6bcf39b2f2d5da178fe6"
+        }
+      ]
+    },
+    "BASE-02-live-inventory-20261105-v1": {
+      "key": "BASE-02-live-inventory-20261105-v1",
+      "action": "ship fixed read-only Artemis inventory; submit artemis-live-inventory-20261105-01 through existing bridge; reconcile same result",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T08:59:55.979180+00:00",
+      "verified_at": "2026-11-05T09:02:19.586296+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-02-live-inventory-20261105.json",
+          "sha256": "67d225d24e15a60b2376afaf3a85c79ee784cd52a1e0e04b3971aefd9c444a54"
         }
       ]
     }
@@ -125,6 +133,12 @@
       "at": "2026-11-05T08:59:55.979192+00:00",
       "event": "began:BASE-02-live-inventory-20261105-v1",
       "next_action": "reconcile:BASE-02-live-inventory-20261105-v1"
+    },
+    {
+      "revision": 11,
+      "at": "2026-11-05T09:02:19.586311+00:00",
+      "event": "verified:BASE-02-live-inventory-20261105-v1",
+      "next_action": "BASE-02/03: diagnose watchdog code 2, sender alias and existing source readers before any schema or delivery activation"
     }
   ],
   "policy": {
