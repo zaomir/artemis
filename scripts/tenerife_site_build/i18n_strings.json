@@ -41,7 +41,8 @@
         "alt": "Coordinate locator for La Quinta district, Puerto de la Cruz and TITSA stop 4004, not a project parcel",
         "caption": "Indicative district locator from verified coordinates; no Artemis site has been selected. Not a cadastral map or travel route.",
         "open_map": "Open the actual area map"
-      }
+      },
+      "project_concept_notice": "Architectural concept search. The plot, building design, dwelling mix and specifications have not been approved; illustrations are exploratory ideas."
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Ink-and-watercolour concept of a stepped Spanish-Canarian residential village on a green Atlantic hillside",
@@ -169,7 +170,8 @@
         "alt": "Esquema de coordenadas de La Quinta, Puerto de la Cruz y la parada TITSA 4004; no indica ninguna parcela de Artemis",
         "caption": "Localización orientativa basada en coordenadas verificadas; aún no se ha elegido la parcela de Artemis. No es un plano catastral ni una ruta.",
         "open_map": "Abrir el mapa real de la zona"
-      }
+      },
+      "project_concept_notice": "Búsqueda del concepto arquitectónico. No se han aprobado la parcela, la arquitectura, la distribución de viviendas ni las especificaciones; las imágenes son ideas exploratorias."
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Boceto en tinta y acuarela de residencias canarias escalonadas sobre una ladera verde del Atlántico",
@@ -297,7 +299,8 @@
         "alt": "Koordinatenübersicht von La Quinta, Puerto de la Cruz und TITSA-Haltestelle 4004; kein Artemis-Grundstück",
         "caption": "Unverbindliche Lageübersicht anhand geprüfter Koordinaten; ein Grundstück für Artemis wurde noch nicht gewählt. Kein Katasterplan und keine Route.",
         "open_map": "Tatsächliche Gebietskarte öffnen"
-      }
+      },
+      "project_concept_notice": "Suche nach dem Architekturkonzept. Grundstück, Entwurf, Wohnungsmix und Ausführung sind noch nicht genehmigt; die Illustrationen zeigen mögliche Ideen."
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Tusche- und Aquarellentwurf für gestaffelte kanarische Residenzen an einem grünen Atlantikhang",
@@ -425,7 +428,8 @@
         "alt": "Repère géographique de La Quinta, Puerto de la Cruz et de l'arrêt TITSA 4004, sans parcelle Artemis",
         "caption": "Repérage indicatif fondé sur des coordonnées vérifiées ; aucune parcelle Artemis n'est choisie. Ni plan cadastral ni itinéraire.",
         "open_map": "Ouvrir la carte réelle du secteur"
-      }
+      },
+      "project_concept_notice": "Recherche du concept architectural. La parcelle, l’architecture, la répartition des logements et les caractéristiques ne sont pas arrêtées ; les illustrations explorent des possibilités."
     },
     "alts": {
       "artemis-watercolour-art01-20261104": "Esquisse à l’encre et à l’aquarelle de résidences canariennes en terrasses sur une colline atlantique verdoyante",
@@ -530,7 +534,8 @@
         "alt": "Координатная схема района La Quinta (Santa Úrsula), Puerto de la Cruz и остановки TITSA 4004 — без указания участка Artemis",
         "caption": "Схема расположения района по проверенным координатам; участок Artemis не выбран. Это не кадастровая карта и не маршрут.",
         "open_map": "Открыть реальную карту района"
-      }
+      },
+      "project_concept_notice": "Сейчас идёт поиск архитектурной концепции. Участок, проект домов, состав резиденций и характеристики ещё не утверждены; иллюстрации показывают возможные решения."
     },
     "calc": {
       "ui": {
