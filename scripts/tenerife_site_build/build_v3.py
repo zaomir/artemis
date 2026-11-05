@@ -722,6 +722,12 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
         # Preview-only educational diagram: stage names, never a fabricated progress indicator.
         if name == "index" and "F17" in s["frames"] and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
             s["concept_progress"] = i18n_strings()[LOCALE]["visual"]["concept_stages"]
+
+        # Locator is coordinate-based, not a conceptual building render.
+        # Replace F23 only in review builds until page-by-page QA is approved.
+        if name == "norte" and "F23" in s["frames"] and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
+            s["location_context"] = i18n_strings()[LOCALE]["visual"]["location_context"]
+            s["frames"] = [fid for fid in s["frames"] if fid != "F23"]
         s["rev"], s["qa"] = False, []
         if name == "inversores" and semantic == "overview":
             s["frames"].insert(0, "F14")
