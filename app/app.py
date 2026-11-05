@@ -670,6 +670,8 @@ def tg_webhook():
 
 import funnel_fb
 funnel_fb.register(app,lambda:DB)
+import funnel_feedback
+funnel_feedback.register(app,lambda:DB)
 
 
 if __name__ == "__main__":
