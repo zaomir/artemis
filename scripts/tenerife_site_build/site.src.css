@@ -509,6 +509,7 @@ a:hover{color:var(--cs-ink)}
 .geo-locator figcaption{margin-top:var(--space-3);font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft)}
 .geo-locator a{color:var(--cs-ink);text-decoration:underline;text-underline-offset:3px}
 .geo-locator a:focus-visible{outline:2px solid var(--cs-basalt);outline-offset:2px}
+@media(max-width:600px){.geo-locator img{aspect-ratio:640/660;max-height:none}}
 
 
 /* Artemis review-only concept notice: explicit stage, not an approval badge. */

@@ -1,0 +1,2840 @@
+{
+  "environment": "Local Chromium via Aside; DPR 2; no production requests",
+  "preview_only": true,
+  "widths": [
+    320,
+    768,
+    1024,
+    1440
+  ],
+  "locales": [
+    "en",
+    "es",
+    "de",
+    "fr",
+    "ru"
+  ],
+  "page_types": 14,
+  "render_checks": 280,
+  "criteria": [
+    "scrollWidth <= viewport width",
+    "no broken images after decode",
+    "one H1",
+    "one primary CTA",
+    "concept notice present"
+  ],
+  "failures": [],
+  "rows": [
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "norte/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "producto/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "inversores/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "calculadora/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "alquiler/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "energia/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "construccion/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "proceso/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "faq/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "simon/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "mercado/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "boris/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "equipo/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "norte/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "producto/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "inversores/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "calculadora/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "alquiler/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "energia/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "construccion/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "proceso/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "faq/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "simon/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "mercado/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "boris/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "equipo/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "norte/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "producto/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "inversores/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "calculadora/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "alquiler/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "energia/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "construccion/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "proceso/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "faq/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "simon/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "mercado/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "boris/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "equipo/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "norte/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "producto/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "inversores/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "calculadora/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "alquiler/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "energia/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "construccion/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "proceso/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "faq/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "simon/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "mercado/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "boris/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "en",
+      "slug": "equipo/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "norte/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "producto/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "inversores/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "calculadora/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "alquiler/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "energia/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "construccion/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "proceso/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "faq/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "simon/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "mercado/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "boris/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "equipo/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "norte/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "producto/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "inversores/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "calculadora/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "alquiler/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "energia/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "construccion/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "proceso/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "faq/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "simon/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "mercado/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "boris/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "equipo/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "norte/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "producto/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "inversores/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "calculadora/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "alquiler/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "energia/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "construccion/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "proceso/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "faq/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "simon/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "mercado/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "boris/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "equipo/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "norte/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "producto/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "inversores/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "calculadora/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "alquiler/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "energia/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "construccion/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "proceso/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "faq/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "simon/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "mercado/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "boris/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "es",
+      "slug": "equipo/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "norte/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "producto/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "inversores/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "calculadora/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "alquiler/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "energia/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "construccion/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "proceso/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "faq/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "simon/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "mercado/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "boris/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "equipo/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "norte/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "producto/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "inversores/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "calculadora/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "alquiler/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "energia/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "construccion/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "proceso/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "faq/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "simon/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "mercado/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "boris/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "equipo/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "norte/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "producto/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "inversores/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "calculadora/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "alquiler/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "energia/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "construccion/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "proceso/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "faq/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "simon/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "mercado/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "boris/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "equipo/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "norte/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "producto/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "inversores/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "calculadora/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "alquiler/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "energia/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "construccion/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "proceso/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "faq/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "simon/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "mercado/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "boris/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "de",
+      "slug": "equipo/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "norte/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "producto/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "inversores/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "calculadora/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "alquiler/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "energia/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "construccion/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "proceso/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "faq/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "simon/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "mercado/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "boris/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "equipo/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "norte/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "producto/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "inversores/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "calculadora/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "alquiler/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "energia/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "construccion/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "proceso/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "faq/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "simon/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "mercado/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "boris/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "equipo/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "norte/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "producto/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "inversores/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "calculadora/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "alquiler/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "energia/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "construccion/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "proceso/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "faq/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "simon/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "mercado/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "boris/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "equipo/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "norte/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "producto/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "inversores/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "calculadora/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "alquiler/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "energia/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "construccion/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "proceso/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "faq/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "simon/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "mercado/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "boris/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "fr",
+      "slug": "equipo/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "norte/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "producto/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "inversores/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "calculadora/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "alquiler/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "energia/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "construccion/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "proceso/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "faq/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "simon/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "mercado/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "boris/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "equipo/",
+      "width": 320,
+      "scroll": 320,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "norte/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "producto/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "inversores/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "calculadora/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "alquiler/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "energia/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "construccion/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "proceso/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "faq/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "simon/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "mercado/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "boris/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "equipo/",
+      "width": 768,
+      "scroll": 768,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "norte/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "producto/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "inversores/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "calculadora/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "alquiler/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "energia/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "construccion/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "proceso/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "faq/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "simon/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "mercado/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "boris/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "equipo/",
+      "width": 1024,
+      "scroll": 1024,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "norte/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "producto/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "inversores/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "calculadora/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "alquiler/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "energia/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "construccion/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "proceso/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "faq/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "simon/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "mercado/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "boris/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    },
+    {
+      "locale": "ru",
+      "slug": "equipo/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": [],
+      "cta": 1,
+      "notice": true,
+      "h1": 1
+    }
+  ],
+  "limitations": [
+    "Current preview only; imported candidates have no page assignment yet",
+    "Metrics do not approve artwork, factual copy or rights",
+    "Original portrait compositions and post-assignment QA pending"
+  ],
+  "mobile_menu": {
+    "open": true,
+    "main_inert": true,
+    "escape_closes": true,
+    "focus_returns_to_burger": true
+  }
+}

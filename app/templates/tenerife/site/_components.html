@@ -352,7 +352,7 @@
 {% if s.location_context|default(false) %}
   <div class="wrap">
     <figure class="geo-locator">
-      <img src="/static/tenerife/site/img/la-quinta-context-locator-20261105.svg" alt="{{ s.location_context.alt }}" width="1200" height="620" loading="lazy" decoding="async">
+      <picture><source media="(max-width:600px)" srcset="/static/tenerife/site/img/la-quinta-context-locator-mobile-20261105.svg" width="640" height="660"><img src="/static/tenerife/site/img/la-quinta-context-locator-20261105.svg" alt="{{ s.location_context.alt }}" width="1200" height="620" loading="lazy" decoding="async"></picture>
       <figcaption>{{ s.location_context.caption }} <a href="https://www.openstreetmap.org/?mlat=28.43187&amp;mlon=-16.49517#map=14/28.43187/-16.49517" target="_blank" rel="noopener noreferrer">{{ s.location_context.open_map }}</a>.</figcaption>
     </figure>
   </div>

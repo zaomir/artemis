@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,6 +136,19 @@ class WatercolourPreviewTests(unittest.TestCase):
             for key in ("alt", "caption", "open_map"):
                 self.assertTrue(v[key].strip(), (lang, key))
             self.assertGreater(len(v["caption"]), 75, lang)
+
+    def test_mobile_locator_is_reproducible_and_preserves_point_coordinates(self):
+        from location_locator import mobile_svg, project, POINTS
+        path = ROOT / "app/static/tenerife/site/img/la-quinta-context-locator-mobile-20261105.svg"
+        self.assertEqual(path.read_text(encoding="utf-8"), mobile_svg())
+        root = ET.fromstring(mobile_svg())
+        points = {el.attrib["id"]: el for el in root.findall("{http://www.w3.org/2000/svg}circle")}
+        for key, coordinate in POINTS.items():
+            x, y = project(*coordinate)
+            self.assertAlmostEqual(float(points[key].attrib["cx"]), x, places=2)
+            self.assertAlmostEqual(float(points[key].attrib["cy"]), y, places=2)
+        self.assertLess(float(points["puerto"].attrib["cx"]), float(points["la_quinta"].attrib["cx"]))
+        self.assertGreater(float(points["titsa"].attrib["cy"]), float(points["la_quinta"].attrib["cy"]))
 
     def test_mobile_picture_contract(self):
         variant = site_builder.image_variant(STEM)
