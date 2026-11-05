@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 48,
-  "updated_at": "2026-11-05T11:26:53.154930+00:00",
-  "next_action": "reconcile:MAIL-06-protected-release-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-protected-release-20261105-v1",
-    "action": "existing core release with protected feedback auth/CLI and isolated cross-checkout pipeline on host; request artemis-mail-feedback-release-20261105-01; keep newsletter/retention off",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:26:53.154917+00:00"
-  },
+  "revision": 49,
+  "updated_at": "2026-11-05T11:36:59.986240+00:00",
+  "next_action": "NEWS-05 persist five desktop browser proofs; token-log privacy, explicit sender/reply gaps; metrics test separation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -310,6 +305,19 @@
           "sha256": "582549e6f72faa0cf2090fdf76c6fd974c712022f945cf3dd6b8c834eaaf4eea"
         }
       ]
+    },
+    "MAIL-06-protected-release-20261105-v1": {
+      "key": "MAIL-06-protected-release-20261105-v1",
+      "action": "existing core release with protected feedback auth/CLI and isolated cross-checkout pipeline on host; request artemis-mail-feedback-release-20261105-01; keep newsletter/retention off",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:26:53.154917+00:00",
+      "verified_at": "2026-11-05T11:36:59.986226+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-protected-runtime-20261105.json",
+          "sha256": "c5e9f351f56a947110659c8cc9b3ed12c1aef732abcbf35d4a3356aaefc8735a"
+        }
+      ]
     }
   },
   "history": [
@@ -600,6 +608,12 @@
       "at": "2026-11-05T11:26:53.154930+00:00",
       "event": "began:MAIL-06-protected-release-20261105-v1",
       "next_action": "reconcile:MAIL-06-protected-release-20261105-v1"
+    },
+    {
+      "revision": 49,
+      "at": "2026-11-05T11:36:59.986240+00:00",
+      "event": "verified:MAIL-06-protected-release-20261105-v1",
+      "next_action": "NEWS-05 persist five desktop browser proofs; token-log privacy, explicit sender/reply gaps; metrics test separation"
     }
   ],
   "policy": {
