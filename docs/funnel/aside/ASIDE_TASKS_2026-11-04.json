@@ -1,11 +1,15 @@
 {
   "schema": "artemis-aside-package/1",
-  "revision": 1,
+  "revision": 2,
   "status": "prepared_not_executed",
   "expected_account": {
     "public_identity": "Valerie Petra",
     "legal_profile_name_hint": "Valeriia Petrova",
-    "verification": "AS-01 must return observed profile URL/ID and Page/group permissions; do not assume based on name"
+    "verification": "AS-01 must return observed profile URL/ID and Page/group permissions; do not assume based on name",
+    "dolphin_profile_id": "833304152",
+    "registered_profile_url": "https://www.facebook.com/valerie.petra.uk/",
+    "binding_observed_on": "2026-11-05",
+    "visible_identity_verified": false
   },
   "account_window": {
     "timezone": "Europe/Paris",
@@ -338,5 +342,12 @@
     "observed_at": "timestamp with zone",
     "readback": "visible text/settings/status, not just click",
     "error": "sanitized code or null"
+  },
+  "access_observation": {
+    "evidence": "docs/funnel/evidence/AS-01-access-20261105.json",
+    "handoff_present": false,
+    "cdp_reachable": false,
+    "page_group_permissions": "not_verified",
+    "constraint": "Inventory existing objects in the authorized Valerie session before creating any Page/group or publishing; no duplicate destination assumptions."
   }
 }

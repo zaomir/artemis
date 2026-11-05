@@ -1,0 +1,14 @@
+{
+  "atom": "AS-01",
+  "status": "registered_binding_found_live_object_inventory_blocked",
+  "connector": "Social Browser Operator",
+  "profile_id": "833304152",
+  "registered_expected_identity": "Valerie Petra",
+  "registered_profile_url": "https://www.facebook.com/valerie.petra.uk/",
+  "visible_identity_verified": false,
+  "artemis_page_or_group_admin_permissions_verified": false,
+  "connection": {"status":"OK","handoff_present":false,"cdp_reachable":false,"browser_actions_performed":false},
+  "scope": "Read-only capability inventory and existing connection check; no launch, profile swap, post, message or new Facebook object.",
+  "blocker": "The authorized browser session is not connected. Registered binding is not evidence of visible identity or Page/group permissions.",
+  "aside_packet": "docs/funnel/aside/ASIDE_TASKS_2026-11-04.json"
+}
