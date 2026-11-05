@@ -488,3 +488,16 @@ a:hover{color:var(--cs-ink)}
 
 /* Approved conceptual art disclosures: readable beside (not baked into) the image. */
 .hero__after .concept-note{grid-column:1/-1;font-size:var(--fs-small);line-height:var(--lh-body);color:var(--cs-ink-soft);margin:0 0 var(--space-3);max-width:var(--measure-lead)}
+
+
+/* Artemis concept-development stages: informational, not construction progress. */
+.concept-stages{margin:var(--space-6) 0 0;padding:var(--space-5);background:var(--cs-sand);border:1px solid var(--cs-basalt)}
+.concept-stages figcaption{font-weight:var(--fw-strong);margin-bottom:var(--space-4)}
+.concept-stages ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4)}
+.concept-stages li{display:flex;align-items:flex-start;gap:var(--space-3);min-width:0}
+.concept-stages__number{width:2rem;height:2rem;border:1px solid var(--cs-basalt);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none;font-variant-numeric:tabular-nums}
+.concept-stages .is-current .concept-stages__number{background:var(--cs-basalt);color:var(--cs-on-dark)}
+.concept-stages__text{min-width:0;overflow-wrap:break-word}
+.concept-stages__text small{display:block;margin-top:var(--space-2);color:var(--cs-ink-soft)}
+@media(max-width:767px){.concept-stages ol{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.concept-stages ol{grid-template-columns:1fr}}
