@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 40,
-  "updated_at": "2026-11-05T11:05:14.426406+00:00",
-  "next_action": "reconcile:MAIL-06-retention-guard-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-retention-guard-20261105-v1",
-    "action": "replace misleading partial pending cleanup with coordinated-expiry guard; inspect actual Twenty deletion OpenAPI read-only before implementing any erasure",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:05:14.426384+00:00"
-  },
+  "revision": 41,
+  "updated_at": "2026-11-05T11:11:47.906715+00:00",
+  "next_action": "MAIL-06 coordinated expiry: durable queue and final local PII scrub only after CRM readback; newsletter stays off",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -258,6 +253,19 @@
           "sha256": "e53f0799061ddc1d078614f26351ea691eb8f336da9a69849745063a6439c88e"
         }
       ]
+    },
+    "MAIL-06-retention-guard-20261105-v1": {
+      "key": "MAIL-06-retention-guard-20261105-v1",
+      "action": "replace misleading partial pending cleanup with coordinated-expiry guard; inspect actual Twenty deletion OpenAPI read-only before implementing any erasure",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:05:14.426384+00:00",
+      "verified_at": "2026-11-05T11:11:47.906701+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-retention-guard-20261105.json",
+          "sha256": "14dc5cc24ea6aed73b64dc77859f05cc9682659be9e7d260b8acff4b8b6396fa"
+        }
+      ]
     }
   },
   "history": [
@@ -500,6 +508,12 @@
       "at": "2026-11-05T11:05:14.426406+00:00",
       "event": "began:MAIL-06-retention-guard-20261105-v1",
       "next_action": "reconcile:MAIL-06-retention-guard-20261105-v1"
+    },
+    {
+      "revision": 41,
+      "at": "2026-11-05T11:11:47.906715+00:00",
+      "event": "verified:MAIL-06-retention-guard-20261105-v1",
+      "next_action": "MAIL-06 coordinated expiry: durable queue and final local PII scrub only after CRM readback; newsletter stays off"
     }
   ],
   "policy": {
