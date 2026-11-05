@@ -1,0 +1,29 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "CAP-05",
+  "unit": "native_POST_error_recovery",
+  "production_changed": false,
+  "feature_activated": false,
+  "tests": {
+    "all_funnel": 73,
+    "HTTP": 13,
+    "failures": 0
+  },
+  "scenarios": [
+    "native validation error returns escaped original values and same submission ID without URL redirect",
+    "corrected retry and repeat create one source/legacy row/notification",
+    "outbox failure rolls back the original row and returns a private retry form",
+    "rate limit retains inputs",
+    "cached typed form during feature rollback is not silently downgraded"
+  ],
+  "privacy": [
+    "no-store and no-referrer",
+    "same-origin form action; no private values in URLs",
+    "checkbox preservation requires explicit prior input; no new opt-in"
+  ],
+  "remaining": [
+    "allowlisted attribution for no-JS locale navigation",
+    "runtime controlled QA and feature activation",
+    "verified group destinations unavailable"
+  ]
+}

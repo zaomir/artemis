@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 62,
-  "updated_at": "2026-11-05T12:15:38.710872+00:00",
-  "next_action": "reconcile:CAP-05-native-error-preservation-20261105-v1",
-  "pending": {
-    "key": "CAP-05-native-error-preservation-20261105-v1",
-    "action": "preserve typed native HTML form values and stable submission ID on validation/rate/database errors; no feature activation",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:15:38.710858+00:00"
-  },
+  "revision": 63,
+  "updated_at": "2026-11-05T12:19:25.969733+00:00",
+  "next_action": "CAP-04 server-rendered safe attribution across locale links without cookies/storage; preserve existing JS behavior",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -401,6 +396,19 @@
           "sha256": "c0e59bd942e6324fb91f8cc7f96deb77e187dbfedf6453ea1f525b2e7dd41ba8"
         }
       ]
+    },
+    "CAP-05-native-error-preservation-20261105-v1": {
+      "key": "CAP-05-native-error-preservation-20261105-v1",
+      "action": "preserve typed native HTML form values and stable submission ID on validation/rate/database errors; no feature activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:15:38.710858+00:00",
+      "verified_at": "2026-11-05T12:19:25.969719+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-05-native-errors-20261105.json",
+          "sha256": "bf61167914f8dc59e38c045ac792c50929ce79aaf394be1dcd72544f51fc4667"
+        }
+      ]
     }
   },
   "history": [
@@ -775,6 +783,12 @@
       "at": "2026-11-05T12:15:38.710872+00:00",
       "event": "began:CAP-05-native-error-preservation-20261105-v1",
       "next_action": "reconcile:CAP-05-native-error-preservation-20261105-v1"
+    },
+    {
+      "revision": 63,
+      "at": "2026-11-05T12:19:25.969733+00:00",
+      "event": "verified:CAP-05-native-error-preservation-20261105-v1",
+      "next_action": "CAP-04 server-rendered safe attribution across locale links without cookies/storage; preserve existing JS behavior"
     }
   ],
   "policy": {
