@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 54,
-  "updated_at": "2026-11-05T11:45:10.031024+00:00",
-  "next_action": "reconcile:MAIL-09-privacy-diagnosis-20261105-v1",
-  "pending": {
-    "key": "MAIL-09-privacy-diagnosis-20261105-v1",
-    "action": "safe nginx public-directive diff and actual installed backup path resolution; request artemis-mail-privacy-diagnostics-20261105-01; read only",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:45:10.031010+00:00"
-  },
+  "revision": 55,
+  "updated_at": "2026-11-05T11:51:33.179110+00:00",
+  "next_action": "Apply exact query-free nginx token privacy preserving observed root redirect and real-IP behavior",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -349,6 +344,19 @@
           "sha256": "a9628c6f0585c18f7f7cb9374319d8a7cbaeec7ab3fd6453e88a614ae5293fb8"
         }
       ]
+    },
+    "MAIL-09-privacy-diagnosis-20261105-v1": {
+      "key": "MAIL-09-privacy-diagnosis-20261105-v1",
+      "action": "safe nginx public-directive diff and actual installed backup path resolution; request artemis-mail-privacy-diagnostics-20261105-01; read only",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:45:10.031010+00:00",
+      "verified_at": "2026-11-05T11:51:33.179094+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-privacy-diagnosis-20261105.json",
+          "sha256": "c146fcced0a3e06cbb1bf0c7d562facac551425a1a25bc37ee7dddd8e422078c"
+        }
+      ]
     }
   },
   "history": [
@@ -675,6 +683,12 @@
       "at": "2026-11-05T11:45:10.031024+00:00",
       "event": "began:MAIL-09-privacy-diagnosis-20261105-v1",
       "next_action": "reconcile:MAIL-09-privacy-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 55,
+      "at": "2026-11-05T11:51:33.179110+00:00",
+      "event": "verified:MAIL-09-privacy-diagnosis-20261105-v1",
+      "next_action": "Apply exact query-free nginx token privacy preserving observed root redirect and real-IP behavior"
     }
   ],
   "policy": {

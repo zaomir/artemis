@@ -1,0 +1,69 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atom": "MAIL-09",
+  "unit": "exact_privacy_configuration_diagnosis",
+  "request_id": "artemis-mail-privacy-diagnostics-20261105-01",
+  "observed_at": "2026-11-05T11:48:55.726Z",
+  "production_changed": false,
+  "provider_source_sha": "adda8dbdc4425da6c2241462329cd45867b768a5",
+  "provider_pr": 2388,
+  "privacy": {
+    "nginx": {
+      "present": true,
+      "path": "/etc/nginx/sites-enabled/artemisresort.com.origin.conf",
+      "sha256": "ce95511488dc0e5595a08c01b4f9c6e38d89f2ef9073881cbc2b0c2fae716bd0",
+      "source_sha256": "76e862d02a93a3c462c47535aa941173a65b3554f79347c003893f068ad0cc34",
+      "matches_deployed_source": false,
+      "dedicated_token_location_count": 0,
+      "token_access_log_off": false,
+      "token_error_log_discarded": false,
+      "safe_public_directive_diff": [
+        "+    location = / { return 302 /tenerife/; }",
+        "-    include /etc/nginx/snippets/cloudflare-realip.conf;",
+        "-    include /etc/nginx/snippets/cloudflare-realip.conf;"
+      ],
+      "unreported_noncomment_changes": 0
+    },
+    "gunicorn": {
+      "unit_read": true,
+      "unit_explicit_access_log_setting": false,
+      "default_cwd_config_present": false,
+      "unit_explicit_config_setting": false
+    },
+    "backup": {
+      "TWENTY_BACKUP_DAILY_KEEP": {
+        "effective_count": 7,
+        "override_observed": false
+      },
+      "TWENTY_BACKUP_WEEKLY_KEEP": {
+        "effective_count": 4,
+        "override_observed": false
+      },
+      "TWENTY_OFFHOST_KEEP": {
+        "effective_count": 14,
+        "override_observed": false
+      },
+      "twenty-backup.sh": {
+        "installed_path": "/var/www/grainee-v2/scripts/ops/twenty-backup.sh",
+        "installed_sha256": "551fd27f1e8350c0a1d3a8addab54de81149957358311e18e32fc0ac96e61d07",
+        "canonical_sha256": "551fd27f1e8350c0a1d3a8addab54de81149957358311e18e32fc0ac96e61d07",
+        "matches_canonical": true
+      },
+      "twenty-offhost-backup.sh": {
+        "installed_path": "/opt/grainee-main/scripts/ops/twenty-offhost-backup.sh",
+        "installed_sha256": "2c7d5da2095231955d50e512d139955c460d4910ca61653b3496be331c7f0257",
+        "canonical_sha256": "2c7d5da2095231955d50e512d139955c460d4910ca61653b3496be331c7f0257",
+        "matches_canonical": true
+      },
+      "twenty-restore.sh": {
+        "installed_path": "/opt/grainee-main/scripts/ops/twenty-restore.sh",
+        "installed_sha256": "9f821a8bc7f6314506d923da316beedfb34ce1a29636527e06de32d3dc2d7421",
+        "canonical_sha256": "9f821a8bc7f6314506d923da316beedfb34ce1a29636527e06de32d3dc2d7421",
+        "matches_canonical": true
+      },
+      "restore_expiry_replay_hook_observed": false,
+      "scope": "script counts and fixed unit/environment overrides; copies not erased, offhost files not listed"
+    }
+  },
+  "decision": "Preserve observed root redirect to Tenerife and removal of duplicate real-IP includes. Add query-free Artemis access format and dedicated token-route error/access exclusion with exact old-hash guard, backups and nginx -t. Backup scripts match canon; restore expiry replay hook remains absent."
+}
