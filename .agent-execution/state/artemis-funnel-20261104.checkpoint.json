@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 19,
-  "updated_at": "2026-11-05T09:30:12.004420+00:00",
-  "next_action": "CRM-01: diagnose preflight failure before metadata mutation; original request completed with proven no effect",
-  "pending": null,
+  "revision": 20,
+  "updated_at": "2026-11-05T09:30:20.489814+00:00",
+  "next_action": "reconcile:CRM-01-preflight-diagnosis-20261105-v1",
+  "pending": {
+    "key": "CRM-01-preflight-diagnosis-20261105-v1",
+    "action": "typed safe schema preflight diagnostics only; request artemis-schema-preflight-diagnostics-20261105-01",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T09:30:20.489800+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -239,6 +244,12 @@
       "at": "2026-11-05T09:30:12.004420+00:00",
       "event": "verified:CRM-01-runtime-schema-20261105-v1",
       "next_action": "CRM-01: diagnose preflight failure before metadata mutation; original request completed with proven no effect"
+    },
+    {
+      "revision": 20,
+      "at": "2026-11-05T09:30:20.489814+00:00",
+      "event": "began:CRM-01-preflight-diagnosis-20261105-v1",
+      "next_action": "reconcile:CRM-01-preflight-diagnosis-20261105-v1"
     }
   ],
   "policy": {
