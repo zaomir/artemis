@@ -1,18 +1,16 @@
-"""Build the EN Tenerife site (14 pages, Spanish slugs) from the verbatim copy in copy_en/.
+"""Build the RU v3 Tenerife site (13 pages) from the verbatim copy in copy_v3/.
 
-  python3 scripts/tenerife_site_build/build_v3.py     # copy_en/*.md -> app/tenerife_site/*.html
+  python3 scripts/tenerife_site_build/make_model.py   # numbers.md + model_inputs.json -> model.json
+  python3 scripts/tenerife_site_build/build_v3.py     # copy_v3/*.md + model.json -> app/tenerife_site/*.html
 
-EN r2 (founder t122u / Lead GO 05.11.2026, BLK-20261031-20; onto main 3df77a4): the public /tenerife/ site is English only. The copy
-(copy_en/, Kimi/web-designer, 01.11.2026) already carries ONLY the approved ranges (price per metre ≈2,900–3,100 €/m²
-from the queue → ≈3,700–3,900 €/m² by completion, expected dividend 2.5–3.5% a year before tax), so the pages show the
-copy as written: no model.json token substitution, no figure hiding, no calculator (page 05 is «Terms»,
-/tenerife/condiciones/). model.json stays in app/tenerife_site/data/ (server side only, never served).
 Texts are taken as written (no edits). The only transformations:
-  * [FRAME Fxx] (or the RU [КАДР Fxx]) markers -> <picture> of an existing Canary Stone photo (frames.json);
+  * figures: every model token is replaced copy -> value from model.json (identity while the
+    inputs equal the copywriter's baseline), so a price change is one edit in model_inputs.json;
+  * [КАДР Fxx] markers -> <picture> of an existing Canary Stone photo (frames.json);
   * markdown (# ## ### | - 1. ** [](...)) -> HTML through Jinja components in
-    app/templates/tenerife/site/ (hero, facts, section, frame, table, cta, footer).
-The build fails if a marker, '{{', '{%', any HTML comment other than <!--email_off--> markers, Cyrillic text, a
-forbidden figure (FORBIDDEN_FIGURES) or a calculator link / script reaches the output. email_off.wrap() is the last step.
+    app/templates/tenerife/site/ (hero, facts, units, section, frame/gallery, table, cta, footer).
+The build fails if '[КАДР', '{{', '{%' or any HTML comment other than <!--email_off--> markers
+reaches the output. build.py (old pages) and email_off.py are not touched; wrap() is the last step.
 """
 import hashlib
 import html
@@ -21,55 +19,45 @@ import os
 import re
 import sys
 from pathlib import Path
+from price_curve import build_curve, percent, reduction_percent
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 HERE = Path(__file__).resolve().parent
+import locale_cfg  # noqa: E402
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from email_off import unprotected, wrap  # noqa: E402
 
-COPY = HERE / "copy_en"
-SITE = ROOT / "app" / "tenerife_site"
+LOCALE = os.environ.get("TENERIFE_LOCALE", "ru").strip().lower() or "ru"
+# RU is the master copy (copy_v3); every other language reads its own translated copy_<loc>/.
+COPY = Path(os.environ.get("TENERIFE_COPY_DIR", "").strip() or
+            str(HERE / ("copy_v3" if LOCALE == "ru" else f"copy_{LOCALE}")))
+# EN lives at the root of app/tenerife_site (URL /tenerife/), every other language in its own subdirectory
+# (/tenerife/ru/…). TENERIFE_OUT_DIR still overrides it (tests, preview builds).
+SITE_DEFAULT = ROOT / "app" / "tenerife_site"
+SITE = Path(os.environ.get("TENERIFE_OUT_DIR", "").strip() or
+            str(SITE_DEFAULT if LOCALE == "en" else SITE_DEFAULT / LOCALE))
 STATIC = ROOT / "app" / "static"
 IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
-MODEL = ROOT / "app" / "tenerife_site" / "data" / "model.json"   # server side only (never under static, never served)
+MODEL = STATIC / "tenerife" / "site" / "model.json"
 BASE_URL = "https://artemisresort.com"
-# Approved EN copy (Kimi, 01.11.2026; 16+17 privacy «Telegram + email» 05.11.2026, QA PASS; sha256 per file confirmed by the Lead 05.11.2026): each file pinned, and the
-# combined sha256 of copy_files() (01-18 joined like the RU build). TENERIFE_COPY_SHA256=<sha> overrides the combined
-# value for a build / test run; a changed file fails the build until it is re-approved and re-pinned here.
-COPY_FILE_SHA256 = {
-    "01_glavnaya.md": "15ed52b2f6341a9cd904ee2a255d0095ec1691762467b5b7a8ff4b858e80c4e5",
-    "02_sever.md": "db210e3988551c98b55c1de0b2a2f7441662056d00f7eea6653abf0a0e02d8a0",
-    "03_rezidencii.md": "e7becf1dde0980943b62d90c68dce8c99a64aa76aa8031a431c7559cb5b14138",
-    "04_akcii.md": "87f925bcef7c7c44180e555f8bf7129e60120fc2ebe53171ff66c457f200c080",
-    "05_kalkulyator.md": "07ee58b6e5116ef118b59470f213c96adb24e8243128fc18dc14657f5062ec0c",
-    "06_arenda.md": "9cf1a56a7183aa7bf832fada043f1150ccb6e44def4d5028bdfa35687194f5f5",
-    "07_energiya.md": "4008843ceda4adf2d3d1822720af082b997d82644ce008bbb0864e84a85615a8",
-    "08_stroyka.md": "1065050afe778e786b0bc20607cd4dbdffd54e694df9654f6c1880da1329aeb7",
-    "09_sdelka.md": "cc8617081fa85dfc8a7857b79c1a40fd19adc59a2bd8e1a90a481951de99994d",
-    "10_voprosy.md": "2ec743163125175e8627ed57f129eab2b62533d36814642f90467426083dbbbf",
-    "11_simon.md": "6ec1fcf18e1a58c73133744ce813810dcc9fe07f46a2114a8bbbabc4a5637a14",
-    "12_rynok.md": "32bbb83feae3fe222bc1c6c415a018bbc6fe0c339d18bc86aa07ecbc45865a39",
-    "13_boris.md": "a11c59a265cbd83afb7f9e418c8e24add147db88795aaaa53cc2916379cc10cb",
-    "14_podval.md": "2ab7720e8770e4fd02e17f9c8615aaa4b7f6befa248bd5cf2eeff6b9762a669f",
-    "15_impressum.md": "690680b4885b9ca44fcace1383e3825c5935d64b2773e0569d65e2532edf28a1",
-    "16_privacy.md": "dbfd963514853f2de4b33b97459bbfd89f0dad2523719f304a2f0a38b457ad91",
-    "17_forma.md": "32bb8774313318ea43ba682ee002fc11cbb2be2120f6794833391f8baf2bb7f5",
-    "18_investoram.md": "88e4840ecbeb68b3cc347f5728a6691bef33a2b41ab0ebd28e9dbedddb8a2229",
-}
-COPY_SHA256_DEFAULT = "5c5b5d783cce14a9656c95a781e86d762a861eb81a8176821b86f27d5d55fb68"
+# Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
+# Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
+# Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
+COPY_SHA256_DEFAULT = "f4f801021075d8ce332d775c516fde10baf305b212bc66e93236c4c58dd84110"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
-# copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Slug» (Spanish slugs kept)
+# copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Слаг»
 PAGES = [("01_glavnaya.md", "index"), ("02_sever.md", "norte"), ("03_rezidencii.md", "producto"),
-         ("04_akcii.md", "acciones"), ("05_kalkulyator.md", "condiciones"), ("06_arenda.md", "alquiler"),
+         ("04_akcii.md", "inversores"), ("05_kalkulyator.md", "calculadora"), ("06_arenda.md", "alquiler"),
          ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"), ("09_sdelka.md", "proceso"),
          ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris"),
-         ("18_investoram.md", "inversores")]
+         ("19_komanda.md", "equipo")]
 FOOTER = "14_podval.md"
+WA_TOKEN = "WhatsApp: {номер из TENERIFE_WHATSAPP}"  # 14_podval.md «Контакты.»
 WA_RX = re.compile(r"\+[1-9]\d{7,14}")  # E.164, same rule as app/tenerife.py whatsapp_number()
 # phone-like literal (not a CSS unicode-range U+…): + or 00, then ≥ 8 digits (spaces . - ( ) nbsp between)
 PHONE_RX = re.compile(r"(?:(?<![Uu])\+|\b00)\d(?:[\s\u00a0.()\-]*\d){7,}")
@@ -77,27 +65,86 @@ PHONE_RX = re.compile(r"(?:(?<![Uu])\+|\b00)\d(?:[\s\u00a0.()\-]*\d){7,}")
 
 def check_whatsapp_env():
     """Kimi r16: the build fails when TENERIFE_WHATSAPP is empty or invalid. The value is never printed and never
-    written into the output (runtime slot <li data-tenerife-whatsapp hidden>, filled by app/tenerife.py)."""
+    written into the output (runtime slot, see parse_footer)."""
     v = os.environ.get("TENERIFE_WHATSAPP", "").strip()
     if not v:
         raise BuildError("TENERIFE_WHATSAPP is empty: set it (E.164, e.g. +440000000000) before building")
     if not WA_RX.fullmatch(v):
         raise BuildError("TENERIFE_WHATSAPP is invalid (expected E.164: + then 8–15 digits); value not shown")
-
-
-# footer «Pages.» names -> output name (names and order are the copy's)
-NAV = {"Home": "index", "The North": "norte", "Residences": "producto", "Shares": "acciones",
-       "Terms": "condiciones", "Rental": "alquiler", "Energy": "energia", "Construction": "construccion",
-       "Process": "proceso", "For investors": "inversores", "FAQ": "faq", "Market and price per metre": "mercado",
-       "Simon Subic": "simon", "Boris Ribaut": "boris"}
+# footer «Страницы.» names -> output name (names are the copy's; order is the copy's)
+NAV = {"Главная": "index", "Локация": "norte", "Резиденции": "producto", "Инвесторам": "inversores",
+       "Калькулятор": "calculadora", "Аренда": "alquiler", "Энергия": "energia", "Ход проекта": "construccion",
+       "Сделка": "proceso", "Вопросы": "faq", "Рынок и цена метра": "mercado", "Developer": "simon",
+       "Supervisor": "boris", "Команда": "equipo"}
+CALC_PAGE = "calculadora"
+CALC_PAGES = {CALC_PAGE, "inversores"}
 FORM_HOST_PAGE = "/tenerife/proceso/"
 
-# DESIGN.md §5: pages 11 and 13 are long text (solid header, 760 px column); 05 and 10 have a short hero
+# Profiles start from text grouping; apply_profile_photos supplies the editorial hero and photo stories.
+# Calculator and FAQ have a short hero.
 LONG_PAGES = {"simon", "boris"}
-SHORT_HERO = {"condiciones", "faq"}
-# DESIGN.md C1: 7 links + «More»; labels are the footer's («Pages.»). Terms takes the calculator's place.
-NAV_PRIMARY = ["norte", "producto", "acciones", "condiciones", "construccion", "proceso", "faq"]
-NAV_MORE = ["alquiler", "energia", "inversores", "mercado", "simon", "boris"]
+SHORT_HERO = {"calculadora", "faq"}
+# DESIGN.md C1: 7 links + «Ещё»; labels are the footer's («Страницы.»)
+# Kimi r18: footer items for pages that are not built yet. Shown only once the page is in PAGES (page 18
+# «Инвесторам» -> /tenerife/inversores/ is a draft, not built), so the footer never links to a 404.
+def lang_url(code, url):
+    """URL той же страницы на другом языке: EN без префикса, остальные — /tenerife/<code>/…"""
+    tail = url[len("/tenerife/"):] if url.startswith("/tenerife/") else url
+    return ("/tenerife/" if code == "en" else f"/tenerife/{code}/") + tail
+
+
+# Все языки сайта: EN — корень, остальные — свой префикс. Порядок = порядок hreflang в <head>.
+ALL_LANGS = ("en", "es", "de", "fr", "ru")
+OG_LOCALE = {"ru": "ru_RU", "en": "en_GB", "es": "es_ES", "de": "de_DE", "fr": "fr_FR"}
+
+
+def hreflang_links(url):
+    """<link rel=alternate hreflang> на все пять языков + x-default (EN) для одной и той же страницы."""
+    return ([{"code": code, "url": BASE_URL + lang_url(code, url)} for code in ALL_LANGS],
+            BASE_URL + lang_url("en", url))
+
+
+def locale_path(url, locale=None):
+    """Нейтральный слаг /tenerife/<page>/ -> путь этого языка: /tenerife/de/<page>/ (EN остаётся в корне)."""
+    code = locale or LOCALE
+    if code == "en" or not url.startswith("/tenerife/"):
+        return url
+    return f"/tenerife/{code}/{url[len('/tenerife/'):]}"
+
+
+# Ссылки на корни языков (/tenerife/ru/, /tenerife/es/ …) не переписываются префиксом страницы.
+LOCALE_ROOT_RX = re.compile(r'href="/tenerife/(?!(?:en|es|de|fr|ru)/)')
+
+
+def prefix_internal_links(out, locale=None):
+    """Внутренние ссылки из текста/подвала (/tenerife/<page>/) получают префикс языка; переключатель и
+    русская ссылка, которые ведут на корни языков, остаются как есть."""
+    code = locale or LOCALE
+    if code == "en":
+        return out
+    return LOCALE_ROOT_RX.sub(f'href="/tenerife/{code}/', out)
+
+
+MORE_LABEL = {"ru": "Информация", "en": "Information", "es": "Información", "de": "Informationen", "fr": "Informations"}
+NAV_FUTURE = {}
+NAV_PRIMARY = ["producto", "inversores", "norte", "construccion", "equipo"]
+NAV_MORE = ["calculadora", "alquiler", "energia", "proceso", "faq", "mercado", "simon", "boris"]
+FOOTER_GROUPS = [("project", ("index", "producto", "norte", "construccion", "energia")),
+                 ("participation", ("inversores", "calculadora", "proceso", "alquiler", "mercado", "faq")),
+                 ("team", ("equipo", "simon", "boris"))]
+
+# Stable investor section IDs; legacy anchors refer to the material's new owner, never to its old ordinal.
+INVESTOR_SECTIONS = {
+    "Проект и текущая стадия": ("overview", ("s2", "s10")),
+    "Инвестиция или покупка резиденции": ("comparison", ("s1",)),
+    "Ранняя цена и база сравнения": ("price-stages", ("s3", "s4")),
+    "Денежный выход через 36 месяцев": ("outcomes", ("s5", "s6", "s7", "s8", "s11")),
+    "Рассчитайте инвестицию": ("calculate", ()),
+    "Как финансируется стройка": ("funding", ()),
+    "Что влияет на результат": ("assumptions", ()),
+    "Контроль и команда": ("control", ()),
+    "Документы и вопросы": ("documents", ("s9", "s12", "s13")),
+}
 
 SIZES = {
     # must match site.css (DESIGN.md C2, C15): hero full-bleed (4:5 crop of a 16:9 photo below 768 px),
@@ -117,38 +164,10 @@ class BuildError(Exception):
     pass
 
 
-# ---------------------------------------------------------------- EN r1 guards (BLK-20261031-20)
-# The approved ranges must be visible; figures that were never approved must never appear (any separator).
-_S = r"[\s\u00a0\u202f,.]?"
-FORBIDDEN_FIGURES = re.compile(
-    rf"(?<![\d,.])87{_S}€|€{_S}87(?![\d,.])|(?<![\d,.])2{_S}950(?!\d)|(?<![\d,.])3{_S}850(?!\d)"
-    rf"|(?<![\d,.])3{_S}800{_S}[–-]{_S}4{_S}600(?!\d)|\bRIC\b|\bZEC\b")
-APPROVED_RANGES = ("≈2,900–3,100", "≈3,700–3,900", "2.5–3.5%")
-CYRILLIC_RX = re.compile(r"[\u0400-\u04FF]")
-# the only Cyrillic allowed in a page: the endonym of one contact language in the waitlist <select>
-CYRILLIC_ALLOWED = ('<option value="ru">Русский</option>',)
-OLD_CALC_URL = "/tenerife/calculadora"
-
-
-def check_en(name, out):
-    """EN r1: no Cyrillic UI/copy, no forbidden figure, no calculator link / script / form field, no model.json."""
-    probe = out
-    for ok in CYRILLIC_ALLOWED:
-        probe = probe.replace(ok, "")
-    m = CYRILLIC_RX.search(probe)
-    if m:
-        raise BuildError(f"{name}: Cyrillic left in the EN page: …{probe[max(0, m.start() - 30):m.start() + 30]}…")
-    m = FORBIDDEN_FIGURES.search(html.unescape(out))
-    if m:
-        raise BuildError(f"{name}: forbidden figure «{m.group(0)}»")
-    for bad in (OLD_CALC_URL, "calc.js", "model.json", 'name="calc_', 'hreflang='):
-        if bad in out:
-            raise BuildError(f"{name}: «{bad}» in output (EN r1: no calculator, no model, no hreflang)")
-
-
-# ---------------------------------------------------------------- copy
+# ---------------------------------------------------------------- copy + figures
 def copy_files():
-    """The copy the build uses: 14 pages (01-13 + 18 investors), footer, legal, form."""
+    """The copy the build actually uses: the 13 pages + footer, legal, form. Anything else in copy_v3 (e.g. Kimi's
+    draft 18_investoram.md) is not built and not hashed."""
     names = sorted({f for f, _ in PAGES} | {FOOTER, "15_impressum.md", "16_privacy.md", FORMA})
     return [COPY / n for n in names]
 
@@ -159,30 +178,49 @@ def combined_sha():
     return hashlib.sha256(s.encode()).hexdigest()
 
 
-def check_copy():
-    for f in copy_files():
-        got = hashlib.sha256(f.read_bytes()).hexdigest()
-        if got != COPY_FILE_SHA256.get(f.name):
-            raise BuildError(f"copy_en/{f.name} sha256 {got} is not the approved one (copy changed: re-approve)")
-    if combined_sha() != COPY_SHA256:
-        raise BuildError(f"copy_en sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
-
-
 def load_model(path=MODEL):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def figure_map(model):
+    """copy figure -> site figure. Raises if one copy string would need two different values."""
+    out, owners = {}, {}
+    for t in model["tokens"] + model["extra"]:
+        c, v = t["copy"], t["value"]
+        if c in out and out[c] != v:
+            raise BuildError(f"ambiguous figure «{c}»: {owners[c]} -> «{out[c]}» but {t['label']} -> «{v}»; "
+                             "the copy uses one string for two model values — split it in the copy first")
+        out[c] = v
+        owners[c] = t["label"]
+    return out
+
+
+def figure_regex(fmap):
+    alts = []
+    for tok in sorted(fmap, key=len, reverse=True):
+        if tok.startswith("@") and tok.endswith("@"):
+            alts.append(re.escape(tok))
+            continue
+        tail = r"(?![\d,]\d)" if tok[-1].isdigit() else ""
+        alts.append(r"(?<![\d,–])(?<!\d[ \u00a0])" + re.escape(tok) + tail)
+    return re.compile("|".join(alts))
+
+
+def apply_figures(text, fmap, rx):
+    return rx.sub(lambda m: fmap[m.group(0)], text)
+
+
 # ---------------------------------------------------------------- markdown subset
 META_RX = re.compile(r"<!-- META\n(.*?)-->", re.S)
-FRAME_RX = re.compile(r"^\[(?:FRAME|КАДР) (F\d\d)\]\s*(?:<!--.*?-->)?\s*$")   # EN copy: [FRAME Fxx]; RU: [КАДР Fxx]
-BUTTON_RX = re.compile(r'^\*\*Button: "(.+)"\*\*$')
+FRAME_RX = re.compile(r"^\[КАДР (F\d\d)\]\s*(?:<!--.*?-->)?\s*$")
+BUTTON_RX = re.compile(r"^\*\*Кнопка: «(.+)»\*\*$")
 EMAIL_RX = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 
 
 def inline(s):
-    """Escape + **bold** + [text](/url) + e-mail -> mailto. Nothing else is interpreted."""
+    """Escape + **bold** + internal/HTTPS links + e-mail -> mailto. Nothing else is interpreted."""
     out, pos = [], 0
-    for m in re.finditer(r"\[([^\]]+)\]\((/[^)\s]*)\)", s):
+    for m in re.finditer(r"\[([^\]]+)\]\(((?:/(?!/)|https://)[^)\s]*)\)", s):
         out.append(_inline_text(s[pos:m.start()]))
         out.append(f'<a href="{html.escape(m.group(2))}">{_inline_text(m.group(1))}</a>')
         pos = m.end()
@@ -231,7 +269,7 @@ def parse_page(md):
             blocks.append({"kind": "frame", "id": fm.group(1)})
             i += 1
             continue
-        if "<!--" in s or "[КАДР" in s or "[FRAME" in s:
+        if "<!--" in s or "[КАДР" in s:
             raise BuildError(f"comment/marker inside text line: {s[:80]}")
         bm = BUTTON_RX.match(s)
         if bm:
@@ -266,7 +304,7 @@ def parse_page(md):
             blocks.append({"kind": "ol" if ordered else "ul", "items": items})
             continue
         para = []
-        while i < n and lines[i].strip() and not re.match(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|\[FRAME|<!--|\*\*Button:)",
+        while i < n and lines[i].strip() and not re.match(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|<!--|\*\*Кнопка:)",
                                                           lines[i].strip()):
             para.append(lines[i].strip())
             i += 1
@@ -385,7 +423,7 @@ def is_facts(block):
 
 LEAD_RX = re.compile(r"^\*\*([^*]+)\*\*\s*(.*)$")
 QA_RX = re.compile(r"^<strong>([^<]+\?)</strong>\s+(.+)$")
-NUM_CELL_RX = re.compile(r"^(?:<strong>)?(?:about |from |≈|\+)?[\d][\d  .,–×÷=+%€²m/-]*(?:</strong>)?$|^—$")
+NUM_CELL_RX = re.compile(r"^(?:<strong>)?(?:около |от |\+)?[\d][\d  .,–×÷=+%€²м/-]*(?:</strong>)?$|^—$")
 FIG_RX = re.compile(r"^([\d][\d  –]*?)\s+(\D.*)$")
 
 
@@ -417,11 +455,26 @@ def table_item(b):
             "plain_head": [re.sub(r"<[^>]+>", "", h) for h in head]}
 
 
-def ladder_from(table):
-    """C8 from the copy's own «Шесть ступеней цены» table (Ступень | событие | цена | рост)."""
-    if table["plain_head"][0] != "Stage" or len(table["head"]) != 4 or "Rise" not in table["plain_head"][3]:
+def ladder_from(table, locale=None, model=None):
+    """Price curve from the model; the copy's table must state the same prices and comparison basis."""
+    loc = locale or LOCALE
+    first, comparison = locale_cfg.LADDER_HEAD.get(loc, locale_cfg.LADDER_HEAD["ru"])
+    if table["plain_head"][0] != first or len(table["head"]) != 4 or comparison not in table["plain_head"][3]:
         return None
-    return [{"name": r[0], "event": r[1], "price": r[2], "grow": r[3]} for r in table["rows"]]
+    model = model or load_model()
+    steps = model["steps"]
+    if len(table["rows"]) != len(steps):
+        raise BuildError("price curve: exactly six stage rows required")
+    baseline = json.loads((HERE / "model_inputs.baseline.json").read_text(encoding="utf-8"))["stages"]
+    for index, (row, step) in enumerate(zip(table["rows"], steps)):
+        price = int(re.sub(r"[^0-9]", "", plain(row[2])))
+        expected = percent(reduction_percent(step["price_eur_m2"], steps[-1]["price_eur_m2"]), loc)
+        approved = percent(reduction_percent(baseline[index][1], baseline[-1][1]), loc)
+        if price != step["price_eur_m2"] or plain(row[3]) != ("—" if index == len(steps) - 1 else approved):
+            raise BuildError("price curve: table price or percentage differs from the model / handover denominator")
+        # The approved copy is checked above; derived comparisons follow a model price edit.
+        row[3] = "—" if index == len(steps) - 1 else expected
+    return build_curve(steps, [plain(r[0]) for r in table["rows"]], loc)
 
 
 def body_item(b):
@@ -442,9 +495,10 @@ def body_item(b):
 # Every component below only re-presents the copy's own words (or model.json, which the copy's figures come from);
 # nothing is added or reworded. Sections are matched by their ### title.
 STEP_P_RX = re.compile(r"^<strong>(\d+)\. ([^<]+)</strong>\s+(.+)$")   # 09 «Шесть шагов»: **1. Запись.** текст
-C7_SENTENCE_TITLES = {"How you enter", "How entry works", "How it works"}  # EN titles of the RU sections  # one paragraph -> one step per sentence
-SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")
-MINI_LADDER = set()   # EN r1: the C8 mini ladder showed model.json stage prices (not approved): off
+C7_SENTENCE_TITLES = {"Порядок входа", "Как устроен вход", "Как это работает"}  # one paragraph -> one step per sentence
+SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[А-ЯЁA-Z])")
+MINI_LADDER = set()  # The previous stage-price ladder does not apply to the cash-exit model.
+
 # C10 log: OFF until copy_v3 has confirmed entries «дата → стадия → что сделано» (DESIGN C10: concrete dates).
 # The sections keep their copy (text + planned-dates table). To enable: put
 # {("index", "Стройка"), ("construccion", "Журнал стройки")} back.
@@ -454,9 +508,9 @@ LOG_SECTIONS = set()  # C10
 # t266u 31.10 00:32 (FOUNDER:54, :172). Roles: only [КАНОН] (copy_v3/sources_v3.md:17-19), no who/when -> the whole
 # section is not rendered (no empty section). Back: TEAM_SECTIONS = {("index", "Команда и компания")}, HIDDEN = set().
 TEAM_SECTIONS = set()                                                       # C11
-HIDDEN_SECTIONS = {("index", "Team and company")}
+HIDDEN_SECTIONS = {("index", "Команда и компания")}
 PEOPLE = {"Simon Subic": "/tenerife/simon/", "Boris Ribaut": "/tenerife/boris/"}
-CALC_SHORT = set()   # EN r1: no calculator (C9 short off)
+CALC_SHORT = set()  # The investor page uses the same complete calculator as /calculadora/.
 
 
 def plain(fragment):
@@ -506,6 +560,30 @@ def c11_people(body):
     return out
 
 
+SHORT_RX = re.compile(r"^<strong>([^<]+):</strong> [\d\u00a0 ]+\u00a0?€ (.+?) [\d\u00a0 ]+\u00a0?€ (.+)\.$")
+
+
+def short_labels(page):
+    """C9 short (04): words of the section's own sentence «Покупка из очереди: 212 400 € сразу или 17 700 € в месяц
+    двенадцать месяцев.» — the two amounts become the computed values (no word from another page)."""
+    s = next((x for x in page["sections"] if x["calc_short"]), None)
+    if s is None:
+        return None
+    for i in s["body"]:
+        m = SHORT_RX.match(i["html"]) if i["kind"] == "p" else None
+        if m:
+            return {"lead": m.group(1), "mid": m.group(2), "tail": m.group(3)}
+    raise BuildError("C9 short: «Покупка из очереди: … € сразу или … € в месяц …» not found")
+
+
+def mini_ladder(model):
+    """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it.
+    Названия ступеней берутся из locale_cfg.STAGE_NAMES (те же слова, что в таблице copy_<loc>/04)."""
+    names = locale_cfg.STAGE_NAMES.get(LOCALE, locale_cfg.STAGE_NAMES["ru"])
+
+    return build_curve(model["steps"], names, LOCALE, with_table=False, key="price-stages-mini")
+
+
 # Designer r3 (31.10.2026): F17 («отделка») never shows a finished-house photo. On construccion the slot is a
 # text block with the basalt bar (like F14-F16); on other pages it is hidden when the page already shows another
 # photo, otherwise it renders the same text block + bar.
@@ -533,7 +611,7 @@ def drop_hidden_sections(blocks, name):
     return out
 
 
-def structure(blocks, frames, alts, name, model=None):
+def structure(blocks, frames, alts, name, model=None, alias=None):
     """Group blocks into hero / sections / cta and choose the DESIGN.md component per section.
     Text order inside a section never changes; pictures ([КАДР]) of a section are placed after its text.
     A slot without a photo (frames[fid] is None) renders no image: its text block gets the basalt bar."""
@@ -564,13 +642,16 @@ def structure(blocks, frames, alts, name, model=None):
     hero = {"h1": inline(h1[0]["text"]), "h1_text": h1[0]["text"],
             "intro": [inline(b["text"]) for b in rest[:j]], "img": hero_img, "bar": hero_img is None,
             "kind": "text" if long_page or hero_img is None else ("short" if name in SHORT_HERO else "full")}
+    if name == "inversores":
+        # Investment terms and a model example take precedence over a construction illustration.
+        hero.update(kind="investment", img=None, bar=False)
     rest = rest[j + 1:]
     facts = None
     if rest and is_facts(rest[0]):
         facts = facts_items(rest[0]["text"])
         rest = rest[1:]
     if not rest or rest[-1]["kind"] != "button" or sum(b["kind"] == "button" for b in rest) != 1:
-        raise BuildError("exactly one **Button** expected, as the last block")
+        raise BuildError("exactly one **Кнопка** expected, as the last block")
     button = rest[-1]
     rest = rest[:-1]
     sections, cur = [], None
@@ -587,32 +668,44 @@ def structure(blocks, frames, alts, name, model=None):
                 cur["frames"].append(b["id"])
             else:
                 cur["body"].append(body_item(b))
-    # the last section is the waitlist text (C13) when it is plain text (01 «The queue»)
+    # the last section is the waitlist text (C13) when it is plain text (01 «Очередь»)
     cta_section = None
     last = sections[-1] if sections else None
-    if last and not last["frames"] and all(i["kind"] in ("p", "ul") for i in last["body"]) \
+    last_title = (alias or {}).get(plain(last["title"]), plain(last["title"])) if last else ""
+    if (name != "inversores" or last_title == "Получить расчёт") and last and not last["frames"] and all(i["kind"] in ("p", "ul") for i in last["body"]) \
             and not all(i["kind"] == "p" and QA_RX.match(i["html"]) for i in last["body"]):
         cta_section = sections.pop()
-        cta_section["id"] = f"s{len(sections) + 1}"
+        cta_section["id"] = "request" if name in ("inversores", "equipo") else f"s{len(sections) + 1}"
     for s in sections:
-        key = (name, plain(s["title"]))
+        title = plain(s["title"])
+        key = (name, (alias or {}).get(title, title))
         s["body"] = c7_steps(s["body"], key[1])
         if key in LOG_SECTIONS:
             s["body"] = c10_log(s["body"])
         if key in TEAM_SECTIONS:
             s["body"] = c11_people(s["body"])
-        s["mini_ladder"] = None
+        s["mini_ladder"] = mini_ladder(model) if key in MINI_LADDER and model else None
         s["calc_short"] = key in CALC_SHORT
     split_n = 0
     for n, s in enumerate(sections, 1):
         s["id"] = f"s{n}"
+        master_title = (alias or {}).get(plain(s["title"]), plain(s["title"]))
+        semantic, legacy = INVESTOR_SECTIONS.get(master_title, (f"section-{n}", ()))
+        s["aliases"] = list(legacy) if name == "inversores" else []
+        if name == "inversores":
+            s["id"] = semantic
+        elif name == "equipo":
+            s["id"] = ("roles", "responsibility", "profiles", "contact")[min(n - 1, 3)]
+        s["calc_full"] = name == "inversores" and semantic == "calculate"
         s["rev"], s["qa"] = False, []
+        if name == "inversores" and semantic == "overview":
+            s["frames"].insert(0, "F14")
         s["frames"] = [f for f in s["frames"] if f not in hidden]
         s["bar"] = bool(s["frames"]) and all(frames[f] is None for f in s["frames"])
         s["frames"] = [f for f in s["frames"] if frames[f] is not None]
         body = s["body"]
         qa = [QA_RX.match(i["html"]) if i["kind"] == "p" else None for i in body]
-        s["ladder"] = next((ladder_from(i) for i in body if i["kind"] == "table" and ladder_from(i)), None)
+        s["ladder"] = next(filter(None, (ladder_from(i, LOCALE, model) for i in body if i["kind"] == "table")), None)
         if body and all(qa):
             s["layout"] = "faq"
             s["qa"] = [{"q": m.group(1), "a": m.group(2)} for m in qa]
@@ -620,6 +713,8 @@ def structure(blocks, frames, alts, name, model=None):
             s["layout"] = "long"
         elif s["ladder"] or any(i["kind"] in ("steps", "log") for i in body):
             s["layout"] = "stack"
+        elif len(s["frames"]) > 1 and len(body) >= len(s["frames"]) and all(i["kind"] == "p" for i in body):
+            s["layout"] = "illustrated"
         elif len(s["frames"]) == 1 and not any(i["kind"] == "table" for i in body):
             s["layout"] = "split"
             s["rev"] = split_n % 2 == 1
@@ -634,78 +729,177 @@ def structure(blocks, frames, alts, name, model=None):
             s["imgs"] = [dict(img(s["frames"][0], "wide"), ratio="21x9")]
         else:
             s["imgs"] = [dict(img(f, "half"), ratio="3x2") for f in s["frames"]]
+        if s["layout"] == "illustrated":
+            count = len(s["imgs"])
+            s["panels"] = [{"body": body[i * len(body) // count:(i + 1) * len(body) // count], "img": photo}
+                           for i, photo in enumerate(s["imgs"])]
     return {"hero": hero, "facts": facts, "sections": sections, "cta_section": cta_section,
             "button": {"text": html.escape(button["text"]), "micro": html.escape(button["micro"])}}
 
 
-def parse_footer(md):
-    meta, blocks = parse_page(md)
+def parse_footer(md, fmap, rx, locale=None):
+    meta, blocks = parse_page(apply_figures(md, fmap, rx))
     title = next(b for b in blocks if b["kind"] == "h")["text"]
     paras = [b["text"] for b in blocks if b["kind"] == "p"]
     out = {"title": html.escape(title), "about": None, "pages": [], "contacts": [], "company": None, "docs": []}
+    if (locale or LOCALE) != "ru":
+        # переводы сохраняют порядок строк подвала: о проекте, страницы, контакты, компания, документы
+        rows = []
+        for p in paras:
+            m = re.match(r"^\*\*(.+?)\*\* ?(.*)$", p)
+            rows.append((m.group(1), m.group(2)) if m else (None, p))
+        about = [r for r in rows if r[0] is None] or rows[:1]
+        out["about"] = (about[0][0] or "", inline(about[0][1])) if about else None
+        for label, rest in rows:
+            if label is None:
+                continue
+            if " · " in rest and not out["pages"] and "mailto" not in rest and "@" not in rest:
+                names = rest.split(" · ")
+                out["hidden"] = [x for x in names if x in NAV_FUTURE.values() or x in NAV_FUTURE]
+                names = [x for x in names if x not in out["hidden"]]
+                out["pages"] = names
+            elif "@" in rest or WA_TOKEN in rest:
+                out["contacts"] = ["whatsapp" if c == WA_TOKEN else c for c in rest.split(" · ")]
+            elif "Companies House" in rest:
+                out["company"] = inline(rest)
+            elif "[Impressum]" in rest or "[Privacy]" in rest or "impressum" in rest:
+                out["docs"] = [re.match(r"\[(.+)\]\((/[^)]+)\)", d).groups()
+                               for d in re.split(r" · ", rest) if re.match(r"\[(.+)\]\((/[^)]+)\)", d)]
+        return out
     for p in paras:
         lab = re.match(r"^\*\*(.+?)\*\* ?(.*)$", p)
         label, rest = lab.group(1), lab.group(2)
-        if label == "Pages.":
+        if label == "Страницы.":
             names = rest.split(" · ")
+            built = {n for _f, n in PAGES}
+            out["hidden"] = [x for x in names if x in NAV_FUTURE and NAV_FUTURE[x] not in built]
+            names = [x for x in names if x not in out["hidden"]]
             if set(names) != set(NAV) or len(names) != len(NAV):
                 raise BuildError(f"footer pages differ from NAV: {names}")
             out["pages"] = names
-        elif label == "Contact.":
-            # EN copy: e-mail only. The WhatsApp contact stays a runtime slot (app/tenerife.py fills it from
-            # TENERIFE_WHATSAPP on every request, never written into the files); a number in the copy fails the build.
+        elif label == "Контакты.":
+            # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}». The token becomes the WhatsApp slot; app/tenerife.py
+            # fills it with the TENERIFE_WHATSAPP value on every request, so the number never lands in the built
+            # files / git. A number written into the copy, or any other {…}, fails the build.
             contacts = []
             for c in rest.split(" · "):
-                if "{" in c or "}" in c or re.search(r"\+?\d[\d ]{7,}", c):
-                    raise BuildError(f"footer «Contact»: unexpected token or hard-coded number: {c[:12]}…")
-                contacts.append(c)
-            out["contacts"] = contacts + ["whatsapp"]
-        elif label == "Company.":
+                if c == WA_TOKEN:
+                    contacts.append("whatsapp")
+                elif "{" in c or "}" in c or re.search(r"\+?\d[\d ]{7,}", c):
+                    raise BuildError(f"footer «Контакты»: unexpected token or hard-coded number: {c[:12]}…")
+                else:
+                    contacts.append(c)
+            out["contacts"] = contacts
+        elif label == "Компания.":
             out["company"] = inline(rest)
-        elif label == "Documents.":
+        elif label == "Документы.":
             out["docs"] = [re.match(r"\[(.+)\]\((/[^)]+)\)", d).groups() for d in rest.split(" · ")]
         elif out["about"] is None:
-            out["about"] = inline(p)   # «**Artemis Tenerife**: …» as written
+            out["about"] = (label, inline(rest))
         else:
             raise BuildError(f"unknown footer line {p[:40]}")
     return out
 
 
-# ---------------------------------------------------------------- form (copy_en/17_forma.md)
+# ---------------------------------------------------------------- form messages (copy_v3/17_forma.md, Kimi r4)
 FORMA = "17_forma.md"
-# label in 17_forma.md «Form messages» -> key (data-msg-<key> on the form; app/tenerife.py FORM_MSG)
+# label in 17_forma.md «Сообщения формы» -> key (data-msg-<key> on the form; app/tenerife.py FORM_MSG)
 FORM_MESSAGES = {
-    "Button while sending.": "sending", "Success, heading.": "ok-title", "Success, what happens next.": "ok-next",
-    "Server error.": "server", "No connection to the server.": "network", "Too many requests.": "rate",
-    "\"Name\" field empty.": "name", "\"Contact\" field empty or shorter than 5 characters.": "contact",
-    "No language selected.": "language", "No consent.": "consent",
+    "Кнопка во время отправки.": "sending", "Успех, заголовок.": "ok-title", "Успех, что дальше.": "ok-next",
+    "Ошибка сервера.": "server", "Нет связи с сервером.": "network", "Слишком много заявок.": "rate",
+    "Поле «Имя» пустое.": "name", "Поле «Контакт» пустое или короче 5 символов.": "contact",
+    "Язык не выбран.": "language", "Нет согласия.": "consent",
 }
 
 
+# ---------------------------------------------------------------- локали: строки формы, alt-тексты (03.11.2026)
+def i18n_strings():
+    """Строки, которых нет в копирайте страниц: подписи и согласие формы, сообщения формы, alt-тексты кадров."""
+    return json.loads((HERE / "i18n_strings.json").read_text(encoding="utf-8"))
+
+
+RU_FORM_UI = {
+    "name": "Имя",
+    "contact": "Контакт — email, телефон или Telegram",
+    "language": "Язык общения",
+    "website": "Сайт",
+    "consent": 'Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из '
+               'калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно '
+               '<a href="%PRIVACY%">политике конфиденциальности</a>. Согласие можно отозвать в любой момент.',
+}
+
+
+def calc_ui():
+    return i18n_strings()[LOCALE]["calc"]["ui"]
+
+
+def form_ui():
+    """{name, contact, language, website, consent, privacy} для текущей локали; RU — канон из шаблона."""
+    if LOCALE == "ru":
+        ui = dict(RU_FORM_UI)
+    else:
+        ui = dict(i18n_strings()[LOCALE]["form"])
+    ui["consent"] = ui["consent"].replace("%PRIVACY%", locale_path("/tenerife/privacy/"))
+    ui["lang_default"] = LOCALE
+    return ui
+
+
 def form_messages(md=None):
-    """{key: text} from the «## Form messages» section of 17_forma.md, verbatim; every label required."""
+    """{key: text} from the «## Сообщения формы» section of 17_forma.md, verbatim; every label required."""
     md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
-    sec = re.search(r"^## Form messages\n(.*?)(?=^## |\Z)", md, re.S | re.M)
+    sec = re.search(r"^## Сообщения формы\n(.*?)(?=^## |\Z)", md, re.S | re.M)
     if not sec:
-        raise BuildError(f"{FORMA}: no «Form messages» section")
+        raise BuildError(f"{FORMA}: no «Сообщения формы» section")
     found = dict(re.findall(r"^\*\*(.+?)\*\* (.+)$", sec.group(1), re.M))
     missing = [lbl for lbl in FORM_MESSAGES if lbl not in found]
     if missing or len(found) != len(FORM_MESSAGES):
         unknown = sorted(set(found) - set(FORM_MESSAGES))
         raise BuildError(f"{FORMA}: form messages missing {missing} / unknown {unknown}")
-    return {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
+    ru = {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
+    if LOCALE == "ru":
+        return ru
+    tr = i18n_strings()[LOCALE]["msgs"]
+    if set(tr) != set(ru):
+        raise BuildError(f"i18n_strings.json {LOCALE}: form messages keys differ from RU")
+    return {k: tr[k] for k in ru}
 
 
-def consent_html(md=None):
-    """The consent line next to the checkbox: «**Consent.** …» of 17_forma.md, verbatim (link kept)."""
-    md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
-    m = re.search(r"^\*\*Consent\.\*\* (.+)$", md, re.M)
-    if not m:
-        raise BuildError(f"{FORMA}: no «Consent.» line")
-    return inline(m.group(1))
-
-
+# ---------------------------------------------------------------- calculator defaults (server-rendered, no CLS)
 NBSP = "\u00a0"
+
+
+def fmt_int(x):
+    """= calc.js eur(): Intl.NumberFormat('ru-RU') groups with U+00A0; half-up like Math.round for positives."""
+    return f"{int(x + 0.5):,}".replace(",", NBSP)
+
+
+def fmt_pct(x):
+    """half-up to 1 decimal (= calc.js roundingMode halfExpand)."""
+    t = int(x * 10 + 0.5)
+    return f"{t // 10},{t % 10}%"
+
+
+def calc_view(model):
+    """A fixed full-payment scenario with one cash exit; defaults work without JS."""
+    quantity = model["area_m2"]["default"]
+    cur = model["steps"][0]
+    investment = model["investment"]
+    total = quantity * cur["price_eur_m2"]
+    result = total * (1 + investment["target_annual"]) ** (investment["exit_months"] / 12)
+    cu = calc_ui()
+    def eur(value):
+        return fmt_int(value) + NBSP + "€"
+    island = {"steps": [{key: value for key, value in st.items() if key != "name"} for st in model["steps"]],
+              "investment": investment, "area_m2": model["area_m2"], "unit": cu["unit"],
+              "types": [{key: value for key, value in t.items() if key != "name"} for t in model["types"]]}
+    return {"m2": quantity, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"],
+            "unit": cu["unit"], "types": [dict(t, checked=t["quantity"] == quantity,
+                budget=eur(t["quantity"] * cur["price_eur_m2"])) for t in model["types"]],
+            "current": cur["id"], "sum": eur(total), "exit": eur(result), "gain": eur(result-total),
+            "pct": fmt_pct(investment["target_annual"] * 100), "term": str(investment["exit_months"]),
+            "gain_pct": fmt_pct((result/total-1) * 100), "entry": eur(cur["price_eur_m2"]),
+            "m2_out": f"{quantity} {cu['unit']}",
+            "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
 
 DESIGN = HERE / "design"   # verbatim copies of web-designer/tenerife/design/{fonts.css,tokens.css}
@@ -719,8 +913,18 @@ def focal_css(frames_cfg):
         if not rx.match(pos) or not (STATIC / "tenerife" / "site" / "img" / f"{stem}.jpg").exists():
             raise BuildError(f"frames.json focal: bad entry {stem}: {pos}")
         rules.append(f"  .hero__media .fp-{stem}{{object-position:{pos}}}")
+    profiles = [f".profile-photo .fp-{stem}{{object-position:{pos}}}" for stem, pos in sorted(frames_cfg["focal"].items())]
     return ("/* mobile 4:5 hero crop focal points: generated by build_v3.py from frames.json */\n"
-            "@media (max-width:767px){\n" + "\n".join(rules) + "\n}\n")
+            "@media (max-width:767px){\n" + "\n".join(rules) + "\n}\n"
+            + "\n".join(profiles) + "\n")
+
+
+def case_css():
+    """Фоны карточек портфеля: один файл на объект (CSP запрещает style=)."""
+    cfg = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))
+    rules = [f".case__media--{it['img']}{{background-image:url('/static/tenerife/site/cases/{it['img']}-1200.webp')}}"
+             for it in cfg["items"]]
+    return "\n".join(rules) + "\n"
 
 
 def site_css(model, frames_cfg=None):
@@ -728,18 +932,140 @@ def site_css(model, frames_cfg=None):
     + photo focal points."""
     frames_cfg = frames_cfg or json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     parts = [(DESIGN / "fonts.css").read_text(encoding="utf-8"), (DESIGN / "tokens.css").read_text(encoding="utf-8"),
-             (HERE / "site.src.css").read_text(encoding="utf-8"), ladder_css(model), focal_css(frames_cfg)]
+             (HERE / "site.src.css").read_text(encoding="utf-8"), focal_css(frames_cfg),
+             case_css()]
     return "\n".join(parts)
 
 
-def ladder_css(model):
-    """C8 bar heights ∝ price / max price (from zero), generated from model.json: CSP forbids style=""."""
-    steps = model["steps"]
-    top = max(st["price_eur_m2"] for st in steps)
-    rules = [f".ladder li:nth-child({i}){{--p:{st['price_eur_m2'] / top:.4f};--i:{i - 1}}}"
-             for i, st in enumerate(steps, 1)]
-    return "/* C8 ladder: generated by build_v3.py from model.json */\n" + "\n".join(rules) + "\n"
+def calc_labels(page, alias=None):
+    return i18n_strings()[LOCALE]["calc"]["results"]
 
+
+PEOPLE_LINKS = (("Simon Subic", "/tenerife/simon/"), ("Boris Ribaut", "/tenerife/boris/"))
+
+
+def link_people(html_text):
+    """Имена команды в тексте — ссылки на их страницы; внутри <a> и в атрибутах не трогаем."""
+    parts = re.split(r"(<[^>]+>)", html_text)
+    depth = 0
+    out = []
+    for part in parts:
+        if part.startswith("<"):
+            tag = part.lower()
+            if tag.startswith("<a ") or tag == "<a>":
+                depth += 1
+            elif tag.startswith("</a"):
+                depth = max(0, depth - 1)
+            out.append(part)
+            continue
+        if depth == 0:
+            for name, href in PEOPLE_LINKS:
+                part = part.replace(name, f'<a href="{href}">{name}</a>')
+        out.append(part)
+    return "".join(out)
+
+
+def apply_profile_photos(page, page_name, alias):
+    """Attach each personal photo to its stated subject in every locale, keeping prose order intact."""
+    cfg = json.loads((HERE / "people.json").read_text(encoding="utf-8"))
+    photos = cfg.get(page_name, [])
+    if not photos:
+        return
+    sections = {(alias or {}).get(plain(s["title"]), plain(s["title"])): s for s in page["sections"]}
+    used = set()
+    for section in page["sections"]:
+        section["profile"] = True
+        section["bar"] = False
+        if section["layout"] == "long":
+            section["layout"] = "head"
+    if page["hero"]["img"]:
+        subject = cfg.get(f"{page_name}_project_photo_section")
+        target = sections.get(subject)
+        if target is None or target["imgs"]:
+            raise BuildError(f"{page_name}: the former project image needs an explicit relevant section")
+        target.update(layout="split", imgs=[dict(page["hero"]["img"], ratio="3x2", sizes=SIZES["split"])], bar=False)
+    for index, it in enumerate(photos):
+        subject = it["section"]
+        if subject in used:
+            raise BuildError(f"{page_name}: two personal photos for {subject}")
+        used.add(subject)
+        key = it.get("alt_key", it["img"])
+        alt = it["alt"] if LOCALE == "ru" else i18n_strings()[LOCALE]["people"][key]
+        photo = dict(image_variant(it["img"]), alt=html.escape(alt, quote=True),
+                     sizes="(min-width:1024px) 33vw, (min-width:768px) 40vw, 100vw",
+                     ratio="4x5", person=page_name, context=it["context"], eager=subject == "hero")
+        if subject == "hero":
+            page["hero"].update(kind="profile", img=photo, bar=False)
+        else:
+            section = sections.get(subject)
+            if section is None:
+                raise BuildError(f"{page_name}: personal photo has no matching section: {subject}")
+            if section["imgs"]:
+                raise BuildError(f"{page_name}: personal photo would replace an assigned project photo: {subject}")
+            section.update(layout="profile-story", imgs=[photo], bar=False, rev=index % 2 == 1)
+    if "hero" not in used:
+        raise BuildError(f"{page_name}: profile needs its own introduction portrait")
+    for index, section in enumerate(s for s in page["sections"] if s["layout"] == "profile-story"):
+        section["rev"] = index % 2 == 1
+
+
+def profile_cases_html(page_name):
+    """Only portfolio cases use a horizontal strip; personal photos live beside their own prose."""
+    cfg = json.loads((HERE / "people.json").read_text(encoding="utf-8"))
+    cases_cfg = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))
+    case_ids = cfg.get(f"{page_name}_cases", [])
+    if not case_ids:
+        return ""
+    by_id = {it["img"]: it for it in cases_cfg["items"]}
+    blocks = []
+    if case_ids:
+        cards = []
+        for cid in case_ids:
+            it = by_id.get(cid)
+            if not it:
+                continue
+            cards.append('<div class="case case--static">'
+                         f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{html.escape(it["name"], quote=True)}"></div>'
+                         f'<span class="case__badge">{it.get("status_by_locale", {}).get(LOCALE, it["status"])}</span>'
+                         f'<div class="case__cap"><b>{it["name"]}</b>'
+                         f'<span>{html.escape(it.get("place_by_locale", {}).get(LOCALE, it["place"]))}</span></div></div>')
+        title = cases_cfg.get("labels", {}).get(LOCALE, cases_cfg["labels"]["ru"])["title"]
+        blocks.append('<h2 id="s-person-cases">' + title + '</h2>'
+                      '<div class="cases__viewport" role="region" aria-labelledby="s-person-cases" tabindex="0">'
+                      '<div class="cases__track">' + "".join(cards) + '</div></div>')
+    return ('<section class="section rule-top s--cases s--profile-cases" aria-labelledby="s-person-cases">'
+            '<div class="wrap">' + "".join(blocks) + '</div></section>')
+
+
+def portfolio_html():
+    """Портфель команды: семь объектов одной бесконечной лентой (CSS-анимация, без ручного скролла).
+    Карточки дублируются, чтобы шов был незаметен; картинки — CSS-фон (.case__media--<stem>)."""
+    cfg = json.loads((HERE / "cases.json").read_text(encoding="utf-8"))
+    labels = cfg.get("labels", {}).get(LOCALE, cfg["labels"]["ru"])
+
+    def cards():
+        out = []
+        for it in cfg["items"]:
+            name = html.escape(it["name"], quote=True)
+            out.append(
+                '<div class="case">'
+                f'<div class="case__media case__media--{it["img"]}" role="img" aria-label="{name}"></div>'
+                f'<span class="case__badge">{it.get("status_by_locale", {}).get(LOCALE, it["status"])}</span>'
+                f'<div class="case__cap"><b>{it["name"]}</b>'
+                f'<span>{html.escape(it.get("place_by_locale", {}).get(LOCALE, it["place"]), quote=False)}</span></div>'
+                '</div>')
+        return "".join(out)
+
+    group = '<div class="cases__group">' + cards() + '</div>'
+    return ('<section class="section rule-top s--cases" aria-labelledby="s-cases">'
+            '<div class="wrap">'
+            '<h2 id="s-cases">' + labels["title"] + '</h2>'
+            '<p class="cases__lead">' + labels["lead"] + '</p>'
+            '</div>'
+            '<div class="cases__viewport" role="region" tabindex="0" aria-label="' + html.escape(labels["title"], quote=True) + '">'
+            '<div class="cases__track">' + group + '</div>'
+            '</div>'
+            '</section>')
 
 # ---------------------------------------------------------------- FAQPage JSON-LD (designer r2, item 5)
 FAQ_LD_PAGE = "faq"
@@ -766,17 +1092,31 @@ def ld_json(data):
     return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c").replace(">", "\\u003e")
 
 
-COMPANY_RX = re.compile(r"^(?P<name>[A-Z][A-Z ]+ LTD)\. .*Companies House No\. (?P<num>\d{8})\. Registered office: "
+COMPANY_RX = re.compile(r"^(?P<name>[A-Z][A-Z ]+ LTD)\. .*Companies House № (?P<num>\d{8})\. Юридический адрес: "
                         r"(?P<street>[^,]+, [^,]+), (?P<city>[^,]+), (?P<zip>[A-Z0-9]{2,4} [A-Z0-9]{3}), "
                         r"(?P<country>[^.]+)\.")
 
 
 def org_ld(footer):
-    """QA T3-08: Organization only from the copy (14 «Company.»). No telephone: the number is not confirmed yet
+    """QA T3-08: Organization only from the copy (14 «Компания.»). No telephone: the number is not confirmed yet
     (T3-01); no e-mail: addresses on the site stay inside email_off (Cloudflare obfuscation), not in data blocks."""
-    m = COMPANY_RX.match(plain(footer["company"]))
+    text = plain(footer["company"])
+    m = COMPANY_RX.match(text)
     if not m:
-        raise BuildError("footer «Company.»: Organization facts not found")
+        # локали: разбираем по фактам, а не по русским подписям
+        num = re.search(r"\b(\d{8})\b", text)
+        addr = re.search(r":[\s]*(?P<addr>[^:]+?)\.?$", text)
+        name = re.match(r"^(?P<name>[A-Z][A-Za-z .&]+?LTD)\.", text)
+        if not (num and addr and name):
+            raise BuildError("footer «Компания.»: Organization facts not found")
+        parts = [x.strip() for x in addr.group("addr").split(",")]
+        zip_city = parts[-2] if len(parts) >= 2 else ""
+        zip_m = re.match(r"(?P<zip>[A-Z0-9]{2,4} [A-Z0-9]{3})", zip_city)
+        m = {"name": name.group("name"), "num": num.group(1),
+             "street": ", ".join(parts[:-2]) if len(parts) > 2 else parts[0],
+             "city": zip_city[zip_m.end():].strip() if zip_m else zip_city,
+             "zip": zip_m.group("zip") if zip_m else "",
+             "country": parts[-1]}
     return ld_json({"@context": "https://schema.org", "@type": "Organization",
                     "name": m["name"], "legalName": m["name"],
                     "url": BASE_URL + "/tenerife/",
@@ -786,7 +1126,7 @@ def org_ld(footer):
 
 
 def breadcrumb_ld(nav, name):
-    """QA T3-08: Home → page; names = the copy's «Pages.» labels."""
+    """QA T3-08: Главная → page; names = the copy's «Страницы.» labels."""
     by = {x["name"]: x for x in nav}
     items = [by["index"]] + ([by[name]] if name != "index" else [])
     return ld_json({"@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -802,6 +1142,8 @@ LD_RX = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 
 
 def check_output(name, out):
+    if re.search(r"@[a-z][a-z0-9_]*@", out):
+        raise BuildError(f"{name}: unresolved financial token")
     errs = []
     for ld in LD_RX.findall(out):           # JSON-LD data block: must parse; then skipped by the text checks
         try:
@@ -809,7 +1151,7 @@ def check_output(name, out):
         except ValueError:
             errs.append(f"{name}: invalid JSON-LD")
     out = LD_RX.sub('<script type="application/ld+json"></script>', out)
-    for bad in ("[КАДР", "[FRAME", "{{", "{%", "%}", "}}", "**", "Кнопка:", "Button:"):
+    for bad in ("[КАДР", "{{", "{%", "%}", "}}", "**", "Кнопка:"):
         if bad in out:
             errs.append(f"{name}: «{bad}» in output")
     # Kimi r16: no copy token may survive, not even a lone brace (the calculator's JSON model is a data block)
@@ -842,134 +1184,181 @@ def check_output(name, out):
 # ---------------------------------------------------------------- main
 def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     check_whatsapp_env()
-    check_copy()
-    model = load_model(model_path)   # only for the C8 ladder CSS (bar heights); no figure reaches a page from it
+    if LOCALE == "ru" and combined_sha() != COPY_SHA256:
+        raise BuildError(f"copy_v3 sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
+    model = load_model(model_path)
+    fmap = figure_map(model)
+    rx = figure_regex(fmap)
     frames_cfg = json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     alts = json.loads(Path(alts_path or HERE / "alts.json").read_text(encoding="utf-8"))
+    if LOCALE != "ru" and alts_path is None:   # переводы alt-текстов; слоты остаются русскими только для RU
+        tr = i18n_strings()[LOCALE]["alts"]
+        missing = sorted(set(alts["images"]) - set(tr))
+        if missing:
+            raise BuildError(f"i18n_strings.json {LOCALE}: no alt for {missing}")
+        alts = {"images": tr, "slots": {}}
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=False, undefined=StrictUndefined,
                       trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
-    footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"))
+    footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"), fmap, rx)
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
-    env.globals["consent"] = consent_html()
+    env.globals["form_ui"] = form_ui()
+    env.globals["calc_ui"] = calc_ui()
+    env.globals["calc_details_url"] = locale_path("/tenerife/inversores/#funding")
+    env.globals["nav_ui"] = locale_cfg.NAV_UI[LOCALE]
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
-        meta, blocks = parse_page((COPY / fname).read_text(encoding="utf-8"))
-        slug = meta["Slug"]
+        md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
+        meta, blocks = parse_page(md)
+        slug = meta["Слаг"]
         expected = "/tenerife/" if name == "index" else f"/tenerife/{name}/"
         if slug != expected:
-            raise BuildError(f"{fname}: Slug {slug} != {expected}")
+            raise BuildError(f"{fname}: Слаг {slug} != {expected}")
         slugs[name], metas[name], parsed[name] = slug, meta, blocks
-    nav = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in footer["pages"]]
+    if LOCALE == "ru":
+        nav = [{"label": html.escape(lbl), "url": locale_path(slugs[NAV[lbl]]), "name": NAV[lbl]}
+               for lbl in footer["pages"]]
+    else:
+        labels = list(footer["pages"])
+        order = list(locale_cfg.PAGE_ORDER)
+        if len(labels) != len(order):
+            raise BuildError(f"{LOCALE}: footer lists {len(labels)} pages, expected {len(order)}")
+        nav = [{"label": html.escape(lbl), "url": locale_path(slugs[n]), "name": n}
+               for lbl, n in zip(labels, order)]
     by_name = {x["name"]: x for x in nav}
     if set(NAV_PRIMARY) | set(NAV_MORE) | {"index"} != set(by_name):
         raise BuildError("header nav (NAV_PRIMARY + NAV_MORE) must cover the footer pages")
-    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE]}
+    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE],
+            "groups": [{"id": key, "label": locale_cfg.NAV_UI[LOCALE][key],
+                        "links": [by_name[n] for n in names]} for key, names in FOOTER_GROUPS]}
+    from news import locale_url as news_locale_url, UI as NEWS_UI
+    diary = {"name": "actualizaciones", "label": html.escape(NEWS_UI[LOCALE][0]), "url": news_locale_url(LOCALE)}
+    menu["primary"].append(diary)
+    menu["groups"][0]["links"].append(diary)
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
-    site_frames = assign_site_frames({n: [b["id"] for b in pblocks[n] if b["kind"] == "frame"] for n in pblocks},
+    site_frames = assign_site_frames({n: [b["id"] for b in bl if b["kind"] == "frame"] for n, bl in pblocks.items()},
                                      frames_cfg)
+    ru_titles = {}
+    if LOCALE != "ru":
+        ru_parsed = {}
+        for f, nm in PAGES:
+            m0, b0 = parse_page(apply_figures((HERE / "copy_v3" / f).read_text(encoding="utf-8"), figure_map(model), figure_regex(figure_map(model))))
+            ru_parsed[nm] = [plain(b["text"]) for b in b0 if b["kind"] == "h"]
+    def heading_alias(name):
+        if LOCALE == "ru":
+            return None
+        local = [plain(b["text"]) for b in pblocks[name] if b["kind"] == "h"]
+        if len(ru_parsed[name]) != len(local):
+            raise BuildError(f"{LOCALE}/{name}: heading structure differs from RU")
+        return dict(zip(local, ru_parsed[name]))
+
+    # Result labels have one owner (05), shared verbatim by the two uses of C9.
+    calc_source = structure(pblocks[CALC_PAGE], site_frames[CALC_PAGE], alts, CALC_PAGE, model,
+                            alias=heading_alias(CALC_PAGE))
+    shared_calc_labels = calc_labels(calc_source, heading_alias(CALC_PAGE))
     for fname, name in PAGES:
         meta, blocks = metas[name], pblocks[name]
         frames = site_frames[name]
-        page = structure(blocks, frames, alts, name)
-        url = slugs[name]
+        alias = heading_alias(name)
+        page = structure(blocks, frames, alts, name, model, alias=alias)
+        if name in ("simon", "boris"):
+            apply_profile_photos(page, name, alias)
+        url = locale_path(slugs[name])
+        langs = [{"code": code.upper(), "url": BASE_URL + lang_url(code, slugs[name]) + ("?lang=en" if code == "en" else ""), "current": code == LOCALE}
+                 for code in ("en", "es", "de", "fr")]
+        hreflangs, x_default = hreflang_links(slugs[name])
         out = tpl.render(
+            html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE], hreflangs=hreflangs, x_default=x_default,
+            ui=locale_cfg.UI[LOCALE],
             name=name, url=url, canonical=BASE_URL + url,
+            home_url=locale_path("/tenerife/"),
+            langs=langs, menu_more_label=MORE_LABEL.get(LOCALE, "Информация"),
+            months=model["installments"]["months"],
             title=html.escape(meta["Meta title"], quote=True),
             description=html.escape(meta["Meta description"], quote=True),
             og_title=html.escape(meta["OG title"], quote=True),
             og_image=BASE_URL + "/static/tenerife/site/img/og-tenerife-1200x630.jpg",
             nav=nav, menu=menu, footer=footer, page=page,
+            profile_cases=profile_cases_html(name) if name in ("simon", "boris") else "",
+            calc=calc_view(model) if name in CALC_PAGES else None,
+            calc_asset_version=hashlib.sha256((STATIC / "tenerife/site/calc.js").read_bytes()).hexdigest()[:12],
+            calc_labels=shared_calc_labels if name in CALC_PAGES else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
                              org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
+            calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
+            calc_short_labels=short_labels(page),
         )
-        out = wrap(out)
+        out = wrap(prefix_internal_links(out))
+        if name == "index":
+            marker = '<section class="plinth"'
+            if marker in out:
+                out = out.replace(marker, portfolio_html() + marker, 1)
         check_output(name, out)
-        check_en(name, out)
         outputs[name] = out
         report[name] = {"url": url, "file": fname, "frames": frames,
                         "hidden": sorted(hide_no_photo_slots(frames, name)),
                         "alts": {fid: slot_alt(alts, name, fid, stem) for fid, stem in frames.items() if stem},
-                        "title": meta["Meta title"], "h1": page["hero"]["h1_text"]}
+                        "title": meta["Meta title"],
+                        "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
-    for name in ("impressum", "privacy", "_notice"):
-        check_en(name, outputs[name])
-
-    # Project diary (main plumbing kept): EN-only pages, no locale alternates.
-    from news import build_pages, UI as NEWS_UI, locale_url as news_locale_url
+    from news import build_pages
 
     def render_news(title, description, body, news_url, available):
-        # footer.about is a single HTML string (parse_footer); append diary blurb.
-        base_about = footer.get("about") or ""
-        blurb = html.escape(NEWS_UI["en"][1] + ". " + NEWS_UI["en"][8])
-        news_footer = dict(footer, about=(base_about + " " + blurb).strip())
-        return wrap(env.get_template("simple.html").render(
-            title=html.escape(title + " — Artemis Tenerife", quote=True),
-            description=html.escape(description, quote=True),
-            body=body, canonical=BASE_URL + news_url, url=news_url, kind="news",
-            nav=nav, menu=menu, footer=news_footer))
+        # News has a contextual CTA, never an incidental investment calculation.
+        labels = dict(locale_cfg.NAV_UI[LOCALE], calculation=NEWS_UI[LOCALE][7])
+        news_footer = dict(footer, about=['Artemis de la Cruz.', NEWS_UI[LOCALE][1]+'. '+NEWS_UI[LOCALE][8]])
+        env.globals['header_cta_url'] = news_locale_url(LOCALE)
+        prefix_free = re.sub(r'^/tenerife/(?:ru|es|de|fr)/', '/tenerife/', news_url)
+        env.globals['footer_ru_url'] = lang_url('ru',prefix_free)
+        alternates = [{'code':loc, 'url':BASE_URL+lang_url(loc,prefix_free)} for loc in available]
+        links = [{'code':x['code'].upper(),'url':x['url'],'current':x['code']==LOCALE}
+                 for x in alternates if x['code']!='ru']
+        return wrap(prefix_internal_links(env.get_template('simple.html').render(
+            title=title+' — Artemis de la Cruz', description=description, body=body,
+            canonical=BASE_URL+news_url, url=news_url, kind='news', nav=nav, menu=menu,
+            footer=news_footer, home_url=locale_path('/tenerife/'), langs=links,
+            menu_more_label=MORE_LABEL.get(LOCALE,'Information'), ui=locale_cfg.UI[LOCALE],
+            nav_ui=labels, html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+            hreflangs=alternates, x_default=BASE_URL+lang_url('en',prefix_free))))
 
-    news_out = build_pages(render_news, "en")
-    for name, out in news_out.items():
-        check_en(name, out)
-        outputs[name] = out
-
-    # Soft 404 shell (EN).
-    outputs["_404"] = wrap(env.get_template("simple.html").render(
-        title="Page not found — Artemis Tenerife",
-        description="Check the address or return to the Artemis Tenerife project.",
-        body=('<h1 id="h1">Page not found</h1>'
-              '<p class="hero__lead">Check the address or return to the Artemis Tenerife project.</p>'
-              '<p class="back"><a href="/tenerife/">Back to the project</a></p>'),
-        canonical=None, url="", kind="notice", nav=nav, menu=menu, footer=footer))
-    check_en("_404", outputs["_404"])
-
+    outputs.update(build_pages(render_news, LOCALE))
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)
     if write:
-        out_root = Path(out_dir)
-        out_root.mkdir(parents=True, exist_ok=True)
+        Path(out_dir).mkdir(parents=True, exist_ok=True)   # app/tenerife_site/<locale>/ создаётся при первой сборке
         (STATIC / "tenerife" / "site" / "site.css").write_text(css, encoding="utf-8")
         for name, out in outputs.items():
-            target = out_root / f"{name}.html"
+            target = Path(out_dir) / f"{name}.html"
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(out, encoding="utf-8")
-        # Remove pre-EN leftovers that must not stay public on disk.
-        for stale in ("calculadora.html", "equipo.html"):
-            (out_root / stale).unlink(missing_ok=True)
-        for loc in ("ru", "es", "de", "fr"):
-            d = out_root / loc
-            if d.is_dir():
-                import shutil
-                shutil.rmtree(d)
-        # model.json / calc.js must never be under public static.
-        static_site = STATIC / "tenerife" / "site"
-        (static_site / "model.json").unlink(missing_ok=True)
-        (static_site / "calc.js").unlink(missing_ok=True)
-        data_dir = SITE / "data"
-        data_dir.mkdir(parents=True, exist_ok=True)
-        if not (data_dir / "model.json").is_file() and Path(model_path).is_file():
-            (data_dir / "model.json").write_bytes(Path(model_path).read_bytes())
+        # The old slug is a redirect, never a second generated copy that can go stale.
+        (Path(out_dir) / "acciones.html").unlink(missing_ok=True)
     return outputs, report
 
 
 LEGAL_TEMPLATES = Path(__file__).resolve().parents[2] / "app" / "templates" / "tenerife"
-LEGAL_FILES = {"impressum": "15_impressum.md", "privacy": "16_privacy.md"}
+LEGAL = {"impressum": "Правовая информация — Artemis de la Cruz", "privacy": "Конфиденциальность — Artemis de la Cruz"}
 NOTICE_SLOTS = ('<h1 id="h1">{{NOTICE_TITLE}}</h1>\n<p class="hero__lead">{{NOTICE_TEXT}}</p>\n'
                 '<p class="back"><a href="{{NOTICE_BACK}}">{{NOTICE_BACK_LABEL}}</a></p>')
 
 
-def legal_title(name):
-    """«Meta title» of copy_en/15|16 (e.g. «Legal notice — Artemis Tenerife»)."""
-    return parse_page((COPY / LEGAL_FILES[name]).read_text(encoding="utf-8"))[0]["Meta title"]
+LEGAL_DIR = HERE / "legal"   # переводы юридических страниц (03.11.2026): plain HTML, по файлу на язык и страницу
 
 
 def legal_body(name):
-    """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html (generated from copy_en by
-    legal_from_copy.py) without its old wrapper (<section class="legal"><div class="wrap"> … </div></section>);
-    only the h1 gets id="h1"."""
+    """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html without its old
+    wrapper (<section class="legal"><div class="wrap"> … </div></section>); only the h1 gets id="h1".
+    У локалей — свой файл legal/<locale>/<name>.html с той же разметкой (без jinja)."""
+    if LOCALE != "ru":
+        f = LEGAL_DIR / LOCALE / f"{name}.html"
+        if not f.is_file():
+            raise BuildError(f"{f}: no legal text for locale {LOCALE}")
+        html_loc = f.read_text(encoding="utf-8").strip()
+        if "{%" in html_loc or "{{" in html_loc or html_loc.count("<h1>") != 1:
+            raise BuildError(f"{f}: legal text must be plain HTML with one <h1>")
+        return html_loc.replace("<h1>", '<h1 id="h1">', 1)
     src = (LEGAL_TEMPLATES / f"{name}.html").read_text(encoding="utf-8")
     m = re.search(r"\{% block body %\}\s*<section class=\"legal\"><div class=\"wrap\">\n(.*?)\n</div></section>\s*"
                   r"\{% endblock %\}", src, re.S)
@@ -978,28 +1367,59 @@ def legal_body(name):
     return m.group(1).replace("<h1>", '<h1 id="h1">', 1)
 
 
-def legal_meta(name):
-    """Meta description of a legal page: the copy gives none, so its own first line under the H1, verbatim
-    (impressum: «Impressum (§ 5 DDG) / Aviso legal …»; privacy: «For the Artemis Tenerife website …»)."""
-    md = re.sub(r"<!--.*?-->", "", (COPY / LEGAL_FILES[name]).read_text(encoding="utf-8"), flags=re.S)
-    after = md.split("\n# ", 1)[1].split("\n", 1)[1]
-    first = next(ln.strip() for ln in after.splitlines() if ln.strip())
-    if first.startswith("#") or "**" in first or len(first) > 160:
-        raise BuildError(f"{name}: no plain first line for the meta description")
-    return first
+LEGAL_META = HERE / "copy_v3" / "meta_legal.md"   # not part of the combined copy (COPY_SHA256 covers 01-17 only)
+
+
+def legal_meta(name, path=LEGAL_META):
+    """Meta description of a legal page: the PRIMARY variant («**Основной (N симв.):**», next line, verbatim) under
+    «## /tenerife/<name>/»; N must equal the Unicode length. Fallback variants are ignored."""
+    md = path.read_text(encoding="utf-8")
+    if LOCALE != "ru":
+        return i18n_strings()[LOCALE]["legal"]["meta"][name]
+    m = re.search(rf"^## /tenerife/{name}/[^\n]*\n(.*?)(?=^## |\Z)", md, re.S | re.M)
+    if not m:
+        raise BuildError(f"meta_legal.md: no section for /tenerife/{name}/")
+    p = re.search(r"^\*\*Основной \((\d+) симв\.\):\*\*\n(.+)$", m.group(1), re.M)
+    if not p or len(p.group(2).strip()) != int(p.group(1)):
+        raise BuildError(f"meta_legal.md: primary description for {name} missing or length != declared")
+    return p.group(2).strip()
 
 
 def simple_pages(env, nav, menu, footer):
+    home_url = locale_path("/tenerife/")
+    langs = [{"code": c.upper(), "url": BASE_URL + lang_url(c, "/tenerife/") + ("?lang=en" if c == "en" else ""), "current": c == LOCALE}
+             for c in ("en", "es", "de", "fr")]
+    more = MORE_LABEL.get(LOCALE, "Информация")
+    env.globals["header_cta_url"] = locale_path("/tenerife/calculadora/#ochered")
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
     tpl = env.get_template("simple.html")
     out = {}
-    for name in LEGAL_FILES:
-        url = f"/tenerife/{name}/"
-        out[name] = wrap(tpl.render(title=html.escape(legal_title(name), quote=True), canonical=BASE_URL + url,
-                                    url=url, kind="legal", description=html.escape(legal_meta(name), quote=True),
-                                    body=legal_body(name), nav=nav, menu=menu, footer=footer))
-    out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis Tenerife", canonical=None, url="",
-                                     kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer))
+    legal_titles = LEGAL if LOCALE == "ru" else i18n_strings()[LOCALE]["legal"]["titles"]
+    for name, title in legal_titles.items():
+        url = locale_path(f"/tenerife/{name}/")
+        hreflangs, x_default = hreflang_links(f"/tenerife/{name}/")
+        out[name] = wrap(prefix_internal_links(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
+                                    description=html.escape(legal_meta(name), quote=True),
+                                    body=legal_body(name), nav=nav, menu=menu, footer=footer,
+                                    home_url=home_url, langs=langs, menu_more_label=more,
+                                    ui=locale_cfg.UI[LOCALE],
+                                    html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+                                    hreflangs=hreflangs, x_default=x_default)))
+    hreflangs, x_default = hreflang_links("/tenerife/")
+    out["_notice"] = wrap(prefix_internal_links(tpl.render(title="{{NOTICE_TITLE}} — Artemis de la Cruz", canonical=None, url="",
+                                     kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer,
+                                     home_url=home_url, langs=langs, menu_more_label=more,
+                                     ui=locale_cfg.UI[LOCALE],
+                                     html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+                                     hreflangs=hreflangs, x_default=x_default)))
+    title, message, back = locale_cfg.NOT_FOUND[LOCALE]
+    body = (f'<h1 id="h1">{html.escape(title)}</h1><p class="hero__lead">{html.escape(message)}</p>'
+            f'<p class="back"><a href="/tenerife/">{html.escape(back)}</a></p>')
+    out["_404"] = wrap(prefix_internal_links(tpl.render(
+        title=title + " — Artemis de la Cruz", canonical=None, url="", kind="notice", body=body,
+        nav=nav, menu=menu, footer=footer, home_url=home_url, langs=langs, menu_more_label=more,
+        ui=locale_cfg.UI[LOCALE], html_lang=LOCALE, og_locale=OG_LOCALE[LOCALE],
+        hreflangs=hreflangs, x_default=x_default)))
     return out
 
 
@@ -1013,7 +1433,10 @@ def main():
         fr = " ".join(f"{k}->{'-'.join(v.split('-')[:2]) if v else ('(hidden)' if k in r['hidden'] else '(text)')}"
                       for k, v in r["frames"].items())
         print(f"{r['url']:28} {len(outputs[name]):6d} B  {fr}")
-    (HERE / "frames_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # frames_report.json — отчёт RU-мастера (его читают тесты); у остальных языков свой файл, чтобы сборки не затирали
+    # отчёт друг друга: теперь один каталог собирается пять раз.
+    name = "frames_report.json" if LOCALE == "ru" else f"frames_report_{LOCALE}.json"
+    (HERE / name).write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

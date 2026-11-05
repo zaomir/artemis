@@ -1,6 +1,6 @@
-{#- EN components = web-designer/tenerife/design/DESIGN.md C1–C15 (markup of components.html, no inline
-    style/script: CSP). No texts or figures here except the interface strings (Main menu, More, Menu, now, Key figures,
-    Pages, form field labels, Website); every other text and number comes from copy_en. No calculator (EN r1). -#}
+{#- RU v3 components = web-designer/tenerife/design/DESIGN.md C1–C15 (markup of components.html, no inline
+    style/script: CSP). No texts or figures here except DESIGN.md §5 interface strings (Меню, Ещё, сейчас,
+    Площадь, м², Сайт); every number comes from the copy via model.json. -#}
 {% macro picture(img, hero=false) -%}
 <picture><source type="image/webp" srcset="{{ img.srcset }}" sizes="{{ img.sizes }}"><img class="fp-{{ img.stem }}" src="{{ img.src }}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}" {% if hero %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}></picture>
 {%- endmacro %}
@@ -9,36 +9,33 @@
 <a href="{{ n.url }}"{% if n.url == url %} aria-current="page"{% endif %}>{{ n.label }}</a>
 {%- endmacro %}
 
-{#- C1 header: 7 links + «More» from 1024 px; below — «Menu» (no JS: anchor to the footer page list) -#}
+{#- C1 header: 7 links + «Ещё» from 1024 px; below — «Меню» (no JS: anchor to the footer page list) -#}
 {#- C1: solid by default and without JS; site.js adds .is-over only while the hero picture is under it -#}
-{% macro header(menu, nav, url) -%}
+{% macro header(menu, nav, url, home_url, langs, menu_more_label) -%}
 <header class="header" id="site-header">
   <div class="wrap header__in">
-    <a class="brand" href="/tenerife/"{% if url == "/tenerife/" %} aria-current="page"{% endif %}>Artemis Tenerife</a>
-    <nav class="nav" aria-label="Main menu">
+    <a class="brand" href="{{ home_url }}"{% if url == home_url %} aria-current="page"{% endif %}>Artemis de la Cruz</a>
+    <nav class="langs" aria-label="{{ ui.lang_aria }}">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
+    <nav class="nav" aria-label="{{ nav_ui.main }}">
       <ul>
 {% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        <li><details><summary>More</summary>
-          <ul>
-{% for n in menu.more %}
-            <li>{{ navlink(n, url) }}</li>
-{% endfor %}
-          </ul>
-        </details></li>
+        <li><a class="header__cta" href="{{ header_cta_url|default('#ochered') }}">{{ nav_ui.calculation }}</a></li>
       </ul>
     </nav>
-    <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>Menu</a>
+    <a class="burger" href="#footer-pages" id="burger" aria-controls="sheet" aria-expanded="false"><span class="burger__icon" aria-hidden="true"></span>{{ ui.menu }}</a>
   </div>
   <div class="sheet" id="sheet" hidden>
-    <nav aria-label="Menu">
+    <nav aria-label="{{ ui.menu_aria }}">
       <ul>
-{% for n in nav %}
+{% for n in menu.primary %}
         <li>{{ navlink(n, url) }}</li>
 {% endfor %}
+        <li><a class="header__cta" href="{{ header_cta_url|default('#ochered') }}">{{ nav_ui.calculation }}</a></li>
       </ul>
     </nav>
+    <nav class="sheet__langs" aria-label="{{ ui.lang_aria }}">{% for l in langs %}<a href="{{ l.url }}"{% if l.current %} aria-current="true"{% endif %}>{{ l.code }}</a>{% endfor %}</nav>
   </div>
 </header>
 {%- endmacro %}
@@ -46,8 +43,37 @@
 {#- C2 hero: full (01–04, 06–09, 12), short (05, 10), text (11, 13: no hero picture, first frame 3:2 below).
     No photo for the hero slot (designer r2: one photo once per page, F13/F18/F19/F20 have none) -> text hero,
     no figure, the basalt bar (.bar-under) under the text. -#}
-{% macro hero(h) -%}
-{% if h.kind == "text" %}
+{% macro hero(h, k=none) -%}
+{% if h.kind == "investment" %}
+<section class="investment-hero" aria-labelledby="h1">
+  <div class="wrap grid investment-hero__grid">
+    <div class="investment-hero__copy">
+      <h1 id="h1">{{ h.h1 }}</h1>
+{% for p in h.intro %}<p class="hero__lead">{{ p }}</p>{% endfor %}
+      <div class="investment-hero__links"><a class="btn-primary" href="#calculate">{{ calc_ui.explore }}</a><a href="#funding">{{ calc_ui.source_link }}</a></div>
+    </div>
+    <div class="investment-example" aria-label="{{ calc_ui.example }}">
+      <p class="micro">{{ calc_ui.example }}</p>
+      <p class="investment-example__gain"><span>{{ calc_labels.gain }}</span><strong>+{{ k.gain }}</strong></p>
+      <dl><div><dt>{{ calc_labels.sum }}</dt><dd>{{ k.sum }}</dd></div><div><dt>{{ calc_labels.exit }}</dt><dd>{{ k.exit }}</dd></div></dl>
+      <p>{{ k.term }} {{ calc_ui.months_from_payment }} · {{ k.pct }} {{ calc_ui.annual_target }}</p>
+      <p class="micro">{{ calc_ui.basis }}</p>
+    </div>
+  </div>
+</section>
+{% elif h.kind == "profile" %}
+<section class="hero-profile" aria-labelledby="h1">
+  <div class="wrap grid profile-hero">
+    <div class="profile-hero__text">
+      <h1 id="h1">{{ h.h1 }}</h1>
+{% for p in h.intro %}
+      <p class="hero__lead">{{ p }}</p>
+{% endfor %}
+    </div>
+    {{ frame(h.img, " profile-photo profile-hero__photo") }}
+  </div>
+</section>
+{% elif h.kind == "text" %}
 <section class="hero-text" aria-labelledby="h1">
   <div class="wrap">
     <div class="col-text{% if h.bar %} bar-under{% endif %}">
@@ -84,7 +110,7 @@
 
 {#- C3 key figures on the basalt plinth (copy line, split into value + label) -#}
 {% macro facts(items) -%}
-<section class="plinth" aria-label="Key figures">
+<section class="plinth" aria-label="{{ ui.plinth }}">
   <ul class="wrap grid figures figures--{{ items|length }}">
 {% for it in items %}
 {% if it.value %}
@@ -113,27 +139,55 @@
 </div>
 {%- endmacro %}
 
-{#- C8 ladder: visual version of the copy's stage price table (the table stays as the text version) -#}
-{% macro ladder(rows) -%}
-<ol class="ladder" id="ladder" aria-hidden="true">
-{% for r in rows %}
-  <li{% if loop.first %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}{% if loop.first %}<span class="ladder__now">now</span>{% endif %}</span><span class="ladder__event">{{ r.event }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__grow">{{ r.grow }}</span><span class="ladder__bar"><i></i></span></li>
+{#- C8: one monotone cubic price curve for both full and secondary placements. -#}
+{% macro price_curve(c) -%}
+<figure class="price-curve" id="{{ c.id }}" data-y-min="{{ c.min }}" data-y-max="{{ c.max }}" data-grid-step="{{ c.grid_step }}">
+{% for v in c.variants %}
+  <svg class="price-curve__svg price-curve__svg--{{ 'compact' if v.compact else 'full' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ v.size }} {{ v.size }}" width="{{ v.size }}" height="{{ v.size }}" role="img" aria-labelledby="{{ v.id }}-title {{ v.id }}-desc" focusable="false">
+    <title id="{{ v.id }}-title">{{ c.ui.title|e }}</title>
+    <desc id="{{ v.id }}-desc">{{ c.description|e }}</desc>
+    <defs>
+      <linearGradient id="{{ v.id }}-fill" gradientUnits="userSpaceOnUse" x1="0" y1="{{ v.top }}" x2="0" y2="{{ v.bottom }}"><stop class="price-curve__gradient-top" offset="0"/><stop class="price-curve__gradient-bottom" offset="1"/></linearGradient>
+      <clipPath id="{{ v.id }}-clip"><rect x="{{ v.left }}" y="{{ v.top }}" width="{{ v.right - v.left }}" height="{{ v.bottom - v.top }}"/></clipPath>
+    </defs>
+    <text class="price-curve__axis" x="{{ v.left - 14 }}" y="28" text-anchor="end">{{ c.ui.unit }}</text>
+{% for tick in v.ticks %}
+    <line class="price-curve__grid{% if loop.first %} price-curve__baseline{% endif %}" x1="{{ v.left }}" y1="{{ tick.y }}" x2="{{ v.right }}" y2="{{ tick.y }}" data-price="{{ tick.value }}"/>
+{% if not v.compact or loop.index0 % 2 == 0 %}
+    <text class="price-curve__axis" x="{{ v.left - 14 }}" y="{{ tick.y }}" text-anchor="end" dominant-baseline="middle">{{ tick.label }}</text>
+{% endif %}
 {% endfor %}
-</ol>
+    <g clip-path="url(#{{ v.id }}-clip)">
+      <path class="price-curve__area" d="{{ v.area }}" fill="url(#{{ v.id }}-fill)"/>
+      <path class="price-curve__line" d="{{ v.line }}"/>
+    </g>
+{% for point in v.marks %}
+    <circle class="price-curve__point{% if loop.first %} price-curve__point--min{% elif loop.last %} price-curve__point--max{% endif %}" cx="{{ point.x }}" cy="{{ point.y }}" r="{{ 7 if loop.first or loop.last else 4 }}" data-stage="{{ point.id }}" data-price="{{ point.value }}"/>
+{% if not v.compact and not loop.first and not loop.last %}
+    <text class="price-curve__point-value" x="{{ point.x }}" y="{{ point.value_y }}" text-anchor="middle">{{ point.price }}</text>
+{% endif %}
+    <text class="price-curve__stage" x="{{ point.x }}" y="{{ v.x_label_y }}" text-anchor="{{ 'middle' if v.compact else point.anchor }}">{% if v.compact %}{{ point.number }}{% else %}{% for line in point.lines %}<tspan x="{{ point.x }}" dy="{{ 0 if loop.first else 20 }}">{{ line|e }}</tspan>{% endfor %}{% endif %}</text>
+{% endfor %}
+    <text class="price-curve__value price-curve__value--min" x="{{ v.left }}" y="{{ v.min_value_y }}">{{ c.first.price }}</text>
+    <text class="price-curve__value" x="{{ v.right }}" y="{{ v.max_value_y }}" text-anchor="end">{{ c.last.price }}</text>
+    <text class="price-curve__end-label" x="{{ v.right }}" y="{{ v.max_label_y }}" text-anchor="end">{{ c.ui.end|e }}</text>
+  </svg>
+{% endfor %}
+  <figcaption class="price-curve__caption">{{ c.ui.comparison|e }}: <strong>{{ c.difference }}</strong>.</figcaption>
+  <ol class="price-curve__key" aria-hidden="true">
+{% for point in c.steps %}
+    <li><span class="price-curve__index">{{ loop.index }}</span><span>{{ point.name|e }}{% if not c.with_table %}<b>{{ point.price }}</b>{% endif %}</span></li>
+{% endfor %}
+  </ol>
+</figure>
 {%- endmacro %}
 
-{#- C8 mini (01, 08, 12): names + prices from model.json, bars ∝ price; decorative, the copy's text/table sits next to it -#}
-{% macro ladder_mini(rows) -%}
-<ol class="ladder ladder--mini" aria-hidden="true">
-{% for r in rows %}
-  <li{% if r.current %} class="is-current"{% endif %}><span class="ladder__name">{{ r.name }}</span><span class="ladder__price">{{ r.price }}</span><span class="ladder__bar"><i></i></span></li>
-{% endfor %}
-</ol>
-{%- endmacro %}
+{% macro ladder(c) -%}{{ price_curve(c) }}{%- endmacro %}
+{% macro ladder_mini(c) -%}{{ price_curve(c) }}{%- endmacro %}
 
 {#- C15 frame -#}
 {% macro frame(img, extra="") -%}
-<figure class="frame{{ extra }}"><div class="frame__media r-{{ img.ratio }}">{{ picture(img) }}</div></figure>
+<figure class="frame{{ extra }}"{% if img.person|default(false) %} data-person-photo="{{ img.person }}" data-photo-context="{{ img.context }}"{% endif %}><div class="frame__media r-{{ img.ratio }}">{{ picture(img, img.eager|default(false)) }}</div></figure>
 {%- endmacro %}
 
 {% macro frames(s) -%}
@@ -193,19 +247,44 @@
 {% if s.level == 2 %}<h2 class="h2-major" id="{{ s.id }}">{{ s.title }}</h2>{% else %}<h2 id="{{ s.id }}">{{ s.title }}</h2>{% endif %}
 {%- endmacro %}
 
-{% macro extras(s) -%}
+{% macro extras(s, k, res) -%}
 {% if s.mini_ladder %}
   <div class="wrap extras">
 {{ ladder_mini(s.mini_ladder) }}
   </div>
 {% endif %}
+{% if s.calc_short and k %}
+{{ calc_short(k, res) }}
+{% endif %}
+{% if s.calc_full and k %}
+{{ calculator(k, res, s.id, true) }}
+{% endif %}
 {%- endmacro %}
 
 {#- one copy section (### = h2) -> C4 (head), C5 (split), C7 (stack), C12 (faq), long text (11, 13).
-    s.bar: its [FRAME] slots have no photo -> no figure, 6 px basalt bar under the text block -#}
-{% macro section(s, first) -%}
-<section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}" aria-labelledby="{{ s.id }}">
-{% if s.layout == "split" %}
+    s.bar: its [КАДР] slots have no photo -> no figure, 6 px basalt bar under the text block -#}
+{% macro section(s, first, k=none, res=none) -%}
+<section class="section{% if s.ladder %} section--sand{% elif not first %} rule-top{% endif %} s--{{ s.layout }}{% if s.profile|default(false) %} profile-section{% endif %}" aria-labelledby="{{ s.id }}">
+{% for old in s.aliases %}<span class="anchor-alias" id="{{ old }}" aria-hidden="true"></span>{% endfor %}
+{% if s.layout == "profile-story" %}
+  <div class="wrap grid profile-story{% if s.rev %} profile-story--rev{% endif %}">
+    <div class="profile-story__text">
+      {{ heading(s) }}
+{{ body_items(s.body, s.id) }}
+    </div>
+    {{ frame(s.imgs[0], " profile-photo") }}
+  </div>
+{% elif s.layout == "illustrated" %}
+{% for panel in s.panels %}
+  <div class="wrap grid ti illustrated-panel{% if not loop.first %} ti--rev{% endif %}">
+    <div class="ti__text">
+{% if loop.first %}      {{ heading(s) }}{% endif %}
+{{ body_items(panel.body, s.id) }}
+    </div>
+    {{ frame(panel.img) }}
+  </div>
+{% endfor %}
+{% elif s.layout == "split" %}
   <div class="wrap grid ti{% if s.rev %} ti--rev{% endif %}">
     <div class="ti__text">
       {{ heading(s) }}
@@ -213,7 +292,7 @@
     </div>
     {{ frame(s.imgs[0]) }}
   </div>
-{{ extras(s) }}
+{{ extras(s, k, res) }}
 {% elif s.layout == "faq" %}
   <div class="wrap grid split-head{% if s.bar %} bar-under{% endif %}">
     {{ heading(s) }}
@@ -223,7 +302,7 @@
 {% endfor %}
     </div>
   </div>
-{{ extras(s) }}
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% elif s.layout == "long" %}
   <div class="wrap">
@@ -232,7 +311,7 @@
 {{ body_items(s.body, s.id) }}
     </div>
   </div>
-{{ extras(s) }}
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% elif s.layout == "stack" %}
   <div class="wrap stack{% if s.bar %} bar-under{% endif %}">
@@ -242,7 +321,7 @@
 {% endif %}
 {{ body_items(s.body, s.id) }}
   </div>
-{{ extras(s) }}
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% else %}
   <div class="wrap grid split-head{% if s.bar %} bar-under{% endif %}">
@@ -251,14 +330,81 @@
 {{ body_items(s.body, s.id) }}
     </div>
   </div>
-{{ extras(s) }}
+{{ extras(s, k, res) }}
 {{ frames(s) }}
 {% endif %}
 </section>
 {%- endmacro %}
 
+{#- C9 calculator (05): defaults rendered server-side; calc.js reads the #cs-model island (= model.json).
+    The inputs sit in a group, not a <form>: every <form> on the site posts to the waitlist handler. -#}
+{% macro calculator(k, res, label_id='h1', embedded=false) -%}
+<{{ 'div' if embedded else 'section' }} class="{{ 'calc-sec calc-sec--embedded' if embedded else 'section calc-sec' }}" id="calc"{% if embedded %} role="group"{% endif %} aria-labelledby="{{ label_id }}">
+  <div class="wrap grid calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
+      <fieldset>
+        <legend>{{ calc_ui.area }}</legend>
+        <div class="opts">
+{% for t in k.types %}
+          <label class="opt"><input type="radio" name="type" value="{{ t.id }}"{% if t.checked %} checked{% endif %}><span>{{ t.budget }}</span></label>
+{% endfor %}
+        </div>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">{{ calc_ui.area_label }}</label>
+          <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}" aria-valuetext="{{ k.sum }} · {{ k.m2_out }}" aria-describedby="calc-quantity">
+          <output for="calc-m2" id="calc-budget-out">{{ k.sum }}</output>
+        </div>
+        <p class="micro" id="calc-quantity"><output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output> · {{ calc_ui.quantity_help }}</p>
+      </fieldset>
+      <p class="micro">{{ calc_ui.pay_now }} · {{ k.term }} {{ calc_ui.months_from_payment }}</p>
+      <p class="micro">{{ calc_ui.step }}: {{ k.entry }}</p>
+    </div>
+    <div class="calc__out" aria-live="polite" aria-atomic="true">
+      <dl class="res" id="calc-res">
+        <div class="res__main"><dt>{{ res.gain }}</dt><dd>+<span data-k="gain">{{ k.gain }}</span></dd></div>
+        <div><dt>{{ res.exit }}</dt><dd data-k="exit">{{ k.exit }}</dd></div>
+        <div><dt>{{ res.sum }}</dt><dd data-k="sum">{{ k.sum }}</dd></div>
+        <div class="res__rate"><dt>{{ res.pct }}</dt><dd data-k="pct">{{ k.pct }}</dd></div>
+        <div class="res__rate"><dt>{{ res.gain_pct }}</dt><dd data-k="gain_pct">{{ k.gain_pct }}</dd></div>
+        <div class="res__paths"><dt>{{ res.paths }}</dt><dd>{{ res.paths_dd }}</dd></div>
+      </dl>
+      <p class="micro calc__basis">{{ calc_ui.basis }}</p>
+      <p class="calc__source"><strong>{{ calc_ui.source_title }}</strong></p>
+      <a class="btn-primary calc__request" href="#ochered" id="calc-request">{{ calc_ui.request }}</a>
+      <p class="micro">{{ calc_ui.request_help }}</p>
+      <p class="micro calc__source-detail">{{ calc_ui.source }}</p>
+      <p class="micro"><a href="{{ calc_details_url }}">{{ calc_ui.details }}</a></p>
+    </div>
+  </div>
+  <script type="application/json" id="cs-model">{{ k.island }}</script>
+</{{ 'div' if embedded else 'section' }}>
+{%- endmacro %}
+
+{#- C9 short (04): area only, the current step and 12 months; same calc.js and #cs-model island, no form button.
+    Words: the section's own «Покупка из очереди: … сразу или … в месяц двенадцать месяцев» -#}
+{% macro calc_short(k, res) -%}
+  <div class="wrap grid calc calc--short" id="calc">
+    <div class="calc__in" id="calc-form" role="group" aria-label="{{ calc_ui.aria }}">
+      <fieldset>
+        <legend>{{ calc_ui.area }}</legend>
+        <div class="range">
+          <label for="calc-m2" class="visually-hidden">{{ calc_ui.area_label }}</label>
+          <input type="range" id="calc-m2" name="m2" min="{{ k.min }}" max="{{ k.max }}" step="1" value="{{ k.m2 }}">
+          <output for="calc-m2" id="calc-m2-out">{{ k.m2_out }}</output>
+        </div>
+      </fieldset>
+    </div>
+    <div class="calc__out" aria-live="polite">
+      <dl class="res" id="calc-res">
+        <div class="res__short"><dt>{{ res.lead }}</dt><dd><span data-k="sum">{{ k.sum }}</span> {{ res.mid }} <span data-k="month">{{ k.month }}</span> {{ res.tail }}</dd></div>
+      </dl>
+    </div>
+    <script type="application/json" id="cs-model">{{ k.island }}</script>
+  </div>
+{%- endmacro %}
+
 {#- C13 waitlist: the page's single .cta-primary. Fields as in prod. id="waitlist" stays for the no-JS redirect -#}
-{% macro cta(s, button, url) -%}
+{% macro cta(s, button, url, calc) -%}
 <section class="section section--sand" id="ochered"{% if s %} aria-labelledby="{{ s.id }}"{% else %} aria-label="{{ button.text }}"{% endif %}>
   <div class="wrap grid wl{% if not s %} wl--solo{% endif %}" id="waitlist">
 {% if s %}
@@ -267,14 +413,27 @@
 {{ body_items(s.body, s.id) }}
     </div>
 {% endif %}
-    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate{% for k, v in form_msg.items() %} data-msg-{{ k }}="{{ v }}"{% endfor %}>
-      <div class="field"><label for="wl-name">Name</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
-      <div class="field"><label for="wl-contact">Contact: email, phone or Telegram</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
-      <div class="field"><label for="wl-lang">Preferred language</label>
-        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="en" selected>English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="ru">Русский</option></select><p class="field__err" id="wl-lang-err"></p></div>
-      <div class="hp" aria-hidden="true"><label for="wl-website">Website</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <form class="wl__form form" id="wl-form" method="post" action="/api/tenerife/waitlist" novalidate{% if calc %} data-variant="calculadora"{% endif %}{% for k, v in form_msg.items() %} data-msg-{{ k }}="{{ v }}"{% endfor %}>
+{% if calc %}
+      <div class="request-scenario" id="request-scenario">
+        <p><strong>{{ calc_ui.your_scenario }}</strong></p>
+        <dl><div><dt>{{ calc_ui.short_sum }}</dt><dd data-calc-value="sum">{{ calc.sum }}</dd></div><div><dt>{{ calc_ui.short_exit }}</dt><dd data-calc-value="exit">{{ calc.exit }}</dd></div><div><dt>{{ calc_ui.short_gain }}</dt><dd data-calc-value="gain">{{ calc.gain }}</dd></div></dl>
+        <p class="micro">{{ calc.term }} {{ calc_ui.months_from_payment }}</p>
+        <a class="micro" href="#calc">{{ calc_ui.edit }}</a>
+      </div>
+{% endif %}
+      <div class="field"><label for="wl-name">{{ form_ui.name }}</label><input type="text" id="wl-name" name="name" autocomplete="name" maxlength="120" required aria-describedby="wl-name-err"><p class="field__err" id="wl-name-err"></p></div>
+      <div class="field"><label for="wl-contact">{{ form_ui.contact }}</label><input type="text" id="wl-contact" name="contact" autocomplete="email" maxlength="200" required aria-describedby="wl-contact-err"><p class="field__err" id="wl-contact-err"></p></div>
+      <div class="field"><label for="wl-lang">{{ form_ui.language }}</label>
+        <select id="wl-lang" name="language" required aria-describedby="wl-lang-err"><option value="ru"{% if form_ui.lang_default == "ru" %} selected{% endif %}>Русский</option><option value="de"{% if form_ui.lang_default == "de" %} selected{% endif %}>Deutsch</option><option value="en"{% if form_ui.lang_default == "en" %} selected{% endif %}>English</option><option value="es"{% if form_ui.lang_default == "es" %} selected{% endif %}>Español</option><option value="fr"{% if form_ui.lang_default == "fr" %} selected{% endif %}>Français</option></select><p class="field__err" id="wl-lang-err"></p></div>
+      <div class="hp" aria-hidden="true"><label for="wl-website">{{ form_ui.website }}</label><input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="page" value="{{ url }}">
-      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>{{ consent }}</span></label>
+{% if calc %}
+      <input type="hidden" name="calc_m2" id="wl-calc-m2" value="{{ calc.m2 }}">
+      <input type="hidden" name="calc_step" id="wl-calc-step" value="{{ calc.current }}">
+      <input type="hidden" name="calc_pay" id="wl-calc-pay" value="now">
+{% endif %}
+      <label class="check"><input type="checkbox" id="wl-consent" name="consent" value="1" required aria-describedby="wl-consent-err"><span>{{ form_ui.consent }}</span></label>
       <p class="field__err" id="wl-consent-err"></p>
       <div><button class="cta-primary btn-primary" type="submit" id="wl-submit">{{ button.text }}</button></div>
       <p class="micro">{{ button.micro }}</p>
@@ -284,25 +443,35 @@
 </section>
 {%- endmacro %}
 
-{#- C14 footer (copy 14). WhatsApp slot after the copy's contacts, filled by app/tenerife.py from TENERIFE_WHATSAPP (r4) -#}
+{#- C14 footer (copy 14). The copy's phone -> WhatsApp slot, filled by app/tenerife.py from TENERIFE_WHATSAPP (r4) -#}
 {% macro footer(f, nav, url) -%}
 <footer class="footer">
   <div class="wrap">
     <h2 class="visually-hidden">{{ f.title }}</h2>
     <div class="grid">
       <div class="f-about">
-        <p>{{ f.about }}</p>
+        <p><strong>{{ f.about[0] }}</strong> {{ f.about[1] }}</p>
       </div>
-      <nav class="f-pages" id="footer-pages" aria-label="Pages">
-        <p><strong>Pages.</strong></p>
-        <ul>
-{% for n in nav %}
-          <li>{{ navlink(n, url) }}</li>
+      <nav class="f-pages" id="footer-pages" aria-label="{{ ui.pages }}">
+        <div class="f-pages__groups">
+{% for group in menu.groups %}
+          <div class="f-pages__group">
+            <h3>{{ group.label }}</h3>
+            <ul>
+{% for n in group.links %}
+              <li>{{ navlink(n, url) }}</li>
 {% endfor %}
-        </ul>
+            </ul>
+          </div>
+{% endfor %}
+          <div class="f-pages__group">
+            <h3>{{ nav_ui.documents }}</h3>
+            <ul>{% for label, href in f.docs %}<li><a href="{{ href }}">{{ label }}</a></li>{% endfor %}</ul>
+          </div>
+        </div>
       </nav>
       <div class="f-contact">
-        <p><strong>Contact.</strong></p>
+        <p><strong>{{ ui.contacts }}</strong></p>
         <ul>
 {% for cn in f.contacts %}
           {% if cn == "whatsapp" %}<li data-tenerife-whatsapp hidden></li>{% else %}<li>{% if "@" in cn %}<a href="mailto:{{ cn }}">{{ cn }}</a>{% else %}{{ cn }}{% endif %}</li>{% endif %}
@@ -311,8 +480,8 @@
       </div>
     </div>
     <div class="f-legal">
-      <p><strong>Company.</strong> {{ f.company }}</p>
-      <p><strong>Documents.</strong> {% for label, href in f.docs %}<a href="{{ href }}">{{ label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      <p><strong>{{ ui.company }}</strong> {{ f.company }}</p>
+      <p class="lang-ru"><a href="{{ footer_ru_url|default('/tenerife/ru/') }}" lang="ru" hreflang="ru">{{ ui.lang_ru }}</a></p>
     </div>
   </div>
 </footer>

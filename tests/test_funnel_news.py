@@ -30,7 +30,6 @@ class NewsTest(unittest.TestCase):
         self.assertIn('Project brief',out)
         self.assertNotIn('github.com/zaomir/grainee-v2',out)
         self.assertNotIn('ARTEMIS_FUNNEL_ATOMIC_PLAN',out)
-    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
     def test_article_menu_and_ru_switch_keep_meaningful_destinations(self):
         for loc in news.LANGS:
             root=ROOT/'app/tenerife_site'
@@ -39,7 +38,6 @@ class NewsTest(unittest.TestCase):
             self.assertIn('class="header__cta" href="'+news.locale_url(loc)+'"',body)
             if loc!='ru':self.assertIn('href="'+news.locale_url('ru','concept-search')+'" lang="ru"',body)
 
-    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
     def test_diary_is_discoverable_without_js_from_main_pages_and_footer(self):
         for loc in news.LANGS:
             root=ROOT/'app/tenerife_site'
@@ -53,7 +51,6 @@ class NewsTest(unittest.TestCase):
                 self.assertIn(target,footer,(loc,name,'no-JS footer'))
                 self.assertIn(news.UI[loc][0],header)
 
-    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
     def test_live_flask_routes_isolated_no_auth_no_js(self):
         import app
         c=app.app.test_client()

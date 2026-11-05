@@ -1,18 +1,20 @@
-{#- EN page shell (DESIGN.md §5 order: header → hero → figures → sections → waitlist → footer).
+{#- RU v3 page shell (DESIGN.md §5 order: header → hero → figures → calculator → sections → waitlist → footer).
     Generated to static HTML by scripts/tenerife_site_build/build_v3.py (not rendered by Flask).
-    No figures here: every number comes from the copy (copy_en). No calculator (EN r1). -#}
-{% import "_components.html" as c %}
+    No figures here: every number comes from the copy via model.json. -#}
+{% import "_components.html" as c with context %}
 <!doctype html>
-<html lang="en">
+<html lang="{{ html_lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <link rel="canonical" href="{{ canonical }}">
+{% for h in hreflangs %}<link rel="alternate" hreflang="{{ h.code }}" href="{{ h.url }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ x_default }}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Artemis Tenerife">
-<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Artemis de la Cruz">
+<meta property="og:locale" content="{{ og_locale }}">
 <meta property="og:title" content="{{ og_title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ canonical }}">
@@ -22,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F4F1EA">
 <link rel="icon" href="/static/favicon-32x32.png">
-<link rel="preload" href="/static/tenerife/site/fonts/literata-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" as="font" type="font/woff2" crossorigin>
 {% if page.hero.img %}
 <link rel="preload" as="image" type="image/webp" imagesrcset="{{ page.hero.img.srcset }}" imagesizes="{{ page.hero.img.sizes }}" fetchpriority="high">
 {% endif %}
@@ -32,20 +34,27 @@
 {% endfor %}
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-{{ c.header(menu, nav, url) }}
+<a class="skip" href="#main">{{ ui.skip }}</a>
+{{ c.header(menu, nav, url, home_url, langs, menu_more_label) }}
 <main id="main">
-{{ c.hero(page.hero) }}
+{{ c.hero(page.hero, calc) }}
 {% if page.facts %}
 {{ c.facts(page.facts) }}
 {% endif %}
+{% if calc and name != 'inversores' %}
+{{ c.calculator(calc, calc_labels) }}
+{% endif %}
 {% for s in page.sections %}
-{{ c.section(s, loop.first and not page.facts) }}
+{{ c.section(s, loop.first and not page.facts and not calc, calc if name == 'inversores' else calc_short, calc_labels if name == 'inversores' else calc_short_labels) }}
 {% endfor %}
-{{ c.cta(page.cta_section, page.button, url) }}
+{% if profile_cases|default(false) %}{{ profile_cases|safe }}{% endif %}
+{{ c.cta(page.cta_section, page.button, url, calc) }}
 </main>
 {{ c.footer(footer, nav, url) }}
 <script src="/static/tenerife/site/site.js" defer></script>
 <script src="/static/tenerife/site/waitlist.js" defer></script>
+{% if calc or calc_short %}
+<script src="/static/tenerife/site/calc.js?v={{ calc_asset_version }}" defer></script>
+{% endif %}
 </body>
 </html>

@@ -1,18 +1,23 @@
-"""Artemis Tenerife — EN-only public site (EN r2 / t122u).
+"""Artemis de la Cruz — RU preview (noindex) + free waitlist.
 
 Routes (Blueprint, registered in app.py):
-  GET  /tenerife/…                 English pages (Spanish slugs) from copy_en via build_v3
-  GET  /tenerife/{ru,es,de,fr}/…   301 → EN equivalent (or /tenerife/)
-  GET  /tenerife/calculadora…      301 → /tenerife/condiciones/ (Terms; page 05)
-  GET  /tenerife/condiciones/      Terms (EN copy)
-  GET  /tenerife/inversores/       Investors (EN copy)
-  GET  /tenerife/acciones/         Shares (EN copy; not aliased to inversores)
-  GET  /tenerife/equipo/           301 → /tenerife/ (no EN equipo page in copy_en 01–18)
-  GET  /tenerife-preview/…         301 → matching /tenerife/… page
-  POST /api/tenerife/waitlist      waitlist (+ optional funnel/CRM plumbing from main)
+  GET  /tenerife-preview[/<sub>]     301 -> /tenerife/<sub>/ if that page exists, else /tenerife/ (T47)
+  GET  /tenerife/impressum/          legal notice (Impressum / Aviso legal); indexable, canonical
+  GET  /tenerife/privacy/            privacy notice for the waitlist; indexable, canonical
+                                     (both static, v2 layout, built by build_v3.py from the templates' text)
+  GET  /tenerife/gracias/?back=      no-JS thank-you page after the form (noindex); errors answer with the
+                                     same v2 notice shell and a link back to the form
+  POST /api/tenerife/waitlist        name, contact, language, GDPR consent
+                                     (+ calc_m2, calc_step, calc_pay from /tenerife/calculadora/:
+                                     recomputed with model.json in tenerife_calc.py)
+  GET  /tenerife/, /tenerife/<page>/ RU prod site (static pages built from
+                                     grainee-v2 docs/projects/artemis/tenerife/site-ru,
+                                     see app/tenerife_site/README.md); indexable.
+                                     /tenerife/<page>.html -> 301 clean URL.
 
-Public Tenerife is English only. Geo entry always lands on EN. Default noindex unless
-TENERIFE_INDEXING=1. model.json / calc.js are never served (404).
+Preview + API paths are noindex (meta + X-Robots-Tag) and is not
+linked from the Crete site. No payments; the only amounts are the server's recomputation of
+the visitor's calculator inputs, stored with the lead.
 """
 from __future__ import annotations
 
@@ -140,19 +145,9 @@ def _with_query(url: str) -> str:
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "acciones", "condiciones", "alquiler", "energia", "construccion",
-              "proceso", "faq", "simon", "mercado", "boris", "inversores")
+SITE_PAGES = ("norte", "producto", "inversores", "calculadora", "alquiler", "energia", "construccion",
+              "proceso", "faq", "simon", "mercado", "boris", "equipo")
 SITE_URL = "https://artemisresort.com"
-# EN r2: calculator gone; page 05 = Terms. Old calculadora URLs → 301 condiciones (query kept).
-MOVED_PAGES = {"calculadora": "condiciones", "equipo": ""}  # equipo → /tenerife/
-# Never public: model.json & calc.js (404 before static).
-FIGURE_STATIC_RX = re.compile(r"^/static/tenerife/(?:.*/)?[^/]*\.json(?:\.gz|\.br)?$", re.I)
-CALC_JS_RX = re.compile(r"^/static/tenerife/(?:.*/)?calc\.js(?:\.gz|\.br|\.map)?$", re.I)
-
-
-def figures_blocked(path: str) -> bool:
-    return bool(FIGURE_STATIC_RX.match(path or "") or CALC_JS_RX.match(path or ""))
-
 
 
 log = logging.getLogger("artemis.tenerife")
@@ -218,39 +213,56 @@ def _finish(page: str) -> str:
     return page
 
 
-ALL_LANGS = ("en", "ru", "es", "de", "fr")  # recognised only so old locale URLs can 301 → EN
-LOCALES = ("ru", "es", "de", "fr")
+ALL_LANGS = ("en", "ru", "es", "de", "fr")
+LOCALES = ("ru", "es", "de", "fr")   # EN — корень /tenerife/, остальные — /tenerife/<locale>/
 
-# EN r2 / t122u: public Tenerife is English only. Geo never sends visitors to ES/DE/FR/RU.
-GEO_LOCALES = {}  # disabled
+# Гео-открытие (02.11.2026; P1-02 06.11.2026): страну посетителя встречает корень сайта `/`, а не /tenerife/.
+# /tenerife/ — канонический URL английской главной (canonical, hreflang en и x-default всех страниц ведут сюда),
+# поэтому он обязан отвечать 200 EN, а не 302 → DE. Сайт не пишет cookie и не трогает хранилище (privacy §7),
+# выбор не запоминается: уйти с гео-редиректа можно ссылкой /tenerife/?lang=en. Cloudflare отдаёт страну в CF-IPCountry.
+GEO_LOCALES = {
+    "ES": "es",
+    "DE": "de", "AT": "de", "CH": "de",
+    "FR": "fr", "BE": "fr", "LU": "fr", "MC": "fr",
+}
 
 
 def geo_locale() -> str | None:
-    """Always None: EN-only public Tenerife (t122u / Lead GO 05.11.2026)."""
-    return None
+    """Язык входа по стране Cloudflare: "es"/"de"/"fr" или None (EN / неизвестная страна)."""
+    return GEO_LOCALES.get((request.headers.get("CF-IPCountry") or "").strip().upper())
 
 
 def entry_target() -> str:
-    """Site root `/` always opens the English Tenerife home. ?lang=* is ignored for locale choice
-    (non-EN values still land on /tenerife/; old /tenerife/<locale>/ URLs 301 to EN)."""
-    return SITE_PREFIX + "/"
+    """Куда корень `/` уводит посетителя: язык страны, EN для неизвестной страны.
+    ?lang= сильнее страны: en → английская главная /tenerife/, остальные локали → их префикс."""
+    wanted = (request.args.get("lang") or "").strip().lower()
+    if wanted == "en":
+        return SITE_PREFIX + "/"
+    if wanted in ALL_LANGS:
+        return f"{SITE_PREFIX}/{wanted}/"
+    geo = geo_locale()
+    return f"{SITE_PREFIX}/{geo}/" if geo else SITE_PREFIX + "/"
 
 
 def _site_page(name: str, locale: str = "en"):
-    # EN r2: only English HTML is built; locale arg kept for call-site compat and ignored.
-    f = SITE_DIR / f"{name}.html"
+    base = SITE_DIR if locale == "en" else SITE_DIR / locale
+    f = base / f"{name}.html"
     if not f.is_file():
-        return _not_found()
+        return _not_found(locale)
     resp = make_response(_finish(f.read_text(encoding="utf-8")))
     resp.headers["Content-Type"] = "text/html; charset=utf-8"
     resp.headers["Cache-Control"] = "public, max-age=300"
-    if not tenerife_indexing():
+    if not tenerife_indexing():  # QA PS-03: header as well as the meta, legal pages included
         resp.headers["X-Robots-Tag"] = "noindex, nofollow"
     return resp
 
 
 def _not_found(locale: str = ""):
-    f = SITE_DIR / "_404.html"
+    if locale not in ALL_LANGS:
+        parts = request.path.strip("/").split("/")
+        locale = parts[1] if len(parts) > 1 and parts[0] == "tenerife" and parts[1] in LOCALES else "en"
+    base = SITE_DIR if locale == "en" else SITE_DIR / locale
+    f = base / "_404.html"
     body = _finish(f.read_text(encoding="utf-8")) if f.is_file() else "Not found"
     resp = make_response(body, 404)
     resp.headers["X-Robots-Tag"] = "noindex, nofollow"
@@ -264,7 +276,14 @@ def site_noslash():
 
 @bp.route(SITE_PREFIX + "/")
 def site_index():
-    # EN r2: always English home. ?lang=* does not open non-EN locales (those URLs 301 → EN).
+    # P1-02: /tenerife/ — это EN-главная, canonical и hreflang en/x-default всех страниц, поэтому гео-редиректа
+    # здесь нет: он живёт в корне сайта (`/`, app.py:root -> tenerife.entry_target()). ?lang=<code> как раньше:
+    # en -> 200 /tenerife/, остальные локали -> 302 на свой префикс (так переключатель уводит на язык).
+    wanted = (request.args.get("lang") or "").strip().lower()
+    if wanted == "en":
+        return _site_page("index")
+    if wanted in ALL_LANGS:
+        return redirect(_with_query(f"{SITE_PREFIX}/{wanted}/"), code=302)
     return _site_page("index")
 
 
@@ -273,29 +292,25 @@ def site_index():
 @bp.route('/tenerife/actualizaciones/<slug>/')
 @bp.route('/tenerife/<locale>/actualizaciones/<slug>/')
 def project_news(locale='en', slug=None):
-    """Project diary — EN only; other locale prefixes 301 to EN."""
+    """Explicit nested article route, never an arbitrary filesystem path."""
     if locale not in ALL_LANGS:
         return _not_found()
-    en_url = '/tenerife/actualizaciones/' + (slug + '/' if slug else '')
-    if locale != 'en':
-        return redirect(_with_query(en_url), code=301)
-    if slug and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
-        return _not_found()
-    target = SITE_DIR / ('actualizaciones/' + slug + '.html' if slug else 'actualizaciones.html')
+    if '/tenerife/en/' in request.path:
+        return redirect(_with_query('/tenerife/actualizaciones/' + (slug+'/' if slug else '')),code=301)
+    if slug and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',slug):
+        return _not_found(locale)
+    base = SITE_DIR if locale=='en' else SITE_DIR/locale
+    target = base / ('actualizaciones/'+slug+'.html' if slug else 'actualizaciones.html')
     if not target.is_file():
-        return _not_found()
-    content = _finish(target.read_text(encoding='utf-8'))
+        return _not_found(locale)
+    content=_finish(target.read_text(encoding='utf-8'))
     if funnel_http.enabled():
-        content = content.replace(
-            '</main>',
-            '<section class="section"><div class="wrap">'
-            + funnel_http.form('en', request.path, 'newsletter_only')
-            + '</div></section></main>')
-        content = content.replace(
-            '</body>', '<script src="/static/tenerife/site/funnel.js" defer></script></body>')
-    response = make_response(content)
-    response.headers['Content-Type'] = 'text/html; charset=utf-8'
-    response.headers['X-Robots-Tag'] = 'noindex, nofollow'
+        content=content.replace('</main>','<section class="section"><div class="wrap">'+funnel_http.form(locale,request.path,'newsletter_only')+'</div></section></main>')
+        content=content.replace('</body>','<script src="/static/tenerife/site/funnel.js" defer></script></body>')
+    response=make_response(content)
+    response.headers['Content-Type']='text/html; charset=utf-8'
+    # Per-route policy: adding news must not globally enable investor indexing.
+    response.headers['X-Robots-Tag']='noindex, nofollow'
     return response
 
 
@@ -308,35 +323,46 @@ def _en_page_target(page: str) -> str | None:
 
 
 def _canonical_target(page: str, locale: str = "en") -> str | None:
-    # EN r2: always the English URL. acciones is its own page; calculadora/equipo via MOVED_PAGES.
-    if page in MOVED_PAGES:
-        dest = MOVED_PAGES[page]
-        return SITE_PREFIX + "/" if dest == "" else f"{SITE_PREFIX}/{dest}/"
+    page = "inversores" if page == "acciones" else page
+    prefix = f"{SITE_PREFIX}/" + (f"{locale}/" if locale != "en" else "")
     if page == "index":
-        return SITE_PREFIX + "/"
+        return prefix
     if page in SITE_PAGES or page in LEGAL_PAGES:
-        return f"{SITE_PREFIX}/{page}/"
+        return f"{prefix}{page}/"
     return None
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>")
 @bp.route(SITE_PREFIX + "/<locale>/<page>.html")
 def site_locale_legacy(locale: str, page: str):
-    """Any /tenerife/<locale>/… → 301 to the English equivalent (EN r2)."""
+    """Clean URL of a locale page: /tenerife/de/norte and /tenerife/de/norte.html -> 301 /tenerife/de/norte/."""
     page = page[:-5] if page.endswith(".html") else page
-    if locale not in ALL_LANGS:
+    if locale == "en":   # /tenerife/en/simon[/.html] -> /tenerife/simon/ (P1-02, без промежуточного /en/)
+        target = _en_page_target(page)
+        return redirect(_with_query(target), code=301) if target else _not_found()
+    if locale not in LOCALES:
         return _not_found()
-    target = _canonical_target(page)
-    return redirect(_with_query(target), code=301) if target else _not_found()
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page, locale)), code=301)
+    if page == "index":
+        return redirect(_with_query(f"{SITE_PREFIX}/{locale}/"), code=301)
+    if page in SITE_PAGES or page in LEGAL_PAGES:
+        return redirect(_with_query(f"{SITE_PREFIX}/{locale}/{page}/"), code=301)
+    return _not_found()
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>/")
 def site_locale_page(locale: str, page: str):
-    """EN r2: non-EN (and /en/) locale pages permanently redirect to the EN URL."""
-    if locale not in ALL_LANGS:
+    if locale == "en":   # P1-02: /tenerife/en/<page>/ -> 301 /tenerife/<page>/ (14 URL больше не 404)
+        target = _en_page_target(page)
+        return redirect(_with_query(target), code=301) if target else _not_found()
+    if locale not in LOCALES:
         return _not_found()
-    target = _canonical_target(page)
-    return redirect(_with_query(target), code=301) if target else _not_found()
+    if page == "acciones":
+        return redirect(_with_query(_canonical_target(page, locale)), code=301)
+    if page not in SITE_PAGES and page not in LEGAL_PAGES:
+        return _not_found()
+    return _site_page(page, locale)
 
 
 @bp.route(SITE_PREFIX + "/impressum/")
@@ -349,10 +375,13 @@ def legal_page():
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
-    """One segment under /tenerife/: EN page, legal, moved slug, or locale home → 301 EN."""
-    if page == "en" or page in LOCALES:
-        return redirect(_with_query(SITE_PREFIX + "/"), code=301)
-    if page in MOVED_PAGES:
+    """One segment under /tenerife/: the home of a locale (/tenerife/ru/), the EN home (/tenerife/),
+    an EN page or legal page, everything else 404."""
+    if page == "en":
+        return redirect(_with_query(SITE_PREFIX + "/"), code=301)   # EN живёт в корне (P1-02)
+    if page in LOCALES:
+        return _site_page("index", page)
+    if page == "acciones":
         return redirect(_with_query(_canonical_target(page)), code=301)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
         return _not_found()
@@ -363,9 +392,13 @@ def site_page(page: str):
 @bp.route(SITE_PREFIX + "/<page>.html")
 def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
-    if page == "index" or page == "en" or page in LOCALES:
+    if page == "index":
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
-    if page in MOVED_PAGES:
+    if page == "en":   # /tenerife/en -> /tenerife/ (P1-02; раньше 404)
+        return redirect(_with_query(SITE_PREFIX + "/"), code=301)
+    if page in LOCALES:   # /tenerife/ru -> /tenerife/ru/
+        return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
+    if page == "acciones":
         return redirect(_with_query(_canonical_target(page)), code=301)
     if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
@@ -391,20 +424,20 @@ THANKS_URL = SITE_PREFIX + "/gracias/"
 # Form messages: copy_v3/17_forma.md «Сообщения формы», verbatim (tests/test_tenerife_r4.py checks them against
 # build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
 FORM_MSG = {
-    "ok-title": "Thank you! You're in the queue.",
-    "ok-next": "Your request goes to the project team on Telegram and to info@artemisresort.com. We will be in touch.",
-    "server": "We couldn't send your request. Please try again or email us at info@artemisresort.com.",
-    "rate": "Too many requests have been sent from this connection. Please try again later or email us at "
+    "ok-title": "Спасибо! Заявка на расчёт принята.",
+    "ok-next": "Команда свяжется с вами по указанному контакту, пришлёт персональный расчёт и объяснит срок и порядок выхода.",
+    "server": "Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.",
+    "rate": "С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на "
             "info@artemisresort.com.",
-    "name": "Please enter your name.",
-    "contact": "Please enter a contact: email, phone or Telegram.",
-    "language": "Please choose your preferred language.",
-    "consent": "Please tick the box to consent to data processing.",
+    "name": "Укажите имя.",
+    "contact": "Укажите контакт: email, телефон или Telegram.",
+    "language": "Выберите язык общения.",
+    "consent": "Отметьте согласие на обработку данных.",
 }
 THANKS_TITLE = FORM_MSG["ok-title"]
 THANKS_TEXT = FORM_MSG["ok-next"]
-BACK_SITE = "← Back to the project site"
-BACK_FORM = "← Back to the form"
+BACK_SITE = "← К сайту проекта"
+BACK_FORM = "← Назад к форме"
 
 
 def _i18n():
@@ -418,22 +451,36 @@ def _i18n():
 
 
 def _page_locale(path: str | None = None) -> str:
-    """EN r2: public pages are English; locale prefixes only exist as 301 sources."""
+    """Язык страницы по адресу: /tenerife/es/... -> es, всё остальное (EN в корне и RU) -> как есть."""
+    parts = (path or request.path).strip("/").split("/")
+    if len(parts) >= 2 and parts[0] == "tenerife" and parts[1] in LOCALES:
+        return parts[1]
     return "en"
 
 
 def _payload_locale(d: dict | None = None) -> str:
-    """EN r2: form replies use English strings."""
-    return "en"
+    """Язык заявки: страница, с которой пришла форма (скрытое поле page); без неё — русский, как было до локалей."""
+    page = str((d or {}).get("page") or "")
+    parts = page.strip("/").split("/")
+    if len(parts) >= 2 and parts[0] == "tenerife":
+        return parts[1] if parts[1] in LOCALES else "en"
+    return "ru"
 
 
 def _form_msg(key: str, locale: str = "") -> str:
-    # EN r2: public replies use the English FORM_MSG (copy_en/17), never locale i18n leftovers.
-    return FORM_MSG[key]
+    loc = locale or _page_locale()
+    if loc == "ru":
+        return FORM_MSG[key]
+    return _i18n().get(loc, {}).get("msgs", {}).get(key, FORM_MSG[key])
 
 
 def _back_label(which: str, locale: str = "") -> str:
-    return BACK_SITE if which == "site" else BACK_FORM
+    loc = locale or _page_locale()
+    if loc in ("ru", "en"):
+        if loc == "ru":
+            return BACK_SITE if which == "site" else BACK_FORM
+        return _i18n().get("en", {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
+    return _i18n().get(loc, {}).get("back", {}).get(which, BACK_SITE if which == "site" else BACK_FORM)
 
 
 _EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")

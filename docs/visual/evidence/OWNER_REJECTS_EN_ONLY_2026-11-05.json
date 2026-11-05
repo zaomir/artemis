@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-05",
+  "authority": "User correction during current continuation",
+  "request": "EN-only rework was erroneous; continue the existing five-language plan",
+  "action": "Revert the EN-only merge #57 inside PR #39, preserving independent CRM/mail changes",
+  "reverted_merge": "6d1697795e9ccd383383c91545302ca6971b2dc5",
+  "locales": [
+    "en",
+    "es",
+    "de",
+    "fr",
+    "ru"
+  ],
+  "production_changed": false
+}

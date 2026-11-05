@@ -1,132 +1,134 @@
 {
  "index": {
-  "url": "/tenerife/",
+  "url": "/tenerife/ru/",
   "file": "01_glavnaya.md",
   "frames": {
    "F01": "modern-low-6e9d80",
-   "F04": null,
-   "F02": null,
-   "F03": null,
-   "F17": null
+   "F04": "private-te-6016b5",
+   "F02": "gate-stone-4f1a2b",
+   "F03": "pool-day-6b1c93",
+   "F17": null,
+   "F22": null
   },
   "hidden": [
    "F17"
   ],
   "alts": {
-   "F01": "Low houses in terraces on a slope above the ocean"
+   "F01": "Невысокие дома террасами на склоне над океаном",
+   "F04": "Терраса со стеклянным ограждением и видом на океан",
+   "F02": "Въезд в комплекс: базальтовые пилоны и бронзовые ворота",
+   "F03": "Общий бассейн днём, каменный настил и дома Canary Stone"
   },
-  "title": "Artemis Tenerife — 20 residences in La Quinta, north Tenerife",
-  "h1": "20 residences in La Quinta: developer company shares, 1 share = 1 m²"
+  "title": "Дом на севере Тенерифе. Участие от 112 896 € — Artemis de la Cruz",
+  "h1": "Дом на зелёном севере Тенерифе — свой или как инвестиция"
  },
  "norte": {
-  "url": "/tenerife/norte/",
+  "url": "/tenerife/ru/norte/",
   "file": "02_sever.md",
   "frames": {
-   "F21": "green-hill-3f3856",
-   "F23": null,
-   "F01": null,
+   "F21": "hillside-row-71c3ab",
+   "F23": "aerial-complex-3d9e50",
+   "F01": "complex-row-9c31a1",
    "F04": null,
    "F22": null,
    "F24": null
   },
   "hidden": [],
   "alts": {
-   "F21": "Houses among greenery on a slope above the ocean"
+   "F21": "Дома террасами на зелёном склоне над океаном",
+   "F23": "Весь комплекс из двадцати домов террасами над океаном",
+   "F01": "Три дома Canary Stone со стороны сада, за ними океан"
   },
-  "title": "North Tenerife: La Quinta, Santa Úrsula — Artemis",
-  "h1": "La Quinta, Santa Úrsula: the north, where Tenerife lives"
+  "title": "Север Тенерифе: La Quinta, Santa Úrsula — Artemis",
+  "h1": "La Quinta, Santa Úrsula: север, где на Тенерифе живут"
  },
  "producto": {
-  "url": "/tenerife/producto/",
+  "url": "/tenerife/ru/producto/",
   "file": "03_rezidencii.md",
   "frames": {
    "F05": "interior-o-74f891",
-   "F06": null,
-   "F07": null,
-   "F08": null,
+   "F06": "interior-salon-8a2c19",
+   "F07": "bedroom-sea-2a7f61",
+   "F08": "kitchen-stone-9e3b40",
    "F09": null,
    "F10": null
   },
   "hidden": [],
   "alts": {
-   "F05": "Bedroom with a floor-to-ceiling window opening onto an inner courtyard"
+   "F05": "Спальня с окном в пол и выходом во внутренний дворик",
+   "F06": "Гостиная резиденции: известковые стены, базальтовый пол, вид на океан",
+   "F07": "Спальня резиденции с окном на океан",
+   "F08": "Кухня резиденции: дуб, базальтовая столешница, вид в сад"
   },
-  "title": "Artemis residences: 20 homes from 48 to 100 m² in La Quinta",
-  "h1": "Twenty residences from 48 to 100 metres, one Canary Stone façade"
+  "title": "Резиденции от 48 до 100 м² — Artemis de la Cruz",
+  "h1": "Дома от 48 до 100 м² — три планировки, один архитектурный язык"
  },
- "acciones": {
-  "url": "/tenerife/acciones/",
+ "inversores": {
+  "url": "/tenerife/ru/inversores/",
   "file": "04_akcii.md",
   "frames": {
-   "F14": null,
-   "F01": null,
-   "F15": null,
-   "F16": null,
-   "F17": null,
-   "F12": null
-  },
-  "hidden": [],
-  "alts": {},
-  "title": "Artemis developer company shares: 1 share = 1 m²",
-  "h1": "One share, one metre: Artemis developer company shares"
- },
- "condiciones": {
-  "url": "/tenerife/condiciones/",
-  "file": "05_kalkulyator.md",
-  "frames": {
-   "F20": null,
-   "F05": null,
-   "F07": null,
-   "F11": null,
-   "F17": null,
-   "F22": null
-  },
-  "hidden": [],
-  "alts": {},
-  "title": "Artemis Tenerife terms: price per metre, discounts, instalments",
-  "h1": "Artemis Tenerife terms: price per metre, 10% and 5% discounts, instalments"
- },
- "alquiler": {
-  "url": "/tenerife/alquiler/",
-  "file": "06_arenda.md",
-  "frames": {
-   "F10": "private-te-6016b5",
-   "F04": null,
-   "F05": null,
-   "F03": null,
-   "F22": null,
-   "F21": null
+   "F14": "build-pit-3ab7c2"
   },
   "hidden": [],
   "alts": {
-   "F10": "Terrace with a glass balustrade and an ocean view"
+   "F14": "Котлован и фундамент домов на склоне, каменные террасы участка"
   },
-  "title": "Renting in north Tenerife: 12–15 € per m² a month — Artemis",
-  "h1": "How a home in La Quinta earns after completion"
+  "title": "Инвестиция с выходом через 36 месяцев — Artemis de la Cruz",
+  "h1": "Инвестиция в Тенерифе с выходом через 36 месяцев"
+ },
+ "calculadora": {
+  "url": "/tenerife/ru/calculadora/",
+  "file": "05_kalkulyator.md",
+  "frames": {
+   "F20": null,
+   "F07": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Рассчитайте инвестицию и сумму на выходе — Artemis de la Cruz",
+  "h1": "Ваше вложение, целевой доход и сумма на выходе"
+ },
+ "alquiler": {
+  "url": "/tenerife/ru/alquiler/",
+  "file": "06_arenda.md",
+  "frames": {
+   "F10": "terrace-view-7c2d15",
+   "F04": null,
+   "F05": null,
+   "F03": null
+  },
+  "hidden": [],
+  "alts": {
+   "F10": "Терраса резиденции с видом на склон и океан"
+  },
+  "title": "Дом для жизни и долгой аренды — Artemis de la Cruz",
+  "h1": "Дом, которым вы пользуетесь по-своему"
  },
  "energia": {
-  "url": "/tenerife/energia/",
+  "url": "/tenerife/ru/energia/",
   "file": "07_energiya.md",
   "frames": {
-   "F11": "golden-hou-d4cc25",
-   "F13": null,
-   "F16": null,
+   "F11": "green-hill-3f3856",
+   "F13": "solar-flat-2b8f04",
+   "F16": "roof-montazh-6d90ef",
    "F12": null,
    "F01": null,
    "F22": null
   },
   "hidden": [],
   "alts": {
-   "F11": "House terraces on a slope in the evening light"
+   "F11": "Дома среди зелени на склоне над океаном",
+   "F13": "Солнечные панели в плоскости плоской кровли с бронзовой кромкой",
+   "F16": "Плоская кровля с бронзовой кромкой, солнечные панели перед монтажом"
   },
-  "title": "Artemis home energy: sun on the roof, stone in the walls",
-  "h1": "A solar roof and a stone shell: a home that holds its own warmth"
+  "title": "Энергия дома Artemis: солнце на крыше и камень",
+  "h1": "Солнечная крыша, каменный контур: дом, который сам держит тепло"
  },
  "construccion": {
-  "url": "/tenerife/construccion/",
+  "url": "/tenerife/ru/construccion/",
   "file": "08_stroyka.md",
   "frames": {
-   "F15": null,
+   "F15": "build-frame-5e6d77",
    "F14": null,
    "F16": null,
    "F17": null,
@@ -134,50 +136,41 @@
    "F12": null
   },
   "hidden": [],
-  "alts": {},
-  "title": "Artemis Tenerife construction: 9 stages and a weekly report",
-  "h1": "Construction planned for 2027–2029: nine stages and a weekly report"
+  "alts": {
+   "F15": "Каркас домов на стадии стройки: бетон, леса, каменные террасы"
+  },
+  "title": "Девять стадий от участка до готового дома — Artemis de la Cruz",
+  "h1": "Девять стадий от земли до ключей — и отчёт каждую неделю"
  },
  "proceso": {
-  "url": "/tenerife/proceso/",
+  "url": "/tenerife/ru/proceso/",
   "file": "09_sdelka.md",
   "frames": {
    "F02": "entrance-o-9abe9d",
-   "F19": null,
-   "F20": null,
-   "F18": null,
-   "F17": null,
-   "F04": null
-  },
-  "hidden": [
-   "F17"
-  ],
-  "alts": {
-   "F02": "Entrance to the complex: stone pillars and wooden gates"
-  },
-  "title": "The Artemis Tenerife process: from queue to keys, step by step",
-  "h1": "From queue to keys: the six steps of the Artemis process"
- },
- "faq": {
-  "url": "/tenerife/faq/",
-  "file": "10_voprosy.md",
-  "frames": {
-   "F03": "communal-s-af42cd",
-   "F01": null,
-   "F11": null,
-   "F15": null,
-   "F05": null,
-   "F22": null
+   "F15": null
   },
   "hidden": [],
   "alts": {
-   "F03": "Shared pool and Canary Stone houses"
+   "F02": "Вход в комплекс: каменные пилоны и деревянные ворота"
   },
-  "title": "Artemis Tenerife FAQ: shares, price, dividend, construction",
-  "h1": "Questions before entering Artemis Tenerife, and straight answers"
+  "title": "Как начать: от заявки до денежного выхода — Artemis de la Cruz",
+  "h1": "Как проходит участие: шесть шагов от заявки до выхода"
+ },
+ "faq": {
+  "url": "/tenerife/ru/faq/",
+  "file": "10_voprosy.md",
+  "frames": {
+   "F20": null,
+   "F15": null,
+   "F05": null
+  },
+  "hidden": [],
+  "alts": {},
+  "title": "Вопросы об инвестиции и покупке дома — Artemis de la Cruz",
+  "h1": "Что нужно знать до участия"
  },
  "simon": {
-  "url": "/tenerife/simon/",
+  "url": "/tenerife/ru/simon/",
   "file": "11_simon.md",
   "frames": {
    "F19": null,
@@ -189,30 +182,30 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Simon Subic, developer of Artemis Tenerife",
-  "h1": "I'm Simon Subic, developer of Artemis Tenerife"
+  "title": "Simon Subic, девелопер Artemis de la Cruz",
+  "h1": "Я Simon Subic, девелопер Artemis de la Cruz"
  },
  "mercado": {
-  "url": "/tenerife/mercado/",
+  "url": "/tenerife/ru/mercado/",
   "file": "12_rynok.md",
   "frames": {
-   "F24": null,
+   "F24": "golden-hou-d4cc25",
    "F01": null,
    "F12": null,
-   "F17": null,
-   "F22": null,
-   "F04": null
+   "F22": null
   },
   "hidden": [],
-  "alts": {},
-  "title": "The market and price per metre in La Quinta: Artemis figures",
-  "h1": "The market and price per metre: where the Artemis figures in La Quinta come from"
+  "alts": {
+   "F24": "Террасы домов на склоне в вечернем свете"
+  },
+  "title": "Цена входа, рост и источники расчёта — Artemis de la Cruz",
+  "h1": "Откуда берутся цена входа и будущая выручка"
  },
  "boris": {
-  "url": "/tenerife/boris/",
+  "url": "/tenerife/ru/boris/",
   "file": "13_boris.md",
   "frames": {
-   "F18": null,
+   "F18": "pool-dusk-4d7e12",
    "F14": null,
    "F12": null,
    "F15": null,
@@ -220,24 +213,23 @@
    "F20": null
   },
   "hidden": [],
-  "alts": {},
-  "title": "Boris Ribaut, chief builder of Artemis Tenerife",
-  "h1": "I'm Boris Ribaut, chief builder of Artemis Tenerife"
+  "alts": {
+   "F18": "Общий бассейн в сумерках, свет в окнах домов"
+  },
+  "title": "Boris Ribaut, главный строитель Artemis de la Cruz",
+  "h1": "Я Boris Ribaut, главный строитель Artemis de la Cruz"
  },
- "inversores": {
-  "url": "/tenerife/inversores/",
-  "file": "18_investoram.md",
+ "equipo": {
+  "url": "/tenerife/ru/equipo/",
+  "file": "19_komanda.md",
   "frames": {
-   "F19": null,
-   "F20": null,
-   "F18": null,
-   "F14": null,
-   "F12": null,
-   "F22": null
+   "F22": "communal-s-af42cd"
   },
   "hidden": [],
-  "alts": {},
-  "title": "For Artemis Tenerife investors: from the queue to your metres",
-  "h1": "For Artemis Tenerife investors: no money before the site is chosen"
+  "alts": {
+   "F22": "Общий бассейн и дома Canary Stone"
+  },
+  "title": "Команда Artemis de la Cruz — роли и ответственность",
+  "h1": "Команда Artemis de la Cruz"
  }
 }

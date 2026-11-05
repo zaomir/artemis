@@ -18,7 +18,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "app"))
-MODEL = ROOT / "app" / "tenerife_site" / "data" / "model.json"
+MODEL = ROOT / "app" / "static" / "tenerife" / "site" / "model.json"
 ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID")
 
 import tenerife_calc  # noqa: E402
