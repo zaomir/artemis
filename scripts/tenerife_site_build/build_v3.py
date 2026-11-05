@@ -719,6 +719,9 @@ def structure(blocks, frames, alts, name, model=None, alias=None):
         elif name == "equipo":
             s["id"] = ("roles", "responsibility", "profiles", "contact")[min(n - 1, 3)]
         s["calc_full"] = name == "inversores" and semantic == "calculate"
+        # Preview-only educational diagram: stage names, never a fabricated progress indicator.
+        if name == "index" and "F17" in s["frames"] and os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1":
+            s["concept_progress"] = i18n_strings()[LOCALE]["visual"]["concept_stages"]
         s["rev"], s["qa"] = False, []
         if name == "inversores" and semantic == "overview":
             s["frames"].insert(0, "F14")
