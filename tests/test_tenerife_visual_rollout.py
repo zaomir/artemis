@@ -51,6 +51,22 @@ class WatercolourPreviewTests(unittest.TestCase):
             if lang != "ru":
                 self.assertIn(STEM, I18N[lang]["alts"])
 
+    def test_preview_concept_stage_is_current_not_fake_construction_progress(self):
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "1"}):
+            # The semantic hook attaches to the reserved F17 homepage section only.
+            for lang in ("ru", "en", "es", "de", "fr"):
+                cfg = I18N[lang]["visual"]["concept_stages"]
+                self.assertEqual(len(cfg["steps"]), 4)
+                self.assertTrue(cfg["current"])
+                self.assertTrue(cfg["next"])
+                self.assertNotEqual(cfg["current"], cfg["next"])
+        components = (ROOT / "app" / "templates" / "tenerife" / "site" / "_components.html").read_text(encoding="utf-8")
+        self.assertIn('s.concept_progress|default(false)', components)
+        self.assertIn('class="is-current"', components)
+        builder_src = (SCRIPTS / "build_v3.py").read_text(encoding="utf-8")
+        self.assertIn('name == "index" and "F17" in s["frames"]', builder_src)
+        self.assertIn('os.environ.get("ARTEMIS_VISUAL_PREVIEW") == "1"', builder_src)
+
     def test_source_master_and_responsive_variants_exist(self):
         img_dir = ROOT / "app" / "static" / "tenerife" / "site" / "img"
         for suffix in (".jpg", "-640.webp", "-800.webp", "-1024.webp",
