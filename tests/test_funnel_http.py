@@ -93,6 +93,46 @@ class HTTPTest(unittest.TestCase):
         self.assertEqual(r.status_code,200)
         self.assertIn(b'/tenerife/actualizaciones/',r.data)
         self.assertEqual(len(self.rows('SELECT * FROM artemis_crm_outbox')),1)
+    def test_native_validation_retains_values_and_stable_id_then_captures_once(self):
+        d=dict(self.d,consent='on',contact='invalid contact',name='TEST <script>alert(1)</script>')
+        d.pop('newsletter_opt_in')
+        r=self.client.post('/api/tenerife/waitlist',data=d)
+        self.assertEqual(r.status_code,400);self.assertNotIn('Location',r.headers)
+        self.assertIn('no-store',r.headers['Cache-Control']);self.assertEqual(r.headers['Referrer-Policy'],'no-referrer')
+        self.assertIn(b'value="test-http-000001"',r.data);self.assertIn(b'value="invalid contact"',r.data)
+        self.assertIn(b'TEST &lt;script&gt;alert(1)&lt;/script&gt;',r.data)
+        self.assertNotIn(b'<script>alert(1)</script>',r.data)
+        self.assertNotRegex(r.data,rb'name="newsletter_opt_in"[^>]*checked')
+        d['contact']='test@example.invalid'
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=d).status_code,200)
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=d).status_code,200)
+        self.assertEqual(len(self.rows('SELECT * FROM tenerife_waitlist')),1);self.assertEqual(self.mock.call_count,1)
+    def test_native_queue_failure_preserves_input_and_rolls_back_original_row(self):
+        import tenerife
+        with sqlite3.connect(self.db) as conn:
+            f.migrate(conn);tenerife.init_waitlist_db(conn)
+            conn.execute("CREATE TRIGGER no_delivery BEFORE INSERT ON artemis_crm_outbox BEGIN SELECT RAISE(ABORT,'isolated'); END")
+        d=dict(self.d,consent='on');d.pop('newsletter_opt_in')
+        r=self.client.post('/api/tenerife/waitlist',data=d)
+        self.assertEqual(r.status_code,503);self.assertIn(b'value="test@example.invalid"',r.data)
+        self.assertIn(b'value="test-http-000001"',r.data)
+        self.assertFalse(self.rows('SELECT * FROM tenerife_waitlist'));self.assertFalse(self.rows('SELECT * FROM artemis_events'))
+        self.mock.assert_not_called()
+        with sqlite3.connect(self.db) as conn:conn.execute('DROP TRIGGER no_delivery')
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=d).status_code,200)
+        self.assertEqual(len(self.rows('SELECT * FROM tenerife_waitlist')),1)
+    def test_native_rate_error_preserves_input_until_retry(self):
+        d=dict(self.d,consent='on');d.pop('newsletter_opt_in')
+        with patch('tenerife.RATE_LIMIT_MAX',0):r=self.client.post('/api/tenerife/waitlist',data=d)
+        self.assertEqual(r.status_code,429);self.assertIn(b'value="test-http-000001"',r.data)
+        self.assertIn(b'value="test@example.invalid"',r.data)
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=d).status_code,200)
+        self.assertEqual(len(self.rows('SELECT * FROM tenerife_waitlist')),1)
+    def test_cached_native_form_after_flag_rollback_retains_input_without_downgrade(self):
+        d=dict(self.d,consent='on');d.pop('newsletter_opt_in')
+        with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):r=self.client.post('/api/tenerife/waitlist',data=d)
+        self.assertEqual(r.status_code,503);self.assertIn(b'value="test-http-000001"',r.data)
+        self.assertIn(b'value="test@example.invalid"',r.data);self.assertFalse(Path(self.db).exists())
 
 
 if __name__=='__main__':unittest.main()

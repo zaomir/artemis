@@ -26,11 +26,31 @@ def secret():
     return os.environ.get('ARTEMIS_NEWSLETTER_SECRET','')
 
 
-def form(locale,page,intent_override=None):
+def form(locale,page,intent_override=None,values=None):
+    values=dict(values or {})
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
     intent=intent_override or ('investor' if '/inversores/' in page or '/calculadora/' in page else 'buyer' if '/producto/' in page else 'other')
+    submission=str(values.get('submission_id') or '')
+    if not store.ID.fullmatch(submission):submission=str(uuid.uuid4())
+    kind='facebook' if values.get('contact_type')=='facebook' else 'email'
+    checked=lambda key:values.get(key) in (True,'on','true','1')
+    extras={key:str(values[key])[:200] for key in ['calc_m2','calc_step','calc_pay','calc_type','calc_shares','calc_model_version'] if key in values}
+    for key in ['source_id','utm_source','utm_medium','utm_campaign','form_id']:
+        value=str(values.get(key) or '')
+        if re.fullmatch('[A-Za-z0-9_.:-]{1,100}',value):extras[key]=value
     return render_template('tenerife/funnel_form.html',locale=locale,page=page,
-        intent=intent,submission_id=str(uuid.uuid4()),labels=LABELS[locale],privacy_url=prefix+'privacy/')
+        intent=intent,submission_id=submission,labels=LABELS[locale],privacy_url=prefix+'privacy/',
+        values=values,kind=kind,opted=checked('newsletter_opt_in'),consented=checked('consent'),extras=extras)
+
+
+def form_error(values,message,status,locale='en'):
+    """Private same-origin POST recovery; never put submitted values in a URL."""
+    import html
+    intent=values.get('intent') if values.get('intent') in store.INTENTS else 'other'
+    page=store.safe_landing(values.get('page'))
+    body='<p role="alert">'+html.escape(message)+'</p>'+form(locale,page,intent,values)
+    response=token_response(message,body,locale);response.status_code=status
+    return response
 
 
 for _loc,_pending in {

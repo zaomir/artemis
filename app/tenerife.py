@@ -522,6 +522,12 @@ def _reply(is_json: bool, ok: bool, status: int = 200, error: str = "", back: st
     return _notice(status, error or _form_msg("server", locale), "", back + "#ochered", _back_label("form", locale))
 
 
+def _capture_error(data,is_json,status,error,back='',field='',locale='en'):
+    if not is_json and data.get('contact_type'):
+        return funnel_http.form_error(data,error,status,locale)
+    return _reply(is_json,False,status,error,back,field,locale=locale)
+
+
 @bp.route("/api/tenerife/waitlist", methods=["POST"])
 def waitlist():
     d, is_json = _payload()
@@ -529,7 +535,7 @@ def waitlist():
     if d.get('contact_type') and not funnel_http.enabled():
         # A cached/new typed form must never silently downgrade into legacy
         # capture and lose its explicit subscription request during rollback.
-        return _reply(is_json,False,503,_form_msg('server',loc),locale=loc)
+        return _capture_error(d,is_json,503,_form_msg('server',loc),locale=loc)
 
     # Honeypot: bots fill the hidden field. Pretend success, store nothing.
     if str(d.get(HONEYPOT_FIELD) or "").strip():
@@ -553,16 +559,18 @@ def waitlist():
                 consent=normalized['newsletter_opt_in']
         except ValueError as exc:
             field=str(exc)
-            return _reply(is_json,False,400,_form_msg('contact' if field in ('contact','newsletter_email') else 'server',loc),back,field,locale=loc)
+            key={'contact':'contact','newsletter_email':'contact','name':'name','language':'language',
+                'consent':'consent','newsletter_opt_in':'consent'}.get(field,'server')
+            return _capture_error(d,is_json,400,_form_msg(key,loc),back,field,locale=loc)
 
     if not name and not newsletter_only:
-        return _reply(is_json, False, 400, _form_msg("name", loc), back, "name", locale=loc)
+        return _capture_error(d,is_json,400,_form_msg("name",loc),back,"name",locale=loc)
     if not typed and not valid_contact(contact):
-        return _reply(is_json, False, 400, _form_msg("contact", loc), back, "contact", locale=loc)
+        return _capture_error(d,is_json,400,_form_msg("contact",loc),back,"contact",locale=loc)
     if language not in WAITLIST_LANGS:
-        return _reply(is_json, False, 400, _form_msg("language", loc), back, "language", locale=loc)
+        return _capture_error(d,is_json,400,_form_msg("language",loc),back,"language",locale=loc)
     if not consent:
-        return _reply(is_json, False, 400, _form_msg("consent", loc), back, "consent", locale=loc)
+        return _capture_error(d,is_json,400,_form_msg("consent",loc),back,"consent",locale=loc)
 
     # calculator fields (calc_m2, calc_step, calc_pay): recomputed with the current model.json and stored
     # with its version as ok / mismatch / invalid (tenerife_calc.py); never blocks the lead
@@ -581,8 +589,9 @@ def waitlist():
     client = _client_hash()
     now = datetime.datetime.now(datetime.timezone.utc)
     since = (now - datetime.timedelta(minutes=RATE_LIMIT_WINDOW_MIN)).isoformat()
-    conn = sqlite3.connect(_db_path(), timeout=5)
+    conn = None
     try:
+        conn = sqlite3.connect(_db_path(), timeout=5)
         init_waitlist_db(conn)
         if typed:
             funnel_store.migrate(conn)
@@ -592,7 +601,7 @@ def waitlist():
             try:
                 funnel_store.capture(conn,d,funnel_http.secret(),now=now,client_hash=client)
             except ValueError:
-                return _reply(is_json,False,409,_form_msg('server',loc),back,locale=loc)
+                return _capture_error(d,is_json,409,_form_msg('server',loc),back,locale=loc)
             conn.commit()
             return _typed_capture_reply(is_json,loc,newsletter_only)
         recent = conn.execute(
@@ -602,7 +611,7 @@ def waitlist():
         if typed:
             recent=conn.execute('SELECT COUNT(*) FROM artemis_events WHERE client_hash=? AND created_at>=?',(client,since)).fetchone()[0]
         if recent >= RATE_LIMIT_MAX:
-            return _reply(is_json, False, 429, _form_msg("rate", loc), back, locale=loc)
+            return _capture_error(d,is_json,429,_form_msg("rate",loc),back,locale=loc)
         cols = ("name", "contact", "language", "page", "consent", "client_hash", "created_at")
         vals = (name, contact, language, page, 1, client, now.isoformat())
         if calc:
@@ -619,8 +628,13 @@ def waitlist():
             from funnel_legacy import enqueue_row
             enqueue_row(conn,'tenerife_waitlist',cursor.lastrowid)
         conn.commit()
+    except sqlite3.Error as exc:
+        if conn:conn.rollback()
+        if not typed:raise
+        current_app.logger.warning('typed capture unavailable: %s',type(exc).__name__)
+        return _capture_error(d,is_json,503,_form_msg('server',loc),back,locale=loc)
     finally:
-        conn.close()
+        if conn:conn.close()
 
     if newsletter_only:
         return _typed_capture_reply(is_json,loc,True)
