@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 44,
-  "updated_at": "2026-11-05T11:15:42.461754+00:00",
-  "next_action": "reconcile:MAIL-06-expiry-writer-20261105-v1",
-  "pending": {
-    "key": "MAIL-06-expiry-writer-20261105-v1",
-    "action": "extend single existing writer with per-identity serialization and independently verified Person contact anonymization; preserve independent context and new subscription; no runtime erasure",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:15:42.461737+00:00"
-  },
+  "revision": 45,
+  "updated_at": "2026-11-05T11:20:03.200070+00:00",
+  "next_action": "MAIL-06 wire source proof, receipt finalization and monotonic request version; no newsletter activation",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -284,6 +279,19 @@
           "sha256": "e18be0c350983ad1677aee347f47be34eea9bbc6ac4908fb9d4d78638f5c8582"
         }
       ]
+    },
+    "MAIL-06-expiry-writer-20261105-v1": {
+      "key": "MAIL-06-expiry-writer-20261105-v1",
+      "action": "extend single existing writer with per-identity serialization and independently verified Person contact anonymization; preserve independent context and new subscription; no runtime erasure",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:15:42.461737+00:00",
+      "verified_at": "2026-11-05T11:20:03.200056+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-writer-20261105.json",
+          "sha256": "79f7a0d700a186e6580f3c5dd43841d7fd2ef56c45952cf085e3141aec2a9bca"
+        }
+      ]
     }
   },
   "history": [
@@ -550,6 +558,12 @@
       "at": "2026-11-05T11:15:42.461754+00:00",
       "event": "began:MAIL-06-expiry-writer-20261105-v1",
       "next_action": "reconcile:MAIL-06-expiry-writer-20261105-v1"
+    },
+    {
+      "revision": 45,
+      "at": "2026-11-05T11:20:03.200070+00:00",
+      "event": "verified:MAIL-06-expiry-writer-20261105-v1",
+      "next_action": "MAIL-06 wire source proof, receipt finalization and monotonic request version; no newsletter activation"
     }
   ],
   "policy": {

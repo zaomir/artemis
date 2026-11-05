@@ -1,0 +1,11 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "MAIL-06",
+  "unit": "single_writer_retention_and_identity_serialization",
+  "repository": "zaomir/grainee-v2",
+  "production_changed": false,
+  "tests": {"all_artemis_provider_and_adapter_tests": 52, "retention_specific": 8, "failures": 0},
+  "checks": ["anonymized contact fields independently GET-verified", "old newsletter replay cannot repopulate PII", "new request restores its legitimate purpose", "actual Opportunity and manual fields preserve contact", "secondary email readback mismatch blocks success", "same contact serialized across workers; other contact remains independent", "conflicting restored email requires reconciliation instead of a duplicate"],
+  "minimal_record": "private pseudonymous identity digest and expiry timestamp retained for replay prevention; not claimed anonymous or a new lead",
+  "remaining": ["source proof precondition and finalization wiring", "monotonic subscription version across a new subscription row", "actual release and guarded runtime probe", "privacy/backup aging and reply assignment gates"]
+}
