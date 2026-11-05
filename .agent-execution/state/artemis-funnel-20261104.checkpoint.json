@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 69,
-  "updated_at": "2026-11-05T12:43:21.642348+00:00",
-  "next_action": "METRICS-01 privacy-safe source/capture/verified/opt-in/active summary with tests separated and current source GET proof",
-  "pending": null,
+  "revision": 70,
+  "updated_at": "2026-11-05T12:43:32.675151+00:00",
+  "next_action": "reconcile:METRICS-01-source-summary-20261105-v1",
+  "pending": {
+    "key": "METRICS-01-source-summary-20261105-v1",
+    "action": "read-only private metrics with source primary events separated from subscription/expiry projections, tests excluded, costs unknown not zero; request artemis-funnel-metrics-20261105-01",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T12:43:32.675136+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -864,6 +869,12 @@
       "at": "2026-11-05T12:43:21.642348+00:00",
       "event": "verified:CAP-native-site-release-20261105-v1",
       "next_action": "METRICS-01 privacy-safe source/capture/verified/opt-in/active summary with tests separated and current source GET proof"
+    },
+    {
+      "revision": 70,
+      "at": "2026-11-05T12:43:32.675151+00:00",
+      "event": "began:METRICS-01-source-summary-20261105-v1",
+      "next_action": "reconcile:METRICS-01-source-summary-20261105-v1"
     }
   ],
   "policy": {
