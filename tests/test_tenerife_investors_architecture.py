@@ -158,14 +158,14 @@ class InvestorArchitectureTest(unittest.TestCase):
                     self.assertEqual(final.status_code, 200, source)
                     self.assertNotIn("Location", final.headers, source)
 
-    def test_primary_and_mobile_menus_have_same_five_destinations_and_calculation_cta(self):
+    def test_primary_and_mobile_menus_keep_existing_destinations_plus_diary_and_calculation_cta(self):
         for locale in LOCALES:
             for name in ("index", "inversores", "equipo"):
                 doc = self.page(locale, name)
                 header = next(doc.nodes("header"))
                 desktop = next(n for n in header.nodes("nav") if has_class(n, "nav"))
                 mobile = header.by_id("sheet")
-                want = [route(locale, slug) for slug in PRIMARY] + ["#ochered"]
+                want = [route(locale, slug) for slug in PRIMARY] + [route(locale, "actualizaciones"), "#ochered"]
                 for menu in (desktop, mobile):
                     got = [href for href in links(menu) if not href.startswith(BASE)]
                     self.assertEqual(got, want, (locale, name))
@@ -188,7 +188,7 @@ class InvestorArchitectureTest(unittest.TestCase):
             self.assertTrue(all(any(n.nodes("h3")) and any(n.nodes("ul")) for n in groups), locale)
             actual = links(pages)
             self.assertCountEqual(actual, [route(locale, name) for _, name in PAGES] +
-                                  [route(locale, name) for name in ("impressum", "privacy")], locale)
+                                  [route(locale, name) for name in ("actualizaciones", "impressum", "privacy")], locale)
             for _, name in PAGES:
                 for href in links(self.page(locale, name)):
                     self.assertNotRegex(urlsplit(href).path, r"/acciones(?:/|\.html)?$", (locale, name, href))
