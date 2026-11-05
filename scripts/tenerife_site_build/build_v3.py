@@ -1290,6 +1290,10 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         frames = site_frames[name]
         alias = heading_alias(name)
         page = structure(blocks, frames, alts, name, model, alias=alias)
+        # Explicit concept-stage notice across all content pages in REVIEW only.
+        # No change to calculator/finance inputs or production HTML by default.
+        if os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1":
+            page["concept_notice"] = html.escape(i18n_strings()[LOCALE]["visual"]["project_concept_notice"])
         if name in ("simon", "boris"):
             apply_profile_photos(page, name, alias)
         url = locale_path(slugs[name])
