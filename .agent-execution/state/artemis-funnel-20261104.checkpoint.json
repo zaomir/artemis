@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 76,
-  "updated_at": "2026-11-05T13:14:34.952480+00:00",
-  "next_action": "reconcile:NEWS-04-failure-diagnosis-20261105-v1",
-  "pending": {
-    "key": "NEWS-04-failure-diagnosis-20261105-v1",
-    "action": "read-only fixed canonical deploy test failure signatures and source frame lines; request artemis-diary-release-diagnostics-20261105-01; no raw logs or credentials",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T13:14:34.952466+00:00"
-  },
+  "revision": 77,
+  "updated_at": "2026-11-05T13:22:26.120059+00:00",
+  "next_action": "NEWS-04 update strict navigation test contract for required diary destination; all other destinations and CTA retained",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -492,6 +487,19 @@
           "sha256": "b0c3baecc7376667aa685a1d61abe75425b9e3d4e5ab7f8ec90c30fa7ca20637"
         }
       ]
+    },
+    "NEWS-04-failure-diagnosis-20261105-v1": {
+      "key": "NEWS-04-failure-diagnosis-20261105-v1",
+      "action": "read-only fixed canonical deploy test failure signatures and source frame lines; request artemis-diary-release-diagnostics-20261105-01; no raw logs or credentials",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:14:34.952466+00:00",
+      "verified_at": "2026-11-05T13:22:26.120045+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-candidate-diagnosis-20261105.json",
+          "sha256": "f2a76942713fa14d52c62acadcc0ed3ba99d8d8235ff06afedbd17b5c87eec7f"
+        }
+      ]
     }
   },
   "history": [
@@ -950,6 +958,12 @@
       "at": "2026-11-05T13:14:34.952480+00:00",
       "event": "began:NEWS-04-failure-diagnosis-20261105-v1",
       "next_action": "reconcile:NEWS-04-failure-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 77,
+      "at": "2026-11-05T13:22:26.120059+00:00",
+      "event": "verified:NEWS-04-failure-diagnosis-20261105-v1",
+      "next_action": "NEWS-04 update strict navigation test contract for required diary destination; all other destinations and CTA retained"
     }
   ],
   "policy": {
