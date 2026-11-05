@@ -23,19 +23,34 @@ STEM = "artemis-watercolour-art01-20261104"
 
 class WatercolourPreviewTests(unittest.TestCase):
     def setUp(self):
-        self.pages = {"index": ["F01", "F04"], "norte": ["F21"]}
+        self.pages = {
+            "index": ["F01", "F04"],
+            "norte": ["F21", "F23"],
+            "producto": ["F05"],
+            "inversores": ["F14"],
+            "construccion": ["F15"],
+            "equipo": ["F22"],
+        }
 
     def test_production_build_retains_existing_photo(self):
         with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "0"}):
             mapping = site_builder.assign_site_frames(self.pages, FRAMES)
         self.assertEqual(mapping["index"]["F01"], "modern-low-6e9d80")
         self.assertNotEqual(mapping["index"]["F01"], STEM)
+        self.assertEqual(mapping["norte"]["F21"], "hillside-row-71c3ab")
+        self.assertEqual(mapping["producto"]["F05"], "interior-o-74f891")
 
     def test_explicit_review_build_uses_new_visual(self):
         with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "1"}):
             mapping = site_builder.assign_site_frames(self.pages, FRAMES)
         self.assertEqual(mapping["index"]["F01"], STEM)
-        self.assertEqual(mapping["norte"]["F21"], "hillside-row-71c3ab")
+        for page, frame in (("norte", "F21"), ("producto", "F05"),
+                            ("inversores", "F14"), ("construccion", "F15"),
+                            ("equipo", "F22")):
+            self.assertIsNone(mapping[page][frame], (page, frame))
+        self.assertEqual(set(FRAMES["preview_hidden"]),
+                         {"norte/F21", "producto/F05", "inversores/F14",
+                          "construccion/F15", "equipo/F22"})
         assigned = [v for p in mapping.values() for v in p.values() if v]
         self.assertEqual(len(assigned), len(set(assigned)))
 
