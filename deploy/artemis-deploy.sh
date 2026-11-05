@@ -51,14 +51,14 @@ log() { echo "$(date -u +%FT%TZ) $*" | tee -a "$LOG"; }
 # /health: app liveness JSON {"ok":true} (PR #23), must be 200 locally and via Cloudflare.
 PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/privacy/
        /en/terms/ /ru/terms/ /es/terms/ /fr/terms/)
-# Tenerife RU prod (/tenerife/): must be 200 locally and via Cloudflare.
-# Pages the author has not delivered yet (producto, construccion, proceso, faq) are
-# added here when they ship (see app/tenerife_site/README.md).
-TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/calculadora/
+# Tenerife EN prod (/tenerife/, EN r1): must be 200 locally and via Cloudflare.
+# /tenerife/calculadora/ answers 301 -> /tenerife/condiciones/; model.json and calc.js answer 404 (checked below).
+TENERIFE_PATHS=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/condiciones/
   /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
-  /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/impressum/ /tenerife/privacy/
+  /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/inversores/ /tenerife/impressum/ /tenerife/privacy/
   /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
-  /static/tenerife/site/calc.js /static/tenerife/site/site.js /static/tenerife/site/model.json /sitemap.xml /robots.txt)
+  /static/tenerife/site/site.js /sitemap.xml /robots.txt)
+TENERIFE_404=(/static/tenerife/site/model.json /static/tenerife/site/calc.js)
 EXTRA_PATHS=(${ARTEMIS_EXTRA_SMOKE:-/tenerife-preview/})
 
 # MainPID of the unit, "0" if none / not a number
@@ -123,6 +123,12 @@ smoke() {
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
     [[ "$code" =~ ^(200|301|404)$ ]] || { log "SMOKE FAIL local ${p} -> ${code}"; fail=1; }
   done
+  for p in "${TENERIFE_404[@]}"; do
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}${p}" || true)
+    [[ "$code" == 404 ]] || { log "SMOKE FAIL local ${p} -> ${code} (want 404)"; fail=1; }
+  done
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/calculadora/" || true)
+  [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/calculadora/ -> ${code} (want 301 to /tenerife/condiciones/)"; fail=1; }
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/admin/leads" || true)
   [[ "$code" == 403 ]] || { log "SMOKE FAIL /admin/leads without token -> ${code} (want 403)"; fail=1; }
   return $fail
