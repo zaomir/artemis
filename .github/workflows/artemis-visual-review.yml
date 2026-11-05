@@ -1,18 +1,9 @@
 name: Artemis visual review (no deploy)
 
+# Manual until GitHub Actions runner provisioning is verified. On 2026-11-05
+# pull_request jobs failed before any step was created (steps=null, logs=404).
+# Keep executable commands here; do not imply tests passed or auto-deploy.
 on:
-  pull_request:
-    paths:
-      - '.github/workflows/artemis-visual-review.yml'
-      - 'app/templates/tenerife/site/**'
-      - 'app/static/tenerife/site/img/artemis-watercolour-*'
-      - 'app/static/tenerife/site/img/la-quinta-context-locator-*.svg'
-      - 'scripts/tenerife_site_build/**'
-      - 'docs/visual/**'
-      - 'docs/funnel/CONTENT_CANON.md'
-      - 'tests/test_tenerife_visual_rollout.py'
-      - 'tests/test_tenerife_art_intake.py'
-      - 'tests/test_tenerife_news_visual.py'
   workflow_dispatch:
 
 permissions:
