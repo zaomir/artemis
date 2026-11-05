@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 60,
-  "updated_at": "2026-11-05T12:07:33.194860+00:00",
-  "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v2",
-  "pending": {
-    "key": "MAIL-09-token-log-protection-20261105-v2",
-    "action": "require old nginx workers to exit after reload before a fresh nonsecret probe; request artemis-token-log-protection-20261105-02; prior version rollback verified",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:07:33.194848+00:00"
-  },
+  "revision": 61,
+  "updated_at": "2026-11-05T12:12:12.072583+00:00",
+  "next_action": "CAP-03/04/05: preserve native HTML errors and allowlisted attribution; then inactive mail/metrics and remaining factual gates",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -388,6 +383,19 @@
           "sha256": "3e5f089bf18471269efddd79b1bb7afa8436335dd375c26a908256de641961ac"
         }
       ]
+    },
+    "MAIL-09-token-log-protection-20261105-v2": {
+      "key": "MAIL-09-token-log-protection-20261105-v2",
+      "action": "require old nginx workers to exit after reload before a fresh nonsecret probe; request artemis-token-log-protection-20261105-02; prior version rollback verified",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:07:33.194848+00:00",
+      "verified_at": "2026-11-05T12:12:12.072567+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-token-log-runtime-20261105.json",
+          "sha256": "c0e59bd942e6324fb91f8cc7f96deb77e187dbfedf6453ea1f525b2e7dd41ba8"
+        }
+      ]
     }
   },
   "history": [
@@ -750,6 +758,12 @@
       "at": "2026-11-05T12:07:33.194860+00:00",
       "event": "began:MAIL-09-token-log-protection-20261105-v2",
       "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v2"
+    },
+    {
+      "revision": 61,
+      "at": "2026-11-05T12:12:12.072583+00:00",
+      "event": "verified:MAIL-09-token-log-protection-20261105-v2",
+      "next_action": "CAP-03/04/05: preserve native HTML errors and allowlisted attribution; then inactive mail/metrics and remaining factual gates"
     }
   ],
   "policy": {
