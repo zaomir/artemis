@@ -354,9 +354,13 @@ def assign_site_frames(page_frames, frames_cfg):
     pass 2 fills the remaining slots the same way. No free photo -> None (text block + basalt bar, DESIGN.md)."""
     used, out = set(), {}
     overrides = dict(frames_cfg.get("page_overrides", {}))
-    # REVIEW imagery is deliberately invisible to a normal production build.
-    if os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1":
+    # REVIEW imagery/hidden placeholders do not affect a normal production build.
+    is_preview = os.environ.get("ARTEMIS_VISUAL_PREVIEW", "") == "1"
+    hidden = set(frames_cfg.get("preview_hidden", ())) if is_preview else set()
+    if is_preview:
         overrides.update(frames_cfg.get("preview_overrides", {}))
+    if hidden.intersection(overrides):
+        raise BuildError("frames.json: preview_hidden conflicts with image overrides")
     for name, fids in page_frames.items():
         if len(set(fids)) != len(fids):
             raise BuildError(f"{name}: a frame id twice on one page")
@@ -365,6 +369,10 @@ def assign_site_frames(page_frames, frames_cfg):
         name, separator, frame_id = key.partition("/")
         if not separator or name not in page_frames or frame_id not in page_frames[name]:
             raise BuildError(f"frames.json: override for unknown page/frame: {key}")
+    for key in hidden:
+        name, separator, frame_id = key.partition("/")
+        if not separator or name not in page_frames or frame_id not in page_frames[name]:
+            raise BuildError(f"frames.json: preview_hidden has unknown page/frame: {key}")
         if not isinstance(candidates, list) or not candidates or any(
                 not isinstance(st, str) or not st for st in candidates):
             raise BuildError(f"frames.json: invalid candidates for {key}")
@@ -372,6 +380,9 @@ def assign_site_frames(page_frames, frames_cfg):
         for name, fids in page_frames.items():
             for fid in (fids[1:] if rest else fids[:1]):
                 key = f"{name}/{fid}"
+                if key in hidden:
+                    out[name][fid] = None
+                    continue
                 candidates = overrides.get(key, frames_cfg["prefer"].get(fid, []))
                 pick = next((st for st in candidates if st not in used), None)
                 if key in overrides and pick is None:
