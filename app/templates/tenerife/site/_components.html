@@ -334,6 +334,21 @@
 {{ extras(s, k, res) }}
 {{ frames(s) }}
 {% endif %}
+{% if s.concept_progress|default(false) %}
+  <div class="wrap">
+    <figure class="concept-stages" aria-label="{{ s.concept_progress.label }}">
+      <figcaption>{{ s.concept_progress.label }}</figcaption>
+      <ol>
+{% for label in s.concept_progress.steps %}
+        <li{% if loop.first %} class="is-current"{% endif %}>
+          <span class="concept-stages__number" aria-hidden="true">{{ loop.index }}</span>
+          <span class="concept-stages__text">{{ label }}<small>{{ s.concept_progress.current if loop.first else s.concept_progress.next }}</small></span>
+        </li>
+{% endfor %}
+      </ol>
+    </figure>
+  </div>
+{% endif %}
 </section>
 {%- endmacro %}
 
