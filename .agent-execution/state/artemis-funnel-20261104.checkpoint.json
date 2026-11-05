@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 56,
-  "updated_at": "2026-11-05T11:51:43.366725+00:00",
-  "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v1",
-  "pending": {
-    "key": "MAIL-09-token-log-protection-20261105-v1",
-    "action": "version exact nginx query-free/token log protection; backup and guarded nginx validation/reload; request artemis-token-log-protection-20261105-01; no sender activation",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T11:51:43.366711+00:00"
-  },
+  "revision": 57,
+  "updated_at": "2026-11-05T12:02:40.864695+00:00",
+  "next_action": "Diagnose exact marker log format and effective nginx config; original config restored",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -362,6 +357,19 @@
           "sha256": "c146fcced0a3e06cbb1bf0c7d562facac551425a1a25bc37ee7dddd8e422078c"
         }
       ]
+    },
+    "MAIL-09-token-log-protection-20261105-v1": {
+      "key": "MAIL-09-token-log-protection-20261105-v1",
+      "action": "version exact nginx query-free/token log protection; backup and guarded nginx validation/reload; request artemis-token-log-protection-20261105-01; no sender activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:51:43.366711+00:00",
+      "verified_at": "2026-11-05T12:02:40.864683+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-token-log-first-runtime-20261105.json",
+          "sha256": "add6ef7fc48344558bd2d4d9d02549093887ea8bca45b77feaecd0a70f7fb4b0"
+        }
+      ]
     }
   },
   "history": [
@@ -700,6 +708,12 @@
       "at": "2026-11-05T11:51:43.366725+00:00",
       "event": "began:MAIL-09-token-log-protection-20261105-v1",
       "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v1"
+    },
+    {
+      "revision": 57,
+      "at": "2026-11-05T12:02:40.864695+00:00",
+      "event": "verified:MAIL-09-token-log-protection-20261105-v1",
+      "next_action": "Diagnose exact marker log format and effective nginx config; original config restored"
     }
   ],
   "policy": {

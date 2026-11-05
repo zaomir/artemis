@@ -1,0 +1,50 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atom": "MAIL-09",
+  "unit": "token_log_protection_first_probe",
+  "request_id": "artemis-token-log-protection-20261105-01",
+  "observed_at": "2026-11-05T11:58:54.877Z",
+  "artemis_source_sha": "d1522c9e3a43591020bf1ecbd54434c64632df30",
+  "provider_source_sha": "a98e595ebeb23b42e272be9e0765f16df444cdb6",
+  "outcome": "probe_failed_automatically_rolled_back; original hash restored; no real token or mail",
+  "runtime": {
+    "schema": "artemis-token-log-privacy/1",
+    "requested_sha": "a98e595ebeb23b42e272be9e0765f16df444cdb6",
+    "artemis_source_sha": "d1522c9e3a43591020bf1ecbd54434c64632df30",
+    "production_changed": false,
+    "sender_activated": false,
+    "real_messages_sent": 0,
+    "real_tokens_used": false,
+    "expected_old_nginx_sha256": "ce95511488dc0e5595a08c01b4f9c6e38d89f2ef9073881cbc2b0c2fae716bd0",
+    "target_nginx_sha256": "8360fa30db33fb9f79596f54be35e527ca8e62dacc575dae03a4826150a93664",
+    "format_sha256": "b14ad713c6ff47a18a9081e57c95ec0951ecf5ad1a5cd4ce4fbb1d8d16dfb978",
+    "install": {
+      "ok": true,
+      "changed": true,
+      "backup_directory": "/var/backups/artemis/nginx-privacy-a98e595ebeb2",
+      "nginx_test_exit_code": 0,
+      "reload_exit_code": 0
+    },
+    "probes": {
+      "origin_token_status": 503,
+      "http_redirect_status": 301,
+      "public_diary_status": 200,
+      "public_home_status": 302,
+      "local_app_health_status": 200
+    },
+    "nonsecret_probe_in_access_log": true,
+    "nonsecret_probe_in_error_log": false,
+    "nonsecret_probe_in_app_journal": false,
+    "legacy_fields_unchanged": true,
+    "installed_nginx_sha256": "8360fa30db33fb9f79596f54be35e527ca8e62dacc575dae03a4826150a93664",
+    "installed_format_sha256": "b14ad713c6ff47a18a9081e57c95ec0951ecf5ad1a5cd4ce4fbb1d8d16dfb978",
+    "health_after_exit_code": 0,
+    "ok": false,
+    "post_probe_rollback": {
+      "validation_exit_code": 0,
+      "reload_exit_code": 0,
+      "original_nginx_hash_restored": true
+    }
+  },
+  "next": "Read only effective vhost selection and controlled-marker format before revised reload readiness guard; do not replay original request."
+}
