@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 15,
-  "updated_at": "2026-11-05T09:11:20.741040+00:00",
-  "next_action": "BASE-03 partial DNS/provider matrix; CAP-01 additive migration; CRM-01 after verified backup using existing metadata deploy script",
-  "pending": null,
+  "revision": 16,
+  "updated_at": "2026-11-05T09:12:33.316698+00:00",
+  "next_action": "reconcile:CAP-01-runtime-migration-20261105-v1",
+  "pending": {
+    "key": "CAP-01-runtime-migration-20261105-v1",
+    "action": "ship fixed typed Artemis release/migration operation; request artemis-capture-migration-20261105-01 after existing deployed source checks and backup",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T09:12:33.316684+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -189,6 +194,12 @@
       "at": "2026-11-05T09:11:20.741040+00:00",
       "event": "verified:BASE-02-ingress-discovery-20261105-v1",
       "next_action": "BASE-03 partial DNS/provider matrix; CAP-01 additive migration; CRM-01 after verified backup using existing metadata deploy script"
+    },
+    {
+      "revision": 16,
+      "at": "2026-11-05T09:12:33.316698+00:00",
+      "event": "began:CAP-01-runtime-migration-20261105-v1",
+      "next_action": "reconcile:CAP-01-runtime-migration-20261105-v1"
     }
   ],
   "policy": {
