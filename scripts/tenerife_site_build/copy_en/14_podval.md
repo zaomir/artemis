@@ -1,16 +1,16 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
+<!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
-Блок: the site footer, shared by all 14 pages. No button: the page's main button sits in its body.
+Block: site footer, shared by all 14 pages. No button: each page's main button sits in its body.
 -->
 
 ## Site footer
 
-**Artemis de la Cruz** — twenty residences in La Quinta, Santa Úrsula. Early participation model from @entry_48@ €, targeting a cash exit after @months@ months. Free enquiry.
+**Artemis Tenerife**: twenty residences in the north of Tenerife; we are choosing the site in La Quinta, Santa Úrsula. Developer company shares: one share equals one m² of the home's total built area, excluding common areas. Joining the queue is free, and we take no money before the site is chosen.
 
-**Страницы.** Home · Residences · For investors · Location · Project progress · Team · Calculator · Letting · Energy · Transaction · Questions · Market and price per metre · Developer · Supervisor
+**Pages.** Home · The North · Residences · Shares · Terms · Rental · Energy · Construction · Process · For investors · FAQ · Market and price per metre · Simon Subic · Boris Ribaut
 
-**Контакты.** info@artemisresort.com · WhatsApp: {номер из TENERIFE_WHATSAPP}
+**Contact.** info@artemisresort.com
 
-**Компания.** OXFORD FRAME REAL ASSETS LTD. Registered in England and Wales, Companies House No. 09153936. Registered address: Drovers, Preston Candover, Basingstoke, RG25 2EE, United Kingdom.
+**Company.** OXFORD FRAME REAL ASSETS LTD. Registered in England and Wales, Companies House No. 09153936. Registered office: Drovers, Preston Candover, Basingstoke, RG25 2EE, United Kingdom. Director: Szabolcs Szaniszlo.
 
-**Документы.** [Impressum](/tenerife/impressum/) · [Privacy](/tenerife/privacy/)
+**Documents.** [Impressum](/tenerife/impressum/) · [Privacy](/tenerife/privacy/)
