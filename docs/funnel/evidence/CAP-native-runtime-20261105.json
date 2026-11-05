@@ -1,0 +1,39 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atoms": [
+    "CAP-03",
+    "CAP-04",
+    "CAP-05"
+  ],
+  "unit": "native_recovery_attribution_and_legacy_compatibility_release",
+  "request_id": "artemis-native-form-release-20261105-01",
+  "observed_at": "2026-11-05T12:37:03.166Z",
+  "source_sha": "24295f138d3ff43af7153ff34c58012e574e9150",
+  "source_pr": 51,
+  "runtime": {
+    "schema": "artemis-site-release/1",
+    "requested_sha": "24295f138d3ff43af7153ff34c58012e574e9150",
+    "production_changed": true,
+    "flags_changed": false,
+    "real_messages_sent": 0,
+    "crm_metadata_changed": false,
+    "previous_sha": "66d569af352661d6261dd8620286dd5d7fb6ad14",
+    "deployed_sha": "fe000ec896c9e7ba3cc157d71a6d4d108775ffbf",
+    "deploy": {
+      "exit_code": 0,
+      "stdout_sha256": "3099d56056f33815de5d8b7ef9b230dbd1ad119e41917fef68a75f267472e99d",
+      "test_summaries": [
+        "tests: Ran 576 tests in 333.932s OK (skipped=9) (rc=0)"
+      ]
+    },
+    "ok": true,
+    "mode": "applied",
+    "migration_replayed": false,
+    "capture_schema_applied": false
+  },
+  "activation": "not performed; full release validates inactive code and existing paths",
+  "remaining": [
+    "controlled form-to-Twenty/mail QA after mail/privacy prerequisites",
+    "verified social join URLs after AS-01/03/09"
+  ]
+}

@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 68,
-  "updated_at": "2026-11-05T12:28:54.579917+00:00",
-  "next_action": "reconcile:CAP-native-site-release-20261105-v1",
-  "pending": {
-    "key": "CAP-native-site-release-20261105-v1",
-    "action": "site-only release full required suite for native errors, safe attribution and calculator compatibility; request artemis-native-form-release-20261105-01; no flag changes or migration",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:28:54.579902+00:00"
-  },
+  "revision": 69,
+  "updated_at": "2026-11-05T12:43:21.642348+00:00",
+  "next_action": "METRICS-01 privacy-safe source/capture/verified/opt-in/active summary with tests separated and current source GET proof",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -440,6 +435,19 @@
           "sha256": "501935b3232ebf8dc7e3894e923aa1feb6af25626eb04c82d8ad140f4fc4d151"
         }
       ]
+    },
+    "CAP-native-site-release-20261105-v1": {
+      "key": "CAP-native-site-release-20261105-v1",
+      "action": "site-only release full required suite for native errors, safe attribution and calculator compatibility; request artemis-native-form-release-20261105-01; no flag changes or migration",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:28:54.579902+00:00",
+      "verified_at": "2026-11-05T12:43:21.642333+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-native-runtime-20261105.json",
+          "sha256": "a109f8d5d30a4d1978be9e5286cc5f4f80d0cb2c814607b9f4e9c05770f33abf"
+        }
+      ]
     }
   },
   "history": [
@@ -850,6 +858,12 @@
       "at": "2026-11-05T12:28:54.579917+00:00",
       "event": "began:CAP-native-site-release-20261105-v1",
       "next_action": "reconcile:CAP-native-site-release-20261105-v1"
+    },
+    {
+      "revision": 69,
+      "at": "2026-11-05T12:43:21.642348+00:00",
+      "event": "verified:CAP-native-site-release-20261105-v1",
+      "next_action": "METRICS-01 privacy-safe source/capture/verified/opt-in/active summary with tests separated and current source GET proof"
     }
   ],
   "policy": {
