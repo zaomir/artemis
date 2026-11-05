@@ -597,6 +597,7 @@ class V3BuildTest(unittest.TestCase):
     def test_primary_menu_is_short_and_footer_covers_all_pages(self):
         from test_tenerife_investors_architecture import Document, links, has_class
         primary = [V3[n] for n in ("producto", "inversores", "norte", "construccion", "equipo")]
+        primary.append(base.RU + "/actualizaciones/")
         for name, page in self.pages.items():
             doc = Document(page).root
             head = next(doc.nodes("header"))
@@ -607,7 +608,7 @@ class V3BuildTest(unittest.TestCase):
                              primary + ["#ochered"], name)
             footer = next(doc.nodes("footer"))
             self.assertCountEqual(links(footer.by_id("footer-pages")),
-                                  list(V3.values()) + [base.RU + "/impressum/", base.RU + "/privacy/"], name)
+                                  list(V3.values()) + [base.RU + "/actualizaciones/", base.RU + "/impressum/", base.RU + "/privacy/"], name)
 
     def test_js_budget(self):
         total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js", "calc.js"))
