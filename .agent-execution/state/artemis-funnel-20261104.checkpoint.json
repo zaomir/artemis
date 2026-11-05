@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 64,
-  "updated_at": "2026-11-05T12:19:51.869953+00:00",
-  "next_action": "reconcile:CAP-04-native-attribution-20261105-v1",
-  "pending": {
-    "key": "CAP-04-native-attribution-20261105-v1",
-    "action": "render allowlisted attribution into typed forms and locale navigation without cookies/browser storage; avoid duplicate client fields; no activation",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T12:19:51.869939+00:00"
-  },
+  "revision": 65,
+  "updated_at": "2026-11-05T12:23:56.481945+00:00",
+  "next_action": "CAP-03 legacy calculator hidden-field compatibility and localized form errors; then guarded site-only release",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -414,6 +409,19 @@
           "sha256": "bf61167914f8dc59e38c045ac792c50929ce79aaf394be1dcd72544f51fc4667"
         }
       ]
+    },
+    "CAP-04-native-attribution-20261105-v1": {
+      "key": "CAP-04-native-attribution-20261105-v1",
+      "action": "render allowlisted attribution into typed forms and locale navigation without cookies/browser storage; avoid duplicate client fields; no activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:19:51.869939+00:00",
+      "verified_at": "2026-11-05T12:23:56.481928+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-04-native-attribution-20261105.json",
+          "sha256": "eb4b07a915e4fccdbc6d1d8fab7787cdd19b5320e52a76f39775c73752093182"
+        }
+      ]
     }
   },
   "history": [
@@ -800,6 +808,12 @@
       "at": "2026-11-05T12:19:51.869953+00:00",
       "event": "began:CAP-04-native-attribution-20261105-v1",
       "next_action": "reconcile:CAP-04-native-attribution-20261105-v1"
+    },
+    {
+      "revision": 65,
+      "at": "2026-11-05T12:23:56.481945+00:00",
+      "event": "verified:CAP-04-native-attribution-20261105-v1",
+      "next_action": "CAP-03 legacy calculator hidden-field compatibility and localized form errors; then guarded site-only release"
     }
   ],
   "policy": {

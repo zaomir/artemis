@@ -4,6 +4,8 @@ from pathlib import Path
 import sqlite3
 import sys
 import tempfile
+from html.parser import HTMLParser
+from urllib.parse import urlsplit,parse_qs
 import unittest
 from unittest.mock import patch
 
@@ -11,6 +13,15 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 os.environ.setdefault('RATE_LIMIT_SALT','isolated-tests-only')
 import app
 import funnel_store as f
+import funnel_http
+
+
+class Fields(HTMLParser):
+    def __init__(self,body):super().__init__();self.inputs=[];self.links=[];self.feed(body.decode())
+    def handle_starttag(self,tag,attrs):
+        item=dict(attrs)
+        if tag=='input':self.inputs.append(item)
+        if tag=='a' and 'href' in item:self.links.append(item['href'])
 
 
 class HTTPTest(unittest.TestCase):
@@ -133,6 +144,37 @@ class HTTPTest(unittest.TestCase):
         with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):r=self.client.post('/api/tenerife/waitlist',data=d)
         self.assertEqual(r.status_code,503);self.assertIn(b'value="test-http-000001"',r.data)
         self.assertIn(b'value="test@example.invalid"',r.data);self.assertFalse(Path(self.db).exists())
+    def test_nojs_locale_navigation_retains_only_public_attribution_and_capture(self):
+        r=self.client.get('/tenerife/es/inversores/?source_id=fb-public-es-v1&utm_medium=organic&utm_source=private@example.invalid&email=private@example.invalid&newsletter_opt_in=on')
+        self.assertEqual(r.status_code,200);self.assertNotIn('Set-Cookie',r.headers)
+        self.assertNotIn(b'private@example.invalid',r.data)
+        fields=Fields(r.data);self.assertEqual(sum(x.get('name')=='source_id' for x in fields.inputs),1)
+        self.assertNotRegex(r.data,rb'name="newsletter_opt_in"[^>]*checked')
+        target=next(h for h in fields.links if urlsplit(h).path=='/tenerife/de/inversores/')
+        self.assertEqual(parse_qs(urlsplit(target).query),{'source_id':['fb-public-es-v1'],'utm_medium':['organic']})
+        response=self.client.get(target);other=Fields(response.data)
+        data={x['name']:x.get('value','') for x in other.inputs if x.get('type')=='hidden'}
+        data.update(name='TEST Attribution',contact_type='email',contact='test@example.invalid',consent='on')
+        self.assertEqual(self.client.post('/api/tenerife/waitlist',data=data).status_code,200)
+        event=json.loads(self.rows('SELECT payload FROM artemis_events')[0][0])
+        self.assertEqual(event['source_id'],'fb-public-es-v1');self.assertEqual(event['utm_medium'],'organic')
+        self.assertEqual(event['language'],'de');self.assertEqual(event['landing'],'/tenerife/de/inversores/')
+        self.assertFalse(event['newsletter_opt_in'])
+    def test_news_mobile_and_russian_links_carry_attribution_without_storage(self):
+        r=self.client.get('/tenerife/es/actualizaciones/concept-search/?source_id=fb-article-es')
+        fields=Fields(r.data)
+        for path in ['/tenerife/de/actualizaciones/concept-search/','/tenerife/ru/actualizaciones/concept-search/']:
+            matches=[h for h in fields.links if urlsplit(h).path==path]
+            self.assertTrue(matches)
+            self.assertTrue(all(parse_qs(urlsplit(h).query).get('source_id')==['fb-article-es'] for h in matches))
+        self.assertNotIn('Set-Cookie',r.headers)
+    def test_attribution_never_rewrites_external_or_token_links(self):
+        body='<a href="https://www.facebook.com/example">FB</a><a href="/tenerife/subscription/confirm/?token=opaque">Confirm</a>'
+        self.assertEqual(funnel_http.carry_attribution(body,{'source_id':'public-slug'}),body)
+    def test_disabled_legacy_form_does_not_gain_typed_attribution(self):
+        with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):
+            response=self.client.get('/tenerife/inversores/?source_id=fb-slug')
+        self.assertNotIn(b'name="source_id"',response.data);self.assertNotIn(b'data-funnel-version',response.data)
 
 
 if __name__=='__main__':unittest.main()

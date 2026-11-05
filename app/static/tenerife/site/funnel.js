@@ -9,11 +9,13 @@
   ['source_id','utm_source','utm_medium','utm_campaign','form_id'].forEach(function(key){
     var value=query.get(key);
     if(value&&/^[A-Za-z0-9_.:-]{1,100}$/.test(value)){
-      var input=document.createElement('input');input.type='hidden';input.name=key;input.value=value;f.appendChild(input);
+      var input=f.querySelector('input[name="'+key+'"]');
+      if(!input){input=document.createElement('input');input.type='hidden';input.name=key;f.appendChild(input);}
+      input.value=value;
     }
   });
   /* Preserve allowlisted campaign values when the user follows a language link. */
-  document.querySelectorAll('a[hreflang], .langs a, .lang a').forEach(function(a){
+  document.querySelectorAll('a[hreflang], .langs a, .sheet__langs a, .lang-ru a, .lang a').forEach(function(a){
     var u=new URL(a.href,location.origin);
     if(u.origin!==location.origin)return;
     ['source_id','utm_source','utm_medium','utm_campaign','form_id'].forEach(function(key){

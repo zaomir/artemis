@@ -7,6 +7,8 @@ import os
 import re
 import sqlite3
 import uuid
+import html
+from urllib.parse import parse_qsl,urlsplit,urlunsplit,urlencode
 from flask import current_app, make_response, render_template, request
 import funnel_store as store
 
@@ -26,6 +28,36 @@ def secret():
     return os.environ.get('ARTEMIS_NEWSLETTER_SECRET','')
 
 
+ATTRIBUTION=('source_id','utm_source','utm_medium','utm_campaign','form_id')
+
+
+def safe_attribution(values):
+    result={}
+    for key in ATTRIBUTION:
+        value=str(values.get(key) or '')
+        if re.fullmatch('[A-Za-z0-9_.:-]{1,100}',value):result[key]=value
+    return result
+
+
+def carry_attribution(page,values=None):
+    """Native navigation without cookies/storage. Only public campaign slugs.
+
+    Never rewrite external URLs or confirmation/unsubscribe links; canonical
+    metadata and private input values are not a source of query parameters.
+    """
+    attribution=safe_attribution(request.args if values is None else values)
+    if not attribution:return page
+    def link(match):
+        raw=html.unescape(match[3]);url=urlsplit(raw)
+        canonical_absolute=url.scheme=='https' and url.netloc=='artemisresort.com'
+        if ((url.scheme or url.netloc) and not canonical_absolute) or not url.path.startswith('/tenerife/') or url.path.startswith('/tenerife/subscription/'):
+            return match[0]
+        query=safe_attribution(dict(parse_qsl(url.query)));query.update(attribution)
+        href=urlunsplit((url.scheme,url.netloc,url.path,urlencode(query),url.fragment))
+        return match[1]+match[2]+html.escape(href,quote=True)+match[2]
+    return re.sub(r'(<a\b[^>]*\bhref=)([\"\x27])(.*?)\2',link,page,flags=re.I)
+
+
 def form(locale,page,intent_override=None,values=None):
     values=dict(values or {})
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
@@ -35,12 +67,11 @@ def form(locale,page,intent_override=None,values=None):
     kind='facebook' if values.get('contact_type')=='facebook' else 'email'
     checked=lambda key:values.get(key) in (True,'on','true','1')
     extras={key:str(values[key])[:200] for key in ['calc_m2','calc_step','calc_pay','calc_type','calc_shares','calc_model_version'] if key in values}
-    for key in ['source_id','utm_source','utm_medium','utm_campaign','form_id']:
-        value=str(values.get(key) or '')
-        if re.fullmatch('[A-Za-z0-9_.:-]{1,100}',value):extras[key]=value
-    return render_template('tenerife/funnel_form.html',locale=locale,page=page,
+    attribution=safe_attribution(request.args);attribution.update(safe_attribution(values));extras.update(attribution)
+    rendered=render_template('tenerife/funnel_form.html',locale=locale,page=page,
         intent=intent,submission_id=submission,labels=LABELS[locale],privacy_url=prefix+'privacy/',
         values=values,kind=kind,opted=checked('newsletter_opt_in'),consented=checked('consent'),extras=extras)
+    return carry_attribution(rendered,attribution)
 
 
 def form_error(values,message,status,locale='en'):
