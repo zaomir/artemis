@@ -67,6 +67,14 @@ import tenerife  # noqa: E402  (blueprint: /tenerife-preview/, noindex)
 app.register_blueprint(tenerife.bp)
 
 
+@app.before_request
+def _block_tenerife_figure_static():
+    """No figure JSON (model.json & co.) and no calc.js under /static/tenerife/, ever."""
+    if tenerife.figures_blocked(request.path):
+        return make_response("Not found", 404)
+
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     first = request.path.strip("/").split("/", 1)[0]
@@ -189,9 +197,7 @@ def _render_legal(lang, page):
 
 @app.route("/")
 def root():
-    # P1-02 (06.11.2026): страну/язык встречает корень. /tenerife/ — 200 EN (canonical + hreflang en/x-default),
-    # поэтому гео-редирект живёт здесь: ES/DE/FR -> /tenerife/<locale>/, неизвестная страна и EN -> /tenerife/.
-    # ?lang= сильнее страны (en -> /tenerife/, остальные локали -> их префикс); query сохраняется.
+    # EN r2 / t122u: root always opens English /tenerife/ (geo locale redirects disabled).
     qs = request.query_string.decode("latin-1")
     target = tenerife.entry_target()
     return redirect(f"{target}?{qs}" if qs else target, code=302)
@@ -238,15 +244,13 @@ def sitemap_paths() -> list[str]:
     paths = [f"/{lang}/" for lang in SUPPORTED]
     if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
         return paths
-    # every language of the site: EN at the root, RU/ES/DE/FR under /tenerife/<locale>/ (hreflang set on each page)
-    for locale in ("en",) + tenerife.LOCALES:
-        base = tenerife.SITE_DIR if locale == "en" else tenerife.SITE_DIR / locale
-        prefix = "" if locale == "en" else f"{locale}/"
-        for name in ("index",) + tenerife.SITE_PAGES:
-            if (base / f"{name}.html").is_file():
-                paths.append(f"/tenerife/{prefix}" if name == "index" else f"/tenerife/{prefix}{name}/")
-        paths += [f"/tenerife/{prefix}{name}/" for name in tenerife.LEGAL_PAGES
-                  if (base / f"{name}.html").is_file()]
+    # EN r2: public Tenerife is English only — no locale prefixes in the sitemap.
+    base = tenerife.SITE_DIR
+    for name in ("index",) + tenerife.SITE_PAGES:
+        if (base / f"{name}.html").is_file():
+            paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
+    paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES
+              if (base / f"{name}.html").is_file()]
     return paths
 
 

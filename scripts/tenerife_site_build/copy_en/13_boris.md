@@ -1,108 +1,108 @@
-<!-- [КАДР Fxx] — служебная пометка, не публикуется: сборка заменяет маркер на кадр, строка «[КАДР» не должна попасть в HTML -->
+<!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
-Слаг: /tenerife/boris/
-Meta title: Boris Ribaut, chief builder of Artemis de la Cruz
-Meta description: Boris Ribaut will run the Artemis de la Cruz site at La Quinta: the structure, the stone, the roof, the services, the reports, handover of the house. First the drawing, then the work.
-OG title: Boris Ribaut: drawing, work, report, and handover of the house
+Slug: /tenerife/boris/
+Meta title: Boris Ribaut, chief builder of Artemis Tenerife
+Meta description: Boris Ribaut will run the Artemis Tenerife site in La Quinta: structure, stone, roof, services, reports and handover of the homes. Drawing first, then the work.
+OG title: Boris Ribaut: drawing, work, report, and handover of the home
 -->
 
-# I am Boris Ribaut, chief builder of Artemis de la Cruz
+# I'm Boris Ribaut, chief builder of Artemis Tenerife
 
-I oversee the Artemis de la Cruz site: structure, contractors, reporting and handover. We are selecting a plot for twenty residences in La Quinta. Investors and buyers fund construction. The calendar follows the selected plot, with weekly reports planned.
+I will run the Artemis Tenerife site in La Quinta, Santa Úrsula. That means twenty residences paid for by developer company shares and home sales. The site, the structure, the reports and handing over the homes are my responsibility. We go on site once the site has been chosen and the building permit granted, planned for early 2027. Completion is planned for late 2028 to mid-2029. Every week you will receive a report on what has been done.
 
-[КАДР F18] <!-- служебная пометка, не публикуется -->
+[FRAME F18] <!-- internal marker, not published -->
 
 ### How I work
 
-I am based in Marseille and work in French and Russian. My method is the one a European buyer is used to: first the drawing, then the work, then the report. No stage is closed on words. If the report says “done”, it is done on site.
+I'm based in Marseille and work in French and Russian. My method is the one European buyers are used to: first the drawing, then the work, then the report. No stage will be signed off on words alone. If a report says "done", it is done on site.
 
-Twenty houses mean one technology, one team, one standard from the first foundation to the last gate.
+Twenty homes means one technology, one team, one standard from the first foundation to the last garden gate.
 
 ### The team
 
-The site will be run by a team I am responsible for. Each person will know their stage, and each stage will end with an inspection before the next begins. You will not see people with shovels; you will see stages closing in order.
+The site will be worked by a team I am responsible for. Everyone will know their stage, and every stage will end with an inspection before the next one begins. You won't see people with shovels — you will see stages being completed in order.
 
-[КАДР F14] <!-- служебная пометка, не публикуется -->
+[FRAME F14] <!-- internal marker, not published -->
 
 ### Stone
 
-The plinth is dark volcanic stone. It is the island's material, heavy and durable, and it holds temperature. Above it, light lime plaster, warm in the sun. The terraces are in stone, with a bronze handrail and glass. You will touch a wall and understand that this house is here to stay.
+The plinth is dark volcanic stone. It is the island's own material, heavy and long-lasting, and it holds its temperature. Above it, light lime render, warm in the sun. The terraces are stone, with bronze handrails and glass. Touch the wall and you'll know this home is here to stay.
 
-[КАДР F12] <!-- служебная пометка, не публикуется -->
+[FRAME F12] <!-- internal marker, not published -->
 
 ### Roof and panels
 
-The roof is flat, with a slim bronze edge. The solar panels lie in the roof plane rather than hanging above it like an add-on. From the street the house looks clean, and the roof works all day. At La Quinta a kilowatt of panels flush with the roof gives, by PVGIS calculation, about 1 490 kWh a year.
+The roof is flat, with a slim bronze edge. The solar panels lie flush with the roof rather than sitting on top like an add-on. From the street the home looks clean, while the roof will be working throughout the daylight hours. In La Quinta, according to PVGIS, a kilowatt of panels flush with the roof produces about 1,490 kWh a year.
 
 ### Services
 
-Electrics, water, smart climate and lighting, connection of the panels. All of it is later closed in by walls, and it is exactly this that most affects your bill and your peace of mind. That is why services are a separate stage for me, with a separate entry in the report. You know not only how the façade looks, but what is inside the walls.
+Electrics, water, smart climate and lighting, panel connection. All of this ends up hidden behind walls, and it is exactly what matters most for your bills and your peace of mind. That is why services will be a separate stage for me, with a separate entry in the report. You will know not just what the façade looks like but what is inside the walls.
 
-[КАДР F15] <!-- служебная пометка, не публикуется -->
+[FRAME F15] <!-- internal marker, not published -->
 
 ### Drawings
 
-Every house begins on paper. Six one-bedroom houses of 48–55 m², ten two-bedroom of 68–78 m², four large of 85–100 m². I build what is drawn. The drawing, the site and the report tell one story, and if one differs from another I find out why before you do.
+Every home starts on paper. Six one-bedroom homes of 48–55 m², ten two-bedroom homes of 68–78 m², four large homes of 85–100 m². I will build what is drawn. The drawing, the site and the report will tell one story, and if one doesn't match another, I will find out why before you do.
 
-[КАДР F19] <!-- служебная пометка, не публикуется -->
+[FRAME F19] <!-- internal marker, not published -->
 
-### From the outside
+### The view from outside
 
-Outside, Canary Stone architecture: basalt at the base, light plaster, tall windows in slim bronze frames, flat roofs with panels. Twenty houses on a green slope in northern Tenerife. Calm, expensive, nothing superfluous.
+Outside: Canary Stone architecture. Basalt at the base, light render, tall windows in slim bronze frames, flat roofs with panels. Twenty homes on the green slope of northern Tenerife. Calm, refined, nothing superfluous.
 
-### From inside the room
+### The view from inside
 
-Inside, tall windows set deep into the wall. In summer the depth holds the shade; in winter it lets the low sun in. Plenty of light, little overheating. Light open rooms, a terrace behind glass.
+Inside: tall windows set deep into the wall. In summer the depth keeps the shade; in winter it lets in the low sun. Plenty of light, little overheating. Bright open rooms, a terrace behind glass.
 
 ### The order of stages
 
-The nine stages, planned dates and weekly report format are in [Project progress](/tenerife/construccion/).
+Groundworks. Foundations. Structure. Roof with panels. Services. Façade. Interiors. Pool. Grounds. The report will go out every week. Shareholders and home buyers will receive it.
 
-[КАДР F20] <!-- служебная пометка, не публикуется -->
+The stages will also move the share price: each completed stage will lift the metre by one step. That is why I will sign off every stage with an inspection, not with words.
 
-### What is in my report
+Joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
 
-Reports show the current stage, completed work, spending, receipts and next step. Milestones are confirmed on site and in the log.
+[FRAME F20] <!-- internal marker, not published -->
 
-Milestones for checking the work:
+### What's in my report
 
-- **Permit:** the building licence in hand.
-- **Foundation:** the base and the stone plinth complete.
-- **Shell and roof:** walls, floors, roof with panels.
-- **Finishing:** façade, services, interiors, pool.
-- **Handover:** the completion certificate.
+Every week, the same things in the same order: which stage is under way, what was done that week, what comes next, when the next price stage is due. A completed stage will go into the site log as an entry "date → stage → what was done". So you will see a sequence, not promises.
 
-Each point is an entry in the log and a line in the weekly report.
+The five milestones that will move the share price will look like this in the report:
 
-### What you get with the keys
+- **Permit**: the building licence in hand.
+- **Foundations**: the base and stone plinth complete.
+- **Structure and roof**: walls, floors, roof with panels.
+- **Finishing**: façade, services, interiors, pool.
+- **Completion**: the occupancy permit.
 
-**A new house.** A new build, not someone else's renovation.
+Each milestone is an entry in the log and a line in the weekly report.
 
-**A warm building envelope.** Stone, deep windows, smart climate. An even temperature winter and summer.
+### What you get at handover
 
-**The pool.** Shared and heated. Warm water in January too.
+**A new home.** A new build, not someone else's renovation.
 
-**Light.** Tall windows, light rooms, smart lighting.
+**A warm shell.** Stone, deep windows, smart climate control. A steady temperature in winter and summer.
+
+**The pool.** Shared and heated. Warm water even in January.
+
+**Light.** Tall windows, bright rooms, smart lighting.
 
 ### How to talk to me
 
-Directly. Ask about the foundation, the roof, how the services were closed in. I will show you on the drawing, in the report or on site. I am a builder, not a brochure: I answer with what has been built.
+Directly. Ask about the foundations, the roof, how the services are closed in. I'll show you on the drawing, in the report or on site. I'm a builder, not a brochure: I answer with what has been built.
 
 ### In short
 
-**What is Boris responsible for?** The site, the structure, the reports, handover of the house.
+**What will Boris be responsible for?** The site, the structure, reports, handover of the homes.
 
-**Where is he based?** In Marseille, working in French and Russian.
+**Where is he based?** In Marseille; he works in French and Russian.
 
-**What is the house built from?** Volcanic stone in the plinth, lime plaster, bronze, a flat roof with panels.
+**What is the home made of?** Volcanic stone in the plinth, lime render, bronze, a flat roof with panels.
 
-**How do I follow the work?** Through the weekly report: the stage, what has been done, what comes next.
+**How will I see the work?** In the weekly report: the stage, what was done, what comes next.
 
-**When is completion?** Handover will be set by the project programme; the investor model assumes exit @months@ months after full payment.
+**When is completion?** Planned for late 2028 to mid-2029.
 
-### Request a calculation
-
-Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
-
-**Кнопка: «Request a personal calculation»**
-Free and without commitment. Participation payment follows approval of the plot and terms.
+**Button: "Join the queue"**
+Free. No money before the site is chosen.
