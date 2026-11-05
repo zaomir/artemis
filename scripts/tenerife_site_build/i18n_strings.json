@@ -36,6 +36,11 @@
         ],
         "current": "Current stage",
         "next": "Planned — not started"
+      },
+      "location_context": {
+        "alt": "Coordinate locator for La Quinta district, Puerto de la Cruz and TITSA stop 4004, not a project parcel",
+        "caption": "Indicative district locator from verified coordinates; no Artemis site has been selected. Not a cadastral map or travel route.",
+        "open_map": "Open the actual area map"
       }
     },
     "alts": {
@@ -159,6 +164,11 @@
         ],
         "current": "Etapa actual",
         "next": "Previsto — no iniciado"
+      },
+      "location_context": {
+        "alt": "Esquema de coordenadas de La Quinta, Puerto de la Cruz y la parada TITSA 4004; no indica ninguna parcela de Artemis",
+        "caption": "Localización orientativa basada en coordenadas verificadas; aún no se ha elegido la parcela de Artemis. No es un plano catastral ni una ruta.",
+        "open_map": "Abrir el mapa real de la zona"
       }
     },
     "alts": {
@@ -282,6 +292,11 @@
         ],
         "current": "Aktuelle Phase",
         "next": "Geplant — noch nicht begonnen"
+      },
+      "location_context": {
+        "alt": "Koordinatenübersicht von La Quinta, Puerto de la Cruz und TITSA-Haltestelle 4004; kein Artemis-Grundstück",
+        "caption": "Unverbindliche Lageübersicht anhand geprüfter Koordinaten; ein Grundstück für Artemis wurde noch nicht gewählt. Kein Katasterplan und keine Route.",
+        "open_map": "Tatsächliche Gebietskarte öffnen"
       }
     },
     "alts": {
@@ -405,6 +420,11 @@
         ],
         "current": "Étape actuelle",
         "next": "Prévu — non commencé"
+      },
+      "location_context": {
+        "alt": "Repère géographique de La Quinta, Puerto de la Cruz et de l'arrêt TITSA 4004, sans parcelle Artemis",
+        "caption": "Repérage indicatif fondé sur des coordonnées vérifiées ; aucune parcelle Artemis n'est choisie. Ni plan cadastral ni itinéraire.",
+        "open_map": "Ouvrir la carte réelle du secteur"
       }
     },
     "alts": {
@@ -505,6 +525,11 @@
         ],
         "current": "Текущая стадия",
         "next": "Планируется — ещё не начато"
+      },
+      "location_context": {
+        "alt": "Координатная схема района La Quinta (Santa Úrsula), Puerto de la Cruz и остановки TITSA 4004 — без указания участка Artemis",
+        "caption": "Схема расположения района по проверенным координатам; участок Artemis не выбран. Это не кадастровая карта и не маршрут.",
+        "open_map": "Открыть реальную карту района"
       }
     },
     "calc": {
