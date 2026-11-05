@@ -49,10 +49,29 @@ class WatercolourPreviewTests(unittest.TestCase):
                             ("equipo", "F22")):
             self.assertIsNone(mapping[page][frame], (page, frame))
         self.assertEqual(set(FRAMES["preview_hidden"]),
-                         {"norte/F21", "producto/F05", "inversores/F14",
+                         {"norte/F21", "norte/F23", "producto/F05", "inversores/F14",
                           "construccion/F15", "equipo/F22"})
         assigned = [v for p in mapping.values() for v in p.values() if v]
         self.assertEqual(len(assigned), len(set(assigned)))
+
+    def test_hidden_and_replaced_renders_cannot_migrate_to_other_pages(self):
+        pages = dict(self.pages, energia=["F11", "F16"], proceso=["F02", "F15"],
+                     simon=["F19", "F21"], mercado=["F24"])
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "1"}):
+            mapping = site_builder.assign_site_frames(pages, FRAMES)
+        assigned = {v for page in mapping.values() for v in page.values() if v}
+        rejected = set(FRAMES["preview_excluded_stems"])
+        for key in set(FRAMES["preview_hidden"]) | set(FRAMES["preview_overrides"]):
+            rejected.update(FRAMES["prefer"][key.partition("/")[2]])
+        self.assertFalse(assigned & rejected, assigned & rejected)
+        self.assertIsNone(mapping["norte"]["F23"])
+        self.assertIn(STEM, assigned)
+
+    def test_override_validation_is_independent_of_hidden_slots(self):
+        cfg = dict(FRAMES, preview_hidden=[], preview_overrides={"index/F01": "bad"})
+        with patch.dict(os.environ, {"ARTEMIS_VISUAL_PREVIEW": "1"}):
+            with self.assertRaisesRegex(site_builder.BuildError, "invalid candidates"):
+                site_builder.assign_site_frames(self.pages, cfg)
 
     def test_draft_cannot_be_production_override(self):
         self.assertEqual(MANIFEST["status"], "REVIEW")

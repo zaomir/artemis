@@ -22,7 +22,7 @@
     "repository_path": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
   "mobile_composition_verified": false,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
@@ -83,5 +83,19 @@
       "Illustration does not establish location, design approval or actual construction progress",
       "Landscape 1280x720; original portrait composition still required for a mobile hero"
     ]
+  },
+  "alt": {
+    "en": "Ink and watercolour study of green coastal terraces and palms, inspired by northern Tenerife",
+    "es": "Estudio en tinta y acuarela de terrazas costeras verdes y palmeras inspirado en el norte de Tenerife",
+    "de": "Tusche- und Aquarellstudie grüner Küstenterrassen und Palmen, inspiriert von Nordteneriffa",
+    "fr": "Étude à l’encre et à l’aquarelle de terrasses côtières verdoyantes et de palmiers inspirée du nord de Tenerife",
+    "ru": "Акварельный этюд зелёных прибрежных террас и пальм по мотивам севера Тенерифе"
+  },
+  "captions": {
+    "en": "Atmospheric concept inspired by northern Tenerife; not a surveyed site or a guaranteed view.",
+    "es": "Concepto de ambiente inspirado en el norte de Tenerife; no es un terreno verificado ni una vista garantizada.",
+    "de": "Atmosphärische Studie, inspiriert von Nordteneriffa; kein vermessenes Grundstück und keine zugesicherte Aussicht.",
+    "fr": "Étude d’ambiance inspirée du nord de Tenerife ; ni terrain relevé ni vue garantie.",
+    "ru": "Атмосферный этюд по мотивам севера Тенерифе. Это не съёмка участка и не обещание вида."
   }
 }

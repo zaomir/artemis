@@ -22,7 +22,7 @@
     "repository_path": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
   "mobile_composition_verified": false,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
@@ -83,5 +83,19 @@
       "Illustration does not establish location, design approval or actual construction progress",
       "Landscape 1280x720; original portrait composition still required for a mobile hero"
     ]
+  },
+  "alt": {
+    "en": "Conceptual ink and watercolour residence with a shaded archway and basalt base",
+    "es": "Concepto en tinta y acuarela de una vivienda con entrada en arco y zócalo de basalto",
+    "de": "Konzeptionelle Tusche- und Aquarellstudie eines Wohnhauses mit schattigem Torbogen und Basaltsockel",
+    "fr": "Étude conceptuelle à l’encre et à l’aquarelle d’une résidence avec arcade ombragée et soubassement en basalte",
+    "ru": "Концептуальный акварельный эскиз дома с затенённой аркой и базальтовым цоколем"
+  },
+  "captions": {
+    "en": "Architectural hypothesis; layout, materials and specifications remain under study.",
+    "es": "Hipótesis arquitectónica; distribución, materiales y características siguen en estudio.",
+    "de": "Architektonische Hypothese; Grundriss, Materialien und Spezifikationen werden noch geprüft.",
+    "fr": "Hypothèse architecturale ; plan, matériaux et caractéristiques restent à l’étude.",
+    "ru": "Архитектурная гипотеза. Планировка, материалы и характеристики ещё уточняются."
   }
 }

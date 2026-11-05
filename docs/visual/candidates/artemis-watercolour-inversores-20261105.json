@@ -22,7 +22,7 @@
     "repository_path": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
   "mobile_composition_verified": false,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
@@ -83,5 +83,19 @@
       "Illustration does not establish location, design approval or actual construction progress",
       "Landscape 1280x720; original portrait composition still required for a mobile hero"
     ]
+  },
+  "alt": {
+    "en": "Exploratory watercolour of possible building volumes on a coastal hillside, with unfinished sketch lines",
+    "es": "Acuarela exploratoria de posibles volúmenes de viviendas en una ladera costera con líneas de estudio sin terminar",
+    "de": "Explorative Aquarellstudie möglicher Baukörper an einem Küstenhang mit unfertigen Entwurfslinien",
+    "fr": "Aquarelle exploratoire de volumes bâtis possibles sur un versant côtier avec traits d’étude inachevés",
+    "ru": "Поисковый акварельный эскиз возможных объёмов домов на прибрежном склоне с незавершёнными линиями"
+  },
+  "captions": {
+    "en": "Exploratory design study; it does not record a selected plot, construction or completed work.",
+    "es": "Estudio de diseño exploratorio; no documenta un terreno elegido, obras ni trabajos terminados.",
+    "de": "Explorative Entwurfsstudie; kein Nachweis eines ausgewählten Grundstücks, von Bauarbeiten oder abgeschlossenen Leistungen.",
+    "fr": "Étude de conception exploratoire ; elle ne documente ni terrain choisi ni chantier ni travaux achevés.",
+    "ru": "Поисковый эскиз. Он не подтверждает выбор участка, начало строительства или выполненные работы."
   }
 }

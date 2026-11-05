@@ -369,13 +369,21 @@ def assign_site_frames(page_frames, frames_cfg):
         name, separator, frame_id = key.partition("/")
         if not separator or name not in page_frames or frame_id not in page_frames[name]:
             raise BuildError(f"frames.json: override for unknown page/frame: {key}")
+        if not isinstance(candidates, list) or not candidates or any(
+                not isinstance(st, str) or not st for st in candidates):
+            raise BuildError(f"frames.json: invalid candidates for {key}")
     for key in hidden:
         name, separator, frame_id = key.partition("/")
         if not separator or name not in page_frames or frame_id not in page_frames[name]:
             raise BuildError(f"frames.json: preview_hidden has unknown page/frame: {key}")
-        if not isinstance(candidates, list) or not candidates or any(
-                not isinstance(st, str) or not st for st in candidates):
-            raise BuildError(f"frames.json: invalid candidates for {key}")
+    excluded = set()
+    if is_preview:
+        excluded.update(frames_cfg.get("preview_excluded_stems", ()))
+        # Removing or replacing a slot must not free its rejected render for
+        # another page. Reserve the original candidates before either pass.
+        for key in hidden | set(frames_cfg.get("preview_overrides", {})):
+            fid = key.partition("/")[2]
+            excluded.update(frames_cfg["prefer"].get(fid, ()))
     for rest in (False, True):
         for name, fids in page_frames.items():
             for fid in (fids[1:] if rest else fids[:1]):
@@ -384,7 +392,7 @@ def assign_site_frames(page_frames, frames_cfg):
                     out[name][fid] = None
                     continue
                 candidates = overrides.get(key, frames_cfg["prefer"].get(fid, []))
-                pick = next((st for st in candidates if st not in used), None)
+                pick = next((st for st in candidates if st not in used and st not in excluded), None)
                 if key in overrides and pick is None:
                     raise BuildError(f"frames.json: no unique image available for {key}")
                 if pick is not None:

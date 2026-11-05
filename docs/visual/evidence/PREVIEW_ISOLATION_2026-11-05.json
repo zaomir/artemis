@@ -1,0 +1,19 @@
+{
+  "status": "VERIFIED",
+  "regression_tests": 12,
+  "fixes": [
+    "Hidden/replaced legacy renders are reserved globally in preview, not freed for other pages",
+    "Synthetic excavation/frame/roof construction imagery excluded globally from preview",
+    "F23 mapping no longer consumes a raster render behind the vector locator",
+    "Override candidate validation fixed outside hidden-slot loop"
+  ],
+  "generated_default_diff": [
+    "site.css from canonical source",
+    "Five diary listing pages regenerated"
+  ],
+  "source_assets": [
+    "Four candidates have focal positions, five-locale alts and per-image captions"
+  ],
+  "financial_model_changes": false,
+  "production_assignment_changes": false
+}

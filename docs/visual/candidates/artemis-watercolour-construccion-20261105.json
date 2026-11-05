@@ -22,7 +22,7 @@
     "repository_path": "docs/visual/candidates/sources/7ogqYT3DK47f4vw3nQwc.png"
   },
   "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
-  "caption_and_alt": "REQUIRED in all EN/ES/DE/FR/RU before assignment",
+  "caption_and_alt": "Prepared in EN/ES/DE/FR/RU; not assigned to pages",
   "mobile_composition_verified": false,
   "architectural_status": "concept only, not a verified property",
   "no_auto_page_assignment": true,
@@ -83,5 +83,19 @@
       "Illustration does not establish location, design approval or actual construction progress",
       "Landscape 1280x720; original portrait composition still required for a mobile hero"
     ]
+  },
+  "alt": {
+    "en": "Illustrative watercolour sequence of possible future building stages, from a green slope to a house concept",
+    "es": "Secuencia ilustrativa en acuarela de posibles fases futuras, desde una ladera verde hasta un concepto de vivienda",
+    "de": "Illustrative Aquarellfolge möglicher künftiger Bauphasen, vom grünen Hang zum Hausentwurf",
+    "fr": "Séquence illustrative à l’aquarelle de phases futures possibles, du versant verdoyant au concept de maison",
+    "ru": "Условная акварельная последовательность возможных будущих этапов: от зелёного склона до концепции дома"
+  },
+  "captions": {
+    "en": "Possible future stages, illustrated conceptually; no stage shown is a record of actual project progress.",
+    "es": "Posibles fases futuras ilustradas de forma conceptual; ninguna imagen documenta avances reales del proyecto.",
+    "de": "Konzeptionelle Darstellung möglicher künftiger Phasen; keine Abbildung dokumentiert einen tatsächlichen Projektfortschritt.",
+    "fr": "Phases futures possibles représentées de façon conceptuelle ; aucune image ne documente un avancement réel du projet.",
+    "ru": "Концептуальная иллюстрация возможных будущих этапов. Изображения не являются отчётом о ходе работ."
   }
 }

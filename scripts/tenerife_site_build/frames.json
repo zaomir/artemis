@@ -134,14 +134,24 @@
     "boris-roof-9e3265": "50% 40%",
     "boris-drawings-d9ba7e": "50% 40%",
     "simon-permits-1e06e2": "50% 40%",
-    "artemis-watercolour-art01-20261104": "50% 50%"
+    "artemis-watercolour-art01-20261104": "50% 50%",
+    "artemis-watercolour-norte-20261105": "50% 50%",
+    "artemis-watercolour-producto-20261105": "50% 50%",
+    "artemis-watercolour-inversores-20261105": "50% 50%",
+    "artemis-watercolour-construccion-20261105": "50% 50%"
   },
   "preview_hidden": [
     "norte/F21",
     "producto/F05",
     "inversores/F14",
     "construccion/F15",
-    "equipo/F22"
+    "equipo/F22",
+    "norte/F23"
   ],
-  "_preview_hidden_explanation": "REVIEW safeguard: hide misleading completed-building and fake-construction photography until specific verified concept artwork is imported and approved. Does not affect default builds."
+  "_preview_hidden_explanation": "REVIEW safeguard: replaced/hidden legacy candidates are excluded site-wide in preview to prevent reassignment; F23 uses the source-based vector locator. Synthetic construction imagery is excluded globally. Default assignments are unchanged.",
+  "preview_excluded_stems": [
+    "build-pit-3ab7c2",
+    "build-frame-5e6d77",
+    "roof-montazh-6d90ef"
+  ]
 }
