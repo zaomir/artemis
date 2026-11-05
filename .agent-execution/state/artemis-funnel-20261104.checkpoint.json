@@ -2,15 +2,10 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 34,
-  "updated_at": "2026-11-05T10:52:17.633322+00:00",
-  "next_action": "reconcile:BASE-03-alias-DKIM-20261105-v1",
-  "pending": {
-    "key": "BASE-03-alias-DKIM-20261105-v1",
-    "action": "fixed read-only alias/received-delivery and DKIM diagnostics; request artemis-mail-routing-20261105-01; no messages or config changes",
-    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:52:17.633308+00:00"
-  },
+  "revision": 35,
+  "updated_at": "2026-11-05T10:55:27.512110+00:00",
+  "next_action": "MAIL-03 safety: release SQLite before network, atomic dispatch claim and no blind resend; provider activation remains gated",
+  "pending": null,
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -219,6 +214,19 @@
           "sha256": "5d31ef1aaeb21e33c1ff5fe998e29644f49ab47f7f75ec1bf9fb894b51551088"
         }
       ]
+    },
+    "BASE-03-alias-DKIM-20261105-v1": {
+      "key": "BASE-03-alias-DKIM-20261105-v1",
+      "action": "fixed read-only alias/received-delivery and DKIM diagnostics; request artemis-mail-routing-20261105-01; no messages or config changes",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:52:17.633308+00:00",
+      "verified_at": "2026-11-05T10:55:27.512095+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-03-routing-20261105.json",
+          "sha256": "311ad831435e6c3f8187cf50c524016626cecc9690314c4889fad5ee8ed8408a"
+        }
+      ]
     }
   },
   "history": [
@@ -425,6 +433,12 @@
       "at": "2026-11-05T10:52:17.633322+00:00",
       "event": "began:BASE-03-alias-DKIM-20261105-v1",
       "next_action": "reconcile:BASE-03-alias-DKIM-20261105-v1"
+    },
+    {
+      "revision": 35,
+      "at": "2026-11-05T10:55:27.512110+00:00",
+      "event": "verified:BASE-03-alias-DKIM-20261105-v1",
+      "next_action": "MAIL-03 safety: release SQLite before network, atomic dispatch claim and no blind resend; provider activation remains gated"
     }
   ],
   "policy": {

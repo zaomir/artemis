@@ -1,0 +1,78 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atom": "BASE-03",
+  "unit": "alias_aware_transport_and_DNS_inventory",
+  "observed_at": "2026-11-05T10:54:24.825Z",
+  "request_id": "artemis-mail-routing-20261105-01",
+  "provider_source_sha": "e516dedee5358499ceaf71b23b890f8bc47ff028",
+  "provider_pr": 2381,
+  "real_messages_sent": 0,
+  "production_changed": false,
+  "mail": {
+    "transport_source": "existing lead relay Gmail DWD",
+    "runtime_sender_configured": true,
+    "from_domain": "oxfordframe.com",
+    "from_fingerprint": "436b8d2a8a2471497a3151ce3926bd99a0be3fe1bd835e422d3f91e9c5298634",
+    "newsletter_reply_to_configured": false,
+    "newsletter_sender_enabled": false,
+    "provider_send_as_verified": true,
+    "responsible_reply_owner_verified": false,
+    "real_messages_sent": 0,
+    "dns": {
+      "spf_record_present": true,
+      "dmarc_record_present": true,
+      "dkim": "selector_not_yet_observed",
+      "tls": "Gmail_API_certificate_validation_enabled",
+      "default_selector_probe": {
+        "selector": "google",
+        "record_present": true,
+        "proves_active_signing": false
+      }
+    },
+    "provider_identity_is_primary": true,
+    "provider_identity_found": true,
+    "provider_identity_verification_status": "not_returned",
+    "provider_reply_to_present": false,
+    "transport": {
+      "protocol": "Gmail API HTTPS",
+      "smtp_used": false,
+      "certificate_validation_disabled": false
+    },
+    "observed_scopes": [],
+    "sent_reconciliation_read_permission_verified": true,
+    "reply_owner_role": "individual_assignee_not_recorded",
+    "reply_owner_assignment_recorded": false,
+    "reply_mailbox_verified": true,
+    "reply_mailbox_route": {
+      "authorized_mailbox_read": true,
+      "requested_address_is_primary": false,
+      "requested_address_is_verified_send_as": true,
+      "requested_alias_has_external_smtp": false,
+      "delegated_subject_observed": true,
+      "delegated_subject_matches_recipient": true,
+      "received_to_recipient_observed": false,
+      "delivery_envelope_matches_recipient": false,
+      "verified": true
+    },
+    "capability_limits": {
+      "new_subscription_purchase_required": false,
+      "existing_license_price": "not_in_Gmail_API",
+      "acceptance": "Gmail send returns provider ID; Sent metadata permits reconciliation",
+      "delivery": "acceptance alone does not prove recipient delivery",
+      "complaint_callback": "not_available_in_Gmail_message_API; authenticated operator suppression required",
+      "bounce_intake": "requires correlated delivery-status parsing from authorized sender inbox; not implemented yet"
+    }
+  },
+  "health_exit_code": 0,
+  "remaining_activation_gaps": [
+    "no recorded individual/staff reply assignment",
+    "newsletter Reply-To unset",
+    "default-selector DNS key is not proof of active DKIM signing; controlled delivered-message check required"
+  ],
+  "capability_matrix": {
+    "acceptance": "Gmail provider ID and Sent readback; not delivery",
+    "bounce": "authenticated correlated DSN inbox intake needs wiring",
+    "complaint": "authenticated operator suppression; no direct complaint callback in Gmail messages API",
+    "cost": "reuse existing Workspace credentials/license; no new purchase; invoice amount not exposed by Gmail API"
+  }
+}
