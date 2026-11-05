@@ -18,3 +18,5 @@ Tratamos los datos de contacto facilitados en las consultas (nombre, correo elec
 
 <!-- @recipients -->
 Destinatario y encargado del tratamiento de las copias de las consultas: Google (Gmail, Google Workspace). Se envía una copia de la notificación de nueva consulta (nombre, datos de contacto, importe previsto, si se ha indicado, y hora) a la dirección de servicio info@artemisresort.com. Google puede tratar los datos fuera del Espacio Económico Europeo (EEE) al amparo del Marco de Privacidad de Datos UE-EE. UU. o de cláusulas contractuales tipo.
+
+Las consultas, su origen y los cálculos enviados también se guardan en nuestro CRM Twenty alojado en nuestro servidor para gestionar respuestas y verificar su tramitación. El responsable es OXFORD FRAME REAL ASSETS LTD, Companies House n.º 09153936; contacto de privacidad: info@artemisresort.com. Las consultas se conservan hasta la retirada del consentimiento o el fin del proyecto. Una consulta no le suscribe a novedades por email ni a un grupo de Facebook.

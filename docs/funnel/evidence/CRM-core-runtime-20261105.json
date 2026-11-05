@@ -1,0 +1,301 @@
+{
+  "atoms": [
+    "CAP-02",
+    "CRM-02",
+    "CRM-03",
+    "CRM-04"
+  ],
+  "status": "crm_snapshot_verified_public_client_403_requires_separate_check",
+  "artemis_source_commit": "fbdf9d92321376b9cc0a86d5a5d1ba6b0f10c127",
+  "grainee_source_commit": "e2a1fcc0779d50aaaf88b2aedee393e55ef7499c",
+  "request_commit": "32bed167104c20996519ad7ccf904b60278055cf",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-crm-core-20261105-01.json",
+  "result": {
+    "request_id": "artemis-crm-core-20261105-01",
+    "type": "artemis_release",
+    "status": "error",
+    "generated_at": "2026-11-05T10:02:02.309Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [
+      {
+        "code": "internal_error",
+        "message": "release_unverified"
+      }
+    ],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-crm-core-release/1",
+        "requested_sha": "e2a1fcc0779d50aaaf88b2aedee393e55ef7499c",
+        "artemis_requested_sha": "fbdf9d92321376b9cc0a86d5a5d1ba6b0f10c127",
+        "production_changed": true,
+        "real_messages_sent": 0,
+        "new_crm_services": 0,
+        "stage": "completed",
+        "existing_compose_drift_exit_code": 0,
+        "release": {
+          "schema": "artemis-capture-migration/1",
+          "requested_sha": "fbdf9d92321376b9cc0a86d5a5d1ba6b0f10c127",
+          "production_changed": true,
+          "flags_changed": false,
+          "real_messages_sent": 0,
+          "crm_metadata_changed": false,
+          "previous_sha": "003980c2fcb4203301ff2d3b75e60a70f94315a6",
+          "deployed_sha": "15a18487023912cf48b83cead24d3f36028dea69",
+          "deploy": {
+            "exit_code": 0,
+            "stdout_sha256": "b4b3e4179d8d398e2b9422cf70c799aa8944daeac72f68e14e1cd1137359825f",
+            "test_summaries": [
+              "tests: Ran 540 tests in 317.403s OK (skipped=9) (rc=0)"
+            ]
+          },
+          "migration": {
+            "before": {
+              "leads": {
+                "count": 3,
+                "schema_sha256": "23d425464de60bf6f3c10ccca4015765f89e263fae366cd4828c24a0cfd9af81",
+                "all_fields_sha256": "afec8b21c21c5da1d9bd20e31eca01f610729c0e3c7f6bce86c6d58211cb8bdf"
+              },
+              "tenerife_waitlist": {
+                "count": 2,
+                "schema_sha256": "53f83431c07b429c0eede6edefdda35ced71aa6ef197a9e581a3eceefe22504b",
+                "all_fields_sha256": "697387efc2cfa774c7bdd1e59c1b786b71a6e654025b0821fdf6d0757d5de5af"
+              }
+            },
+            "after": {
+              "leads": {
+                "count": 3,
+                "schema_sha256": "23d425464de60bf6f3c10ccca4015765f89e263fae366cd4828c24a0cfd9af81",
+                "all_fields_sha256": "afec8b21c21c5da1d9bd20e31eca01f610729c0e3c7f6bce86c6d58211cb8bdf"
+              },
+              "tenerife_waitlist": {
+                "count": 2,
+                "schema_sha256": "53f83431c07b429c0eede6edefdda35ced71aa6ef197a9e581a3eceefe22504b",
+                "all_fields_sha256": "697387efc2cfa774c7bdd1e59c1b786b71a6e654025b0821fdf6d0757d5de5af"
+              }
+            },
+            "tables": {
+              "artemis_events": 0,
+              "artemis_crm_outbox": 0,
+              "artemis_subscriptions": 0,
+              "artemis_mail_outbox": 0
+            },
+            "independent_readback": true,
+            "backup_path": "/var/backups/artemis/capture-fbdf9d923213-before.sqlite",
+            "backup_sha256": "391c697fd4bfe847018470183265563184bfd4160af1a2c9413547c544903f3c"
+          },
+          "ok": true,
+          "mode": "applied"
+        },
+        "sync_source_sha": "1c49b46a2351164185bd872063658eaa9b567695",
+        "rollback_directory": "/var/backups/artemis/crm-core-e2a1fcc0779d",
+        "authenticated_route_invalid_payload_status": 400,
+        "reconciliation": {
+          "ok": true,
+          "result": {
+            "source_coverage": {
+              "leads": {
+                "accepted": 3,
+                "mapped_to_event": 3,
+                "unmapped": 0
+              },
+              "tenerife_waitlist": {
+                "accepted": 2,
+                "mapped_to_event": 2,
+                "unmapped": 0
+              }
+            },
+            "records": [
+              {
+                "source_event_id": "artemis:legacy:leads:1:68ff22c38a0e68b4f44da17c",
+                "project": "artemis_crete",
+                "is_test": true,
+                "person_id": "0e94ffb8-1d01-5913-849d-b86c130eec17",
+                "opportunity_id": "d353ea35-dce8-5332-9994-107a60ccaba3",
+                "state": "verified",
+                "independent_GET_readback": true
+              },
+              {
+                "source_event_id": "artemis:legacy:leads:2:486e1272f2acacbac110ddda",
+                "project": "artemis_crete",
+                "is_test": false,
+                "person_id": "65384838-f262-5460-ac19-bc8ebfe8c3ab",
+                "opportunity_id": "943c2885-701b-5908-b815-2f900dafa5f1",
+                "state": "verified",
+                "independent_GET_readback": true
+              },
+              {
+                "source_event_id": "artemis:legacy:leads:3:0bf2911ab06b576535bc865b",
+                "project": "artemis_crete",
+                "is_test": false,
+                "person_id": "5d805651-a692-5fce-afde-46655bb40fd5",
+                "opportunity_id": "632efca6-b854-5c95-9419-9b6f9e45d027",
+                "state": "verified",
+                "independent_GET_readback": true
+              },
+              {
+                "source_event_id": "artemis:legacy:tenerife_waitlist:1:aa9bea01bccef2e744a09a0f",
+                "project": "artemis_tenerife",
+                "is_test": true,
+                "person_id": "70c5b4a0-3044-5098-98f0-2bce553653be",
+                "opportunity_id": "3bd5ca40-4a78-5556-ad74-fdfea406288a",
+                "state": "verified",
+                "independent_GET_readback": true
+              },
+              {
+                "source_event_id": "artemis:legacy:tenerife_waitlist:2:8c9135d174bd2ad251c96e81",
+                "project": "artemis_tenerife",
+                "is_test": true,
+                "person_id": "43a99fad-f1a7-5e48-b119-f6d25eaddcea",
+                "opportunity_id": "0f22f923-ff29-5a69-a021-47bf3dab3fcf",
+                "state": "verified",
+                "independent_GET_readback": true
+              }
+            ],
+            "accepted": 5,
+            "verified": 5,
+            "test_records": 3,
+            "real_records": 2,
+            "unexplained": 0,
+            "all_snapshot_sources_verified": true,
+            "news_subscriptions": 0,
+            "mail_queue_count": 0,
+            "events_enqueued": 5,
+            "processing": [
+              {
+                "source_event_id": "artemis:legacy:leads:1:68ff22c38a0e68b4f44da17c",
+                "state": "verified"
+              },
+              {
+                "source_event_id": "artemis:legacy:leads:2:486e1272f2acacbac110ddda",
+                "state": "verified"
+              },
+              {
+                "source_event_id": "artemis:legacy:leads:3:0bf2911ab06b576535bc865b",
+                "state": "verified"
+              },
+              {
+                "source_event_id": "artemis:legacy:tenerife_waitlist:1:aa9bea01bccef2e744a09a0f",
+                "state": "verified"
+              },
+              {
+                "source_event_id": "artemis:legacy:tenerife_waitlist:2:8c9135d174bd2ad251c96e81",
+                "state": "verified"
+              }
+            ]
+          }
+        },
+        "public_pages": [
+          {
+            "path": "/tenerife/actualizaciones/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/privacy/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/actualizaciones/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/es/privacy/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/actualizaciones/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/de/privacy/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/actualizaciones/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/fr/privacy/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/actualizaciones/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/actualizaciones/concept-search/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          },
+          {
+            "path": "/tenerife/ru/privacy/",
+            "local_status": 200,
+            "public_status": 403,
+            "authentication_supplied": false
+          }
+        ],
+        "health_after_exit_code": 0,
+        "capture_enabled": true,
+        "crm_delivery_enabled": true,
+        "newsletter_enabled": false,
+        "ok": false
+      }
+    },
+    "error": {
+      "code": "internal_error",
+      "message": "release_unverified"
+    }
+  },
+  "conclusions": [
+    "Every original source row maps to a verified event and independently read Person/Opportunity. Accepted5 = verified5; real2; test3; unexplained0.",
+    "Existing service and relay only; no parallel CRM writer. New capture/delivery active; newsletter remains off.",
+    "Canonical full server suite540 passed,9 existing skips; all original source field digests preserved.",
+    "Overall bridge status is error because Python urllib public-page probes returned403. This does not negate independently verified CRM atoms. Public diary acceptance remains unverified pending ordinary-browser check; do not rerun a completed data migration."
+  ]
+}

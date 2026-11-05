@@ -31,6 +31,20 @@ class HTTPTest(unittest.TestCase):
         self.assertEqual(len(self.rows('SELECT * FROM artemis_crm_outbox')),1)
         self.assertFalse(self.rows('SELECT * FROM artemis_mail_outbox'))
         self.assertEqual(r.json['next_url'],'/tenerife/actualizaciones/')
+    def test_existing_crete_and_tenerife_forms_queue_without_newsletter(self):
+        import tenerife
+        with sqlite3.connect(self.db) as conn:
+            f.migrate(conn);tenerife.init_waitlist_db(conn)
+        with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0',ARTEMIS_CRM_CAPTURE_ENABLED='1'),patch('app.notify_lead'):
+            r=self.client.post('/api/enquiry',json=dict(name='TEST CRM',email='service@example.invalid',consent=True,enquiry_type='investor'))
+            self.assertEqual(r.status_code,200)
+            r=self.client.post('/api/tenerife/waitlist',json=dict(name='TEST CRM',contact='service@example.invalid',language='de',consent=True,page='/tenerife/de/'))
+            self.assertEqual(r.status_code,200)
+        events=[json.loads(r[0]) for r in self.rows('SELECT payload FROM artemis_events')]
+        self.assertEqual({e['project'] for e in events},{'artemis_crete','artemis_tenerife'})
+        self.assertEqual(len(self.rows('SELECT * FROM artemis_crm_outbox')),2)
+        self.assertFalse(self.rows('SELECT * FROM artemis_subscriptions'))
+        self.assertFalse(self.rows('SELECT * FROM artemis_mail_outbox'))
     def test_retry_is_one_legacy_lead_and_notification(self):
         self.submit();self.submit()
         self.assertEqual(len(self.rows('SELECT * FROM tenerife_waitlist')),1)
