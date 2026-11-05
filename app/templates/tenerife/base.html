@@ -1,29 +1,29 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 {% if canonical %}<link rel="canonical" href="{{ canonical }}">
 {% else %}<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
-{% endif %}<title>{% block title %}Artemis Tenerife — превью{% endblock %}</title>
-<meta name="description" content="Artemis Tenerife — проект 20 резиденций на севере Тенерифе на стадии подготовки. Бесплатная запись в очередь.">
+{% endif %}<title>{% block title %}Artemis Tenerife — preview{% endblock %}</title>
+<meta name="description" content="Artemis Tenerife: twenty residences in the north of Tenerife. Joining the queue is free.">
 <link rel="icon" href="/static/favicon-32x32.png">
 <link rel="stylesheet" href="/static/tenerife/base.css">
 </head>
 <body>
-{% if not canonical %}<div class="preview-bar">Предварительная версия · не опубликована</div>
+{% if not canonical %}<div class="preview-bar">Preview · not published</div>
 {% endif %}<header class="site"><div class="wrap">
-  <a class="brand" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}">Artemis Tenerife<small>Север Тенерифе · проект на стадии подготовки</small></a>
-  {% block headcta %}<a class="btn sm" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}#waitlist">Встать в очередь</a>{% endblock %}
+  <a class="brand" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}">Artemis Tenerife</a>
+  {% block headcta %}<a class="btn sm" href="{{ "/tenerife/" if canonical else "/tenerife-preview/" }}#waitlist">Join the queue</a>{% endblock %}
 </div></header>
 <main>
 {% block body %}{% endblock %}
 </main>
 <footer class="site"><div class="wrap">
-  <p><a href="/tenerife/impressum/">Правовая информация (Impressum / Aviso legal)</a><a href="/tenerife/privacy/">Конфиденциальность</a></p>
-  <p>Оператор страницы: OXFORD FRAME REAL ASSETS LTD (Companies House № 09153936, England and Wales).</p>
-  <p>Контакт: <!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a><!--/email_off--></p>
+  <p><a href="/tenerife/impressum/">Legal notice (Impressum / Aviso legal)</a><a href="/tenerife/privacy/">Privacy</a></p>
+  <p>Website operator: OXFORD FRAME REAL ASSETS LTD (Companies House No. 09153936, England and Wales).</p>
+  <p>Contact: <!--email_off--><a href="mailto:info@artemisresort.com">info@artemisresort.com</a><!--/email_off--></p>
 </div></footer>
 </body>
 </html>

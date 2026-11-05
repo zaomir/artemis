@@ -1,4 +1,4 @@
-"""copy_v3 15_impressum.md / 16_privacy.md -> {% block body %} of app/templates/tenerife/{impressum,privacy}.html
+"""copy_en 15_impressum.md (EN r1; was copy_v3) / 16_privacy.md -> {% block body %} of app/templates/tenerife/{impressum,privacy}.html
 (QA T3-09, Kimi 31.10.2026). Text word for word; markup only: h1/h2/p/ul, **b**, [link](url) (rel nofollow noopener),
 mailto + email_off around info@artemisresort.com, the old classes (intro line .muted, source line .muted src).
 usage: legal_from_copy.py [--check]   (--check: exit 1 if a template differs from what the copy gives)"""
@@ -11,9 +11,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 TPL = ROOT / "app" / "templates" / "tenerife"
 FILES = {"impressum": "15_impressum.md", "privacy": "16_privacy.md"}
-TITLES = {"impressum": "Правовая информация — Artemis Tenerife", "privacy": "Конфиденциальность — Artemis Tenerife"}
+TITLES = {"impressum": "Legal notice — Artemis Tenerife", "privacy": "Privacy — Artemis Tenerife"}   # copy «Meta title»
 EMAIL = "info@artemisresort.com"
-BACK = '  <p class="back"><a href="/tenerife/">← К сайту проекта</a></p>'
+BACK = '  <p class="back"><a href="/tenerife/">← Back to the project site</a></p>'
 
 
 def inline(t):
@@ -42,7 +42,7 @@ def body(md):
                 ul = True
             out.append(f"    <li>{inline(line[2:])}</li>")
         else:
-            cls = ' class="muted"' if first_p else (' class="muted src"' if line.startswith("Источник:") else "")
+            cls = ' class="muted"' if first_p else (' class="muted src"' if line.startswith("Source:") else "")
             out.append(f"  <p{cls}>{inline(line)}</p>")
             first_p = False
     if ul:
@@ -51,9 +51,9 @@ def body(md):
 
 
 def template(name):
-    md = (HERE / "copy_v3" / FILES[name]).read_text(encoding="utf-8")
+    md = (HERE / "copy_en" / FILES[name]).read_text(encoding="utf-8")
     return ('{% extends "tenerife/base.html" %}\n'
-            f'{{% block title %}}{TITLES[name]}{{% if not canonical %}} (превью){{% endif %}}{{% endblock %}}\n'
+            f'{{% block title %}}{TITLES[name]}{{% if not canonical %}} (preview){{% endif %}}{{% endblock %}}\n'
             '{% block body %}\n<section class="legal"><div class="wrap">\n'
             + body(md) + "\n</div></section>\n{% endblock %}\n")
 

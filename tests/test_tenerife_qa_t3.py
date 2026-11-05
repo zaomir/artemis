@@ -26,8 +26,7 @@ ENV_KEYS = ("ARTEMIS_TG_BOT_TOKEN", "ARTEMIS_TG_CHAT_ID", "TENERIFE_WHATSAPP", "
 import build_v3  # noqa: E402
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
-PAGES = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES
-         if name not in build_v3.FIGURE_ONLY_PAGES}   # r4.1 c2: calculadora is not served (302)
+PAGES = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
 
 
 def page(name):
@@ -147,29 +146,19 @@ class FormPayloadTest(AppCase):
                 d[n.group(1)] = htmllib.unescape(v.group(1) if v else "")
         return d
 
-    def test_calculadora_form_stores_calc_columns(self):
-        # r4.1: the calculator (and its calc_* fields) is only built with TENERIFE_SHOW_FIGURES=1
-        self.assertFalse([k for k in self.form_payload("calculadora") if k.startswith("calc_")])
-        with mock.patch.dict(os.environ, {"TENERIFE_WHATSAPP": "+440000000000"}):   # dummy: the build needs one
-            shown = build_v3.build(write=False, show_figures=True)[0]["calculadora"]
-        d = self.form_payload("calculadora", shown)
-        self.assertEqual(sorted(k for k in d if k.startswith("calc_")), ["calc_m2", "calc_pay", "calc_step"])
-        self.assertEqual(d["page"], "/tenerife/calculadora/")
-        r = self.client.post("/api/tenerife/waitlist", json=d, headers={"X-Real-IP": "203.0.113.5"})
-        self.assertEqual(r.get_json(), {"ok": True})
-        row = self.rows()[0]
-        model = json.loads((ROOT / "app/tenerife_site/data/model.json").read_text(encoding="utf-8"))
-        self.assertEqual((row["calc_status"], row["calc_m2"], row["calc_step"], row["calc_pay"]),
-                         ("ok", 72, "queue", "m12"))
-        self.assertEqual((row["calc_amount"], row["calc_month_eur"], row["calc_model_version"]),
-                         (212400, 17700, model["version"]))
-        self.assertEqual(self.nl.call_args.kwargs["calc"]["calc_amount"], 212400)  # mocked: nothing sent
+    def test_calculadora_redirects_and_no_page_sends_calc_fields(self):
+        # EN r1: no calculator; the old URL is a 301 to the Terms page, no form carries calc_* fields
+        r = self.client.get("/tenerife/calculadora/")
+        self.assertEqual((r.status_code, r.headers["Location"].split("artemisresort.com")[-1].replace("http://localhost", "")),
+                         (301, "/tenerife/condiciones/"))
+        for name in PAGES:
+            self.assertFalse([k for k in self.form_payload(name) if k.startswith("calc_")], name)
 
     def test_other_pages_send_page_only(self):
         for name in PAGES:
             d = self.form_payload(name)
             self.assertEqual(d["page"], PAGES[name], name)
-            if name != "calculadora":
+            if True:
                 self.assertFalse([k for k in d if k.startswith("calc_")], name)
 
 
@@ -183,8 +172,8 @@ class NoJsAnswerTest(AppCase):
         body = g.get_data(as_text=True)
         self.assertEqual(g.status_code, 200)
         self.assertIn("noindex", g.headers.get("X-Robots-Tag", "") + body)
-        self.assertIn("Спасибо! Вы в очереди.", body)
-        self.assertIn('<a href="/tenerife/faq/">← К сайту проекта</a>', body)
+        self.assertIn("Thank you! You&#x27;re in the queue.", body)
+        self.assertIn('<a href="/tenerife/faq/">← Back to the project site</a>', body)
         self.assertIn('<link rel="stylesheet" href="/static/tenerife/site/site.css">', body)
         self.assertNotIn("{{NOTICE_", body)
 
@@ -199,8 +188,8 @@ class NoJsAnswerTest(AppCase):
         r = self.lead(json_body=False, consent=False, page="/tenerife/proceso/")
         body = r.get_data(as_text=True)
         self.assertEqual(r.status_code, 400)
-        self.assertIn("Отметьте согласие на обработку данных.", body)
-        self.assertIn('<a href="/tenerife/proceso/#ochered">← Назад к форме</a>', body)
+        self.assertIn("Please tick the box to consent to data processing.", body)
+        self.assertIn('<a href="/tenerife/proceso/#ochered">← Back to the form</a>', body)
         self.assertNotIn('<p class="hero__lead"></p>', body)
         self.assertIn('class="header', body)
         self.assertIn("noindex", r.headers.get("X-Robots-Tag", "") + body)
@@ -323,15 +312,13 @@ class MenuScriptTest(unittest.TestCase):
 # ---------------------------------------------------------------- T3-07 / T3-11
 class ComponentsTest(unittest.TestCase):
     def test_steps_log_people_mini_ladder_short_calc(self):
-        # r4.1: the mini ladder and the short calculator are figures -> only with TENERIFE_SHOW_FIGURES=1
-        shown = build_v3.build(write=False, show_figures=True)[0]
-        for name in ("index", "construccion", "mercado"):
-            self.assertIn('<ol class="ladder ladder--mini"', shown[name], name)
+        # EN r1: no mini ladder (model.json stage prices are not approved) and no short calculator
+        for name in PAGES:
             self.assertNotIn('class="ladder', page(name), name)
         # C10 hidden (designer 20:23): copy_v3 has no confirmed log entries; the copy stays as an ordinary table,
         # no log markup and no anchor to it anywhere
-        heads = {"index": '<th scope="col">Когда, по плану</th>',
-                 "construccion": '<th scope="col">Дата, по плану</th>'}
+        heads = {"index": '<th scope="col">When (planned)</th>',
+                 "construccion": '<th scope="col">Date (planned)</th>'}
         for name, th in heads.items():
             self.assertIn(th, page(name), name)
         for f in SITE.glob("*.html"):
@@ -340,26 +327,21 @@ class ComponentsTest(unittest.TestCase):
             self.assertNotIn('href="#log', html, f.name)
         # C11 OFF (designer r3 item 4): no documented who/when for the roles -> whole section not rendered
         self.assertEqual(build_v3.TEAM_SECTIONS, set())
-        self.assertIn(("index", "Команда и компания"), build_v3.HIDDEN_SECTIONS)
+        self.assertIn(("index", "Team and company"), build_v3.HIDDEN_SECTIONS)
         for name in PAGES:
             self.assertNotIn('class="people', page(name), name)
-        self.assertNotIn("Команда и компания", page("index"))
+        self.assertNotIn("Team and company", page("index"))
         self.assertIsNone(re.search(r"<section[^>]*>\s*</section>", page("index")))
         for href in ("/tenerife/simon/", "/tenerife/boris/"):
             self.assertIn(f'<li><a href="{href}">', page("index"))
         self.assertNotIn('id="calc"', page("acciones"))
         self.assertNotIn("calc.js", page("acciones"))
-        a = shown["acciones"]
-        self.assertIn('class="wrap grid calc calc--short" id="calc"', a)
-        self.assertIn('<script type="application/json" id="cs-model">', a)
-        self.assertIn('<script src="/static/tenerife/site/calc.js"', a)
-        self.assertNotIn("Сумма", re.sub(r"<script.*?</script>", "", a, flags=re.S))
         self.assertIn('<ol class="grid steps">', page("proceso"))  # 09: numbered paragraphs
-        # Kimi r18: the «Порядок входа» / «Как устроен вход» paragraphs of 02 04 05 06 09 12 now have 7 sentences;
+        # Kimi r18: the «How you enter» / «How entry works» paragraphs have more than 6 sentences;
         # C7 is 3–6 steps (DESIGN.md), so they stay one paragraph (text as in the copy, not split)
-        for name in ("norte", "calculadora", "alquiler", "mercado"):
+        for name in ("norte", "condiciones", "alquiler", "mercado"):
             self.assertNotIn('<ol class="grid steps">', page(name), name)
-            self.assertIn("Денег до выбора участка не берём", page(name), name)
+            self.assertIn("We take no money before the site is", page(name), name)
 
     def test_f14_f16_without_photo(self):
         report = json.loads((BUILD / "frames_report.json").read_text(encoding="utf-8"))
@@ -400,21 +382,18 @@ class LegalPagesTest(AppCase):
     def test_v2_layout_and_text_verbatim(self):
         for name in ("impressum", "privacy"):
             body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
-            self.assertIn(build_v3.wording_off(build_v3.legal_body(name)), body, name)   # r4.1 c2 wording
+            self.assertIn(build_v3.legal_body(name), body, name)
             self.assertIn('class="header', body)
             self.assertIn('<footer', body)
             self.assertNotIn("cloudflareinsights", body)
             self.assertEqual(body, self.tenerife._finish(page(name)))  # r4: runtime slots (WhatsApp, robots)
 
     def test_legal_meta_description_from_copy(self):
-        """r3: meta description of impressum / privacy = the PRIMARY variant of copy_v3/meta_legal.md, verbatim
-        (read from the file; fallback variants ignored); exactly one per page, served as built."""
-        md = (BUILD / "copy_v3/meta_legal.md").read_text(encoding="utf-8")
-        for name in ("impressum", "privacy"):
-            sec = re.search(rf"^## /tenerife/{name}/.*?(?=^## |\Z)", md, re.S | re.M).group(0)
-            n, want = re.search(r"^\*\*Основной \((\d+) симв\.\):\*\*\n(.+)$", sec, re.M).groups()
-            self.assertEqual(len(want), int(n), name)
-            self.assertTrue(120 <= len(want) <= 155, name)
+        """EN r1: copy_en 15/16 give no meta description: it is the copy's own first line under the H1, verbatim."""
+        wants = {"impressum": "Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) for the Artemis Tenerife website.",
+                 "privacy": "For the Artemis Tenerife website and queue sign-up. Version of 05.11.2026."}
+        for name, want in wants.items():
+            self.assertIn("\n" + want + "\n", (BUILD / "copy_en" / build_v3.LEGAL_FILES[name]).read_text(encoding="utf-8"))
             body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
             for html_ in (body, page(name)):
                 got = re.findall(r'<meta name="description" content="([^"]*)">', html_)
@@ -445,8 +424,10 @@ class KimiTextsTest(unittest.TestCase):
         return re.sub(r"\( ", "(", re.sub(r" ([.,)])", r"\1", t))  # spaces left by removed inline tags
 
     def test_copy_hash(self):
-        self.assertEqual(build_v3.COPY_SHA256_DEFAULT,
-                         "d50ee7e4962a7fbbceec800dc7e9fcbc2c922dab79fb370ed0de4114c9f6be79")
+        self.assertEqual(build_v3.COPY_SHA256_DEFAULT,   # EN r1: copy_en 01-18 (Kimi 01.11, Lead 05.11)
+                         "5c5b5d783cce14a9656c95a781e86d762a861eb81a8176821b86f27d5d55fb68")
+        for f in build_v3.copy_files():
+            self.assertEqual(hashlib.sha256(f.read_bytes()).hexdigest(), build_v3.COPY_FILE_SHA256[f.name], f.name)
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
 
     def test_copy_hash_is_configurable(self):
@@ -464,8 +445,8 @@ class KimiTextsTest(unittest.TestCase):
         for name, md in legal_from_copy.FILES.items():
             tpl = (ROOT / "app/templates/tenerife" / f"{name}.html").read_text(encoding="utf-8")
             self.assertEqual(tpl, legal_from_copy.template(name), name)
-            src = re.sub(r"<!--.*?-->", "", (BUILD / "copy_v3" / md).read_text(encoding="utf-8"), flags=re.S)
-            self.assertIn(self.words(build_v3.wording_off(src)), self.words(page(name)), name)   # r4.1 c2
+            src = re.sub(r"<!--.*?-->", "", (BUILD / "copy_en" / md).read_text(encoding="utf-8"), flags=re.S)
+            self.assertIn(self.words(src), self.words(page(name)), name)
 
     def test_no_waiting_list_wording(self):
         files = [*SITE.glob("*.html"), *(ROOT / "app/templates/tenerife").rglob("*.html"),
@@ -474,31 +455,29 @@ class KimiTextsTest(unittest.TestCase):
             self.assertIsNone(re.search(r"[Лл]ист\w* ожидани", f.read_text(encoding="utf-8")), f.name)
 
     def test_consent_wording_and_link(self):
-        """QA R12 item 5: the consent line on all 13 pages == copy_v3/17_forma.md line 7 (read from the copy file,
+        """QA R12 item 5: the consent line on all 14 pages == copy_en/17_forma.md «Consent.» (read from the copy file,
         so a later copy change fails here until the pages are rebuilt)."""
-        line7 = (BUILD / "copy_v3/17_forma.md").read_text(encoding="utf-8").splitlines()[6]
-        m = re.fullmatch(r"\*\*Согласие\.\*\* (.+)", line7)
-        self.assertIsNotNone(m, line7)
+        line = next(x for x in (BUILD / "copy_en/17_forma.md").read_text(encoding="utf-8").splitlines()
+                    if x.startswith("**Consent.**"))
+        m = re.fullmatch(r"\*\*Consent\.\*\* (.+)", line)
         md = m.group(1)
         self.assertNotIn("*", md)
         links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", md)
-        self.assertEqual(links, [("политике конфиденциальности", "/tenerife/privacy/")])
-        want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', md) + "</span>"
-        self.assertEqual(len(PAGES), 12)   # r4.1 c2: calculadora is not served
-        shown = build_v3.wording_off(want)   # r4.1 c2: «расчёт по вашему запросу» (Lead 01.11)
-        self.assertNotEqual(shown, want)
+        self.assertEqual(links, [("privacy policy", "/tenerife/privacy/")])
+        self.assertIn("sent a calculation on request", md)   # r4.1 c2 / EN r1: no calculator wording
+        self.assertNotIn("calculator", md)
+        want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', htmllib.escape(md, quote=False)) + "</span>"
+        self.assertEqual(len(PAGES), 14)
         for name in PAGES:
             html = page(name)
             self.assertEqual(html.count('id="wl-consent"'), 1, name)
-            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [shown], name)
-        for f in ("scripts/tenerife_site_build/_waitlist.html",):   # r4.1 c2: unused preview.html deleted
-            self.assertIn(want, (ROOT / f).read_text(encoding="utf-8"), f)
+            self.assertEqual(re.findall(r'id="wl-consent"[^>]*>(<span>.*?</span>)</label>', html), [want], name)
 
     def test_no_web_analytics_wording(self):
         """QA R12-03: no Tenerife page claims analytics / visit statistics (privacy r12: analytics not used)."""
         rx = re.compile(r"Web\s+Analytics|статистик\w*\s+посещени", re.I)
         files = [*SITE.glob("*.html"), *(ROOT / "app/templates/tenerife").rglob("*.html"),
-                 *(BUILD / "copy_v3").glob("1[5-7]_*.md")]
+                 *(BUILD / "copy_en").glob("1[5-7]_*.md")]
         for f in files:
             self.assertIsNone(rx.search(f.read_text(encoding="utf-8")), f.name)
         for u in ("/tenerife/privacy/", "/tenerife/impressum/", "/tenerife-preview/privacy/"):

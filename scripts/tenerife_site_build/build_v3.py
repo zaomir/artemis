@@ -1,16 +1,18 @@
-"""Build the RU v3 Tenerife site (13 pages) from the verbatim copy in copy_v3/.
+"""Build the EN Tenerife site (14 pages, Spanish slugs) from the verbatim copy in copy_en/.
 
-  python3 scripts/tenerife_site_build/make_model.py   # numbers.md + model_inputs.json -> model.json
-  python3 scripts/tenerife_site_build/build_v3.py     # copy_v3/*.md + model.json -> app/tenerife_site/*.html
+  python3 scripts/tenerife_site_build/build_v3.py     # copy_en/*.md -> app/tenerife_site/*.html
 
+EN r1 (founder t122u via Lead 01.11, BLK-20261031-20): the public /tenerife/ site is English only. The copy
+(copy_en/, Kimi/web-designer, 01.11.2026) already carries ONLY the approved ranges (price per metre ≈2,900–3,100 €/m²
+from the queue → ≈3,700–3,900 €/m² by completion, expected dividend 2.5–3.5% a year before tax), so the pages show the
+copy as written: no model.json token substitution, no figure hiding, no calculator (page 05 is «Terms»,
+/tenerife/condiciones/). model.json stays in app/tenerife_site/data/ (server side only, never served).
 Texts are taken as written (no edits). The only transformations:
-  * figures: every model token is replaced copy -> value from model.json (identity while the
-    inputs equal the copywriter's baseline), so a price change is one edit in model_inputs.json;
-  * [КАДР Fxx] markers -> <picture> of an existing Canary Stone photo (frames.json);
+  * [FRAME Fxx] (or the RU [КАДР Fxx]) markers -> <picture> of an existing Canary Stone photo (frames.json);
   * markdown (# ## ### | - 1. ** [](...)) -> HTML through Jinja components in
-    app/templates/tenerife/site/ (hero, facts, units, section, frame/gallery, table, cta, footer).
-The build fails if '[КАДР', '{{', '{%' or any HTML comment other than <!--email_off--> markers
-reaches the output. build.py (old pages) and email_off.py are not touched; wrap() is the last step.
+    app/templates/tenerife/site/ (hero, facts, section, frame, table, cta, footer).
+The build fails if a marker, '{{', '{%', any HTML comment other than <!--email_off--> markers, Cyrillic text, a
+forbidden figure (FORBIDDEN_FIGURES) or a calculator link / script reaches the output. email_off.wrap() is the last step.
 """
 import hashlib
 import html
@@ -27,27 +29,47 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from email_off import unprotected, wrap  # noqa: E402
 
-COPY = HERE / "copy_v3"
+COPY = HERE / "copy_en"
 SITE = ROOT / "app" / "tenerife_site"
 STATIC = ROOT / "app" / "static"
 IMG = STATIC / "tenerife" / "site" / "img"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
-MODEL = ROOT / "app" / "tenerife_site" / "data" / "model.json"   # r4.1: not under static (nginx serves /static/ from disk)
+MODEL = ROOT / "app" / "tenerife_site" / "data" / "model.json"   # server side only (never under static, never served)
 BASE_URL = "https://artemisresort.com"
-# Approved copy: sha256 of copy_v3 01-17 combined (= Artemis_Tenerife_RU_copy_v3.md; final copy, 31.10.2026 20:48).
-# Configurable until the final value: TENERIFE_COPY_SHA256=<sha> overrides the default for a build / test run.
-# Kimi r16: 01–17 only (explicit list, copy_files(); draft 18_investoram.md not built) = Artemis_Tenerife_RU_copy_v3.md
-COPY_SHA256_DEFAULT = "d50ee7e4962a7fbbceec800dc7e9fcbc2c922dab79fb370ed0de4114c9f6be79"
+# Approved EN copy (Kimi, 01.11.2026; 16+17 privacy «Telegram + email» 05.11.2026, QA PASS; sha256 per file confirmed by the Lead 05.11.2026): each file pinned, and the
+# combined sha256 of copy_files() (01-18 joined like the RU build). TENERIFE_COPY_SHA256=<sha> overrides the combined
+# value for a build / test run; a changed file fails the build until it is re-approved and re-pinned here.
+COPY_FILE_SHA256 = {
+    "01_glavnaya.md": "15ed52b2f6341a9cd904ee2a255d0095ec1691762467b5b7a8ff4b858e80c4e5",
+    "02_sever.md": "db210e3988551c98b55c1de0b2a2f7441662056d00f7eea6653abf0a0e02d8a0",
+    "03_rezidencii.md": "e7becf1dde0980943b62d90c68dce8c99a64aa76aa8031a431c7559cb5b14138",
+    "04_akcii.md": "87f925bcef7c7c44180e555f8bf7129e60120fc2ebe53171ff66c457f200c080",
+    "05_kalkulyator.md": "07ee58b6e5116ef118b59470f213c96adb24e8243128fc18dc14657f5062ec0c",
+    "06_arenda.md": "9cf1a56a7183aa7bf832fada043f1150ccb6e44def4d5028bdfa35687194f5f5",
+    "07_energiya.md": "4008843ceda4adf2d3d1822720af082b997d82644ce008bbb0864e84a85615a8",
+    "08_stroyka.md": "1065050afe778e786b0bc20607cd4dbdffd54e694df9654f6c1880da1329aeb7",
+    "09_sdelka.md": "cc8617081fa85dfc8a7857b79c1a40fd19adc59a2bd8e1a90a481951de99994d",
+    "10_voprosy.md": "2ec743163125175e8627ed57f129eab2b62533d36814642f90467426083dbbbf",
+    "11_simon.md": "6ec1fcf18e1a58c73133744ce813810dcc9fe07f46a2114a8bbbabc4a5637a14",
+    "12_rynok.md": "32bbb83feae3fe222bc1c6c415a018bbc6fe0c339d18bc86aa07ecbc45865a39",
+    "13_boris.md": "a11c59a265cbd83afb7f9e418c8e24add147db88795aaaa53cc2916379cc10cb",
+    "14_podval.md": "2ab7720e8770e4fd02e17f9c8615aaa4b7f6befa248bd5cf2eeff6b9762a669f",
+    "15_impressum.md": "690680b4885b9ca44fcace1383e3825c5935d64b2773e0569d65e2532edf28a1",
+    "16_privacy.md": "dbfd963514853f2de4b33b97459bbfd89f0dad2523719f304a2f0a38b457ad91",
+    "17_forma.md": "32bb8774313318ea43ba682ee002fc11cbb2be2120f6794833391f8baf2bb7f5",
+    "18_investoram.md": "88e4840ecbeb68b3cc347f5728a6691bef33a2b41ab0ebd28e9dbedddb8a2229",
+}
+COPY_SHA256_DEFAULT = "5c5b5d783cce14a9656c95a781e86d762a861eb81a8176821b86f27d5d55fb68"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
-# copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Слаг»
+# copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Slug» (Spanish slugs kept)
 PAGES = [("01_glavnaya.md", "index"), ("02_sever.md", "norte"), ("03_rezidencii.md", "producto"),
-         ("04_akcii.md", "acciones"), ("05_kalkulyator.md", "calculadora"), ("06_arenda.md", "alquiler"),
+         ("04_akcii.md", "acciones"), ("05_kalkulyator.md", "condiciones"), ("06_arenda.md", "alquiler"),
          ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"), ("09_sdelka.md", "proceso"),
-         ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris")]
+         ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris"),
+         ("18_investoram.md", "inversores")]
 FOOTER = "14_podval.md"
-WA_TOKEN = "WhatsApp: {номер из TENERIFE_WHATSAPP}"  # 14_podval.md «Контакты.»
 WA_RX = re.compile(r"\+[1-9]\d{7,14}")  # E.164, same rule as app/tenerife.py whatsapp_number()
 # phone-like literal (not a CSS unicode-range U+…): + or 00, then ≥ 8 digits (spaces . - ( ) nbsp between)
 PHONE_RX = re.compile(r"(?:(?<![Uu])\+|\b00)\d(?:[\s\u00a0.()\-]*\d){7,}")
@@ -55,29 +77,27 @@ PHONE_RX = re.compile(r"(?:(?<![Uu])\+|\b00)\d(?:[\s\u00a0.()\-]*\d){7,}")
 
 def check_whatsapp_env():
     """Kimi r16: the build fails when TENERIFE_WHATSAPP is empty or invalid. The value is never printed and never
-    written into the output (runtime slot, see parse_footer)."""
+    written into the output (runtime slot <li data-tenerife-whatsapp hidden>, filled by app/tenerife.py)."""
     v = os.environ.get("TENERIFE_WHATSAPP", "").strip()
     if not v:
         raise BuildError("TENERIFE_WHATSAPP is empty: set it (E.164, e.g. +440000000000) before building")
     if not WA_RX.fullmatch(v):
         raise BuildError("TENERIFE_WHATSAPP is invalid (expected E.164: + then 8–15 digits); value not shown")
-# footer «Страницы.» names -> output name (names are the copy's; order is the copy's)
-NAV = {"Главная": "index", "Север": "norte", "Резиденции": "producto", "Акции": "acciones",
-       "Калькулятор": "calculadora", "Аренда": "alquiler", "Энергия": "energia", "Стройка": "construccion",
-       "Сделка": "proceso", "Вопросы": "faq", "Рынок и цена метра": "mercado", "Simon Subic": "simon",
-       "Boris Ribaut": "boris"}
-CALC_PAGE = "calculadora"
+
+
+# footer «Pages.» names -> output name (names and order are the copy's)
+NAV = {"Home": "index", "The North": "norte", "Residences": "producto", "Shares": "acciones",
+       "Terms": "condiciones", "Rental": "alquiler", "Energy": "energia", "Construction": "construccion",
+       "Process": "proceso", "For investors": "inversores", "FAQ": "faq", "Market and price per metre": "mercado",
+       "Simon Subic": "simon", "Boris Ribaut": "boris"}
 FORM_HOST_PAGE = "/tenerife/proceso/"
 
 # DESIGN.md §5: pages 11 and 13 are long text (solid header, 760 px column); 05 and 10 have a short hero
 LONG_PAGES = {"simon", "boris"}
-SHORT_HERO = {"calculadora", "faq"}
-# DESIGN.md C1: 7 links + «Ещё»; labels are the footer's («Страницы.»)
-# Kimi r18: footer items for pages that are not built yet. Shown only once the page is in PAGES (page 18
-# «Инвесторам» -> /tenerife/inversores/ is a draft, not built), so the footer never links to a 404.
-NAV_FUTURE = {"Инвесторам": "inversores"}
-NAV_PRIMARY = ["norte", "producto", "acciones", "calculadora", "construccion", "proceso", "faq"]
-NAV_MORE = ["alquiler", "energia", "mercado", "simon", "boris"]
+SHORT_HERO = {"condiciones", "faq"}
+# DESIGN.md C1: 7 links + «More»; labels are the footer's («Pages.»). Terms takes the calculator's place.
+NAV_PRIMARY = ["norte", "producto", "acciones", "condiciones", "construccion", "proceso", "faq"]
+NAV_MORE = ["alquiler", "energia", "inversores", "mercado", "simon", "boris"]
 
 SIZES = {
     # must match site.css (DESIGN.md C2, C15): hero full-bleed (4:5 crop of a 16:9 photo below 768 px),
@@ -97,236 +117,38 @@ class BuildError(Exception):
     pass
 
 
-# ---------------------------------------------------------------- r4.1: figures hidden until approved
-# Project preview rule (DEC-ARTEMIS-TENERIFE-PREVIEW): no dividends and no price ladder in public. Founder: figures
-# come back later, as ranges, once approved. Until then (TENERIFE_SHOW_FIGURES unset = default) the build leaves out of
-# the rendered pages every sentence, list item, table row (or the whole table when its head has one), heading clause and
-# meta text with a euro amount (price per m² / per share, ladder, payment example, dividend, rent or cost figure) or a
-# percentage about a dividend / yield / return; the C8 ladders, the C9 calculator (calculadora, acciones) and every
-# section, lead or intro left empty by that. The copy (copy_v3, COPY_SHA256) and model.json are NOT changed:
-# TENERIFE_SHOW_FIGURES=1 python3 scripts/tenerife_site_build/build_v3.py rebuilds the pages exactly as before r4.1.
-def show_figures_env():
-    return os.environ.get("TENERIFE_SHOW_FIGURES", "").strip() == "1"
+# ---------------------------------------------------------------- EN r1 guards (BLK-20261031-20)
+# The approved ranges must be visible; figures that were never approved must never appear (any separator).
+_S = r"[\s\u00a0\u202f,.]?"
+FORBIDDEN_FIGURES = re.compile(
+    rf"(?<![\d,.])87{_S}€|€{_S}87(?![\d,.])|(?<![\d,.])2{_S}950(?!\d)|(?<![\d,.])3{_S}850(?!\d)"
+    rf"|(?<![\d,.])3{_S}800{_S}[–-]{_S}4{_S}600(?!\d)|\bRIC\b|\bZEC\b")
+APPROVED_RANGES = ("≈2,900–3,100", "≈3,700–3,900", "2.5–3.5%")
+CYRILLIC_RX = re.compile(r"[\u0400-\u04FF]")
+# the only Cyrillic allowed in a page: the endonym of one contact language in the waitlist <select>
+CYRILLIC_ALLOWED = ('<option value="ru">Русский</option>',)
+OLD_CALC_URL = "/tenerife/calculadora"
 
 
-_SP = r"[\s\u00a0\u202f]?"
-EUR_FIG_RX = re.compile(rf"\d{_SP}€|€{_SP}\d|€/[мm]²|\d{_SP}евро\b")
-PCT_FIG_RX = re.compile(rf"\d{_SP}%")
-PCT_CTX_RX = re.compile(r"(?i)дивиденд|доходн|годовых|вложен|к цене|рост|Bund|Festgeld|\bстатья\b")
-# sentence end: . ! ? (optionally closing a **lead.**) + space, next sentence starts with a capital, digit, «, ( or **
-_SENT_SPLIT_RX = re.compile(r"(?:(?<=[.!?])|(?<=[.!?]\*\*))\s+(?=(?:\*\*|[«(])?[А-ЯЁA-Z0-9])")
-_LEAD_ONLY_RX = re.compile(r"^\*\*[^*]+\*\*[.:]?$")
-_TABLE_SEP_RX = re.compile(r"^\|(\s*:?-+:?\s*\|)+$")
-_LIST_RX = re.compile(r"^(?:- |\d+\. )")
-_SPECIAL_RX = re.compile(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|<!--|\*\*Кнопка:)")
+def check_en(name, out):
+    """EN r1: no Cyrillic UI/copy, no forbidden figure, no calculator link / script / form field, no model.json."""
+    probe = out
+    for ok in CYRILLIC_ALLOWED:
+        probe = probe.replace(ok, "")
+    m = CYRILLIC_RX.search(probe)
+    if m:
+        raise BuildError(f"{name}: Cyrillic left in the EN page: …{probe[max(0, m.start() - 30):m.start() + 30]}…")
+    m = FORBIDDEN_FIGURES.search(html.unescape(out))
+    if m:
+        raise BuildError(f"{name}: forbidden figure «{m.group(0)}»")
+    for bad in (OLD_CALC_URL, "calc.js", "model.json", 'name="calc_', 'hreflang='):
+        if bad in out:
+            raise BuildError(f"{name}: «{bad}» in output (EN r1: no calculator, no model, no hreflang)")
 
 
-# sections that are a payment / dividend example, the price ladder or a yield benchmark as a whole: what is left of them
-# without the figures is a stub that points at numbers no longer shown, so they go completely (heading + frames)
-FIGURE_SECTIONS = {("norte", "Рынок рядом"), ("acciones", "Пример на 72 метрах"),
-                   ("calculadora", "Три готовых примера из очереди"),
-                   ("calculadora", "Почему дивиденд в евро, а не в процентах"),
-                   ("calculadora", "Если ступень уже позже"), ("alquiler", "Годовая картина: 72 метра"),
-                   ("proceso", "Пример на 72 метрах"), ("mercado", "Ступени Artemis рядом с рынком"),
-                   ("mercado", "Немецкие ориентиры")}
-
-
-# r4.1 c2 (Lead 01.11 00:58 UTC): the calculator page is not served while the figures are hidden (app/tenerife.py:
-# FIGURE_ONLY_PAGES -> 302 to /tenerife/), so no page links it: it leaves the header menu and the footer «Страницы.»,
-# and the consent / privacy wording about «the calculation from the calculator» becomes the Lead's «расчёт по вашему
-# запросу» (exact strings below, each must be found: a copy change fails the build instead of silently passing).
-# calculadora.html is still built (kept in the repo, served only with TENERIFE_SHOW_FIGURES=1 at runtime).
-FIGURE_ONLY_PAGES = ("calculadora",)
-CONSENT_OLD = "(имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт)"
-CONSENT_NEW = "(имя, контакт, язык, страница, дата и время, расчёт по вашему запросу)"
-PRIVACY_WORDING = [   # (before, after), verbatim; app/templates/tenerife/privacy.html (= copy_v3/16_privacy.md)
-    ("Из калькулятора, если заявка отправлена со страницы калькулятора: площадь в метрах, ступень цены и способ "
-     "оплаты — сразу или за 12 месяцев. По этим трём значениям сервер сам пересчитывает число акций, цену метра, сумму "
-     "и платёж в месяц и сохраняет расчёт вместе с заявкой.",
-     "Расчёт по вашему запросу."),
-    ("Сумму в форму вы не вводите: её считает калькулятор.", "Сумму в форму вы не вводите."),
-    ("в том числе прислать расчёт из калькулятора,", "в том числе прислать расчёт по вашему запросу,"),
-    ("имя, контакт, язык, страница, а для заявки из калькулятора — расчёт.",
-     "имя, контакт, язык, страница, расчёт по вашему запросу."),
-]
-
-
-CALC_JS = ROOT / "app" / "tenerife_site" / "data" / "calc.js"   # r4.1 c2: out of app/static (not served)
-
-
-def wording_off(text):
-    """The Lead's wording applied to any text (copy markdown or HTML): what the committed pages show (tests)."""
-    for old, new in [(CONSENT_OLD, CONSENT_NEW)] + PRIVACY_WORDING:
-        text = text.replace(old, new)
-    return text
-
-
-def hide_calculator_wording(name, out):
-    """Flag off: consent line on every form page and the privacy sentences -> the Lead's wording (see above)."""
-    if 'id="wl-consent"' in out:
-        if out.count(CONSENT_OLD) != 1:
-            raise BuildError(f"{name}: consent wording not found (copy_v3/17_forma.md changed?)")
-        out = out.replace(CONSENT_OLD, CONSENT_NEW)
-    if name == "privacy":
-        for old, new in PRIVACY_WORDING:
-            if out.count(old) != 1:
-                raise BuildError(f"privacy: wording not found: {old[:50]}")
-            out = out.replace(old, new)
-    return out
-
-
-def has_figure(text):
-    """True when the text shows a figure that stays hidden until approved (see above)."""
-    return bool(EUR_FIG_RX.search(text) or (PCT_FIG_RX.search(text) and PCT_CTX_RX.search(text)))
-
-
-def keep_sentences(text):
-    """The sentences of a paragraph without a hidden figure, verbatim and in order; '' when nothing but a bold lead
-    («**Как считается.**», «**Q?**») would be left."""
-    parts = _SENT_SPLIT_RX.split(text)
-    kept = [x for x in parts if not has_figure(x)]
-    if len(kept) == len(parts):
-        return text
-    if parts[0].startswith("**") and has_figure(parts[0]):   # the lead / question itself goes: the rest is its answer
-        return ""
-    out = " ".join(kept)
-    return "" if not out or _LEAD_ONLY_RX.match(out) else out
-
-
-def keep_heading(text):
-    """Heading clauses («a: b») without a figure; None when none is left (the section goes)."""
-    parts = [x for x in text.split(": ") if not has_figure(x)]
-    return ": ".join(parts) if parts else None
-
-
-def hide_figures_md(md, hidden=None, name=None):
-    """copy markdown -> the same markdown without the hidden figures (lines verbatim or dropped; a paragraph is
-    re-joined from its kept sentences). `hidden`, if a list, receives one entry per removed unit (for the report)."""
-    log = hidden if hidden is not None else []
-    lines = md.splitlines()
-    ents, i, n = [], 0, len(lines)   # entries: [kind, out_lines, had_content, removed]
-    while i < n:
-        s = lines[i].strip()
-        if not s:
-            ents.append(["blank", [lines[i]], False, False]); i += 1; continue
-        if s.startswith("<!--"):
-            j = i
-            while "-->" not in lines[j]:
-                j += 1
-            ents.append(["raw", lines[i:j + 1], False, False]); i = j + 1; continue
-        if s.startswith("**Кнопка:"):
-            ents.append(["button", lines[i:i + 2], False, False]); i += 2; continue
-        if s.startswith("[КАДР"):
-            ents.append(["frame", [lines[i]], False, False]); i += 1; continue
-        if s == "---":
-            ents.append(["hr", [lines[i]], False, False]); i += 1; continue
-        hm = re.match(r"^(#{1,3}) (.+)$", s)
-        if hm:
-            t = keep_heading(hm.group(2))
-            if t != hm.group(2):
-                log.append(("heading", hm.group(2), t))
-            kind = "h1" if len(hm.group(1)) == 1 else "h"
-            if t is None and kind == "h1":
-                raise BuildError(f"H1 is a figure only: {s[:60]}")
-            ents.append([kind, [f"{hm.group(1)} {t}"] if t else [], True, t is None]); i += 1; continue
-        if s.startswith("|"):
-            rows = []
-            while i < n and lines[i].strip().startswith("|"):
-                rows.append(lines[i]); i += 1
-            head, body = rows[:2], rows[2:]
-            if has_figure(head[0]) or "€" in head[0]:   # a € column: its cells are euro figures without the sign
-                kept = []
-            else:
-                kept = [r for r in body if not has_figure(r)]
-            for r in (body if not kept else [r for r in body if r not in kept]):
-                log.append(("table row", r.strip(), None))
-            if has_figure(head[0]) or "€" in head[0]:
-                log.append(("table head", head[0].strip(), None))
-            ents.append(["table", head + kept if kept else [], True, not kept]); continue
-        if _LIST_RX.match(s):
-            ordered = bool(re.match(r"^\d+\. ", s))
-            items = []
-            while i < n and (re.match(r"^\d+\. ", lines[i].strip()) if ordered else lines[i].strip().startswith("- ")):
-                items.append(lines[i]); i += 1
-            kept = [x for x in items if not has_figure(x)]
-            log.extend(("list item", x.strip(), None) for x in items if has_figure(x))
-            ents.append(["list", kept, True, not kept]); continue
-        para = []
-        while i < n and lines[i].strip() and not _SPECIAL_RX.match(lines[i].strip()):
-            para.append(lines[i].strip()); i += 1
-        text = " ".join(para)
-        kept = keep_sentences(text)
-        if kept != text:
-            for x in _SENT_SPLIT_RX.split(text):
-                if has_figure(x):
-                    log.append(("sentence", x, None))
-            if not kept:
-                log.append(("paragraph (empty after hiding)", text[:80], None))
-        ents.append(["p", [kept] if kept else [], True, not kept])
-    # a paragraph that introduces a removed table / list («…к вложенному:») goes with it
-    content = [k for k, e in enumerate(ents) if e[0] in ("p", "table", "list", "h", "h1", "button", "frame", "hr")]
-    for a, b in zip(content, content[1:]):
-        e, nxt = ents[a], ents[b]
-        if e[0] == "p" and e[1] and e[1][0].rstrip().rstrip("*").endswith(":") and nxt[0] in ("table", "list") and nxt[3]:
-            log.append(("intro of a hidden block", e[1][0], None))
-            e[1], e[3] = [], True
-    # a section (## / ###) whose text is all hidden goes completely: heading, its [КАДР] frames
-    k = 0
-    while k < len(ents):
-        if ents[k][0] == "h":
-            j = k + 1
-            while j < len(ents) and ents[j][0] not in ("h", "h1", "hr", "button"):
-                j += 1
-            body = [e for e in ents[k + 1:j] if e[0] in ("p", "table", "list")]
-            whole = bool(ents[k][1]) and (name, re.sub(r"^#{1,3} ", "", ents[k][1][0])) in FIGURE_SECTIONS
-            if ents[k][3] or whole or (body and all(e[3] for e in body)):
-                title = re.sub(r"^#{1,3} ", "", ents[k][1][0]) if ents[k][1] else "(figure heading)"
-                log.append(("section", title, None))
-                for e in ents[k:j]:
-                    if e[0] != "blank":
-                        e[1], e[3] = [], True
-            k = j
-        else:
-            k += 1
-    out = [ln for e in ents for ln in e[1]]
-    # no runs of blank lines where blocks went
-    text = re.sub(r"\n{3,}", "\n\n", "\n".join(out))
-    return text + ("\n" if md.endswith("\n") else "")
-
-
-META_DESC_MAX = 160
-
-
-def hide_figures_meta(meta, md_hidden):
-    """Meta title / description / OG title without figures, from the copy's own words only: a title with a figure ->
-    the OG title (else the H1 as shown); an OG title with a figure -> the Meta title; a description that loses a
-    sentence -> the first sentences of the first paragraph shown (the hero intro, if any is left; <= 160 characters)."""
-    out = dict(meta)
-    h1 = re.search(r"^# (.+)$", md_hidden, re.M).group(1)
-    if has_figure(meta["Meta title"]):
-        out["Meta title"] = meta["OG title"] if not has_figure(meta["OG title"]) else h1
-    if has_figure(meta["OG title"]):
-        out["OG title"] = out["Meta title"]
-    if has_figure(meta["Meta description"]):
-        after = md_hidden.split("\n# " + h1, 1)[1]
-        paras = [ln.strip() for ln in after.splitlines()
-                 if ln.strip() and not _SPECIAL_RX.match(ln.strip()) and not _LEAD_ONLY_RX.match(ln.strip())]
-        intro = paras[0] if paras else ""   # the hero intro as shown, else the first paragraph shown
-        acc = ""
-        for x in _SENT_SPLIT_RX.split(intro):
-            if acc and len(acc) + 1 + len(x) > META_DESC_MAX:
-                break
-            acc = f"{acc} {x}".strip()
-        if not acc or has_figure(acc):
-            raise BuildError("meta description: no figure-free intro sentence")
-        out["Meta description"] = re.sub(r"\*\*", "", acc)
-    return out
-
-
-# ---------------------------------------------------------------- copy + figures
+# ---------------------------------------------------------------- copy
 def copy_files():
-    """The copy the build actually uses: the 13 pages + footer, legal, form. Anything else in copy_v3 (e.g. Kimi's
-    draft 18_investoram.md) is not built and not hashed."""
+    """The copy the build uses: 14 pages (01-13 + 18 investors), footer, legal, form."""
     names = sorted({f for f, _ in PAGES} | {FOOTER, "15_impressum.md", "16_privacy.md", FORMA})
     return [COPY / n for n in names]
 
@@ -337,39 +159,23 @@ def combined_sha():
     return hashlib.sha256(s.encode()).hexdigest()
 
 
+def check_copy():
+    for f in copy_files():
+        got = hashlib.sha256(f.read_bytes()).hexdigest()
+        if got != COPY_FILE_SHA256.get(f.name):
+            raise BuildError(f"copy_en/{f.name} sha256 {got} is not the approved one (copy changed: re-approve)")
+    if combined_sha() != COPY_SHA256:
+        raise BuildError(f"copy_en sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
+
+
 def load_model(path=MODEL):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def figure_map(model):
-    """copy figure -> site figure. Raises if one copy string would need two different values."""
-    out, owners = {}, {}
-    for t in model["tokens"] + model["extra"]:
-        c, v = t["copy"], t["value"]
-        if c in out and out[c] != v:
-            raise BuildError(f"ambiguous figure «{c}»: {owners[c]} -> «{out[c]}» but {t['label']} -> «{v}»; "
-                             "the copy uses one string for two model values — split it in the copy first")
-        out[c] = v
-        owners[c] = t["label"]
-    return out
-
-
-def figure_regex(fmap):
-    alts = []
-    for tok in sorted(fmap, key=len, reverse=True):
-        tail = r"(?![\d,]\d)" if tok[-1].isdigit() else ""
-        alts.append(r"(?<![\d,–])(?<!\d[ \u00a0])" + re.escape(tok) + tail)
-    return re.compile("|".join(alts))
-
-
-def apply_figures(text, fmap, rx):
-    return rx.sub(lambda m: fmap[m.group(0)], text)
-
-
 # ---------------------------------------------------------------- markdown subset
 META_RX = re.compile(r"<!-- META\n(.*?)-->", re.S)
-FRAME_RX = re.compile(r"^\[КАДР (F\d\d)\]\s*(?:<!--.*?-->)?\s*$")
-BUTTON_RX = re.compile(r"^\*\*Кнопка: «(.+)»\*\*$")
+FRAME_RX = re.compile(r"^\[(?:FRAME|КАДР) (F\d\d)\]\s*(?:<!--.*?-->)?\s*$")   # EN copy: [FRAME Fxx]; RU: [КАДР Fxx]
+BUTTON_RX = re.compile(r'^\*\*Button: "(.+)"\*\*$')
 EMAIL_RX = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 
 
@@ -425,7 +231,7 @@ def parse_page(md):
             blocks.append({"kind": "frame", "id": fm.group(1)})
             i += 1
             continue
-        if "<!--" in s or "[КАДР" in s:
+        if "<!--" in s or "[КАДР" in s or "[FRAME" in s:
             raise BuildError(f"comment/marker inside text line: {s[:80]}")
         bm = BUTTON_RX.match(s)
         if bm:
@@ -460,7 +266,7 @@ def parse_page(md):
             blocks.append({"kind": "ol" if ordered else "ul", "items": items})
             continue
         para = []
-        while i < n and lines[i].strip() and not re.match(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|<!--|\*\*Кнопка:)",
+        while i < n and lines[i].strip() and not re.match(r"^(#{1,3} |\||- |\d+\. |---$|\[КАДР|\[FRAME|<!--|\*\*Button:)",
                                                           lines[i].strip()):
             para.append(lines[i].strip())
             i += 1
@@ -579,7 +385,7 @@ def is_facts(block):
 
 LEAD_RX = re.compile(r"^\*\*([^*]+)\*\*\s*(.*)$")
 QA_RX = re.compile(r"^<strong>([^<]+\?)</strong>\s+(.+)$")
-NUM_CELL_RX = re.compile(r"^(?:<strong>)?(?:около |от |\+)?[\d][\d  .,–×÷=+%€²м/-]*(?:</strong>)?$|^—$")
+NUM_CELL_RX = re.compile(r"^(?:<strong>)?(?:about |from |≈|\+)?[\d][\d  .,–×÷=+%€²m/-]*(?:</strong>)?$|^—$")
 FIG_RX = re.compile(r"^([\d][\d  –]*?)\s+(\D.*)$")
 
 
@@ -613,7 +419,7 @@ def table_item(b):
 
 def ladder_from(table):
     """C8 from the copy's own «Шесть ступеней цены» table (Ступень | событие | цена | рост)."""
-    if table["plain_head"][0] != "Ступень" or len(table["head"]) != 4 or "Рост" not in table["plain_head"][3]:
+    if table["plain_head"][0] != "Stage" or len(table["head"]) != 4 or "Rise" not in table["plain_head"][3]:
         return None
     return [{"name": r[0], "event": r[1], "price": r[2], "grow": r[3]} for r in table["rows"]]
 
@@ -636,10 +442,9 @@ def body_item(b):
 # Every component below only re-presents the copy's own words (or model.json, which the copy's figures come from);
 # nothing is added or reworded. Sections are matched by their ### title.
 STEP_P_RX = re.compile(r"^<strong>(\d+)\. ([^<]+)</strong>\s+(.+)$")   # 09 «Шесть шагов»: **1. Запись.** текст
-C7_SENTENCE_TITLES = {"Порядок входа", "Как устроен вход", "Как это работает"}  # one paragraph -> one step per sentence
-SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[А-ЯЁA-Z])")
-MINI_LADDER = {("index", "Как это работает"), ("construccion", "Девять стадий и ступени цены"),
-               ("mercado", "Ступени Artemis рядом с рынком")}          # C8 mini (01, 08, 12)
+C7_SENTENCE_TITLES = {"How you enter", "How entry works", "How it works"}  # EN titles of the RU sections  # one paragraph -> one step per sentence
+SENTENCE_RX = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")
+MINI_LADDER = set()   # EN r1: the C8 mini ladder showed model.json stage prices (not approved): off
 # C10 log: OFF until copy_v3 has confirmed entries «дата → стадия → что сделано» (DESIGN C10: concrete dates).
 # The sections keep their copy (text + planned-dates table). To enable: put
 # {("index", "Стройка"), ("construccion", "Журнал стройки")} back.
@@ -649,9 +454,9 @@ LOG_SECTIONS = set()  # C10
 # t266u 31.10 00:32 (FOUNDER:54, :172). Roles: only [КАНОН] (copy_v3/sources_v3.md:17-19), no who/when -> the whole
 # section is not rendered (no empty section). Back: TEAM_SECTIONS = {("index", "Команда и компания")}, HIDDEN = set().
 TEAM_SECTIONS = set()                                                       # C11
-HIDDEN_SECTIONS = {("index", "Команда и компания")}
+HIDDEN_SECTIONS = {("index", "Team and company")}
 PEOPLE = {"Simon Subic": "/tenerife/simon/", "Boris Ribaut": "/tenerife/boris/"}
-CALC_SHORT = {("acciones", "Пример на 72 метрах")}                       # C9 short (04)
+CALC_SHORT = set()   # EN r1: no calculator (C9 short off)
 
 
 def plain(fragment):
@@ -699,30 +504,6 @@ def c11_people(body):
     if not any(i["kind"] == "people" for i in out):
         raise BuildError("C11: no team list")
     return out
-
-
-SHORT_RX = re.compile(r"^<strong>([^<]+):</strong> [\d\u00a0 ]+\u00a0?€ (.+?) [\d\u00a0 ]+\u00a0?€ (.+)\.$")
-
-
-def short_labels(page):
-    """C9 short (04): words of the section's own sentence «Покупка из очереди: 212 400 € сразу или 17 700 € в месяц
-    двенадцать месяцев.» — the two amounts become the computed values (no word from another page)."""
-    s = next((x for x in page["sections"] if x["calc_short"]), None)
-    if s is None:
-        return None
-    for i in s["body"]:
-        m = SHORT_RX.match(i["html"]) if i["kind"] == "p" else None
-        if m:
-            return {"lead": m.group(1), "mid": m.group(2), "tail": m.group(3)}
-    raise BuildError("C9 short: «Покупка из очереди: … € сразу или … € в месяц …» not found")
-
-
-def mini_ladder(model):
-    """C8 mini: names and prices from model.json (= the copy's figures); visual only, the text is next to it."""
-    def eur(v):
-        return fmt_int(v) + NBSP + "€"
-    return [{"name": st["name"], "price": eur(st["price_eur_m2"]), "current": bool(st.get("current"))}
-            for st in model["steps"]]
 
 
 # Designer r3 (31.10.2026): F17 («отделка») never shows a finished-house photo. On construccion the slot is a
@@ -789,7 +570,7 @@ def structure(blocks, frames, alts, name, model=None):
         facts = facts_items(rest[0]["text"])
         rest = rest[1:]
     if not rest or rest[-1]["kind"] != "button" or sum(b["kind"] == "button" for b in rest) != 1:
-        raise BuildError("exactly one **Кнопка** expected, as the last block")
+        raise BuildError("exactly one **Button** expected, as the last block")
     button = rest[-1]
     rest = rest[:-1]
     sections, cur = [], None
@@ -806,7 +587,7 @@ def structure(blocks, frames, alts, name, model=None):
                 cur["frames"].append(b["id"])
             else:
                 cur["body"].append(body_item(b))
-    # the last section is the waitlist text (C13) when it is plain text (01 «Очередь»)
+    # the last section is the waitlist text (C13) when it is plain text (01 «The queue»)
     cta_section = None
     last = sections[-1] if sections else None
     if last and not last["frames"] and all(i["kind"] in ("p", "ul") for i in last["body"]) \
@@ -820,7 +601,7 @@ def structure(blocks, frames, alts, name, model=None):
             s["body"] = c10_log(s["body"])
         if key in TEAM_SECTIONS:
             s["body"] = c11_people(s["body"])
-        s["mini_ladder"] = mini_ladder(model) if key in MINI_LADDER and model else None
+        s["mini_ladder"] = None
         s["calc_short"] = key in CALC_SHORT
     split_n = 0
     for n, s in enumerate(sections, 1):
@@ -857,63 +638,56 @@ def structure(blocks, frames, alts, name, model=None):
             "button": {"text": html.escape(button["text"]), "micro": html.escape(button["micro"])}}
 
 
-def parse_footer(md, fmap, rx):
-    meta, blocks = parse_page(apply_figures(md, fmap, rx))
+def parse_footer(md):
+    meta, blocks = parse_page(md)
     title = next(b for b in blocks if b["kind"] == "h")["text"]
     paras = [b["text"] for b in blocks if b["kind"] == "p"]
     out = {"title": html.escape(title), "about": None, "pages": [], "contacts": [], "company": None, "docs": []}
     for p in paras:
         lab = re.match(r"^\*\*(.+?)\*\* ?(.*)$", p)
         label, rest = lab.group(1), lab.group(2)
-        if label == "Страницы.":
+        if label == "Pages.":
             names = rest.split(" · ")
-            built = {n for _f, n in PAGES}
-            out["hidden"] = [x for x in names if x in NAV_FUTURE and NAV_FUTURE[x] not in built]
-            names = [x for x in names if x not in out["hidden"]]
             if set(names) != set(NAV) or len(names) != len(NAV):
                 raise BuildError(f"footer pages differ from NAV: {names}")
             out["pages"] = names
-        elif label == "Контакты.":
-            # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}». The token becomes the WhatsApp slot; app/tenerife.py
-            # fills it with the TENERIFE_WHATSAPP value on every request, so the number never lands in the built
-            # files / git. A number written into the copy, or any other {…}, fails the build.
+        elif label == "Contact.":
+            # EN copy: e-mail only. The WhatsApp contact stays a runtime slot (app/tenerife.py fills it from
+            # TENERIFE_WHATSAPP on every request, never written into the files); a number in the copy fails the build.
             contacts = []
             for c in rest.split(" · "):
-                if c == WA_TOKEN:
-                    contacts.append("whatsapp")
-                elif "{" in c or "}" in c or re.search(r"\+?\d[\d ]{7,}", c):
-                    raise BuildError(f"footer «Контакты»: unexpected token or hard-coded number: {c[:12]}…")
-                else:
-                    contacts.append(c)
-            out["contacts"] = contacts
-        elif label == "Компания.":
+                if "{" in c or "}" in c or re.search(r"\+?\d[\d ]{7,}", c):
+                    raise BuildError(f"footer «Contact»: unexpected token or hard-coded number: {c[:12]}…")
+                contacts.append(c)
+            out["contacts"] = contacts + ["whatsapp"]
+        elif label == "Company.":
             out["company"] = inline(rest)
-        elif label == "Документы.":
+        elif label == "Documents.":
             out["docs"] = [re.match(r"\[(.+)\]\((/[^)]+)\)", d).groups() for d in rest.split(" · ")]
         elif out["about"] is None:
-            out["about"] = (label, inline(rest))
+            out["about"] = inline(p)   # «**Artemis Tenerife**: …» as written
         else:
             raise BuildError(f"unknown footer line {p[:40]}")
     return out
 
 
-# ---------------------------------------------------------------- form messages (copy_v3/17_forma.md, Kimi r4)
+# ---------------------------------------------------------------- form (copy_en/17_forma.md)
 FORMA = "17_forma.md"
-# label in 17_forma.md «Сообщения формы» -> key (data-msg-<key> on the form; app/tenerife.py FORM_MSG)
+# label in 17_forma.md «Form messages» -> key (data-msg-<key> on the form; app/tenerife.py FORM_MSG)
 FORM_MESSAGES = {
-    "Кнопка во время отправки.": "sending", "Успех, заголовок.": "ok-title", "Успех, что дальше.": "ok-next",
-    "Ошибка сервера.": "server", "Нет связи с сервером.": "network", "Слишком много заявок.": "rate",
-    "Поле «Имя» пустое.": "name", "Поле «Контакт» пустое или короче 5 символов.": "contact",
-    "Язык не выбран.": "language", "Нет согласия.": "consent",
+    "Button while sending.": "sending", "Success, heading.": "ok-title", "Success, what happens next.": "ok-next",
+    "Server error.": "server", "No connection to the server.": "network", "Too many requests.": "rate",
+    "\"Name\" field empty.": "name", "\"Contact\" field empty or shorter than 5 characters.": "contact",
+    "No language selected.": "language", "No consent.": "consent",
 }
 
 
 def form_messages(md=None):
-    """{key: text} from the «## Сообщения формы» section of 17_forma.md, verbatim; every label required."""
+    """{key: text} from the «## Form messages» section of 17_forma.md, verbatim; every label required."""
     md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
-    sec = re.search(r"^## Сообщения формы\n(.*?)(?=^## |\Z)", md, re.S | re.M)
+    sec = re.search(r"^## Form messages\n(.*?)(?=^## |\Z)", md, re.S | re.M)
     if not sec:
-        raise BuildError(f"{FORMA}: no «Сообщения формы» section")
+        raise BuildError(f"{FORMA}: no «Form messages» section")
     found = dict(re.findall(r"^\*\*(.+?)\*\* (.+)$", sec.group(1), re.M))
     missing = [lbl for lbl in FORM_MESSAGES if lbl not in found]
     if missing or len(found) != len(FORM_MESSAGES):
@@ -922,44 +696,16 @@ def form_messages(md=None):
     return {FORM_MESSAGES[lbl]: found[lbl].strip() for lbl in FORM_MESSAGES}
 
 
-# ---------------------------------------------------------------- calculator defaults (server-rendered, no CLS)
+def consent_html(md=None):
+    """The consent line next to the checkbox: «**Consent.** …» of 17_forma.md, verbatim (link kept)."""
+    md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
+    m = re.search(r"^\*\*Consent\.\*\* (.+)$", md, re.M)
+    if not m:
+        raise BuildError(f"{FORMA}: no «Consent.» line")
+    return inline(m.group(1))
+
+
 NBSP = "\u00a0"
-
-
-def fmt_int(x):
-    """= calc.js eur(): Intl.NumberFormat('ru-RU') groups with U+00A0; half-up like Math.round for positives."""
-    return f"{int(x + 0.5):,}".replace(",", NBSP)
-
-
-def fmt_pct(x):
-    """half-up to 1 decimal (= calc.js roundingMode halfExpand)."""
-    t = int(x * 10 + 0.5)
-    return f"{t // 10},{t % 10}%"
-
-
-def calc_view(model):
-    """C9 defaults rendered into the HTML (no CLS, correct without JS) + the inline #cs-model island data."""
-    steps = model["steps"]
-    m2 = model["area_m2"]["default"]
-    cur = next(st for st in steps if st.get("current"))
-    hand = next(st for st in steps if not st["entry"])
-    total = m2 * cur["price_eur_m2"]
-    d = model["dividend_eur_per_share_year"]
-    months = model["installments"]["months"]
-    def eur(v):
-        return fmt_int(v) + NBSP + "€"
-    island = {"steps": [{k: st[k] for k in ("id", "price_eur_m2", "entry") if k in st}
-                        | ({"current": True} if st.get("current") else {}) for st in steps],
-              "installments": {"months": months}, "dividend_eur_per_share_year": d,
-              "area_m2": model["area_m2"], "types": [{k: t[k] for k in ("id", "min", "max")} for t in model["types"]]}
-    return {"m2": m2, "min": model["area_m2"]["min"], "max": model["area_m2"]["max"], "months": months,
-            "types": [dict(t, checked=t["min"] <= m2 <= t["max"]) for t in model["types"]],
-            "steps": [dict(st, label=st["name"] + " — " + eur(st["price_eur_m2"])) for st in steps if st["entry"]],
-            "current": cur["id"],
-            "sum": eur(total), "month": eur(total / months), "handover": eur(m2 * hand["price_eur_m2"]),
-            "div": eur(m2 * d), "pct": fmt_pct(d / cur["price_eur_m2"] * 100),
-            "m2_out": f"{m2} м²",
-            "island": json.dumps(island, ensure_ascii=False, separators=(",", ":"))}
 
 
 DESIGN = HERE / "design"   # verbatim copies of web-designer/tenerife/design/{fonts.css,tokens.css}
@@ -984,23 +730,6 @@ def site_css(model, frames_cfg=None):
     parts = [(DESIGN / "fonts.css").read_text(encoding="utf-8"), (DESIGN / "tokens.css").read_text(encoding="utf-8"),
              (HERE / "site.src.css").read_text(encoding="utf-8"), ladder_css(model), focal_css(frames_cfg)]
     return "\n".join(parts)
-
-
-def calc_labels(page):
-    """C9 labels are the copy's own words: «Что вы видите» (result names) and «Способ оплаты.» (options)."""
-    seen = next(s for s in page["sections"] if s["title"] == "Что вы видите")
-    led = next(i for i in seen["body"] if i["kind"] == "ledger")["items"]
-    leads = [re.sub(r"<[^>]+>", "", x["lead"]) for x in led]
-    rests = [x["rest"] for x in led]
-    if len(leads) != 6:
-        raise BuildError("calculator: «Что вы видите» must list 6 results")
-    pay = next(re.sub(r"^<strong>Способ оплаты\.</strong> ", "", i["html"]) for s in page["sections"] for i in s["body"]
-               if i["kind"] == "p" and i["html"].startswith("<strong>Способ оплаты.</strong>"))
-    now, parts = pay.rstrip(".").split(" или ", 1)
-    return {"sum": leads[0], "month": leads[1], "handover": leads[2],
-            "div": leads[3] + "," + rests[3].rsplit(",", 1)[1].rstrip("."), "pct": leads[4],
-            "paths": leads[5], "paths_dd": re.sub(r"^— ", "", rests[5]).rstrip("."),
-            "pay_now": now, "pay_parts": parts[:1].upper() + parts[1:]}
 
 
 def ladder_css(model):
@@ -1037,17 +766,17 @@ def ld_json(data):
     return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c").replace(">", "\\u003e")
 
 
-COMPANY_RX = re.compile(r"^(?P<name>[A-Z][A-Z ]+ LTD)\. .*Companies House № (?P<num>\d{8})\. Юридический адрес: "
+COMPANY_RX = re.compile(r"^(?P<name>[A-Z][A-Z ]+ LTD)\. .*Companies House No\. (?P<num>\d{8})\. Registered office: "
                         r"(?P<street>[^,]+, [^,]+), (?P<city>[^,]+), (?P<zip>[A-Z0-9]{2,4} [A-Z0-9]{3}), "
                         r"(?P<country>[^.]+)\.")
 
 
 def org_ld(footer):
-    """QA T3-08: Organization only from the copy (14 «Компания.»). No telephone: the number is not confirmed yet
+    """QA T3-08: Organization only from the copy (14 «Company.»). No telephone: the number is not confirmed yet
     (T3-01); no e-mail: addresses on the site stay inside email_off (Cloudflare obfuscation), not in data blocks."""
     m = COMPANY_RX.match(plain(footer["company"]))
     if not m:
-        raise BuildError("footer «Компания.»: Organization facts not found")
+        raise BuildError("footer «Company.»: Organization facts not found")
     return ld_json({"@context": "https://schema.org", "@type": "Organization",
                     "name": m["name"], "legalName": m["name"],
                     "url": BASE_URL + "/tenerife/",
@@ -1057,7 +786,7 @@ def org_ld(footer):
 
 
 def breadcrumb_ld(nav, name):
-    """QA T3-08: Главная → page; names = the copy's «Страницы.» labels."""
+    """QA T3-08: Home → page; names = the copy's «Pages.» labels."""
     by = {x["name"]: x for x in nav}
     items = [by["index"]] + ([by[name]] if name != "index" else [])
     return ld_json({"@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -1080,7 +809,7 @@ def check_output(name, out):
         except ValueError:
             errs.append(f"{name}: invalid JSON-LD")
     out = LD_RX.sub('<script type="application/ld+json"></script>', out)
-    for bad in ("[КАДР", "{{", "{%", "%}", "}}", "**", "Кнопка:"):
+    for bad in ("[КАДР", "[FRAME", "{{", "{%", "%}", "}}", "**", "Кнопка:", "Button:"):
         if bad in out:
             errs.append(f"{name}: «{bad}» in output")
     # Kimi r16: no copy token may survive, not even a lone brace (the calculator's JSON model is a data block)
@@ -1111,83 +840,40 @@ def check_output(name, out):
 
 
 # ---------------------------------------------------------------- main
-UNPUBLISHED_URLS = ("/tenerife/inversores",)   # r4.1: investor page(s) stay unpublished and unlinked
-
-
-def check_no_figures(name, out):
-    """r4.1 guard: with figures hidden no rendered unit (text, attribute, JSON-LD) may carry one, and nothing links an
-    unpublished page."""
-    txt = html.unescape(re.sub(r"<[^>]+>", " | ", out))
-    attrs = " | ".join(html.unescape(v) for v in re.findall(r'(?:content|alt|aria-label|title)="([^"]*)"', out))
-    for unit in re.split(r"\s\|\s|(?<=[.!?])\s+", txt + " | " + attrs):
-        if has_figure(unit):
-            raise BuildError(f"{name}: figure left with TENERIFE_SHOW_FIGURES off: {unit.strip()[:80]}")
-    for u in UNPUBLISHED_URLS:
-        if u in out:
-            raise BuildError(f"{name}: links unpublished {u}")
-    if name not in FIGURE_ONLY_PAGES:   # r4.1 c2: nothing served links the 302 calculator page
-        for p in FIGURE_ONLY_PAGES:
-            if f"/tenerife/{p}" in out:
-                raise BuildError(f"{name}: links /tenerife/{p}/ (not served while figures are hidden)")
-    if name not in FIGURE_ONLY_PAGES and ("calc.js" in out or "из калькулятора" in out):
-        raise BuildError(f"{name}: calculator script or wording left with TENERIFE_SHOW_FIGURES off")
-
-
-def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figures=None):
+def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     check_whatsapp_env()
-    show = show_figures_env() if show_figures is None else bool(show_figures)
-    hidden_log = {}
-    if combined_sha() != COPY_SHA256:
-        raise BuildError(f"copy_v3 sha256 {combined_sha()} != {COPY_SHA256} (copy changed: re-approve)")
-    model = load_model(model_path)
-    fmap = figure_map(model)
-    rx = figure_regex(fmap)
+    check_copy()
+    model = load_model(model_path)   # only for the C8 ladder CSS (bar heights); no figure reaches a page from it
     frames_cfg = json.loads((HERE / "frames.json").read_text(encoding="utf-8"))
     alts = json.loads(Path(alts_path or HERE / "alts.json").read_text(encoding="utf-8"))
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=False, undefined=StrictUndefined,
                       trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
-    footer_md = (COPY / FOOTER).read_text(encoding="utf-8")
-    if not show:
-        footer_md = hide_figures_md(footer_md, hidden_log.setdefault("footer", []))
-    footer = parse_footer(footer_md, fmap, rx)
-    nav_primary = NAV_PRIMARY if show else [n for n in NAV_PRIMARY if n not in FIGURE_ONLY_PAGES]
-    if not show:   # r4.1 c2: the calculator is not linked (footer «Страницы.» and header menu)
-        footer["pages"] = [x for x in footer["pages"] if NAV[x] not in FIGURE_ONLY_PAGES]
+    footer = parse_footer((COPY / FOOTER).read_text(encoding="utf-8"))
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
-    slugs, metas, parsed, full_blocks = {}, {}, {}, {}
+    env.globals["consent"] = consent_html()
+    slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
-        md = apply_figures((COPY / fname).read_text(encoding="utf-8"), fmap, rx)
-        full_blocks[name] = parse_page(md)[1]   # photos are assigned on the full copy: no other slot changes
-        if not show:
-            md = hide_figures_md(md, hidden_log.setdefault(name, []), name)
-        meta, blocks = parse_page(md)
-        if not show:
-            meta = hide_figures_meta(meta, md)
-        slug = meta["Слаг"]
+        meta, blocks = parse_page((COPY / fname).read_text(encoding="utf-8"))
+        slug = meta["Slug"]
         expected = "/tenerife/" if name == "index" else f"/tenerife/{name}/"
         if slug != expected:
-            raise BuildError(f"{fname}: Слаг {slug} != {expected}")
+            raise BuildError(f"{fname}: Slug {slug} != {expected}")
         slugs[name], metas[name], parsed[name] = slug, meta, blocks
     nav = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in footer["pages"]]
-    nav_all = [{"label": html.escape(lbl), "url": slugs[NAV[lbl]], "name": NAV[lbl]} for lbl in NAV]   # breadcrumbs
     by_name = {x["name"]: x for x in nav}
-    if set(nav_primary) | set(NAV_MORE) | {"index"} != set(by_name):
+    if set(NAV_PRIMARY) | set(NAV_MORE) | {"index"} != set(by_name):
         raise BuildError("header nav (NAV_PRIMARY + NAV_MORE) must cover the footer pages")
-    menu = {"primary": [by_name[n] for n in nav_primary], "more": [by_name[n] for n in NAV_MORE]}
+    menu = {"primary": [by_name[n] for n in NAV_PRIMARY], "more": [by_name[n] for n in NAV_MORE]}
     report, outputs = {}, {}
     tpl = env.get_template("page.html")
     pblocks = {name: drop_hidden_sections(parsed[name], name) for _f, name in PAGES}
-    site_frames = assign_site_frames({n: [b["id"] for b in drop_hidden_sections(full_blocks[n], n)
-                                          if b["kind"] == "frame"] for n in pblocks}, frames_cfg)
+    site_frames = assign_site_frames({n: [b["id"] for b in pblocks[n] if b["kind"] == "frame"] for n in pblocks},
+                                     frames_cfg)
     for fname, name in PAGES:
         meta, blocks = metas[name], pblocks[name]
-        shown_ids = {b["id"] for b in blocks if b["kind"] == "frame"}   # r4.1: slots of hidden sections are not shown
-        frames = {f: stem for f, stem in site_frames[name].items() if f in shown_ids}
-        page = structure(blocks, frames, alts, name, model if show else None)
-        if not show:
-            for sec in page["sections"]:
-                sec["calc_short"] = False   # C9 short (acciones) shows prices and payments
+        frames = site_frames[name]
+        page = structure(blocks, frames, alts, name)
         url = slugs[name]
         out = tpl.render(
             name=name, url=url, canonical=BASE_URL + url,
@@ -1196,31 +882,20 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
             og_title=html.escape(meta["OG title"], quote=True),
             og_image=BASE_URL + "/static/tenerife/site/img/og-tenerife-1200x630.jpg",
             nav=nav, menu=menu, footer=footer, page=page,
-            calc=calc_view(model) if show and name == CALC_PAGE else None,
-            calc_labels=calc_labels(page) if show and name == CALC_PAGE else None,
             lds=[x for x in (faq_ld(page) if name == FAQ_LD_PAGE else None,
-                             org_ld(footer) if name == "index" else breadcrumb_ld(nav_all, name)) if x],
-            calc_short=calc_view(model) if any(x["calc_short"] for x in page["sections"]) else None,
-            calc_short_labels=short_labels(page),
+                             org_ld(footer) if name == "index" else breadcrumb_ld(nav, name)) if x],
         )
         out = wrap(out)
-        if not show:
-            out = hide_calculator_wording(name, out)
         check_output(name, out)
-        if not show:
-            check_no_figures(name, out)
+        check_en(name, out)
         outputs[name] = out
         report[name] = {"url": url, "file": fname, "frames": frames,
                         "hidden": sorted(hide_no_photo_slots(frames, name)),
                         "alts": {fid: slot_alt(alts, name, fid, stem) for fid, stem in frames.items() if stem},
-                        "title": meta["Meta title"],
-                        "figures_hidden": [list(x[:2]) for x in hidden_log.get(name, [])] if not show else [],
-                        "h1": page["hero"]["h1_text"]}
+                        "title": meta["Meta title"], "h1": page["hero"]["h1_text"]}
     outputs.update(simple_pages(env, nav, menu, footer))
-    if not show:
-        for name in ("impressum", "privacy", "_notice"):
-            outputs[name] = hide_calculator_wording(name, outputs[name])
-            check_no_figures(name, outputs[name])
+    for name in ("impressum", "privacy", "_notice"):
+        check_en(name, outputs[name])
     check_unique_images(outputs)
     css = site_css(model, frames_cfg)
     if write:
@@ -1231,14 +906,20 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None, show_figur
 
 
 LEGAL_TEMPLATES = Path(__file__).resolve().parents[2] / "app" / "templates" / "tenerife"
-LEGAL = {"impressum": "Правовая информация — Artemis Tenerife", "privacy": "Конфиденциальность — Artemis Tenerife"}
+LEGAL_FILES = {"impressum": "15_impressum.md", "privacy": "16_privacy.md"}
 NOTICE_SLOTS = ('<h1 id="h1">{{NOTICE_TITLE}}</h1>\n<p class="hero__lead">{{NOTICE_TEXT}}</p>\n'
                 '<p class="back"><a href="{{NOTICE_BACK}}">{{NOTICE_BACK_LABEL}}</a></p>')
 
 
+def legal_title(name):
+    """«Meta title» of copy_en/15|16 (e.g. «Legal notice — Artemis Tenerife»)."""
+    return parse_page((COPY / LEGAL_FILES[name]).read_text(encoding="utf-8"))[0]["Meta title"]
+
+
 def legal_body(name):
-    """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html without its old
-    wrapper (<section class="legal"><div class="wrap"> … </div></section>); only the h1 gets id="h1"."""
+    """The legal text, verbatim: the {% block body %} of app/templates/tenerife/<name>.html (generated from copy_en by
+    legal_from_copy.py) without its old wrapper (<section class="legal"><div class="wrap"> … </div></section>);
+    only the h1 gets id="h1"."""
     src = (LEGAL_TEMPLATES / f"{name}.html").read_text(encoding="utf-8")
     m = re.search(r"\{% block body %\}\s*<section class=\"legal\"><div class=\"wrap\">\n(.*?)\n</div></section>\s*"
                   r"\{% endblock %\}", src, re.S)
@@ -1247,30 +928,25 @@ def legal_body(name):
     return m.group(1).replace("<h1>", '<h1 id="h1">', 1)
 
 
-LEGAL_META = HERE / "copy_v3" / "meta_legal.md"   # not part of the combined copy (COPY_SHA256 covers 01-17 only)
-
-
-def legal_meta(name, path=LEGAL_META):
-    """Meta description of a legal page: the PRIMARY variant («**Основной (N симв.):**», next line, verbatim) under
-    «## /tenerife/<name>/»; N must equal the Unicode length. Fallback variants are ignored."""
-    md = path.read_text(encoding="utf-8")
-    m = re.search(rf"^## /tenerife/{name}/[^\n]*\n(.*?)(?=^## |\Z)", md, re.S | re.M)
-    if not m:
-        raise BuildError(f"meta_legal.md: no section for /tenerife/{name}/")
-    p = re.search(r"^\*\*Основной \((\d+) симв\.\):\*\*\n(.+)$", m.group(1), re.M)
-    if not p or len(p.group(2).strip()) != int(p.group(1)):
-        raise BuildError(f"meta_legal.md: primary description for {name} missing or length != declared")
-    return p.group(2).strip()
+def legal_meta(name):
+    """Meta description of a legal page: the copy gives none, so its own first line under the H1, verbatim
+    (impressum: «Impressum (§ 5 DDG) / Aviso legal …»; privacy: «For the Artemis Tenerife website …»)."""
+    md = re.sub(r"<!--.*?-->", "", (COPY / LEGAL_FILES[name]).read_text(encoding="utf-8"), flags=re.S)
+    after = md.split("\n# ", 1)[1].split("\n", 1)[1]
+    first = next(ln.strip() for ln in after.splitlines() if ln.strip())
+    if first.startswith("#") or "**" in first or len(first) > 160:
+        raise BuildError(f"{name}: no plain first line for the meta description")
+    return first
 
 
 def simple_pages(env, nav, menu, footer):
     """QA T3-09: Impressum / privacy in the v2 layout; QA T3-05: shell of the no-JS form answers."""
     tpl = env.get_template("simple.html")
     out = {}
-    for name, title in LEGAL.items():
+    for name in LEGAL_FILES:
         url = f"/tenerife/{name}/"
-        out[name] = wrap(tpl.render(title=title, canonical=BASE_URL + url, url=url, kind="legal",
-                                    description=html.escape(legal_meta(name), quote=True),
+        out[name] = wrap(tpl.render(title=html.escape(legal_title(name), quote=True), canonical=BASE_URL + url,
+                                    url=url, kind="legal", description=html.escape(legal_meta(name), quote=True),
                                     body=legal_body(name), nav=nav, menu=menu, footer=footer))
     out["_notice"] = wrap(tpl.render(title="{{NOTICE_TITLE}} — Artemis Tenerife", canonical=None, url="",
                                      kind="notice", body=NOTICE_SLOTS, nav=nav, menu=menu, footer=footer))
@@ -1287,9 +963,6 @@ def main():
         fr = " ".join(f"{k}->{'-'.join(v.split('-')[:2]) if v else ('(hidden)' if k in r['hidden'] else '(text)')}"
                       for k, v in r["frames"].items())
         print(f"{r['url']:28} {len(outputs[name]):6d} B  {fr}")
-    for r in report.values():   # r4.1: the file keeps only how many units were hidden, by kind (full list: build())
-        r["figures_hidden"] = {k: sum(1 for x in r.get("figures_hidden", []) if x[0] == k)
-                               for k in sorted({x[0] for x in r.get("figures_hidden", [])})}
     (HERE / "frames_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 

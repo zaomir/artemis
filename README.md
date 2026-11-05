@@ -50,8 +50,9 @@ Lead relay (`deploy/artemis-lead-relay.py` → `/usr/local/sbin/artemis-lead-rel
 `leads.db` no longer needs a state clean-up: a new lead that gets a deleted lead's id (existing tables have
 no AUTOINCREMENT; new databases do) is still e-mailed. Legacy `sent` rows without a key count only for a
 lead created no later than the row's `at`. Checkout: `/var/www/artemis` (branch `main`, never edit in place).
-Leads from `/tenerife/calculadora/` carry validated calculator fields (`calc_*` columns of `tenerife_waitlist`,
-added by the app on first write; `app/tenerife_calc.py`); the app's Telegram message shows them (the relay does not).
+Tenerife EN r1: the calculator is retired (`/tenerife/calculadora/` → 301 `/tenerife/condiciones/`), so new leads carry no
+`calc_*` fields; the `calc_*` columns of `tenerife_waitlist` and the server-side recompute (`app/tenerife_calc.py`)
+stay for old rows / legacy posts.
 
 ## Runtime config
 
@@ -65,7 +66,7 @@ added by the app on first write; `app/tenerife_calc.py`); the app's Telegram mes
 | `RATE_LIMIT_SALT` | Secret HMAC key for the per-client rate-limit hash (`/api/enquiry`, Tenerife waitlist; `app/ratelimit.py`); any long random string, e.g. `openssl rand -hex 32`. Unset or empty → `ARTEMIS_ADMIN_TOKEN` is used. **Neither set → the app refuses to start** (`refusing to start: rate limit: …` in the journal); there is no built-in default. Changing it only resets the rate-limit counters |
 | `TENERIFE_WHATSAPP` | WhatsApp number of the `/tenerife/` footer, E.164 with `+` (e.g. `+440000000000`): «WhatsApp: » + `https://wa.me/<digits>`. Unset/invalid → contact hidden + one warning without the value. Never commit it. Details: `app/tenerife_site/README.md` |
 | `TENERIFE_INDEXING` | `1` → `/tenerife/` indexable and in `sitemap.xml`. Unset → `noindex, nofollow` meta + `X-Robots-Tag` on every `/tenerife/` page (impressum/privacy included), none in the sitemap (until the founder approves numbers and prices). Crete unaffected |
-| `TENERIFE_SHOW_FIGURES` | Read at **build time** by `scripts/tenerife_site_build/build_v3.py` **and at runtime** by `app/tenerife.py` (`show_figures()`). Build: unset → the committed `/tenerife/` pages carry no prices, ladder, payments, dividend or yield figures, no calculator and no link to `/tenerife/calculadora/`; `1` → rebuilt with them, as before r4.1. Runtime: unset → any JSON and `calc.js` under `/static/tenerife/` answer 404 (`figures_blocked()`, before static serving) and `/tenerife/calculadora/` answers a temporary 302 to `/tenerife/`; `1` → both served again. **Do not set it in `/etc/artemis/artemis.env` until the founder approves the figures.** Details: `app/tenerife_site/README.md` |
+| `TENERIFE_SHOW_FIGURES` | **Retired (EN r1): no effect, remove it from `/etc/artemis/artemis.env`.** The EN pages show the approved ranges from the copy (≈2,900–3,100 → ≈3,700–3,900 €/m², dividend 2.5–3.5% before tax); there is no calculator; `model.json` and `calc.js` are never public (Flask 404 for any JSON / `calc.js` under `/static/tenerife/`, model under `app/tenerife_site/data/`). Details: `app/tenerife_site/README.md` |
 
 Notifications contain only: name, contact, language, page — plus the planned investment amount
 for Crete enquiries when the visitor filled it in (Telegram from `app/notify.py`, e-mail copy from

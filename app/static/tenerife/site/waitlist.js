@@ -1,7 +1,7 @@
 /* Artemis Tenerife waitlist form (external file: CSP script-src 'self').
    QA T3-10: errors sit under their field (p.field__err, linked by aria-describedby) and set aria-invalid;
    the server names the field ({"field": "name|contact|language|consent"}); other errors go to #wl-msg.
-   r4: every text comes from the form's data-msg-* (copy_v3/17_forma.md «Сообщения формы», put there by build_v3.py).
+   r4: every text comes from the form's data-msg-* (copy_en/17_forma.md «Form messages», put there by build_v3.py).
    The answer is read only when it is the app's JSON: fetch rejected -> network text; 429 -> rate text;
    5xx or not JSON (proxy / HTML error page) -> server text; JSON with a field -> that field's own text. */
 (function(){

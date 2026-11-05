@@ -1,13 +1,13 @@
 {
- "_comment": "Alt texts of the RU v3 photos (data, not code; edit and rebuild: python3 scripts/tenerife_site_build/build_v3.py). 'images' = default alt per photo file; 'slots' = override for one slot, key '<page>/<Fxx>', value {file, alt} — the build fails if 'file' is no longer the photo of that slot. Review list: python3 scripts/tenerife_site_build/alts.py export <out.md>; apply an edited list: alts.py import <in.md>.",
+ "_comment": "Alt texts of the site photos (EN r1; data, not code; edit and rebuild: python3 scripts/tenerife_site_build/build_v3.py). 'images' = default alt per photo file; 'slots' = override for one slot, key '<page>/<Fxx>', value {file, alt} — the build fails if 'file' is no longer the photo of that slot. EN r1: PROVISIONAL developer translations of the approved RU alts of these 7 photos (copy_en/alts_en.json covers the T47 frames, which are not on the site yet) — designer/Kimi to confirm. Review list: python3 scripts/tenerife_site_build/alts.py export <out.md>; apply an edited list: alts.py import <in.md>.",
  "images": {
-  "modern-low-6e9d80": "Невысокие дома террасами на склоне над океаном",
-  "entrance-o-9abe9d": "Вход в комплекс: каменные пилоны и деревянные ворота",
-  "communal-s-af42cd": "Общий бассейн и дома Canary Stone",
-  "private-te-6016b5": "Терраса со стеклянным ограждением и видом на океан",
-  "interior-o-74f891": "Спальня с окном в пол и выходом во внутренний дворик",
-  "green-hill-3f3856": "Дома среди зелени на склоне над океаном",
-  "golden-hou-d4cc25": "Террасы домов на склоне в вечернем свете"
+  "modern-low-6e9d80": "Low houses in terraces on a slope above the ocean",
+  "entrance-o-9abe9d": "Entrance to the complex: stone pillars and wooden gates",
+  "communal-s-af42cd": "Shared pool and Canary Stone houses",
+  "private-te-6016b5": "Terrace with a glass balustrade and an ocean view",
+  "interior-o-74f891": "Bedroom with a floor-to-ceiling window opening onto an inner courtyard",
+  "green-hill-3f3856": "Houses among greenery on a slope above the ocean",
+  "golden-hou-d4cc25": "House terraces on a slope in the evening light"
  },
  "slots": {}
 }

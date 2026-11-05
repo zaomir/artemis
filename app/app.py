@@ -69,7 +69,7 @@ app.register_blueprint(tenerife.bp)
 
 @app.before_request
 def _tenerife_figure_data_guard():
-    """r4.1: no figure JSON under /static/tenerife/ while TENERIFE_SHOW_FIGURES is off (runs before static serving)."""
+    """No figure JSON (model.json & co.) and no calc.js under /static/tenerife/, ever (runs before static serving)."""
     if tenerife.figures_blocked(request.path):
         return make_response("Not found", 404)
     return None
@@ -236,7 +236,7 @@ def sitemap_paths() -> list[str]:
     if not tenerife.tenerife_indexing():  # TENERIFE_INDEXING unset -> /tenerife/ is noindex, so not listed
         return paths
     for name in ("index",) + tenerife.SITE_PAGES:
-        if name not in tenerife.UNPUBLISHED_PAGES and not tenerife.figure_page_hidden(name) and (tenerife.SITE_DIR / f"{name}.html").is_file():
+        if (tenerife.SITE_DIR / f"{name}.html").is_file():
             paths.append("/tenerife/" if name == "index" else f"/tenerife/{name}/")
     paths += [f"/tenerife/{name}/" for name in tenerife.LEGAL_PAGES]
     return paths

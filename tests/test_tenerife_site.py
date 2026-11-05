@@ -1,4 +1,4 @@
-"""Tenerife RU prod site (/tenerife/): clean URLs, local assets only, no guaranteed
+"""Tenerife EN prod site (/tenerife/, EN r1): clean URLs, local assets only, no guaranteed
 return / payments, no disclaimer block / AI captions (founder 31.10 01:44 UTC), legal links,
 waitlist form wired to our handler."""
 import html as _html
@@ -30,7 +30,10 @@ FORBIDDEN = [
     # a guaranteed / promised return stays forbidden.
     r"\d\s*[–-]\s*\d\s*%", r"\d+\s*% годовых", r"доходност\w* \d",
     r"(?i)гарантир\w*\s+(?:\w+\s+)?(?:доход|доходност|дивиденд)", r"(?i)гарантированн\w* доходност",
-    r"(?i)rendimiento", r"(?i)\byield\b", r"name=\"amount\"", r"Сумма", r"(?i)купить сейчас",
+    r"(?i)rendimiento", r"(?i)\byield\b",
+    # EN r1: the same rule in English (the copy's «forecast, not a guarantee» is a disclaimer, not a promise)
+    r"(?i)guarantee[ds]?\s+(?:\w+\s+)?(?:return|income|dividend|yield)", r"(?i)guaranteed\s+(?:\w+\s+)?(?:return|income|dividend|yield)",
+    r"(?i)buy now", r"(?i)pay now", r"name=\"amount\"", r"Сумма", r"(?i)купить сейчас",
     r"(?i)оплат\w+ сейчас", r"(?i)iban", r"(?i)stripe", r"(?i)paypal", r"не для деплоя",
     r"(?i)TODO", r"(?i)\bTZ\b", r"(?i)бриф", r"нельзя", r"в наших файлах", r"Лица не генерируем",
     r"(?i)googletagmanager|google-analytics|gtag\(|fbq\(|yandex|metrika|hotjar|clarity",
@@ -61,7 +64,8 @@ LIVE_DISCLAIMERS = [r"не зафиксирован", r"не наш прайс",
 # («Сумма покупки», «4–6% аренды», «валовая доходность 5,8%» in market tables, «нельзя» in Ley 6/2025,
 # the footer phone). They are re-checked in tests/test_tenerife_v3.py against everything except
 # the exact approved phrases, so any new occurrence still fails.
-V3_ALLOWED = {r"\d\s*[–-]\s*\d\s*%", r"доходност\w* \d", r"Сумма", r"нельзя", r"\+\d[\d\s()-]{7,}"}
+# EN r1 (copy_en, sha256-pinned): «4–6% of rent» (cost table) and «yield» in the market data / German benchmarks.
+V3_ALLOWED = {r"\d\s*[–-]\s*\d\s*%", r"доходност\w* \d", r"Сумма", r"нельзя", r"\+\d[\d\s()-]{7,}", r"(?i)\byield\b"}
 FORBIDDEN = [rx for rx in FORBIDDEN if rx not in V3_ALLOWED]
 
 
@@ -104,7 +108,7 @@ class TenerifeSiteTest(unittest.TestCase):
             self.assertNotIn("X-Robots-Tag", r.headers, url)
             self.assertNotIn("noindex", html, url)
             self.assertEqual(len(re.findall(r"<h1[ >]", html)), 1, url)
-            self.assertIn('lang="ru"', html)
+            self.assertIn('<html lang="en">', html)
             self.assertIn('name="viewport"', html)
 
     def test_redirects(self):
@@ -212,7 +216,7 @@ class TenerifeSiteTest(unittest.TestCase):
             full = "https://artemisresort.com" + url
             self.assertIn(f'<link rel="canonical" href="{full}">', html, name)
             desc = re.search(r'<meta name="description" content="([^"]+)">', html)
-            self.assertTrue(desc and 50 <= len(desc.group(1)) <= 170, name)
+            self.assertTrue(desc and 50 <= len(_html.unescape(desc.group(1))) <= 170, name)   # characters, not entities
             for prop in ("og:title", "og:description", "og:image", "og:type", "og:locale"):
                 self.assertRegex(html, rf'<meta property="{prop}" content="[^"]+">', f"{name}: {prop}")
             self.assertIn(f'<meta property="og:url" content="{full}">', html, name)

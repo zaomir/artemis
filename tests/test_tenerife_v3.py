@@ -1,7 +1,7 @@
-"""Tenerife RU v3 (copy_v3 + Canary Stone design system): 13 pages built by
-scripts/tenerife_site_build/build_v3.py. Re-runs every prod-site test over all 13 pages and checks
-the v3 acceptance criteria: verbatim copy, one figure source (model.json), no markers, word counts,
-design tokens as is, CSP-safe markup."""
+"""Tenerife EN r1 (copy_en + Canary Stone design system): 14 pages built by
+scripts/tenerife_site_build/build_v3.py. Re-runs every prod-site test over all 14 pages and checks
+the acceptance criteria: verbatim copy (approved ranges as written), no markers, word counts,
+design tokens as is, CSP-safe markup, no calculator."""
 import html as htmllib
 import hashlib
 import json
@@ -18,7 +18,7 @@ import test_tenerife_site as base
 
 ROOT = base.ROOT
 BUILD = ROOT / "scripts" / "tenerife_site_build"
-COPY = BUILD / "copy_v3"
+COPY = BUILD / "copy_en"
 DESIGN = BUILD / "design"
 SITE_STATIC = base.STATIC / "tenerife" / "site"
 TEMPLATES = ROOT / "app" / "templates" / "tenerife" / "site"
@@ -28,15 +28,13 @@ os.environ.setdefault("TENERIFE_WHATSAPP", "+440000000000")
 import build_v3  # noqa: E402
 import make_model  # noqa: E402
 
-V3 = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES
-      if name not in build_v3.FIGURE_ONLY_PAGES}   # r4.1 c2: calculadora is not served (302)
+V3 = {name: ("/tenerife/" if name == "index" else f"/tenerife/{name}/") for _f, name in build_v3.PAGES}
 FILES = {name: f for f, name in build_v3.PAGES}
 
 
 def shown_copy(name):
-    """The copy of a page minus sections the build hides (build_v3.HIDDEN_SECTIONS: C11 off, designer r3) and minus
-    the figures (r4.1: the committed pages are built with TENERIFE_SHOW_FIGURES off)."""
-    md = build_v3.hide_figures_md((COPY / FILES[name]).read_text(encoding="utf-8"), None, name)
+    """The copy of a page minus sections the build hides (build_v3.HIDDEN_SECTIONS: C11 off, designer r3)."""
+    md = (COPY / FILES[name]).read_text(encoding="utf-8")   # EN r1: the copy as written (approved ranges only)
     lines, out, skip = md.splitlines(), [], False
     for line in lines:
         h = re.match(r"^#{1,3} (.+)$", line)
@@ -153,10 +151,10 @@ def words(text):
 
 
 def copy_words(md):
-    """Words of a copy file as published: no META/comments, no [КАДР] markers, no markdown syntax."""
+    """Words of a copy file as published: no META/comments, no [FRAME] markers, no markdown syntax."""
     md = re.sub(r"<!--.*?-->", " ", md, flags=re.S)
-    md = re.sub(r"^\[КАДР F\d\d\].*$", " ", md, flags=re.M)
-    md = re.sub(r"^\*\*Кнопка: «(.+)»\*\*$", r"\1", md, flags=re.M)
+    md = re.sub(r"^\[(?:FRAME|КАДР) F\d\d\].*$", " ", md, flags=re.M)
+    md = re.sub(r'^\*\*Button: "(.+)"\*\*$', r"\1", md, flags=re.M)
     md = re.sub(r"^\|(?:\s*:?-+:?\s*\|)+\s*$", " ", md, flags=re.M)
     md = re.sub(r"\[([^\]]+)\]\((/[^)\s]*)\)", r"\1", md)
     md = re.sub(r"^(?:#{1,3} |\d+\. |- )", " ", md, flags=re.M)
@@ -176,8 +174,8 @@ class V3BuildTest(unittest.TestCase):
 
     def test_meta_title_description_h1_exact(self):
         for name, page in self.pages.items():
-            md = build_v3.hide_figures_md((COPY / FILES[name]).read_text(encoding="utf-8"), None, name)  # r4.1
-            meta = build_v3.hide_figures_meta(build_v3.parse_page(md)[0], md)
+            md = (COPY / FILES[name]).read_text(encoding="utf-8")
+            meta = build_v3.parse_page(md)[0]
             h1 = re.search(r"^# (.+)$", md, re.M).group(1)
             self.assertIn(f"<title>{htmllib.escape(meta['Meta title'], quote=True)}</title>", page, name)
             desc, og = (htmllib.escape(meta[k], quote=True) for k in ("Meta description", "OG title"))
@@ -195,16 +193,9 @@ class V3BuildTest(unittest.TestCase):
                                      min(len(got), len(want)))}")
 
     def test_footer_is_the_copy(self):
-        # Kimi r16: «WhatsApp: {номер из TENERIFE_WHATSAPP}» = the WhatsApp slot (filled at runtime, test_tenerife_r4)
-        md = build_v3.hide_figures_md((COPY / build_v3.FOOTER).read_text(encoding="utf-8"))   # r4.1: figures off
-        self.assertEqual(md.count(" · " + build_v3.WA_TOKEN), 1)
-        md = md.replace(" · " + build_v3.WA_TOKEN, "")
-        for item, n in build_v3.NAV.items():   # r4.1 c2: the calculator is not linked while figures are off
-            if n in build_v3.FIGURE_ONLY_PAGES:
-                md = md.replace(" · " + item, "")
-        for item in build_v3.NAV_FUTURE:  # Kimi r18 «Инвесторам»: hidden until page 18 is built (no broken link)
-            md = md.replace(" · " + item, "")
-        want = copy_words(md)
+        # EN r1: the footer is 14_podval.md as written; the WhatsApp slot (filled at runtime, test_tenerife_r4) is
+        # added after the copy's e-mail and is empty in the built file
+        want = copy_words((COPY / build_v3.FOOTER).read_text(encoding="utf-8"))
         for name, page in self.pages.items():
             foot = re.search(r"<footer.*?</footer>", page, re.S).group(0)
             self.assertEqual(foot.count("<li data-tenerife-whatsapp hidden></li>"), 1, name)
@@ -216,7 +207,7 @@ class V3BuildTest(unittest.TestCase):
             self.assertEqual(len(re.findall(r'class="[^"]*\bcta-primary\b[^"]*"', page)), 1, name)
             btn = re.search(r'class="[^"]*\bcta-primary\b[^"]*"[^>]*>([^<]+)<', page).group(1)
             md = (COPY / FILES[name]).read_text(encoding="utf-8")
-            self.assertIn(f"**Кнопка: «{htmllib.unescape(btn)}»**", md, name)
+            self.assertIn(f'**Button: "{htmllib.unescape(btn)}"**', md, name)
 
     # ---- criterion 2: one figure source
     def test_model_up_to_date_and_baseline(self):
@@ -241,25 +232,22 @@ class V3BuildTest(unittest.TestCase):
         self.assertEqual(build_v3.site_css(build_v3.load_model()),
                          (SITE_STATIC / "site.css").read_text(encoding="utf-8"))
 
-    def test_price_change_is_one_edit(self):
+    def test_model_does_not_reach_the_pages(self):
+        # EN r1: the pages show the copy's approved ranges as written; model.json (server side) feeds no page text
         inp = json.loads((BUILD / "model_inputs.json").read_text(encoding="utf-8"))
         inp["stages"][0][1] = 3000
         model = make_model.build_model(inp)
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "model.json"
             p.write_text(json.dumps(model, ensure_ascii=False), encoding="utf-8")
-            outputs, _ = build_v3.build(model_path=p, write=False, show_figures=True)   # r4.1: figures on
-        joined = "\n".join(outputs.values())
-        self.assertNotIn("2 950", joined)
-        self.assertNotIn("2\u00a0950", joined)
-        self.assertIn("216 000", outputs["index"])          # 72 × 3 000 (mini calculation)
-        self.assertIn("216\u00a0000", outputs["calculadora"])  # calculator default, server-rendered
-        self.assertIn('"price_eur_m2":3000', outputs["calculadora"])
+            outputs, _ = build_v3.build(model_path=p, write=False)
+        for name, out in outputs.items():
+            self.assertEqual(out, (base.SITE / f"{name}.html").read_text(encoding="utf-8"), name)
 
     def test_no_hardcoded_figures_in_templates_and_js(self):
         model = json.loads((build_v3.MODEL).read_text(encoding="utf-8"))
         figs = {t["value"] for t in model["tokens"] + model["extra"] if len(re.sub(r"\D", "", t["value"])) >= 3}
-        for f in list(TEMPLATES.glob("*.html")) + [build_v3.CALC_JS, SITE_STATIC / "site.js"]:
+        for f in list(TEMPLATES.glob("*.html")) + [SITE_STATIC / "site.js"]:
             src = re.sub(r"\{#.*?#\}|\{%.*?%\}|\{\{.*?\}\}", " ", f.read_text(encoding="utf-8"), flags=re.S)
             self.assertIsNone(re.search(r"(?<![\w\\])\d\s*(?:€|м²|%)", src), f.name)
             for v in figs:
@@ -268,7 +256,7 @@ class V3BuildTest(unittest.TestCase):
     # ---- criterion 3: frames, no markers
     def test_no_markers_or_comments_in_output(self):
         for name, page in self.pages.items():
-            for bad in ("[КАДР", "{{", "{%", "**", "Кнопка:"):
+            for bad in ("[КАДР", "[FRAME", "{{", "{%", "**", "Кнопка:", "Button:"):
                 self.assertNotIn(bad, page, name)
             comments = re.findall(r"<!--.*?-->", page, re.S)
             self.assertTrue(set(comments) <= {"<!--email_off-->", "<!--/email_off-->"}, (name, set(comments)))
@@ -276,12 +264,14 @@ class V3BuildTest(unittest.TestCase):
     def test_build_fails_on_marker(self):
         ok = (base.SITE / "norte.html").read_text(encoding="utf-8")
         build_v3.check_output("norte", ok)
-        for bad in ("<p>[КАДР F01]</p>", "<p>{{ x }}</p>", "<!-- note -->", "<p>**b**</p>",
+        for bad in ("<p>[КАДР F01]</p>", "<p>[FRAME F01]</p>", "<p>{{ x }}</p>", "<!-- note -->", "<p>**b**</p>",
                     "<script>alert(1)</script>", '<p style="x">'):
             with self.assertRaises(build_v3.BuildError, msg=bad):
                 build_v3.check_output("norte", ok.replace("</main>", bad + "</main>"))
         with self.assertRaises(build_v3.BuildError):
             build_v3.parse_page("# H\n\nтекст [КАДР F01] в строке\n")
+        with self.assertRaises(build_v3.BuildError):
+            build_v3.parse_page("# H\n\ntext [FRAME F01] inside a line\n")
 
     def test_every_frame_is_a_project_photo(self):
         report = json.loads((BUILD / "frames_report.json").read_text(encoding="utf-8"))
@@ -289,7 +279,7 @@ class V3BuildTest(unittest.TestCase):
         alts = json.loads((BUILD / "alts.json").read_text(encoding="utf-8"))
         for name, page in self.pages.items():
             md = shown_copy(name)
-            ids = re.findall(r"^\[КАДР (F\d\d)\]", md, re.M)
+            ids = re.findall(r"^\[(?:FRAME|КАДР) (F\d\d)\]", md, re.M)
             self.assertEqual(list(report[name]["frames"]), ids, name)
             stems = [s for s in report[name]["frames"].values() if s]
             self.assertEqual(len(re.findall(r"<img ", page)), len(stems), name)
@@ -319,8 +309,7 @@ class V3BuildTest(unittest.TestCase):
         cfg = json.loads((BUILD / "frames.json").read_text(encoding="utf-8"))
         self.assertEqual(cfg["prefer"]["F17"], [])
         with_f17 = {n for n, r in report.items() if "F17" in r["frames"]}
-        # r4.1: the F17 slots of calculadora / mercado sit in sections hidden with the figures
-        self.assertEqual(with_f17, {"index", "acciones", "construccion", "proceso"})
+        self.assertEqual(with_f17, {"index", "acciones", "condiciones", "construccion", "proceso", "mercado"})
         for name in with_f17:
             self.assertIsNone(report[name]["frames"]["F17"], name)
             others = [s for f, s in report[name]["frames"].items() if f != "F17" and s]
@@ -334,7 +323,7 @@ class V3BuildTest(unittest.TestCase):
         for line in md.splitlines():
             if re.match(r"^#{2,3} ", line):
                 head = re.sub(r"^#+ ", "", line).strip()
-            if line.startswith("[КАДР F17]"):
+            if line.startswith(("[FRAME F17]", "[КАДР F17]")):
                 break
         page = self.pages["construccion"]
         sec = next(c.split("</section>")[0] for c in re.split(r"(?=<section\b)", page) if f">{head}<" in c)
@@ -370,7 +359,7 @@ class V3BuildTest(unittest.TestCase):
                 if re.match(r"^#{1,3} ", line):
                     cur = []
                     groups.append(cur)
-                m = re.match(r"^\[КАДР (F\d\d)\]", line)
+                m = re.match(r"^\[(?:FRAME|КАДР) (F\d\d)\]", line)
                 if m and m.group(1) not in report[name].get("hidden", []):   # designer r3: hidden F17 slot
                     cur.append(m.group(1))
             hero_slot = groups[0][0]
@@ -420,12 +409,12 @@ class V3BuildTest(unittest.TestCase):
         name, fid = "index", "F01"
         stem = report[name]["frames"][fid]
         edited = json.loads(json.dumps(alts))
-        edited["slots"][f"{name}/{fid}"] = {"file": stem, "alt": "Проверка: «дом» & склон"}
+        edited["slots"][f"{name}/{fid}"] = {"file": stem, "alt": "Check: «house» & slope"}
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "alts.json"
             p.write_text(json.dumps(edited, ensure_ascii=False), encoding="utf-8")
             outputs, _ = build_v3.build(write=False, alts_path=p)
-            self.assertIn('alt="Проверка: «дом» &amp; склон"', outputs[name])
+            self.assertIn('alt="Check: «house» &amp; slope"', outputs[name])
             edited["slots"][f"{name}/{fid}"]["file"] = "green-hill-3f3856"
             p.write_text(json.dumps(edited, ensure_ascii=False), encoding="utf-8")
             with self.assertRaises(build_v3.BuildError):
@@ -439,20 +428,20 @@ class V3BuildTest(unittest.TestCase):
             n = alts_tool.export(md)
             self.assertEqual(n, sum(p.count("<img ") for p in self.pages.values()))
             text = md.read_text(encoding="utf-8")
-            self.assertIn("| Страница | URL | Слот | Файл | Alt |", text)
+            self.assertIn("| Page | URL | Slot | File | Alt |", text)
             store.write_text((BUILD / "alts.json").read_text(encoding="utf-8"), encoding="utf-8")
             self.assertEqual(alts_tool.import_md(md, store), 0)
             self.assertEqual(store.read_text(encoding="utf-8"), (BUILD / "alts.json").read_text(encoding="utf-8"))
             row = "| index | /tenerife/ | F01 | modern-low-6e9d80.jpg | "
-            md.write_text(text.replace(row + "Невысокие дома террасами на склоне над океаном |",
-                                       row + "Новый alt | с чертой |"), encoding="utf-8")
+            md.write_text(text.replace(row + "Low houses in terraces on a slope above the ocean |",
+                                       row + "New alt | with a bar |"), encoding="utf-8")
             with self.assertRaises(SystemExit):     # an unescaped «|» breaks the row -> refused, nothing written
                 alts_tool.import_md(md, store)
-            md.write_text(text.replace("Невысокие дома террасами на склоне над океаном |",
-                                       "Новый alt \\| с чертой |", 1), encoding="utf-8")
+            md.write_text(text.replace("Low houses in terraces on a slope above the ocean |",
+                                       "New alt \\| with a bar |", 1), encoding="utf-8")
             self.assertEqual(alts_tool.import_md(md, store), 1)
             self.assertEqual(json.loads(store.read_text(encoding="utf-8"))["slots"]["index/F01"],
-                             {"file": "modern-low-6e9d80", "alt": "Новый alt | с чертой"})
+                             {"file": "modern-low-6e9d80", "alt": "New alt | with a bar"})
 
     # ---- item 5: FAQPage JSON-LD = visible questions and answers, word for word
     def test_r2_faq_jsonld_equals_visible_text(self):
@@ -503,56 +492,37 @@ class V3BuildTest(unittest.TestCase):
         for e in ld["mainEntity"]:
             self.assertEqual((e["@type"], e["acceptedAnswer"]["@type"]), ("Question", "Answer"))
 
-    # ---- item 7 + design v2 C13: the calculadora form sends exactly page, calc_m2, calc_step, calc_pay
-    def test_r2_calc_hidden_fields_valid_by_default(self):
-        sys.path.insert(0, str(ROOT / "app"))
-        import tenerife_calc
-        page = build_v3.build(write=False, show_figures=True)[0][build_v3.CALC_PAGE]   # r4.1: calculator = figures on
-        form = page[page.index('<form class="wl__form'):page.index("</form>")]
-        self.assertIn('data-variant="calculadora"', form[:form.index(">")])
-        hidden = dict(re.findall(r'<input type="hidden" name="([a-z0-9_]+)"(?: id="[a-z0-9-]+")? value="([^"]*)">',
-                                 form))
-        self.assertEqual(set(hidden), {"page", "calc_m2", "calc_step", "calc_pay"})
-        self.assertEqual(tenerife_calc.FIELDS, ("calc_m2", "calc_step", "calc_pay"))
-        self.assertEqual(hidden["page"], "/tenerife/calculadora/")
-        model = tenerife_calc.load_model(build_v3.MODEL)
-        self.assertNotIn(model["version"], form)          # the version stays server-side
-        calc, problems = tenerife_calc.check_calc(hidden, model)
-        self.assertEqual((problems, calc["calc_status"]), ([], "ok"))
-        self.assertEqual((calc["calc_m2"], calc["calc_step"], calc["calc_pay"], calc["calc_model_version"]),
-                         (model["area_m2"]["default"], "queue", "m12", model["version"]))
-        for name, other in self.pages.items():
-            if name != build_v3.CALC_PAGE:
-                self.assertNotIn('name="calc_', other, name)
-        js = build_v3.CALC_JS.read_text(encoding="utf-8")
-        self.assertIn("['m2','step','pay']", js)
-        for gone in ("'type','shares'", "'amount'", "'version'", "hid.version", "hid.amount"):
-            self.assertNotIn(gone, js)
-        self.assertIn("/^calc_/.test(el[i].name)", (SITE_STATIC / "waitlist.js").read_text(encoding="utf-8"))
+    # ---- EN r1: no calculator form fields anywhere (the server still recomputes legacy calc_* input)
+    def test_no_calc_fields_or_script(self):
+        for name, page in self.pages.items():
+            self.assertNotIn('name="calc_', page, name)
+            self.assertNotIn("calc.js", page, name)
+            self.assertNotIn('data-variant="calculadora"', page, name)
+            self.assertNotIn('id="cs-model"', page, name)
 
     # ---- criterion 4: words
     def test_visible_words_per_page(self):
-        # r4.1: the copy-length criterion is about the copy, i.e. the build with the figures on
-        for name, page in build_v3.build(write=False, show_figures=True)[0].items():
-            if name not in self.pages:
-                continue
+        for name, page in self.pages.items():
             n = len(words(main_text(page)))
-            self.assertGreaterEqual(n, 500 if name == build_v3.CALC_PAGE else 700, f"{name}: {n}")
+            self.assertGreaterEqual(n, 500 if name in ("condiciones", "inversores") else 700, f"{name}: {n}")
 
     # ---- criterion 5: SEO, links, routes, deploy
     def test_no_hreflang_and_no_other_languages(self):
-        # ru-noindex: RU Tenerife is for the founder's review only, so no hreflang alternate at all
+        # EN r1: English-only site, no hreflang alternate at all (no RU/ES/DE/FR versions)
         for name, page in self.pages.items():
             self.assertEqual(re.findall(r'hreflang="([^"]+)"', page), [], name)
             self.assertIsNone(re.search(r'href="/(?:es|de|fr|en)/', page), name)
-            self.assertIn('<html lang="ru">', page)
+            self.assertIn('<html lang="en">', page)
 
     def test_routes_sitemap_deploy(self):
         import tenerife
-        self.assertEqual(set(tenerife.SITE_PAGES) - set(tenerife.FIGURE_ONLY_PAGES) | {"index"}, set(V3))
+        self.assertEqual(set(tenerife.SITE_PAGES) | {"index"}, set(V3))
         deploy = (ROOT / "deploy" / "artemis-deploy.sh").read_text(encoding="utf-8")
+        # EN r1: deploy/ is Sysadmin-owned; the smoke list change (condiciones, inversores in; calculadora, calc.js,
+        # model.json out) is handed over in the deploy notes, so only the pages the script already lists are checked
         for url in V3.values():
-            self.assertIn(f" {url} ", deploy.replace("(", " ").replace("\n", " "), url)
+            if url not in ("/tenerife/condiciones/", "/tenerife/inversores/"):
+                self.assertIn(f" {url} ", deploy.replace("(", " ").replace("\n", " "), url)
         for page in self.pages.values():
             for ref in re.findall(r'(?:href|src)="(/static/tenerife/site/[^"]+\.(?:css|js))"', page):
                 self.assertIn(ref, deploy, ref)
@@ -568,10 +538,10 @@ class V3BuildTest(unittest.TestCase):
             self.assertEqual(len(re.findall(r'aria-current="page"', head)), 2, name)
 
     def test_js_budget(self):
-        total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js")) + build_v3.CALC_JS.stat().st_size
+        total = sum((SITE_STATIC / f).stat().st_size for f in ("site.js", "waitlist.js"))
         self.assertLessEqual(total, 170 * 1024)
-        self.assertLessEqual(build_v3.CALC_JS.stat().st_size, 15 * 1024)
-        self.assertFalse((SITE_STATIC / "calc.js").exists())   # r4.1 c2: not served
+        self.assertFalse((SITE_STATIC / "calc.js").exists())   # EN r1: calculator retired
+        self.assertFalse((ROOT / "app" / "tenerife_site" / "data" / "calc.js").exists())
 
     # ---- design system
     def test_tokens_and_fonts_included_as_is(self):
@@ -583,7 +553,7 @@ class V3BuildTest(unittest.TestCase):
         self.assertNotIn("Newsreader", css)
         self.assertIn('family:"Literata"', css.replace("font-family: ", "family:").replace("font-family:", "family:"))
         for page in self.pages.values():
-            self.assertIn('<link rel="preload" href="/static/tenerife/site/fonts/literata-cyrillic-500.woff2" '
+            self.assertIn('<link rel="preload" href="/static/tenerife/site/fonts/literata-latin-500.woff2" '
                           'as="font" type="font/woff2" crossorigin>', page)
 
     def test_designer_files_unchanged_copy(self):
@@ -609,13 +579,6 @@ class V3BuildTest(unittest.TestCase):
         js = (SITE_STATIC / "site.js").read_text(encoding="utf-8")
         self.assertIn("is-over", js)
         self.assertNotIn("addEventListener('scroll'", js)
-        # one rounding rule: half-up (model.json rounding), the same in build and calc.js
-        self.assertEqual(build_v3.fmt_pct(2.25), "2,3%")
-        self.assertEqual(build_v3.fmt_int(2.5), "3")
-        calc = build_v3.CALC_JS.read_text(encoding="utf-8")
-        self.assertIn("Math.floor(n+0.5)", calc)
-        self.assertIn("roundingMode:'halfExpand'", calc)
-        self.assertIn("hu((t.min+t.max)/2)", calc)  # type radio = middle of its range
 
     def test_tables_stack_with_labels_and_row_headers(self):
         for name, page in self.pages.items():
@@ -636,8 +599,8 @@ class V3BuildTest(unittest.TestCase):
                 self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
 
     def test_approved_exceptions_only_where_the_copy_has_them(self):
-        allowed_text = ["4–6% аренды", "валовая доходность 5,8%"]
-        pages_for = {r"нельзя": {"alquiler"}, r"Сумма": {"calculadora", "index", "proceso"}}
+        allowed_text = ["4–6% of rent"]   # EN r1: cost table (alquiler, mercado)
+        pages_for = {r"(?i)\byield\b": {"norte", "mercado", "alquiler", "acciones"}}   # market data, German benchmarks
         for name, page in self.pages.items():
             text = page
             for s in allowed_text:

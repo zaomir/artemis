@@ -1,4 +1,4 @@
-"""Artemis Tenerife — RU preview (noindex) + free waitlist.
+"""Artemis Tenerife — EN site (/tenerife/, Spanish slugs) + free waitlist.
 
 Routes (Blueprint, registered in app.py):
   GET  /tenerife-preview[/<sub>]     301 -> /tenerife/<sub>/ if that page exists, else /tenerife/ (T47)
@@ -7,14 +7,12 @@ Routes (Blueprint, registered in app.py):
                                      (both static, v2 layout, built by build_v3.py from the templates' text)
   GET  /tenerife/gracias/?back=      no-JS thank-you page after the form (noindex); errors answer with the
                                      same v2 notice shell and a link back to the form
-  POST /api/tenerife/waitlist        name, contact, language, GDPR consent
-                                     (+ calc_m2, calc_step, calc_pay from /tenerife/calculadora/:
-                                     recomputed with model.json in tenerife_calc.py)
-  GET  /tenerife/, /tenerife/<page>/ RU prod site (static pages built from
-                                     grainee-v2 docs/projects/artemis/tenerife/site-ru,
-                                     see app/tenerife_site/README.md); indexable.
+  POST /api/tenerife/waitlist        name, contact, language, GDPR consent (the EN pages send no calc_* fields;
+                                     legacy calc_* input is still recomputed server-side by tenerife_calc.py)
+  GET  /tenerife/, /tenerife/<page>/ EN site (static pages built by scripts/tenerife_site_build/build_v3.py from
+                                     copy_en, see app/tenerife_site/README.md); noindex unless TENERIFE_INDEXING=1.
                                      /tenerife/<page>.html -> 301 clean URL.
-  GET  /tenerife/calculadora[/|.html] 302 -> /tenerife/ while TENERIFE_SHOW_FIGURES is off (r4.1 c2, temporary)
+  GET  /tenerife/calculadora[/|.html] 301 -> /tenerife/condiciones/ (EN r1: the calculator is gone, page 05 = Terms)
 
 Preview + API paths are noindex (meta + X-Robots-Tag) and is not
 linked from the Crete site. No payments; the only amounts are the server's recomputation of
@@ -44,7 +42,8 @@ bp = Blueprint("tenerife", __name__)
 
 PREVIEW_PREFIX = "/tenerife-preview"
 NOINDEX_PREFIXES = (PREVIEW_PREFIX, "/api/tenerife/")
-WAITLIST_LANGS = {"ru": "Русский", "de": "Deutsch", "en": "English", "es": "Español", "fr": "Français"}
+# contact languages offered by the waitlist <select> (endonyms; the page chrome is English)
+WAITLIST_LANGS = {"en": "English", "es": "Español", "de": "Deutsch", "fr": "Français", "ru": "Русский"}
 RATE_LIMIT_MAX = 3          # submissions
 RATE_LIMIT_WINDOW_MIN = 10  # per this many minutes per client
 HONEYPOT_FIELD = "website"
@@ -125,8 +124,7 @@ LEGAL_PAGES = ("impressum", "privacy")
 @bp.route(PREVIEW_PREFIX + "/<path:sub>")
 def preview_moved(sub: str = ""):
     first = sub.strip("/").split("/", 1)[0]
-    if figure_page_hidden(first):   # r4.1 c2: straight to /tenerife/ (temporary), not via the 302 page
-        return _figure_page_moved()
+    first = MOVED_PAGES.get(first, first)   # EN r1: calculadora -> condiciones in one hop
     target = f"/tenerife/{first}/" if first in LEGAL_PAGES + SITE_PAGES else "/tenerife/"
     return redirect(_with_query(target), code=301)
 
@@ -139,50 +137,34 @@ def _with_query(url: str) -> str:
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "acciones", "calculadora", "alquiler", "energia", "construccion",
-              "proceso", "faq", "simon", "mercado", "boris")  # RU v3: scripts/tenerife_site_build/build_v3.py
+SITE_PAGES = ("norte", "producto", "acciones", "condiciones", "alquiler", "energia", "construccion",
+              "proceso", "faq", "simon", "mercado", "boris", "inversores")  # EN r1: build_v3.py from copy_en
 SITE_URL = "https://artemisresort.com"
-# r4.1: investor pages are not published until the figures are approved: 404 (as the hidden «Инвесторам» footer link),
-# never in SITE_PAGES, the sitemap or any internal link. Guarded explicitly so adding one to SITE_PAGES can't leak it.
-UNPUBLISHED_PAGES = ("inversores", "investors", "inversiones", "invest")
-# r4.1: figure data (model.json & co.) is never served while TENERIFE_SHOW_FIGURES is off (default). The file itself
-# lives in app/tenerife_site/data/ (nginx serves /static/ straight from disk); this guard answers 404 in Flask before
-# static serving, for any JSON under /static/tenerife/, in case one is ever put back there.
+# EN r1 (founder t122u via Lead 01.11, BLK-20261031-20): the calculator is gone; page 05 is «Terms» at
+# /tenerife/condiciones/. Every old calculator URL (/tenerife/calculadora, /calculadora/, .html, any query,
+# /tenerife-preview/calculadora/) answers ONE permanent 301 to the Terms page (query kept).
+MOVED_PAGES = {"calculadora": "condiciones"}
+# Never public: figure data (model.json & co.) and the retired calculator script. Both live outside app/static
+# (model.json in app/tenerife_site/data/, calc.js deleted); this guard answers 404 in Flask before static serving for
+# any JSON or calc.js under /static/tenerife/, in case one is ever put back there. No env switch (EN r1:
+# TENERIFE_SHOW_FIGURES is retired — the approved ranges are in the pages, the model is never served).
 FIGURE_STATIC_RX = re.compile(r"^/static/tenerife/(?:.*/)?[^/]*\.json(?:\.gz|\.br)?$", re.I)
-# r4.1 c2 (Lead 01.11): the calculator page has nothing to show without the figures. While TENERIFE_SHOW_FIGURES is off
-# every URL of it (/tenerife/calculadora[/][.html], any query, /tenerife-preview/calculadora/) answers a TEMPORARY 302
-# to /tenerife/ (it comes back with the figures, so no 301 that browsers/CDN would cache); no page links it.
-# app/tenerife_site/calculadora.html stays in the repo and is served again only with TENERIFE_SHOW_FIGURES=1.
-# calc.js is not in app/static any more (app/tenerife_site/data/calc.js, not served); the guard also answers 404.
-FIGURE_ONLY_PAGES = ("calculadora",)
 CALC_JS_RX = re.compile(r"^/static/tenerife/(?:.*/)?calc\.js(?:\.gz|\.br|\.map)?$", re.I)
 
 
-def show_figures() -> bool:
-    return os.environ.get("TENERIFE_SHOW_FIGURES", "").strip() == "1"
-
-
 def figures_blocked(path: str) -> bool:
-    return not show_figures() and bool(FIGURE_STATIC_RX.match(path or "") or CALC_JS_RX.match(path or ""))
-
-
-def figure_page_hidden(page: str) -> bool:
-    return page in FIGURE_ONLY_PAGES and not show_figures()
-
-
-def _figure_page_moved():
-    return redirect(SITE_PREFIX + "/", code=302)
+    return bool(FIGURE_STATIC_RX.match(path or "") or CALC_JS_RX.match(path or ""))
 
 
 log = logging.getLogger("artemis.tenerife")
 
 # ---- runtime config of the built pages (the static HTML is committed; these two never are)
-# TENERIFE_WHATSAPP  E.164 with "+", e.g. +440000000000. Footer «Контакты»: «WhatsApp: » + a wa.me link whose text is
-#                    the number. The build leaves WA_SLOT where the copy has the phone; unset/invalid -> the contact
+# TENERIFE_WHATSAPP  E.164 with "+", e.g. +440000000000. Footer «Contact.»: «WhatsApp: » + a wa.me link whose text is
+#                    the number. The build leaves WA_SLOT after the copy's e-mail; unset/invalid -> the contact
 #                    is left out (never a placeholder) and a warning WITHOUT the value is logged.
 # TENERIFE_INDEXING  "1" -> /tenerife/ pages indexable and in sitemap.xml; unset/anything else -> every page gets
 #                    <meta name="robots" content="noindex, nofollow"> + X-Robots-Tag and none is in the
-#                    sitemap (until the founder approves numbers and prices).
+#                    sitemap (Sysadmin decides for prod).
 WA_SLOT = "<li data-tenerife-whatsapp hidden></li>"
 _WA_RX = re.compile(r"\+[1-9]\d{7,14}")
 _ROBOTS_META = '<meta name="robots" content="noindex, nofollow">'
@@ -262,10 +244,10 @@ def legal_page():
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
-    if page not in SITE_PAGES or page in UNPUBLISHED_PAGES:
+    if page in MOVED_PAGES:
+        return redirect(_with_query(f"{SITE_PREFIX}/{MOVED_PAGES[page]}/"), code=301)
+    if page not in SITE_PAGES:
         return make_response("Not found", 404)
-    if figure_page_hidden(page):
-        return _figure_page_moved()
     return _site_page(page)
 
 
@@ -275,9 +257,8 @@ def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
     if page == "index":
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
-    if figure_page_hidden(page):
-        return _figure_page_moved()
-    if (page in SITE_PAGES or page in LEGAL_PAGES) and page not in UNPUBLISHED_PAGES:
+    page = MOVED_PAGES.get(page, page)
+    if page in SITE_PAGES or page in LEGAL_PAGES:
         return redirect(_with_query(f"{SITE_PREFIX}/{page}/"), code=301)
     return make_response("Not found", 404)
 
@@ -298,23 +279,23 @@ def _payload() -> tuple[dict, bool]:
 # No-JS answers (QA T3-05): the v2 page shell built by build_v3.py (app/tenerife_site/_notice.html) with
 # {{NOTICE_*}} slots; Flask fills them with escaped text. Strings: C13 states (DESIGN.md) and the server errors.
 THANKS_URL = SITE_PREFIX + "/gracias/"
-# Form messages: copy_v3/17_forma.md «Сообщения формы», verbatim (tests/test_tenerife_r4.py checks them against
+# Form messages: copy_en/17_forma.md «Form messages», verbatim (tests/test_tenerife_r4.py checks them against
 # build_v3.form_messages(); the page gets the same texts as data-msg-* for waitlist.js).
 FORM_MSG = {
-    "ok-title": "Спасибо! Вы в очереди.",
-    "ok-next": "Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.",
-    "server": "Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.",
-    "rate": "С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на "
+    "ok-title": "Thank you! You're in the queue.",
+    "ok-next": "Your request goes to the project team on Telegram and to info@artemisresort.com. We will be in touch.",
+    "server": "We couldn't send your request. Please try again or email us at info@artemisresort.com.",
+    "rate": "Too many requests have been sent from this connection. Please try again later or email us at "
             "info@artemisresort.com.",
-    "name": "Укажите имя.",
-    "contact": "Укажите контакт: email, телефон или Telegram.",
-    "language": "Выберите язык общения.",
-    "consent": "Отметьте согласие на обработку данных.",
+    "name": "Please enter your name.",
+    "contact": "Please enter a contact: email, phone or Telegram.",
+    "language": "Please choose your preferred language.",
+    "consent": "Please tick the box to consent to data processing.",
 }
 THANKS_TITLE = FORM_MSG["ok-title"]
 THANKS_TEXT = FORM_MSG["ok-next"]
-BACK_SITE = "← К сайту проекта"
-BACK_FORM = "← Назад к форме"
+BACK_SITE = "← Back to the project site"   # interface strings (not in the copy; same as the legal pages' back link)
+BACK_FORM = "← Back to the form"
 
 
 _EMAIL_RX = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
@@ -386,7 +367,7 @@ def waitlist():
         calc, problems = check_calc(d, model)
     except (OSError, ValueError, KeyError, TypeError, StopIteration) as e:
         model = None
-        calc = {"calc_status": "invalid", "calc_note": "model.json не прочитан"} if any(
+        calc = {"calc_status": "invalid", "calc_note": "model.json not readable"} if any(
             d.get(k) not in (None, "") for k in ("calc_m2", "calc_step", "calc_pay")) else None
         problems = [f"model.json unavailable: {type(e).__name__}"] if calc else []
     if problems:

@@ -18,6 +18,8 @@ REMOVED_DISCLAIMERS = [
     r"визуализац", r"\(AI\)", r"(?<![А-Яа-яЁё])ИИ(?![А-Яа-яЁё])", r"не фотограф", r"иллюстрация этапа",
     r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт", r"не гарантирован",
     r"общая информация", r"до разрешения",
+    # EN r1: the same captions / disclaimer blocks in English
+    r"visuali[sz]ation", r"not a photograph", r"Important information", r"\bsecurities\b", r"general information",
 ]
 
 FORBIDDEN = [
@@ -124,7 +126,7 @@ class TenerifePreviewTest(unittest.TestCase):
 
     def test_privacy_names_controller_and_hosting_country(self):
         body = self.client.get("/tenerife/privacy/").get_data(as_text=True)
-        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "Германии"):
+        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "the server is located in Germany"):
             self.assertIn(must, body)
         self.assertNotIn("Oxford Frame Ltd", body)
 

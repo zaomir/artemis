@@ -45,7 +45,7 @@
     /* burger hidden (desktop width) while open -> close, so the page never stays inert */
     window.addEventListener('resize',function(){if(isOpen()&&!b.offsetParent) setOpen(false,false);});
   }
-  /* «Ещё» (<details> в меню ≥1024): Esc закрывает и возвращает фокус на summary (design v3, components.html) */
+  /* «More» (<details> in the menu ≥1024): Esc closes it and returns focus to the summary (design v3, components.html) */
   document.addEventListener('keydown',function(ev){
     if(ev.key!=='Escape') return;
     var d=document.querySelector('.nav details[open]'); if(!d) return;
