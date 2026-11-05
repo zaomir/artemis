@@ -1,0 +1,18 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "NEWS-04",
+  "subunit": "strict_navigation_contract_updated",
+  "source_commit_sha": "e47cd4cd2e8ac86ecbab77538ff441cb80d19fc6",
+  "merge_commit_sha": "19011c4d43a1390c163488a8eb52dcf70db80dd8",
+  "pr_url": "https://github.com/zaomir/artemis/pull/53",
+  "tests": {
+    "investor_architecture": 12,
+    "v3": 60,
+    "failures": 0,
+    "tests_removed": 0,
+    "additional_skips": 0,
+    "whitespace": "passed"
+  },
+  "status": "source_merged_pending_full_runtime_suite",
+  "production_changed": false
+}

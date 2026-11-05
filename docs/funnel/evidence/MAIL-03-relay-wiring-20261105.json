@@ -1,0 +1,30 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "MAIL-03",
+  "subunit": "same_timer_inactive_confirmation_welcome_transport",
+  "source_commit_sha": "10000e3197f30ee2422fdd7a57ca630fdd5726a5",
+  "merge_commit_sha": "9f5f0d5642b59632bc077d1b5030d747505439bb",
+  "pr_url": "https://github.com/zaomir/artemis/pull/55",
+  "tests": {
+    "funnel": 83,
+    "relay": 27,
+    "failures": 0,
+    "standard_library_only_mail_import": true
+  },
+  "behavior": [
+    "same existing Gmail factory and SQLite queue; one due job per existing timer run",
+    "CRM step precedes newsletter and legacy notifications",
+    "disabled/empty/unmigrated paths do not construct provider",
+    "actual assigned reply role, sender, Reply-To and host secret required by runtime entry",
+    "shared five-locale copy moved byte-for-byte out of Flask HTTP module"
+  ],
+  "status": "source_merged_pending_core_install",
+  "production_changed": false,
+  "real_messages_sent": 0,
+  "remaining": [
+    "actual sender/reply/role/secret configuration and controlled delivery proof",
+    "newsletter flag remains off",
+    "published news issue transport/content not covered by confirmation/welcome wiring",
+    "authenticated DSN and Gmail-copy/backup/restore expiry scope remain open"
+  ]
+}

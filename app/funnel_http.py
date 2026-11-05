@@ -7,15 +7,13 @@ import os
 import re
 import sqlite3
 import uuid
+import html
+from urllib.parse import parse_qsl,urlsplit,urlunsplit,urlencode
+from html.parser import HTMLParser
 from flask import current_app, make_response, render_template, request
 import funnel_store as store
 
-LABELS={
- 'en': dict(name='Name',channel='How may we reply?',contact='Email or Facebook profile',optional_email='Email for updates (optional for a Facebook contact)',opt_in='I want email news about Artemis de la Cruz: the site search, concept development and project progress. I can unsubscribe at any time.',consent='Use my details to respond to this enquiry.',privacy='Privacy',submit='Send enquiry',success='Your enquiry is saved. If you requested email updates, check your inbox for the confirmation request. You can read the project diary now.',confirm='Confirm subscription',unsubscribe='Unsubscribe',done='Your preference has been saved.',diary='Project diary'),
- 'es': dict(name='Nombre',channel='¿Cómo podemos responderle?',contact='Email o perfil de Facebook',optional_email='Email para novedades (opcional con contacto de Facebook)',opt_in='Quiero recibir por email noticias de Artemis de la Cruz: búsqueda del terreno, desarrollo del concepto y avances. Puedo darme de baja en cualquier momento.',consent='Utilicen mis datos para responder a esta consulta.',privacy='Privacidad',submit='Enviar consulta',success='Su consulta se ha guardado. Si ha solicitado novedades por email, revise su bandeja para confirmar la suscripción. Ya puede leer el diario del proyecto.',confirm='Confirmar suscripción',unsubscribe='Darse de baja',done='Su preferencia se ha guardado.',diary='Diario del proyecto'),
- 'de': dict(name='Name',channel='Wie dürfen wir antworten?',contact='E-Mail oder Facebook-Profil',optional_email='E-Mail für Neuigkeiten (bei Facebook-Kontakt optional)',opt_in='Ich möchte E-Mail-Neuigkeiten zu Artemis de la Cruz erhalten: Grundstückssuche, Konzeptentwicklung und Projektfortschritt. Ich kann mich jederzeit abmelden.',consent='Meine Angaben dürfen zur Beantwortung dieser Anfrage verwendet werden.',privacy='Datenschutz',submit='Anfrage senden',success='Ihre Anfrage wurde gespeichert. Falls Sie E-Mail-Neuigkeiten angefordert haben, prüfen Sie Ihr Postfach für die Bestätigung. Das Projekttagebuch ist bereits zugänglich.',confirm='Abonnement bestätigen',unsubscribe='Abmelden',done='Ihre Auswahl wurde gespeichert.',diary='Projekttagebuch'),
- 'fr': dict(name='Nom',channel='Comment pouvons-nous vous répondre ?',contact='Email ou profil Facebook',optional_email='Email pour les nouvelles (facultatif avec un contact Facebook)',opt_in="Je souhaite recevoir par email les nouvelles d’Artemis de la Cruz : recherche du terrain, développement du concept et avancement du projet. Je peux me désabonner à tout moment.",consent='Utilisez mes coordonnées pour répondre à cette demande.',privacy='Confidentialité',submit='Envoyer la demande',success='Votre demande a été enregistrée. Si vous avez demandé des nouvelles par email, consultez votre boîte pour confirmer l’abonnement. Le journal du projet est déjà accessible.',confirm='Confirmer l’abonnement',unsubscribe='Se désabonner',done='Votre préférence a été enregistrée.',diary='Journal du projet'),
- 'ru': dict(name='Имя',channel='Как вам ответить?',contact='Email или профиль Facebook',optional_email='Email для новостей (необязательно при контакте Facebook)',opt_in='Хочу получать по email новости Artemis de la Cruz: о выборе участка, разработке концепции и ходе проекта. Отписаться можно в любой момент.',consent='Используйте мои данные для ответа на это обращение.',privacy='Конфиденциальность',submit='Отправить заявку',success='Ваша заявка сохранена. Если вы выбрали новости по email, проверьте почту для подтверждения подписки. Уже сейчас можно читать дневник проекта.',confirm='Подтвердить подписку',unsubscribe='Отписаться',done='Ваш выбор сохранён.',diary='Дневник проекта')}
+from funnel_copy import LABELS
 
 
 def enabled():
@@ -26,11 +24,71 @@ def secret():
     return os.environ.get('ARTEMIS_NEWSLETTER_SECRET','')
 
 
-def form(locale,page,intent_override=None):
+ATTRIBUTION=('source_id','utm_source','utm_medium','utm_campaign','form_id')
+
+
+def safe_attribution(values):
+    result={}
+    for key in ATTRIBUTION:
+        value=str(values.get(key) or '')
+        if re.fullmatch('[A-Za-z0-9_.:-]{1,100}',value):result[key]=value
+    return result
+
+
+def carry_attribution(page,values=None):
+    """Native navigation without cookies/storage. Only public campaign slugs.
+
+    Never rewrite external URLs or confirmation/unsubscribe links; canonical
+    metadata and private input values are not a source of query parameters.
+    """
+    attribution=safe_attribution(request.args if values is None else values)
+    if not attribution:return page
+    def link(match):
+        raw=html.unescape(match[3]);url=urlsplit(raw)
+        canonical_absolute=url.scheme=='https' and url.netloc=='artemisresort.com'
+        if ((url.scheme or url.netloc) and not canonical_absolute) or not url.path.startswith('/tenerife/') or url.path.startswith('/tenerife/subscription/'):
+            return match[0]
+        query=safe_attribution(dict(parse_qsl(url.query)));query.update(attribution)
+        href=urlunsplit((url.scheme,url.netloc,url.path,urlencode(query),url.fragment))
+        return match[1]+match[2]+html.escape(href,quote=True)+match[2]
+    return re.sub(r'(<a\b[^>]*\bhref=)([\"\x27])(.*?)\2',link,page,flags=re.I)
+
+
+def compatibility_fields(markup):
+    """Preserve only the existing server-built calculator inputs, not client math."""
+    class Inputs(HTMLParser):
+        def __init__(self):super().__init__();self.values={}
+        def handle_starttag(self,tag,attrs):
+            attrs=dict(attrs);name=attrs.get('name')
+            if tag=='input' and attrs.get('type')=='hidden' and name in {'calc_m2','calc_step','calc_pay'}:
+                self.values[name]=attrs.get('value','')
+    parser=Inputs();parser.feed(markup);return parser.values
+
+
+def form(locale,page,intent_override=None,values=None):
+    values=dict(values or {})
     prefix='/tenerife/'+('' if locale=='en' else locale+'/')
     intent=intent_override or ('investor' if '/inversores/' in page or '/calculadora/' in page else 'buyer' if '/producto/' in page else 'other')
-    return render_template('tenerife/funnel_form.html',locale=locale,page=page,
-        intent=intent,submission_id=str(uuid.uuid4()),labels=LABELS[locale],privacy_url=prefix+'privacy/')
+    submission=str(values.get('submission_id') or '')
+    if not store.ID.fullmatch(submission):submission=str(uuid.uuid4())
+    kind='facebook' if values.get('contact_type')=='facebook' else 'email'
+    checked=lambda key:values.get(key) in (True,'on','true','1')
+    extras={key:str(values[key])[:200] for key in ['calc_m2','calc_step','calc_pay','calc_type','calc_shares','calc_model_version'] if key in values}
+    attribution=safe_attribution(request.args);attribution.update(safe_attribution(values));extras.update(attribution)
+    rendered=render_template('tenerife/funnel_form.html',locale=locale,page=page,
+        intent=intent,submission_id=submission,labels=LABELS[locale],privacy_url=prefix+'privacy/',
+        values=values,kind=kind,opted=checked('newsletter_opt_in'),consented=checked('consent'),extras=extras)
+    return carry_attribution(rendered,attribution)
+
+
+def form_error(values,message,status,locale='en'):
+    """Private same-origin POST recovery; never put submitted values in a URL."""
+    import html
+    intent=values.get('intent') if values.get('intent') in store.INTENTS else 'other'
+    page=store.safe_landing(values.get('page'))
+    body='<p role="alert">'+html.escape(message)+'</p>'+form(locale,page,intent,values)
+    response=token_response(message,body,locale);response.status_code=status
+    return response
 
 
 for _loc,_pending in {
@@ -43,6 +101,14 @@ for _loc,_pending in {
 
 for _loc,_subscribe in {'en':'Subscribe to updates','es':'Suscribirse a las novedades','de':'Neuigkeiten abonnieren','fr':'S’abonner aux nouvelles','ru':'Подписаться на новости'}.items():
     LABELS[_loc]['subscribe']=_subscribe
+
+for _loc,_problem in {
+ 'en':'The submission could not be confirmed. Your entries are retained; retry this same form.',
+ 'es':'No se ha podido confirmar el envío. Sus datos siguen en el formulario; inténtelo de nuevo aquí.',
+ 'de':'Die Übermittlung konnte nicht bestätigt werden. Ihre Eingaben bleiben erhalten; versuchen Sie es mit diesem Formular erneut.',
+ 'fr':'L’envoi n’a pas pu être confirmé. Vos données restent dans le formulaire ; réessayez ici.',
+ 'ru':'Не удалось подтвердить отправку. Введённые данные сохранены в форме; повторите отправку здесь.'}.items():
+    LABELS[_loc]['problem']=_problem
 
 
 def token_response(title,body,locale='en'):

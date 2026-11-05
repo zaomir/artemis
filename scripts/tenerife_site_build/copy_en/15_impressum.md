@@ -1,21 +1,25 @@
 <!-- META
-Слаг: /tenerife/impressum/
-Meta title: Правовая информация — Artemis de la Cruz
-Блок: юридическая страница. Без кнопки и без кадров.
+Slug: /tenerife/impressum/
+Meta title: Legal notice — Artemis Tenerife
+Block: legal page. No button and no frames.
 -->
 
-# Правовая информация
+# Legal notice
 
-Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) для сайта Artemis de la Cruz.
+Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) for the Artemis Tenerife website.
 
-## Оператор сайта
+## Website operator
 
-**OXFORD FRAME REAL ASSETS LTD**. Registered in England and Wales — компания зарегистрирована в Англии и Уэльсе.
+**OXFORD FRAME REAL ASSETS LTD**. Registered in England and Wales.
 
-Регистрационный номер (Companies House): 09153936. Зарегистрированный адрес (registered office): Drovers, Preston Candover, Basingstoke, RG25 2EE.
+Company number (Companies House): 09153936. Registered office: Drovers, Preston Candover, Basingstoke, RG25 2EE.
 
-Источник: публичный реестр [Companies House](https://find-and-update.company-information.service.gov.uk/company/09153936), проверено 31.10.2026.
+Source: the public [Companies House](https://find-and-update.company-information.service.gov.uk/company/09153936) register, checked on 31.10.2026.
 
-## Контакты
+## Representative
+
+Director: Szabolcs Szaniszlo.
+
+## Contact
 
 Email: info@artemisresort.com.

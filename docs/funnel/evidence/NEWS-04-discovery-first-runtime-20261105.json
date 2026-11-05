@@ -1,0 +1,55 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "NEWS-04",
+  "subunit": "guarded_navigation_release_first_attempt",
+  "status": "failed_tests_previous_release_preserved",
+  "runtime_result": {
+    "request_id": "artemis-diary-discovery-release-20261105-01",
+    "type": "artemis_release",
+    "status": "error",
+    "generated_at": "2026-11-05T13:13:08.093Z",
+    "providers_used": [
+      "artemis_release"
+    ],
+    "places": [],
+    "warnings": [],
+    "errors": [
+      {
+        "code": "internal_error",
+        "message": "canonical_deploy_failed"
+      }
+    ],
+    "meta": {
+      "artemis_release": {
+        "schema": "artemis-site-release/1",
+        "requested_sha": "a15a2eb77147eb66c3646e32c53769bbfd5eee99",
+        "production_changed": false,
+        "flags_changed": false,
+        "real_messages_sent": 0,
+        "crm_metadata_changed": false,
+        "previous_sha": "fe000ec896c9e7ba3cc157d71a6d4d108775ffbf",
+        "deployed_sha": "fe000ec896c9e7ba3cc157d71a6d4d108775ffbf",
+        "deploy": {
+          "exit_code": 1,
+          "stdout_sha256": "34e3febb18f4a1288787ced980742bed6586401dad4818264c01b5a68c33be6e",
+          "test_summaries": [
+            "tests: Ran 577 tests in 450.205s FAILED (failures=3, skipped=9) (rc=1)"
+          ]
+        },
+        "ok": false,
+        "error_class": "canonical_deploy_failed",
+        "test_log": "/var/log/artemis-deploy-tests-fe000ec.log"
+      }
+    },
+    "error": {
+      "code": "internal_error",
+      "message": "canonical_deploy_failed"
+    }
+  },
+  "production_changed": false,
+  "notes": [
+    "Do not claim navigation live",
+    "No migration replay or flags change",
+    "Diagnose the actual 3 failing test cases before retry; no broad test exclusion"
+  ]
+}

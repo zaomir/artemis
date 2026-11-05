@@ -1,11 +1,15 @@
 {
   "schema": "artemis-aside-package/1",
-  "revision": 1,
+  "revision": 3,
   "status": "prepared_not_executed",
   "expected_account": {
     "public_identity": "Valerie Petra",
     "legal_profile_name_hint": "Valeriia Petrova",
-    "verification": "AS-01 must return observed profile URL/ID and Page/group permissions; do not assume based on name"
+    "verification": "AS-01 must return observed profile URL/ID and Page/group permissions; do not assume based on name",
+    "dolphin_profile_id": "833304152",
+    "registered_profile_url": "https://www.facebook.com/valerie.petra.uk/",
+    "binding_observed_on": "2026-11-05",
+    "visible_identity_verified": false
   },
   "account_window": {
     "timezone": "Europe/Paris",
@@ -338,5 +342,26 @@
     "observed_at": "timestamp with zone",
     "readback": "visible text/settings/status, not just click",
     "error": "sanitized code or null"
+  },
+  "access_observation": {
+    "evidence": "docs/funnel/evidence/AS-01-access-20261105.json",
+    "handoff_present": false,
+    "cdp_reachable": false,
+    "page_group_permissions": "not_verified",
+    "constraint": "Inventory existing objects in the authorized Valerie session before creating any Page/group or publishing; no duplicate destination assumptions."
+  },
+  "explicit_enquiry_intake": {
+    "contract": "docs/funnel/aside/FACEBOOK_EXPLICIT_INTAKE.md",
+    "host_interface": "/var/www/artemis/scripts/capture_fb_enquiry.py",
+    "runtime_status": "ready_verified_2026-11-05",
+    "requires": [
+      "AS-01",
+      "AS-12",
+      "CRM-05"
+    ],
+    "credential_delivery": "trusted_host_only_no_credentials_in_Aside_packet",
+    "source_provenance": "operator_attested_not_Meta_API",
+    "raw_payload_storage": "authorized_private_stdin_or_job_storage_never_git",
+    "runtime_evidence": "docs/funnel/evidence/CRM-05-runtime-20261105.json"
   }
 }

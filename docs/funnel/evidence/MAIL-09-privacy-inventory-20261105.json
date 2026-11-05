@@ -1,0 +1,77 @@
+{
+  "schema": "artemis-atom-runtime-evidence/1",
+  "atom": "MAIL-09",
+  "unit": "token_log_and_backup_inventory",
+  "request_id": "artemis-mail-privacy-inventory-20261105-01",
+  "observed_at": "2026-11-05T11:42:58.107Z",
+  "production_changed": false,
+  "provider_source_sha": "580444360d8e0a5225232052435d8d75e6206cd8",
+  "provider_pr": 2387,
+  "privacy": {
+    "nginx": {
+      "present": true,
+      "path": "/etc/nginx/sites-enabled/artemisresort.com.origin.conf",
+      "sha256": "ce95511488dc0e5595a08c01b4f9c6e38d89f2ef9073881cbc2b0c2fae716bd0",
+      "source_sha256": "76e862d02a93a3c462c47535aa941173a65b3554f79347c003893f068ad0cc34",
+      "matches_deployed_source": false,
+      "dedicated_token_location_count": 0,
+      "token_access_log_off": false,
+      "token_error_log_discarded": false
+    },
+    "gunicorn": {
+      "unit_read": true,
+      "unit_explicit_access_log_setting": false,
+      "default_cwd_config_present": false,
+      "unit_explicit_config_setting": false
+    },
+    "backup": {
+      "TWENTY_BACKUP_DAILY_KEEP": {
+        "effective_count": 7,
+        "override_observed": false
+      },
+      "TWENTY_BACKUP_WEEKLY_KEEP": {
+        "effective_count": 4,
+        "override_observed": false
+      },
+      "TWENTY_OFFHOST_KEEP": {
+        "effective_count": 14,
+        "override_observed": false
+      },
+      "twenty-backup.sh": {
+        "installed_sha256": null,
+        "canonical_sha256": "551fd27f1e8350c0a1d3a8addab54de81149957358311e18e32fc0ac96e61d07",
+        "matches_canonical": false
+      },
+      "twenty-offhost-backup.sh": {
+        "installed_sha256": null,
+        "canonical_sha256": "2c7d5da2095231955d50e512d139955c460d4910ca61653b3496be331c7f0257",
+        "matches_canonical": false
+      },
+      "twenty-restore.sh": {
+        "installed_sha256": null,
+        "canonical_sha256": "9f821a8bc7f6314506d923da316beedfb34ce1a29636527e06de32d3dc2d7421",
+        "matches_canonical": false
+      },
+      "restore_expiry_replay_hook_observed": false,
+      "scope": "script counts and fixed unit/environment overrides; copies not erased, offhost files not listed"
+    }
+  },
+  "runtime_flags": {
+    "ARTEMIS_FUNNEL_ENABLED": false,
+    "ARTEMIS_CRM_CAPTURE_ENABLED": true,
+    "ARTEMIS_CRM_DELIVERY_ENABLED": true,
+    "ARTEMIS_NEWSLETTER_ENABLED": false
+  },
+  "health": 0,
+  "findings": [
+    "no dedicated nginx subscription token log exclusion",
+    "actual nginx differs from deployed repository copy; do not overwrite wholesale",
+    "Gunicorn unit has no explicit access log or config flag and no default cwd config",
+    "backup script location assumption /usr/local/sbin was not confirmed; resolve actual unit path before calling this drift"
+  ],
+  "remaining": [
+    "read only safe nginx diff and actual backup executable paths",
+    "apply exact token log exclusion with backup and nginx validation",
+    "reply assignment, DKIM delivery, privacy and controlled mail QA"
+  ]
+}

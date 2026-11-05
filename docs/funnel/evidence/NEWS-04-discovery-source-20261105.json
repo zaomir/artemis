@@ -1,0 +1,23 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "NEWS-04",
+  "subunit": "five_locale_menu_footer_discovery",
+  "source_commit_sha": "a15a2eb77147eb66c3646e32c53769bbfd5eee99",
+  "merge_commit_sha": "040256b53b21e7f1c2683f06ebaa59f6bbe2048b",
+  "pr_url": "https://github.com/zaomir/artemis/pull/52",
+  "tests": {
+    "locale_builds": 5,
+    "news_tests": 6,
+    "locale_tests": 14,
+    "failures": 0,
+    "whitespace_check": "passed"
+  },
+  "generated_pages_updated": 100,
+  "behavior": [
+    "localized project diary link in existing desktop and mobile menu",
+    "same link in no-JS footer page list",
+    "existing buyer/news contextual CTA and investor calculator behavior preserved"
+  ],
+  "status": "source_merged_runtime_release_next",
+  "production_deployed_by_this_subunit": false
+}

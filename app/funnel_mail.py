@@ -11,9 +11,12 @@ import hashlib
 import html
 import json
 import re
+import os
+from pathlib import Path
+import sqlite3
 from urllib.parse import urlencode
 import funnel_store as store
-from funnel_http import LABELS
+from funnel_copy import LABELS
 
 TEXT={
  'en': ('Confirm your Artemis de la Cruz news subscription','A request to receive Artemis de la Cruz news was made for this address. Open the page below and press the confirmation button. The link is valid for 48 hours. If you did not request this, do nothing; no news will be sent. Project updates are available on the website without a subscription.','Your subscription is confirmed. Read the project diary for the current stage and updates.'),
@@ -72,7 +75,7 @@ def deliver_one(conn,service,sender,reply_to,secret,now=None):
     now=now or store.utcnow()
     row=conn.execute('''SELECT m.id,s.email,s.language,m.generation,m.message_type,s.id,m.state
         FROM artemis_mail_outbox m JOIN artemis_subscriptions s ON s.id=m.subscription_id
-        WHERE m.state IN ('queued','uncertain') AND (m.next_attempt_at IS NULL OR m.next_attempt_at<=?)
+        WHERE m.state IN ('queued','retrying','uncertain') AND (m.next_attempt_at IS NULL OR m.next_attempt_at<=?)
         ORDER BY m.created_at LIMIT 1''',(now.isoformat(),)).fetchone()
     if not row:return None
     m=message(row[:6],sender,reply_to,secret)
@@ -87,22 +90,40 @@ def deliver_one(conn,service,sender,reply_to,secret,now=None):
         conn.execute('UPDATE artemis_mail_outbox SET next_attempt_at=? WHERE id=?',((now+timedelta(hours=1)).isoformat(),mid));conn.commit()
         return {'state':'uncertain','message_id':mid}
     conn.execute('BEGIN IMMEDIATE')
+    # Selection is advisory: another worker may have claimed this row while we
+    # waited for the short write transaction. Never suppress its in-flight send.
+    state=conn.execute('SELECT state FROM artemis_mail_outbox WHERE id=?',(mid,)).fetchone()
+    if not state or state[0] not in ('queued','retrying'):
+        conn.rollback();return None
     if not store.eligible_mail(conn,mid,now):
         conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE id=?",(mid,));conn.commit()
         return {'state':'suppressed','message_id':mid}
-    conn.execute("UPDATE artemis_mail_outbox SET state='uncertain',attempts=attempts+1 WHERE id=?",(mid,));conn.commit()
-    # Serialize the final suppression check and transport against unsubscribe.
-    conn.execute('BEGIN IMMEDIATE')
-    current=conn.execute('SELECT state,generation,deliverability FROM artemis_subscriptions WHERE id=?',(row[5],)).fetchone()
-    desired='pending_confirmation' if row[4]=='confirmation' else 'active'
-    if current!=(desired,row[3],'unknown') and not (current[0]==desired and current[1]==row[3] and current[2]=='ok'):
-        conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE id=?",(mid,));conn.commit()
-        return {'state':'suppressed','message_id':mid}
+    # This commit is the dispatch boundary. Eligibility and generation are
+    # checked atomically with the claim. An unsubscribe committed before this
+    # boundary prevents dispatch; an already-started provider request cannot be
+    # recalled. It must not block new enquiries or the unsubscribe itself.
+    conn.execute("UPDATE artemis_mail_outbox SET state='uncertain',attempts=attempts+1,next_attempt_at=?,last_error=NULL WHERE id=?",
+        ((now+timedelta(minutes=10)).isoformat(),mid));conn.commit()
     try:
         result=service.users().messages().send(userId='me',body={'raw':base64.urlsafe_b64encode(m.as_bytes()).decode()}).execute()
         if not result.get('id'):raise RuntimeError('missing_provider_id')
     except Exception as exc:
-        conn.execute('UPDATE artemis_mail_outbox SET last_error=?,next_attempt_at=? WHERE id=?',(type(exc).__name__,(now+timedelta(minutes=10)).isoformat(),mid));conn.commit()
+        conn.execute("UPDATE artemis_mail_outbox SET last_error=?,next_attempt_at=? WHERE id=? AND state='uncertain'",(type(exc).__name__,(now+timedelta(minutes=10)).isoformat(),mid));conn.commit()
         return {'state':'uncertain','message_id':mid}
     conn.execute("UPDATE artemis_mail_outbox SET state='accepted',provider_id=?,last_error=NULL WHERE id=?",(result['id'],mid));conn.commit()
     return {'state':'accepted','message_id':mid,'provider_id':result['id']}
+
+
+def relay_once(db,service_factory,sender,reply_to,secret,now=None):
+    """One due service message in the SAME timer; never create/migrate a DB."""
+    if os.environ.get('ARTEMIS_NEWSLETTER_ENABLED')!='1':return None
+    path=Path(db)
+    if not path.is_file():return {'state':'blocked_missing_source'}
+    now=now or store.utcnow()
+    with sqlite3.connect(path.resolve().as_uri()+'?mode=rw',uri=True,timeout=5) as conn:
+        tables={r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        if not {'artemis_mail_outbox','artemis_subscriptions','artemis_events'}<=tables:
+            return {'state':'blocked_missing_migration'}
+        due=conn.execute("SELECT 1 FROM artemis_mail_outbox WHERE state IN ('queued','retrying','uncertain') AND (next_attempt_at IS NULL OR next_attempt_at<=?) LIMIT 1",(now.isoformat(),)).fetchone()
+        if not due:return None
+        return deliver_one(conn,service_factory(),sender,reply_to,secret,now)

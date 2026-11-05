@@ -1,0 +1,171 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "METRICS-01",
+  "subunit": "read_only_current_source_summary",
+  "status": "runtime_verified_mail_group_dependencies_remain",
+  "source_repository": "zaomir/grainee-v2",
+  "source_commit_sha": "c6ac90940d876b9684bcd8aac6514146db5c51a6",
+  "source_merge_sha": "4e17f14ab806393a1614becd44f3012faeb5b779",
+  "request_id": "artemis-funnel-metrics-20261105-01",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-funnel-metrics-20261105-01.json",
+  "generated_at": "2026-11-05T12:55:51.504Z",
+  "execution_origin": {
+    "hostname": "vps2402",
+    "verified_server_origin": true
+  },
+  "metrics": {
+    "ok": true,
+    "schema": "artemis-private-funnel-metrics/1",
+    "as_of": "2026-11-05T12:55:39.626365+00:00",
+    "read_only": true,
+    "production_changed": false,
+    "flow_unit": "source_requests_not_unique_people",
+    "flow": {
+      "all": {
+        "source_records": 5,
+        "captured": 5,
+        "crm_receipt_verified": 5,
+        "explicit_opt_in_requests": 0
+      },
+      "unmarked": {
+        "source_records": 2,
+        "captured": 2,
+        "crm_receipt_verified": 2,
+        "explicit_opt_in_requests": 0
+      },
+      "marked_test": {
+        "source_records": 3,
+        "captured": 3,
+        "crm_receipt_verified": 3,
+        "explicit_opt_in_requests": 0
+      }
+    },
+    "source_coverage": {
+      "leads": {
+        "source_records": 3,
+        "mapped": 3,
+        "unmapped": 0
+      },
+      "tenerife_waitlist": {
+        "source_records": 2,
+        "mapped": 2,
+        "unmapped": 0
+      }
+    },
+    "classification": "unmarked excludes recorded tests and reserved .invalid addresses; unmarked tests may remain",
+    "unmarked_enquiries": 2,
+    "marked_test_enquiries": 3,
+    "dimensions_unmarked": {
+      "project": {
+        "artemis_crete": 2
+      },
+      "intent": {
+        "other": 2
+      },
+      "capture_origin": {
+        "legacy_sqlite": 2
+      },
+      "contact_type": {
+        "email": 2
+      }
+    },
+    "service_events_excluded_from_new_requests": {},
+    "unsupported_primary_events": 0,
+    "subscriptions_current": {
+      "all": {
+        "active": 0,
+        "pending_confirmation": 0,
+        "unsubscribed": 0,
+        "expired_address_removed": 0,
+        "expiry_cleanup_pending": 0
+      },
+      "unmarked": {
+        "active": 0,
+        "pending_confirmation": 0,
+        "unsubscribed": 0,
+        "expired_address_removed": 0,
+        "expiry_cleanup_pending": 0
+      },
+      "marked_test": {
+        "active": 0,
+        "pending_confirmation": 0,
+        "unsubscribed": 0,
+        "expired_address_removed": 0,
+        "expiry_cleanup_pending": 0
+      },
+      "unclassified": {
+        "active": 0,
+        "pending_confirmation": 0,
+        "unsubscribed": 0,
+        "expired_address_removed": 0,
+        "expiry_cleanup_pending": 0
+      }
+    },
+    "pending_over_seven_days": 0,
+    "crm_outbox_states": {
+      "verified": 5
+    },
+    "membership": {
+      "source_observations_unmarked": {
+        "unknown": 2
+      },
+      "Facebook_group_members": null,
+      "verified_group_count": false
+    },
+    "mail": {
+      "queue_states": {},
+      "provider_accepted": 0,
+      "recipient_delivered": null,
+      "recipient_read": null,
+      "delivery_evidence": "not_observed; provider acceptance is not delivery or reading"
+    },
+    "costs_eur": {
+      "services": null,
+      "content": null,
+      "placement": null,
+      "labour": null,
+      "total": null,
+      "per_unmarked_enquiry": null,
+      "per_active_subscription": null,
+      "per_verified_group_member": null,
+      "reason": "actual_spend_not_recorded; unknown_is_not_zero"
+    },
+    "receipt_scope": "previous verified writer receipts; current independent GET evidence is separate",
+    "erasure_scope": "site SQLite and owned Twenty fields only; Gmail copies and backups are not erased by this code",
+    "current_independent_GET": {
+      "scope": "legacy_Crete_Tenerife_and_explicit_Facebook_enquiries; newsletter projections require separate mail acceptance",
+      "accepted": 5,
+      "verified": 5,
+      "test_records": 3,
+      "real_records": 2,
+      "unexplained": 0,
+      "all_snapshot_sources_verified": true
+    }
+  },
+  "watchdog": {
+    "checked_at": "2026-11-05T12:55:22Z",
+    "mode": "check",
+    "internal": "ok",
+    "rest": "ok",
+    "rest_code": "200",
+    "public_code": "200",
+    "sync": "ok",
+    "worker": "ok",
+    "backup_age_h": "3",
+    "offhost_age_h": "3",
+    "exit": 0
+  },
+  "tests": {
+    "local_artemis_provider_tests": 68,
+    "new_metrics_tests": 9,
+    "failures": 0
+  },
+  "production_changed": false,
+  "remaining": [
+    "newsletter worker transport and controlled delivery QA remain gated",
+    "verified Facebook group membership unavailable",
+    "actual cost data unavailable; no zero substituted",
+    "Gmail Sent/Inbox confirmation copies are not erased by site/Twenty retention",
+    "backup restore expiry replay absent; retention not activated"
+  ]
+}

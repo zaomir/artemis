@@ -1,55 +1,121 @@
+<!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
-Слаг: /tenerife/mercado/
-Meta title: Entry price, growth and calculation sources — Artemis de la Cruz
-Meta description: A provisional @market@ €/m² reference, entry @discount@% below it and @growth@% assumed annual growth. Model inputs and available sources.
-OG title: Entry price, growth and calculation sources
+Slug: /tenerife/mercado/
+Meta title: The market and price per metre in La Quinta: Artemis figures
+Meta description: What a metre costs in Santa Úrsula and La Quinta, what new builds next door sell for, long-term rents in the north and where the Artemis share price stages come from.
+OG title: Price per metre in north Tenerife and the Artemis share stages
 -->
 
-# Where the entry price and future sales revenue come from
+# The market and price per metre: where the Artemis figures in La Quinta come from
 
-The financial plan uses a provisional @market@ €/m² reference, an early price of @entry@ € per share and assumed @growth@% annual growth for unsold homes.
+The Artemis developer company share price is ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion: an estimate based on current prices of comparable new apartments in the area. This page shows the market to compare that estimate with: resale housing in Santa Úrsula, the neighbouring La Quinta new builds, long-term rents in the north and German yield benchmarks. Every figure comes from a public source.
 
-[КАДР F24]
+[FRAME F24] <!-- internal marker, not published -->
 
-### Early entry 30% below the reference
+### What a metre costs in the north
 
-@market@ × 70% = @entry@ €. The difference is @discount@% of the comparison reference. The share price buys participation; the per-m² reference supports comparison and sales calculations, not a promise of a specific home for shares.
+| What | € per m² | Source |
+|---|---|---|
+| Santa Úrsula, all housing | 2,405 | Fotocasa, October 2026 |
+| Santa Úrsula, La Quinta area | 2,812 | Fotocasa, October 2026 |
+| Santa Úrsula, houses / apartments | 2,485 / 3,132 | Engel & Völkers, 2026 |
+| Santa Úrsula, postcode 38390 index: all / apartments / houses | 2,983 / 2,851 / 3,157 | RealAdvisor, 2026 |
+| Puerto de la Cruz | 3,596 | Fotocasa, October 2026 |
+| Province of Santa Cruz de Tenerife | 3,321 | Fotocasa, October 2026 |
 
+This is mostly resale housing: houses and apartments of various ages. New builds in the north cost more.
 
-[КАДР F01]
+[FRAME F01] <!-- internal marker, not published -->
 
-### What neighbouring projects show
+### How prices are rising
 
-[Reside Tenerife](https://residentenerife.com/obra-nueva) marks La Quinta I, II, III and Lomo Román as sold. These are examples of neighbouring residential projects; Artemis calculations use the model’s provisional reference.
+Santa Úrsula prices rose 13.7% over the year, according to the Fotocasa index. The north of Tenerife is getting more expensive faster than people who only know the southern coast tend to think.
 
-### How 6% annual growth is applied
+### Neighbouring La Quinta new builds: asking prices
 
-| Time until signing | Model reference, €/m² |
+| Project | Asking price | € per m² |
+|---|---|---|
+| La Quinta III | 4 houses of 125 m², 420,000–425,000 €, sold out | 3,360–3,400 |
+| La Quinta 2 | houses of 110 m², 399,999–425,700 €, sold out | 3,636–3,870 |
+
+The neighbouring La Quinta new builds were offered at 3,360–3,870 € per metre, and both projects have already sold out.
+
+[FRAME F12] <!-- internal marker, not published -->
+
+### Artemis stages next to the market
+
+Artemis share stages: queue, permit, foundations, structure and roof, finishing, completion. A metre as a share costs ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion — an estimate based on current prices of comparable new apartments in the area.
+
+The market for comparison is in the tables above: resale housing in the La Quinta area at 2,812 € per metre, asking prices at the neighbouring new builds at 3,360–3,870 €.
+
+The difference between an early stage and completion is the construction you go through together with the company. Buying off-plan in Spain is usually 10–20% cheaper than buying a finished home: that is how the market works, not just Artemis.
+
+[FRAME F17] <!-- internal marker, not published -->
+
+### Long-term rental
+
+| What | € per m² a month | Source |
+|---|---|---|
+| Santa Úrsula | 12 | Fotocasa |
+| Santa Úrsula, houses / apartments | 11.31 / 15.04 | Engel & Völkers |
+| Santa Úrsula | 12.1 | Mesurae, gross yield 5.8% |
+| Santa Úrsula, by district, March 2026 | 10.00–11.67 | Kelify |
+| Puerto de la Cruz | 17 | Fotocasa |
+
+For example, listings in La Quinta itself on Kelify (snapshot of 31.10.2026): 80 m² for 975 € a month, 60 m² for 900 €, 132 m² for 1,500 €. For a 72-metre home, that is 864–1,080 € a month at 12–15 € per metre.
+
+### From rent to dividend
+
+Canary Islands law Ley 6/2025 rules out short-term holiday lets in new builds. So the Artemis dividend is calculated only from long-term rental:
+
+- rent: 13.5 € per metre a month, the middle of the market's 12–15 €;
+- per year: twelve months of rent;
+- minus 46.3% in costs across seven items;
+- what remains: an expected dividend of 2.5–3.5% a year before tax at the queue entry price.
+
+| Item | % of annual rent | Basis |
+|---|---|---|
+| IBI, property tax | 2.3% | 300 € a year for 80 m² in Tenerife |
+| Community fees | 21.0% | 200–400 € a month in complexes with a heated pool; the estimate uses 200 € for an average home of about 70 m² |
+| Rental management | 10.7% | 8–12% of rent plus IGIC; the estimate uses 10% |
+| Vacancy between tenants | 4.2% | half a month a year with high demand |
+| Insurance | 2.2% | 280 € a year for 80 m² in Tenerife |
+| Repair reserve | 5.0% | 4–6% of rent for a new home |
+| Rubbish collection charge (basura) | 0.9% | 100–150 € a year, paid by the owner; the estimate uses 120 € for 80 m² |
+| **Total** | **46.3%** | |
+
+In a gentle scenario — the same 200 € in fees on a larger home of 75.5 m², 8% management, 4% repairs — costs are 41.8%. In a strict one — rent of 12 € per metre, 200 € in fees on a smaller home of 65.4 m², 12% management, a month's vacancy, 6% repairs — costs are 58.7%. The lower the costs, the more is left for the dividend.
+
+[FRAME F22] <!-- internal marker, not published -->
+
+### German benchmarks
+
+| What | Rate |
 |---|---|
-| Today | @market_y0@ |
-| In one year | @market_y1@ |
-| In two years | @market_y2@ |
-| In three years | @market_y3@ |
+| 10-year Bund, 30.10.2026 | 3.34% |
+| 1-year Festgeld (fixed-term deposit), top-10 average | 3.52% |
+| Gross rental yield, Germany's 52 largest cities, H1 2026 | 4.17% |
+| Expected Artemis dividend before tax, at the queue entry price | 2.5–3.5% a year |
 
-Formula: @market@ × (1 + @growth@%)^(months / 12). Sales are scheduled across months 3–30, with each contract fixing its own price. Planned total contracts: @sales@ €.
+The dividend in euros is the same on every share, but the percentage on what you invest depends on the stage at which you enter: the later the stage, the lower it is. The range in the table is for the queue entry price; it is an estimate based on current long-term rents in the area.
 
-[КАДР F12]
+This is a forecast, not a guarantee: the dividend may be lower or may not be paid, and the share price may fall. Tax consequences depend on your personal situation.
 
-### Budget references
+### How it works
 
-Local practice [Urbara](https://urbara.com/guias/cuanto-cuesta-construir-casa-tenerife) publishes Tenerife building-cost references by specification level. The estimated budget uses @cost_m2@ €/m² of built area; land, design, shared areas and contingency are separate.
+Joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
 
-See [project funding](/tenerife/inversores/#funding) for the budget and payment sources.
+[FRAME F04] <!-- internal marker, not published -->
 
-### What this means for you
+### In short
 
-Early price, future house-price growth and investor return are three separate inputs. @discount@% sets entry against the reference; @growth@% drives the sales plan; @target@% is the investor's target. They are not added together. [Calculate an investment](/tenerife/calculadora/).
+**What does a metre cost in La Quinta?** Resale: 2,812 €. The neighbouring new builds were offered at 3,360–3,870 €, and both projects have sold out.
 
-[КАДР F22]
+**What does a metre cost as an Artemis share?** ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion — an estimate based on current prices of comparable new apartments in the area.
 
-### Request a calculation
+**What are rents like in the north?** 12–15 € per metre a month in Santa Úrsula, 17 € in Puerto de la Cruz.
 
-Leave your name and preferred contact. Receive a personal calculation covering the investment, target income, exit period from full payment and payment source. We will discuss the sales timetable and inputs to confirm before payment.
+**Where does the dividend estimate come from?** A year's rent per metre minus 46.3% in costs: IBI property tax, community fees, management, vacancy, insurance, repair reserve, rubbish collection charge. It is a before-tax estimate.
 
-**Кнопка: «Request a personal calculation»**
-Free and without commitment. Participation payment follows approval of the plot and terms.
+**Button: "Join the queue"**
+Free. No money before the site is chosen.

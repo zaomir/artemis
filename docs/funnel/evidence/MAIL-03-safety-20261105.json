@@ -1,0 +1,23 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "MAIL-03",
+  "unit": "dispatch_safety",
+  "production_changed": false,
+  "sender_enabled": false,
+  "verification": {
+    "command": "PYTHONPATH=.../deps python3 -m unittest discover -s tests -p test_funnel_mail.py -v",
+    "passed": 7,
+    "failed": 0,
+    "meaningful_scenarios": [
+      "real SQLite file and concurrent thread hold provider in flight while a different enquiry commits",
+      "unsubscribe commits during provider request; subscription remains unsubscribed after provider acceptance",
+      "second dispatcher cannot claim the same request",
+      "timeout uses positive Sent readback, negative search never resends"
+    ]
+  },
+  "dispatch_semantics": "eligibility and uncertain claim commit atomically immediately before transport; this is dispatch start. A started provider request cannot be recalled; no database write transaction spans network. Subsequent queued messages are suppressed by committed unsubscribe.",
+  "remaining": [
+    "actual mail worker activation and controlled real provider acceptance are gated by BASE-03/MAIL-09/QA-02",
+    "accepted never asserted as delivered"
+  ]
+}

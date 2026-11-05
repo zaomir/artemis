@@ -204,16 +204,20 @@ def capture(conn, data, secret=None, now=None, legacy=None, client_hash=None):
 
 
 def subscription_snapshot(row):
-    return dict(version=row[2]*100+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]])+({'unknown':0,'ok':0,'hard_bounce':10,'complaint':20}[row[6]]),state=row[1],
+    # A new subscription row after expiry must still outrank the old Person
+    # projection. Milliseconds + state rank remain exact within JSON safe ints.
+    base=int(datetime.fromisoformat(row[3]).timestamp()*1000)*100 if row[3] else row[2]*100
+    return dict(version=base+({'pending_confirmation':1,'active':2,'unsubscribed':3}[row[1]])+({'unknown':0,'ok':0,'hard_bounce':10,'complaint':20}[row[6]]),state=row[1],
                 requested_at=row[3],confirmed_at=row[4],unsubscribed_at=row[5],deliverability=row[6],consent_version=VERSION)
 
 
-def queue_subscription_projection(conn,sid,kind,now):
+def queue_subscription_projection(conn,sid,kind,now,source_event_id=None,feedback=None):
     row=conn.execute('SELECT id,state,generation,requested_at,confirmed_at,unsubscribed_at,deliverability,source_event_id FROM artemis_subscriptions WHERE id=?',(sid,)).fetchone()
     source=conn.execute('SELECT payload FROM artemis_events WHERE source_event_id=?',(row[7],)).fetchone() if row else None
     if not source:return
     event=json.loads(source[0]);event['event_kind']='subscription'
-    event['source_event_id']=f'artemis:subscription:{sid}:{row[2]}:{kind}'
+    event['source_event_id']=source_event_id or f'artemis:subscription:{sid}:{row[2]}:{kind}'
+    if feedback is not None:event['mail_feedback']=feedback
     event['subscription']=subscription_snapshot(row);event['created_at']=now.isoformat()
     event['submission_id']=event['source_event_id']
     payload=json.dumps(event,sort_keys=True)
@@ -257,12 +261,12 @@ def unsubscribe(conn, sid, generation, token, secret, now=None):
     return True
 
 
-def suppress(conn, sid, reason):
+def suppress(conn, sid, reason,project=True):
     if reason not in ('hard_bounce','complaint'):
         raise ValueError('deliverability')
     conn.execute("UPDATE artemis_subscriptions SET deliverability=CASE WHEN deliverability='complaint' THEN deliverability ELSE ? END WHERE id=?",(reason,sid))
     conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')",(sid,))
-    queue_subscription_projection(conn,sid,reason,utcnow())
+    if project:queue_subscription_projection(conn,sid,reason,utcnow())
 
 
 def eligible_mail(conn, mail_id, now=None):
@@ -278,18 +282,21 @@ def eligible_mail(conn, mail_id, now=None):
 
 
 def cleanup_pending(conn, now=None):
-    """Newsletter-only retention; never deletes an independent waitlist/event."""
+    """Fail closed until the privacy coordinator verifies all owned stores.
+
+    Replacing just this table's address leaves plaintext in capture/projection
+    events and Twenty. It is not erasure and must never be reported as such.
+    The deployed API's permanent-delete semantics and independent-contact guards
+    are verified separately before that coordinator is activated.
+    """
     before = ((now or utcnow())-timedelta(days=7)).isoformat()
     candidates = conn.execute("SELECT id,email FROM artemis_subscriptions WHERE state='pending_confirmation' AND requested_at<? AND deliverability NOT IN ('hard_bounce','complaint')", (before,)).fetchall()
-    removed = 0
+    due = 0
     for sid,email in candidates:
         events = [json.loads(r[0]) for r in conn.execute('SELECT payload FROM artemis_events')]
         related = [e for e in events if e.get('newsletter_email') == email]
         if any(e.get('intent') != 'newsletter_only' for e in related):
             continue
-        # CRM deletion requires a separate verified privacy process. Never claim
-        # global erasure while CRM still holds data; keep event and suppression audit.
-        conn.execute("UPDATE artemis_subscriptions SET email=?,token_hash=NULL,state='unsubscribed',generation=generation+1 WHERE id=?",('expired:'+sid,sid))
-        conn.execute("UPDATE artemis_mail_outbox SET state='suppressed' WHERE subscription_id=? AND state IN ('queued','retrying')", (sid,))
-        removed += 1
-    return removed
+        due += 1
+    if due:raise RuntimeError('coordinated_pending_erasure_required')
+    return 0

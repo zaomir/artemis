@@ -1,0 +1,11 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "MAIL-06",
+  "unit": "authenticated_operator_feedback",
+  "production_changed": false,
+  "actual_recipients_changed": 0,
+  "tests": {"funnel_total": 60, "feedback_specific": 6, "grainee_adapter_total": 21, "failures": 0},
+  "checks": ["loopback and scoped credential", "correlated dispatched mail required", "idempotent evidence reference", "outbox failure rolls back suppression", "complaint cannot be downgraded by bounce or new import", "same Person projection; no new Opportunity"],
+  "source_verification": "authenticated operator; not a provider callback",
+  "remaining": ["actual endpoint deploy/probe", "automatic authenticated DSN collection", "coordinated pending retention", "controlled real provider acceptance after sender gates"]
+}

@@ -2,14 +2,14 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 28,
-  "updated_at": "2026-11-05T10:10:27.361746+00:00",
-  "next_action": "reconcile:AS-01-access-inventory-20261105-v1",
+  "revision": 86,
+  "updated_at": "2026-11-05T13:45:30.339323+00:00",
+  "next_action": "reconcile:CRM-MAIL-relay-runtime-20261105-v1",
   "pending": {
-    "key": "AS-01-access-inventory-20261105-v1",
-    "action": "read existing authorized social operator binding for Valerie Petra profile833304152; no publication or profile lifecycle",
+    "key": "CRM-MAIL-relay-runtime-20261105-v1",
+    "action": "existing crm_core release request artemis-relay-priority-release-20261105-01 for CRM-first relay and disabled confirmation/welcome transport; no schema/migration/backfill replay; full suite plus current independent source GETs",
     "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
-    "started_at": "2026-11-05T10:10:27.361694+00:00"
+    "started_at": "2026-11-05T13:45:30.339312+00:00"
   },
   "verified": {
     "BASE-01-contract-v1": {
@@ -178,6 +178,383 @@
         {
           "path": "docs/funnel/evidence/NEWS-public-runtime-20261105.json",
           "sha256": "564bc0c84c859fc3d9d30f0b847430235c8141e35caa9d0bb703825b9df1f5e1"
+        }
+      ]
+    },
+    "AS-01-access-inventory-20261105-v1": {
+      "key": "AS-01-access-inventory-20261105-v1",
+      "action": "read existing authorized social operator binding for Valerie Petra profile833304152; no publication or profile lifecycle",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:10:27.361694+00:00",
+      "verified_at": "2026-11-05T10:12:03.197839+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/AS-01-access-20261105.json",
+          "sha256": "2fb9ff6892cd053f5a8caef726d1fd850a08d60fb5dd094970e315d8f0b89ab6"
+        }
+      ]
+    },
+    "NEWS-04-public-navigation-20261105-v1": {
+      "key": "NEWS-04-public-navigation-20261105-v1",
+      "action": "fix observed article menu self-link, private evidence hyperlink and actual publication metadata; rebuild locales; no CRM replay",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:12:15.641712+00:00",
+      "verified_at": "2026-11-05T10:29:04.315390+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-runtime-20261105.json",
+          "sha256": "9065eee12def6db199f77931d2e4244b9649b27e85ecadf54a6d7526586acb38"
+        }
+      ]
+    },
+    "CRM-05-internal-intake-20261105-v1": {
+      "key": "CRM-05-internal-intake-20261105-v1",
+      "action": "deploy protected explicit FB enquiry intake into same outbox; host-only scoped credential; request artemis-facebook-intake-release-20261105-01; no real Facebook source fabricated",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:29:14.115964+00:00",
+      "verified_at": "2026-11-05T10:50:40.535479+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CRM-05-runtime-20261105.json",
+          "sha256": "5d31ef1aaeb21e33c1ff5fe998e29644f49ab47f7f75ec1bf9fb894b51551088"
+        }
+      ]
+    },
+    "BASE-03-alias-DKIM-20261105-v1": {
+      "key": "BASE-03-alias-DKIM-20261105-v1",
+      "action": "fixed read-only alias/received-delivery and DKIM diagnostics; request artemis-mail-routing-20261105-01; no messages or config changes",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:52:17.633308+00:00",
+      "verified_at": "2026-11-05T10:55:27.512095+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/BASE-03-routing-20261105.json",
+          "sha256": "311ad831435e6c3f8187cf50c524016626cecc9690314c4889fad5ee8ed8408a"
+        }
+      ]
+    },
+    "MAIL-03-dispatch-safety-20261105-v1": {
+      "key": "MAIL-03-dispatch-safety-20261105-v1",
+      "action": "fix prepared mail worker atomic claim, no SQLite write lock during provider network, unsubscribe race and no blind retry; remain inactive",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:55:36.901798+00:00",
+      "verified_at": "2026-11-05T10:57:57.410623+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-03-safety-20261105.json",
+          "sha256": "b39e2defebeb23b969ed9c8411eeaa2632990804b65f040d54a42c834bbb83d5"
+        }
+      ]
+    },
+    "MAIL-06-feedback-preparation-20261105-v1": {
+      "key": "MAIL-06-feedback-preparation-20261105-v1",
+      "action": "authenticated operator deliverability feedback into existing subscription and CRM outbox; source receipt idempotency; no real recipient mutation or send",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T10:58:28.838725+00:00",
+      "verified_at": "2026-11-05T11:01:46.072716+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-feedback-preparation-20261105.json",
+          "sha256": "e53f0799061ddc1d078614f26351ea691eb8f336da9a69849745063a6439c88e"
+        }
+      ]
+    },
+    "MAIL-06-retention-guard-20261105-v1": {
+      "key": "MAIL-06-retention-guard-20261105-v1",
+      "action": "replace misleading partial pending cleanup with coordinated-expiry guard; inspect actual Twenty deletion OpenAPI read-only before implementing any erasure",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:05:14.426384+00:00",
+      "verified_at": "2026-11-05T11:11:47.906701+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-retention-guard-20261105.json",
+          "sha256": "14dc5cc24ea6aed73b64dc77859f05cc9682659be9e7d260b8acff4b8b6396fa"
+        }
+      ]
+    },
+    "MAIL-06-expiry-source-20261105-v1": {
+      "key": "MAIL-06-expiry-source-20261105-v1",
+      "action": "durable pending expiry command in same CRM outbox; final local PII scrub requires matching independent CRM receipt; preserve new requests and unrelated enquiries",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:12:05.252143+00:00",
+      "verified_at": "2026-11-05T11:14:01.225525+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-source-20261105.json",
+          "sha256": "e18be0c350983ad1677aee347f47be34eea9bbc6ac4908fb9d4d78638f5c8582"
+        }
+      ]
+    },
+    "MAIL-06-expiry-writer-20261105-v1": {
+      "key": "MAIL-06-expiry-writer-20261105-v1",
+      "action": "extend single existing writer with per-identity serialization and independently verified Person contact anonymization; preserve independent context and new subscription; no runtime erasure",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:15:42.461737+00:00",
+      "verified_at": "2026-11-05T11:20:03.200056+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-writer-20261105.json",
+          "sha256": "79f7a0d700a186e6580f3c5dd43841d7fd2ef56c45952cf085e3141aec2a9bca"
+        }
+      ]
+    },
+    "MAIL-06-expiry-wiring-20261105-v1": {
+      "key": "MAIL-06-expiry-wiring-20261105-v1",
+      "action": "wire expiry into existing delivery with source receipt prerequisite and exact finalization; monotonic subscription versions; retention flag remains off",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:21:34.920686+00:00",
+      "verified_at": "2026-11-05T11:25:28.093405+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-expiry-wiring-20261105.json",
+          "sha256": "582549e6f72faa0cf2090fdf76c6fd974c712022f945cf3dd6b8c834eaaf4eea"
+        }
+      ]
+    },
+    "MAIL-06-protected-release-20261105-v1": {
+      "key": "MAIL-06-protected-release-20261105-v1",
+      "action": "existing core release with protected feedback auth/CLI and isolated cross-checkout pipeline on host; request artemis-mail-feedback-release-20261105-01; keep newsletter/retention off",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:26:53.154917+00:00",
+      "verified_at": "2026-11-05T11:36:59.986226+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-06-protected-runtime-20261105.json",
+          "sha256": "c5e9f351f56a947110659c8cc9b3ed12c1aef732abcbf35d4a3356aaefc8735a"
+        }
+      ]
+    },
+    "NEWS-05-desktop-browser-proof-20261105-v1": {
+      "key": "NEWS-05-desktop-browser-proof-20261105-v1",
+      "action": "persist original five locale desktop browser screenshots and observed routes; mobile/no-JS/FB-browser not claimed",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:37:10.927060+00:00",
+      "verified_at": "2026-11-05T11:37:45.724173+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-05-desktop-20261105.json",
+          "sha256": "2148a84782d38b6cacd4d603c9f25a1f8e858ce85dc2687152bc783b23cff6ff"
+        }
+      ]
+    },
+    "MAIL-09-token-log-inventory-20261105-v1": {
+      "key": "MAIL-09-token-log-inventory-20261105-v1",
+      "action": "read actual Artemis nginx/gunicorn token logging and backup rotation configuration; request artemis-mail-privacy-inventory-20261105-01; no settings or recipients changed",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:39:33.384681+00:00",
+      "verified_at": "2026-11-05T11:44:59.808091+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-privacy-inventory-20261105.json",
+          "sha256": "a9628c6f0585c18f7f7cb9374319d8a7cbaeec7ab3fd6453e88a614ae5293fb8"
+        }
+      ]
+    },
+    "MAIL-09-privacy-diagnosis-20261105-v1": {
+      "key": "MAIL-09-privacy-diagnosis-20261105-v1",
+      "action": "safe nginx public-directive diff and actual installed backup path resolution; request artemis-mail-privacy-diagnostics-20261105-01; read only",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:45:10.031010+00:00",
+      "verified_at": "2026-11-05T11:51:33.179094+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-privacy-diagnosis-20261105.json",
+          "sha256": "c146fcced0a3e06cbb1bf0c7d562facac551425a1a25bc37ee7dddd8e422078c"
+        }
+      ]
+    },
+    "MAIL-09-token-log-protection-20261105-v1": {
+      "key": "MAIL-09-token-log-protection-20261105-v1",
+      "action": "version exact nginx query-free/token log protection; backup and guarded nginx validation/reload; request artemis-token-log-protection-20261105-01; no sender activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T11:51:43.366711+00:00",
+      "verified_at": "2026-11-05T12:02:40.864683+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-token-log-first-runtime-20261105.json",
+          "sha256": "add6ef7fc48344558bd2d4d9d02549093887ea8bca45b77feaecd0a70f7fb4b0"
+        }
+      ]
+    },
+    "MAIL-09-nginx-reload-diagnosis-20261105-v1": {
+      "key": "MAIL-09-nginx-reload-diagnosis-20261105-v1",
+      "action": "read effective Artemis vhost files, conflict count and controlled nonsecret marker log shape; request artemis-nginx-reload-diagnostics-20261105-01; no config mutation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:02:51.125019+00:00",
+      "verified_at": "2026-11-05T12:07:23.060963+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-reload-diagnosis-20261105.json",
+          "sha256": "3e5f089bf18471269efddd79b1bb7afa8436335dd375c26a908256de641961ac"
+        }
+      ]
+    },
+    "MAIL-09-token-log-protection-20261105-v2": {
+      "key": "MAIL-09-token-log-protection-20261105-v2",
+      "action": "require old nginx workers to exit after reload before a fresh nonsecret probe; request artemis-token-log-protection-20261105-02; prior version rollback verified",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:07:33.194848+00:00",
+      "verified_at": "2026-11-05T12:12:12.072567+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-09-token-log-runtime-20261105.json",
+          "sha256": "c0e59bd942e6324fb91f8cc7f96deb77e187dbfedf6453ea1f525b2e7dd41ba8"
+        }
+      ]
+    },
+    "CAP-05-native-error-preservation-20261105-v1": {
+      "key": "CAP-05-native-error-preservation-20261105-v1",
+      "action": "preserve typed native HTML form values and stable submission ID on validation/rate/database errors; no feature activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:15:38.710858+00:00",
+      "verified_at": "2026-11-05T12:19:25.969719+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-05-native-errors-20261105.json",
+          "sha256": "bf61167914f8dc59e38c045ac792c50929ce79aaf394be1dcd72544f51fc4667"
+        }
+      ]
+    },
+    "CAP-04-native-attribution-20261105-v1": {
+      "key": "CAP-04-native-attribution-20261105-v1",
+      "action": "render allowlisted attribution into typed forms and locale navigation without cookies/browser storage; avoid duplicate client fields; no activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:19:51.869939+00:00",
+      "verified_at": "2026-11-05T12:23:56.481928+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-04-native-attribution-20261105.json",
+          "sha256": "eb4b07a915e4fccdbc6d1d8fab7787cdd19b5320e52a76f39775c73752093182"
+        }
+      ]
+    },
+    "CAP-03-calculator-compatibility-20261105-v1": {
+      "key": "CAP-03-calculator-compatibility-20261105-v1",
+      "action": "preserve existing server-built calc hidden fields in typed replacement; localize error messaging; no model math change or activation",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:24:20.872537+00:00",
+      "verified_at": "2026-11-05T12:28:29.256306+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-03-compatibility-20261105.json",
+          "sha256": "501935b3232ebf8dc7e3894e923aa1feb6af25626eb04c82d8ad140f4fc4d151"
+        }
+      ]
+    },
+    "CAP-native-site-release-20261105-v1": {
+      "key": "CAP-native-site-release-20261105-v1",
+      "action": "site-only release full required suite for native errors, safe attribution and calculator compatibility; request artemis-native-form-release-20261105-01; no flag changes or migration",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:28:54.579902+00:00",
+      "verified_at": "2026-11-05T12:43:21.642333+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CAP-native-runtime-20261105.json",
+          "sha256": "a109f8d5d30a4d1978be9e5286cc5f4f80d0cb2c814607b9f4e9c05770f33abf"
+        }
+      ]
+    },
+    "METRICS-01-source-summary-20261105-v1": {
+      "key": "METRICS-01-source-summary-20261105-v1",
+      "action": "read-only private metrics with source primary events separated from subscription/expiry projections, tests excluded, costs unknown not zero; request artemis-funnel-metrics-20261105-01",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:43:32.675136+00:00",
+      "verified_at": "2026-11-05T12:56:31.787120+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/METRICS-01-runtime-20261105.json",
+          "sha256": "6afce1dfff138e85e5a7ee912b2f9cfc6ce51496faff028d10c4da427c70e504"
+        }
+      ]
+    },
+    "NEWS-04-menu-footer-discovery-20261105-v1": {
+      "key": "NEWS-04-menu-footer-discovery-20261105-v1",
+      "action": "add diary discovery through existing desktop/mobile menu and footer on all five locales; preserve contextual CTA and all calculator behavior",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T12:56:42.839075+00:00",
+      "verified_at": "2026-11-05T13:03:50.314763+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-discovery-source-20261105.json",
+          "sha256": "fd582dfe4d8025d0c4b4b9ae984743cfc135c8725386bc99edd7f72577bc737a"
+        }
+      ]
+    },
+    "NEWS-04-discovery-runtime-20261105-v1": {
+      "key": "NEWS-04-discovery-runtime-20261105-v1",
+      "action": "site-only release request artemis-diary-discovery-release-20261105-01 for a15a2eb77147eb66c3646e32c53769bbfd5eee99 then live ordinary-browser menu/footer proof; flags unchanged",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:04:01.859981+00:00",
+      "verified_at": "2026-11-05T13:14:25.080838+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-discovery-first-runtime-20261105.json",
+          "sha256": "b0c3baecc7376667aa685a1d61abe75425b9e3d4e5ab7f8ec90c30fa7ca20637"
+        }
+      ]
+    },
+    "NEWS-04-failure-diagnosis-20261105-v1": {
+      "key": "NEWS-04-failure-diagnosis-20261105-v1",
+      "action": "read-only fixed canonical deploy test failure signatures and source frame lines; request artemis-diary-release-diagnostics-20261105-01; no raw logs or credentials",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:14:34.952466+00:00",
+      "verified_at": "2026-11-05T13:22:26.120045+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-candidate-diagnosis-20261105.json",
+          "sha256": "f2a76942713fa14d52c62acadcc0ed3ba99d8d8235ff06afedbd17b5c87eec7f"
+        }
+      ]
+    },
+    "NEWS-04-navigation-test-contract-20261105-v1": {
+      "key": "NEWS-04-navigation-test-contract-20261105-v1",
+      "action": "retain strict desktop/mobile/footer destination assertions with the required localized diary addition; no test removal or exclusion",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:22:35.994179+00:00",
+      "verified_at": "2026-11-05T13:23:20.398875+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-navigation-contract-20261105.json",
+          "sha256": "22befad6d32874b970bf43cfb8cf9f1fd227a07f6147745c61ae17fb1a78091a"
+        }
+      ]
+    },
+    "NEWS-04-discovery-runtime-20261105-v2": {
+      "key": "NEWS-04-discovery-runtime-20261105-v2",
+      "action": "repeat full canonical site release after exact three test contract corrections; request artemis-diary-discovery-release-20261105-02; no migration or flag changes",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:23:31.545952+00:00",
+      "verified_at": "2026-11-05T13:36:54.908955+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/NEWS-04-discovery-runtime-20261105.json",
+          "sha256": "fb9f266ed86759d15bf756fb1b8dc2b8bb0c072774d27fbc40e5874290e51991"
+        }
+      ]
+    },
+    "CRM-03-relay-priority-20261105-v1": {
+      "key": "CRM-03-relay-priority-20261105-v1",
+      "action": "prioritize existing durable CRM delivery before potentially blocking legacy email/TG notifications; preserve status/requeue behavior and one existing timer",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:37:07.126491+00:00",
+      "verified_at": "2026-11-05T13:40:34.921695+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/CRM-03-relay-priority-20261105.json",
+          "sha256": "333e0c82ad282ba2131c0e1240ba10601a3a268245b11273ff2bcce93100c881"
+        }
+      ]
+    },
+    "MAIL-03-existing-relay-wiring-20261105-v1": {
+      "key": "MAIL-03-existing-relay-wiring-20261105-v1",
+      "action": "wire disabled confirmation/welcome worker into SAME timer and existing Gmail factory with sender/reply/role/secret gates; shared pure copy no Flask dependency in mail venv; no real sends",
+      "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+      "started_at": "2026-11-05T13:40:45.458966+00:00",
+      "verified_at": "2026-11-05T13:45:18.129563+00:00",
+      "evidence": [
+        {
+          "path": "docs/funnel/evidence/MAIL-03-relay-wiring-20261105.json",
+          "sha256": "693ed4a43e5f739b7a06151289596b0ac3bbe52f63f83aa66c0281cb6e80a382"
         }
       ]
     }
@@ -350,6 +727,354 @@
       "at": "2026-11-05T10:10:27.361746+00:00",
       "event": "began:AS-01-access-inventory-20261105-v1",
       "next_action": "reconcile:AS-01-access-inventory-20261105-v1"
+    },
+    {
+      "revision": 29,
+      "at": "2026-11-05T10:12:03.197853+00:00",
+      "event": "verified:AS-01-access-inventory-20261105-v1",
+      "next_action": "NEWS-04 navigation and public source fix; CRM-05 internal explicit FB intake; AS-01 needs connected authorized session"
+    },
+    {
+      "revision": 30,
+      "at": "2026-11-05T10:12:15.641726+00:00",
+      "event": "began:NEWS-04-public-navigation-20261105-v1",
+      "next_action": "reconcile:NEWS-04-public-navigation-20261105-v1"
+    },
+    {
+      "revision": 31,
+      "at": "2026-11-05T10:29:04.315404+00:00",
+      "event": "verified:NEWS-04-public-navigation-20261105-v1",
+      "next_action": "CRM-05 typed internal Facebook enquiry queue; BASE-03 reply-alias and DKIM gaps; NEWS-04 form-dependent remainder pending"
+    },
+    {
+      "revision": 32,
+      "at": "2026-11-05T10:29:14.115980+00:00",
+      "event": "began:CRM-05-internal-intake-20261105-v1",
+      "next_action": "reconcile:CRM-05-internal-intake-20261105-v1"
+    },
+    {
+      "revision": 33,
+      "at": "2026-11-05T10:50:40.535495+00:00",
+      "event": "verified:CRM-05-internal-intake-20261105-v1",
+      "next_action": "BASE-03: alias-aware mailbox/DKIM read-only proof; then mail queue safety and feedback/retention, no activation before gates"
+    },
+    {
+      "revision": 34,
+      "at": "2026-11-05T10:52:17.633322+00:00",
+      "event": "began:BASE-03-alias-DKIM-20261105-v1",
+      "next_action": "reconcile:BASE-03-alias-DKIM-20261105-v1"
+    },
+    {
+      "revision": 35,
+      "at": "2026-11-05T10:55:27.512110+00:00",
+      "event": "verified:BASE-03-alias-DKIM-20261105-v1",
+      "next_action": "MAIL-03 safety: release SQLite before network, atomic dispatch claim and no blind resend; provider activation remains gated"
+    },
+    {
+      "revision": 36,
+      "at": "2026-11-05T10:55:36.901813+00:00",
+      "event": "began:MAIL-03-dispatch-safety-20261105-v1",
+      "next_action": "reconcile:MAIL-03-dispatch-safety-20261105-v1"
+    },
+    {
+      "revision": 37,
+      "at": "2026-11-05T10:57:57.410639+00:00",
+      "event": "verified:MAIL-03-dispatch-safety-20261105-v1",
+      "next_action": "MAIL-06: authenticated feedback and coordinated pending-data expiry; newsletter inactive"
+    },
+    {
+      "revision": 38,
+      "at": "2026-11-05T10:58:28.838740+00:00",
+      "event": "began:MAIL-06-feedback-preparation-20261105-v1",
+      "next_action": "reconcile:MAIL-06-feedback-preparation-20261105-v1"
+    },
+    {
+      "revision": 39,
+      "at": "2026-11-05T11:01:46.072730+00:00",
+      "event": "verified:MAIL-06-feedback-preparation-20261105-v1",
+      "next_action": "MAIL-06 deploy protected feedback with existing CRM service; then coordinated pending expiry; no newsletter activation"
+    },
+    {
+      "revision": 40,
+      "at": "2026-11-05T11:05:14.426406+00:00",
+      "event": "began:MAIL-06-retention-guard-20261105-v1",
+      "next_action": "reconcile:MAIL-06-retention-guard-20261105-v1"
+    },
+    {
+      "revision": 41,
+      "at": "2026-11-05T11:11:47.906715+00:00",
+      "event": "verified:MAIL-06-retention-guard-20261105-v1",
+      "next_action": "MAIL-06 coordinated expiry: durable queue and final local PII scrub only after CRM readback; newsletter stays off"
+    },
+    {
+      "revision": 42,
+      "at": "2026-11-05T11:12:05.252158+00:00",
+      "event": "began:MAIL-06-expiry-source-20261105-v1",
+      "next_action": "reconcile:MAIL-06-expiry-source-20261105-v1"
+    },
+    {
+      "revision": 43,
+      "at": "2026-11-05T11:14:01.225541+00:00",
+      "event": "verified:MAIL-06-expiry-source-20261105-v1",
+      "next_action": "MAIL-06 common writer expiry readback and stale-event protection; then source finalization wiring"
+    },
+    {
+      "revision": 44,
+      "at": "2026-11-05T11:15:42.461754+00:00",
+      "event": "began:MAIL-06-expiry-writer-20261105-v1",
+      "next_action": "reconcile:MAIL-06-expiry-writer-20261105-v1"
+    },
+    {
+      "revision": 45,
+      "at": "2026-11-05T11:20:03.200070+00:00",
+      "event": "verified:MAIL-06-expiry-writer-20261105-v1",
+      "next_action": "MAIL-06 wire source proof, receipt finalization and monotonic request version; no newsletter activation"
+    },
+    {
+      "revision": 46,
+      "at": "2026-11-05T11:21:34.920700+00:00",
+      "event": "began:MAIL-06-expiry-wiring-20261105-v1",
+      "next_action": "reconcile:MAIL-06-expiry-wiring-20261105-v1"
+    },
+    {
+      "revision": 47,
+      "at": "2026-11-05T11:25:28.093426+00:00",
+      "event": "verified:MAIL-06-expiry-wiring-20261105-v1",
+      "next_action": "Deploy protected feedback and inactive retention code through existing core release; full tests; no real recipient changes"
+    },
+    {
+      "revision": 48,
+      "at": "2026-11-05T11:26:53.154930+00:00",
+      "event": "began:MAIL-06-protected-release-20261105-v1",
+      "next_action": "reconcile:MAIL-06-protected-release-20261105-v1"
+    },
+    {
+      "revision": 49,
+      "at": "2026-11-05T11:36:59.986240+00:00",
+      "event": "verified:MAIL-06-protected-release-20261105-v1",
+      "next_action": "NEWS-05 persist five desktop browser proofs; token-log privacy, explicit sender/reply gaps; metrics test separation"
+    },
+    {
+      "revision": 50,
+      "at": "2026-11-05T11:37:10.927074+00:00",
+      "event": "began:NEWS-05-desktop-browser-proof-20261105-v1",
+      "next_action": "reconcile:NEWS-05-desktop-browser-proof-20261105-v1"
+    },
+    {
+      "revision": 51,
+      "at": "2026-11-05T11:37:45.724187+00:00",
+      "event": "verified:NEWS-05-desktop-browser-proof-20261105-v1",
+      "next_action": "Privacy token logging and mail gates; metrics real/test separation; canonical registry refresh"
+    },
+    {
+      "revision": 52,
+      "at": "2026-11-05T11:39:33.384695+00:00",
+      "event": "began:MAIL-09-token-log-inventory-20261105-v1",
+      "next_action": "reconcile:MAIL-09-token-log-inventory-20261105-v1"
+    },
+    {
+      "revision": 53,
+      "at": "2026-11-05T11:44:59.808108+00:00",
+      "event": "verified:MAIL-09-token-log-inventory-20261105-v1",
+      "next_action": "Read safe nginx drift and actual backup paths before exact token-log exclusion"
+    },
+    {
+      "revision": 54,
+      "at": "2026-11-05T11:45:10.031024+00:00",
+      "event": "began:MAIL-09-privacy-diagnosis-20261105-v1",
+      "next_action": "reconcile:MAIL-09-privacy-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 55,
+      "at": "2026-11-05T11:51:33.179110+00:00",
+      "event": "verified:MAIL-09-privacy-diagnosis-20261105-v1",
+      "next_action": "Apply exact query-free nginx token privacy preserving observed root redirect and real-IP behavior"
+    },
+    {
+      "revision": 56,
+      "at": "2026-11-05T11:51:43.366725+00:00",
+      "event": "began:MAIL-09-token-log-protection-20261105-v1",
+      "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v1"
+    },
+    {
+      "revision": 57,
+      "at": "2026-11-05T12:02:40.864695+00:00",
+      "event": "verified:MAIL-09-token-log-protection-20261105-v1",
+      "next_action": "Diagnose exact marker log format and effective nginx config; original config restored"
+    },
+    {
+      "revision": 58,
+      "at": "2026-11-05T12:02:51.125031+00:00",
+      "event": "began:MAIL-09-nginx-reload-diagnosis-20261105-v1",
+      "next_action": "reconcile:MAIL-09-nginx-reload-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 59,
+      "at": "2026-11-05T12:07:23.060977+00:00",
+      "event": "verified:MAIL-09-nginx-reload-diagnosis-20261105-v1",
+      "next_action": "Wait for full nginx worker replacement before fresh privacy probe; baseline hash restored"
+    },
+    {
+      "revision": 60,
+      "at": "2026-11-05T12:07:33.194860+00:00",
+      "event": "began:MAIL-09-token-log-protection-20261105-v2",
+      "next_action": "reconcile:MAIL-09-token-log-protection-20261105-v2"
+    },
+    {
+      "revision": 61,
+      "at": "2026-11-05T12:12:12.072583+00:00",
+      "event": "verified:MAIL-09-token-log-protection-20261105-v2",
+      "next_action": "CAP-03/04/05: preserve native HTML errors and allowlisted attribution; then inactive mail/metrics and remaining factual gates"
+    },
+    {
+      "revision": 62,
+      "at": "2026-11-05T12:15:38.710872+00:00",
+      "event": "began:CAP-05-native-error-preservation-20261105-v1",
+      "next_action": "reconcile:CAP-05-native-error-preservation-20261105-v1"
+    },
+    {
+      "revision": 63,
+      "at": "2026-11-05T12:19:25.969733+00:00",
+      "event": "verified:CAP-05-native-error-preservation-20261105-v1",
+      "next_action": "CAP-04 server-rendered safe attribution across locale links without cookies/storage; preserve existing JS behavior"
+    },
+    {
+      "revision": 64,
+      "at": "2026-11-05T12:19:51.869953+00:00",
+      "event": "began:CAP-04-native-attribution-20261105-v1",
+      "next_action": "reconcile:CAP-04-native-attribution-20261105-v1"
+    },
+    {
+      "revision": 65,
+      "at": "2026-11-05T12:23:56.481945+00:00",
+      "event": "verified:CAP-04-native-attribution-20261105-v1",
+      "next_action": "CAP-03 legacy calculator hidden-field compatibility and localized form errors; then guarded site-only release"
+    },
+    {
+      "revision": 66,
+      "at": "2026-11-05T12:24:20.872549+00:00",
+      "event": "began:CAP-03-calculator-compatibility-20261105-v1",
+      "next_action": "reconcile:CAP-03-calculator-compatibility-20261105-v1"
+    },
+    {
+      "revision": 67,
+      "at": "2026-11-05T12:28:29.256325+00:00",
+      "event": "verified:CAP-03-calculator-compatibility-20261105-v1",
+      "next_action": "Guarded site-only release and full required server suite; no migration/CRM replay or feature activation"
+    },
+    {
+      "revision": 68,
+      "at": "2026-11-05T12:28:54.579917+00:00",
+      "event": "began:CAP-native-site-release-20261105-v1",
+      "next_action": "reconcile:CAP-native-site-release-20261105-v1"
+    },
+    {
+      "revision": 69,
+      "at": "2026-11-05T12:43:21.642348+00:00",
+      "event": "verified:CAP-native-site-release-20261105-v1",
+      "next_action": "METRICS-01 privacy-safe source/capture/verified/opt-in/active summary with tests separated and current source GET proof"
+    },
+    {
+      "revision": 70,
+      "at": "2026-11-05T12:43:32.675151+00:00",
+      "event": "began:METRICS-01-source-summary-20261105-v1",
+      "next_action": "reconcile:METRICS-01-source-summary-20261105-v1"
+    },
+    {
+      "revision": 71,
+      "at": "2026-11-05T12:56:31.787135+00:00",
+      "event": "verified:METRICS-01-source-summary-20261105-v1",
+      "next_action": "NEWS-04 existing menu/footer project diary discovery on five locales; newsletter and retention remain off"
+    },
+    {
+      "revision": 72,
+      "at": "2026-11-05T12:56:42.839088+00:00",
+      "event": "began:NEWS-04-menu-footer-discovery-20261105-v1",
+      "next_action": "reconcile:NEWS-04-menu-footer-discovery-20261105-v1"
+    },
+    {
+      "revision": 73,
+      "at": "2026-11-05T13:03:50.314778+00:00",
+      "event": "verified:NEWS-04-menu-footer-discovery-20261105-v1",
+      "next_action": "NEWS-04 site-only release and live diary discovery browser proof; no flag changes"
+    },
+    {
+      "revision": 74,
+      "at": "2026-11-05T13:04:01.859994+00:00",
+      "event": "began:NEWS-04-discovery-runtime-20261105-v1",
+      "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v1"
+    },
+    {
+      "revision": 75,
+      "at": "2026-11-05T13:14:25.080851+00:00",
+      "event": "verified:NEWS-04-discovery-runtime-20261105-v1",
+      "next_action": "NEWS-04 read only canonical failure case names and test frame lines; diagnose 3 failures, previous version retained"
+    },
+    {
+      "revision": 76,
+      "at": "2026-11-05T13:14:34.952480+00:00",
+      "event": "began:NEWS-04-failure-diagnosis-20261105-v1",
+      "next_action": "reconcile:NEWS-04-failure-diagnosis-20261105-v1"
+    },
+    {
+      "revision": 77,
+      "at": "2026-11-05T13:22:26.120059+00:00",
+      "event": "verified:NEWS-04-failure-diagnosis-20261105-v1",
+      "next_action": "NEWS-04 update strict navigation test contract for required diary destination; all other destinations and CTA retained"
+    },
+    {
+      "revision": 78,
+      "at": "2026-11-05T13:22:35.994195+00:00",
+      "event": "began:NEWS-04-navigation-test-contract-20261105-v1",
+      "next_action": "reconcile:NEWS-04-navigation-test-contract-20261105-v1"
+    },
+    {
+      "revision": 79,
+      "at": "2026-11-05T13:23:20.398890+00:00",
+      "event": "verified:NEWS-04-navigation-test-contract-20261105-v1",
+      "next_action": "NEWS-04 repeat full guarded release with corrected strict tests; actual browser discovery proof"
+    },
+    {
+      "revision": 80,
+      "at": "2026-11-05T13:23:31.545966+00:00",
+      "event": "began:NEWS-04-discovery-runtime-20261105-v2",
+      "next_action": "reconcile:NEWS-04-discovery-runtime-20261105-v2"
+    },
+    {
+      "revision": 81,
+      "at": "2026-11-05T13:36:54.908971+00:00",
+      "event": "verified:NEWS-04-discovery-runtime-20261105-v2",
+      "next_action": "CRM-03 relay reliability: execute durable CRM step before legacy notification transport in the SAME timer; then inactive newsletter wiring"
+    },
+    {
+      "revision": 82,
+      "at": "2026-11-05T13:37:07.126510+00:00",
+      "event": "began:CRM-03-relay-priority-20261105-v1",
+      "next_action": "reconcile:CRM-03-relay-priority-20261105-v1"
+    },
+    {
+      "revision": 83,
+      "at": "2026-11-05T13:40:34.921709+00:00",
+      "event": "verified:CRM-03-relay-priority-20261105-v1",
+      "next_action": "MAIL-03 connect inactive confirmation/welcome dispatch through SAME timer and existing Gmail factory; no activation"
+    },
+    {
+      "revision": 84,
+      "at": "2026-11-05T13:40:45.458980+00:00",
+      "event": "began:MAIL-03-existing-relay-wiring-20261105-v1",
+      "next_action": "reconcile:MAIL-03-existing-relay-wiring-20261105-v1"
+    },
+    {
+      "revision": 85,
+      "at": "2026-11-05T13:45:18.129577+00:00",
+      "event": "verified:MAIL-03-existing-relay-wiring-20261105-v1",
+      "next_action": "Core release existing relay priority and inactive service-message wiring, full suite and fresh source GETs; no newsletter activation"
+    },
+    {
+      "revision": 86,
+      "at": "2026-11-05T13:45:30.339323+00:00",
+      "event": "began:CRM-MAIL-relay-runtime-20261105-v1",
+      "next_action": "reconcile:CRM-MAIL-relay-runtime-20261105-v1"
     }
   ],
   "policy": {

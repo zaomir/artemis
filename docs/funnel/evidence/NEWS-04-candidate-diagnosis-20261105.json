@@ -1,0 +1,81 @@
+{
+  "schema": "artemis-atomic-evidence/1",
+  "atom": "NEWS-04",
+  "subunit": "actual_canonical_failure_diagnosis",
+  "request_id": "artemis-diary-release-diagnostics-20261105-02",
+  "result_url": "https://github.com/zaomir/grainee-v2/blob/main/docs/agent-api/results/artemis-diary-release-diagnostics-20261105-02.json",
+  "generated_at": "2026-11-05T13:21:44.581Z",
+  "source_commit_sha": "4242173bbc5f7b74a4f65b425bd9134408e1e0b8",
+  "actual_server_test_failure": {
+    "present": true,
+    "cases": [
+      {
+        "kind": "FAIL",
+        "test": "test_grouped_footer_keeps_all_secondary_pages_without_old_payment_links",
+        "case": "test_tenerife_investors_architecture.InvestorArchitectureTest.test_grouped_footer_keeps_all_secondary_pages_without_old_payment_links",
+        "test_frames": [
+          {
+            "path": "tests/test_tenerife_investors_architecture.py",
+            "line": 190,
+            "function": "test_grouped_footer_keeps_all_secondary_pages_without_old_payment_links"
+          }
+        ],
+        "exception_class": "AssertionError"
+      },
+      {
+        "kind": "FAIL",
+        "test": "test_primary_and_mobile_menus_have_same_five_destinations_and_calculation_cta",
+        "case": "test_tenerife_investors_architecture.InvestorArchitectureTest.test_primary_and_mobile_menus_have_same_five_destinations_and_calculation_cta",
+        "test_frames": [
+          {
+            "path": "tests/test_tenerife_investors_architecture.py",
+            "line": 171,
+            "function": "test_primary_and_mobile_menus_have_same_five_destinations_and_calculation_cta"
+          }
+        ],
+        "exception_class": "AssertionError"
+      },
+      {
+        "kind": "FAIL",
+        "test": "test_primary_menu_is_short_and_footer_covers_all_pages",
+        "case": "test_tenerife_v3.V3BuildTest.test_primary_menu_is_short_and_footer_covers_all_pages",
+        "test_frames": [
+          {
+            "path": "tests/test_tenerife_v3.py",
+            "line": 604,
+            "function": "test_primary_menu_is_short_and_footer_covers_all_pages"
+          }
+        ],
+        "exception_class": "AssertionError"
+      }
+    ],
+    "bytes": 38421,
+    "tail_sha256": "d6b3a87cbdb151b68d4b9b8de9f9b379afea62c23e83ab6d56e85e771829d010",
+    "mtime_utc": 1793884387.9663298,
+    "summaries": [
+      "Ran 577 tests in 450.205s",
+      "FAILED (failures=3, skipped=9)"
+    ],
+    "source_log": "artemis-deploy-tests-0181583.log",
+    "live_sha": "fe000ec896c9e7ba3cc157d71a6d4d108775ffbf",
+    "selection": "newest_canonical_candidate_failure"
+  },
+  "previous_diagnostic": {
+    "request_id": "artemis-diary-release-diagnostics-20261105-01",
+    "result": "wrapper selected nonexistent live-SHA log; corrected to actual candidate log"
+  },
+  "local_reproduction": {
+    "same_failures": 3,
+    "modules": [
+      "test_tenerife_investors_architecture",
+      "test_tenerife_v3"
+    ],
+    "cause": "exact navigation expectations predate the required project diary item"
+  },
+  "production_changed": false,
+  "tests": {
+    "provider_tests": 71,
+    "failures": 0
+  },
+  "resolution": "keep exact old destinations/order/CTA and add localized diary to strict menu/footer expectations; no suite exclusion"
+}

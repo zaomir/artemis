@@ -1,0 +1,30 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "CAP-04",
+  "unit": "server_rendered_attribution_for_native_navigation",
+  "production_changed": false,
+  "feature_activated": false,
+  "tests": {
+    "all_funnel": 77,
+    "HTTP": 17,
+    "JS_syntax": "passed",
+    "failures": 0
+  },
+  "scenarios": [
+    "native ES -> DE locale switch -> POST -> source event retains source_id, utm_medium, language and clean landing",
+    "query values containing email are omitted",
+    "query cannot preselect newsletter checkbox",
+    "mobile and RU article links retain public source slug",
+    "external/token links are not rewritten",
+    "client reuses server hidden input instead of appending a duplicate",
+    "disabled legacy surface unchanged"
+  ],
+  "storage": {
+    "cookies_added": false,
+    "browser_storage_added": false,
+    "third_party_tracking_added": false
+  },
+  "remaining": [
+    "controlled runtime QA and activation after mail/privacy gates"
+  ]
+}

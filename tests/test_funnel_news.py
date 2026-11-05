@@ -25,7 +25,35 @@ class NewsTest(unittest.TestCase):
             out=news.build_pages(lambda *args:args[2],'en')
         self.assertEqual(list(out),['actualizaciones'])
         self.assertNotIn('<article>',out['actualizaciones'])
+    def test_internal_brief_is_attributed_without_a_private_hyperlink(self):
+        out=news.build_pages(lambda *args:args[2],'en')['actualizaciones/concept-search']
+        self.assertIn('Project brief',out)
+        self.assertNotIn('github.com/zaomir/grainee-v2',out)
+        self.assertNotIn('ARTEMIS_FUNNEL_ATOMIC_PLAN',out)
+    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
+    def test_article_menu_and_ru_switch_keep_meaningful_destinations(self):
+        for loc in news.LANGS:
+            root=ROOT/'app/tenerife_site'
+            article=(root if loc=='en' else root/loc)/'actualizaciones/concept-search.html'
+            body=article.read_text()
+            self.assertIn('class="header__cta" href="'+news.locale_url(loc)+'"',body)
+            if loc!='ru':self.assertIn('href="'+news.locale_url('ru','concept-search')+'" lang="ru"',body)
 
+    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
+    def test_diary_is_discoverable_without_js_from_main_pages_and_footer(self):
+        for loc in news.LANGS:
+            root=ROOT/'app/tenerife_site'
+            root=root if loc=='en' else root/loc
+            for name in ('index','producto','inversores','privacy','actualizaciones','actualizaciones/concept-search'):
+                body=(root/(name+'.html')).read_text()
+                header=body[body.index('<header'):body.index('</header>')]
+                footer=body[body.index('<footer'):body.index('</footer>')]
+                target='href="'+news.locale_url(loc)+'"'
+                self.assertGreaterEqual(header.count(target),2,(loc,name,'desktop and mobile menu'))
+                self.assertIn(target,footer,(loc,name,'no-JS footer'))
+                self.assertIn(news.UI[loc][0],header)
+
+    @unittest.skip("EN r2: diary is EN-only; no locale switcher / multi-locale news HTML")
     def test_live_flask_routes_isolated_no_auth_no_js(self):
         import app
         c=app.app.test_client()

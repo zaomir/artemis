@@ -4,7 +4,11 @@ from email import message_from_bytes
 from pathlib import Path
 import sqlite3
 import sys
+import tempfile
+import threading
 import unittest
+import os
+from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'app'))
 import funnel_store as f
@@ -73,6 +77,83 @@ class MailTest(unittest.TestCase):
         msg=m.message(('test-id','test@example.invalid','en',1,'welcome','opaque-id'),'sender@example.invalid','reply@example.invalid',self.secret)
         self.assertEqual(msg['List-Unsubscribe-Post'],'List-Unsubscribe=One-Click')
         self.assertNotIn('facebook',msg.as_string().casefold())
+
+    def test_disabled_timer_worker_does_not_construct_provider_or_create_database(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'0'}):
+            db=Path(tmp)/'missing.db'
+            self.assertIsNone(m.relay_once(db,lambda:self.fail('no provider while disabled'),'sender@example.invalid','reply@example.invalid',self.secret))
+            self.assertFalse(db.exists())
+
+    def test_existing_timer_worker_uses_same_queue_without_duplicate_send(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'1'}):
+            db=Path(tmp)/'leads.db'
+            with sqlite3.connect(db) as disk:self.conn.backup(disk)
+            factory=lambda:self.gmail
+            result=m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now)
+            self.assertEqual(result['state'],'accepted')
+            self.assertIsNone(m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now))
+            self.assertEqual(self.gmail.calls,1)
+            with sqlite3.connect(db) as disk:
+                self.assertEqual(disk.execute('SELECT state,provider_id FROM artemis_mail_outbox').fetchone(),('accepted','google-test-id'))
+
+    def test_empty_or_unmigrated_queue_never_constructs_provider(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(os.environ,{'ARTEMIS_NEWSLETTER_ENABLED':'1'}):
+            db=Path(tmp)/'leads.db'
+            with sqlite3.connect(db) as disk:disk.execute('CREATE TABLE leads(id INTEGER)')
+            factory=lambda:self.fail('no provider without due mail')
+            result=m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now)
+            self.assertEqual(result['state'],'blocked_missing_migration')
+            with sqlite3.connect(db) as disk:f.migrate(disk)
+            self.assertIsNone(m.relay_once(db,factory,'sender@example.invalid','reply@example.invalid',self.secret,self.now))
+
+
+class ConcurrentMailTest(unittest.TestCase):
+    def test_inflight_provider_does_not_lock_capture_or_unsubscribe_and_cannot_be_claimed_twice(self):
+        secret='isolated-test-secret-at-least-32-chars';now=f.utcnow()
+        entered=threading.Event();release=threading.Event();results=[];errors=[]
+        class SlowGmail(Gmail):
+            def send(self,**kwargs):
+                original=super().send(**kwargs)
+                def execute():
+                    entered.set()
+                    if not release.wait(4):raise RuntimeError('test_release_timeout')
+                    return original.execute()
+                return Result(execute)
+        service=SlowGmail()
+        with tempfile.TemporaryDirectory() as tmp:
+            db=Path(tmp)/'leads.db'
+            with sqlite3.connect(db) as conn:
+                f.migrate(conn);conn.commit();conn.execute('BEGIN IMMEDIATE')
+                f.capture(conn,dict(submission_id='thread-mail-00001',name='TEST',intent='buyer',contact_type='email',
+                    contact='subscriber@example.invalid',language='en',consent=True,newsletter_opt_in=True),secret,now)
+                sid,gen=conn.execute('SELECT id,generation FROM artemis_subscriptions').fetchone()
+            def deliver():
+                try:
+                    with sqlite3.connect(db,timeout=.5) as conn:
+                        results.append(m.deliver_one(conn,service,'sender@example.invalid','reply@example.invalid',secret,now))
+                except Exception as exc:errors.append(exc)
+            worker=threading.Thread(target=deliver);worker.start()
+            try:
+                self.assertTrue(entered.wait(2))
+                with sqlite3.connect(db,timeout=.5) as conn:
+                    # A second dispatcher cannot send the claimed row.
+                    self.assertIsNone(m.deliver_one(conn,service,'sender@example.invalid','reply@example.invalid',secret,now))
+                    conn.execute('BEGIN IMMEDIATE')
+                    f.capture(conn,dict(submission_id='different-lead-001',name='TEST OTHER',intent='partner',
+                        contact_type='email',contact='different@example.invalid',language='en',consent=True),None,now)
+                    conn.commit()
+                    conn.execute('BEGIN IMMEDIATE')
+                    self.assertTrue(f.unsubscribe(conn,sid,gen,f.token_for(secret,sid,gen,'unsubscribe'),secret,now))
+                    conn.commit()
+                    self.assertEqual(conn.execute('SELECT state FROM artemis_subscriptions').fetchone()[0],'unsubscribed')
+            finally:
+                release.set();worker.join(3)
+            self.assertFalse(worker.is_alive());self.assertEqual(errors,[])
+            self.assertEqual(results[0]['state'],'accepted');self.assertEqual(service.calls,1)
+            with sqlite3.connect(db) as conn:
+                self.assertIsNone(m.deliver_one(conn,service,'sender@example.invalid','reply@example.invalid',secret,now+timedelta(minutes=11)))
+                self.assertEqual(conn.execute('SELECT state FROM artemis_subscriptions').fetchone()[0],'unsubscribed')
+                self.assertEqual(conn.execute("SELECT COUNT(*) FROM artemis_events WHERE submission_id='different-lead-001'").fetchone()[0],1)
 
 
 if __name__=='__main__':unittest.main()

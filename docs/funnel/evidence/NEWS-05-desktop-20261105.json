@@ -1,0 +1,83 @@
+{
+  "schema": "artemis-browser-evidence/1",
+  "atom": "NEWS-05",
+  "scope": "desktop_article_five_locales",
+  "observed_on": "2026-11-05",
+  "screenshots": [
+    {
+      "locale": "en",
+      "source_file": "artemis-diary-en-desktop-1793878301696.jpg",
+      "path": "docs/funnel/evidence/screenshots/news-20261105-en-desktop.jpg",
+      "sha256": "d56c2e3391a3e54b7976c6af5ab5f3b2fdfd26c41a8a4be26221dd06cb369b37",
+      "bytes": 96195,
+      "width": 1363,
+      "height": 936,
+      "format": "JPEG",
+      "observed_url": "https://artemisresort.com/tenerife/actualizaciones/concept-search/"
+    },
+    {
+      "locale": "ru",
+      "source_file": "artemis-diary-ru-desktop-1793878327351.jpg",
+      "path": "docs/funnel/evidence/screenshots/news-20261105-ru-desktop.jpg",
+      "sha256": "fa891b933caa773ce658b3508922822aa863931b1e509abe21ed0d2820591bd5",
+      "bytes": 84952,
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "observed_url": "https://artemisresort.com/tenerife/ru/actualizaciones/concept-search/"
+    },
+    {
+      "locale": "es",
+      "source_file": "artemis-diary-es-desktop-1793878373603.jpg",
+      "path": "docs/funnel/evidence/screenshots/news-20261105-es-desktop.jpg",
+      "sha256": "39647701ade63f61c46b2b75c5849441310359af9009e9cfb018b2823d078b0a",
+      "bytes": 90101,
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "observed_url": "https://artemisresort.com/tenerife/es/actualizaciones/concept-search/"
+    },
+    {
+      "locale": "de",
+      "source_file": "artemis-diary-de-desktop-1793878381690.jpg",
+      "path": "docs/funnel/evidence/screenshots/news-20261105-de-desktop.jpg",
+      "sha256": "103d4acdd655774f1912be23324fffc895c9c9abb4a52bc21286f59a7c68f1d1",
+      "bytes": 89559,
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "observed_url": "https://artemisresort.com/tenerife/de/actualizaciones/concept-search/"
+    },
+    {
+      "locale": "fr",
+      "source_file": "artemis-diary-fr-desktop-1793878391113.jpg",
+      "path": "docs/funnel/evidence/screenshots/news-20261105-fr-desktop.jpg",
+      "sha256": "9401ab8d14acf0ce1c8f577075fabfc4b29747f524600ccbca4ec93b94268c8e",
+      "bytes": 86285,
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "observed_url": "https://artemisresort.com/tenerife/fr/actualizaciones/concept-search/"
+    }
+  ],
+  "checks": [
+    "ordinary browser; no authentication or subscription required",
+    "locale switching preserves article",
+    "localized title, publication date and concept caption visible",
+    "original screenshot bytes retained; no image editing"
+  ],
+  "fr_DOM": {
+    "viewport_width": 1363,
+    "viewport_height": 936,
+    "horizontal_overflow": false,
+    "image_loaded": true,
+    "image_natural_width": 1536,
+    "image_natural_height": 1024
+  },
+  "remaining": [
+    "mobile visitor layout",
+    "no-JS public form after activation",
+    "Facebook in-app browser",
+    "full NEWS-05 acceptance not claimed"
+  ]
+}

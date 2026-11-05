@@ -1,0 +1,11 @@
+{
+  "schema": "artemis-atom-code-evidence/1",
+  "atom": "MAIL-06",
+  "unit": "durable_expiry_source_and_receipt_gated_local_cleanup",
+  "production_changed": false,
+  "tests": {"retention": 8, "failures": 0},
+  "scenarios": ["no local PII removal until exact independently verified CRM receipt", "one durable expiry command in existing outbox", "rollback on queue failure", "independent contact without newsletter consent prevents expiry", "fresh generation survives old expiry", "minimal command contains no plaintext email"],
+  "cleanup_scope": "online newsletter-only payloads and expired subscription address; minimal pseudonymous receipts retained",
+  "backups_erased": false,
+  "remaining": ["implement common writer Person anonymization and stale-event guards", "wire source finalization and existing relay", "actual protected runtime release", "document backup aging and restore behavior"]
+}

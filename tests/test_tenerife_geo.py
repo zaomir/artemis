@@ -1,9 +1,6 @@
-"""Гео-открытие Тенерифе: страну встречает корень сайта `/`, а /tenerife/ — всегда английская главная 200.
+"""EN r2: site root `/` always opens English /tenerife/; geo never sends users to ES/DE/FR/RU.
 
-02.11.2026, решение основателя: ES/DE/FR по CF-IPCountry, EN по умолчанию; cookie сайт не пишет.
-P1-02 (06.11.2026): гео-редирект перенесён с /tenerife/ на `/`. Причина: /tenerife/ — canonical и hreflang
-en/x-default всех страниц Tenerife, он обязан отвечать 200 EN, иначе Google получает «английская и
-default-версия — это немецкая страница». ?lang= по-прежнему сильнее страны.
+t122u / Lead GO 05.11.2026: public Tenerife is English only. CF-IPCountry is ignored for locale choice.
 """
 import importlib
 import os
@@ -36,69 +33,49 @@ class GeoRedirectTest(unittest.TestCase):
     def client(self):
         return self.mod.app.test_client()
 
-    def test_spanish_visitor_goes_to_spanish(self):
-        r = self.client().get("/", headers={"CF-IPCountry": "ES"})
-        self.assertEqual(r.status_code, 302)
-        self.assertTrue(r.headers["Location"].endswith("/tenerife/es/"))
-
-    def test_german_and_french_visitors(self):
-        for country, loc in (("DE", "de"), ("AT", "de"), ("CH", "de"),
-                             ("FR", "fr"), ("BE", "fr"), ("LU", "fr"), ("MC", "fr")):
+    def test_every_country_lands_on_english_home(self):
+        for country in ("ES", "DE", "AT", "CH", "FR", "BE", "LU", "MC", "US", "GB", "RU", ""):
             with self.subTest(country=country):
                 r = self.client().get("/", headers={"CF-IPCountry": country})
                 self.assertEqual(r.status_code, 302, country)
-                self.assertTrue(r.headers["Location"].endswith(f"/tenerife/{loc}/"))
-
-    def test_unknown_country_goes_to_english_home(self):
-        for country in ("US", "GB", "RU", ""):
-            with self.subTest(country=country):
-                r = self.client().get("/", headers={"CF-IPCountry": country})
-                self.assertEqual((r.status_code, r.headers["Location"]), (302, "/tenerife/"), country)
+                self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, "/tenerife/", country)
 
     def test_tenerife_root_is_english_200_for_every_country(self):
-        """P1-02: /tenerife/ не редиректит ни по гео, ни на DE — это 200 английская главная."""
         for country in ("ES", "DE", "AT", "FR", "US", "GB", "RU", ""):
             with self.subTest(country=country):
                 r = self.client().get("/tenerife/", headers={"CF-IPCountry": country})
                 self.assertEqual(r.status_code, 200, country)
                 self.assertIn(b'<html lang="en">', r.data, country)
 
-    def test_lang_param_beats_geo_on_tenerife_root(self):
-        r = self.client().get("/tenerife/?lang=en", headers={"CF-IPCountry": "ES"})
+    def test_lang_param_does_not_open_non_en_locale(self):
+        r = self.client().get("/tenerife/?lang=de", headers={"CF-IPCountry": "US"})
         self.assertEqual(r.status_code, 200)
         self.assertIn(b'<html lang="en">', r.data)
 
-    def test_lang_param_goes_to_that_locale(self):
-        r = self.client().get("/tenerife/?lang=de", headers={"CF-IPCountry": "US"})
-        self.assertEqual(r.status_code, 302)
-        self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, "/tenerife/de/")
-
-    def test_lang_param_beats_geo_on_site_root(self):
-        r = self.client().get("/?lang=en", headers={"CF-IPCountry": "ES"})
-        self.assertEqual(r.status_code, 302)
-        self.assertEqual(r.headers["Location"], "/tenerife/?lang=en")
+    def test_lang_param_on_site_root_still_opens_en(self):
         r = self.client().get("/?lang=de", headers={"CF-IPCountry": "US"})
         self.assertEqual(r.status_code, 302)
-        self.assertEqual(r.headers["Location"], "/tenerife/de/?lang=de")
+        self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, "/tenerife/")
 
-    def test_geo_redirect_sets_no_cookie(self):
-        r = self.client().get("/", headers={"CF-IPCountry": "ES"})
+    def test_query_kept_on_root_redirect(self):
+        r = self.client().get("/?utm=1", headers={"CF-IPCountry": "FR"})
         self.assertEqual(r.status_code, 302)
-        self.assertIsNone(r.headers.get("Set-Cookie"))
-        r = self.client().get("/tenerife/", headers={"CF-IPCountry": "ES"})
-        self.assertEqual(r.status_code, 200)
-        self.assertIsNone(r.headers.get("Set-Cookie"))
+        self.assertTrue(r.headers["Location"].startswith("/tenerife/"))
+        self.assertIn("utm=1", r.headers["Location"])
 
-    def test_query_kept_on_geo_redirect(self):
-        r = self.client().get("/?utm_source=x", headers={"CF-IPCountry": "FR"})
-        self.assertEqual(r.status_code, 302)
-        self.assertTrue(r.headers["Location"].startswith("/tenerife/fr/"))
-        self.assertIn("utm_source=x", r.headers["Location"])
-
-    def test_tenerife_root_keeps_query_and_is_not_a_redirect(self):
-        r = self.client().get("/tenerife/?utm_source=x", headers={"CF-IPCountry": "DE"})
-        self.assertEqual(r.status_code, 200)
-        self.assertIn(b'<html lang="en">', r.data)
+    def test_non_en_locale_prefix_301_to_en(self):
+        cases = (
+            ("/tenerife/es/", "/tenerife/"),
+            ("/tenerife/de/norte/", "/tenerife/norte/"),
+            ("/tenerife/fr/condiciones/", "/tenerife/condiciones/"),
+            ("/tenerife/ru/inversores/", "/tenerife/inversores/"),
+            ("/tenerife/en/", "/tenerife/"),
+        )
+        for src, dest in cases:
+            with self.subTest(src=src):
+                r = self.client().get(src)
+                self.assertEqual(r.status_code, 301, src)
+                self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, dest, src)
 
 
 if __name__ == "__main__":
