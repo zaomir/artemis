@@ -2,10 +2,15 @@
   "schema": "atomic-iteration/1",
   "task_id": "artemis-funnel-20261104",
   "base_sha": "664ecd600a03790738ae06e520c0ff62f61a20d7",
-  "revision": 47,
-  "updated_at": "2026-11-05T11:25:28.093426+00:00",
-  "next_action": "Deploy protected feedback and inactive retention code through existing core release; full tests; no real recipient changes",
-  "pending": null,
+  "revision": 48,
+  "updated_at": "2026-11-05T11:26:53.154930+00:00",
+  "next_action": "reconcile:MAIL-06-protected-release-20261105-v1",
+  "pending": {
+    "key": "MAIL-06-protected-release-20261105-v1",
+    "action": "existing core release with protected feedback auth/CLI and isolated cross-checkout pipeline on host; request artemis-mail-feedback-release-20261105-01; keep newsletter/retention off",
+    "input_sha256": "d3383e5a4d888aba32526efff4a18f84398ffb4d23c828f403dbcc7fc3a56c44",
+    "started_at": "2026-11-05T11:26:53.154917+00:00"
+  },
   "verified": {
     "BASE-01-contract-v1": {
       "key": "BASE-01-contract-v1",
@@ -589,6 +594,12 @@
       "at": "2026-11-05T11:25:28.093426+00:00",
       "event": "verified:MAIL-06-expiry-wiring-20261105-v1",
       "next_action": "Deploy protected feedback and inactive retention code through existing core release; full tests; no real recipient changes"
+    },
+    {
+      "revision": 48,
+      "at": "2026-11-05T11:26:53.154930+00:00",
+      "event": "began:MAIL-06-protected-release-20261105-v1",
+      "next_action": "reconcile:MAIL-06-protected-release-20261105-v1"
     }
   ],
   "policy": {
