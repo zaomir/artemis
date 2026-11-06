@@ -1,0 +1,30 @@
+{
+  "schema": "artemis-visual-assets/1",
+  "assets": {
+    "artemis-watercolour-art01-20261104": {
+      "manifest": "docs/visual/candidates/manifest.json",
+      "page": "index",
+      "frame": "F01"
+    },
+    "artemis-watercolour-norte-20261105": {
+      "manifest": "docs/visual/candidates/artemis-watercolour-norte-20261105.json",
+      "page": "norte",
+      "frame": "F21"
+    },
+    "artemis-watercolour-producto-20261105": {
+      "manifest": "docs/visual/candidates/artemis-watercolour-producto-20261105.json",
+      "page": "producto",
+      "frame": "F05"
+    },
+    "artemis-watercolour-inversores-20261105": {
+      "manifest": "docs/visual/candidates/artemis-watercolour-inversores-20261105.json",
+      "page": "inversores",
+      "frame": "F14"
+    },
+    "artemis-watercolour-construccion-20261105": {
+      "manifest": "docs/visual/candidates/artemis-watercolour-construccion-20261105.json",
+      "page": "construccion",
+      "frame": "F15"
+    }
+  }
+}

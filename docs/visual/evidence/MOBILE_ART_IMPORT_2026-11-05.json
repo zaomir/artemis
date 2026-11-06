@@ -1,0 +1,159 @@
+{
+  "status": "VERIFIED",
+  "standalone_compositions": 5,
+  "mobile_variants": 10,
+  "old_mobile_crops_preserved": true,
+  "production_changed": false,
+  "items": [
+    {
+      "page": "index",
+      "stem": "artemis-watercolour-art01-20261104",
+      "source": "docs/visual/candidates/sources/index-mobile-original-20261105.png",
+      "sha256": "db387552e84f9442dff345f18b5874292fb378b6a1411f161a8e6a97b6d17b38",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "variants": [
+        {
+          "name": "artemis-watercolour-art01-20261104-mobile-20261105-640.webp",
+          "dimensions": [
+            640,
+            800
+          ],
+          "sha256": "e142593568f0a38a2050219641283518468a269792f0e85c4e0aa7883e86450c",
+          "bytes": 153890
+        },
+        {
+          "name": "artemis-watercolour-art01-20261104-mobile-20261105-800.webp",
+          "dimensions": [
+            800,
+            1000
+          ],
+          "sha256": "2ce8e7eaa6ad63d110b6c2b39c93edef82a0b2ac76e075af522e97dc3999e8eb",
+          "bytes": 227870
+        }
+      ]
+    },
+    {
+      "page": "norte",
+      "stem": "artemis-watercolour-norte-20261105",
+      "source": "docs/visual/candidates/sources/norte-mobile-original-20261105.png",
+      "sha256": "571b74ec1f1e8a7e6b5f159d51328fdb4e5d6ac65105d8fb5e6a36f4fc1d662f",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "variants": [
+        {
+          "name": "artemis-watercolour-norte-20261105-mobile-20261105-640.webp",
+          "dimensions": [
+            640,
+            800
+          ],
+          "sha256": "d569018941c20efa95ec894aaedc08eece91f6e9ada9f065b4658fc52a49a678",
+          "bytes": 159716
+        },
+        {
+          "name": "artemis-watercolour-norte-20261105-mobile-20261105-800.webp",
+          "dimensions": [
+            800,
+            1000
+          ],
+          "sha256": "844a6a90d0e0347abd9c3181ea24d6cb25197024becfaa8c60357ec112fd27ed",
+          "bytes": 244124
+        }
+      ]
+    },
+    {
+      "page": "producto",
+      "stem": "artemis-watercolour-producto-20261105",
+      "source": "docs/visual/candidates/sources/producto-mobile-original-20261105.png",
+      "sha256": "cb332382285a0efdc1c2de1018da309a0baa5071c581f1450ce1f704e002c463",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "variants": [
+        {
+          "name": "artemis-watercolour-producto-20261105-mobile-20261105-640.webp",
+          "dimensions": [
+            640,
+            800
+          ],
+          "sha256": "e2a154fb20f889e4b0852623e3006703979a5310c60cbc5ea1d12f36be3ee1db",
+          "bytes": 146620
+        },
+        {
+          "name": "artemis-watercolour-producto-20261105-mobile-20261105-800.webp",
+          "dimensions": [
+            800,
+            1000
+          ],
+          "sha256": "6c5f694d71cd7758a3d2648e4079f77b78a8987455e74e6ae5b0f870ddbb2fb9",
+          "bytes": 226010
+        }
+      ]
+    },
+    {
+      "page": "inversores",
+      "stem": "artemis-watercolour-inversores-20261105",
+      "source": "docs/visual/candidates/sources/inversores-mobile-original-20261105.png",
+      "sha256": "33cb93c1e6f1b79e2e7b78a36bc03d2965ed139552c1214290764824825b03d1",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "variants": [
+        {
+          "name": "artemis-watercolour-inversores-20261105-mobile-20261105-640.webp",
+          "dimensions": [
+            640,
+            800
+          ],
+          "sha256": "e0c5f8ffe9088d851f9beb39bde979bfc2e9d49c1cab270c6851983f52854774",
+          "bytes": 146854
+        },
+        {
+          "name": "artemis-watercolour-inversores-20261105-mobile-20261105-800.webp",
+          "dimensions": [
+            800,
+            1000
+          ],
+          "sha256": "414861b4d5b4c4716f5c4892d66fd2776b19b7dda068d73ebd104c63defb6557",
+          "bytes": 224350
+        }
+      ]
+    },
+    {
+      "page": "construccion",
+      "stem": "artemis-watercolour-construccion-20261105",
+      "source": "docs/visual/candidates/sources/construccion-mobile-original-20261105.png",
+      "sha256": "ad1e9e2dc04644cf0c2f96220e18d34d5ca0e127bd4a305e311f42f9d984cf02",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "variants": [
+        {
+          "name": "artemis-watercolour-construccion-20261105-mobile-20261105-640.webp",
+          "dimensions": [
+            640,
+            800
+          ],
+          "sha256": "cf3c727115b7c23af6458fe00c7a90d3e358681ab600cdefcdc0b9bc735ef0ab",
+          "bytes": 55966
+        },
+        {
+          "name": "artemis-watercolour-construccion-20261105-mobile-20261105-800.webp",
+          "dimensions": [
+            800,
+            1000
+          ],
+          "sha256": "82bd548f0de89ff88b7efb79de2d67d672a256c27c67f489faddb7c3b19e5bde",
+          "bytes": 86452
+        }
+      ]
+    }
+  ]
+}

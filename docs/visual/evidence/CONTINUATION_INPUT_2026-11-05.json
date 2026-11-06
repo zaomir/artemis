@@ -1,0 +1,24 @@
+{
+  "task": "artemis-visual-rollout",
+  "canonical_journal": "docs/visual/EXECUTION_2026-11-05.md",
+  "authorization": "User requested continuation of draft PR #39; implementation and validation only, no merge to main or deploy.",
+  "head": "e487703e77e6588818d2066105e9b4c51e019625",
+  "main": "04ae88ac6db52c9a3cd6e39fe2ceb43e018b62a4",
+  "scope": [
+    "reconcile main",
+    "recover existing P0 artwork bytes",
+    "five-locale builds",
+    "unit and responsive QA"
+  ],
+  "exclusions": [
+    "financial model changes",
+    "CRM mutations",
+    "portrait/case replacements",
+    "production deployment"
+  ],
+  "acceptance": [
+    "record actual execution results",
+    "preserve REVIEW status",
+    "keep default build separate from preview"
+  ]
+}

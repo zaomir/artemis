@@ -1,0 +1,13 @@
+{
+  "main": "6d1697795e9ccd383383c91545302ca6971b2dc5",
+  "merge": "e6fef29",
+  "conflicts_resolved": "Retain current main EN-only builder/templates/frames and deletions; reapply visual-only preview hooks next",
+  "preserved": [
+    "EN-only public routes",
+    "approved EN copy hashes",
+    "no public calculator/model",
+    "current CRM/mail logic"
+  ],
+  "owner_approval": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+  "validation": "Pending visual reapplication and full suite"
+}

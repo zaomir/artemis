@@ -1,0 +1,43 @@
+{
+  "id": "boris-f18",
+  "page": "boris",
+  "frame": "F18",
+  "category": "ART-06",
+  "truth_level": "C2",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/boris-f18-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-41c0a480-4779-450a-8733-123e00a56255.png",
+  "reference": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. A small architectural detail-and-garden study: rough volcanic basalt plinth meets cream lime plaster and the base of one simple column, with low green planting and a narrow edge of shaded stone paving. Tactile close view at eye level, no people or portraits, no swimming pool, no wide finished estate and no construction evidence.",
+  "production_assignment": false,
+  "sha256": "ee554c0323100a470b409624760ebd579dcadb9ed18b87b4bb62a3e72e69b271",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 3952544,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Basalt plinth, lime plaster and column beside planting",
+    "es": "Estudio en tinta y acuarela: Zócalo de basalto, revoco de cal y columna junto a plantas",
+    "de": "Tusche- und Aquarellstudie: Basaltsockel, Kalkputz und Säule neben Bepflanzung",
+    "fr": "Étude à l’encre et à l’aquarelle : Soubassement en basalte, enduit de chaux et colonne près de végétaux",
+    "ru": "Акварельный этюд: Базальтовый цоколь, известковая штукатурка и колонна рядом с растениями"
+  },
+  "captions": {
+    "en": "Conceptual study. Design, materials and specifications remain under exploration.",
+    "es": "Estudio conceptual. Diseño, materiales y características siguen en exploración.",
+    "de": "Konzeptionelle Studie. Gestaltung, Materialien und Spezifikationen werden noch untersucht.",
+    "fr": "Étude conceptuelle. Conception, matériaux et caractéristiques restent à explorer.",
+    "ru": "Концептуальный этюд. Дизайн, материалы и характеристики ещё уточняются."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "producto-f06",
+  "page": "producto",
+  "frame": "F06",
+  "category": "ART-03",
+  "truth_level": "C2",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/producto-f06-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-509cdd67-6bea-4638-b837-9284e925e784.png",
+  "reference": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. An intimate interior living-room concept inside the same small Spanish-Canarian house family. Cream lime walls, one shallow arched opening to a leafy private courtyard, quiet linen sofa and small dark timber table, subtle volcanic stone floor, soft cool daylight. Modest room with believable domestic proportions, no double-height luxury hall, no people, no ocean window or architectural plan.",
+  "production_assignment": false,
+  "sha256": "863e286717aad12bf9c788748b25c1bf42eca01605edb37df0c99a07cd59da0f",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 3477828,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Living-room study opening toward a leafy courtyard",
+    "es": "Estudio en tinta y acuarela: Estudio de salón abierto a un patio verde",
+    "de": "Tusche- und Aquarellstudie: Wohnraumstudie mit Blick in einen begrünten Innenhof",
+    "fr": "Étude à l’encre et à l’aquarelle : Étude de séjour ouvert sur une cour végétalisée",
+    "ru": "Акварельный этюд: Этюд гостиной с выходом в зелёный двор"
+  },
+  "captions": {
+    "en": "Conceptual study. Design, materials and specifications remain under exploration.",
+    "es": "Estudio conceptual. Diseño, materiales y características siguen en exploración.",
+    "de": "Konzeptionelle Studie. Gestaltung, Materialien und Spezifikationen werden noch untersucht.",
+    "fr": "Étude conceptuelle. Conception, matériaux et caractéristiques restent à explorer.",
+    "ru": "Концептуальный этюд. Дизайн, материалы и характеристики ещё уточняются."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

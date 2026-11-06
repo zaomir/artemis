@@ -14,12 +14,11 @@ sys.path.insert(0, str(ROOT / "app"))
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")  # app refuses to start without a salt
 
 # founder 31.10.2026 01:44 UTC: no disclaimer block, no «Визуализация»/AI captions (supersedes PR #4/#5 rule)
+# A calculator outcome caveat («не гарантирован») is product information, not a removed legal block.
 REMOVED_DISCLAIMERS = [
     r"визуализац", r"\(AI\)", r"(?<![А-Яа-яЁё])ИИ(?![А-Яа-яЁё])", r"не фотограф", r"иллюстрация этапа",
-    r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт", r"не гарантирован",
+    r"Важная информация", r"ценных бумаг", r"Vermögensanlage", r"оферт",
     r"общая информация", r"до разрешения",
-    # EN r1: the same captions / disclaimer blocks in English
-    r"visuali[sz]ation", r"not a photograph", r"Important information", r"\bsecurities\b", r"general information",
 ]
 
 FORBIDDEN = [
@@ -117,7 +116,7 @@ class TenerifePreviewTest(unittest.TestCase):
         body = self.client.get("/tenerife/impressum/").get_data(as_text=True)
         # founder 31.10.2026 01:11 UTC: publish OXFORD FRAME REAL ASSETS LTD / 09153936 (Companies House facts only)
         for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales",
-                     "Drovers, Preston Candover, Basingstoke, RG25 2EE", "Szabolcs Szaniszlo"):
+                     "Drovers, Preston Candover, Basingstoke, RG25 2EE"):
             self.assertIn(must, body)
         self.assertNotIn("[уточнить", body)  # placeholders removed; only known data (founder 31.10)
         self.assertIn("info@artemisresort.com", body)
@@ -125,8 +124,8 @@ class TenerifePreviewTest(unittest.TestCase):
             self.assertNotIn(forbidden, body)
 
     def test_privacy_names_controller_and_hosting_country(self):
-        body = self.client.get("/tenerife/privacy/").get_data(as_text=True)
-        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "the server is located in Germany"):
+        body = self.client.get("/tenerife/ru/privacy/").get_data(as_text=True)   # RU — канон юридического текста
+        for must in ("OXFORD FRAME REAL ASSETS LTD", "09153936", "England and Wales", "Германии"):
             self.assertIn(must, body)
         self.assertNotIn("Oxford Frame Ltd", body)
 

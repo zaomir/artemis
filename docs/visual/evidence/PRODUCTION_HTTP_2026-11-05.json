@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-05T10:10:56.802Z",
+  "requests": "Read-only GET; no release, login or form submission",
+  "results": [
+    {
+      "path": "/tenerife/",
+      "status": 200,
+      "server": "cloudflare",
+      "release_sha_observed": false
+    },
+    {
+      "path": "/tenerife/norte/",
+      "status": 200,
+      "server": "cloudflare",
+      "release_sha_observed": false
+    },
+    {
+      "path": "/tenerife/ru/",
+      "status": 200,
+      "server": "cloudflare",
+      "release_sha_observed": false
+    }
+  ],
+  "limit": "HTTP availability is not verification of deployed Git SHA"
+}

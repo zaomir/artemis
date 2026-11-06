@@ -69,7 +69,17 @@ def build_pages(render, locale):
         body+=f'<h2>{u[5]}</h2><ul>'+''.join(citations)+'</ul>'
         body+=f'<p><a href="{locale_url(locale)}">{u[0]}</a></p>'
         output['actualizaciones/'+a['slug']]=render(t['title'],t['summary'],body,url,list(a['translations']))
-        cards.append(f'<article><h2><a href="{url}">{esc(t["title"])}</a></h2><p>{esc(t["summary"])}</p><time datetime="{a["publication_date"]}">{a["publication_date"]}</time></article>')
+        # A teaser uses only the article's already-provenance-recorded image.
+        # It does not create a second, fictional site photograph.
+        teaser = ''
+        if a['assets']:
+            asset = a['assets'][0]
+            caption = asset['captions'][locale]
+            teaser = (f'<figure class="news-teaser__media">'
+                      f'<img src="{esc(asset["path"], quote=True)}" alt="{esc(caption, quote=True)}" '
+                      f'width="{asset["width"]}" height="{asset["height"]}" loading="lazy" decoding="async">'
+                      f'<figcaption class="micro">{esc(caption)}</figcaption></figure>')
+        cards.append(f'<article class="news-teaser"><div class="news-teaser__text"><h2><a href="{url}">{esc(t["title"])}</a></h2><p>{esc(t["summary"])}</p><time datetime="{a["publication_date"]}">{a["publication_date"]}</time></div>{teaser}</article>')
     body=f'<h1 id="h1">{u[0]}</h1><p class="hero__lead">{u[1]}</p><p>{u[8]}</p>'+''.join(cards)
     output['actualizaciones']=render(u[0],u[1],body,locale_url(locale),list(LANGS))
     return output

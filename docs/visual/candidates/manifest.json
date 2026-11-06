@@ -1,0 +1,167 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "canon": "ARTEMIS — Atlantic Heritage Watercolour v1.0",
+  "status": "APPROVED_FOR_PREVIEW",
+  "image_id": "ART01-MASTER-20261104-CANDIDATE-01",
+  "category": "ART-01",
+  "truth_level": "C2",
+  "purpose": "homepage concept-vision hero, not approved site design",
+  "slot": {
+    "page": "index",
+    "frame": "F01"
+  },
+  "file": "docs/visual/candidates/ART-01-master-1600.webp",
+  "dimensions": {
+    "width": 1600,
+    "height": 900
+  },
+  "mime_type": "image/webp",
+  "sha256": "0b6304a8ebff7c63ee75140c38cb725fdd309f05f8586d2e925e894f27ed4145",
+  "source": "OpenAI image_gen 2026-11-04 original concept artwork",
+  "generation_id": "ec769ce7-2d31-4d42-92ec-2e43be979ad5",
+  "provenance": "Original synthetic architecture generated for project. No site plan, client photo or existing house was supplied.",
+  "rights_basis": "New project illustration created at owner direction; legal clearance prior to public use to be confirmed by owner.",
+  "review_flags": [
+    "Not a verified site view",
+    "Original mobile composition prepared 2026-11-05; previous mobile crops retained as superseded drafts",
+    "Owner approved named desktop image and adaptation; production release and public rights clearance pending"
+  ],
+  "captions": {
+    "en": "Conceptual architectural vision; design, location and specifications remain under study.",
+    "es": "Visión arquitectónica conceptual; el diseño, la ubicación y las características siguen en estudio.",
+    "de": "Konzeptionelle Architekturvision; Gestaltung, Standort und Eigenschaften werden noch geprüft.",
+    "fr": "Vision architecturale conceptuelle ; conception, emplacement et caractéristiques restent à l'étude.",
+    "ru": "Концептуальное архитектурное видение. Дизайн, местоположение и характеристики ещё уточняются."
+  },
+  "alt": {
+    "en": "Ink and watercolour concept of a stepped Spanish-Canarian residential village among green hills near the Atlantic",
+    "es": "Concepto en tinta y acuarela de viviendas escalonadas de inspiración canaria y jardín en una ladera atlántica",
+    "de": "Tusche- und Aquarellentwurf für eine terrassierte Wohnanlage in kanarischem Stil an der Atlantikküste",
+    "fr": "Étude à l'encre et à l'aquarelle de résidences en terrasses inspirées des Canaries près de l'Atlantique",
+    "ru": "Акварельный эскиз каскадного ансамбля резиденций в испанско-канарском стиле на зелёном склоне"
+  },
+  "preview_assignment": {
+    "env": "ARTEMIS_VISUAL_PREVIEW=1",
+    "slot": "index/F01",
+    "production_enabled": false,
+    "source": "scripts/tenerife_site_build/frames.json:preview_overrides"
+  },
+  "variants": [
+    {
+      "name": "artemis-watercolour-art01-20261104.jpg",
+      "size_bytes": 579447,
+      "sha256": "c79f02620a2d8da0e6d4a44410b67ff54cdefc7713b97bffc95444d2d0980bcf",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "role": "desktop jpeg fallback"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-640.webp",
+      "size_bytes": 62382,
+      "sha256": "05b76d7da2739ac96ae192474e76919f1d6a4933bd5037d22053ad3b2a6c2ac4",
+      "dimensions": [
+        640,
+        360
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-800.webp",
+      "size_bytes": 94254,
+      "sha256": "33ad75640eea357c5d7fd893d8f6629608bbe5a67149f8579120c3139965e004",
+      "dimensions": [
+        800,
+        450
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-1024.webp",
+      "size_bytes": 149640,
+      "sha256": "c7c80a9e6b43cd36180b761e7bdc2add9b256fab0a130169268cac0802a8a46f",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-1600.webp",
+      "size_bytes": 305008,
+      "sha256": "0b6304a8ebff7c63ee75140c38cb725fdd309f05f8586d2e925e894f27ed4145",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "role": "desktop responsive"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-mobile-640.webp",
+      "size_bytes": 144648,
+      "sha256": "e2fd1e9130c2650f5cf6a6910668a017673848144aec6025265f42869b09cb59",
+      "dimensions": [
+        640,
+        800
+      ],
+      "role": "mobile 4:5 crop draft"
+    },
+    {
+      "name": "artemis-watercolour-art01-20261104-mobile-800.webp",
+      "size_bytes": 194870,
+      "sha256": "ceec677f85f87666ad518f7b6b8e84dc951ac7e80cd2851a7376fcd5089cc472",
+      "dimensions": [
+        800,
+        1000
+      ],
+      "role": "mobile 4:5 crop draft"
+    }
+  ],
+  "approved": true,
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/index-mobile-original-20261105.png",
+    "sha256": "db387552e84f9442dff345f18b5874292fb378b6a1411f161a8e6a97b6d17b38",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-674fff47-b56d-4d5e-8e8a-a80e60db32bc",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-art01-20261104-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "e142593568f0a38a2050219641283518468a269792f0e85c4e0aa7883e86450c",
+        "bytes": 153890
+      },
+      {
+        "name": "artemis-watercolour-art01-20261104-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "2ce8e7eaa6ad63d110b6c2b39c93edef82a0b2ac76e075af522e97dc3999e8eb",
+        "bytes": 227870
+      }
+    ]
+  },
+  "mobile_composition_verified": true,
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only"
+}

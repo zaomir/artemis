@@ -1,9 +1,9 @@
-# Tenerife EN copy (EN r2 / t122u)
+# English copy (draft)
 
-Pinned Kimi/web-designer English copy for the public `/tenerife/` site.
-Build: `TENERIFE_WHATSAPP=+440000000000 python3 scripts/tenerife_site_build/build_v3.py`
+Translation of `copy_v3` (Russian master), produced 2026-11-02. Structure, figures, `[КАДР Fxx]` markers,
+links and META keys are identical to the master; only prose is translated.
 
-- Pages 01–18 (Spanish slugs). Page 05 = Terms `/condiciones/`. Page 18 = Investors `/inversores/`.
-- `19_komanda.md` is not built (equipo → 301 `/tenerife/`).
-- Pins: see `SHA256SUMS` and `COPY_FILE_SHA256` in `build_v3.py`.
-- `Artemis_Tenerife_EN_copy.md` is reference only (not required by the build).
+Not wired into the build yet: `build_v3.py` recognises components by Russian section titles and footer labels
+(`Страницы.` / `Контакты.` / `Компания.` / `Документы.`), and `NAV` is keyed by the Russian names. A locale
+layer (per-locale NAV, footer labels, COMPANY_RX, section-title map, ladder headers) is required before
+`TENERIFE_LOCALE=en` can render. Legal pages 15–17 are not translated yet.

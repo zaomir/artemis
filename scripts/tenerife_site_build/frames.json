@@ -1,38 +1,165 @@
 {
- "_comment": "RU v3 photos until the Leonardo F01–F25 frames arrive (designer r2, 31.10.2026): a slot [КАДР Fxx] gets the first photo of its 'prefer' list (theme match, PLAN §8) not used yet on the page — hero included; every photo at most ONCE per page. No suitable photo (empty list: F13, F18, F19, F20) or all already used -> no image: the text block gets the 6 px basalt bar (--plinth, --cs-basalt). Alt texts: alts.json. focal = object-position of each photo in the mobile 4:5 hero crop (CSS class fp-<file>, CSP forbids style=). QA T3-11: F14 (котлован), F15 (каркас), F16 (кровля в монтаже) are construction stages; no photo shows one -> text block + basalt bar (decision 1). F17 (отделка): designer r3 (31.10.2026) — a finished-house photo is misleading, so F17 never gets a photo: on construccion it is a text block + basalt bar, on other pages the slot is hidden when the page already shows another photo (else text block + bar); build_v3.py F17_RULE.",
- "prefer": {
-  "F01": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"],
-  "F02": ["entrance-o-9abe9d"],
-  "F03": ["communal-s-af42cd"],
-  "F04": ["private-te-6016b5", "modern-low-6e9d80"],
-  "F05": ["interior-o-74f891", "private-te-6016b5"],
-  "F06": ["interior-o-74f891", "private-te-6016b5"],
-  "F07": ["interior-o-74f891", "private-te-6016b5", "golden-hou-d4cc25"],
-  "F08": ["interior-o-74f891", "private-te-6016b5", "communal-s-af42cd"],
-  "F09": ["interior-o-74f891", "private-te-6016b5", "entrance-o-9abe9d"],
-  "F10": ["interior-o-74f891", "private-te-6016b5"],
-  "F11": ["green-hill-3f3856", "modern-low-6e9d80", "golden-hou-d4cc25"],
-  "F12": ["entrance-o-9abe9d", "communal-s-af42cd"],
-  "F13": [],
-  "F14": [],
-  "F15": [],
-  "F16": [],
-  "F17": [],
-  "F18": [],
-  "F19": [],
-  "F20": [],
-  "F21": ["green-hill-3f3856", "modern-low-6e9d80"],
-  "F22": ["golden-hou-d4cc25", "communal-s-af42cd"],
-  "F23": ["green-hill-3f3856", "golden-hou-d4cc25"],
-  "F24": ["modern-low-6e9d80", "golden-hou-d4cc25", "green-hill-3f3856"]
- },
- "focal": {
-  "modern-low-6e9d80": "35% 50%",
-  "entrance-o-9abe9d": "50% 60%",
-  "communal-s-af42cd": "40% 50%",
-  "private-te-6016b5": "55% 50%",
-  "interior-o-74f891": "65% 55%",
-  "green-hill-3f3856": "68% 50%",
-  "golden-hou-d4cc25": "40% 50%"
- }
+  "page_overrides": {},
+  "preview_overrides": {
+    "index/F01": [
+      "artemis-watercolour-art01-20261104"
+    ],
+    "norte/F21": [
+      "artemis-watercolour-norte-20261105"
+    ],
+    "producto/F05": [
+      "artemis-watercolour-producto-20261105"
+    ],
+    "inversores/F14": [
+      "artemis-watercolour-inversores-20261105"
+    ],
+    "construccion/F15": [
+      "artemis-watercolour-construccion-20261105"
+    ]
+  },
+  "_comment": "RU v3 photos; Leonardo Canary Stone frames F13–F22 added 2026-11-02 (designer, auto/lucid-origin): a slot [КАДР Fxx] gets the first photo of its 'prefer' list (theme match, PLAN §8) not used yet on the page — hero included; every photo at most ONCE per page. No suitable photo (empty list: F13, F18, F19, F20) or all already used -> no image: the text block gets the 6 px basalt bar (--plinth, --cs-basalt). Alt texts: alts.json. focal = object-position of each photo in the mobile 4:5 hero crop (CSS class fp-<file>, CSP forbids style=). QA T3-11: F14 (котлован), F15 (каркас), F16 (кровля в монтаже) are construction stages; no photo shows one -> text block + basalt bar (decision 1). F17 (отделка): designer r3 (31.10.2026) — a finished-house photo is misleading, so F17 never gets a photo: on construccion it is a text block + basalt bar, on other pages the slot is hidden when the page already shows another photo (else text block + bar); build_v3.py F17_RULE.",
+  "prefer": {
+    "F01": [
+      "modern-low-6e9d80",
+      "complex-row-9c31a1"
+    ],
+    "F02": [
+      "entrance-o-9abe9d",
+      "gate-stone-4f1a2b"
+    ],
+    "F03": [
+      "communal-s-af42cd",
+      "pool-day-6b1c93"
+    ],
+    "F04": [
+      "private-te-6016b5",
+      "terrace-view-7c2d15"
+    ],
+    "F05": [
+      "interior-o-74f891",
+      "interior-salon-8a2c19"
+    ],
+    "F06": [
+      "interior-o-74f891",
+      "interior-salon-8a2c19"
+    ],
+    "F07": [
+      "interior-o-74f891",
+      "bedroom-sea-2a7f61",
+      "interior-salon-8a2c19"
+    ],
+    "F08": [
+      "interior-o-74f891",
+      "kitchen-stone-9e3b40",
+      "interior-salon-8a2c19"
+    ],
+    "F09": [
+      "interior-o-74f891",
+      "bedroom-sea-2a7f61"
+    ],
+    "F10": [
+      "interior-o-74f891",
+      "terrace-view-7c2d15",
+      "private-te-6016b5"
+    ],
+    "F11": [
+      "green-hill-3f3856",
+      "aerial-complex-3d9e50"
+    ],
+    "F12": [
+      "entrance-o-9abe9d",
+      "gate-stone-4f1a2b"
+    ],
+    "F13": [
+      "solar-flat-2b8f04"
+    ],
+    "F14": [
+      "build-pit-3ab7c2",
+      "build-frame-5e6d77"
+    ],
+    "F15": [
+      "build-frame-5e6d77",
+      "build-pit-3ab7c2"
+    ],
+    "F16": [
+      "roof-montazh-6d90ef",
+      "solar-flat-2b8f04"
+    ],
+    "F17": [],
+    "F18": [
+      "pool-dusk-4d7e12",
+      "communal-s-af42cd"
+    ],
+    "F19": [],
+    "F20": [],
+    "F21": [
+      "hillside-row-71c3ab",
+      "aerial-complex-3d9e50",
+      "green-hill-3f3856"
+    ],
+    "F22": [
+      "pool-dusk-4d7e12",
+      "golden-hou-d4cc25",
+      "communal-s-af42cd"
+    ],
+    "F23": [
+      "green-hill-3f3856",
+      "aerial-complex-3d9e50"
+    ],
+    "F24": [
+      "golden-hou-d4cc25",
+      "complex-row-9c31a1",
+      "aerial-complex-3d9e50"
+    ]
+  },
+  "focal": {
+    "modern-low-6e9d80": "35% 50%",
+    "entrance-o-9abe9d": "50% 60%",
+    "communal-s-af42cd": "40% 50%",
+    "private-te-6016b5": "55% 50%",
+    "interior-o-74f891": "65% 55%",
+    "green-hill-3f3856": "68% 50%",
+    "golden-hou-d4cc25": "40% 50%",
+    "complex-row-9c31a1": "50% 45%",
+    "pool-dusk-4d7e12": "50% 62%",
+    "hillside-row-71c3ab": "45% 42%",
+    "solar-flat-2b8f04": "50% 50%",
+    "build-frame-5e6d77": "50% 45%",
+    "interior-salon-8a2c19": "55% 50%",
+    "build-pit-3ab7c2": "50% 45%",
+    "roof-montazh-6d90ef": "50% 55%",
+    "gate-stone-4f1a2b": "50% 55%",
+    "terrace-view-7c2d15": "50% 55%",
+    "kitchen-stone-9e3b40": "50% 50%",
+    "bedroom-sea-2a7f61": "50% 50%",
+    "pool-day-6b1c93": "50% 45%",
+    "aerial-complex-3d9e50": "50% 50%",
+    "simon-portrait": "50% 30%",
+    "simon-street": "50% 30%",
+    "simon-rooftop": "70% 40%",
+    "simon-site": "50% 40%",
+    "boris-portrait": "50% 35%",
+    "boris-formwork": "50% 35%",
+    "boris-roof": "50% 35%",
+    "boris-drawings": "50% 35%",
+    "boris-formwork-43f3d5": "50% 40%",
+    "boris-roof-9e3265": "50% 40%",
+    "boris-drawings-d9ba7e": "50% 40%",
+    "simon-permits-1e06e2": "50% 40%",
+    "artemis-watercolour-art01-20261104": "50% 50%",
+    "artemis-watercolour-norte-20261105": "50% 50%",
+    "artemis-watercolour-producto-20261105": "50% 50%",
+    "artemis-watercolour-inversores-20261105": "50% 50%",
+    "artemis-watercolour-construccion-20261105": "50% 50%"
+  },
+  "preview_hidden": [
+    "equipo/F22",
+    "norte/F23"
+  ],
+  "_preview_hidden_explanation": "REVIEW safeguard: replaced/hidden legacy candidates are excluded site-wide in preview to prevent reassignment; F23 uses the source-based vector locator. Synthetic construction imagery is excluded globally. Default assignments are unchanged.",
+  "preview_excluded_stems": [
+    "build-pit-3ab7c2",
+    "build-frame-5e6d77",
+    "roof-montazh-6d90ef"
+  ]
 }

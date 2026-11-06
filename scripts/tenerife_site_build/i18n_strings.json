@@ -24,7 +24,32 @@
       "site": "← Back to the project site",
       "form": "← Back to the form"
     },
+    "visual": {
+      "concept_caption": "Conceptual illustration. Architecture, location and project characteristics are under study.",
+      "concept_stages": {
+        "label": "Project development stages (concept only)",
+        "steps": [
+          "Architectural concept search",
+          "Site selection",
+          "Feasibility review",
+          "Detailed design"
+        ],
+        "current": "Current stage",
+        "next": "Planned — not started"
+      },
+      "location_context": {
+        "alt": "Coordinate locator for La Quinta district, Puerto de la Cruz and TITSA stop 4004, not a project parcel",
+        "caption": "Indicative district locator from verified coordinates; no Artemis site has been selected. Not a cadastral map or travel route.",
+        "open_map": "Open the actual area map"
+      },
+      "project_concept_notice": "Architectural concept search. The plot, building design, dwelling mix and specifications have not been approved; illustrations are exploratory ideas.",
+      "future_stages": {
+        "label": "Possible future construction stages",
+        "disclosure": "Prospective stages only. The programme will be refined after plot selection; this is not a progress report."
+      }
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Ink-and-watercolour concept of a stepped Spanish-Canarian residential village on a green Atlantic hillside",
       "modern-low-6e9d80": "Low houses in terraces on the slope above the ocean",
       "entrance-o-9abe9d": "Entrance to the complex: stone pylons and wooden gates",
       "communal-s-af42cd": "Communal pool and Canary Stone houses",
@@ -45,13 +70,17 @@
       "kitchen-stone-9e3b40": "Kitchen of the residence: oak, basalt worktop, view into the garden",
       "bedroom-sea-2a7f61": "Bedroom of the residence with a window onto the ocean",
       "pool-day-6b1c93": "Communal pool by day, stone deck and Canary Stone houses",
-      "aerial-complex-3d9e50": "The whole complex of twenty houses in terraces above the ocean"
+      "aerial-complex-3d9e50": "The whole complex of twenty houses in terraces above the ocean",
+      "artemis-watercolour-norte-20261105": "Ink and watercolour study of green coastal terraces and palms, inspired by northern Tenerife",
+      "artemis-watercolour-producto-20261105": "Conceptual ink and watercolour residence with a shaded archway and basalt base",
+      "artemis-watercolour-inversores-20261105": "Exploratory watercolour of possible building volumes on a coastal hillside, with unfinished sketch lines",
+      "artemis-watercolour-construccion-20261105": "Illustrative watercolour sequence of possible future building stages, from a green slope to a house concept"
     },
     "people": {
       "simon-portrait": "Simon Subic, developer of Artemis de la Cruz",
       "simon-street": "Simon Subic in the street by a house",
       "simon-rooftop": "Simon Subic on a rooftop overlooking the town",
-      "simon-site": "Simon Subic on the Canary Stone site with drawings",
+      "simon-site": "Simon Subic holding drawings in a construction setting",
       "boris-portrait": "Boris Ribaut, construction supervisor at Artemis de la Cruz",
       "boris-formwork": "Boris Ribaut checks formwork dimensions and reinforcement before concrete is poured",
       "boris-roof": "Boris Ribaut checks solar-panel mounting on a flat roof",
@@ -132,7 +161,32 @@
       "site": "← Volver al sitio del proyecto",
       "form": "← Volver al formulario"
     },
+    "visual": {
+      "concept_caption": "Ilustración conceptual. Arquitectura, ubicación y características del proyecto en estudio.",
+      "concept_stages": {
+        "label": "Etapas de desarrollo del proyecto (conceptuales)",
+        "steps": [
+          "Búsqueda del concepto arquitectónico",
+          "Selección del terreno",
+          "Estudio de viabilidad",
+          "Proyecto arquitectónico"
+        ],
+        "current": "Etapa actual",
+        "next": "Previsto — no iniciado"
+      },
+      "location_context": {
+        "alt": "Esquema de coordenadas de La Quinta, Puerto de la Cruz y la parada TITSA 4004; no indica ninguna parcela de Artemis",
+        "caption": "Localización orientativa basada en coordenadas verificadas; aún no se ha elegido la parcela de Artemis. No es un plano catastral ni una ruta.",
+        "open_map": "Abrir el mapa real de la zona"
+      },
+      "project_concept_notice": "Búsqueda del concepto arquitectónico. No se han aprobado la parcela, la arquitectura, la distribución de viviendas ni las especificaciones; las imágenes son ideas exploratorias.",
+      "future_stages": {
+        "label": "Posibles fases futuras de construcción",
+        "disclosure": "Fases previstas únicamente. El programa se precisará tras elegir el terreno; no es un informe de avance."
+      }
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Boceto en tinta y acuarela de residencias canarias escalonadas sobre una ladera verde del Atlántico",
       "modern-low-6e9d80": "Casas bajas en terrazas en la ladera sobre el océano",
       "entrance-o-9abe9d": "Entrada al complejo: pilones de piedra y puertas de madera",
       "communal-s-af42cd": "Piscina común y casas Canary Stone",
@@ -153,13 +207,17 @@
       "kitchen-stone-9e3b40": "Cocina de la residencia: roble, encimera de basalto, vistas al jardín",
       "bedroom-sea-2a7f61": "Dormitorio de la residencia con ventana al océano",
       "pool-day-6b1c93": "Piscina común de día, solado de piedra y casas Canary Stone",
-      "aerial-complex-3d9e50": "Todo el complejo de veinte casas en terrazas sobre el océano"
+      "aerial-complex-3d9e50": "Todo el complejo de veinte casas en terrazas sobre el océano",
+      "artemis-watercolour-norte-20261105": "Estudio en tinta y acuarela de terrazas costeras verdes y palmeras inspirado en el norte de Tenerife",
+      "artemis-watercolour-producto-20261105": "Concepto en tinta y acuarela de una vivienda con entrada en arco y zócalo de basalto",
+      "artemis-watercolour-inversores-20261105": "Acuarela exploratoria de posibles volúmenes de viviendas en una ladera costera con líneas de estudio sin terminar",
+      "artemis-watercolour-construccion-20261105": "Secuencia ilustrativa en acuarela de posibles fases futuras, desde una ladera verde hasta un concepto de vivienda"
     },
     "people": {
       "simon-portrait": "Simon Subic, promotor de Artemis de la Cruz",
       "simon-street": "Simon Subic en la calle junto a una casa",
       "simon-rooftop": "Simon Subic en una azotea con vistas a la ciudad",
-      "simon-site": "Simon Subic en la obra de Canary Stone con planos",
+      "simon-site": "Simon Subic con planos en un entorno de construcción",
       "boris-portrait": "Boris Ribaut, jefe de obra de Artemis de la Cruz",
       "boris-formwork": "Boris Ribaut comprueba las dimensiones del encofrado y la armadura antes del hormigonado",
       "boris-roof": "Boris Ribaut revisa la fijación de los paneles solares en una cubierta plana",
@@ -240,7 +298,32 @@
       "site": "← Zurück zur Projektseite",
       "form": "← Zurück zum Formular"
     },
+    "visual": {
+      "concept_caption": "Konzeptillustration. Architektur, Standort und Projekteigenschaften werden noch geprüft.",
+      "concept_stages": {
+        "label": "Projektphasen (konzeptionell)",
+        "steps": [
+          "Architekturkonzept suchen",
+          "Grundstück auswählen",
+          "Machbarkeit prüfen",
+          "Detailplanung"
+        ],
+        "current": "Aktuelle Phase",
+        "next": "Geplant — noch nicht begonnen"
+      },
+      "location_context": {
+        "alt": "Koordinatenübersicht von La Quinta, Puerto de la Cruz und TITSA-Haltestelle 4004; kein Artemis-Grundstück",
+        "caption": "Unverbindliche Lageübersicht anhand geprüfter Koordinaten; ein Grundstück für Artemis wurde noch nicht gewählt. Kein Katasterplan und keine Route.",
+        "open_map": "Tatsächliche Gebietskarte öffnen"
+      },
+      "project_concept_notice": "Suche nach dem Architekturkonzept. Grundstück, Entwurf, Wohnungsmix und Ausführung sind noch nicht genehmigt; die Illustrationen zeigen mögliche Ideen.",
+      "future_stages": {
+        "label": "Mögliche künftige Bauphasen",
+        "disclosure": "Nur mögliche künftige Phasen. Das Programm wird nach der Grundstückswahl präzisiert; dies ist kein Fortschrittsbericht."
+      }
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Tusche- und Aquarellentwurf für gestaffelte kanarische Residenzen an einem grünen Atlantikhang",
       "modern-low-6e9d80": "Niedrige Häuser in Terrassen am Hang über dem Ozean",
       "entrance-o-9abe9d": "Eingang der Anlage: steinerne Pfeiler und Holztore",
       "communal-s-af42cd": "Gemeinschaftspool und Canary-Stone-Häuser",
@@ -261,13 +344,17 @@
       "kitchen-stone-9e3b40": "Küche der Residenz: Eiche, Basaltarbeitsplatte, Blick in den Garten",
       "bedroom-sea-2a7f61": "Schlafzimmer der Residenz mit Fenster zum Ozean",
       "pool-day-6b1c93": "Gemeinschaftspool am Tag, Steinplatten und Canary-Stone-Häuser",
-      "aerial-complex-3d9e50": "Die gesamte Anlage aus zwanzig Häusern in Terrassen über dem Ozean"
+      "aerial-complex-3d9e50": "Die gesamte Anlage aus zwanzig Häusern in Terrassen über dem Ozean",
+      "artemis-watercolour-norte-20261105": "Tusche- und Aquarellstudie grüner Küstenterrassen und Palmen, inspiriert von Nordteneriffa",
+      "artemis-watercolour-producto-20261105": "Konzeptionelle Tusche- und Aquarellstudie eines Wohnhauses mit schattigem Torbogen und Basaltsockel",
+      "artemis-watercolour-inversores-20261105": "Explorative Aquarellstudie möglicher Baukörper an einem Küstenhang mit unfertigen Entwurfslinien",
+      "artemis-watercolour-construccion-20261105": "Illustrative Aquarellfolge möglicher künftiger Bauphasen, vom grünen Hang zum Hausentwurf"
     },
     "people": {
       "simon-portrait": "Simon Subic, Entwickler von Artemis de la Cruz",
       "simon-street": "Simon Subic auf der Straße vor einem Haus",
       "simon-rooftop": "Simon Subic auf einem Dach mit Blick über die Stadt",
-      "simon-site": "Simon Subic auf der Baustelle Canary Stone mit Plänen",
+      "simon-site": "Simon Subic mit Plänen in einer Baustellenumgebung",
       "boris-portrait": "Boris Ribaut, Bauleiter von Artemis de la Cruz",
       "boris-formwork": "Boris Ribaut prüft Schalungsmaße und Bewehrung vor dem Betonieren",
       "boris-roof": "Boris Ribaut prüft die Befestigung der Solarmodule auf einem Flachdach",
@@ -348,7 +435,32 @@
       "site": "← Retour au site du projet",
       "form": "← Retour au formulaire"
     },
+    "visual": {
+      "concept_caption": "Illustration conceptuelle. Architecture, emplacement et caractéristiques du projet sont à l’étude.",
+      "concept_stages": {
+        "label": "Étapes du projet (conceptuelles)",
+        "steps": [
+          "Recherche du concept architectural",
+          "Sélection du terrain",
+          "Étude de faisabilité",
+          "Conception détaillée"
+        ],
+        "current": "Étape actuelle",
+        "next": "Prévu — non commencé"
+      },
+      "location_context": {
+        "alt": "Repère géographique de La Quinta, Puerto de la Cruz et de l'arrêt TITSA 4004, sans parcelle Artemis",
+        "caption": "Repérage indicatif fondé sur des coordonnées vérifiées ; aucune parcelle Artemis n'est choisie. Ni plan cadastral ni itinéraire.",
+        "open_map": "Ouvrir la carte réelle du secteur"
+      },
+      "project_concept_notice": "Recherche du concept architectural. La parcelle, l’architecture, la répartition des logements et les caractéristiques ne sont pas arrêtées ; les illustrations explorent des possibilités.",
+      "future_stages": {
+        "label": "Phases futures possibles de construction",
+        "disclosure": "Étapes prévisionnelles uniquement. Le programme sera précisé après le choix du terrain ; ce n’est pas un rapport d’avancement."
+      }
+    },
     "alts": {
+      "artemis-watercolour-art01-20261104": "Esquisse à l’encre et à l’aquarelle de résidences canariennes en terrasses sur une colline atlantique verdoyante",
       "modern-low-6e9d80": "Maisons basses en terrasses sur la pente au-dessus de l'océan",
       "entrance-o-9abe9d": "Entrée du complexe : piliers de pierre et portails en bois",
       "communal-s-af42cd": "Piscine commune et maisons Canary Stone",
@@ -369,13 +481,17 @@
       "kitchen-stone-9e3b40": "Cuisine de la résidence : chêne, plan de travail en basalte, vue sur le jardin",
       "bedroom-sea-2a7f61": "Chambre de la résidence avec fenêtre sur l'océan",
       "pool-day-6b1c93": "Piscine commune de jour, dallage de pierre et maisons Canary Stone",
-      "aerial-complex-3d9e50": "Tout le complexe de vingt maisons en terrasses au-dessus de l'océan"
+      "aerial-complex-3d9e50": "Tout le complexe de vingt maisons en terrasses au-dessus de l'océan",
+      "artemis-watercolour-norte-20261105": "Étude à l’encre et à l’aquarelle de terrasses côtières verdoyantes et de palmiers inspirée du nord de Tenerife",
+      "artemis-watercolour-producto-20261105": "Étude conceptuelle à l’encre et à l’aquarelle d’une résidence avec arcade ombragée et soubassement en basalte",
+      "artemis-watercolour-inversores-20261105": "Aquarelle exploratoire de volumes bâtis possibles sur un versant côtier avec traits d’étude inachevés",
+      "artemis-watercolour-construccion-20261105": "Séquence illustrative à l’aquarelle de phases futures possibles, du versant verdoyant au concept de maison"
     },
     "people": {
       "simon-portrait": "Simon Subic, promoteur d'Artemis de la Cruz",
       "simon-street": "Simon Subic dans la rue devant une maison",
       "simon-rooftop": "Simon Subic sur un toit avec vue sur la ville",
-      "simon-site": "Simon Subic sur le chantier Canary Stone avec des plans",
+      "simon-site": "Simon Subic tenant des plans dans un environnement de chantier",
       "boris-portrait": "Boris Ribaut, chef de chantier d'Artemis de la Cruz",
       "boris-formwork": "Boris Ribaut contrôle les dimensions du coffrage et les armatures avant le coulage du béton",
       "boris-roof": "Boris Ribaut vérifie la fixation des panneaux solaires sur une toiture plate",
@@ -433,6 +549,30 @@
     }
   },
   "ru": {
+    "visual": {
+      "concept_caption": "Концептуальная иллюстрация. Архитектура, участок и характеристики проекта ещё не утверждены.",
+      "concept_stages": {
+        "label": "Стадии развития проекта (концептуально)",
+        "steps": [
+          "Поиск архитектурной концепции",
+          "Выбор участка",
+          "Проверка реализуемости",
+          "Разработка проекта"
+        ],
+        "current": "Текущая стадия",
+        "next": "Планируется — ещё не начато"
+      },
+      "location_context": {
+        "alt": "Координатная схема района La Quinta (Santa Úrsula), Puerto de la Cruz и остановки TITSA 4004 — без указания участка Artemis",
+        "caption": "Схема расположения района по проверенным координатам; участок Artemis не выбран. Это не кадастровая карта и не маршрут.",
+        "open_map": "Открыть реальную карту района"
+      },
+      "project_concept_notice": "Сейчас идёт поиск архитектурной концепции. Участок, проект домов, состав резиденций и характеристики ещё не утверждены; иллюстрации показывают возможные решения.",
+      "future_stages": {
+        "label": "Возможные будущие этапы строительства",
+        "disclosure": "Только предполагаемые этапы. Программа уточняется после выбора участка; это не отчёт о выполненных работах."
+      }
+    },
     "calc": {
       "ui": {
         "aria": "Калькулятор инвестиции",

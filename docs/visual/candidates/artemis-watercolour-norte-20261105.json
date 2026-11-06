@@ -1,0 +1,144 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "status": "APPROVED_FOR_PREVIEW",
+  "approved": true,
+  "created_utc": "2026-11-05T10:00:19.259596+00:00",
+  "stem": "artemis-watercolour-norte-20261105",
+  "category": "ART-04",
+  "truth_level": "C1",
+  "target": {
+    "page": "norte",
+    "frame": "F21"
+  },
+  "source": {
+    "name": "wBYf7vERpRPDQRSzObyC.png",
+    "sha256": "308c246312beee2353aafd2d0cacef1f637405fe18c0df70612e3a7b3f28c2f2",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "provider": "ElevenLabs",
+    "generation_id": "wBYf7vERpRPDQRSzObyC",
+    "repository_path": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png"
+  },
+  "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only",
+  "mobile_composition_verified": true,
+  "architectural_status": "concept only, not a verified property",
+  "no_auto_page_assignment": true,
+  "variants": [
+    {
+      "name": "artemis-watercolour-norte-20261105.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "6d9d2041a66130b2bbff2064465014af7acf276dd514a53be7d70b48d72db47c",
+      "bytes": 542640
+    },
+    {
+      "name": "artemis-watercolour-norte-20261105-640.webp",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sha256": "82f5d774adb745a20d1b78a4e0197e54b195928208ed6de5f7b34e4c8792a119",
+      "bytes": 70994
+    },
+    {
+      "name": "artemis-watercolour-norte-20261105-800.webp",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "d4406cadddf8e4f420d3052a23d28d618b53ff41b22ce39bb7d6762dc2d58a3f",
+      "bytes": 110212
+    },
+    {
+      "name": "artemis-watercolour-norte-20261105-1024.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "sha256": "6bffc977e662ebd81cc60147f51e7e6ccc7b5b62854aeea4adbfeed5806d8f90",
+      "bytes": 173708
+    },
+    {
+      "name": "artemis-watercolour-norte-20261105-1600.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "0587557156b345f19906ab8765c1d90a86e9b0317dfe76abb008c8c7cd71a4b1",
+      "bytes": 333738
+    }
+  ],
+  "generation_settings": "docs/visual/candidates/p0-generation-settings.json",
+  "visual_review": {
+    "reviewer": "Codex",
+    "date": "2026-11-05",
+    "result": "Suitable concept candidate; owner approval pending",
+    "notes": [
+      "Ink and watercolour on cream paper; no text or people",
+      "Illustration does not establish location, design approval or actual construction progress",
+      "Landscape 1280x720; original portrait composition still required for a mobile hero"
+    ]
+  },
+  "alt": {
+    "en": "Ink and watercolour study of green coastal terraces and palms, inspired by northern Tenerife",
+    "es": "Estudio en tinta y acuarela de terrazas costeras verdes y palmeras inspirado en el norte de Tenerife",
+    "de": "Tusche- und Aquarellstudie grüner Küstenterrassen und Palmen, inspiriert von Nordteneriffa",
+    "fr": "Étude à l’encre et à l’aquarelle de terrasses côtières verdoyantes et de palmiers inspirée du nord de Tenerife",
+    "ru": "Акварельный этюд зелёных прибрежных террас и пальм по мотивам севера Тенерифе"
+  },
+  "captions": {
+    "en": "Atmospheric concept inspired by northern Tenerife; not a surveyed site or a guaranteed view.",
+    "es": "Concepto de ambiente inspirado en el norte de Tenerife; no es un terreno verificado ni una vista garantizada.",
+    "de": "Atmosphärische Studie, inspiriert von Nordteneriffa; kein vermessenes Grundstück und keine zugesicherte Aussicht.",
+    "fr": "Étude d’ambiance inspirée du nord de Tenerife ; ni terrain relevé ni vue garantie.",
+    "ru": "Атмосферный этюд по мотивам севера Тенерифе. Это не съёмка участка и не обещание вида."
+  },
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/norte-mobile-original-20261105.png",
+    "sha256": "571b74ec1f1e8a7e6b5f159d51328fdb4e5d6ac65105d8fb5e6a36f4fc1d662f",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-b58d2ffe-fc26-41f4-9a16-98ff6fd7ddaf",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-norte-20261105-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "d569018941c20efa95ec894aaedc08eece91f6e9ada9f065b4658fc52a49a678",
+        "bytes": 159716
+      },
+      {
+        "name": "artemis-watercolour-norte-20261105-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "844a6a90d0e0347abd9c3181ea24d6cb25197024becfaa8c60357ec112fd27ed",
+        "bytes": 244124
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-05",
+  "author": "owner",
+  "user_reply": "\u0434\u0430. \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0439",
+  "responds_to": "Approval of five sketches for named pages; mobile adaptation and preview assignment",
+  "production_release_approved": false,
+  "architecture_approved": false,
+  "rights_clearance_for_public_use": "Not established by visual approval",
+  "items": [
+    {
+      "page": "index",
+      "frame": "F01",
+      "file": "docs/visual/candidates/ART-01-master-1600.webp",
+      "stem": "artemis-watercolour-art01-20261104",
+      "sha256": "0b6304a8ebff7c63ee75140c38cb725fdd309f05f8586d2e925e894f27ed4145"
+    },
+    {
+      "page": "norte",
+      "frame": "F21",
+      "file": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png",
+      "stem": "artemis-watercolour-norte-20261105",
+      "sha256": "308c246312beee2353aafd2d0cacef1f637405fe18c0df70612e3a7b3f28c2f2"
+    },
+    {
+      "page": "producto",
+      "frame": "F05",
+      "file": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+      "stem": "artemis-watercolour-producto-20261105",
+      "sha256": "08377d661cc194433c3c198dae35a9251eeac31bc354bb417487b28fca6f2bce"
+    },
+    {
+      "page": "inversores",
+      "frame": "F14",
+      "file": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png",
+      "stem": "artemis-watercolour-inversores-20261105",
+      "sha256": "9c10df9f1f37f6b4a86373573626fc203079f2af58c5e3694a3771895553d4c3"
+    },
+    {
+      "page": "construccion",
+      "frame": "F15",
+      "file": "docs/visual/candidates/sources/7ogqYT3DK47f4vw3nQwc.png",
+      "stem": "artemis-watercolour-construccion-20261105",
+      "sha256": "3c36a7ccfa426bcce8f7f4a9558c4010bc7643a2151d1c85cb5148af8062d89c"
+    }
+  ]
+}

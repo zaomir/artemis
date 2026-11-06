@@ -67,14 +67,7 @@ CURL = r'''#!/bin/bash
 S="$SANDBOX"; url="${@: -1}"
 p=$(cat "$S/master.pid" 2>/dev/null)
 if [ -n "$p" ] && kill -0 "$p" 2>/dev/null && [ -n "$(pgrep -P "$p")" ]; then
-  # EN-aware fake: dual-path smoke probes condiciones → 200, then expects
-  # model.json/calc.js → 404 and calculadora → 301; everything else → 200 (admin → 403).
-  case $url in
-    */admin/leads) printf 403;;
-    */static/tenerife/site/model.json*|*/static/tenerife/site/calc.js*) printf 404;;
-    */tenerife/calculadora*) printf 301;;
-    *) printf 200;;
-  esac
+  case $url in */admin/leads) printf 403;; *) printf 200;; esac
 else printf 502; fi
 '''
 

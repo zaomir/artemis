@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">La Quinta, Santa Úrsula — geographical coordinate locator</title>
+<desc id="desc">Coordinate plot showing the neighbourhood point La Quinta, the municipality point Puerto de la Cruz and La Quinta TITSA stop 4004. This is not a street map, parcel plan, construction site or route. Coordinates: OSM, AEMET and TITSA.</desc>
+<defs><radialGradient id="paper"><stop offset="0" stop-color="#fff9ed"/><stop offset="1" stop-color="#f5efe0"/></radialGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".28" numOctaves="1" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".08"/></feComponentTransfer></filter></defs>
+<style>
+.paper{fill:url(#paper)}.grid{fill:none;stroke:#9ba6a5;stroke-width:1;stroke-dasharray:3 8;opacity:.4}
+.head{font-family:Georgia,"Times New Roman",serif;font-size:43px;fill:#4a3525}.subtitle{font:15px Georgia,serif;letter-spacing:1px;fill:#7a5c43}
+.place{font:21px Georgia,serif;fill:#4a3525}.strong{font-weight:bold}.tick{font:14px Georgia,serif;fill:#7a5c43}.small{font:16px Georgia,serif;fill:#7a5c43}
+</style>
+<rect width="1200" height="620" class="paper"/><rect width="1200" height="620" fill="#a6b0a8" opacity=".05" filter="url(#grain)"/>
+<g aria-hidden="true"><path d="M 48 48 h 60 M 48 48 v 60 M 1152 48 h -60 M 1152 48 v 60 M 48 574 h 60 M 48 574 v -60 M 1152 574 h -60 M 1152 574 v -60" stroke="#4a3525" stroke-width="1" opacity=".38"/><path d="M 85 530 Q 390 485 800 554 T 1140 525" fill="none" stroke="#819da8" opacity=".11" stroke-width="19"/></g>
+<text x="110" y="88" class="head">La Quinta · Santa Úrsula</text>
+<text x="111" y="117" class="subtitle">NORTH TENERIFE · COORDINATE LOCATOR</text>
+<rect x="120" y="142" width="950" height="320" rx="4" fill="#e8d8b9" opacity=".07" stroke="#7a5c43" stroke-width="1"/>
+<path d="M 120 426 H 1070" class="grid"/><text x="60" y="431" class="tick"> 28.41°N </text>
+<path d="M 120 338 H 1070" class="grid"/><text x="60" y="343" class="tick"> 28.42°N </text>
+<path d="M 120 249 H 1070" class="grid"/><text x="60" y="254" class="tick"> 28.43°N </text>
+<path d="M 120 160 H 1070" class="grid"/><text x="60" y="165" class="tick"> 28.44°N </text>
+<path d="M 189 142 V 462" class="grid"/><text x="189" y="488" class="tick" text-anchor="middle">16.56°W</text>
+<path d="M 418 142 V 462" class="grid"/><text x="418" y="488" class="tick" text-anchor="middle">16.54°W</text>
+<path d="M 647 142 V 462" class="grid"/><text x="647" y="488" class="tick" text-anchor="middle">16.52°W</text>
+<path d="M 875 142 V 462" class="grid"/><text x="875" y="488" class="tick" text-anchor="middle">16.50°W</text>
+<line x1="303" y1="377" x2="931" y2="232" stroke="#927b5a" stroke-width="1.5" stroke-dasharray="6 9" opacity=".75" aria-hidden="true"/>
+<circle cx="931" cy="232" r="25" fill="#b86b43" opacity=".1"/><circle cx="931" cy="232" r="12" fill="#444743" stroke="#f5efe0" stroke-width="4"/>
+<circle cx="303" cy="377" r="7" fill="#819da8" stroke="#f5efe0" stroke-width="3"/>
+<circle cx="956" cy="274" r="7" fill="#967b5a" stroke="#f5efe0" stroke-width="3"/>
+<path d="M 311 381 l 24 30 h 90" fill="none" stroke="#7a5c43" stroke-width="1.3"/>
+<text x="338" y="441" class="place">Puerto de la Cruz</text>
+<path d="M 922 222 l -46 -55 h -175" fill="none" stroke="#4a3525" stroke-width="1.4"/>
+<text x="706" y="154" class="place strong">La Quinta</text>
+<text x="706" y="174" class="small">Santa Úrsula</text>
+<path d="M 963 280 l 28 32 h 53" fill="none" stroke="#967b5a" stroke-width="1.25"/>
+<text x="993" y="335" class="small">TITSA 4004</text>
+<path d="M 1100 180 v -35 m 0 0 l -6 12 m 6 -12 l 6 12" fill="none" stroke="#4a3525" stroke-width="2"/>
+<text x="1100" y="137" class="place" text-anchor="middle">N</text>
+<path d="M 120 548 h 940" stroke="#7a5c43" stroke-width="1" opacity=".35"/>
+<text x="120" y="577" class="tick">© OpenStreetMap contributors · AEMET · TITSA</text>
+<text x="1070" y="578" class="tick" text-anchor="end">Neighbourhood / indicative points · no selected parcel</text>
+</svg>

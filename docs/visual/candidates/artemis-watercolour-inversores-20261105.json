@@ -1,0 +1,144 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "status": "APPROVED_FOR_PREVIEW",
+  "approved": true,
+  "created_utc": "2026-11-05T10:00:21.173383+00:00",
+  "stem": "artemis-watercolour-inversores-20261105",
+  "category": "ART-05",
+  "truth_level": "C2",
+  "target": {
+    "page": "inversores",
+    "frame": "F14"
+  },
+  "source": {
+    "name": "e23JTMG8M8JQCErDMrFw.png",
+    "sha256": "9c10df9f1f37f6b4a86373573626fc203079f2af58c5e3694a3771895553d4c3",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "provider": "ElevenLabs",
+    "generation_id": "e23JTMG8M8JQCErDMrFw",
+    "repository_path": "docs/visual/candidates/sources/e23JTMG8M8JQCErDMrFw.png"
+  },
+  "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only",
+  "mobile_composition_verified": true,
+  "architectural_status": "concept only, not a verified property",
+  "no_auto_page_assignment": true,
+  "variants": [
+    {
+      "name": "artemis-watercolour-inversores-20261105.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "935cc2ca604cfc020475ef73103cd2872e97b47a881f70894d01b81e9ba3da25",
+      "bytes": 472989
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-640.webp",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sha256": "69265e08e0c695b844b01854e1f8dc81c7cd446b92d0fe6d6ab3bdd8305bbd9f",
+      "bytes": 58302
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-800.webp",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "d3648317018133bf8d116305bc67d876dfada9be88ba383c6997d5093092d56f",
+      "bytes": 89796
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-1024.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "sha256": "0c973fe5a0ab2f535292d29500806f7b90eb8033c4bf0e311706ffff2a3a6756",
+      "bytes": 141184
+    },
+    {
+      "name": "artemis-watercolour-inversores-20261105-1600.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "d79d4338ad410ddefd8dc63d36a0c7426758d729ed692efc25b51a215ed40c3c",
+      "bytes": 266140
+    }
+  ],
+  "generation_settings": "docs/visual/candidates/p0-generation-settings.json",
+  "visual_review": {
+    "reviewer": "Codex",
+    "date": "2026-11-05",
+    "result": "Suitable concept candidate; owner approval pending",
+    "notes": [
+      "Ink and watercolour on cream paper; no text or people",
+      "Illustration does not establish location, design approval or actual construction progress",
+      "Landscape 1280x720; original portrait composition still required for a mobile hero"
+    ]
+  },
+  "alt": {
+    "en": "Exploratory watercolour of possible building volumes on a coastal hillside, with unfinished sketch lines",
+    "es": "Acuarela exploratoria de posibles volúmenes de viviendas en una ladera costera con líneas de estudio sin terminar",
+    "de": "Explorative Aquarellstudie möglicher Baukörper an einem Küstenhang mit unfertigen Entwurfslinien",
+    "fr": "Aquarelle exploratoire de volumes bâtis possibles sur un versant côtier avec traits d’étude inachevés",
+    "ru": "Поисковый акварельный эскиз возможных объёмов домов на прибрежном склоне с незавершёнными линиями"
+  },
+  "captions": {
+    "en": "Exploratory design study; it does not record a selected plot, construction or completed work.",
+    "es": "Estudio de diseño exploratorio; no documenta un terreno elegido, obras ni trabajos terminados.",
+    "de": "Explorative Entwurfsstudie; kein Nachweis eines ausgewählten Grundstücks, von Bauarbeiten oder abgeschlossenen Leistungen.",
+    "fr": "Étude de conception exploratoire ; elle ne documente ni terrain choisi ni chantier ni travaux achevés.",
+    "ru": "Поисковый эскиз. Он не подтверждает выбор участка, начало строительства или выполненные работы."
+  },
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/inversores-mobile-original-20261105.png",
+    "sha256": "33cb93c1e6f1b79e2e7b78a36bc03d2965ed139552c1214290764824825b03d1",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-42e41a0c-edd2-4bc5-a59a-da36ea9b75ff",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-inversores-20261105-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "e0c5f8ffe9088d851f9beb39bde979bfc2e9d49c1cab270c6851983f52854774",
+        "bytes": 146854
+      },
+      {
+        "name": "artemis-watercolour-inversores-20261105-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "414861b4d5b4c4716f5c4892d66fd2776b19b7dda068d73ebd104c63defb6557",
+        "bytes": 224350
+      }
+    ]
+  }
+}

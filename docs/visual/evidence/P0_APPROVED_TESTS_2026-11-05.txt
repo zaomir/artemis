@@ -1,0 +1,168 @@
+...........s.....s.....................................................INFO:root:crete enquiry: honeypot hit, dropped
+.......s........sssssssss.............INFO:root:crete enquiry: honeypot hit, dropped
+.INFO:root:crete enquiry: honeypot hit, dropped
+INFO:root:crete enquiry: honeypot hit, dropped
+INFO:root:crete enquiry: honeypot hit, dropped
+INFO:root:crete enquiry: honeypot hit, dropped
+INFO:root:crete enquiry: honeypot hit, dropped
+.......................<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon.ico'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-32x32.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_fix_relay01_pr24_10_11.py:127: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/favicon-192x192.png'>
+  self.assertEqual(self.client.get(href).status_code, 200, href)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..................................WARNING:app:typed capture unavailable: IntegrityError
+.........................................................2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-05T23:49:46Z email route ok
+2026-11-05T23:49:46Z email sent tenerife_waitlist 1 <m1@x>
+...2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+..2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-05T23:49:46Z email route ok
+.2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-05T23:49:46Z email route ok
+...2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-06T00:54:46Z email deferred: MX lookup for artemisresort.com failed (DNS error); 1 lead(s) stay queued, nothing sent
+2026-11-06T01:54:46Z email route ok again: sending queued copies
+2026-11-06T01:54:46Z email sent tenerife_waitlist 1 <m1@x>
+.2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+...2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-05T23:49:46Z email route ok
+2026-11-05T23:49:46Z email failed tenerife_waitlist 1 RuntimeError attempt 1/8 - next 2026-11-05T23:50:46Z
+2026-11-05T23:50:46Z email failed tenerife_waitlist 1 RuntimeError attempt 2/8 - next 2026-11-05T23:52:46Z
+2026-11-05T23:52:46Z email failed tenerife_waitlist 1 RuntimeError attempt 3/8 - next 2026-11-05T23:56:46Z
+2026-11-05T23:56:46Z email failed tenerife_waitlist 1 RuntimeError attempt 4/8 - next 2026-11-06T00:04:46Z
+2026-11-06T00:04:46Z email failed tenerife_waitlist 1 RuntimeError attempt 5/8 - next 2026-11-06T00:20:46Z
+2026-11-06T00:20:46Z email failed tenerife_waitlist 1 RuntimeError attempt 6/8 - next 2026-11-06T00:52:46Z
+2026-11-06T00:52:46Z email failed tenerife_waitlist 1 RuntimeError attempt 7/8 - next 2026-11-06T01:56:46Z
+2026-11-06T01:56:46Z email failed tenerife_waitlist 1 RuntimeError attempt 8/8 - parked, lead stays in DB (--requeue to retry)
+2026-11-13T03:09:46Z email sent tenerife_waitlist 1 <ok@x>
+.2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+...2026-11-05T23:49:46Z baseline set: 1 existing leads will not be e-mailed
+2026-11-05T23:49:46Z email route ok
+2026-11-05T23:49:46Z email sent tenerife_waitlist 1 <m1@x>
+2026-11-05T23:49:46Z tg backlog forwarded leads 1 tg:1
+2026-11-05T23:49:46Z tg backlog done: 1 forwarded
+......................WARNING:artemis.notify:artemis lead (Crete enquiry) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
+................<repo>/tests/test_prod_smoke_fixes.py:188: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/img/og-crete-1200x630.jpg'>
+  self.assertEqual(self.client.get(f"/static/img/{og['file']}").status_code, 200)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_prod_smoke_fixes.py:188: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/img/og-crete-1200x630.jpg'>
+  self.assertEqual(self.client.get(f"/static/img/{og['file']}").status_code, 200)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_prod_smoke_fixes.py:188: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/img/og-crete-1200x630.jpg'>
+  self.assertEqual(self.client.get(f"/static/img/{og['file']}").status_code, 200)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_prod_smoke_fixes.py:188: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/img/og-crete-1200x630.jpg'>
+  self.assertEqual(self.client.get(f"/static/img/{og['file']}").status_code, 200)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................................................ssssss..WARNING:artemis.notify:artemis lead notification: unexpected Telegram reply
+.................WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.......................................INFO:app:tenerife waitlist: honeypot hit, dropped
+......................................../Users/donnyduck/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/unittest/case.py:589: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/site.js'>
+  if method() is not None:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.......<repo>/tests/test_tenerife_qa_t3.py:578: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/site.css'>
+  r = self.client.get(u)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_tenerife_qa_t3.py:578: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/waitlist.js'>
+  r = self.client.get(u)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_tenerife_qa_t3.py:578: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/funnel.js'>
+  r = self.client.get(u)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+<repo>/tests/test_tenerife_qa_t3.py:578: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/site.js'>
+  r = self.client.get(u)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+INFO:app:tenerife waitlist: honeypot hit, dropped
+<repo>/tests/test_tenerife_qa_t3.py:586: ResourceWarning: unclosed file <_io.BufferedReader name='<repo>/app/static/tenerife/site/calc.js'>
+  for r in posts:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+......INFO:app:tenerife waitlist: honeypot hit, dropped
+...............WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.....WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+..WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+...WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+...WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.............WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+............WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+......WARNING:artemis.tenerife:TENERIFE_WHATSAPP is not set: WhatsApp contact hidden on /tenerife/ pages
+.....................WARNING:artemis.notify:artemis lead (Tenerife waitlist) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
+WARNING:artemis.notify:artemis lead (Tenerife waitlist) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
+.........................WARNING:artemis.notify:artemis lead (Tenerife waitlist) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
+WARNING:artemis.notify:artemis lead (Tenerife waitlist) stored in DB only: ARTEMIS_TG_BOT_TOKEN not configured
+...................................................
+----------------------------------------------------------------------
+Ran 605 tests in 28.752s
+
+OK (skipped=18)

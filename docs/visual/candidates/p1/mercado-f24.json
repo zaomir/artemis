@@ -1,0 +1,43 @@
+{
+  "id": "mercado-f24",
+  "page": "mercado",
+  "frame": "F24",
+  "category": "ART-04",
+  "truth_level": "C1",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/mercado-f24-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-d4913123-cdb7-4cef-be9e-26daa515a960.png",
+  "reference": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. An understated Atlantic coastal landscape under diffuse pale cloud, low green slopes and only a faint distant suggestion of small settlement silhouettes. Dominant grey-blue sea, muted green land, no advertising sunset, dramatic gold light, exact project buildings or geographic claims. Wide airy sky and quiet negative space, clearly different composition from the palms-and-cliff reference.",
+  "production_assignment": false,
+  "sha256": "f8cf50e3406745d016a299c45ec2d7b6da9e33ef896dde9bb4ca7c49d3fb9859",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 3403171,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Quiet Atlantic coast and distant settlement silhouettes",
+    "es": "Estudio en tinta y acuarela: Costa atlántica tranquila y siluetas lejanas de un núcleo urbano",
+    "de": "Tusche- und Aquarellstudie: Ruhige Atlantikküste mit fernen Siedlungssilhouetten",
+    "fr": "Étude à l’encre et à l’aquarelle : Côte atlantique calme et silhouettes bâties lointaines",
+    "ru": "Акварельный этюд: Тихое атлантическое побережье и далёкие силуэты поселения"
+  },
+  "captions": {
+    "en": "Atmospheric concept inspired by northern Tenerife; not a verified view of a selected project site.",
+    "es": "Concepto de ambiente inspirado en el norte de Tenerife; no es una vista verificada de un terreno elegido.",
+    "de": "Atmosphärische Studie, inspiriert von Nordteneriffa; keine verifizierte Ansicht eines gewählten Projektgrundstücks.",
+    "fr": "Étude d’ambiance inspirée du nord de Tenerife ; aucune vue vérifiée d’un terrain choisi.",
+    "ru": "Атмосферный концепт по мотивам севера Тенерифе; это не подтверждённый вид выбранного участка."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

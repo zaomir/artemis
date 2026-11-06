@@ -1,0 +1,43 @@
+{
+  "id": "index-f04",
+  "page": "index",
+  "frame": "F04",
+  "category": "ART-04",
+  "truth_level": "C1",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/index-f04-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-97e643ab-de4b-48b6-b009-e5615941e830.png",
+  "reference": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. A quiet valley of green banana terraces and natural Canary palms under layered Atlantic mist, framed by a dark basalt dry-stone wall. A distant blue-grey ocean is only a narrow atmospheric band. No houses, no Mount Teide silhouette, no exact surveyed viewpoint. Distinct composition from the reference: valley seen from a low garden edge rather than a tall coastal cliff.",
+  "production_assignment": false,
+  "sha256": "5bde8a4f8d908b3dea5c0b601e1d64e20076ec2f7b7e2f411727ff5a0b7b752b",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 3906794,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Mist over green northern terraces",
+    "es": "Estudio en tinta y acuarela: Bruma sobre terrazas verdes del norte",
+    "de": "Tusche- und Aquarellstudie: Nebel über grünen Terrassen im Norden",
+    "fr": "Étude à l’encre et à l’aquarelle : Brume sur les terrasses verdoyantes du nord",
+    "ru": "Акварельный этюд: Дымка над зелёными северными террасами"
+  },
+  "captions": {
+    "en": "Atmospheric concept inspired by northern Tenerife; not a verified view of a selected project site.",
+    "es": "Concepto de ambiente inspirado en el norte de Tenerife; no es una vista verificada de un terreno elegido.",
+    "de": "Atmosphärische Studie, inspiriert von Nordteneriffa; keine verifizierte Ansicht eines gewählten Projektgrundstücks.",
+    "fr": "Étude d’ambiance inspirée du nord de Tenerife ; aucune vue vérifiée d’un terrain choisi.",
+    "ru": "Атмосферный концепт по мотивам севера Тенерифе; это не подтверждённый вид выбранного участка."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "VERIFIED_REVIEW_ONLY",
+  "files": 4,
+  "derivatives": 20,
+  "original_dimensions": [
+    1280,
+    720
+  ],
+  "inventory": "docs/visual/candidates/p0-generation-inventory.json",
+  "all_sha256_verified": true,
+  "page_assignments_changed": false,
+  "production_changed": false
+}

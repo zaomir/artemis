@@ -1,0 +1,43 @@
+{
+  "id": "index-f02",
+  "page": "index",
+  "frame": "F02",
+  "category": "ART-02",
+  "truth_level": "C2",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/index-f02-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-1c62f689-1c12-42ae-af1a-171a7e14eae0.png",
+  "reference": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. A compact Spanish-Canarian house seen obliquely from a garden, with a shaded arched side gallery and two simple slim columns, cream lime render, basalt base, restrained bronze window frames, modest timber pergola. Keep the reference's intimate building family. Different viewpoint from the reference entrance: show the side arcade facing a planted courtyard, no ocean panorama, no people.",
+  "production_assignment": false,
+  "sha256": "3866189e6c6924bb0d0d387e426de6391a5c9d243588ef226b438a53a21f61d4",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 3814076,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Small residence with a shaded side arcade",
+    "es": "Estudio en tinta y acuarela: Vivienda pequeña con galería lateral sombreada",
+    "de": "Tusche- und Aquarellstudie: Kleines Wohnhaus mit schattiger Seitengalerie",
+    "fr": "Étude à l’encre et à l’aquarelle : Petite résidence avec galerie latérale ombragée",
+    "ru": "Акварельный этюд: Небольшой дом с затенённой боковой галереей"
+  },
+  "captions": {
+    "en": "Conceptual study. Design, materials and specifications remain under exploration.",
+    "es": "Estudio conceptual. Diseño, materiales y características siguen en exploración.",
+    "de": "Konzeptionelle Studie. Gestaltung, Materialien und Spezifikationen werden noch untersucht.",
+    "fr": "Étude conceptuelle. Conception, matériaux et caractéristiques restent à explorer.",
+    "ru": "Концептуальный этюд. Дизайн, материалы и характеристики ещё уточняются."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

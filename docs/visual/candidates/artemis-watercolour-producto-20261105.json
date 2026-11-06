@@ -1,0 +1,144 @@
+{
+  "schema": "artemis-watercolour-asset/1",
+  "status": "APPROVED_FOR_PREVIEW",
+  "approved": true,
+  "created_utc": "2026-11-05T10:00:20.142195+00:00",
+  "stem": "artemis-watercolour-producto-20261105",
+  "category": "ART-02",
+  "truth_level": "C2",
+  "target": {
+    "page": "producto",
+    "frame": "F05"
+  },
+  "source": {
+    "name": "MRSkYIdJ4VasJW40dcsx.png",
+    "sha256": "08377d661cc194433c3c198dae35a9251eeac31bc354bb417487b28fca6f2bce",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "provider": "ElevenLabs",
+    "generation_id": "MRSkYIdJ4VasJW40dcsx",
+    "repository_path": "docs/visual/candidates/sources/MRSkYIdJ4VasJW40dcsx.png"
+  },
+  "rights_basis": "Original generated concept commissioned for Artemis; owner rights clearance pending before release",
+  "caption_and_alt": "Five-locale captions/alts prepared; assigned in preview only",
+  "mobile_composition_verified": true,
+  "architectural_status": "concept only, not a verified property",
+  "no_auto_page_assignment": true,
+  "variants": [
+    {
+      "name": "artemis-watercolour-producto-20261105.jpg",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "a349f8f57f8ffdadb2b0556acd526847092081d7b42efd302e3c2280e1b700f6",
+      "bytes": 480945
+    },
+    {
+      "name": "artemis-watercolour-producto-20261105-640.webp",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sha256": "3089bded2f09fb7ba37b116b820f23a5a7777696895ba76855881f20962d9ec2",
+      "bytes": 59066
+    },
+    {
+      "name": "artemis-watercolour-producto-20261105-800.webp",
+      "dimensions": [
+        800,
+        450
+      ],
+      "sha256": "a141bf14f026d204b2b22a2c725c2c8f6291cbade0dfe706af5afe521c171e8e",
+      "bytes": 90942
+    },
+    {
+      "name": "artemis-watercolour-producto-20261105-1024.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "sha256": "dcbfd92a7f82cf9120b2c5753a1bed842910ce79472095d2c26aaf2916da6390",
+      "bytes": 143720
+    },
+    {
+      "name": "artemis-watercolour-producto-20261105-1600.webp",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "sha256": "e3326276685f36d11c0faa56a23a40c38f593e41f92495e0c5e5fdda508b13e6",
+      "bytes": 275578
+    }
+  ],
+  "generation_settings": "docs/visual/candidates/p0-generation-settings.json",
+  "visual_review": {
+    "reviewer": "Codex",
+    "date": "2026-11-05",
+    "result": "Suitable concept candidate; owner approval pending",
+    "notes": [
+      "Ink and watercolour on cream paper; no text or people",
+      "Illustration does not establish location, design approval or actual construction progress",
+      "Landscape 1280x720; original portrait composition still required for a mobile hero"
+    ]
+  },
+  "alt": {
+    "en": "Conceptual ink and watercolour residence with a shaded archway and basalt base",
+    "es": "Concepto en tinta y acuarela de una vivienda con entrada en arco y zócalo de basalto",
+    "de": "Konzeptionelle Tusche- und Aquarellstudie eines Wohnhauses mit schattigem Torbogen und Basaltsockel",
+    "fr": "Étude conceptuelle à l’encre et à l’aquarelle d’une résidence avec arcade ombragée et soubassement en basalte",
+    "ru": "Концептуальный акварельный эскиз дома с затенённой аркой и базальтовым цоколем"
+  },
+  "captions": {
+    "en": "Architectural hypothesis; layout, materials and specifications remain under study.",
+    "es": "Hipótesis arquitectónica; distribución, materiales y características siguen en estudio.",
+    "de": "Architektonische Hypothese; Grundriss, Materialien und Spezifikationen werden noch geprüft.",
+    "fr": "Hypothèse architecturale ; plan, matériaux et caractéristiques restent à l’étude.",
+    "ru": "Архитектурная гипотеза. Планировка, материалы и характеристики ещё уточняются."
+  },
+  "approval": {
+    "by": "owner",
+    "date": "2026-11-05",
+    "scope": "Named desktop artwork and purpose; adaptation and preview placement",
+    "receipt": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "production_release": false
+  },
+  "mobile": {
+    "source": "docs/visual/candidates/sources/producto-mobile-original-20261105.png",
+    "sha256": "cb332382285a0efdc1c2de1018da309a0baa5071c581f1450ce1f704e002c463",
+    "dimensions": [
+      1122,
+      1402
+    ],
+    "provider": "OpenAI image_gen",
+    "tool_output_file_id": "exec-1804dfe0-a050-450c-96ad-c2b807c28989",
+    "composition": "independent_portrait_recomposition",
+    "authorization": "docs/visual/evidence/OWNER_P0_APPROVAL_2026-11-05.json",
+    "review": {
+      "reviewer": "Codex",
+      "result": "Complete subject fits portrait canvas; same visual family; no text/people; approved for preview adaptation only"
+    },
+    "variants": [
+      {
+        "name": "artemis-watercolour-producto-20261105-mobile-20261105-640.webp",
+        "dimensions": [
+          640,
+          800
+        ],
+        "sha256": "e2a154fb20f889e4b0852623e3006703979a5310c60cbc5ea1d12f36be3ee1db",
+        "bytes": 146620
+      },
+      {
+        "name": "artemis-watercolour-producto-20261105-mobile-20261105-800.webp",
+        "dimensions": [
+          800,
+          1000
+        ],
+        "sha256": "6c5f694d71cd7758a3d2648e4079f77b78a8987455e74e6ae5b0f870ddbb2fb9",
+        "bytes": 226010
+      }
+    ]
+  }
+}

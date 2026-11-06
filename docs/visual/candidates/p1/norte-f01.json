@@ -1,0 +1,43 @@
+{
+  "id": "norte-f01",
+  "page": "norte",
+  "frame": "F01",
+  "category": "ART-04",
+  "truth_level": "C1",
+  "status": "REVIEW",
+  "approved": false,
+  "source": "docs/visual/candidates/p1-sources/norte-f01-20261105.png",
+  "provider": "OpenAI image_gen",
+  "tool_output_file_id": "exec-94c2565a-7ce6-4c82-9314-497ea5b2f2b8.png",
+  "reference": "docs/visual/candidates/sources/wBYf7vERpRPDQRSzObyC.png",
+  "prompt": "Create ONE wide LANDSCAPE 16:9 fine architectural ink-and-watercolour illustration on warm cream art paper. This is a new distinct candidate in the approved Artemis Atlantic Heritage Watercolour series, using the attached image as a STYLE AND BUILDING-FAMILY reference, not a scene to copy. Hand-drawn dark sepia nib, delicate precise cross-hatching, transparent layered watercolor washes, limestone cream/ochre, volcanic basalt grey, restrained bronze, natural greens, quiet Atlantic blue-grey. Airy unfinished vignette edges, sophisticated calm composition, soft natural light. No photorealism or computer 3D, no people, no text, captions, letters, numbers, logos, watermark, amphorae, deeds or money. No exact parcel, approved architectural plan, guaranteed amenity or documentary project-progress claim. One landscape illustration only. A narrow walking path between lush banana terraces, flowering shrubs and rough basalt retaining walls in northern Tenerife, with palms and humid soft clouds. Eye-level intimate landscape; the path turns away so this is clearly a different view from the reference coast. No buildings, project boundary, giant mountain or promised ocean view.",
+  "production_assignment": false,
+  "sha256": "d5af210227a5592c8292ef9c536bc7fb1536a5d0dc2514956fbb9ade34fbf38d",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "mime_type": "image/png",
+  "bytes": 4206036,
+  "rights_basis": "New concept illustration from approved project style reference; public-use clearance remains pending",
+  "alt": {
+    "en": "Ink-and-watercolour study: Path among banana terraces and basalt walls",
+    "es": "Estudio en tinta y acuarela: Sendero entre terrazas de plataneras y muros de basalto",
+    "de": "Tusche- und Aquarellstudie: Weg zwischen Bananenterrassen und Basaltmauern",
+    "fr": "Étude à l’encre et à l’aquarelle : Sentier entre bananeraies en terrasses et murs de basalte",
+    "ru": "Акварельный этюд: Тропа среди банановых террас и базальтовых стен"
+  },
+  "captions": {
+    "en": "Atmospheric concept inspired by northern Tenerife; not a verified view of a selected project site.",
+    "es": "Concepto de ambiente inspirado en el norte de Tenerife; no es una vista verificada de un terreno elegido.",
+    "de": "Atmosphärische Studie, inspiriert von Nordteneriffa; keine verifizierte Ansicht eines gewählten Projektgrundstücks.",
+    "fr": "Étude d’ambiance inspirée du nord de Tenerife ; aucune vue vérifiée d’un terrain choisi.",
+    "ru": "Атмосферный концепт по мотивам севера Тенерифе; это не подтверждённый вид выбранного участка."
+  },
+  "visual_review": {
+    "reviewer": "Codex",
+    "result": "Concept candidate; owner review required before assignment",
+    "not_documentary": true,
+    "not_an_approved_design": true
+  }
+}

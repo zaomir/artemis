@@ -1,29 +1,29 @@
 <!-- META
-Block: queue sign-up form, shared by all 14 pages. No button: the form button sits in the page body. The consent line sits next to the checkbox. Form messages are the texts for waitlist.js and app/tenerife.py.
+Блок: форма записи в очередь, общая для всех 14 страниц (на калькуляторе — с расчётом). Без кнопки: кнопка формы стоит в теле страницы. Строка согласия стоит у чекбокса. Сообщения формы — тексты для waitlist.js и app/tenerife.py.
 -->
 
-## Queue sign-up form
+## Форма записи в очередь
 
-**Consent.** I agree to the processing of my data (name, contact, language, page, date and time) so that I can be added to the queue, contacted about my request and sent a calculation on request, in accordance with the [privacy policy](/tenerife/privacy/). I can withdraw my consent at any time.
+**Согласие.** Я соглашаюсь на обработку моих данных (имя, контакт, язык, страница, дата и время, а для заявки из калькулятора — расчёт), чтобы меня записали в очередь и связались со мной по заявке, согласно [политике конфиденциальности](/tenerife/privacy/). Согласие можно отозвать в любой момент.
 
-## Form messages
+## Сообщения формы
 
-**Button while sending.** Sending…
+**Кнопка во время отправки.** Отправляем…
 
-**Success, heading.** Thank you! You're in the queue.
+**Успех, заголовок.** Спасибо! Вы в очереди.
 
-**Success, what happens next.** Your request goes to the project team on Telegram and to info@artemisresort.com. We will be in touch.
+**Успех, что дальше.** Заявка уходит команде проекта в Telegram и на info@artemisresort.com. Мы свяжемся с вами.
 
-**Server error.** We couldn't send your request. Please try again or email us at info@artemisresort.com.
+**Ошибка сервера.** Не удалось отправить заявку. Попробуйте ещё раз или напишите нам на info@artemisresort.com.
 
-**No connection to the server.** We couldn't reach the server. Please check your internet connection and try again.
+**Нет связи с сервером.** Не удалось связаться с сервером. Проверьте подключение к интернету и попробуйте ещё раз.
 
-**Too many requests.** Too many requests have been sent from this connection. Please try again later or email us at info@artemisresort.com.
+**Слишком много заявок.** С этого подключения отправлено слишком много заявок. Повторите попытку позже или напишите нам на info@artemisresort.com.
 
-**"Name" field empty.** Please enter your name.
+**Поле «Имя» пустое.** Укажите имя.
 
-**"Contact" field empty or shorter than 5 characters.** Please enter a contact: email, phone or Telegram.
+**Поле «Контакт» пустое или короче 5 символов.** Укажите контакт: email, телефон или Telegram.
 
-**No language selected.** Please choose your preferred language.
+**Язык не выбран.** Выберите язык общения.
 
-**No consent.** Please tick the box to consent to data processing.
+**Нет согласия.** Отметьте согласие на обработку данных.

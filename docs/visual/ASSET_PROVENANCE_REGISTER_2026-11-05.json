@@ -1,0 +1,496 @@
+{
+  "task_date": "2026-11-05",
+  "updated_utc": "2026-11-06T00:00:46.927597+00:00",
+  "scope": "Existing imagery retained; this register does not certify authenticity, rights, project roles or construction progress",
+  "counts": {
+    "legacy_project_visual": 21,
+    "profile": 8,
+    "portfolio": 7,
+    "news": 1
+  },
+  "known_identity_edits": 4,
+  "caption_fix": "Removed unverified claim that simon-site depicts the Canary Stone project site, in five languages",
+  "items": [
+    {
+      "id": "aerial-complex-3d9e50",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/aerial-complex-3d9e50.jpg",
+      "sha256": "20423c141fbcf9fd132801ae883f794139cba527d6b246f62a2a7cc4fc56c2bd",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "bedroom-sea-2a7f61",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/bedroom-sea-2a7f61.jpg",
+      "sha256": "f1b693c18513a6f0d570919c647aae2a9f827fbeab809581eb666bbe667be55e",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "build-frame-5e6d77",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/build-frame-5e6d77.jpg",
+      "sha256": "21562b891deb928e60ed552e0d71493edfd51d0ed47c4bdee4e32c76ec72860f",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "build-pit-3ab7c2",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/build-pit-3ab7c2.jpg",
+      "sha256": "09a10ef30287647703cec7fc7fbc541f51b3e82864a5fb13194c647f01c19651",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "communal-s-af42cd",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/communal-s-af42cd.jpg",
+      "sha256": "3b717ef9f36c30522c5c91f0db9fda33647b44cf544190690f1e3f7312e60378",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "complex-row-9c31a1",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/complex-row-9c31a1.jpg",
+      "sha256": "d6d5e31d3399ab6025996c6472d149ad31355920a3ceaa8f9ef0432e0f7689b2",
+      "dimensions": [
+        1600,
+        893
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "entrance-o-9abe9d",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/entrance-o-9abe9d.jpg",
+      "sha256": "8ff78395ac955aed5424946c4a4a607a287d41fa1802888135098782568f5358",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "gate-stone-4f1a2b",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/gate-stone-4f1a2b.jpg",
+      "sha256": "8e619c750dabd69800fbdf60f9cda8f68c74e12c61e52e9552b99ee73b03ae67",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "golden-hou-d4cc25",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/golden-hou-d4cc25.jpg",
+      "sha256": "4134116f8925bb5360b2afba26f189f3e96eaca7fd6167ce9f4c3b8549c90c20",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "green-hill-3f3856",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/green-hill-3f3856.jpg",
+      "sha256": "b7218731fd9bed23f94ba61a5109740f4dbb0f8f203a5cf0072b1dd2cd565371",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "hillside-row-71c3ab",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/hillside-row-71c3ab.jpg",
+      "sha256": "970c3816518b4faa684041cdcb5f3ecfc97cf1e4f1d1a251f8d7f83602a87dee",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "interior-o-74f891",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/interior-o-74f891.jpg",
+      "sha256": "6d552eb498962be8ce0b144f7f2d1666493fd9167cd6c5f83ce0e37e21481a2f",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "interior-salon-8a2c19",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/interior-salon-8a2c19.jpg",
+      "sha256": "82ee26621ee261b43b4cdc08ed5d6502c2602ded2133d5e5ae854b2a81cbe090",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "kitchen-stone-9e3b40",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/kitchen-stone-9e3b40.jpg",
+      "sha256": "91f7a19fb750b950ed62ba7452a7b3980c605f8c840e1dd5fdc694d2cee69a6b",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "modern-low-6e9d80",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/modern-low-6e9d80.jpg",
+      "sha256": "91f8ecb46d2ebbceafafcd728b4758641d0df2db383811a9654c54b05ce9c164",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "pool-day-6b1c93",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/pool-day-6b1c93.jpg",
+      "sha256": "028260aea9cac1cc4ba2dc6132ac95beea4345fd336408a593358fda313d3034",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "pool-dusk-4d7e12",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/pool-dusk-4d7e12.jpg",
+      "sha256": "a9d720644ada78c925ca6e13759c932108cf5d41c2d503fdd330b1a775da0bf6",
+      "dimensions": [
+        1600,
+        893
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "private-te-6016b5",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/private-te-6016b5.jpg",
+      "sha256": "4e0690bf90fa53dafd715250af68623eb3cfb66c661fc78067265797de198b77",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "roof-montazh-6d90ef",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/roof-montazh-6d90ef.jpg",
+      "sha256": "57190d930c1031e02f44f31d6ab140c551d383e138dd9f36ce431f6fd4c3f022",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "solar-flat-2b8f04",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/solar-flat-2b8f04.jpg",
+      "sha256": "926a00013ecf6178e6cb75406202d95424dde5b7777bd6931210535c80d8d751",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "terrace-view-7c2d15",
+      "kind": "legacy_project_visual",
+      "path": "app/static/tenerife/site/img/terrace-view-7c2d15.jpg",
+      "sha256": "7de4f51428a65a1ec2b48d4d2bd882b4a394bfcc97a5a1b265a24eb0cd42e124",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing site asset; replacement target in original visual registry. Individual acquisition receipt not found in this review.",
+      "rights": "Unverified; do not infer rights from repository presence",
+      "status": "REPLACEMENT_PLANNED_NOT_PROJECT_EVIDENCE"
+    },
+    {
+      "id": "simon-portrait",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/simon-portrait.jpg",
+      "sha256": "e89a185e5355faf66f6e956c1f80b03a43dc781eecbf0df13c3ab2560b66d8ea",
+      "dimensions": [
+        1600,
+        2844
+      ],
+      "source": "Existing identity reference/context image; original acquisition receipt not documented here",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SOURCE_AUTHENTICITY_UNVERIFIED"
+    },
+    {
+      "id": "simon-permits-1e06e2",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/simon-permits-1e06e2.jpg",
+      "sha256": "1e06e2185ac93d8c808178d2750af9d65ba20c8fa47189f716210d3fb5fa83fc",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "source": "Identity-preserving image_gen edit documented in docs/qa/PROFILE_IMAGE_PROMPTS_2026-11-03.json",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SYNTHETIC_EDITORIAL_CONTEXT_NOT_SITE_EVIDENCE"
+    },
+    {
+      "id": "simon-rooftop",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/simon-rooftop.jpg",
+      "sha256": "5e78eec7faf91785ad9709b240a27d93546aa8be132f146348a3aaf69ad6ed92",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "source": "Existing identity reference/context image; original acquisition receipt not documented here",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SOURCE_AUTHENTICITY_UNVERIFIED"
+    },
+    {
+      "id": "simon-site",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/simon-site.jpg",
+      "sha256": "bad8dc1c2a3b50ba096a94443a61fef8fcde36af4a3e60473ee9f706208bc6ef",
+      "dimensions": [
+        1600,
+        914
+      ],
+      "source": "Existing identity reference/context image; original acquisition receipt not documented here",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SOURCE_AUTHENTICITY_UNVERIFIED"
+    },
+    {
+      "id": "boris-portrait",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/boris-portrait.jpg",
+      "sha256": "7d0f965a1ddb8c0afff8a982937339c5eb7751b018d7b9a6f87e1a8ed7c29a90",
+      "dimensions": [
+        1600,
+        1999
+      ],
+      "source": "Existing identity reference/context image; original acquisition receipt not documented here",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SOURCE_AUTHENTICITY_UNVERIFIED"
+    },
+    {
+      "id": "boris-formwork-43f3d5",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/boris-formwork-43f3d5.jpg",
+      "sha256": "43f3d587208ba46f895eb9cf9c44949b1975d4aaf310416aade95e126c6ac96a",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "source": "Identity-preserving image_gen edit documented in docs/qa/PROFILE_IMAGE_PROMPTS_2026-11-03.json",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SYNTHETIC_EDITORIAL_CONTEXT_NOT_SITE_EVIDENCE"
+    },
+    {
+      "id": "boris-roof-9e3265",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/boris-roof-9e3265.jpg",
+      "sha256": "9e326517118575c72aae5ad5e2cd94b4fe94300774af57c0ce91496aff3b0369",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "source": "Identity-preserving image_gen edit documented in docs/qa/PROFILE_IMAGE_PROMPTS_2026-11-03.json",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SYNTHETIC_EDITORIAL_CONTEXT_NOT_SITE_EVIDENCE"
+    },
+    {
+      "id": "boris-drawings-d9ba7e",
+      "kind": "profile",
+      "path": "app/static/tenerife/site/img/boris-drawings-d9ba7e.jpg",
+      "sha256": "d9ba7e61286e32a96450067196ed3e40f13b205e165d116ae4961697ea8f2b82",
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "source": "Identity-preserving image_gen edit documented in docs/qa/PROFILE_IMAGE_PROMPTS_2026-11-03.json",
+      "rights": "Owner/reference rights need verification before release",
+      "status": "SYNTHETIC_EDITORIAL_CONTEXT_NOT_SITE_EVIDENCE"
+    },
+    {
+      "id": "crete",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/crete.jpg",
+      "sha256": "4efca5cbfc20bf139bbf4998d8430f78bbff623c669deec7d389baf5a110b96d",
+      "dimensions": [
+        1200,
+        654
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "montenegro",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/montenegro.jpg",
+      "sha256": "407581ff40728ad338f4165ea40c5cd188830dcb3b2f9333e71b7a518f574736",
+      "dimensions": [
+        1200,
+        800
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "filario",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/filario.jpg",
+      "sha256": "14683c4be66a137ce6455888d51075d1159d7c36cb2f97c1cd4eaeae1ccfd913",
+      "dimensions": [
+        1200,
+        800
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "paris",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/paris.jpg",
+      "sha256": "cdf97d872bf6916389f6e142355c93d1793a44c2db41cde0e341c7b6501c5944",
+      "dimensions": [
+        1200,
+        800
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "paraiso",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/paraiso.jpg",
+      "sha256": "e3e29a2ebcefbc480daade0a6ef6c65685b5c58dab65eb0cb0a5e26d6633adc0",
+      "dimensions": [
+        1200,
+        906
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "aneto",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/aneto.jpg",
+      "sha256": "924ed031608e3574365a2f92b260ce40c7b86610f36a53636b1fba975b241b9e",
+      "dimensions": [
+        1200,
+        678
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "iconic",
+      "kind": "portfolio",
+      "path": "app/static/tenerife/site/cases/iconic.jpg",
+      "sha256": "3b57ea33b03f25ca8ab0184daae3e37f9b3e633ee2187f8c5ac1620c1bf3a007",
+      "dimensions": [
+        1200,
+        750
+      ],
+      "source": "Existing portfolio association in cases.json; source photographer/acquisition receipt not documented here",
+      "rights": "Photo rights, attribution and claimed role/status need owner confirmation",
+      "status": "PORTFOLIO_EVIDENCE_REVIEW_PENDING"
+    },
+    {
+      "id": "diary-atlantic-20261104",
+      "kind": "news",
+      "path": "app/static/tenerife/site/img/diary-atlantic-20261104.webp",
+      "sha256": "43bbd303b6812114b31aaaf9374ad171c593738af92e30369a8f5f9d436b2c09",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source": "OpenAI built-in image generation, 2026-11-04, this authorized implementation session",
+      "rights": "new project illustration generated for user; no third-party reference or person supplied",
+      "status": "RECORDED_CONCEPT_PROVENANCE"
+    }
+  ]
+}

@@ -1,50 +1,55 @@
 <!-- META
-Slug: /tenerife/privacy/
-Meta title: Privacy — Artemis Tenerife
-Block: legal page. No button and no frames.
+Слаг: /tenerife/privacy/
+Meta title: Конфиденциальность — Artemis de la Cruz
+Блок: юридическая страница. Без кнопки и без кадров.
 -->
 
-# Privacy policy
+# Политика конфиденциальности
 
-For the Artemis Tenerife website and queue sign-up. Version of 05.11.2026.
+Для сайта Artemis de la Cruz и записи в очередь. Версия от 31.10.2026.
 
-## 1. Who processes your data
+## 1. Кто обрабатывает данные
 
-Controller: **OXFORD FRAME REAL ASSETS LTD**, registered in England and Wales, Companies House No. 09153936. Registered office: Drovers, Preston Candover, Basingstoke, RG25 2EE. Contact for data matters: info@artemisresort.com.
+Ответственный (controller): **OXFORD FRAME REAL ASSETS LTD**, registered in England and Wales, Companies House № 09153936. Зарегистрированный адрес: Drovers, Preston Candover, Basingstoke, RG25 2EE. Контакт по вопросам данных: info@artemisresort.com.
 
-## 2. What data we collect
+## 2. Какие данные мы собираем
 
-- Through the queue sign-up form: name, contact (email, phone or Telegram), preferred language, the page the request was sent from, date and time, and a record of consent.
-- For spam protection: a pseudonymised hash of the IP address (the IP address itself is not stored in the request database).
-- Technical logs of the web server and CDN (IP address, time, page requested, browser), for security and to keep the site running.
+- Через форму записи в очередь: имя, контакт (email, телефон или Telegram), предпочитаемый язык, страница, с которой отправлена заявка, дата и время, отметка о согласии.
+- Из калькулятора, если заявка отправлена со страницы калькулятора: площадь в метрах, ступень цены и способ оплаты — сразу или за 12 месяцев. По этим трём значениям сервер сам пересчитывает число акций, цену метра, сумму и платёж в месяц и сохраняет расчёт вместе с заявкой.
+- Для защиты от спама: псевдонимизированный хеш IP-адреса (сам IP-адрес в базе заявок не хранится).
+- Технические журналы веб-сервера и CDN (IP-адрес, время, запрошенная страница, браузер) — в целях безопасности и работы сайта.
 
-We do not ask for information about income or for payment details.
+Мы не запрашиваем сведения о доходах и платёжные данные. Сумму в форму вы не вводите: её считает калькулятор.
 
-## 3. Why, and on what legal basis
+## 3. Зачем и на каком основании
 
-To add you to the queue and contact you about the Artemis Tenerife project, including sending you a calculation on request — on the basis of your consent (Art. 6(1)(a) GDPR / UK GDPR). Spam protection and technical logs — legitimate interest (Art. 6(1)(f) GDPR).
+Чтобы записать вас в очередь и связаться по проекту Artemis de la Cruz, в том числе прислать расчёт из калькулятора, — на основании вашего согласия (ст. 6(1)(a) GDPR / UK GDPR). Защита от спама и технические журналы — законный интерес (ст. 6(1)(f) GDPR).
 
-## 4. Who receives the data
+## 4. Кому передаются данные
 
-Each request reaches the team in a working group on Telegram, with a copy to info@artemisresort.com.
+Каждая заявка приходит команде в рабочую группу в Telegram и копией на почту info@artemisresort.com.
 
-- The server hosting provider (the server is located in Germany).
-- Cloudflare, Inc.: CDN and site protection (data may be transferred to the USA on the basis of standard contractual clauses / the EU-US Data Privacy Framework).
-- Telegram: internal notification to the team about a new request — name, contact, language, page. The service is provided by Telegram Messenger Inc., a company outside the EEA, so the data is processed outside the EEA. According to the [Telegram privacy policy](https://telegram.org/privacy), data is transferred within the Telegram group of companies on the basis of the European Commission's standard contractual clauses.
-- Google (Gmail, Google Workspace): a copy of the same notification to the service address info@artemisresort.com. Google may process data outside the EEA (EU-US Data Privacy Framework / standard contractual clauses).
+- Хостинг-провайдер сервера (сервер находится в Германии).
+- Cloudflare, Inc. — CDN и защита сайта (возможна передача данных в США на основании стандартных договорных положений / EU-US Data Privacy Framework).
+- Telegram — внутреннее уведомление команды о новой заявке: имя, контакт, язык, страница, а для заявки из калькулятора — расчёт. Сервис оказывает Telegram Messenger Inc., компания за пределами ЕЭЗ, поэтому данные обрабатываются за пределами ЕЭЗ. По [политике конфиденциальности Telegram](https://telegram.org/privacy) внутри группы компаний Telegram данные передаются на основании стандартных договорных положений Еврокомиссии.
+- Google (Gmail, Google Workspace) — копия того же уведомления на служебный адрес info@artemisresort.com. Google может обрабатывать данные за пределами ЕЭЗ (EU-US Data Privacy Framework / стандартные договорные положения).
 
-We do not sell data or pass it to third parties for advertising.
+Мы не продаём данные и не передаём их третьим лицам для рекламы.
 
-## 5. How long we keep it
+## 5. Сколько храним
 
-We keep your request, together with the IP address hash stored in the same record, until you withdraw your consent or the project ends. Copies of the notification in the Telegram working group and in Google Workspace mail (in the info@artemisresort.com inbox and in the sent folder of the service mailbox the copy is sent from) are deleted together with the request: at your request or when the project ends.
+Заявку вместе с хешем IP-адреса, который хранится в той же записи, мы храним до отзыва согласия или до завершения проекта. Копии уведомления в рабочей группе Telegram и в почте Google Workspace (у получателя info@artemisresort.com и в отправленных служебного ящика, с которого уходит копия) удаляем вместе с заявкой: по вашему запросу или по завершении проекта.
 
-Access and error logs of the web server containing IP addresses are kept for no more than 15 days and then deleted. CDN logs are kept by Cloudflare under its own privacy policy.
+Технические журналы веб-сервера с IP-адресами хранятся не более 15 дней и затем удаляются. Журналы CDN хранит Cloudflare по своей политике конфиденциальности.
 
-## 6. Your rights
+## 6. Ваши права
 
-You can request access to your data, its correction or deletion, restriction of processing and data portability, object to processing, and withdraw your consent at any time (this does not affect the lawfulness of processing before withdrawal). You have the right to complain to a supervisory authority: in the UK this is the ICO; in the EU, the data protection authority of your country.
+Вы можете запросить доступ к своим данным, их исправление или удаление, ограничение обработки, переносимость, возразить против обработки и в любой момент отозвать согласие (это не влияет на законность обработки до отзыва). Вы вправе подать жалобу в надзорный орган — в Великобритании это ICO, в ЕС — орган по защите данных вашей страны.
 
 ## 7. Cookies
 
-The site does not use analytics, tracking tools or advertising cookies, and the Artemis Tenerife pages themselves do not write cookies or localStorage to your browser. The Artemis Crete pages on the same domain set a functional lang cookie: it stores only the selected language, lasts 1 year and applies to the whole artemisresort.com site, so your browser also sends it on the Artemis Tenerife pages. Cloudflare, which provides the CDN and site protection, may set technical cookies required for protection, such as __cf_bm and cf_clearance ([Cloudflare cookie description](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)).
+Сайт не использует аналитику, инструменты отслеживания и рекламные cookies, а страницы Artemis de la Cruz сами не записывают в браузер ни cookies, ни localStorage. Страницы Artemis Crete на том же домене ставят функциональную cookie lang: она хранит только выбранный язык, действует 1 год и относится ко всему сайту artemisresort.com, поэтому браузер присылает её и на страницах Artemis de la Cruz. Cloudflare, который обеспечивает CDN и защиту сайта, может устанавливать технические cookies, необходимые для защиты, например __cf_bm и cf_clearance ([описание cookies Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)).
+
+## 8. CRM and separate choices
+
+We store enquiries, their source and any submitted calculation in our self-hosted Twenty CRM to manage replies and verify processing. The controller, retention period and data rights stated above also apply to these CRM records. An enquiry does not subscribe you to email news and does not add you to a Facebook group. The project diary is open without registration.

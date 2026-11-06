@@ -144,7 +144,6 @@ class HTTPTest(unittest.TestCase):
         with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):r=self.client.post('/api/tenerife/waitlist',data=d)
         self.assertEqual(r.status_code,503);self.assertIn(b'value="test-http-000001"',r.data)
         self.assertIn(b'value="test@example.invalid"',r.data);self.assertFalse(Path(self.db).exists())
-    @unittest.skip("EN r2: public Tenerife is EN-only; no calculadora/locale forms")
     def test_nojs_locale_navigation_retains_only_public_attribution_and_capture(self):
         r=self.client.get('/tenerife/es/inversores/?source_id=fb-public-es-v1&utm_medium=organic&utm_source=private@example.invalid&email=private@example.invalid&newsletter_opt_in=on')
         self.assertEqual(r.status_code,200);self.assertNotIn('Set-Cookie',r.headers)
@@ -161,7 +160,6 @@ class HTTPTest(unittest.TestCase):
         self.assertEqual(event['source_id'],'fb-public-es-v1');self.assertEqual(event['utm_medium'],'organic')
         self.assertEqual(event['language'],'de');self.assertEqual(event['landing'],'/tenerife/de/inversores/')
         self.assertFalse(event['newsletter_opt_in'])
-    @unittest.skip("EN r2: public Tenerife is EN-only; no calculadora/locale forms")
     def test_news_mobile_and_russian_links_carry_attribution_without_storage(self):
         r=self.client.get('/tenerife/es/actualizaciones/concept-search/?source_id=fb-article-es')
         fields=Fields(r.data)
@@ -177,7 +175,6 @@ class HTTPTest(unittest.TestCase):
         with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):
             response=self.client.get('/tenerife/inversores/?source_id=fb-slug')
         self.assertNotIn(b'name="source_id"',response.data);self.assertNotIn(b'data-funnel-version',response.data)
-    @unittest.skip("EN r2: public Tenerife is EN-only; no calculadora/locale forms")
     def test_typed_calculator_form_retains_original_server_built_fields_and_recomputation(self):
         with patch.dict(os.environ,ARTEMIS_FUNNEL_ENABLED='0'):
             legacy=Fields(self.client.get('/tenerife/calculadora/').data)
@@ -192,7 +189,6 @@ class HTTPTest(unittest.TestCase):
         self.assertEqual(self.client.post('/api/tenerife/waitlist',data=data).status_code,200)
         row=self.rows('SELECT calc_status,calc_m2,calc_step,calc_pay FROM tenerife_waitlist')[0]
         self.assertEqual(row[0],'ok');self.assertEqual(str(row[1]),data['calc_m2']);self.assertEqual(row[2:],(data['calc_step'],data['calc_pay']))
-    @unittest.skip("EN r2: public Tenerife is EN-only; no calculadora/locale forms")
     def test_all_five_forms_have_localized_uncertain_send_message_and_empty_optin(self):
         for locale in ['en','es','de','fr','ru']:
             url='/tenerife/'+('' if locale=='en' else locale+'/')+'inversores/'
