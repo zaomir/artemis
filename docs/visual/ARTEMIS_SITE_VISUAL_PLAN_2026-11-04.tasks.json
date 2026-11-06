@@ -673,7 +673,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "MAIN_RECONCILED_HTTP_AVAILABLE_DEPLOY_SHA_UNVERIFIED",
+        "status": "FIVE_LANGUAGE_PLAN_RESTORED_PER_OWNER_MAIN_6d16977_RECONCILED_NO_DEPLOY",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -709,7 +709,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "DOCUMENTARY_PROVENANCE_REVIEW_PENDING",
+        "status": "37_ASSETS_INVENTORIED_DOCUMENTARY_RIGHTS_AND_AUTHENTICITY_REVIEW_OPEN",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -728,7 +728,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "REVIEW_PENDING_OWNER_APPROVAL_AND_MOBILE_COMPOSITIONS",
+        "status": "P0_FIVE_APPROVED_WITH_MOBILE_ADAPTATIONS_P1_FOURTEEN_REVIEW",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -756,7 +756,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "IMPLEMENTED_LOCAL_VALIDATION_PASSED_FINAL_ASSIGNMENT_PENDING",
+        "status": "APPROVED_HASH_BOUND_PREVIEW_AND_MOBILE_PIPELINE_VALIDATED",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -782,7 +782,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "CONCEPT_NOTICE_IMPLEMENTED_FACT_SPEC_REVIEW_PENDING",
+        "status": "DISCLOSURES_AND_UNVERIFIED_SITE_ALT_FIXED_FACT_SPEC_REVIEW_OPEN",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -807,7 +807,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "SOURCES_IMPORTED_HASHED_REVIEW_ONLY_FOUR_NOT_ASSIGNED",
+        "status": "FIVE_APPROVED_ASSIGNED_PREVIEW_MAP_AND_TEAM_HANDLED",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -827,7 +827,7 @@
       ],
       "execution": {
         "as_of": "2026-11-05",
-        "status": "CURRENT_PREVIEW_280_CHECKS_PASSED_POST_ASSIGNMENT_QA_PENDING",
+        "status": "280_RENDERS_100_ART_PLACEMENTS_AND_607_TESTS_ZERO_FAILURES_18_SKIPS",
         "evidence": "docs/visual/EXECUTION_2026-11-05.md"
       }
     },
@@ -842,7 +842,12 @@
       "acceptance": [
         "F04/F02/F03 homepage, norte F01, producto F06/F07/F08, alquiler F10, energia F11/F13/F16, proceso F02, mercado F24, boris F18 covered",
         "Unique image per non-documentary slot, 5 languages and source provenance logged"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "FOURTEEN_CANDIDATES_HASHED_LOCALIZED_OWNER_REVIEW_REQUIRED",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-P1-INFOGRAPHICS",
@@ -859,7 +864,12 @@
       ],
       "blockers": [
         "PR #38: financial model/numeric audit before financial charts"
-      ]
+      ],
+      "execution": {
+        "as_of": "2026-11-05",
+        "status": "NINE_STAGE_SOURCE_LAYOUT_AND_LOCATOR_IMPLEMENTED_FINANCIAL_DIAGRAMS_PENDING_MODEL_AUTHORITY",
+        "evidence": "docs/visual/EXECUTION_2026-11-05.md"
+      }
     },
     {
       "id": "VIS-P1-NEWS",

@@ -1,15 +1,12 @@
-# Artemis visual candidate intake
+# Artemis visual source and review assets
 
-This folder is a **REVIEW-only repository staging area** for source artworks; files in here must never be treated as published images or an approved architectural design.
+Approval lives in each named manifest; repository presence alone is not approval.
 
-- `ART-01-master-1600.webp`: first original ink/watercolour concept. See `manifest.json` for source, SHA256, model, alt/caption in five locales and review flags.
-- Approved production files belong in `app/static/tenerife/site/img/` with uniquely named responsive variants and a verified mapping in `frames.json` / `alts.json`.
-- No partial copy or reused crop may bypass the site-wide dHash uniqueness requirement.
-- Current candidate lacks its own 4:5 mobile composition; the site must not crop away main architecture.
-- Other ART-01…ART-06 calibration outputs are saved in ElevenLabs flow `KlLCmfPxmdfrPsZMWJpT` and are not repo-backed until downloaded, hashed and reviewed.
-- Store generated imagery separately from authentic portraits and case-study evidence.
-- This file and its manifest do not authorize merging or production deployment.
+- Five P0 desktop images are APPROVED_FOR_PREVIEW by the owner. Their independently recomposed mobile originals and variants are recorded alongside them. Production release remains unauthorized.
+- Fourteen P1 candidates under p1/ and p1-sources/ are REVIEW and are not assigned to pages. See ../P1_REVIEW_2026-11-05.md.
+- ART01 old mobile crops remain preserved as superseded drafts; the builder selects the independent 2026-11-05 portrait composition.
+- Each candidate stores source bytes, SHA-256, dimensions, provider/tool reference, prompt and five-language alt/caption metadata.
+- The builder binds approved desktop sources to the owner receipt and prevents production assignment of preview-only images.
+- No generated image certifies a surveyed plot, approved design, engineering detail, construction progress or investment result. Documentary/profile/portfolio provenance is tracked separately.
 
-## P0 import receipt — 2026-11-05
-
-Four original PNGs are now stored in sources/, with per-image artemis-watercolour-*-20261105.json manifests, 20 derivatives, generation settings, five-language alt/caption text and verified hashes. Status remains REVIEW; no page assignments were made. See ../P0_REVIEW_2026-11-05.md. Independent 4:5 mobile compositions and owner approval remain pending.
+Original calibration outputs in ElevenLabs flow KlLCmfPxmdfrPsZMWJpT remain historical references, separate from these imported assets.

@@ -1,0 +1,146 @@
+{
+  "status": "VERIFIED_REVIEW_CANDIDATES",
+  "candidates": 14,
+  "assets_compared": 19,
+  "minimum_distance": 14,
+  "duplicate_threshold": 10,
+  "duplicate_flags": [],
+  "all_sha256_recorded": true,
+  "source_dimensions_recorded": true,
+  "locales": [
+    "en",
+    "es",
+    "de",
+    "fr",
+    "ru"
+  ],
+  "frame_assignments_changed": false,
+  "items": [
+    {
+      "id": "index-f04",
+      "path": "docs/visual/candidates/p1-sources/index-f04-20261105.png",
+      "sha256": "5bde8a4f8d908b3dea5c0b601e1d64e20076ec2f7b7e2f411727ff5a0b7b752b",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "index-f02",
+      "path": "docs/visual/candidates/p1-sources/index-f02-20261105.png",
+      "sha256": "3866189e6c6924bb0d0d387e426de6391a5c9d243588ef226b438a53a21f61d4",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "index-f03",
+      "path": "docs/visual/candidates/p1-sources/index-f03-20261105.png",
+      "sha256": "7e77d56994a4cf08479b66c9b3d735e4489ced5af7d835c8c9a57406d91744ef",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "norte-f01",
+      "path": "docs/visual/candidates/p1-sources/norte-f01-20261105.png",
+      "sha256": "d5af210227a5592c8292ef9c536bc7fb1536a5d0dc2514956fbb9ade34fbf38d",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "producto-f06",
+      "path": "docs/visual/candidates/p1-sources/producto-f06-20261105.png",
+      "sha256": "863e286717aad12bf9c788748b25c1bf42eca01605edb37df0c99a07cd59da0f",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "producto-f07",
+      "path": "docs/visual/candidates/p1-sources/producto-f07-20261105.png",
+      "sha256": "d87cbf5a2922372ce974a07d41e89cd6e927fa5d106ef1cd8e47c163ee3dfb21",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "producto-f08",
+      "path": "docs/visual/candidates/p1-sources/producto-f08-20261105.png",
+      "sha256": "3d632e32ec247301c050a18e66358020b37c86634f74f875efec044cd5a77046",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "alquiler-f10",
+      "path": "docs/visual/candidates/p1-sources/alquiler-f10-20261105.png",
+      "sha256": "84ce1a05874d843a0b20d5ab7395fc1b91174523474573ce7a9bd9614c41faca",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "energia-f11",
+      "path": "docs/visual/candidates/p1-sources/energia-f11-20261105.png",
+      "sha256": "8fbbc54e8c1f048549f82239f51e1afff06715e4dabf4b16edf10dcd085556bd",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "energia-f13",
+      "path": "docs/visual/candidates/p1-sources/energia-f13-20261105.png",
+      "sha256": "8e6e9f64ad8700c34583e3e892ca2b8cacbaf6fcd00c0d09f4c7d6a60fce7fef",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "energia-f16",
+      "path": "docs/visual/candidates/p1-sources/energia-f16-20261105.png",
+      "sha256": "66443ea5ccfc7c759c40666c897313d6edb450110537dd28b9a6a6ebaae945a7",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "proceso-f02",
+      "path": "docs/visual/candidates/p1-sources/proceso-f02-20261105.png",
+      "sha256": "25ad3f02be32996d91ce2c1a498e91c747c21c868e63eab9ddd522fa78cc922f",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "mercado-f24",
+      "path": "docs/visual/candidates/p1-sources/mercado-f24-20261105.png",
+      "sha256": "f8cf50e3406745d016a299c45ec2d7b6da9e33ef896dde9bb4ca7c49d3fb9859",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "boris-f18",
+      "path": "docs/visual/candidates/p1-sources/boris-f18-20261105.png",
+      "sha256": "ee554c0323100a470b409624760ebd579dcadb9ed18b87b4bb62a3e72e69b271",
+      "dimensions": [
+        1672,
+        941
+      ]
+    }
+  ]
+}

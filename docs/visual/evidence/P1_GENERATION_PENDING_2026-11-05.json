@@ -1,7 +1,7 @@
 {
   "worker": "functions cell 37 in active conversation",
   "requested": 14,
-  "saved": 6,
+  "saved": 14,
   "items": [
     {
       "id": "alquiler-f10",
@@ -35,5 +35,8 @@
     }
   ],
   "reconcile_before_retry": true,
-  "publication": false
+  "publication": false,
+  "status": "COMPLETED",
+  "worker_finished": true,
+  "final_receipt": "docs/visual/evidence/P1_CANDIDATES_2026-11-05.json"
 }
