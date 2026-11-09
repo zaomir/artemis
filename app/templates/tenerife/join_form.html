@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="{{ ui_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{{ labels.title }}</title>
+<link rel="icon" href="/static/favicon-32x32.png">
+<link rel="stylesheet" href="/static/tenerife/site/site.css">
+</head>
+<body>
+<main class="wrap section">
+  <h1>{{ labels.title }}</h1>
+  <p class="hero__lead">{{ labels.lead }}</p>
+{% if error %}<p class="field__err" role="alert">{{ error }}</p>{% endif %}
+  <form method="post" action="/tenerife/join/" novalidate>
+    <input type="hidden" name="submission_id" value="{{ submission_id }}">
+    <input type="hidden" name="page" value="/tenerife/join/">
+    <input type="hidden" name="fb_src" value="{{ fb_src }}">
+    <input type="hidden" name="fb_ref" value="{{ fb_ref }}">
+    <input type="hidden" name="ui_lang" value="{{ ui_lang }}">
+    <div class="field">
+      <label for="jf-name">{{ labels.name }}</label>
+      <input id="jf-name" name="name" autocomplete="name" required maxlength="120" value="{{ values.get('name','') }}">
+    </div>
+    <div class="field">
+      <label for="jf-fb">{{ labels.facebook }}</label>
+      <input id="jf-fb" name="facebook" required maxlength="254" value="{{ values.get('facebook','') }}">
+    </div>
+    <div class="field">
+      <label for="jf-interest">{{ labels.interest }}</label>
+      <select id="jf-interest" name="interest" required>
+        <option value="" disabled{% if not values.get('interest') %} selected{% endif %}>—</option>
+        <option value="buyer"{% if values.get('interest')=='buyer' %} selected{% endif %}>{{ labels.interest_buyer }}</option>
+        <option value="investor"{% if values.get('interest')=='investor' %} selected{% endif %}>{{ labels.interest_investor }}</option>
+        <option value="partner"{% if values.get('interest')=='partner' %} selected{% endif %}>{{ labels.interest_partner }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="jf-language">{{ labels.language }}</label>
+      <select id="jf-language" name="language" required>
+        <option value="" disabled{% if not values.get('language') %} selected{% endif %}>—</option>
+{% for code, name in lang_options %}
+        <option value="{{ code }}"{% if values.get('language')==code %} selected{% endif %}>{{ name }}</option>
+{% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="jf-email">{{ labels.email }}</label>
+      <input id="jf-email" name="email" type="email" autocomplete="email" maxlength="254" value="{{ values.get('email','') }}">
+    </div>
+    <label class="check">
+      <input type="checkbox" name="consent" value="1" required{% if values.get('consent') %} checked{% endif %}>
+      <span>{{ labels.consent }} <a href="/tenerife/privacy/">{{ labels.privacy }}</a>.</span>
+    </label>
+    <div class="hp" aria-hidden="true" hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="cta-primary" type="submit">{{ labels.submit }}</button>
+  </form>
+  <p><a href="/tenerife/privacy/">{{ labels.privacy }}</a></p>
+</main>
+</body>
+</html>

@@ -257,6 +257,19 @@ def _not_found(locale: str = ""):
     return resp
 
 
+import tenerife_join  # noqa: E402
+
+tenerife_join.register(
+    bp,
+    _db_path,
+    _client_hash,
+    HONEYPOT_FIELD,
+    RATE_LIMIT_MAX,
+    RATE_LIMIT_WINDOW_MIN,
+    init_waitlist_db,
+)
+
+
 @bp.route(SITE_PREFIX)
 def site_noslash():
     return redirect(SITE_PREFIX + "/", code=301)

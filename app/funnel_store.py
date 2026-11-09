@@ -123,10 +123,13 @@ def normalize(data, now=None):
     kind = 'email' if intent == 'newsletter_only' else data.get('contact_type')
     contact = contact_value(kind, data.get('contact'))
     newsletter_email = contact_value('email', data.get('newsletter_email') or (contact if kind == 'email' else '')) if opted else None
+    origin = str(data.get('capture_origin') or 'website')
+    if origin not in {'website', 'facebook', 'facebook_explicit'}:
+        origin = 'website'
     event = dict(source_event_id='artemis:submission:'+submission, submission_id=submission,
                  project='artemis_tenerife', intent=intent, name=name, contact_type=kind,
                  contact=contact, language=language, created_at=now.isoformat(),
-                 capture_origin='website', source_id='unknown', landing=safe_landing(data.get('page')),
+                 capture_origin=origin, source_id='unknown', landing=safe_landing(data.get('page')),
                  consent_version=VERSION, newsletter_opt_in=opted,
                  newsletter_email=newsletter_email,
                  newsletter_requested_at=now.isoformat() if opted else None,
@@ -136,6 +139,11 @@ def normalize(data, now=None):
         value = str(data.get(key) or '')
         if value and re.fullmatch(r'[A-Za-z0-9_.:-]{1,100}', value):
             event[key] = value
+    extra_email = str(data.get('optional_email') or '').strip()
+    if extra_email and EMAIL.fullmatch(extra_email):
+        event['optional_email'] = extra_email.casefold()
+    if data.get('consent') in (True, 'on', 'true', '1'):
+        event['consent_at'] = now.isoformat()
     return event
 
 
@@ -183,7 +191,7 @@ def capture(conn, data, secret=None, now=None, legacy=None, client_hash=None):
         raise RuntimeError('capture requires caller transaction')
     now = now or utcnow()
     event = normalize(data, now)
-    stable = {k: v for k,v in event.items() if k not in ('created_at', 'newsletter_requested_at')}
+    stable = {k: v for k,v in event.items() if k not in ('created_at', 'newsletter_requested_at', 'consent_at')}
     digest = hashlib.sha256(json.dumps(stable, sort_keys=True).encode()).hexdigest()
     row = conn.execute('SELECT payload_hash FROM artemis_events WHERE submission_id=?', (event['submission_id'],)).fetchone()
     if row:
