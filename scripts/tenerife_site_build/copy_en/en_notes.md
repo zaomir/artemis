@@ -1,14 +1,14 @@
 # EN notes — Artemis Tenerife (r20h source)
-Slugs unchanged (Spanish). Russian not published. Fixed 05.11 after ART-QA-20261105-01.
+Slugs unchanged (Spanish). t15u cleanup 10.11.2026: no shares, dividends, discounts, investment contracts, rental income, yield, ROI, share prices or mortgage offers; 04_akcii.md and 06_arenda.md are archived and not part of the served set. Russian not published. Fixed 05.11 after ART-QA-20261105-01.
 
 | file | slug | EN menu |
 |---|---|---|
 | 01_glavnaya.md | /tenerife/ | — |
 | 02_sever.md | /tenerife/norte/ | — |
 | 03_rezidencii.md | /tenerife/producto/ | — |
-| 04_akcii.md | /tenerife/acciones/ | — |
+| 04_akcii.md | archived, not served (no /tenerife/acciones/) | — |
 | 05_kalkulyator.md | /tenerife/condiciones/ | Terms |
-| 06_arenda.md | /tenerife/alquiler/ | — |
+| 06_arenda.md | archived, not served (no /tenerife/alquiler/) | — |
 | 07_energiya.md | /tenerife/energia/ | — |
 | 08_stroyka.md | /tenerife/construccion/ | — |
 | 09_sdelka.md | /tenerife/proceso/ | — |
@@ -16,7 +16,7 @@ Slugs unchanged (Spanish). Russian not published. Fixed 05.11 after ART-QA-20261
 | 11_simon.md | /tenerife/simon/ | — |
 | 12_rynok.md | /tenerife/mercado/ | — |
 | 13_boris.md | /tenerife/boris/ | — |
-| 14_podval.md | (footer) | — |
+| 14_podval.md | (footer; Pages list without Shares and Rental) | — |
 | 15_impressum.md | /tenerife/impressum/ | — |
 | 16_privacy.md | /tenerife/privacy/ | — |
 | 17_forma.md | (form block) | — |

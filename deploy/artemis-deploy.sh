@@ -56,8 +56,8 @@ PATHS=(/health /en/ /ru/ /es/ /fr/ /en/privacy/ /ru/privacy/ /es/privacy/ /fr/pr
 #   200 -> EN r2 (condiciones + acciones + inversores; model.json/calc.js must 404; calculadora must 301)
 #   else -> legacy (calculadora + calc.js + model.json + locale prefixes must 200; no strict EN 404/301)
 # So the SAME installed script still passes smoke after ROLLBACK to a pre-EN tree.
-TENERIFE_PATHS_EN=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/acciones/ /tenerife/condiciones/
-  /tenerife/alquiler/ /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
+TENERIFE_PATHS_EN=(/tenerife/ /tenerife/norte/ /tenerife/producto/ /tenerife/condiciones/
+  /tenerife/energia/ /tenerife/construccion/ /tenerife/proceso/ /tenerife/faq/
   /tenerife/simon/ /tenerife/mercado/ /tenerife/boris/ /tenerife/inversores/ /tenerife/impressum/ /tenerife/privacy/
   /static/tenerife/site/style.css /static/tenerife/site/site.css /static/tenerife/site/waitlist.js
   /static/tenerife/site/site.js /sitemap.xml /robots.txt)
@@ -163,6 +163,10 @@ smoke() {
     done
     code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/calculadora/" || true)
     [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/calculadora/ -> ${code} (want 301 to /tenerife/condiciones/)"; fail=1; }
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/acciones/" || true)
+    [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/acciones/ -> ${code} (want 301 to /tenerife/inversores/)"; fail=1; }
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/tenerife/alquiler/" || true)
+    [[ "$code" == 301 ]] || { log "SMOKE FAIL /tenerife/alquiler/ -> ${code} (want 301 to /tenerife/)"; fail=1; }
   fi
   code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "${LOCAL}/admin/leads" || true)
   [[ "$code" == 403 ]] || { log "SMOKE FAIL /admin/leads without token -> ${code} (want 403)"; fail=1; }

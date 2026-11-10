@@ -4,7 +4,7 @@
   "file": "01_glavnaya.md",
   "frames": {
    "F01": "modern-low-6e9d80",
-   "F04": null,
+   "F04": "private-te-6016b5",
    "F02": null,
    "F03": null,
    "F17": null
@@ -13,10 +13,11 @@
    "F17"
   ],
   "alts": {
-   "F01": "Low houses in terraces on a slope above the ocean"
+   "F01": "Low houses in terraces on a slope above the ocean",
+   "F04": "Terrace with a glass balustrade and an ocean view"
   },
-  "title": "Artemis Tenerife — 20 residences in La Quinta, north Tenerife",
-  "h1": "20 residences in La Quinta: developer company shares, 1 share = 1 m²"
+  "title": "Artemis Tenerife — 20 residences planned in La Quinta, north Tenerife",
+  "h1": "20 residences planned in La Quinta, in the green north of Tenerife"
  },
  "norte": {
   "url": "/tenerife/norte/",
@@ -54,22 +55,6 @@
   "title": "Artemis residences: 20 homes from 48 to 100 m² in La Quinta",
   "h1": "Twenty residences from 48 to 100 metres, one Canary Stone façade"
  },
- "acciones": {
-  "url": "/tenerife/acciones/",
-  "file": "04_akcii.md",
-  "frames": {
-   "F14": null,
-   "F01": null,
-   "F15": null,
-   "F16": null,
-   "F17": null,
-   "F12": null
-  },
-  "hidden": [],
-  "alts": {},
-  "title": "Artemis developer company shares: 1 share = 1 m²",
-  "h1": "One share, one metre: Artemis developer company shares"
- },
  "condiciones": {
   "url": "/tenerife/condiciones/",
   "file": "05_kalkulyator.md",
@@ -83,26 +68,8 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "Artemis Tenerife terms: price per metre, discounts, instalments",
-  "h1": "Artemis Tenerife terms: price per metre, 10% and 5% discounts, instalments"
- },
- "alquiler": {
-  "url": "/tenerife/alquiler/",
-  "file": "06_arenda.md",
-  "frames": {
-   "F10": "private-te-6016b5",
-   "F04": null,
-   "F05": null,
-   "F03": null,
-   "F22": null,
-   "F21": null
-  },
-  "hidden": [],
-  "alts": {
-   "F10": "Terrace with a glass balustrade and an ocean view"
-  },
-  "title": "Renting in north Tenerife: 12–15 € per m² a month — Artemis",
-  "h1": "How a home in La Quinta earns after completion"
+  "title": "Artemis Tenerife terms: home types, built area, individual prices",
+  "h1": "Artemis Tenerife terms: home types, built area, individual prices"
  },
  "energia": {
   "url": "/tenerife/energia/",
@@ -155,8 +122,8 @@
   "alts": {
    "F02": "Entrance to the complex: stone pillars and wooden gates"
   },
-  "title": "The Artemis Tenerife process: from queue to keys, step by step",
-  "h1": "From queue to keys: the six steps of the Artemis process"
+  "title": "The Artemis Tenerife process: from interest list to keys, step by step",
+  "h1": "From interest list to keys: the six steps of the Artemis process"
  },
  "faq": {
   "url": "/tenerife/faq/",
@@ -173,8 +140,8 @@
   "alts": {
    "F03": "Shared pool and Canary Stone houses"
   },
-  "title": "Artemis Tenerife FAQ: shares, price, dividend, construction",
-  "h1": "Questions before entering Artemis Tenerife, and straight answers"
+  "title": "Artemis Tenerife FAQ: location, price, financing, construction",
+  "h1": "Questions about Artemis Tenerife, and straight answers"
  },
  "simon": {
   "url": "/tenerife/simon/",
@@ -205,8 +172,8 @@
   },
   "hidden": [],
   "alts": {},
-  "title": "The market and price per metre in La Quinta: Artemis figures",
-  "h1": "The market and price per metre: where the Artemis figures in La Quinta come from"
+  "title": "The market and price per metre in La Quinta: sale comparables",
+  "h1": "The market and price per metre in La Quinta: sale comparables"
  },
  "boris": {
   "url": "/tenerife/boris/",
@@ -228,16 +195,11 @@
   "url": "/tenerife/inversores/",
   "file": "18_investoram.md",
   "frames": {
-   "F19": null,
-   "F20": null,
-   "F18": null,
-   "F14": null,
-   "F12": null,
-   "F22": null
+   "F19": null
   },
   "hidden": [],
   "alts": {},
-  "title": "For Artemis Tenerife investors: from the queue to your metres",
-  "h1": "For Artemis Tenerife investors: no money before the site is chosen"
+  "title": "For Artemis Tenerife co-investors",
+  "h1": "For Artemis Tenerife co-investors"
  }
 }

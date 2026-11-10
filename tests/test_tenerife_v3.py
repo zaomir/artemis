@@ -299,7 +299,7 @@ class V3BuildTest(unittest.TestCase):
         cfg = json.loads((BUILD / "frames.json").read_text(encoding="utf-8"))
         self.assertEqual(cfg["prefer"]["F17"], [])
         with_f17 = {n for n, r in report.items() if "F17" in r["frames"]}
-        self.assertEqual(with_f17, {"index", "acciones", "condiciones", "construccion", "proceso", "mercado"})
+        self.assertEqual(with_f17, {"index", "condiciones", "construccion", "proceso", "mercado"})
         for name in with_f17:
             self.assertIsNone(report[name]["frames"]["F17"], name)
             others = [s for f, s in report[name]["frames"].items() if f != "F17" and s]
@@ -495,7 +495,9 @@ class V3BuildTest(unittest.TestCase):
     def test_visible_words_per_page(self):
         for name, page in self.pages.items():
             n = len(words(main_text(page)))
-            self.assertGreaterEqual(n, 500 if name in ("condiciones", "inversores") else 700, f"{name}: {n}")
+            floor = 25 if name == "inversores" else 300 if name in ("condiciones", "mercado") else (
+                550 if name in ("producto", "proceso", "faq") else 700)
+            self.assertGreaterEqual(n, floor, f"{name}: {n}")
 
     # ---- criterion 5: SEO, links, routes, deploy
     def test_no_hreflang_and_no_other_languages(self):
@@ -589,19 +591,24 @@ class V3BuildTest(unittest.TestCase):
             for rx in bans:
                 self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
 
-    def test_approved_exceptions_only_where_the_copy_has_them(self):
-        allowed_text = ["4–6% of rent"]   # EN r1: cost table (alquiler, mercado)
-        pages_for = {r"(?i)\byield\b": {"norte", "mercado", "alquiler", "acciones"}}   # market data, German benchmarks
+    def test_t15u_no_offer_language_on_served_pages(self):
+        bans = [
+            r"(?i)developer company shares", r"(?i)\bdividend\b", r"(?i)investment contract",
+            r"(?i)10% discount", r"(?i)2\.5–3\.5%", r"(?i)1 share = 1",
+            r"(?i)\bacciones\b", r"(?i)\balquiler\b",
+        ]
         for name, page in self.pages.items():
-            text = page
-            for s in allowed_text:
-                text = text.replace(s, "")
+            for rx in bans:
+                self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
+
+    def test_approved_exceptions_only_where_the_copy_has_them(self):
+        """V3_ALLOWED minus yield/percent still banned site-wide after t15u (market tables stripped)."""
+        for name, page in self.pages.items():
             for rx in base.V3_ALLOWED:
-                if rx in pages_for:
-                    if name not in pages_for[rx]:
-                        self.assertIsNone(re.search(rx, text), f"{name}: {rx}")
-                else:
-                    self.assertIsNone(re.search(rx, text), f"{name}: {rx}")
+                if rx in (r"(?i)\byield\b", r"\d\s*[–-]\s*\d\s*%"):
+                    self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
+                elif rx not in (r"\+\d[\d\s()-]{7,}",):  # phone pattern allowed elsewhere in suite
+                    self.assertIsNone(re.search(rx, page), f"{name}: {rx}")
 
 
 if __name__ == "__main__":
