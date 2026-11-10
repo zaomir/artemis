@@ -1,10 +1,14 @@
 <!-- META
-Block: queue sign-up form, shared by all 14 pages. No button: the form button sits in the page body. The consent line sits next to the checkbox. Form messages are the texts for waitlist.js and app/tenerife.py.
+Block: queue sign-up form, shared by all 12 pages. No button: the form button sits in the page body. The consent line sits next to the checkbox. Form messages are the texts for waitlist.js and app/tenerife.py.
 -->
 
 ## Queue sign-up form
 
-**Consent.** I agree to the processing of my data (name, contact, language, page, date and time) so that I can be added to the queue, contacted about my request and sent a calculation on request, in accordance with the [privacy policy](/tenerife/privacy/). I can withdraw my consent at any time.
+**Co-investment interest.** I am interested in co-investment (from €200,000, individually)
+
+**Queue microcopy.** Free, non-binding interest list. No payment, no contract.
+
+**Consent.** I agree to the processing of my data (name, contact, language, co-investment interest, page, date and time) so that I can be added to the queue and contacted about my request, in accordance with the [privacy policy](/tenerife/privacy/). I can withdraw my consent at any time.
 
 ## Form messages
 

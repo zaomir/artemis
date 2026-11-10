@@ -1,13 +1,13 @@
 <!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
-Block: site footer, shared by all 14 pages. No button: each page's main button sits in its body.
+Block: site footer, shared by all 12 pages. No button: each page's main button sits in its body.
 -->
 
 ## Site footer
 
-**Artemis Tenerife**: twenty residences in the north of Tenerife; we are choosing the site in La Quinta, Santa Úrsula. Developer company shares: one share equals one m² of the home's total built area, excluding common areas. Joining the queue is free, and we take no money before the site is chosen.
+**Artemis Tenerife**: 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. Co-investment from €200,000, individually. Website operated by OXFORD FRAME REAL ASSETS LTD (England and Wales, No. 09153936). The Spanish project company will be named once incorporated.
 
-**Pages.** Home · The North · Residences · Shares · Terms · Rental · Energy · Construction · Process · For investors · FAQ · Market and price per metre · Simon Subic · Boris Ribaut
+**Pages.** Home · The North · Residences · Terms · Energy · Construction · Process · For investors · FAQ · Market and price per metre · Simon Subic · Boris Ribaut
 
 **Contact.** info@artemisresort.com
 

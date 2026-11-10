@@ -6,7 +6,7 @@ Block: legal page. No button and no frames.
 
 # Privacy policy
 
-For the Artemis Tenerife website and queue sign-up. Version of 05.11.2026.
+For the Artemis Tenerife website and queue sign-up. Version of 10.11.2026.
 
 ## 1. Who processes your data
 
@@ -14,7 +14,7 @@ Controller: **OXFORD FRAME REAL ASSETS LTD**, registered in England and Wales, C
 
 ## 2. What data we collect
 
-- Through the queue sign-up form: name, contact (email, phone or Telegram), preferred language, the page the request was sent from, date and time, and a record of consent.
+- Through the queue sign-up form: name, contact (email, phone or Telegram), preferred language, an indication of co-investment interest, the page the request was sent from, date and time, and a record of consent.
 - For spam protection: a pseudonymised hash of the IP address (the IP address itself is not stored in the request database).
 - Technical logs of the web server and CDN (IP address, time, page requested, browser), for security and to keep the site running.
 
@@ -22,7 +22,7 @@ We do not ask for information about income or for payment details.
 
 ## 3. Why, and on what legal basis
 
-To add you to the queue and contact you about the Artemis Tenerife project, including sending you a calculation on request — on the basis of your consent (Art. 6(1)(a) GDPR / UK GDPR). Spam protection and technical logs — legitimate interest (Art. 6(1)(f) GDPR).
+To add you to the queue and contact you about the Artemis Tenerife project, including your co-investment interest — on the basis of your consent (Art. 6(1)(a) GDPR / UK GDPR). Spam protection and technical logs — legitimate interest (Art. 6(1)(f) GDPR).
 
 ## 4. Who receives the data
 
@@ -30,7 +30,7 @@ Each request reaches the team in a working group on Telegram, with a copy to inf
 
 - The server hosting provider (the server is located in Germany).
 - Cloudflare, Inc.: CDN and site protection (data may be transferred to the USA on the basis of standard contractual clauses / the EU-US Data Privacy Framework).
-- Telegram: internal notification to the team about a new request — name, contact, language, page. The service is provided by Telegram Messenger Inc., a company outside the EEA, so the data is processed outside the EEA. According to the [Telegram privacy policy](https://telegram.org/privacy), data is transferred within the Telegram group of companies on the basis of the European Commission's standard contractual clauses.
+- Telegram: internal notification to the team about a new request — name, contact, language, co-investment interest, page. The service is provided by Telegram Messenger Inc., a company outside the EEA, so the data is processed outside the EEA. According to the [Telegram privacy policy](https://telegram.org/privacy), data is transferred within the Telegram group of companies on the basis of the European Commission's standard contractual clauses.
 - Google (Gmail, Google Workspace): a copy of the same notification to the service address info@artemisresort.com. Google may process data outside the EEA (EU-US Data Privacy Framework / standard contractual clauses).
 
 We do not sell data or pass it to third parties for advertising.
