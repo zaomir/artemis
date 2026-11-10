@@ -1,56 +1,52 @@
 <!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
 Slug: /tenerife/proceso/
-Meta title: The Artemis Tenerife process: from queue to keys, step by step
-Meta description: Join the queue, site approval, the investment contract, a discount for paying upfront or over six months, weekly reports, then a dividend or metres after completion.
-OG title: From queue to keys: how the Artemis process works
+Meta title: The Artemis Tenerife process: from interest list to keys, step by step
+Meta description: Join the free interest list, a personal call, site and building permit, home prices, weekly reports, then completion. No payment, no contract when you join.
+OG title: From interest list to keys: how the Artemis process works
 -->
 
-# From queue to keys: the six steps of the Artemis process
+# From interest list to keys: the six steps of the Artemis process
 
-Your journey with Artemis Tenerife starts with joining the queue for free and ends with a choice once your home is completed: a dividend on your developer company shares, or the metres of your own residence in La Quinta. In between: an email with your calculation, choosing the site together with the queue, the investment contract, buying shares and a construction report every week. You can do it all from abroad, or on the island.
+Your journey with Artemis Tenerife starts with joining the free, non-binding interest list and leads, step by step, to a completed home in La Quinta. In between: a personal call, the choice of site, the building permit, published home prices and a construction report every week. You can follow it all from abroad, or on the island.
 
 [FRAME F02] <!-- internal marker, not published -->
 
 ### Six steps
 
-**1. Join the queue.** You leave your name and contact details. It's free, and you don't need to pay anything now.
+**1. Join the interest list.** You leave your name and contact details. It's free, and you don't need to pay or sign anything. Joining the list creates no contract and no investment.
 
-**2. An email with your calculation.** We send you a calculation for your area: how many shares, the indicative stage price, the entry price with the discount for paying upfront or over six months, the monthly payment if you pay over a year, and the indicative dividend after completion.
+**2. A personal call.** We talk to you in person. Co-investment from €200,000, individually; details are discussed in person after a call.
 
-**3. Site and contract.** Once most of the queue approves the site, we send you the investment contract. Under it you buy developer company shares at the price of the current stage: one share equals one metre. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount.
+**3. The site.** 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. We will tell the list members once the site is confirmed.
 
-**4. Reports.** A construction report every week: the stage, what was done, what comes next. Shareholders and home buyers will receive the report.
+**4. The building permit and home prices.** Home prices will be published once the site and building permit are confirmed. Home sales open after the building permit.
 
-**5. Completion.** The occupancy permit, planned for late 2028 to mid-2029.
+**5. Construction.** A construction report every week: the stage, what was done, what comes next. Home buyers will receive the report. Start planned for early 2027.
 
-**6. Your choice.** A dividend in euros on every share from long-term rental after costs, or exchange your shares for the metres of your own residence: a deed of sale at the notary and registration in the property register.
+**6. Completion.** The occupancy permit, planned for late 2028 to mid-2029, then handover of the homes.
 
 [FRAME F19] <!-- internal marker, not published -->
 
-### Example for 72 metres: the formulas
+### What happens when
 
-| Step | What happens | Amount |
+| Step | What happens | When |
 |---|---|---|
-| Joining | the queue | 0 € |
-| Entry price | 72 shares × price per metre | price per metre ≈2,900–3,100 €/m² if you enter from the queue, ≈3,700–3,900 €/m² by completion |
-| In full upfront | 10% discount | entry price × 0.9 |
-| Or over six months | six equal payments, the first on signing the contract, no down payment, 5% discount | each = entry price × 0.95 ÷ 6 |
-| Or over a year | twelve equal payments with no discount | per month = entry price ÷ 12 |
-| After completion: dividend | on 72 shares | expected dividend of 2.5–3.5% a year before tax at the queue entry price |
-| Or exchange | 72 shares | 72 m² of your own residence |
+| Interest list | free, non-binding; no payment, no contract | now |
+| Site | we are selecting the site in La Quinta, Santa Úrsula | concept stage |
+| Building permit | home prices published once site and permit are confirmed; home sales open | after the permit |
+| Construction | nine stages with a weekly report | planned for early 2027 |
+| Completion | occupancy permit and handover | planned for late 2028 – mid-2029 |
 
-The same steps apply to any area: only the number of shares changes in the formulas.
-
-This is a forecast, not a guarantee: the dividend may be lower or may not be paid, and the share price may fall. Tax consequences depend on your personal situation.
+Prices and payment terms are provided individually.
 
 [FRAME F20] <!-- internal marker, not published -->
 
 ### From abroad or on the island
 
-**Remotely.** A video call, your calculation by email, documents to sign, a report every week. You can go all the way to completion without flying to the island.
+**Remotely.** A video call, documents by email, a report every week. You can follow the project all the way to completion without flying to the island.
 
-**On the island.** We will show you La Quinta, Puerto de la Cruz 8 km away and the project site as construction progresses, with the figures worked out for your area. Meeting, conversation and answers in person.
+**On the island.** We will show you La Quinta, Puerto de la Cruz 8 km away and the project site as the project progresses. Meeting, conversation and answers in person.
 
 Joining on the website is the first step. Next comes a real conversation with the person responsible for the project.
 
@@ -58,59 +54,35 @@ Joining on the website is the first step. Next comes a real conversation with th
 
 **When you join.** You sign nothing and pay nothing.
 
-**After the site is approved.** An investment contract to buy shares at the price of the current stage — not a deed of sale: there is no project documentation yet and the metres have not been physically allocated. Payment: in full upfront with a 10% discount on the entry price; over six months in six equal payments with no down payment, the first on signing the contract, a 5% discount on the whole price, each payment = entry price × 0.95 ÷ 6; over a year with no discount, monthly payment = entry price ÷ 12.
+**Before the building permit.** Home prices will be published once the site and building permit are confirmed. Home sales open after the building permit.
 
-**After completion.** If you choose metres: a deed of sale at the notary for your residence and registration in the property register. If you choose the dividend: you keep the shares, and the dividend arrives in euros on every share.
+**Co-investment.** From €200,000, individually. Details are discussed in person after a call.
 
 [FRAME F18] <!-- internal marker, not published -->
 
-### Exchanging shares for metres: taxes
+### Financing
 
-Exchanging shares for metres is completed as a purchase of a new residence from the developer. Taxes on the transaction follow the laws of Spain and the Canary Islands; details are in the terms and on request. Plus the notary and registration.
+Financing: founders' capital, a bank development loan and a small group of private co-investors. Home sales open after the building permit.
 
-### Mortgage
-
-A mortgage is available only to a buyer, but an investor can pay a first instalment of 50% from their own funds and cover the rest with a mortgage once the building permit is granted. Our brokers help you get a mortgage from banks in Spain and other European countries.
-
-| Bank | Loan as share of home price | Term |
-|---|---|---|
-| CaixaBank HolaBank | up to 70% | up to 20 years |
-| Banca March | up to 70% | up to 20 years |
-| Bankinter | 60% for a second home | up to 25 years |
-| UCI | 70% | up to 30 years |
-| Santander, Sabadell | on request | — |
-
-With a loan of 70% of the price, a non-resident needs their own funds of 40–45% of the price, including taxes and costs. The table and the 40–45% are the banks' terms for home buyers; the arrangement for investors is described above.
-
-**Passing your unit to a buyer.** If there turn out to be more buyers than units, we will offer investors the chance to pass their unit to a buyer at the price per square metre in effect at that moment. This is an opportunity, not a promise of income.
+Market reference: neighbouring La Quinta new builds 3,360–3,870 €/m² (asking, sold out); plus resale La Quinta 2,812 €/m² (Fotocasa, October 2026).
 
 [FRAME F17] <!-- internal marker, not published -->
 
-### Construction money
+### Who handles your enquiry
 
-Construction is paid for by developer company shares and home sales. Each construction stage will change the price stage: queue, permit, foundations, structure and roof, finishing, completion.
-
-### Who handles your deal
-
-**Simon Subic**, developer: site selection, permits, launch, linking the money to the construction. **Boris Ribaut**, chief builder: the site, structure, reports, handover of the homes. We send you the calculation for your area, using one formula for everyone: entry price = metres × price per metre at the stage; at the queue entry price, the expected dividend is 2.5–3.5% a year before tax. You can pay in three ways: in full upfront with a 10% discount on the entry price; over six months in six equal payments with no down payment, the first on signing the contract, a 5% discount on the whole price; or over a year with no discount, in which case the monthly payment = entry price ÷ 12.
+**Simon Subic**, developer: site selection, permits, launch, linking the money to the construction. **Boris Ribaut**, chief builder: the site, structure, reports, handover of the homes. Prices and payment terms are provided individually.
 
 [FRAME F04] <!-- internal marker, not published -->
 
-### How you enter
-
-Joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
-
 ### In short
 
-**What do I sign when I join?** Nothing.
+**What do I sign when I join?** Nothing. Joining the list creates no contract and no investment.
 
-**When do I pay?** Once most of the queue has approved the site and the investment contract has arrived: in full upfront with a 10% discount on the entry price, over six months in six equal payments with a 5% discount, or over a year with no discount, monthly payment = entry price ÷ 12.
+**When do I pay?** Not when you join. Home prices will be published once the site and building permit are confirmed.
 
-**Can I do everything from abroad?** Yes: your calculation and documents arrive remotely, and once construction starts, so do the weekly reports.
+**Can I follow everything from abroad?** Yes: documents arrive remotely, and once construction starts, so do the weekly reports.
 
-**What happens after completion?** A dividend on your shares, or exchange for metres at the notary.
-
-**What taxes apply on the exchange?** Under the laws of Spain and the Canary Islands; details are in the terms and on request. Plus the notary and registry.
+**How is the project financed?** Founders' capital, a bank development loan and a small group of private co-investors.
 
 **Button: "Join the queue"**
-Free. No money before the site is chosen.
+Free, non-binding interest list. No payment, no contract.

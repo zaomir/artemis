@@ -8,7 +8,7 @@ OG title: Boris Ribaut: drawing, work, report, and handover of the home
 
 # I'm Boris Ribaut, chief builder of Artemis Tenerife
 
-I will run the Artemis Tenerife site in La Quinta, Santa Úrsula. That means twenty residences paid for by developer company shares and home sales. The site, the structure, the reports and handing over the homes are my responsibility. We go on site once the site has been chosen and the building permit granted, planned for early 2027. Completion is planned for late 2028 to mid-2029. Every week you will receive a report on what has been done.
+I will run the Artemis Tenerife site: 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. The site, the structure, the reports and handing over the homes are my responsibility. We go on site once the site has been chosen and the building permit granted, planned for early 2027. Completion is planned for late 2028 to mid-2029. Every week home buyers will receive a report on what has been done.
 
 [FRAME F18] <!-- internal marker, not published -->
 
@@ -56,19 +56,17 @@ Inside: tall windows set deep into the wall. In summer the depth keeps the shade
 
 ### The order of stages
 
-Groundworks. Foundations. Structure. Roof with panels. Services. Façade. Interiors. Pool. Grounds. The report will go out every week. Shareholders and home buyers will receive it.
+Groundworks. Foundations. Structure. Roof with panels. Services. Façade. Interiors. Pool. Grounds. The report will go out every week. Home buyers will receive it. I will sign off every stage with an inspection, not with words.
 
-The stages will also move the share price: each completed stage will lift the metre by one step. That is why I will sign off every stage with an inspection, not with words.
-
-Joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
+Financing: founders' capital, a bank development loan and a small group of private co-investors. Home sales open after the building permit. Joining the list creates no contract and no investment.
 
 [FRAME F20] <!-- internal marker, not published -->
 
 ### What's in my report
 
-Every week, the same things in the same order: which stage is under way, what was done that week, what comes next, when the next price stage is due. A completed stage will go into the site log as an entry "date → stage → what was done". So you will see a sequence, not promises.
+Every week, the same things in the same order: which stage is under way, what was done that week, what comes next. A completed stage will go into the site log as an entry "date → stage → what was done". So you will see a sequence, not promises.
 
-The five milestones that will move the share price will look like this in the report:
+The five milestones will look like this in the report:
 
 - **Permit**: the building licence in hand.
 - **Foundations**: the base and stone plinth complete.
@@ -105,4 +103,4 @@ Directly. Ask about the foundations, the roof, how the services are closed in. I
 **When is completion?** Planned for late 2028 to mid-2029.
 
 **Button: "Join the queue"**
-Free. No money before the site is chosen.
+Free, non-binding interest list. No payment, no contract.
