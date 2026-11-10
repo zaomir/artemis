@@ -1,18 +1,18 @@
 <!-- [FRAME Fxx] — internal marker, not published: the build replaces the marker with an image; the string "[FRAME" must not reach the HTML -->
 <!-- META
 Slug: /tenerife/
-Meta title: Artemis Tenerife — 20 residences in La Quinta, north Tenerife
-Meta description: Shares in the Artemis Tenerife developer company: 1 share = 1 m², price shown as an indicative range. The queue is free; no money before the site is approved.
-OG title: 20 residences in La Quinta: developer company shares, 1 share = 1 m²
+Meta title: Artemis Tenerife — 20 residences planned in La Quinta, north Tenerife
+Meta description: 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. Co-investment from €200,000, individually. Free, non-binding interest list.
+OG title: 20 residences planned in La Quinta: co-investment from €200,000, individually
 -->
 
-# 20 residences in La Quinta: developer company shares, 1 share = 1 m²
+# 20 residences planned in La Quinta, in the green north of Tenerife
 
-Artemis Tenerife is twenty residences in the green north of Tenerife. We are now choosing the site in La Quinta, Santa Úrsula. You can come in before the keys exist, through shares in the developer company: one share equals one square metre of the home's total built area, excluding common areas. The price per metre is ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by the time the homes are completed — an estimate based on current prices of comparable new apartments in the area. Joining the queue is free, and we take no money before the site is chosen.
+Artemis Tenerife: co-investment from €200,000, individually. 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. Joining the list creates no contract and no investment.
 
 [FRAME F01] <!-- internal marker, not published -->
 
-**20 residences · 48–100 m² · 1 share = 1 m² · free queue, money only after the site is approved**
+**20 residences · 48–100 m² · co-investment from €200,000, individually**
 
 ### Location
 
@@ -41,13 +41,13 @@ Inside: an open-plan room opening onto the terrace, light through deep windows, 
 
 ### Residences: 20 = 6 + 10 + 4
 
-| Type | How many | Area | This residence = |
-|---|---|---|---|
-| One bedroom | 6 of 20 | 48–55 m² | 48–55 shares |
-| Two bedrooms | 10 of 20 | 68–78 m² | 68–78 shares |
-| Large home | 4 of 20 | 85–100 m² | 85–100 shares |
+| Type | How many | Area |
+|---|---|---|
+| One bedroom | 6 of 20 | 48–55 m² |
+| Two bedrooms | 10 of 20 | 68–78 m² |
+| Large home | 4 of 20 | 85–100 m² |
 
-1,308–1,510 m² in total across the twenty residences. A metre bought as a developer company share costs ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion.
+1,308–1,510 m² in total across the twenty residences. Home prices will be published once the site and building permit are confirmed. Market reference: neighbouring La Quinta new builds 3,360–3,870 €/m² (asking, sold out); plus resale La Quinta 2,812 €/m² (Fotocasa, October 2026).
 
 The most common type is the two-bedroom home of 68–78 metres: ten of the twenty. The second bedroom works for children, guests or a study, and the living room opens onto a stone terrace.
 
@@ -55,24 +55,20 @@ The most common type is the two-bedroom home of 68–78 metres: ten of the twent
 
 ### How it works
 
-1. **The queue — now.** Joining is free. We are choosing the site in La Quinta and discussing the options with queue members.
-2. **Site approved — contract and shares.** Once most of the queue approves the site, we send you an investment contract. Under it you buy developer company shares at the price of the current stage: pay in full upfront with a 10% discount on the entry price, over six months in six equal payments with a 5% discount, or over a year with no discount.
-3. **Construction with a weekly report.** Shareholders and home buyers will receive the report.
-4. **After completion — dividend or metres.** A dividend in euros on every share from long-term rental after costs, or exchange your shares for the metres of your own residence.
+1. **The interest list — now.** Free and non-binding. We are selecting the site in La Quinta and keep list members informed about the options.
+2. **The site — next.** Once the site is confirmed, we publish it together with the plan for permits.
+3. **The building permit.** Home prices will be published once the site and building permit are confirmed. Home sales open after the building permit.
+4. **Construction with a weekly report.** Home buyers will receive the report.
 
-In one paragraph: joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
+Financing: founders' capital, a bank development loan and a small group of private co-investors. Home sales open after the building permit. Co-investment starts from €200,000, individually. Details are discussed in person after a call.
 
-The entry price for your area, discounts and instalments are on the [Terms](/tenerife/condiciones/) page.
-
-The share price is planned to rise with each construction stage: queue, permit, foundations, structure and roof, finishing, completion. After completion, the expected dividend is 2.5–3.5% a year before tax at the queue entry price. It is calculated from long-term rental of a metre minus itemised costs: IBI property tax, community fees, management, vacancy, insurance, a repair reserve and the rubbish collection charge.
-
-This is a forecast, not a guarantee: the dividend may be lower or may not be paid, and the share price may fall. Tax consequences depend on your personal situation.
+Joining the list creates no contract and no investment.
 
 [FRAME F17] <!-- internal marker, not published -->
 
 ### Construction
 
-Start: planned for early 2027. Completion: planned for late 2028 to mid-2029. Nine stages: groundworks, foundations, structure, roof with panels, services, façade, interiors, pool, grounds. The site log will be kept as entries "date → stage → what was done", and a report will go out every week to shareholders and buyers.
+Start: planned for early 2027. Completion: planned for late 2028 to mid-2029. Nine stages: groundworks, foundations, structure, roof with panels, services, façade, interiors, pool, grounds. The site log will be kept as entries "date → stage → what was done", and a report will go out every week to home buyers.
 
 | When (planned) | Stage |
 |---|---|
@@ -84,31 +80,27 @@ Start: planned for early 2027. Completion: planned for late 2028 to mid-2029. Ni
 - **Simon Subic**, developer — site selection, permits, launch, linking the money to the construction.
 - **Boris Ribaut**, chief builder — the site, structure, reports, handover of the homes.
 
-Company: OXFORD FRAME REAL ASSETS LTD, England and Wales, Companies House No. 09153936. Contact: info@artemisresort.com.
+Website operated by OXFORD FRAME REAL ASSETS LTD (England and Wales, No. 09153936). The Spanish project company will be named once incorporated. Contact: info@artemisresort.com.
 
 [FRAME F22] <!-- internal marker, not published -->
 
 ### Questions
 
-**What am I buying?** Shares in the Artemis Tenerife developer company. One share equals one square metre.
+**What is Artemis Tenerife?** 20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site.
 
-**How much does it cost to enter?** ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion — an estimate based on current prices of comparable new apartments in the area.
+**What does it cost?** Home prices will be published once the site and building permit are confirmed. Market reference: neighbouring La Quinta new builds 3,360–3,870 €/m² (asking, sold out); plus resale La Quinta 2,812 €/m² (Fotocasa, October 2026).
 
-**When do I pay?** Once most of the queue has approved the site and the investment contract has arrived: in full upfront with a 10% discount on the entry price, over six months in six equal payments with a 5% discount, or over a year with no discount, monthly payment = entry price ÷ 12.
+**How is it financed?** Financing: founders' capital, a bank development loan and a small group of private co-investors. Home sales open after the building permit.
 
-**How does the dividend work?** The same amount in euros on every share, from long-term rental after costs; the expected dividend is 2.5–3.5% a year before tax at the queue entry price.
+**Can I take part as a co-investor?** Co-investment from €200,000, individually. Details are discussed in person after a call.
 
-**How do I exchange shares for metres?** After the occupancy permit: a deed of sale at the notary and registration in the property register.
+**What do I sign when I join the list?** Nothing. Joining the list creates no contract and no investment.
 
-**Who will see the reports?** Shareholders and home buyers, every week.
-
-**Can I get a mortgage?** A mortgage is available only to a buyer, but an investor can pay a first instalment of 50% from their own funds and cover the rest with a mortgage once the building permit is granted. Our brokers help you get a mortgage from banks in Spain and other European countries.
-
-**Can I sell my unit before the keys?** If there turn out to be more buyers than units, we will offer investors the chance to pass their unit to a buyer at the price per square metre in effect at that moment. This is an opportunity, not a promise of income.
+**Who will see the reports?** Home buyers, every week once construction starts.
 
 ### The queue
 
-Join the queue and we will invite you to a private group of members, show you the site options and send you a calculation for your area. We take no money before the site is chosen.
+Join the queue and we will keep you informed about the site options and talk to you in person. Free, non-binding interest list. No payment, no contract.
 
 **Button: "Join the queue"**
-Free. No money before the site is chosen.
+Free, non-binding interest list. No payment, no contract.

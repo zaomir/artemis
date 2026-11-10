@@ -73,7 +73,7 @@ EMAIL_RE = re.compile(r"^[^@\s<>,;\"]+@[^@\s<>,;\"]+\.[^@\s<>,;\"]+$")
 SOURCES = {
     # table: (kind label, contact column, extra columns)
     "leads": ("Crete enquiry", "email", ("amount",)),
-    "tenerife_waitlist": ("Tenerife waitlist", "contact", ("language", "page")),
+    "tenerife_waitlist": ("Tenerife waitlist", "contact", ("language", "page", "co_investment")),
 }
 
 
@@ -349,6 +349,8 @@ def lead_text(kind, d, mark=""):
         lines.append(f"Страница: {clean(d['page'])}")
     if d.get("amount") and clean(d["amount"], 64):
         lines.append(f"Сумма (план): {clean(d['amount'], 64)}")
+    if "co_investment" in d and d.get("co_investment") is not None:
+        lines.append(f"Co-investment interest: {'yes' if int(d['co_investment']) else 'no'}")
     lines.append(f"Время заявки: {clean(d.get('created_at'), 40)}")
     return "\n".join(lines)
 

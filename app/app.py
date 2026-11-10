@@ -626,7 +626,7 @@ def admin_leads():
     finally:
         conn.close()
     h += f"<h2>Tenerife waitlist ({len(tw)})</h2>"
-    h += "<table><tr><th>#</th><th>Name</th><th>Contact</th><th>Lang</th><th>Page</th><th>Date (UTC)</th></tr>"
+    h += "<table><tr><th>#</th><th>Name</th><th>Contact</th><th>Lang</th><th>Page</th><th>Co-invest</th><th>Date (UTC)</th></tr>"
     for r in tw:
         e = [html.escape(str(x if x is not None else "")) for x in r]
         h += "<tr>" + "".join(f"<td>{x}</td>" for x in e) + "</tr>"

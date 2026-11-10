@@ -70,21 +70,11 @@ The neighbouring La Quinta 2 project has also been announced with solar panels.
 
 [FRAME F12] <!-- internal marker, not published -->
 
-### Why this matters for renting
+### Why this matters for the owner
 
-The Artemis dividend is calculated from long-term rental after costs: the home is let long term, to a tenant for a year or more. A long-term tenant in the north sees the electricity bill just as you do. A home that is warm in winter without a heater, with a lower electricity bill and a heated pool, is easier to let and makes it easier to keep a tenant for another year. Fewer empty months between tenants means steadier rent after costs.
+A home that is warm in winter without a heater, with a lower electricity bill and a heated pool, is cheaper to run and more comfortable to live in. An empty home that holds its temperature does not turn cold and damp while the owner is away. The less the shared systems draw from the grid, the lower the running costs of the whole complex.
 
-### Why this matters for the price per metre
-
-A new home with solar on the roof and a stone shell costs more than an old flat of the same size and is cheaper to run. The neighbouring La Quinta new builds were offered at 3,360–3,870 € per metre; both projects have sold out. A metre bought as an Artemis developer company share costs ≈2,900–3,100 €/m² if you enter from the queue and ≈3,700–3,900 €/m² by completion: the home's energy features are included in the price per metre.
-
-### Why this matters for shareholders
-
-Joining the queue is free. We are now choosing the site in La Quinta, Santa Úrsula, and discussing the options with queue members. We take no money before the site is chosen: the investment contract arrives once most of the queue approves the site. Under the contract you buy developer company shares at the price of the current stage: one share equals one m² of the home's total built area, excluding common areas. Pay in full upfront for a 10% discount on the entry price, in instalments over six months — six equal payments with a 5% discount — or in instalments over a year with no discount. A report every week of construction. Once the home is completed, you receive a dividend in euros on every share from long-term rental after costs, estimated and before tax, or exchange your shares for the metres of your own residence.
-
-The dividend is rent minus costs. The less the homes spend on electricity, water and the pool, the more of the rent is left. Itemised costs come to 46.3% of rent; the expected dividend is 2.5–3.5% a year before tax at the queue entry price. The largest item is community fees, at 21.0%: they cover the shared heated pool and upkeep of the grounds. The less the shared systems draw from the grid, the lower this item.
-
-This is a forecast, not a guarantee: the dividend may be lower or may not be paid, and the share price may fall. Tax consequences depend on your personal situation.
+20 residences planned in La Quinta, Santa Úrsula. Concept stage: we are selecting the site. Home prices will be published once the site and building permit are confirmed. Market reference: neighbouring La Quinta new builds 3,360–3,870 €/m² (asking, sold out); plus resale La Quinta 2,812 €/m² (Fotocasa, October 2026).
 
 [FRAME F01] <!-- internal marker, not published -->
 
@@ -104,7 +94,7 @@ On the northern slope the sun is gentler than in the south, which is why it is g
 
 **The pool in winter?** Shared and heated, usable all year round.
 
-**How does this relate to the dividend?** Lower costs mean more of the rent is left for each share.
+**Who is it for?** Anyone who will live in the home, for part of the year or all year round.
 
 **Button: "Join the queue"**
-Free. No money before the site is chosen.
+Free, non-binding interest list. No payment, no contract.

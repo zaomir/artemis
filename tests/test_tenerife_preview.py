@@ -144,7 +144,8 @@ class TenerifePreviewTest(unittest.TestCase):
         self.assertEqual(r.get_json(), {"ok": True})
         self.assertIn("noindex", r.headers.get("X-Robots-Tag", ""))
         self.assertEqual(self.rows(), [("Anna", "anna@example.de", "de", "/tenerife-preview/", 1)])
-        nl.assert_called_once_with("Tenerife waitlist", "Anna", "anna@example.de", "de", "/tenerife-preview/")
+        nl.assert_called_once_with("Tenerife waitlist", "Anna", "anna@example.de", "de", "/tenerife-preview/",
+                                   co_investment=False)
 
     def test_waitlist_without_tg_config_stores_and_warns(self):
         with self.assertLogs("artemis.notify", level="WARNING"):

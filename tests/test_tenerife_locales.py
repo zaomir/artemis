@@ -1,7 +1,7 @@
-"""EN r2: public Tenerife is English only at /tenerife/.
+"""EN r2+: public Tenerife is English only at /tenerife/.
 
 Old /tenerife/{ru,es,de,fr}/… URLs permanently redirect to the EN equivalent.
-Built pages: lang=en, no multi-locale hreflang, approved ranges present, calculator absent.
+Built pages: lang=en, no multi-locale hreflang; acciones/alquiler not served (t15u).
 """
 import os
 import re
@@ -11,11 +11,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / "scripts" / "tenerife_site_build"
-SITE = ROOT / "app" / "tenerife_site"
+SITE = ROOT / "app/tenerife_site"
 sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(BUILD))
 
-from build_v3 import PAGES, APPROVED_RANGES  # noqa: E402
+from build_v3 import PAGES  # noqa: E402
 
 os.environ.setdefault("RATE_LIMIT_SALT", "unit-tests-only-not-a-secret")
 os.environ.setdefault("TENERIFE_WHATSAPP", "+440000000000")
@@ -39,18 +39,17 @@ class EnOnlySiteTest(unittest.TestCase):
             self.assertIn('<html lang="en">', page, name)
             self.assertEqual(re.findall(r'hreflang="([^"]+)"', page), [], name)
 
-    def test_approved_ranges_present_on_key_pages(self):
-        for name in ("index", "acciones", "condiciones"):
-            page = self.page(name)
-            for token in APPROVED_RANGES:
-                self.assertIn(token, page, (name, token))
-        # alquiler carries the dividend range, not the €/m² bands
-        self.assertIn("2.5–3.5%", self.page("alquiler"))
+    def test_no_share_offer_on_home_and_terms(self):
+        for name in ("index", "condiciones", "inversores"):
+            page = self.page(name).lower()
+            self.assertNotIn("dividend", page, name)
+            self.assertNotIn("developer company shares", page, name)
+            self.assertNotIn("2.5–3.5%", page, name)
 
-    def test_no_calculadora_page_file(self):
-        self.assertFalse((SITE / "calculadora.html").exists())
+    def test_no_calculadora_or_retired_page_files(self):
+        for stale in ("calculadora.html", "acciones.html", "alquiler.html"):
+            self.assertFalse((SITE / stale).exists(), stale)
         self.assertTrue((SITE / "condiciones.html").exists())
-        self.assertTrue((SITE / "acciones.html").exists())
         self.assertTrue((SITE / "inversores.html").exists())
 
 
@@ -78,6 +77,14 @@ class EnOnlyRoutesTest(unittest.TestCase):
         r = self.client.get("/tenerife/calculadora/?x=1")
         self.assertEqual(r.status_code, 301)
         self.assertEqual(r.headers["Location"], "/tenerife/condiciones/?x=1")
+
+    def test_acciones_alquiler_301(self):
+        r = self.client.get("/tenerife/acciones/")
+        self.assertEqual(r.status_code, 301)
+        self.assertEqual(r.headers["Location"], "/tenerife/inversores/")
+        r = self.client.get("/tenerife/alquiler/")
+        self.assertEqual(r.status_code, 301)
+        self.assertEqual(r.headers["Location"], "/tenerife/")
 
 
 if __name__ == "__main__":

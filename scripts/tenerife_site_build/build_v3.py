@@ -2,11 +2,9 @@
 
   python3 scripts/tenerife_site_build/build_v3.py     # copy_en/*.md -> app/tenerife_site/*.html
 
-EN r2 (founder t122u / Lead GO 05.11.2026, BLK-20261031-20; onto main 3df77a4): the public /tenerife/ site is English only. The copy
-(copy_en/, Kimi/web-designer, 01.11.2026) already carries ONLY the approved ranges (price per metre ≈2,900–3,100 €/m²
-from the queue → ≈3,700–3,900 €/m² by completion, expected dividend 2.5–3.5% a year before tax), so the pages show the
-copy as written: no model.json token substitution, no figure hiding, no calculator (page 05 is «Terms»,
-/tenerife/condiciones/). model.json stays in app/tenerife_site/data/ (server side only, never served).
+EN r2+ (founder t15u cleanup 10.11.2026): the public /tenerife/ site is English only. Copy in copy_en/ is pinned
+(sha256 per file); no share-price, dividend or rental-income language. Page 05 is «Terms» (/tenerife/condiciones/).
+model.json stays in app/tenerife_site/data/ (server side only, never served).
 Texts are taken as written (no edits). The only transformations:
   * [FRAME Fxx] (or the RU [КАДР Fxx]) markers -> <picture> of an existing Canary Stone photo (frames.json);
   * markdown (# ## ### | - 1. ** [](...)) -> HTML through Jinja components in
@@ -40,35 +38,32 @@ BASE_URL = "https://artemisresort.com"
 # combined sha256 of copy_files() (01-18 joined like the RU build). TENERIFE_COPY_SHA256=<sha> overrides the combined
 # value for a build / test run; a changed file fails the build until it is re-approved and re-pinned here.
 COPY_FILE_SHA256 = {
-    "01_glavnaya.md": "15ed52b2f6341a9cd904ee2a255d0095ec1691762467b5b7a8ff4b858e80c4e5",
-    "02_sever.md": "db210e3988551c98b55c1de0b2a2f7441662056d00f7eea6653abf0a0e02d8a0",
-    "03_rezidencii.md": "e7becf1dde0980943b62d90c68dce8c99a64aa76aa8031a431c7559cb5b14138",
-    "04_akcii.md": "87f925bcef7c7c44180e555f8bf7129e60120fc2ebe53171ff66c457f200c080",
-    "05_kalkulyator.md": "07ee58b6e5116ef118b59470f213c96adb24e8243128fc18dc14657f5062ec0c",
-    "06_arenda.md": "9cf1a56a7183aa7bf832fada043f1150ccb6e44def4d5028bdfa35687194f5f5",
-    "07_energiya.md": "4008843ceda4adf2d3d1822720af082b997d82644ce008bbb0864e84a85615a8",
-    "08_stroyka.md": "1065050afe778e786b0bc20607cd4dbdffd54e694df9654f6c1880da1329aeb7",
-    "09_sdelka.md": "cc8617081fa85dfc8a7857b79c1a40fd19adc59a2bd8e1a90a481951de99994d",
-    "10_voprosy.md": "2ec743163125175e8627ed57f129eab2b62533d36814642f90467426083dbbbf",
-    "11_simon.md": "6ec1fcf18e1a58c73133744ce813810dcc9fe07f46a2114a8bbbabc4a5637a14",
-    "12_rynok.md": "32bbb83feae3fe222bc1c6c415a018bbc6fe0c339d18bc86aa07ecbc45865a39",
-    "13_boris.md": "a11c59a265cbd83afb7f9e418c8e24add147db88795aaaa53cc2916379cc10cb",
-    "14_podval.md": "2ab7720e8770e4fd02e17f9c8615aaa4b7f6befa248bd5cf2eeff6b9762a669f",
-    "15_impressum.md": "690680b4885b9ca44fcace1383e3825c5935d64b2773e0569d65e2532edf28a1",
-    "16_privacy.md": "dbfd963514853f2de4b33b97459bbfd89f0dad2523719f304a2f0a38b457ad91",
-    "17_forma.md": "32bb8774313318ea43ba682ee002fc11cbb2be2120f6794833391f8baf2bb7f5",
-    "18_investoram.md": "88e4840ecbeb68b3cc347f5728a6691bef33a2b41ab0ebd28e9dbedddb8a2229",
+    "01_glavnaya.md": "29df33e14f29d8826f79dcbc078126d510bfdad3b419938aef096fd1ddee121f",
+    "02_sever.md": "f58771fd9a4b18fe6489bcf0977b8853aaa22fc51e1344afe293b89dfc7f3b5b",
+    "03_rezidencii.md": "1c8e485991f58035ffa11d5237659dac8a100ab2202dd96ae6ade65a180edeb2",
+    "05_kalkulyator.md": "2cbda3a35ee9b0cfbe73e2b65eec9e329942527bdf7a2c41f81a1e7dad5733e1",
+    "07_energiya.md": "5b6f899bd45b2d7226f324475328e689337977c38a3a9d8c21bb43ade7f496e4",
+    "08_stroyka.md": "0015da16c522d750b807facda4774551611facbf06ead3c3c9a86b196382794b",
+    "09_sdelka.md": "c0ac5a1ddb1d029fee4a1f26f06fdf02905353137e5dea4e110aa0e518853fb6",
+    "10_voprosy.md": "16e9f873aacb4295c3543818a3a2341a2d5a83a83d3c88955e704eb56b4e1b95",
+    "11_simon.md": "3cb49fdc1fb6c4b1154d637620b1201bfb45c8853acb6a4637dc91b50f7c7bfc",
+    "12_rynok.md": "9ec3a9462e1f4e7eef1b3822cc03db2016ec7bfaf25b82799b7f40d654cadfd8",
+    "13_boris.md": "8983e6f43120f77fed525fb6d2e8c536ef539895428925f5cc8b1576c31e7a57",
+    "14_podval.md": "8566ead8c116c0bec74ec117e1882aa2d6ae19a18ccfe81d354b2e29fabf1fdd",
+    "15_impressum.md": "8d554df546ef86ad55b5090837942db745ce98c5b3975426ad23b9a635cc18e5",
+    "16_privacy.md": "242cb7cb05a097dd28a69a161173407d4b7a221ffa4e40f7f103118f086e345f",
+    "17_forma.md": "cb24b3264fafb3eea6544493b70b603d6b7956ce7daec74637f21102b6748260",
+    "18_investoram.md": "eb305be11c544ee980a414ca688cf201427af4db730f927f77192a498c5a3fdf",
 }
-COPY_SHA256_DEFAULT = "5c5b5d783cce14a9656c95a781e86d762a861eb81a8176821b86f27d5d55fb68"
+COPY_SHA256_DEFAULT = "011ad265436890ec7258bc862c7169e8c071d7c978824fb04cb65d357300f8fc"
 COPY_SHA256 = os.environ.get("TENERIFE_COPY_SHA256", "").strip().lower() or COPY_SHA256_DEFAULT
 WIDTHS = (640, 800, 1024, 1600)
 
 # copy file -> output name (app/tenerife_site/<name>.html); URL comes from the copy's own «Slug» (Spanish slugs kept)
 PAGES = [("01_glavnaya.md", "index"), ("02_sever.md", "norte"), ("03_rezidencii.md", "producto"),
-         ("04_akcii.md", "acciones"), ("05_kalkulyator.md", "condiciones"), ("06_arenda.md", "alquiler"),
-         ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"), ("09_sdelka.md", "proceso"),
-         ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"), ("13_boris.md", "boris"),
-         ("18_investoram.md", "inversores")]
+         ("05_kalkulyator.md", "condiciones"), ("07_energiya.md", "energia"), ("08_stroyka.md", "construccion"),
+         ("09_sdelka.md", "proceso"), ("10_voprosy.md", "faq"), ("11_simon.md", "simon"), ("12_rynok.md", "mercado"),
+         ("13_boris.md", "boris"), ("18_investoram.md", "inversores")]
 FOOTER = "14_podval.md"
 WA_RX = re.compile(r"\+[1-9]\d{7,14}")  # E.164, same rule as app/tenerife.py whatsapp_number()
 # phone-like literal (not a CSS unicode-range U+…): + or 00, then ≥ 8 digits (spaces . - ( ) nbsp between)
@@ -86,18 +81,17 @@ def check_whatsapp_env():
 
 
 # footer «Pages.» names -> output name (names and order are the copy's)
-NAV = {"Home": "index", "The North": "norte", "Residences": "producto", "Shares": "acciones",
-       "Terms": "condiciones", "Rental": "alquiler", "Energy": "energia", "Construction": "construccion",
-       "Process": "proceso", "For investors": "inversores", "FAQ": "faq", "Market and price per metre": "mercado",
-       "Simon Subic": "simon", "Boris Ribaut": "boris"}
+NAV = {"Home": "index", "The North": "norte", "Residences": "producto", "Terms": "condiciones",
+       "Energy": "energia", "Construction": "construccion", "Process": "proceso", "For investors": "inversores",
+       "FAQ": "faq", "Market and price per metre": "mercado", "Simon Subic": "simon", "Boris Ribaut": "boris"}
 FORM_HOST_PAGE = "/tenerife/proceso/"
 
 # DESIGN.md §5: pages 11 and 13 are long text (solid header, 760 px column); 05 and 10 have a short hero
 LONG_PAGES = {"simon", "boris"}
 SHORT_HERO = {"condiciones", "faq"}
 # DESIGN.md C1: 7 links + «More»; labels are the footer's («Pages.»). Terms takes the calculator's place.
-NAV_PRIMARY = ["norte", "producto", "acciones", "condiciones", "construccion", "proceso", "faq"]
-NAV_MORE = ["alquiler", "energia", "inversores", "mercado", "simon", "boris"]
+NAV_PRIMARY = ["norte", "producto", "condiciones", "construccion", "proceso", "faq", "inversores"]
+NAV_MORE = ["energia", "mercado", "simon", "boris"]
 
 SIZES = {
     # must match site.css (DESIGN.md C2, C15): hero full-bleed (4:5 crop of a 16:9 photo below 768 px),
@@ -123,7 +117,6 @@ _S = r"[\s\u00a0\u202f,.]?"
 FORBIDDEN_FIGURES = re.compile(
     rf"(?<![\d,.])87{_S}€|€{_S}87(?![\d,.])|(?<![\d,.])2{_S}950(?!\d)|(?<![\d,.])3{_S}850(?!\d)"
     rf"|(?<![\d,.])3{_S}800{_S}[–-]{_S}4{_S}600(?!\d)|\bRIC\b|\bZEC\b")
-APPROVED_RANGES = ("≈2,900–3,100", "≈3,700–3,900", "2.5–3.5%")
 CYRILLIC_RX = re.compile(r"[\u0400-\u04FF]")
 # the only Cyrillic allowed in a page: the endonym of one contact language in the waitlist <select>
 CYRILLIC_ALLOWED = ('<option value="ru">Русский</option>',)
@@ -705,6 +698,15 @@ def consent_html(md=None):
     return inline(m.group(1))
 
 
+def coinvest_label(md=None):
+    """Optional co-investment checkbox label: «**Co-investment interest.** …» in 17_forma.md."""
+    md = md if md is not None else (COPY / FORMA).read_text(encoding="utf-8")
+    m = re.search(r"^\*\*Co-investment interest\.\*\* (.+)$", md, re.M)
+    if not m:
+        raise BuildError(f"{FORMA}: no «Co-investment interest.» line")
+    return inline(m.group(1))
+
+
 NBSP = "\u00a0"
 
 
@@ -852,6 +854,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
     # «@» as &#64; in the attributes: Cloudflare e-mail obfuscation never sees an address there (dataset decodes it)
     env.globals["form_msg"] = {k: html.escape(v, quote=True).replace("@", "&#64;") for k, v in form_messages().items()}
     env.globals["consent"] = consent_html()
+    env.globals["coinvest_label"] = coinvest_label()
     slugs, metas, parsed = {}, {}, {}
     for fname, name in PAGES:
         meta, blocks = parse_page((COPY / fname).read_text(encoding="utf-8"))
@@ -937,7 +940,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(out, encoding="utf-8")
         # Remove pre-EN leftovers that must not stay public on disk.
-        for stale in ("calculadora.html", "equipo.html"):
+        for stale in ("calculadora.html", "equipo.html", "acciones.html", "alquiler.html"):
             (out_root / stale).unlink(missing_ok=True)
         for loc in ("ru", "es", "de", "fr"):
             d = out_root / loc
