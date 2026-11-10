@@ -334,14 +334,11 @@ class ComponentsTest(unittest.TestCase):
         self.assertIsNone(re.search(r"<section[^>]*>\s*</section>", page("index")))
         for href in ("/tenerife/simon/", "/tenerife/boris/"):
             self.assertIn(f'<li><a href="{href}">', page("index"))
-        self.assertNotIn('id="calc"', page("acciones"))
-        self.assertNotIn("calc.js", page("acciones"))
         self.assertIn('<ol class="grid steps">', page("proceso"))  # 09: numbered paragraphs
-        # Kimi r18: the «How you enter» / «How entry works» paragraphs have more than 6 sentences;
-        # C7 is 3–6 steps (DESIGN.md), so they stay one paragraph (text as in the copy, not split)
-        for name in ("norte", "condiciones", "alquiler", "mercado"):
+        for name in ("norte", "condiciones", "mercado"):
             self.assertNotIn('<ol class="grid steps">', page(name), name)
-            self.assertIn("We take no money before the site is", page(name), name)
+        for name in PAGES:
+            self.assertNotIn("dividend", page(name).lower(), name)
 
     def test_f14_f16_without_photo(self):
         report = json.loads((BUILD / "frames_report.json").read_text(encoding="utf-8"))
@@ -391,7 +388,7 @@ class LegalPagesTest(AppCase):
     def test_legal_meta_description_from_copy(self):
         """EN r1: copy_en 15/16 give no meta description: it is the copy's own first line under the H1, verbatim."""
         wants = {"impressum": "Impressum (§ 5 DDG) / Aviso legal (art. 10 LSSI-CE) for the Artemis Tenerife website.",
-                 "privacy": "For the Artemis Tenerife website and queue sign-up. Version of 05.11.2026."}
+                 "privacy": "For the Artemis Tenerife website and queue sign-up. Version of 10.11.2026."}
         for name, want in wants.items():
             self.assertIn("\n" + want + "\n", (BUILD / "copy_en" / build_v3.LEGAL_FILES[name]).read_text(encoding="utf-8"))
             body = self.client.get(f"/tenerife/{name}/").get_data(as_text=True)
@@ -424,8 +421,8 @@ class KimiTextsTest(unittest.TestCase):
         return re.sub(r"\( ", "(", re.sub(r" ([.,)])", r"\1", t))  # spaces left by removed inline tags
 
     def test_copy_hash(self):
-        self.assertEqual(build_v3.COPY_SHA256_DEFAULT,   # EN r1: copy_en 01-18 (Kimi 01.11, Lead 05.11)
-                         "5c5b5d783cce14a9656c95a781e86d762a861eb81a8176821b86f27d5d55fb68")
+        self.assertEqual(build_v3.COPY_SHA256_DEFAULT,   # EN t15u cleanup 10.11.2026
+                         "011ad265436890ec7258bc862c7169e8c071d7c978824fb04cb65d357300f8fc")
         for f in build_v3.copy_files():
             self.assertEqual(hashlib.sha256(f.read_bytes()).hexdigest(), build_v3.COPY_FILE_SHA256[f.name], f.name)
         self.assertEqual(build_v3.combined_sha(), build_v3.COPY_SHA256)
@@ -464,10 +461,10 @@ class KimiTextsTest(unittest.TestCase):
         self.assertNotIn("*", md)
         links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", md)
         self.assertEqual(links, [("privacy policy", "/tenerife/privacy/")])
-        self.assertIn("sent a calculation on request", md)   # r4.1 c2 / EN r1: no calculator wording
+        self.assertIn("co-investment interest", md.lower())
         self.assertNotIn("calculator", md)
         want = "<span>" + re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', htmllib.escape(md, quote=False)) + "</span>"
-        self.assertEqual(len(PAGES), 14)
+        self.assertEqual(len(PAGES), 12)
         for name in PAGES:
             html = page(name)
             self.assertEqual(html.count('id="wl-consent"'), 1, name)

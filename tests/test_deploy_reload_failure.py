@@ -73,6 +73,8 @@ if [ -n "$p" ] && kill -0 "$p" 2>/dev/null && [ -n "$(pgrep -P "$p")" ]; then
     */admin/leads) printf 403;;
     */static/tenerife/site/model.json*|*/static/tenerife/site/calc.js*) printf 404;;
     */tenerife/calculadora*) printf 301;;
+    */tenerife/acciones*) printf 301;;
+    */tenerife/alquiler*) printf 301;;
     *) printf 200;;
   esac
 else printf 502; fi

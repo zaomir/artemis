@@ -89,7 +89,8 @@ def is_test(*values) -> bool:
 
 
 def format_lead(kind: str, name: str, contact: str, lang: str, page: str,
-                amount: str = "", calc: dict | None = None, model: dict | None = None, test: bool = False) -> str:
+                amount: str = "", calc: dict | None = None, model: dict | None = None, test: bool = False,
+                co_investment: bool | None = None) -> str:
     """amount: Crete «Сумма (план)» (main); calc/model: Tenerife calculator lines (keyword arguments);
     test: the caller saw «TEST» elsewhere (Crete message); a name with «TEST» is detected here."""
     lines = [
@@ -101,6 +102,8 @@ def format_lead(kind: str, name: str, contact: str, lang: str, page: str,
     ]
     if _clean(amount, 64):
         lines.append(f"Сумма (план): {_clean(amount, 64)}")
+    if co_investment is not None:
+        lines.append(f"Co-investment interest: {'yes' if co_investment else 'no'}")
     return "\n".join(lines + format_calc(calc, model))
 
 
@@ -129,7 +132,7 @@ def _send(token: str, chat_id: str, text: str) -> None:
 
 def notify_lead(kind: str, name: str, contact: str, lang: str, page: str,
                 background: bool = True, amount: str = "", calc: dict | None = None,
-                model: dict | None = None, test: bool = False) -> bool:
+                model: dict | None = None, test: bool = False, co_investment: bool | None = None) -> bool:
     """Returns True if a send was attempted."""
     token = os.environ.get("ARTEMIS_TG_BOT_TOKEN", "").strip()
     chat_id = os.environ.get("ARTEMIS_TG_CHAT_ID", "").strip()
@@ -139,7 +142,8 @@ def notify_lead(kind: str, name: str, contact: str, lang: str, page: str,
             kind, "CHAT_ID" if token else "BOT_TOKEN",
         )
         return False
-    text = format_lead(kind, name, contact, lang, page, amount=amount, calc=calc, model=model, test=test)
+    text = format_lead(kind, name, contact, lang, page, amount=amount, calc=calc, model=model, test=test,
+                       co_investment=co_investment)
     if background:
         threading.Thread(target=_send, args=(token, chat_id, text), daemon=True).start()
     else:

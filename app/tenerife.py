@@ -70,6 +70,14 @@ def init_waitlist_db(conn: sqlite3.Connection) -> None:
         "CREATE INDEX IF NOT EXISTS ix_tw_client_time ON tenerife_waitlist(client_hash, created_at)"
     )
     migrate_calc(conn)
+    migrate_co_investment(conn)
+
+
+def migrate_co_investment(conn: sqlite3.Connection) -> None:
+    """Idempotent: co_investment flag on tenerife_waitlist (optional waitlist checkbox, t15u)."""
+    have = {r[1] for r in conn.execute("PRAGMA table_info(tenerife_waitlist)")}
+    if "co_investment" not in have:
+        conn.execute("ALTER TABLE tenerife_waitlist ADD COLUMN co_investment INTEGER NOT NULL DEFAULT 0")
 
 
 def _client_ip() -> str:
@@ -140,11 +148,11 @@ def _with_query(url: str) -> str:
 # --- /tenerife/ prod (static RU pages, clean URLs) ---------------------------
 SITE_PREFIX = "/tenerife"
 SITE_DIR = Path(__file__).resolve().parent / "tenerife_site"
-SITE_PAGES = ("norte", "producto", "acciones", "condiciones", "alquiler", "energia", "construccion",
-              "proceso", "faq", "simon", "mercado", "boris", "inversores")
+SITE_PAGES = ("norte", "producto", "condiciones", "energia", "construccion", "proceso", "faq", "simon",
+              "mercado", "boris", "inversores")
 SITE_URL = "https://artemisresort.com"
-# EN r2: calculator gone; page 05 = Terms. Old calculadora URLs → 301 condiciones (query kept).
-MOVED_PAGES = {"calculadora": "condiciones", "equipo": ""}  # equipo → /tenerife/
+# EN r2+: calculator → condiciones; equipo/acciones/alquiler retired (t15u).
+MOVED_PAGES = {"calculadora": "condiciones", "equipo": "", "acciones": "inversores", "alquiler": ""}
 # Never public: model.json & calc.js (404 before static).
 FIGURE_STATIC_RX = re.compile(r"^/static/tenerife/(?:.*/)?[^/]*\.json(?:\.gz|\.br)?$", re.I)
 CALC_JS_RX = re.compile(r"^/static/tenerife/(?:.*/)?calc\.js(?:\.gz|\.br|\.map)?$", re.I)
@@ -513,6 +521,11 @@ def waitlist():
     contact = " ".join(str(d.get("contact") or "").split())[:200]
     language = str(d.get("language") or "").strip().lower()[:5]
     consent = str(d.get("consent")).lower() in {"1", "true", "on", "yes"}
+    raw_ci = d.get("co_investment")
+    if isinstance(raw_ci, bool):
+        co_investment = raw_ci
+    else:
+        co_investment = str(raw_ci or "").lower() in {"1", "true", "on", "yes"}
     page = str(d.get("page") or "").strip()[:200] or urllib.parse.urlsplit(request.referrer or "").path
     page = page or SITE_PREFIX + "/"
     back = _safe_back(page)
@@ -579,8 +592,8 @@ def waitlist():
             recent=conn.execute('SELECT COUNT(*) FROM artemis_events WHERE client_hash=? AND created_at>=?',(client,since)).fetchone()[0]
         if recent >= RATE_LIMIT_MAX:
             return _capture_error(d,is_json,429,_form_msg("rate",loc),back,locale=loc)
-        cols = ("name", "contact", "language", "page", "consent", "client_hash", "created_at")
-        vals = (name, contact, language, page, 1, client, now.isoformat())
+        cols = ("name", "contact", "language", "page", "consent", "co_investment", "client_hash", "created_at")
+        vals = (name, contact, language, page, 1, 1 if co_investment else 0, client, now.isoformat())
         if calc:
             cols += tuple(c for c, _ in CALC_COLUMNS)
             vals += tuple(calc.get(c) for c, _ in CALC_COLUMNS)
@@ -606,9 +619,10 @@ def waitlist():
     if newsletter_only:
         return _typed_capture_reply(is_json,loc,True)
     if calc:
-        notify_lead("Tenerife waitlist", name, contact, language, page, calc=calc, model=model)
+        notify_lead("Tenerife waitlist", name, contact, language, page, calc=calc, model=model,
+                    co_investment=co_investment)
     else:
-        notify_lead("Tenerife waitlist", name, contact, language, page)
+        notify_lead("Tenerife waitlist", name, contact, language, page, co_investment=co_investment)
     return _typed_capture_reply(is_json,loc) if typed else _reply(is_json, True, back=back)
 
 
@@ -627,5 +641,5 @@ funnel_http.register(bp,_db_path)
 def waitlist_rows(conn: sqlite3.Connection):
     init_waitlist_db(conn)
     return conn.execute(
-        "SELECT id,name,contact,language,page,created_at FROM tenerife_waitlist ORDER BY id DESC"
+        "SELECT id,name,contact,language,page,co_investment,created_at FROM tenerife_waitlist ORDER BY id DESC"
     ).fetchall()
