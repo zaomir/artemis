@@ -11,7 +11,6 @@ from urllib.parse import urlencode
 from flask import make_response, redirect, render_template, request
 
 import funnel_store as store
-import funnel_http
 import tenerife_join_copy as copy
 import tenerife_join_crm as join_crm
 
@@ -27,6 +26,22 @@ FB_MAX = 300
 EMAIL_MAX = 254
 
 FIELD_KEYS = ("name", "facebook", "interest", "language", "email", "consent")
+_STRIP_RX = re.compile(
+    "[\x00-\x1f"
+    "\u200b-\u200f"
+    "\u202a-\u202e"
+    "\u2066-\u2069"
+    "]"
+)
+
+
+def join_typed_crm_enabled() -> bool:
+    return os.environ.get("ARTEMIS_JOIN_TYPED_CRM", "").strip() == "1"
+
+
+def strip_join_text(raw: str) -> str:
+    """Join path only: remove control and bidi override characters."""
+    return _STRIP_RX.sub("", str(raw or ""))
 
 
 def _ui_lang() -> str:
@@ -147,6 +162,8 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
             return redirect(THANKS_PATH + "?" + urlencode({"lang": ui}), code=303)
 
         values = {k: request.form.get(k, "") for k in FIELD_KEYS if k != "consent"}
+        for key in ("name", "facebook"):
+            values[key] = strip_join_text(values[key])
         values["consent"] = _consent_ok(request.form.get("consent"))
         submission_id = str(request.form.get("submission_id") or "")
         src, ref = _capture_attribution()
@@ -167,23 +184,23 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
         now = datetime.datetime.now(datetime.timezone.utc)
         since = (now - datetime.timedelta(minutes=rate_window_min)).isoformat()
         client = client_hash()
-        funnel_on = funnel_http.enabled()
+        typed_crm = join_typed_crm_enabled()
         conn = None
         waitlist_contact = fb_contact
         if email:
             waitlist_contact = f"{fb_contact} | {email.casefold()}"
+        saved = False
 
         try:
             conn = sqlite3.connect(db_path(), timeout=5)
             init_waitlist_db(conn)
-            if funnel_on:
+            if typed_crm or os.environ.get("ARTEMIS_CRM_CAPTURE_ENABLED") == "1":
                 store.migrate(conn)
             conn.commit()
             conn.execute("BEGIN IMMEDIATE")
 
             event = None
-            digest = None
-            if funnel_on:
+            if typed_crm:
                 event = join_crm.build_join_event(submission_id, name, fb_contact, interest, language, src, ref, now)
                 digest = join_crm.event_digest(event)
                 row = conn.execute(
@@ -211,7 +228,7 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
                 (client, since),
             ).fetchone()[0]
             recent_events = 0
-            if funnel_on:
+            if typed_crm:
                 recent_events = conn.execute(
                     "SELECT COUNT(*) FROM artemis_events WHERE client_hash=? AND created_at>=?",
                     (client, since),
@@ -227,7 +244,7 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
             )
             legacy = ("tenerife_waitlist", cursor.lastrowid, now.isoformat())
 
-            if funnel_on:
+            if typed_crm:
                 join_crm.capture_join(conn, event, legacy, client)
             elif os.environ.get("ARTEMIS_CRM_CAPTURE_ENABLED") == "1":
                 from funnel_legacy import enqueue_row
@@ -235,6 +252,7 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
                 enqueue_row(conn, "tenerife_waitlist", cursor.lastrowid)
 
             conn.commit()
+            saved = True
         except sqlite3.Error:
             if conn:
                 conn.rollback()
@@ -251,13 +269,14 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
             if conn:
                 conn.close()
 
-        notify_lead(
-            "Tenerife FB waitlist",
-            name,
-            waitlist_contact,
-            language,
-            JOIN_PATH + (f"?src={src}" if src else ""),
-        )
+        if saved:
+            notify_lead(
+                "Tenerife FB waitlist",
+                name,
+                waitlist_contact,
+                language,
+                JOIN_PATH + (f"?src={src}" if src else ""),
+            )
         return redirect(THANKS_PATH + "?" + urlencode({"lang": ui}), code=303)
 
     @bp.route(THANKS_PATH)

@@ -43,8 +43,9 @@ class FbJoinTest(unittest.TestCase):
         self.dbpatch.start()
         self.funnel = patch.dict(
             os.environ,
-            ARTEMIS_FUNNEL_ENABLED="1",
-            ARTEMIS_NEWSLETTER_SECRET="isolated-test-secret-at-least-32-chars",
+            ARTEMIS_FUNNEL_ENABLED="0",
+            ARTEMIS_NEWSLETTER_SECRET="",
+            ARTEMIS_JOIN_TYPED_CRM="1",
         )
         self.funnel.start()
         self.client = app.app.test_client()
@@ -137,6 +138,23 @@ class FbJoinTest(unittest.TestCase):
         self.assertNotIn("consent_at", event)
         self.assertNotIn("optional_email", event)
 
+    def test_duplicate_submission_no_double_notify(self):
+        r = self.get_form()
+        sid = Hidden(r.data).hidden["submission_id"]
+        base = dict(
+            submission_id=sid,
+            name="TEST",
+            facebook="@test.person",
+            interest="buyer",
+            language="en",
+            consent="1",
+        )
+        self.assertEqual(self.post(**base).status_code, 303)
+        self.assertEqual(self.post(**base).status_code, 303)
+        self.assertEqual(len(self.rows("SELECT * FROM tenerife_waitlist")), 1)
+        self.assertEqual(len(self.rows("SELECT * FROM artemis_events")), 1)
+        self.mock_notify.assert_called_once()
+
     def test_submission_id_conflict_409(self):
         r = self.get_form()
         sid = Hidden(r.data).hidden["submission_id"]
@@ -151,37 +169,117 @@ class FbJoinTest(unittest.TestCase):
         self.assertEqual(self.post(**base).status_code, 303)
         self.assertEqual(self.post(**dict(base, name="OTHER")).status_code, 409)
 
-    def test_funnel_disabled_skips_outbox(self):
+    def test_join_typed_off_uses_legacy_when_crm_capture(self):
         with patch.dict(
             os.environ,
-            ARTEMIS_FUNNEL_ENABLED="0",
-            ARTEMIS_NEWSLETTER_SECRET="",
+            ARTEMIS_JOIN_TYPED_CRM="0",
+            ARTEMIS_CRM_CAPTURE_ENABLED="1",
         ):
             r = self.get_form()
             sid = Hidden(r.data).hidden["submission_id"]
             self.assertEqual(
-                self.client.post(
-                    "/tenerife/join/",
-                    data=dict(
-                        submission_id=sid,
-                        name="OFF",
-                        facebook="@off.user",
-                        interest="buyer",
-                        language="en",
-                        consent="1",
-                    ),
+                self.post(
+                    submission_id=sid,
+                    name="LEG",
+                    facebook="@leg.user",
+                    interest="partner",
+                    language="en",
+                    consent="1",
                 ).status_code,
                 303,
             )
-        self.assertEqual(len(self.rows("SELECT * FROM tenerife_waitlist")), 1)
-        with sqlite3.connect(self.db) as c:
-            self.assertFalse(c.execute("SELECT 1 FROM sqlite_master WHERE name='artemis_events'").fetchone())
+        event = json.loads(self.rows("SELECT payload FROM artemis_events")[0][0])
+        self.assertTrue(event["source_event_id"].startswith("artemis:legacy:"))
+        self.assertEqual(event.get("source_id"), "unknown")
+        self.assertNotEqual(event.get("contact_type"), "facebook")
+
+    def test_prod_flags_join_typed_without_global_funnel(self):
+        """Prod: funnel off, CRM_CAPTURE on — JOIN_TYPED_CRM must emit FB typed events."""
+        with patch.dict(
+            os.environ,
+            ARTEMIS_FUNNEL_ENABLED="0",
+            ARTEMIS_NEWSLETTER_SECRET="",
+            ARTEMIS_JOIN_TYPED_CRM="1",
+            ARTEMIS_CRM_CAPTURE_ENABLED="1",
+        ):
+            r = self.get_form("?src=fb-page&ref=r1")
+            h = Hidden(r.data).hidden
+            self.assertEqual(
+                self.post(
+                    submission_id=h["submission_id"],
+                    fb_src=h["fb_src"],
+                    fb_ref=h["fb_ref"],
+                    name="PROD",
+                    facebook="@prod.user",
+                    interest="investor",
+                    language="en",
+                    consent="1",
+                ).status_code,
+                303,
+            )
+        event = json.loads(self.rows("SELECT payload FROM artemis_events")[0][0])
+        self.assertEqual(event["source_id"], "FB")
+        self.assertEqual(event["contact_type"], "facebook")
+        self.assertEqual(event["intent"], "investor")
+        self.assertEqual(event["utm_source"], "fb-page")
+
+    def test_strip_bidi_from_name(self):
+        r = self.get_form()
+        sid = Hidden(r.data).hidden["submission_id"]
+        self.assertEqual(
+            self.post(
+                submission_id=sid,
+                name="A\u200bB",
+                facebook="@x.user",
+                interest="buyer",
+                language="en",
+                consent="1",
+            ).status_code,
+            303,
+        )
+        self.assertEqual(self.rows("SELECT name FROM tenerife_waitlist")[0][0], "AB")
 
     def test_thanks_hides_group_without_env(self):
         with patch.dict(os.environ, {}, clear=False):
             os.environ.pop("ARTEMIS_FB_PRIVATE_GROUP_URL", None)
             r = self.client.get("/tenerife/join/gracias/?lang=en")
         self.assertNotIn(b"btn-primary", r.data)
+
+    def test_main_funnel_unchanged_by_join_flag(self):
+        """ARTEMIS_JOIN_TYPED_CRM must not change /api/tenerife/waitlist typed capture."""
+        d = dict(
+            submission_id="main-funnel-flag-check-01",
+            intent="investor",
+            name="TEST",
+            contact_type="email",
+            contact="test@example.invalid",
+            language="en",
+            consent=True,
+            newsletter_opt_in=False,
+            page="/tenerife/inversores/",
+        )
+        env_on = dict(
+            ARTEMIS_FUNNEL_ENABLED="1",
+            ARTEMIS_NEWSLETTER_SECRET="isolated-test-secret-at-least-32-chars",
+            ARTEMIS_JOIN_TYPED_CRM="0",
+        )
+        env_flag = dict(env_on, ARTEMIS_JOIN_TYPED_CRM="1")
+        payloads = []
+        for env in (env_on, env_flag):
+            db = os.path.join(self.tmp.name, f"funnel-{env['ARTEMIS_JOIN_TYPED_CRM']}.db")
+            with patch.dict(os.environ, env, clear=False):
+                with patch.object(app, "DB", db):
+                    with patch("tenerife.notify_lead"):
+                        client = app.app.test_client()
+                        r = client.post("/api/tenerife/waitlist", json=d)
+                        self.assertEqual(r.status_code, 200)
+                        with sqlite3.connect(db) as c:
+                            fstore.migrate(c)
+                            payloads.append(json.loads(c.execute("SELECT payload FROM artemis_events").fetchone()[0]))
+        for key in ("created_at", "newsletter_requested_at"):
+            payloads[0].pop(key, None)
+            payloads[1].pop(key, None)
+        self.assertEqual(payloads[0], payloads[1])
 
     def test_join_crm_builder_matches_normalize_byte_identity(self):
         """Existing typed funnel events must stay byte-identical (funnel_store.normalize unchanged)."""

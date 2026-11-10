@@ -1,10 +1,9 @@
 """Twenty consumer field allowlist (artemis_sync.py).
 
-Vendored from zaomir/grainee-v2 ``scripts/outreach/artemis_sync.py`` on ``main``.
-Reference file sha256 (CRM-01 interpreter diagnosis, 2026-11-05):
+Vendored from zaomir/grainee-v2 ``scripts/outreach/artemis_sync.py``.
+File blob sha256 at grainee commit ``8d46aa6c88`` (2026-11-04):
 ``23d6b47fc97136b21c72fdad2a27839b899ae010db96e9345d2f2e2c55cace37``
-Reference grainee merge commit (CRM-05 runtime evidence):
-``f4df79f5a4b51cd66b8e3de3c4a4184abf075fd2``
+(Not claimed to match current ``main``; re-vendor if that script changes.)
 
 The sync service rejects any other top-level event keys with
 ``ValueError: unknown_artemis_fields``.
