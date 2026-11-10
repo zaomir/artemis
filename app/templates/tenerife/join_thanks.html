@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ ui_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{{ labels.thanks_title }}</title>
+<link rel="icon" href="/static/favicon-32x32.png">
+<link rel="stylesheet" href="/static/tenerife/site/site.css">
+</head>
+<body class="join-page">
+<main class="wrap section col-text">
+  <h1>{{ labels.thanks_title }}</h1>
+  <p class="hero__lead">{{ labels.thanks_lead }}</p>
+  <p>{{ labels.thanks_messenger }}</p>
+{% if show_group_button %}
+  <p><a class="btn-primary cta-primary" href="{{ group_url }}">{{ labels.join_group }}</a></p>
+{% endif %}
+  <p><small>{{ labels.disclaimer }}</small></p>
+</main>
+</body>
+</html>

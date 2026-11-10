@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="{{ ui_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{{ labels.title }}</title>
+<link rel="icon" href="/static/favicon-32x32.png">
+<link rel="stylesheet" href="/static/tenerife/site/site.css">
+</head>
+<body class="join-page">
+<main class="wrap section">
+  <h1>{{ labels.title }}</h1>
+  <p class="hero__lead">{{ labels.lead }}</p>
+{% if field_errors %}
+  <div class="msg msg--err" id="join-errors" role="alert" tabindex="-1"{% if field_errors %} autofocus{% endif %}>
+    <p>{{ labels.err_summary }}</p>
+    <ul>
+{% for field, msg in field_errors.items() %}
+      <li>{{ msg }}</li>
+{% endfor %}
+    </ul>
+  </div>
+{% endif %}
+  <form class="join-form col-text" method="post" action="/tenerife/join/" novalidate>
+    <input type="hidden" name="submission_id" value="{{ submission_id }}">
+    <input type="hidden" name="page" value="/tenerife/join/">
+    <input type="hidden" name="fb_src" value="{{ fb_src }}">
+    <input type="hidden" name="fb_ref" value="{{ fb_ref }}">
+    <input type="hidden" name="ui_lang" value="{{ ui_lang }}">
+    <div class="field">
+      <label for="jf-name">{{ labels.name }}</label>
+      <input id="jf-name" name="name" autocomplete="name" required maxlength="120" value="{{ values.get('name','') }}"
+        {% if field_errors.get('name') %} aria-invalid="true" aria-describedby="jf-name-err"{% endif %}>
+{% if field_errors.get('name') %}<p class="field__err" id="jf-name-err">{{ field_errors.name }}</p>{% endif %}
+    </div>
+    <div class="field">
+      <label for="jf-fb">{{ labels.facebook }}</label>
+      <input id="jf-fb" name="facebook" required maxlength="300" value="{{ values.get('facebook','') }}"
+        {% if field_errors.get('facebook') %} aria-invalid="true" aria-describedby="jf-fb-err"{% endif %}>
+{% if field_errors.get('facebook') %}<p class="field__err" id="jf-fb-err">{{ field_errors.facebook }}</p>{% endif %}
+    </div>
+    <div class="field">
+      <label for="jf-interest">{{ labels.interest }}</label>
+      <select id="jf-interest" name="interest" required
+        {% if field_errors.get('interest') %} aria-invalid="true" aria-describedby="jf-interest-err"{% endif %}>
+        <option value="" disabled{% if not values.get('interest') %} selected{% endif %}>—</option>
+        <option value="buyer"{% if values.get('interest')=='buyer' %} selected{% endif %}>{{ labels.interest_buyer }}</option>
+        <option value="investor"{% if values.get('interest')=='investor' %} selected{% endif %}>{{ labels.interest_investor }}</option>
+        <option value="partner"{% if values.get('interest')=='partner' %} selected{% endif %}>{{ labels.interest_partner }}</option>
+      </select>
+{% if field_errors.get('interest') %}<p class="field__err" id="jf-interest-err">{{ field_errors.interest }}</p>{% endif %}
+    </div>
+    <div class="field">
+      <label for="jf-language">{{ labels.language }}</label>
+      <select id="jf-language" name="language" required
+        {% if field_errors.get('language') %} aria-invalid="true" aria-describedby="jf-language-err"{% endif %}>
+        <option value="" disabled{% if not values.get('language') %} selected{% endif %}>—</option>
+{% for code, name in lang_options %}
+        <option value="{{ code }}"{% if values.get('language')==code or (not values.get('language') and preselect_language==code) %} selected{% endif %}>{{ name }}</option>
+{% endfor %}
+      </select>
+{% if field_errors.get('language') %}<p class="field__err" id="jf-language-err">{{ field_errors.language }}</p>{% endif %}
+    </div>
+    <div class="field">
+      <label for="jf-email">{{ labels.email }}</label>
+      <input id="jf-email" name="email" type="email" autocomplete="email" maxlength="254" value="{{ values.get('email','') }}"
+        {% if field_errors.get('email') %} aria-invalid="true" aria-describedby="jf-email-err"{% endif %}>
+{% if field_errors.get('email') %}<p class="field__err" id="jf-email-err">{{ field_errors.email }}</p>{% endif %}
+    </div>
+    <label class="check">
+      <input type="checkbox" name="consent" value="1" required{% if values.get('consent') %} checked{% endif %}
+        {% if field_errors.get('consent') %} aria-invalid="true" aria-describedby="jf-consent-err"{% endif %}>
+      <span>{{ labels.consent }} <a href="/tenerife/privacy/">{{ labels.privacy }}</a>.</span>
+    </label>
+{% if field_errors.get('consent') %}<p class="field__err" id="jf-consent-err">{{ field_errors.consent }}</p>{% endif %}
+    <div class="hp" aria-hidden="true" hidden><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn-primary cta-primary" type="submit">{{ labels.submit }}</button>
+  </form>
+  <p class="col-text"><a href="/tenerife/privacy/">{{ labels.privacy_link }}</a></p>
+</main>
+</body>
+</html>
