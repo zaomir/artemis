@@ -3,7 +3,7 @@
 Slug: /tenerife/condiciones/
 Menu item: Terms
 Meta title: Artemis Tenerife terms: home types, built area, individual prices
-Meta description: Artemis Tenerife home types and built area, how prices will be published, financing and co-investment from €200,000, individually. Prices and payment terms are provided individually.
+Meta description: Home types and built area at Artemis Tenerife; prices and payment terms are provided individually after the building permit.
 OG title: Terms of Artemis Tenerife
 -->
 
