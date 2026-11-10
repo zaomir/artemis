@@ -137,7 +137,7 @@ class IndexingDefaultTest(R4Case):
         """QA PS-03: unset TENERIFE_INDEXING -> header too, on all 14 pages + impressum/privacy (+ gracias)."""
         self.assertIn("/tenerife/impressum/", URLS)
         self.assertIn("/tenerife/privacy/", URLS)
-        self.assertEqual(len(URLS), 17)   # EN r1: 14 pages (condiciones, inversores) + 2 legal + gracias
+        self.assertEqual(len(URLS), 15)   # EN t15u: 12 pages + 2 legal + gracias
         for url in URLS:
             r = self.client.get(url)
             self.assertEqual(r.status_code, 200, url)
@@ -427,7 +427,7 @@ class BuildWhatsAppTokenTest(unittest.TestCase):
     def test_page_18_is_built_and_hashed(self):
         # EN r1: «For investors» (18_investoram.md) is published at /tenerife/inversores/
         names = [f.name for f in build_v3.copy_files()]
-        self.assertEqual(len(names), 18)
+        self.assertEqual(len(names), 16)   # 12 pages + footer + 2 legal + form
         self.assertIn("18_investoram.md", names)
         self.assertIn(("18_investoram.md", "inversores"), build_v3.PAGES)
         self.assertTrue((SITE / "inversores.html").exists())

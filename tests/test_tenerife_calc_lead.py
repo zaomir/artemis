@@ -205,7 +205,7 @@ class WaitlistCalcApiTest(unittest.TestCase):
         self.assertIsNone(self.rows()[0]["calc_status"])
         self.assertEqual(nl.call_args.args, ("Tenerife waitlist", "Анна", "anna@example.de", "ru",
                                              "/tenerife/calculadora/"))
-        self.assertEqual(nl.call_args.kwargs, {})
+        self.assertEqual(nl.call_args.kwargs, {"co_investment": False})
 
     def test_model_unreadable_does_not_block_lead(self):
         with mock.patch.object(self.tenerife, "load_model", side_effect=OSError("x")), \
@@ -233,7 +233,9 @@ class WaitlistCalcApiTest(unittest.TestCase):
         c = sqlite3.connect(self.mod.DB)
         cols = [r[1] for r in c.execute("PRAGMA table_info(tenerife_waitlist)")]
         c.close()
-        self.assertEqual(cols[-len(tenerife_calc.COLUMNS):], [x for x, _ in tenerife_calc.COLUMNS])
+        calc_cols = [x for x, _ in tenerife_calc.COLUMNS]
+        self.assertIn("co_investment", cols)
+        self.assertEqual([c for c in cols if c in calc_cols], calc_cols)
 
     def test_admin_rows_still_work(self):
         self.post(good())

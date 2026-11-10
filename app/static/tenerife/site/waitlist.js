@@ -32,7 +32,8 @@
     e.preventDefault();
     var el=f.elements;
     var d={name:el['name'].value.trim(),contact:el['contact'].value.trim(),language:el['language'].value,
-           consent:el['consent'].checked,website:el['website'].value,page:el['page'].value};
+           consent:el['consent'].checked,co_investment:!!(el['co_investment']&&el['co_investment'].checked),
+           website:el['website'].value,page:el['page'].value};
     /* calculator page: hidden calc_m2, calc_step, calc_pay go with the lead (server recomputes them) */
     for(var i=0;i<el.length;i++){ if(/^calc_/.test(el[i].name)) d[el[i].name]=el[i].value; }
     clear();
