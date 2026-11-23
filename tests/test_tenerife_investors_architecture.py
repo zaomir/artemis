@@ -47,11 +47,14 @@ class InvestorArchitectureTest(unittest.TestCase):
         self.assertEqual(r.headers["Location"], "/tenerife/condiciones/?ref=1")
 
     def test_locale_investor_urls_301_to_en(self):
-        for src in ("/tenerife/es/inversores/", "/tenerife/de/acciones/", "/tenerife/ru/condiciones/"):
+        for src in ("/tenerife/es/inversores/", "/tenerife/ru/condiciones/"):
             r = self.c.get(src)
             self.assertEqual(r.status_code, 301, src)
             path = urllib.parse.urlsplit(r.headers["Location"]).path
             self.assertFalse(any(f"/{loc}/" in path for loc in ("es", "de", "fr", "ru")), path)
+
+    def test_moved_german_page(self):
+        self.assertEqual(self.c.get("/tenerife/de/acciones/").location, "/tenerife/de/inversores/")
 
     def test_no_share_offer_language_on_investor_routes(self):
         for path in ("/tenerife/inversores/", "/tenerife/condiciones/"):

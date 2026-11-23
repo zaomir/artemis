@@ -200,7 +200,7 @@ def root():
     # EN r2 / t122u: root always opens English /tenerife/ (geo locale redirects disabled).
     qs = request.query_string.decode("latin-1")
     target = tenerife.entry_target()
-    return redirect(f"{target}?{qs}" if qs else target, code=302)
+    return tenerife.locale_response(redirect(f"{target}?{qs}" if qs else target, code=302))
 
 
 @app.route("/<lang>/")

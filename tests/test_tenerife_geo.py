@@ -47,15 +47,26 @@ class GeoRedirectTest(unittest.TestCase):
                 self.assertEqual(r.status_code, 200, country)
                 self.assertIn(b'<html lang="en">', r.data, country)
 
-    def test_lang_param_does_not_open_non_en_locale(self):
-        r = self.client().get("/tenerife/?lang=de", headers={"CF-IPCountry": "US"})
-        self.assertEqual(r.status_code, 200)
-        self.assertIn(b'<html lang="en">', r.data)
+    def test_language_negotiation_and_cache(self):
+        for header, target in [('de-AT,en;q=0.7','de/'), ('de;q=0,en',''), ('fr',''), ('en-GB,de;q=0.2','')]:
+            r = self.client().get('/?source=x', headers={'Accept-Language': header})
+            self.assertEqual(r.location, '/tenerife/' + target + '?source=x')
+            self.assertIn('no-store', r.cache_control.to_header())
+            self.assertTrue({'Accept-Language','Cookie'} <= set(r.vary))
 
-    def test_lang_param_on_site_root_still_opens_en(self):
-        r = self.client().get("/?lang=de", headers={"CF-IPCountry": "US"})
-        self.assertEqual(r.status_code, 302)
-        self.assertEqual(urllib.parse.urlsplit(r.headers["Location"]).path, "/tenerife/")
+    def test_explicit_english_persists(self):
+        c = self.client()
+        h = {'Accept-Language': 'de-DE'}
+        self.assertEqual(c.get('/tenerife/faq/', headers=h).location, '/tenerife/de/faq/')
+        self.assertEqual(c.get('/tenerife/faq/?lang=en', headers=h).headers['Content-Language'], 'en')
+        self.assertEqual(c.get('/tenerife/', headers=h).headers['Content-Language'], 'en')
+        self.assertEqual(c.get('/?lang=de', headers=h).location, '/tenerife/de/?lang=de')
+
+    def test_join_localized(self):
+        for suffix in ('join/', 'join/gracias/'):
+            r = self.client().get('/tenerife/' + suffix, headers={'Accept-Language':'de-CH'})
+            self.assertIn(b'<html lang="de">', r.data)
+            self.assertIn('Accept-Language', r.vary)
 
     def test_query_kept_on_root_redirect(self):
         r = self.client().get("/?utm=1", headers={"CF-IPCountry": "FR"})
@@ -66,7 +77,6 @@ class GeoRedirectTest(unittest.TestCase):
     def test_non_en_locale_prefix_301_to_en(self):
         cases = (
             ("/tenerife/es/", "/tenerife/"),
-            ("/tenerife/de/norte/", "/tenerife/norte/"),
             ("/tenerife/fr/condiciones/", "/tenerife/condiciones/"),
             ("/tenerife/ru/inversores/", "/tenerife/inversores/"),
             ("/tenerife/en/", "/tenerife/"),

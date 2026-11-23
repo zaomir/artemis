@@ -30,7 +30,7 @@ class EnOnlySiteTest(unittest.TestCase):
             "impressum.html", "privacy.html", "_notice.html", "_404.html", "actualizaciones.html"}
         got = {p.name for p in SITE.glob("*.html")}
         self.assertTrue(want <= got, f"missing {want - got}")
-        for loc in ("ru", "es", "de", "fr"):
+        for loc in ("ru", "es", "fr"):
             self.assertFalse((SITE / loc).exists(), loc)
 
     def test_lang_en_no_hreflang_alternates(self):
@@ -65,13 +65,25 @@ class EnOnlyRoutesTest(unittest.TestCase):
     def test_locale_prefixes_301_to_en(self):
         for src, dest in (
             ("/tenerife/es/producto/", "/tenerife/producto/"),
-            ("/tenerife/de/", "/tenerife/"),
             ("/tenerife/fr/privacy/", "/tenerife/privacy/"),
             ("/tenerife/ru/faq/", "/tenerife/faq/"),
             ("/tenerife/en/norte/", "/tenerife/norte/"),
         ):
             r = self.client.get(src)
             self.assertEqual((r.status_code, r.headers.get("Location")), (301, dest), src)
+
+    def test_all_german_pages_and_switch_links(self):
+        for slug in [n for _, n in PAGES] + ['privacy','impressum','actualizaciones','actualizaciones/concept-search']:
+            suffix = '' if slug == 'index' else slug + '/'
+            en, de = '/tenerife/' + suffix, '/tenerife/de/' + suffix
+            self.assertEqual(self.client.get(en, headers={'Accept-Language':'de-DE'}).location, de)
+            r = self.client.get(de, headers={'Accept-Language':'en'})
+            self.assertEqual(r.status_code, 200, de)
+            self.assertIn(b'<html lang="de"', r.data)
+            self.assertEqual(r.headers['Content-Language'], 'de')
+            self.assertIn((en + '?lang=en').encode(), r.data)
+            self.assertIn((de + '?lang=de').encode(), r.data)
+            self.assertTrue(r.cache_control.no_store)
 
     def test_calculadora_301_condiciones(self):
         r = self.client.get("/tenerife/calculadora/?x=1")

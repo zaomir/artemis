@@ -44,8 +44,8 @@ def strip_join_text(raw: str) -> str:
     return _STRIP_RX.sub("", str(raw or ""))
 
 
-def _ui_lang() -> str:
-    raw = (request.args.get("lang") or request.form.get("ui_lang") or "en").strip().lower()[:5]
+def _ui_lang(default_language) -> str:
+    raw = (request.args.get("lang") or request.form.get("ui_lang") or default_language()).strip().lower()[:5]
     return raw if raw in copy.JOIN_LANGS else "en"
 
 
@@ -61,6 +61,8 @@ def _capture_attribution() -> tuple[str, str]:
 
 def _headers(resp):
     resp.headers.update({"Cache-Control": "no-store, max-age=0", "X-Robots-Tag": "noindex, nofollow"})
+    resp.vary.add("Accept-Language")
+    resp.vary.add("Cookie")
     return resp
 
 
@@ -146,10 +148,10 @@ def _render_form(ui, labels, submission_id, src, ref, values, field_errors, stat
     return _headers(make_response(body, status))
 
 
-def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min, init_waitlist_db):
+def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min, init_waitlist_db, preferred_language):
     @bp.route(JOIN_PATH, methods=["GET", "POST"])
     def fb_join():
-        ui = _ui_lang()
+        ui = _ui_lang(preferred_language)
         labels = copy.COPY[ui]
         src, ref = _capture_attribution()
         default_language = ui if ui in copy.JOIN_LANGS else ""
@@ -281,7 +283,7 @@ def register(bp, db_path, client_hash, honeypot_field, rate_max, rate_window_min
 
     @bp.route(THANKS_PATH)
     def fb_join_thanks():
-        ui = _ui_lang()
+        ui = _ui_lang(preferred_language)
         labels = copy.COPY[ui]
         group_url, show_group = _group_url_configured()
         body = render_template(

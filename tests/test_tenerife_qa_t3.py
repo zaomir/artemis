@@ -383,7 +383,7 @@ class LegalPagesTest(AppCase):
             self.assertIn('class="header', body)
             self.assertIn('<footer', body)
             self.assertNotIn("cloudflareinsights", body)
-            self.assertEqual(body, self.tenerife._finish(page(name)))  # r4: runtime slots (WhatsApp, robots)
+            self.assertEqual(re.sub(r'<nav aria-label="English / Deutsch">[^\n]+?</nav>', "", body), self.tenerife._finish(page(name)))  # r4: runtime slots (WhatsApp, robots)
 
     def test_legal_meta_description_from_copy(self):
         """EN r1: copy_en 15/16 give no meta description: it is the copy's own first line under the H1, verbatim."""

@@ -942,7 +942,7 @@ def build(model_path=MODEL, out_dir=SITE, write=True, alts_path=None):
         # Remove pre-EN leftovers that must not stay public on disk.
         for stale in ("calculadora.html", "equipo.html", "acciones.html", "alquiler.html"):
             (out_root / stale).unlink(missing_ok=True)
-        for loc in ("ru", "es", "de", "fr"):
+        for loc in ("ru", "es", "fr"):  # German is maintained alongside the English output.
             d = out_root / loc
             if d.is_dir():
                 import shutil

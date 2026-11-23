@@ -229,36 +229,66 @@ def _finish(page: str) -> str:
 ALL_LANGS = ("en", "ru", "es", "de", "fr")  # recognised only so old locale URLs can 301 → EN
 LOCALES = ("ru", "es", "de", "fr")
 
-# EN r2 / t122u: public Tenerife is English only. Geo never sends visitors to ES/DE/FR/RU.
-GEO_LOCALES = {}  # disabled
+LANG_COOKIE = "tenerife_lang"
 
 
-def geo_locale() -> str | None:
-    """Always None: EN-only public Tenerife (t122u / Lead GO 05.11.2026)."""
-    return None
+def preferred_language():
+    for choice in (request.args.get("lang"), request.cookies.get(LANG_COOKIE)):
+        if choice in ("de", "en"):
+            return choice
+    # Rank primary languages with their regional variants and q-values together.
+    scores = {}
+    wildcard = 0
+    for tag, quality in request.accept_languages:
+        primary = tag.lower().split("-")[0]
+        if primary == "*":
+            wildcard = quality
+        elif primary in ("de", "en"):
+            scores[primary] = max(scores.get(primary, 0), quality)
+    return "de" if scores.get("de", wildcard) > scores.get("en", wildcard) else "en"
 
 
-def entry_target() -> str:
-    """Site root `/` always opens the English Tenerife home. ?lang=* is ignored for locale choice
-    (non-EN values still land on /tenerife/; old /tenerife/<locale>/ URLs 301 to EN)."""
-    return SITE_PREFIX + "/"
+def locale_response(response):
+    response.headers["Cache-Control"] = "private, no-store"
+    response.vary.add("Accept-Language")
+    response.vary.add("Cookie")
+    choice = request.args.get("lang")
+    if choice in ("de", "en"):
+        response.set_cookie(LANG_COOKIE, choice, path="/", httponly=True, secure=True, samesite="Lax")
+    return response
 
 
-def _site_page(name: str, locale: str = "en"):
-    # EN r2: only English HTML is built; locale arg kept for call-site compat and ignored.
-    f = SITE_DIR / f"{name}.html"
-    if not f.is_file():
-        return _not_found()
-    resp = make_response(_finish(f.read_text(encoding="utf-8")))
-    resp.headers["Content-Type"] = "text/html; charset=utf-8"
-    resp.headers["Cache-Control"] = "public, max-age=300"
-    if not tenerife_indexing():
-        resp.headers["X-Robots-Tag"] = "noindex, nofollow"
-    return resp
+def entry_target():
+    return SITE_PREFIX + ("/de/" if preferred_language() == "de" else "/")
+
+
+def _page_response(name, locale="en", news=False):
+    suffix = "" if name == "index" else name + "/"
+    en = SITE_PREFIX + "/" + suffix
+    de = SITE_PREFIX + "/de/" + suffix
+    if locale == "en" and preferred_language() == "de":
+        return locale_response(redirect(_with_query(de), code=302))
+    if locale == "de" and request.args.get("lang") == "en":
+        return locale_response(redirect(_with_query(en), code=302))
+    file = SITE_DIR / ("de" if locale == "de" else "") / (name + ".html")
+    if not file.is_file():
+        return _not_found(locale)
+    content = _finish(file.read_text(encoding="utf-8"))
+    if news and funnel_http.enabled():
+        content = content.replace("</main>", '<section class="section"><div class="wrap">'
+            + funnel_http.form(locale, request.path, "newsletter_only") + "</div></section></main>")
+        content = content.replace("</body>", '<script src="/static/tenerife/site/funnel.js" defer></script></body>')
+    links = (f'<nav aria-label="English / Deutsch"><a lang="en" href="{en}?lang=en">English</a> · '
+             f'<a lang="de" href="{de}?lang=de">Deutsch</a></nav>')
+    response = make_response(content.replace("</footer>", links + "</footer>", 1))
+    response.headers["Content-Language"] = locale
+    if news or not tenerife_indexing():
+        response.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return locale_response(response)
 
 
 def _not_found(locale: str = ""):
-    f = SITE_DIR / "_404.html"
+    f = SITE_DIR / ("de" if locale == "de" else "") / "_404.html"
     body = _finish(f.read_text(encoding="utf-8")) if f.is_file() else "Not found"
     resp = make_response(body, 404)
     resp.headers["X-Robots-Tag"] = "noindex, nofollow"
@@ -275,18 +305,19 @@ tenerife_join.register(
     RATE_LIMIT_MAX,
     RATE_LIMIT_WINDOW_MIN,
     init_waitlist_db,
+    preferred_language,
 )
 
 
 @bp.route(SITE_PREFIX)
 def site_noslash():
-    return redirect(SITE_PREFIX + "/", code=301)
+    return redirect(_with_query(SITE_PREFIX + "/"), code=301)
 
 
 @bp.route(SITE_PREFIX + "/")
 def site_index():
     # EN r2: always English home. ?lang=* does not open non-EN locales (those URLs 301 → EN).
-    return _site_page("index")
+    return _page_response("index")
 
 
 @bp.route('/tenerife/actualizaciones/')
@@ -294,30 +325,14 @@ def site_index():
 @bp.route('/tenerife/actualizaciones/<slug>/')
 @bp.route('/tenerife/<locale>/actualizaciones/<slug>/')
 def project_news(locale='en', slug=None):
-    """Project diary — EN only; other locale prefixes 301 to EN."""
-    if locale not in ALL_LANGS:
+    if locale not in ALL_LANGS or (slug and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug)):
         return _not_found()
-    en_url = '/tenerife/actualizaciones/' + (slug + '/' if slug else '')
-    if locale != 'en':
-        return redirect(_with_query(en_url), code=301)
-    if slug and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
-        return _not_found()
-    target = SITE_DIR / ('actualizaciones/' + slug + '.html' if slug else 'actualizaciones.html')
-    if not target.is_file():
-        return _not_found()
-    content = _finish(target.read_text(encoding='utf-8'))
-    if funnel_http.enabled():
-        content = content.replace(
-            '</main>',
-            '<section class="section"><div class="wrap">'
-            + funnel_http.form('en', request.path, 'newsletter_only')
-            + '</div></section></main>')
-        content = content.replace(
-            '</body>', '<script src="/static/tenerife/site/funnel.js" defer></script></body>')
-    response = make_response(content)
-    response.headers['Content-Type'] = 'text/html; charset=utf-8'
-    response.headers['X-Robots-Tag'] = 'noindex, nofollow'
-    return response
+    name = 'actualizaciones' + ('/' + slug if slug else '')
+    if locale not in ('de', 'en') or request.path.startswith('/tenerife/en/'):
+        return redirect(_with_query('/tenerife/' + name + '/'), code=301)
+    if not (SITE_DIR / (name + '.html')).is_file():
+        return _not_found(locale)
+    return _page_response(name, locale, news=True)
 
 
 # P1-02: английская локаль живёт в корне (/tenerife/<page>/), а не под /en/. Старые /tenerife/en/* (их в отчёте 14:
@@ -348,15 +363,20 @@ def site_locale_legacy(locale: str, page: str):
     if locale not in ALL_LANGS:
         return _not_found()
     target = _canonical_target(page)
+    if target and locale == 'de':
+        target = target.replace('/tenerife/', '/tenerife/de/', 1)
     return redirect(_with_query(target), code=301) if target else _not_found()
 
 
 @bp.route(SITE_PREFIX + "/<locale>/<page>/")
 def site_locale_page(locale: str, page: str):
-    """EN r2: non-EN (and /en/) locale pages permanently redirect to the EN URL."""
+    if locale == 'de' and page in SITE_PAGES + LEGAL_PAGES:
+        return _page_response(page, locale)
     if locale not in ALL_LANGS:
         return _not_found()
     target = _canonical_target(page)
+    if target and locale == 'de':
+        target = target.replace('/tenerife/', '/tenerife/de/', 1)
     return redirect(_with_query(target), code=301) if target else _not_found()
 
 
@@ -365,25 +385,29 @@ def site_locale_page(locale: str, page: str):
 def legal_page():
     # v2 layout (QA T3-09): static pages built by build_v3.py; the legal text itself stays in
     # app/templates/tenerife/{impressum,privacy}.html (body block, copied verbatim by the build)
-    return _site_page(request.path.rstrip("/").rsplit("/", 1)[-1])
+    return _page_response(request.path.rstrip("/").rsplit("/", 1)[-1])
 
 
 @bp.route(SITE_PREFIX + "/<page>/")
 def site_page(page: str):
     """One segment under /tenerife/: EN page, legal, moved slug, or locale home → 301 EN."""
+    if page == "de":
+        return _page_response("index", "de")
     if page == "en" or page in LOCALES:
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
     if page in MOVED_PAGES:
         return redirect(_with_query(_canonical_target(page)), code=301)
     if page not in SITE_PAGES and page not in LEGAL_PAGES:
         return _not_found()
-    return _site_page(page)
+    return _page_response(page)
 
 
 @bp.route(SITE_PREFIX + "/<page>")
 @bp.route(SITE_PREFIX + "/<page>.html")
 def site_legacy(page: str):
     page = page[:-5] if page.endswith(".html") else page
+    if page == "de":
+        return redirect(_with_query(SITE_PREFIX + "/de/"), code=301)
     if page == "index" or page == "en" or page in LOCALES:
         return redirect(_with_query(SITE_PREFIX + "/"), code=301)
     if page in MOVED_PAGES:
@@ -439,21 +463,26 @@ def _i18n():
 
 
 def _page_locale(path: str | None = None) -> str:
-    """EN r2: public pages are English; locale prefixes only exist as 301 sources."""
-    return "en"
+    return "de" if str(path or "").startswith("/tenerife/de/") else "en"
 
 
 def _payload_locale(d: dict | None = None) -> str:
-    """EN r2: form replies use English strings."""
-    return "en"
+    return _page_locale((d or {}).get("page"))
 
 
 def _form_msg(key: str, locale: str = "") -> str:
-    # EN r2: public replies use the English FORM_MSG (copy_en/17), never locale i18n leftovers.
+    if locale == "de":
+        if key == "ok-title":
+            return "Vielen Dank! Sie stehen auf der Warteliste."
+        if key == "ok-next":
+            return "Ihre Anfrage wird an das Projektteam weitergeleitet. Wir melden uns bei Ihnen."
+        return _i18n()["de"]["msgs"][key]
     return FORM_MSG[key]
 
 
 def _back_label(which: str, locale: str = "") -> str:
+    if locale == "de":
+        return _i18n()["de"]["back"][which]
     return BACK_SITE if which == "site" else BACK_FORM
 
 
@@ -471,13 +500,13 @@ def _notice(status: int, title: str, text: str, back: str, back_label: str, loca
         if key in ("TITLE", "TEXT"):  # the form texts name info@…: keep it out of Cloudflare's e-mail obfuscation
             val = _EMAIL_RX.sub(lambda m: "<!--email_off-->" + m.group(0) + "<!--/email_off-->", val)
         shell = shell.replace("{{NOTICE_%s}}" % key, val)
-    return _noindex(make_response(shell, status, {"Content-Type": "text/html; charset=utf-8"}))
+    return locale_response(_noindex(make_response(shell, status, {"Content-Language": loc})))
 
 
 @bp.route(THANKS_URL)
 def thanks():
     back = _safe_back(request.args.get("back", ""))
-    loc = _payload_locale({"page": back})   # язык страницы, с которой пришла форма
+    loc = _page_locale(back) if request.args.get("back") else preferred_language()   # язык страницы, с которой пришла форма
     return _notice(200, _form_msg("ok-title", loc), _form_msg("ok-next", loc), back,
                    _back_label("site", loc), locale=loc)
 
